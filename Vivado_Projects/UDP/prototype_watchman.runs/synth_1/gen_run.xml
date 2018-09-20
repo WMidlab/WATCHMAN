@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z010clg400-1" LaunchTime="1535509723">
+  <File Type="REPORTS-TCL" Name="prototype_watchman_wrapper_reports.tcl"/>
+  <File Type="PA-TCL" Name="prototype_watchman_wrapper.tcl"/>
+  <File Type="RDS-DCP" Name="prototype_watchman_wrapper.dcp"/>
+  <File Type="RDS-RDS" Name="prototype_watchman_wrapper.vds"/>
+  <File Type="RDS-UTIL-PB" Name="prototype_watchman_wrapper_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="prototype_watchman_wrapper_utilization_synth.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/bd/prototype_watchman/prototype_watchman.bd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/prototype_watchman/hdl/prototype_watchman_wrapper.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="prototype_watchman_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/prototype_watchman_wrapper.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/prototype_watchman_wrapper.xdc"/>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_example_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_auto_pc_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_xlconstant_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_auto_us_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_axi_dma_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_rst_ps7_0_100M_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_auto_pc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_auto_us_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_xlconcat_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="prototype_watchman_xbar_1"/>
+</GenRun>
