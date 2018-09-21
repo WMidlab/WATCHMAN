@@ -1,4 +1,4 @@
-# WATCHMAN Porject Repository
+# WATCHMAN Project Repository
 Date : 20th September 2018 - 11:51
 
 ## Collaborators :
