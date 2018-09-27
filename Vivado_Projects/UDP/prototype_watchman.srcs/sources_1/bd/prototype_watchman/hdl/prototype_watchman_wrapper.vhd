@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.1 (lin64) Build 2188600 Wed Apr  4 18:39:19 MDT 2018
---Date        : Mon Aug 13 11:41:04 2018
+--Date        : Tue Sep 25 13:12:53 2018
 --Host        : idlab52-OptiPlex-790 running 64-bit Ubuntu 14.04.5 LTS
 --Command     : generate_target prototype_watchman_wrapper.bd
 --Design      : prototype_watchman_wrapper

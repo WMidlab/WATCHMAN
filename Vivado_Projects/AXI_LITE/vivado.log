@@ -1,0 +1,68 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Tue Sep 25 08:49:40 2018
+# Process ID: 32738
+# Current directory: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE
+# Command line: vivado
+# Log file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.log
+# Journal file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/simple_reg/simple_reg.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.1/data/ip'.
+open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:05 . Memory (MB): peak = 6137.453 ; gain = 145.359 ; free physical = 8333 ; free virtual = 30128
+create_bd_design "design_1"
+Wrote  : </home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/simple_reg/simple_reg.srcs/sources_1/bd/design_1/design_1.bd> 
+update_compile_order -fileset sources_1
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+WARNING: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+create_peripheral user.org user simple_axi_lite 1.0 -dir /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/ip_repo
+add_peripheral_interface S00_AXI -interface_mode slave -axi_type lite [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+generate_peripheral -driver -bfm_example_design -debug_hw_example_design [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+write_peripheral [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+set_property  ip_repo_paths  /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/ip_repo/simple_axi_lite_1.0 [current_project]
+update_ip_catalog -rebuild
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/ip_repo/simple_axi_lite_1.0'.
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 axi_iic_0
+endgroup
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+apply_bd_automation -rule xilinx.com:bd_rule:board  [get_bd_intf_pins axi_iic_0/IIC]
+INFO: [board_rule 100-100] create_bd_intf_port -mode Master -vlnv xilinx.com:interface:iic_rtl:1.0 iic_rtl
+INFO: [board_rule 100-100] connect_bd_intf_net /iic_rtl /axi_iic_0/IIC
+WARNING: [board_rule 100-100] Board automation did not generate location constraint for /axi_iic_0/IIC. Users may need to specify the location constraint manually.
+set_property location {2.5 567 -66} [get_bd_cells axi_iic_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+startgroup
+set_property -dict [list CONFIG.PCW_USE_M_AXI_GP0 {1}] [get_bd_cells processing_system7_0]
+CRITICAL WARNING: [PSU-1]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_0 has negative value -0.073 . PS DDR interfaces might fail when entering negative DQS skew values. 
+CRITICAL WARNING: [PSU-2]  Parameter : PCW_UIPARAM_DDR_DQS_TO_CLK_DELAY_1 has negative value -0.072 . PS DDR interfaces might fail when entering negative DQS skew values. 
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {Auto} Clk_slave {Auto} Clk_xbar {Auto} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_iic_0/S_AXI} intc_ip {New AXI Interconnect} master_apm {0}}  [get_bd_intf_pins axi_iic_0/S_AXI]
+INFO: [Ipptcl 7-1463] No Compatible Board Interface found. Board Tab not created in customize GUI
+</axi_iic_0/S_AXI/Reg> is being mapped into </processing_system7_0/Data> at <0x41600000 [ 64K ]>
+set_property location {2 659 22} [get_bd_cells axi_iic_0]
+set_property location {2 665 59} [get_bd_cells axi_iic_0]
+set_property location {2 660 74} [get_bd_cells axi_iic_0]
+set_property location {1227 -45} [get_bd_intf_ports iic_rtl]
+set_property location {1227 -27} [get_bd_intf_ports iic_rtl]
+set_property location {1227 -6} [get_bd_intf_ports iic_rtl]
+set_property location {2 663 78} [get_bd_cells axi_iic_0]
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Sep 25 09:22:43 2018...

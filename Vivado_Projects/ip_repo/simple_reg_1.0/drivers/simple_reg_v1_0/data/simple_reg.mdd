@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER simple_reg
+	OPTION supported_peripherals = (simple_reg);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = simple_reg;
+END DRIVER

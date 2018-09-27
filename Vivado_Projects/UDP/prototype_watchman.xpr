@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="36" Path="/home/idlab-52/Desktop/GitVivado/WATCHMAN/prototype_watchman/prototype_watchman.xpr">
+<Project Version="7" Minor="36" Path="/home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/UDP/prototype_watchman.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="0104d954f99b4f539a17bf4f0be97e33"/>
@@ -22,6 +22,8 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/ten_reg_map_1.0"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/simple_reg_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/simple_gen_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../ip_repo/simple_reg_map_1.0"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/../prototype_watchman_HLS_designs"/>
@@ -66,6 +68,12 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
+        <CompFileExtendedInfo CompFileName="prototype_watchman.bd" FileRelPathName="ip/prototype_watchman_processing_system7_0_1/prototype_watchman_processing_system7_0_1.xci">
+          <Proxy FileSetName="prototype_watchman_processing_system7_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="prototype_watchman.bd" FileRelPathName="ip/prototype_watchman_ten_reg_map_0_1/prototype_watchman_ten_reg_map_0_1.xci">
+          <Proxy FileSetName="prototype_watchman_ten_reg_map_0_1"/>
+        </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/prototype_watchman/hdl/prototype_watchman_wrapper.vhd">
         <FileInfo>
@@ -83,12 +91,12 @@
       <Filter Type="Constrs"/>
       <File Path="$PSRCDIR/constrs_1/new/prototype_watchman_wrapper.xdc">
         <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
       </File>
       <Config>
-        <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/prototype_watchman_wrapper.xdc"/>
         <Option Name="ConstrsType" Val="XDC"/>
       </Config>
     </FileSet>
@@ -102,6 +110,18 @@
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SrcSet" Val="sources_1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="prototype_watchman_processing_system7_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/prototype_watchman_processing_system7_0_1">
+      <Config>
+        <Option Name="TopModule" Val="prototype_watchman_processing_system7_0_1"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+      </Config>
+    </FileSet>
+    <FileSet Name="prototype_watchman_ten_reg_map_0_1" Type="BlockSrcs" RelSrcDir="$PSRCDIR/prototype_watchman_ten_reg_map_0_1">
+      <Config>
+        <Option Name="TopModule" Val="prototype_watchman_ten_reg_map_0_1"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
   </FileSets>
@@ -139,6 +159,28 @@
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
+    <Run Id="prototype_watchman_processing_system7_0_1_synth_1" Type="Ft3:Synth" SrcSet="prototype_watchman_processing_system7_0_1" Part="xc7z010clg400-1" ConstrsSet="prototype_watchman_processing_system7_0_1" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/prototype_watchman_processing_system7_0_1_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="prototype_watchman_ten_reg_map_0_1_synth_1" Type="Ft3:Synth" SrcSet="prototype_watchman_ten_reg_map_0_1" Part="xc7z010clg400-1" ConstrsSet="prototype_watchman_ten_reg_map_0_1" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/prototype_watchman_ten_reg_map_0_1_synth_1" IncludeInArchive="true">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
+        <Step Id="synth_design"/>
+      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018"/>
@@ -153,6 +195,42 @@
         <Step Id="write_bitstream"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="prototype_watchman_processing_system7_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="prototype_watchman_processing_system7_0_1" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="prototype_watchman_processing_system7_0_1_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
+      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
+    </Run>
+    <Run Id="prototype_watchman_ten_reg_map_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z010clg400-1" ConstrsSet="prototype_watchman_ten_reg_map_0_1" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="prototype_watchman_ten_reg_map_0_1_synth_1" IncludeInArchive="false">
+      <Strategy Version="1" Minor="2">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2018">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
+        <Step Id="init_design"/>
+        <Step Id="opt_design"/>
+        <Step Id="power_opt_design"/>
+        <Step Id="place_design"/>
+        <Step Id="post_place_power_opt_design"/>
+        <Step Id="phys_opt_design"/>
+        <Step Id="route_design"/>
+        <Step Id="post_route_phys_opt_design"/>
+        <Step Id="write_bitstream"/>
+      </Strategy>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2018"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
