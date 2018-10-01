@@ -1,0 +1,134 @@
+11:08:32 **** Incremental Build of configuration Debug for project Multiple_Packets ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/MultiplePackets.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/MultiplePackets.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../Multiple_Packets_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/MultiplePackets.d" -MT"src/MultiplePackets.o" -o "src/MultiplePackets.o" "../src/MultiplePackets.c"
+In file included from ../src/MultiplePackets.c:20:0:
+../../Multiple_Packets_bsp/ps7_cortexa9_0/include/xtime_l.h:89:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/MultiplePackets.c:10:0:
+../src/MultiplePackets.c: In function 'main':
+../../Multiple_Packets_bsp/ps7_cortexa9_0/include/xparameters.h:39:53: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ #define XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR 0x43C00000
+                                                     ^
+../src/MultiplePackets.c:68:17: note: in expansion of macro 'XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR'
+  int *regbank = XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR;
+                 ^
+../src/MultiplePackets.c:104:3: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+   sleep(1);
+   ^~~~~
+../src/MultiplePackets.c:256:16: warning: passing argument 1 of 'decToHexa' makes integer from pointer without a cast [-Wint-conversion]
+      decToHexa(&PtrData[a]);
+                ^
+../src/MultiplePackets.c:36:6: note: expected 'int' but argument is of type 'int *'
+ void decToHexa(int n) ;
+      ^~~~~~~~~
+../src/MultiplePackets.c: In function 'RxIntrHandler':
+../src/MultiplePackets.c:324:6: warning: unused variable 'TimeOut' [-Wunused-variable]
+  int TimeOut;
+      ^~~~~~~
+../src/MultiplePackets.c: In function 'XAxiDma_SimpleTransfer_Hej':
+../src/MultiplePackets.c:385:6: warning: unused variable 'n' [-Wunused-variable]
+  int n;
+      ^
+../src/MultiplePackets.c:407:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/MultiplePackets.c: At top level:
+../src/MultiplePackets.c:31:13: warning: 'TxIntrHandler' declared 'static' but never defined [-Wunused-function]
+ static void TxIntrHandler(void *Callback);
+             ^~~~~~~~~~~~~
+../src/MultiplePackets.c:451:13: warning: 'XAxiDma_S2MM_DMASR' defined but not used [-Wunused-function]
+ static void XAxiDma_S2MM_DMASR(void){
+             ^~~~~~~~~~~~~~~~~~
+../src/MultiplePackets.c:414:13: warning: 'XAxiDma_S2MM_DMACR' defined but not used [-Wunused-function]
+ static void XAxiDma_S2MM_DMACR(void){
+             ^~~~~~~~~~~~~~~~~~
+Finished building: ../src/MultiplePackets.c
+ 
+Building target: Multiple_Packets.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../Multiple_Packets_bsp/ps7_cortexa9_0/lib -o "Multiple_Packets.elf"  ./src/MultiplePackets.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Multiple_Packets.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size Multiple_Packets.elf  |tee "Multiple_Packets.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89440	   4224	  25280	 118944	  1d0a0	Multiple_Packets.elf
+Finished building: Multiple_Packets.elf.size
+ 
+11:08:42 **** Incremental Build of configuration Debug for project Multiple_Packets ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+11:09:09 **** Auto Build of configuration Debug for project Multiple_Packets ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/MultiplePackets.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/MultiplePackets.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../Multiple_Packets_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/MultiplePackets.d" -MT"src/MultiplePackets.o" -o "src/MultiplePackets.o" "../src/MultiplePackets.c"
+In file included from ../src/MultiplePackets.c:20:0:
+../../Multiple_Packets_bsp/ps7_cortexa9_0/include/xtime_l.h:89:9: note: #pragma message: For the sleep routines, Global timer is being used
+ #pragma message ("For the sleep routines, Global timer is being used")
+         ^~~~~~~
+In file included from ../src/MultiplePackets.c:10:0:
+../src/MultiplePackets.c: In function 'main':
+../../Multiple_Packets_bsp/ps7_cortexa9_0/include/xparameters.h:39:53: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ #define XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR 0x43C00000
+                                                     ^
+../src/MultiplePackets.c:68:17: note: in expansion of macro 'XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR'
+  int *regbank = XPAR_AXIS_TEST_COMPONENT_0_S00_AXI_BASEADDR;
+                 ^
+../src/MultiplePackets.c:104:3: warning: implicit declaration of function 'sleep' [-Wimplicit-function-declaration]
+   sleep(1);
+   ^~~~~
+../src/MultiplePackets.c:256:16: warning: passing argument 1 of 'decToHexa' makes integer from pointer without a cast [-Wint-conversion]
+      decToHexa(&PtrData[a]);
+                ^
+../src/MultiplePackets.c:36:6: note: expected 'int' but argument is of type 'int *'
+ void decToHexa(int n) ;
+      ^~~~~~~~~
+../src/MultiplePackets.c: In function 'RxIntrHandler':
+../src/MultiplePackets.c:324:6: warning: unused variable 'TimeOut' [-Wunused-variable]
+  int TimeOut;
+      ^~~~~~~
+../src/MultiplePackets.c: In function 'XAxiDma_SimpleTransfer_Hej':
+../src/MultiplePackets.c:385:6: warning: unused variable 'n' [-Wunused-variable]
+  int n;
+      ^
+../src/MultiplePackets.c:407:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+../src/MultiplePackets.c: At top level:
+../src/MultiplePackets.c:31:13: warning: 'TxIntrHandler' declared 'static' but never defined [-Wunused-function]
+ static void TxIntrHandler(void *Callback);
+             ^~~~~~~~~~~~~
+../src/MultiplePackets.c:451:13: warning: 'XAxiDma_S2MM_DMASR' defined but not used [-Wunused-function]
+ static void XAxiDma_S2MM_DMASR(void){
+             ^~~~~~~~~~~~~~~~~~
+../src/MultiplePackets.c:414:13: warning: 'XAxiDma_S2MM_DMACR' defined but not used [-Wunused-function]
+ static void XAxiDma_S2MM_DMACR(void){
+             ^~~~~~~~~~~~~~~~~~
+Finished building: ../src/MultiplePackets.c
+ 
+Building target: Multiple_Packets.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../Multiple_Packets_bsp/ps7_cortexa9_0/lib -o "Multiple_Packets.elf"  ./src/MultiplePackets.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Multiple_Packets.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size Multiple_Packets.elf  |tee "Multiple_Packets.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  89440	   4224	  25280	 118944	  1d0a0	Multiple_Packets.elf
+Finished building: Multiple_Packets.elf.size
+ 
+11:09:14 **** Incremental Build of configuration Debug for project Multiple_Packets ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.

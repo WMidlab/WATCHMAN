@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1024001fs"></ZoomEndTime>
+      <Cursor1Time time="182000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="374"></NameColumnWidth>
+      <ValueColumnWidth column_width="194"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject type="array" fp_name="base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_s2mm_tdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nbr_of_packets_s[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">content_packet_s[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="u_ila_0_m00_axis_tlast">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_m00_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_m00_axis_tlast</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="u_ila_0_m_axi_s2mm_wlast">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_m_axi_s2mm_wlast</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_m_axi_s2mm_wlast</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_S00_AXI_inst_n_6">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_S00_AXI_inst_n_6</obj_property>
+      <obj_property name="ObjectShortName">AXIS_Peripheral_v1_0_S00_AXI_inst_n_6</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/CONTENT_1">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/CONTENT_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CONTENT_1[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/NBR_PACKETS">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/NBR_PACKETS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NBR_PACKETS[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="u_ila_0_AXIS_Peripheral_v1_0_S00_AXI_inst_n_7">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_AXIS_Peripheral_v1_0_S00_AXI_inst_n_7</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_AXIS_Peripheral_v1_0_S00_AXI_inst_n_7</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="u_ila_0_m00_axis_tlast">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_m00_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_m00_axis_tlast</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="u_ila_0_m_axi_s2mm_wlast">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">u_ila_0_m_axi_s2mm_wlast</obj_property>
+      <obj_property name="ObjectShortName">u_ila_0_m_axi_s2mm_wlast</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_axis_s2mm_tdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">content_packet_s[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nbr_of_packets_s[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>

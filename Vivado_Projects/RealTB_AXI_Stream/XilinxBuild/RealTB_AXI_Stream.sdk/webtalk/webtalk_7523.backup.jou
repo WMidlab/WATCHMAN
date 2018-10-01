@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# 
+# Start of session at: Fri Sep 28 15:13:18 2018
+# Process ID: 7523
+# Current directory: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.sdk/webtalk
+# Command line: wbtcv -mode batch -source sdk_webtalk.tcl
+# Log file: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.sdk/webtalk/webtalk.log
+# Journal file: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.sdk/webtalk/webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

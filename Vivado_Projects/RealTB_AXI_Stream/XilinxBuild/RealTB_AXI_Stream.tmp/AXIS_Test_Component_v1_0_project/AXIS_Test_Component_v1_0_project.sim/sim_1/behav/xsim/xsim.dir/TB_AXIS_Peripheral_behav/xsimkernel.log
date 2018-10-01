@@ -1,0 +1,7 @@
+Running: xsim.dir/TB_AXIS_Peripheral_behav/xsimk -simmode gui -wdb TB_AXIS_Peripheral_behav.wdb -simrunnum 0 -socket 46445
+Design successfully loaded
+Design Loading Memory Usage: 42436 KB (Peak: 42436 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 132372 KB (Peak: 189708 KB)
+Simulation CPU Usage: 40 ms

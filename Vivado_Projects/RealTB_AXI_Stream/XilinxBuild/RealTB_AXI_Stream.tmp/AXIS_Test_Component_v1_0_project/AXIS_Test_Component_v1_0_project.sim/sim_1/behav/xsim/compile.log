@@ -1,0 +1,12 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_pkg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_v1_0_M00_AXIS.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity AXIS_Peripheral_v1_0_M00_AXIS
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_v1_0_S00_AXI.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity AXIS_Peripheral_v1_0_S00_AXI
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/hdl/AXIS_Test_Component_v1_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity AXIS_Test_Component_v1_0
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/sim/simulation_pkg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/sim/TB_AXIS_Peripheral.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TB_AXIS_Peripheral
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component/sim/TB_AXIS_Peripheral.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TB_AXIS_Peripheral
