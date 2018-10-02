@@ -1,0 +1,13 @@
+.metadata/
+.sdk/
+.Xil/
+prototype_watchman.cache/
+prototype_watchman.hw/
+prototype_watchman.runs/
+prototype_watchman.sim/
+prototype_watchman.sdk/.metadata
+prototype_watchman.tmp/
+RemoteSystemsTempFiles/
+webtalk
+*.jou
+*.log
