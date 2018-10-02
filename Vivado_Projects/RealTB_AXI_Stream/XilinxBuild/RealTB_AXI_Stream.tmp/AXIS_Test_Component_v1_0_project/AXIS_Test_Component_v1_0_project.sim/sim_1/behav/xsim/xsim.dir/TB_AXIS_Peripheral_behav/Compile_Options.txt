@@ -1,1 +1,0 @@
--wto "47effe66dffb43728fa64d98041643a4" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "TB_AXIS_Peripheral_behav" "xil_defaultlib.TB_AXIS_Peripheral" -log "elaborate.log" 

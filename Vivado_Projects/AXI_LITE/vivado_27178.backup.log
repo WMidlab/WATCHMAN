@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Fri Sep 21 14:00:58 2018
+# Process ID: 27178
+# Current directory: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE
+# Command line: vivado
+# Log file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.log
+# Journal file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/idlab-52/new_axi_lite_example/new_axi_lite_example.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/idlab-52/ip_repo/new_axi_lite_example_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.1/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:05 . Memory (MB): peak = 6135.188 ; gain = 128.613 ; free physical = 8569 ; free virtual = 30269
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 21 14:03:09 2018...

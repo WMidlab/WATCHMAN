@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2018.1 (64-bit)
+# SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+# IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+# Start of session at: Tue Sep 25 08:49:40 2018
+# Process ID: 32738
+# Current directory: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE
+# Command line: vivado
+# Log file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.log
+# Journal file: /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/simple_reg/simple_reg.xpr
+create_bd_design "design_1"
+update_compile_order -fileset sources_1
+create_peripheral user.org user simple_axi_lite 1.0 -dir /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/ip_repo
+add_peripheral_interface S00_AXI -interface_mode slave -axi_type lite [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+generate_peripheral -driver -bfm_example_design -debug_hw_example_design [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+write_peripheral [ipx::find_open_core user.org:user:simple_axi_lite:1.0]
+set_property  ip_repo_paths  /home/idlab-52/Desktop/GitVivado/WATCHMAN/Vivado_Projects/AXI_LITE/ip_repo/simple_axi_lite_1.0 [current_project]
+update_ip_catalog -rebuild
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 axi_iic_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:processing_system7 -config {make_external "FIXED_IO, DDR" apply_board_preset "1" Master "Disable" Slave "Disable" }  [get_bd_cells processing_system7_0]
+apply_bd_automation -rule xilinx.com:bd_rule:board  [get_bd_intf_pins axi_iic_0/IIC]
+set_property location {2.5 567 -66} [get_bd_cells axi_iic_0]
+startgroup
+set_property -dict [list CONFIG.PCW_USE_M_AXI_GP0 {1}] [get_bd_cells processing_system7_0]
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {Auto} Clk_slave {Auto} Clk_xbar {Auto} Master {/processing_system7_0/M_AXI_GP0} Slave {/axi_iic_0/S_AXI} intc_ip {New AXI Interconnect} master_apm {0}}  [get_bd_intf_pins axi_iic_0/S_AXI]
+set_property location {2 659 22} [get_bd_cells axi_iic_0]
+set_property location {2 665 59} [get_bd_cells axi_iic_0]
+set_property location {2 660 74} [get_bd_cells axi_iic_0]
+set_property location {1227 -45} [get_bd_intf_ports iic_rtl]
+set_property location {1227 -27} [get_bd_intf_ports iic_rtl]
+set_property location {1227 -6} [get_bd_intf_ports iic_rtl]
+set_property location {2 663 78} [get_bd_cells axi_iic_0]
