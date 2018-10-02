@@ -45,7 +45,21 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 
 # Set IP repository paths
 set obj [get_filesets sources_1]
-set ip_list [list [exec ls ${origin_dir}/hw/user_ip/]]
+
+# OS select
+switch -glob -- [lindex $tcl_platform(os) 0] {
+	Win* { #Windows
+		set ip_list [list [exec cmd /c dir ${origin_dir}/hw/user_ip/]]
+	}
+	Lin* { #Linux
+		set ip_list [list [exec ls ${origin_dir}/hw/user_ip/]]
+
+	}
+	default {
+		puts "Unknow"
+	}
+}
+
 if {[llength ip_list] > 0} {
 	foreach a $ip_list {
 		set_property -name "ip_repo_paths" -value "[file normalize "${origin_dir}/hw/user_ip/${a}"]" -objects $obj
@@ -53,21 +67,24 @@ if {[llength ip_list] > 0} {
 }
 
 
-# [file normalize "${origin_dir}/ip/base_zynq_auto_pc_0/base_zynq_auto_pc_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_auto_pc_1/base_zynq_auto_pc_1.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_axi_bram_ctrl_0_0/base_zynq_axi_bram_ctrl_0_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_axi_gpio_0_0/base_zynq_axi_gpio_0_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_blk_mem_gen_0_0/base_zynq_blk_mem_gen_0_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_ps7_0_axi_periph_0/base_zynq_ps7_0_axi_periph_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0.xci"]\
-# [file normalize "${origin_dir}/ip/base_zynq_xbar_0/base_zynq_xbar_0.xci"]\
-
-
 # Set Project BD for Project
-set ProjectBD [exec ls ${origin_dir}/hw/bd/]
+switch -glob -- [lindex $tcl_platform(os) 0] {
+	Win* { #Windows
+		set ProjectBD [exec cmd /c dir ${origin_dir}/hw/bd/]
+		set ProjectWrapper [file rootname [exec cmd /c dir ${origin_dir}/hw/bd/${ProjectBD}/hdl/]]
+	}
+	Lin* { #Linux
+		set ProjectBD [exec ls ${origin_dir}/hw/bd/]
+		set ProjectWrapper [file rootname [exec ls -1 ${origin_dir}/hw/bd/${ProjectBD}/hdl/]]
+
+	}
+	default {
+		puts "Unknow"
+	}
+}
+
+#Generate Name of file from the ProjectBD and Wrapper
 set FileProjectBD "${ProjectBD}.bd"
-set ProjectWrapper [file rootname [exec ls -1 ${origin_dir}/hw/bd/${ProjectBD}/hdl/]]
 set VHDProjectWrapper "${ProjectWrapper}.vhd"
 set BITProjectWrapper "${ProjectWrapper}.bit"
 set HDFProjectWrapper "${ProjectWrapper}.hdf"

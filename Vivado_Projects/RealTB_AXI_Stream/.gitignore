@@ -1,5 +1,5 @@
 # GitIgonre for the Vivado Project
 
 # Ignore everything in XilinxBuild Directory
-XilinxBuild\
+XilinxBuild/
 
