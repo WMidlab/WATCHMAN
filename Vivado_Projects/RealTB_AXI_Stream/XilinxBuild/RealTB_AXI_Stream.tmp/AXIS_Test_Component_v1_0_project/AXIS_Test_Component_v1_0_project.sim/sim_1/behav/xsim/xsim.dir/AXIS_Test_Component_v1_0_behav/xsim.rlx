@@ -1,0 +1,12 @@
+
+{ 
+    crc :  7798558021519344772  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto 47effe66dffb43728fa64d98041643a4 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot AXIS_Test_Component_v1_0_behav xil_defaultlib.AXIS_Test_Component_v1_0" , 
+    buildDate : "Jun 14 2018" , 
+    buildTime : "20:07:38" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/AXIS_Test_Component_v1_0_behav/xsimk\"   \"xsim.dir/AXIS_Test_Component_v1_0_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/AXIS_Test_Component_v1_0_behav/obj/xsim_1.lnx64.o\" \"/opt/Xilinx/Vivado/2018.2/lib/lnx64.o/librdi_simulator_kernel.so\"  \"/opt/Xilinx/Vivado/2018.2/lib/lnx64.o/librdi_simbridge_kernel.so\"" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

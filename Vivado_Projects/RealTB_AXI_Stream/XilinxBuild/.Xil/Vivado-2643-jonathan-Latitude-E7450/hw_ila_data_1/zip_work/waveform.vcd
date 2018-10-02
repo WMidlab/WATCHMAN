@@ -1,0 +1,175 @@
+$date
+        2018-Oct-01 10:48:14
+$end
+$version
+        Vivado v2018.2 (64-bit)
+$end
+$timescale
+        1ps
+$end
+$scope module dut $end
+$var reg 32 " base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s [31:0] $end
+$var reg 32 B base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s [31:0] $end
+$var reg 32 b base_zynq_i/AXIS_Test_Component_0/U0/NBR_PACKETS [31:0] $end
+$var reg 32 $" base_zynq_i/AXIS_Test_Component_0/U0/CONTENT_1 [31:0] $end
+$var reg 32 D" base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata [31:0] $end
+$var reg 32 d" base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata [31:0] $end
+$var reg 1 &# base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_S00_AXI_inst_n_6 $end
+$var reg 1 '# u_ila_0_AXIS_Peripheral_v1_0_S00_AXI_inst_n_7 $end
+$var reg 1 (# u_ila_0_m00_axis_tlast $end
+$var reg 1 )# u_ila_0_m_axi_s2mm_wlast $end
+$var reg 1 *# _TRIGGER $end
+$var reg 1 +# _WINDOW $end
+$var reg 1 ,# _GAP $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 "
+b0 B
+b1010 b
+b1100100 $"
+b11011011 D"
+b11011011 d"
+1&#
+0'#
+0(#
+0)#
+0*#
+1+#
+0,#
+$end
+#65
+0&#
+1'#
+#66
+b1010 "
+b1100100 B
+0'#
+#67
+b1100100 D"
+b1100100 d"
+#68
+b1100101 D"
+b1100101 d"
+#69
+b1100110 D"
+b1100110 d"
+#70
+b1100111 D"
+b1100111 d"
+#71
+b1101000 D"
+b1101000 d"
+#72
+b1101001 D"
+b1101001 d"
+#73
+b1101010 D"
+b1101010 d"
+#74
+b1101011 D"
+b1101011 d"
+#75
+b1101100 D"
+b1101100 d"
+#76
+b1101101 D"
+b1101101 d"
+1(#
+#77
+b0 "
+b0 B
+1&#
+0(#
+#100
+1)#
+1*#
+#101
+0)#
+#512
+b10100 b
+b11001000 $"
+0+#
+#577
+0&#
+1'#
+#578
+b10100 "
+b11001000 B
+0'#
+#579
+b11001000 D"
+b11001000 d"
+#580
+b11001001 D"
+b11001001 d"
+#581
+b11001010 D"
+b11001010 d"
+#582
+b11001011 D"
+b11001011 d"
+#583
+b11001100 D"
+b11001100 d"
+#584
+b11001101 D"
+b11001101 d"
+#585
+b11001110 D"
+b11001110 d"
+#586
+b11001111 D"
+b11001111 d"
+#587
+b11010000 D"
+b11010000 d"
+#588
+b11010001 D"
+b11010001 d"
+#589
+b11010010 D"
+b11010010 d"
+#590
+b11010011 D"
+b11010011 d"
+#591
+b11010100 D"
+b11010100 d"
+#592
+b11010101 D"
+b11010101 d"
+#593
+b11010110 D"
+b11010110 d"
+#599
+b11010111 D"
+b11010111 d"
+#600
+b11011000 D"
+b11011000 d"
+#601
+b11011001 D"
+b11011001 d"
+#602
+b11011010 D"
+b11011010 d"
+#603
+b11011011 D"
+b11011011 d"
+1(#
+#604
+b0 "
+b0 B
+1&#
+0(#
+#612
+1)#
+0*#
+#613
+0)#
+#627
+1)#
+#628
+0)#

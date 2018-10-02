@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../../../hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_pkg.vhd" \
+"../../../../../../../hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_v1_0_M00_AXIS.vhd" \
+"../../../../../../../hw/user_ip/AXIS_Test_Component/hdl/AXIS_Peripheral_v1_0_S00_AXI.vhd" \
+"../../../../../../../hw/user_ip/AXIS_Test_Component/sim/simulation_pkg.vhd" \
+"../../../../../../../hw/user_ip/AXIS_Test_Component/sim/TB_AXIS_Peripheral.vhd" \
+
+# Do not sort compile order
+nosort
