@@ -1,0 +1,78 @@
+Script started on Tue 02 Oct 2018 10:03:53 AM HST
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Streamidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream$ cd ../
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projectsidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects$ l s
+[0m[01;34mAXI_LITE[0m  [01;34mip_repo[0m  [01;34mPackages[0m  [01;34mRealTB_AXI_Stream[0m  [01;34mUDP[0m
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projectsidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects$ c d RealTB_AXI_Stream/
+hw/     script/ sdk/    
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projectsidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects$ cdd RealTB_AXI_Stream/
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Streamidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream$ ls
+[0m[01;34mhw[0m  ReadMe.md  [01;34mscript[0m  [01;34msdk[0m  typescript
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Streamidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream$ cd script/
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ Cr[K[Kvivado
+
+****** Vivado v2018.1 (64-bit)
+  **** SW Build 2188600 on Wed Apr  4 18:39:19 MDT 2018
+  **** IP Build 2185939 on Wed Apr  4 20:55:05 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+start_gui
+INFO: [Common 17-206] Exiting Vivado at Tue Oct  2 10:13:02 2018...
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ^C
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av idlab:midlab:zidlab:aidlab:@idlab:[C[C[C[C[C[C/opt/shared/software/xilinx/vi[K[KVivado/[K[K[K[K[K[K[K[K[K[K[K[K[K[KXilinx/Vivado/V ivado-2018.2/*.gz ~/De/home/idlab-52/Desktop/
+mza@idlab's password: 
+receiving incremental file list
+Xilinx_Vivado_SDK_2018.2_0614_1954.tar.gz
+
+ 
+
+
+asd
+ls
+ls
+ls
+ls
+^C^Crsync error: unexplained error (code 130) at rsync.c(638) [generator=3.1.0]
+rsync error: received SIGUSR1 (code 19) at main.c(1434) [receiver=3.1.0]
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av mza@idlab:/opt/shared/software/Xilinx/Vivado/Viivado-2018.2/*.gz /home/idlab-52/Desktop/
+mza@idlab's password: 
+rsync error: received SIGINT, SIGTERM, or SIGHUP (code 20) at rsync.c(638) [Receiver=3.1.0]
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av mza@idlab:/opt/shared/software/Xilinx/Vivado/Viivado-2018.2/*.gz /home/idlab-52/Desktop/Vivado\ 
+/home/idlab-52/Desktop/Vivado\ 2015.3.desktop 
+/home/idlab-52/Desktop/Vivado\ HLS\ 2015.3.desktop 
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av mza@idlab:/opt/shared/software/Xilinx/Vivado/Viivado-2018.2/*.gz /home/idlab-52/Desktop/Vivado\ [K[K[K[K[K[K[K[KVivado\ [K[K[K[K[K[K[K[KVivado\ 
+/home/idlab-52/Desktop/Vivado\ 2015.3.desktop 
+/home/idlab-52/Desktop/Vivado\ HLS\ 2015.3.desktop 
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av mza@idlab:/opt/shared/software/Xilinx/Vivado/Viivado-2018.2/*.gz /home/idlab-52/Desktop/Vivado\ 
+/home/idlab-52/Desktop/Vivado\ 2015.3.desktop 
+/home/idlab-52/Desktop/Vivado\ HLS\ 2015.3.desktop 
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ rsync -av mza@idlab:/opt/shared/software/Xilinx/Vivado/Viivado-2018.2/*.gz /home/idlab-52/Desktop/Vivado\ [K[K[K[K[K[K[K[K[K/
+mza@idlab's password: 
+receiving incremental file list
+Xilinx_Vivado_SDK_2018.2_0614_1954.tar.gz
+Xilinx_Vivado_SDx_Update_2018.2.1_0726_1815.tar.gz
+
+
+sent 49 bytes  received 24,558,077,467 bytes  22,540,686.11 bytes/sec
+total size is 24,555,079,805  speedup is 1.00
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ 
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl  vivado.jou  vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls =l
+ls: cannot access =l: No such file or directory
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls =l[1Pl-l
+total 40
+-rw-rw-r-- 1 idlab-52 idlab-52  2040 Oct  2 10:03 BuildProjectVivado.tcl
+-rw-rw-r-- 1 idlab-52 idlab-52  6588 Oct  2 10:03 CreateProjectVivado.tcl
+-rw-rw-r-- 1 idlab-52 idlab-52  1354 Oct  2 10:13 vivado.jou
+-rw-rw-r-- 1 idlab-52 idlab-52 21353 Oct  2 10:13 vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl  vivado.jou  vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl  vivado.jou  vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl  vivado.jou  vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/scriptidlab-52@idlab52-OptiPlex-790:~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/ReaalTB_AXI_Stream/script$ ls
+BuildProjectVivado.tcl  CreateProjectVivado.tcl  vivado.jou  vivado.log
+]0;idlab-52@idlab52-OptiPlex-790: ~/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/RealTB_AXI_Stre

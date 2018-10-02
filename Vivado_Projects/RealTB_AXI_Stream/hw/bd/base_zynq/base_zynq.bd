@@ -774,7 +774,7 @@
       </spirit:componentInstance>
       <spirit:componentInstance>
         <spirit:instanceName>AXIS_Test_Component_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="user" spirit:name="AXIS_Test_Component" spirit:vendor="user.org" spirit:version="1.0"/>
+        <spirit:componentRef spirit:library="user" spirit:name="AXIS_Test_Component" spirit:vendor="user.org" spirit:version="2.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_AXIS_Test_Component_0_0</spirit:configurableElementValue>
         </spirit:configurableElementValues>

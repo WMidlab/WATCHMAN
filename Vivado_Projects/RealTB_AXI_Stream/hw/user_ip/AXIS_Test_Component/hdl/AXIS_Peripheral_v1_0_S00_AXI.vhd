@@ -21,7 +21,7 @@ entity AXIS_Peripheral_v1_0_S00_AXI is
 	   	S_START_STREAMING : out std_logic;
         S_NBR_PACKETS : 	out std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
 		S_CONTENT_1:	 	out std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
-	
+		
 		-- Users to add ports here
         S_AXI_INTR : out std_logic;
 		-- User ports ends
