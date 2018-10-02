@@ -2,12 +2,12 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Fri Sep 28 16:28:42 2018
-# Process ID: 16974
-# Current directory: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1
+# Start of session at: Tue Oct  2 12:46:49 2018
+# Process ID: 7330
+# Current directory: /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1
 # Command line: vivado -log base_zynq_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source base_zynq_processing_system7_0_0.tcl
-# Log file: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.vds
-# Journal file: /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/vivado.jou
+# Log file: /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.vds
+# Journal file: /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/vivado.jou
 #-----------------------------------------------------------
 source base_zynq_processing_system7_0_0.tcl -notrace
 Command: synth_design -top base_zynq_processing_system7_0_0 -part xc7z010clg400-1 -mode out_of_context
@@ -15,12 +15,12 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 17049 
+INFO: Helper process launched with PID 7552 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1298.934 ; gain = 84.848 ; free physical = 1320 ; free virtual = 11197
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1298.930 ; gain = 84.848 ; free physical = 127 ; free virtual = 9534
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'base_zynq_processing_system7_0_0' [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:60]
-INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
+INFO: [Synth 8-6157] synthesizing module 'base_zynq_processing_system7_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:60]
+INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_system7' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
 	Parameter C_USE_DEFAULT_ACP_USER_VAL bound to: 0 - type: integer 
 	Parameter C_S_AXI_ACP_ARUSER_VAL bound to: 31 - type: integer 
 	Parameter C_S_AXI_ACP_AWUSER_VAL bound to: 31 - type: integer 
@@ -77,17 +77,17 @@ INFO: [Synth 8-6157] synthesizing module 'processing_system7_v5_5_processing_sys
 	Parameter C_USE_S_AXI_ACP bound to: 0 - type: integer 
 	Parameter C_GP0_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
 	Parameter C_GP1_EN_MODIFIABLE_TXN bound to: 1 - type: integer 
-INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1347]
-INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1348]
+INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1347]
+INFO: [Synth 8-5534] Detected attribute (* keep = "true" *) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:1348]
 INFO: [Synth 8-6157] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:609]
 INFO: [Synth 8-6155] done synthesizing module 'BUFG' (1#1) [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:609]
 INFO: [Synth 8-6157] synthesizing module 'BIBUF' [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:270]
 INFO: [Synth 8-6155] done synthesizing module 'BIBUF' (2#1) [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:270]
 INFO: [Synth 8-6157] synthesizing module 'PS7' [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:40565]
 INFO: [Synth 8-6155] done synthesizing module 'PS7' (3#1) [/opt/Xilinx/Vivado/2018.2/scripts/rt/data/unisim_comp.v:40565]
-INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (4#1) [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
-WARNING: [Synth 8-350] instance 'inst' of module 'processing_system7_v5_5_processing_system7' requires 685 connections, but only 672 given [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:462]
-INFO: [Synth 8-6155] done synthesizing module 'base_zynq_processing_system7_0_0' (5#1) [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'processing_system7_v5_5_processing_system7' (4#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/hdl/verilog/processing_system7_v5_5_processing_system7.v:161]
+WARNING: [Synth 8-350] instance 'inst' of module 'processing_system7_v5_5_processing_system7' requires 685 connections, but only 672 given [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:462]
+INFO: [Synth 8-6155] done synthesizing module 'base_zynq_processing_system7_0_0' (5#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/synth/base_zynq_processing_system7_0_0.v:60]
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_COL
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_CRS
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET0_GMII_RX_DV
@@ -168,7 +168,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_ATID[1]
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port FTMD_TRACEIN_ATID[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1343.559 ; gain = 129.473 ; free physical = 1328 ; free virtual = 11207
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1343.555 ; gain = 129.473 ; free physical = 515 ; free virtual = 9861
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -181,47 +181,47 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1343.559 ; gain = 129.473 ; free physical = 1306 ; free virtual = 11185
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1343.555 ; gain = 129.473 ; free physical = 506 ; free virtual = 9856
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1343.559 ; gain = 129.473 ; free physical = 1306 ; free virtual = 11185
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1343.555 ; gain = 129.473 ; free physical = 506 ; free virtual = 9856
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc] for cell 'inst'
-Finished Parsing XDC File [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc] for cell 'inst'
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/base_zynq_processing_system7_0_0_propImpl.xdc].
+Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc] for cell 'inst'
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/base_zynq_processing_system7_0_0_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/base_zynq_processing_system7_0_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc]
+Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 1594.145 ; gain = 0.000 ; free physical = 899 ; free virtual = 10807
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.12 . Memory (MB): peak = 1594.148 ; gain = 0.000 ; free physical = 134 ; free virtual = 8882
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:40 . Memory (MB): peak = 1594.145 ; gain = 380.059 ; free physical = 935 ; free virtual = 10865
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:01:12 . Memory (MB): peak = 1594.148 ; gain = 380.066 ; free physical = 186 ; free virtual = 8942
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:40 . Memory (MB): peak = 1594.145 ; gain = 380.059 ; free physical = 935 ; free virtual = 10864
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:01:13 . Memory (MB): peak = 1594.148 ; gain = 380.066 ; free physical = 185 ; free virtual = 8943
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc, line 9).
+Applied set_property DONT_TOUCH = true for inst. (constraint file  /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:41 . Memory (MB): peak = 1594.145 ; gain = 380.059 ; free physical = 935 ; free virtual = 10864
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:01:13 . Memory (MB): peak = 1594.148 ; gain = 380.066 ; free physical = 185 ; free virtual = 8943
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:41 . Memory (MB): peak = 1594.145 ; gain = 380.059 ; free physical = 950 ; free virtual = 10862
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:01:14 . Memory (MB): peak = 1594.148 ; gain = 380.066 ; free physical = 183 ; free virtual = 8944
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -279,7 +279,7 @@ WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has un
 WARNING: [Synth 8-3331] design processing_system7_v5_5_processing_system7 has unconnected port ENET1_GMII_RXD[3]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:42 . Memory (MB): peak = 1594.145 ; gain = 380.059 ; free physical = 950 ; free virtual = 10864
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:01:15 . Memory (MB): peak = 1594.148 ; gain = 380.066 ; free physical = 168 ; free virtual = 8935
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -291,13 +291,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:55 . Memory (MB): peak = 1790.145 ; gain = 576.059 ; free physical = 552 ; free virtual = 10465
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:01:52 . Memory (MB): peak = 1790.148 ; gain = 576.066 ; free physical = 246 ; free virtual = 8462
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:55 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 539 ; free virtual = 10452
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:01:52 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 225 ; free virtual = 8445
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -309,7 +309,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:56 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 577 ; free virtual = 10490
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:01:55 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 116 ; free virtual = 8387
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -333,7 +333,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 135 ; free virtual = 8353
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -346,7 +346,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 132 ; free virtual = 8351
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -358,25 +358,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 136 ; free virtual = 8356
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 132 ; free virtual = 8353
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 130 ; free virtual = 8352
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 129 ; free virtual = 8351
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -406,11 +406,11 @@ Report Instance Areas:
 |2     |  inst   |processing_system7_v5_5_processing_system7 |   244|
 +------+---------+-------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.152 ; gain = 596.066 ; free physical = 589 ; free virtual = 10505
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:02:02 . Memory (MB): peak = 1810.156 ; gain = 596.074 ; free physical = 128 ; free virtual = 8350
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 79 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:26 . Memory (MB): peak = 1810.152 ; gain = 345.480 ; free physical = 636 ; free virtual = 10551
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:58 . Memory (MB): peak = 1810.160 ; gain = 596.066 ; free physical = 636 ; free virtual = 10551
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:01:02 . Memory (MB): peak = 1810.156 ; gain = 345.480 ; free physical = 175 ; free virtual = 8403
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:02:03 . Memory (MB): peak = 1810.164 ; gain = 596.074 ; free physical = 173 ; free virtual = 8402
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -420,14 +420,12 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 23 Infos, 101 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:59 . Memory (MB): peak = 1820.152 ; gain = 617.672 ; free physical = 1363 ; free virtual = 11259
-INFO: [Common 17-600] The following parameters have non-default value.
-tcl.collectionResultDisplayLimit
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:02:07 . Memory (MB): peak = 1820.156 ; gain = 617.680 ; free physical = 311 ; free virtual = 8570
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint '/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xci
+INFO: [Common 17-1381] The checkpoint '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xci
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint '/home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/base_zynq_processing_system7_0_0_synth_1/base_zynq_processing_system7_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file base_zynq_processing_system7_0_0_utilization_synth.rpt -pb base_zynq_processing_system7_0_0_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.21 . Memory (MB): peak = 1820.152 ; gain = 0.000 ; free physical = 1199 ; free virtual = 11227
-INFO: [Common 17-206] Exiting Vivado at Fri Sep 28 16:29:57 2018...
+report_utilization: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.45 . Memory (MB): peak = 1820.156 ; gain = 0.000 ; free physical = 249 ; free virtual = 8569
+INFO: [Common 17-206] Exiting Vivado at Tue Oct  2 12:49:31 2018...

@@ -66,13 +66,12 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param xicom.use_bs_reader 1
-  set_param tcl.collectionResultDisplayLimit 0
   reset_param project.defaultXPMLibraries 
-  open_checkpoint /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/impl_1/base_zynq_wrapper.dcp
-  set_property webtalk.parent_dir /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.cache/wt [current_project]
-  set_property parent.project_path /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.xpr [current_project]
-  set_property ip_repo_paths /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component [current_project]
-  set_property ip_output_repo /home/jonathan/VivadoProjects/00_WATCHMANN/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.cache/ip [current_project]
+  open_checkpoint /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/impl_1/base_zynq_wrapper.dcp
+  set_property webtalk.parent_dir /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.cache/wt [current_project]
+  set_property parent.project_path /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.xpr [current_project]
+  set_property ip_repo_paths /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/user_ip/AXIS_Test_Component [current_project]
+  set_property ip_output_repo /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
   close_msg_db -file init_design.pb

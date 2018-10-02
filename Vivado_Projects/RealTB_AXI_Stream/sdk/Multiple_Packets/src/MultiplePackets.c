@@ -176,7 +176,7 @@ int main(){
 	
 	XAxiDma_WriteReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET,XAXIDMA_CR_OFFSET,XAxiDma_ReadReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET, XAXIDMA_CR_OFFSET)| XAXIDMA_IRQ_IOC_MASK);
 	
-	int PacketsToSend = 0;
+	//int PacketsToSend = 0;
 	// For loop
 	for(int k= 1; k < 5 ; k++){
 		PacketsToSend = PACKETS*k;
@@ -236,6 +236,8 @@ int main(){
 			xil_printf(">> RxDone Interrupt Caught\r\n");
 			xil_printf("\tVerifying...");
 			
+			Xil_DCacheInvalidateRange((UINTPTR)PtrData, PacketsToSend*sizeof(int));
+	
 			int cst = regbank[CONTENT_PACKET_1];
 			for(int a=0; a < PacketsToSend; a++){
 				if(PtrData[a] != (a+cst)){
@@ -324,7 +326,7 @@ static void RxIntrHandler(void *Callback)
 	int TimeOut;
 	XAxiDma *AxiDmaInst = (XAxiDma *)Callback;
  	
-	Xil_DCacheInvalidateRange((UINTPTR)PtrData, PACKETS*sizeof(int));
+	//Xil_DCacheInvalidateRange((UINTPTR)PtrData, PACKETS*sizeof(int));
 	
 	/* Read pending interrupts */
 	IrqStatus = XAxiDma_IntrGetIrq(AxiDmaInst, XAXIDMA_DEVICE_TO_DMA);
