@@ -159,7 +159,7 @@ proc create_root_design { parentCell } {
   # Create ports
 
   # Create instance: AXIS_Test_Component_0, and set properties
-  set AXIS_Test_Component_0 [ create_bd_cell -type ip -vlnv user.org:user:AXIS_Test_Component:1.0 AXIS_Test_Component_0 ]
+  set AXIS_Test_Component_0 [ create_bd_cell -type ip -vlnv user.org:user:AXIS_Test_Component:2.0 AXIS_Test_Component_0 ]
 
   # Create instance: axi_dma_0, and set properties
   set axi_dma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dma:7.1 axi_dma_0 ]

@@ -27,3 +27,6 @@ Will create the folder for sharing to GitHub.
 
 #XilinxBuild
 Build folder with Vivado temporary folders for synth and implementation, etc. 
+
+#Data
+Screenshots and data collected during diverse runs of the project.

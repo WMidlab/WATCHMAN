@@ -8,5 +8,6 @@
 #define	CONTROL_REG			0
 #define	NBR_OF_PACKETS_REG	1
 #define	CONTENT_PACKET_1	2
+#define	MODE_REG			3
 	
 #endif  /* end of protection macro */
