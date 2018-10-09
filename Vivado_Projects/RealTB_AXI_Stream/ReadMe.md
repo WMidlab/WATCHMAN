@@ -9,7 +9,7 @@ Contains the hardware (PL) for the Zynq 7z010
 Contains the application project :
 - DMA Test : simple test for running the AXI DMA and AXI Test Component
 - DMA Multiple packes : sending multiple packets and receiving with timing analysis
-
+- Containing information file on code [link](sdk/ReadMe.md)
 #script
 - CreateProjectVivado.tcl : which the file after the project is built according to the folder configuartion
 
