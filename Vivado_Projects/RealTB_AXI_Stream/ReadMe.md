@@ -1,16 +1,16 @@
 # RealTB_AXI_Stream
 Date : 1st October 2018 - 12:11
 
-## Folder Structure
-#hw
+# Folder Structure
+## hw
 Contains the hardware (PL) for the Zynq 7z010
 
-#sdk
+## sdk
 Contains the application project :
 - DMA Test : simple test for running the AXI DMA and AXI Test Component
 - DMA Multiple packes : sending multiple packets and receiving with timing analysis
-
-#script
+- Containing information file on code [link](sdk/ReadMe.md)
+## script
 - CreateProjectVivado.tcl : which the file after the project is built according to the folder configuartion
 
 > **IMPORTANT:**
@@ -25,8 +25,8 @@ Contains the application project :
 - BuildProjectVivado.tcl (Prototype Version)
 Will create the folder for sharing to GitHub.
 
-#XilinxBuild
+## XilinxBuild
 Build folder with Vivado temporary folders for synth and implementation, etc. 
 
-#Data
+## Data
 Screenshots and data collected during diverse runs of the project.
