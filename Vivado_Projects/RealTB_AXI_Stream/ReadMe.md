@@ -1,8 +1,8 @@
 # RealTB_AXI_Stream
 Date : 1st October 2018 - 12:11
 
-## Folder Structure
-#hw
+# Folder Structure
+## hw
 Contains the hardware (PL) for the Zynq 7z010
 
 ## sdk
