@@ -1,0 +1,9 @@
+# GitIgonre for the Vivado Project
+
+# Ignore everything in this ip directory, BUT NOT the .xci files in it
+
+*
+!**/*.xci
+# !**.xci
+# !/**/*.xci
+

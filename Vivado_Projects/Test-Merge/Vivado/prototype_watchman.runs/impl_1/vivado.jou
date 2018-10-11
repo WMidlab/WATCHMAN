@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Oct  9 16:01:13 2018
+# Process ID: 3890
+# Current directory: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Test-Merge/Test_merge/prototype_watchman.runs/impl_1
+# Command line: vivado -log prototype_watchman_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source prototype_watchman_wrapper.tcl -notrace
+# Log file: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Test-Merge/Test_merge/prototype_watchman.runs/impl_1/prototype_watchman_wrapper.vdi
+# Journal file: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Test-Merge/Test_merge/prototype_watchman.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source prototype_watchman_wrapper.tcl -notrace

@@ -1,0 +1,10 @@
+# GitIgonre for the Vivado Project
+
+ip/*/*
+!ip/*/*.xci
+
+
+# Ignore everything in these directories
+ipshared/
+synth/
+ui/
