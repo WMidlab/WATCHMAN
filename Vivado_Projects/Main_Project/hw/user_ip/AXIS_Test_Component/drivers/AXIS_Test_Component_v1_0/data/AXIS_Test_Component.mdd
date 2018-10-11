@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER AXIS_Test_Component
+	OPTION supported_peripherals = (AXIS_Test_Component);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = AXIS_Test_Component;
+END DRIVER
