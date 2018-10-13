@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Oct  2 13:05:00 2018" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct 12 15:33:17 2018" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="base_zynq" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -2831,8 +2831,8 @@
         <PARAMETER NAME="PCW_USB0_USB0_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_USB_RESET_ENABLE" VALUE="1"/>
         <PARAMETER NAME="PCW_USB_RESET_SELECT" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_USB0_RESET_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="PCW_USB0_RESET_IO" VALUE="MIO 7"/>
+        <PARAMETER NAME="PCW_USB0_RESET_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_USB0_RESET_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_USB1_PERIPHERAL_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_USB1_USB1_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_USB1_RESET_ENABLE" VALUE="0"/>
@@ -2841,8 +2841,8 @@
         <PARAMETER NAME="PCW_I2C0_I2C0_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_I2C0_GRP_INT_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_I2C0_GRP_INT_IO" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_I2C0_RESET_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="PCW_I2C0_RESET_IO" VALUE="MIO 13"/>
+        <PARAMETER NAME="PCW_I2C0_RESET_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_I2C0_RESET_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_I2C1_PERIPHERAL_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_I2C1_I2C1_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_I2C1_GRP_INT_ENABLE" VALUE="0"/>
@@ -2942,7 +2942,7 @@
         <PARAMETER NAME="PCW_MIO_12_SLEW" VALUE="slow"/>
         <PARAMETER NAME="PCW_MIO_13_PULLUP" VALUE="enabled"/>
         <PARAMETER NAME="PCW_MIO_13_IOTYPE" VALUE="LVCMOS 1.8V"/>
-        <PARAMETER NAME="PCW_MIO_13_DIRECTION" VALUE="out"/>
+        <PARAMETER NAME="PCW_MIO_13_DIRECTION" VALUE="inout"/>
         <PARAMETER NAME="PCW_MIO_13_SLEW" VALUE="slow"/>
         <PARAMETER NAME="PCW_MIO_14_PULLUP" VALUE="enabled"/>
         <PARAMETER NAME="PCW_MIO_14_IOTYPE" VALUE="LVCMOS 1.8V"/>
@@ -3574,6 +3574,8 @@
             <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="processing_system7_0" PORT="S_AXI_HP0_ACLK"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_s2mm_aclk"/>
+            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="s00_axi_aclk"/>
+            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="m00_axis_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
@@ -3581,8 +3583,6 @@
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
-            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="s00_axi_aclk"/>
-            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="m00_axis_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -4658,7 +4658,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="5e+07" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT CLKFREQUENCY="50000000" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
@@ -4683,13 +4683,13 @@
         <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" RIGHT="0" SIGIS="rst" SIGNAME="rst_ps7_0_50M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_dma_0" PORT="axi_resetn"/>
+            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="s00_axi_aresetn"/>
+            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="m00_axis_aresetn"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="axi_mem_intercon" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
-            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="s00_axi_aresetn"/>
-            <CONNECTION INSTANCE="AXIS_Test_Component_0" PORT="m00_axis_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
