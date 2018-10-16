@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1538521803">
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1539723910">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="BG-DRC" Name="base_zynq_wrapper.drc"/>
   <File Type="BG-BGN" Name="base_zynq_wrapper.bgn"/>
@@ -15,6 +15,7 @@
   <File Type="BG-BIT" Name="base_zynq_wrapper.bit"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="base_zynq_wrapper_bus_skew_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="base_zynq_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="base_zynq_wrapper_bus_skew_postroute_physopted.rpt"/>
   <File Type="RDI-RDI" Name="base_zynq_wrapper.vdi"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="base_zynq_wrapper_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="base_zynq_wrapper_timing_summary_postroute_physopted.pb"/>
@@ -68,8 +69,6 @@
   <File Type="REPORTS-TCL" Name="base_zynq_wrapper_reports.tcl"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="base_zynq_wrapper_bus_skew_routed.pb"/>
   <File Type="PA-TCL" Name="base_zynq_wrapper.tcl"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="base_zynq_wrapper_bus_skew_postroute_physopted.rpt"/>
-  <File Type="PA-DCP" Name="base_zynq_wrapper.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../hw/bd/base_zynq/base_zynq.bd">
@@ -93,14 +92,7 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/new/Constraint_RealTB.xdc">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-      </FileInfo>
-    </File>
     <Config>
-      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Constraint_RealTB.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -116,9 +108,12 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="base_zynq_AXIS_Test_Component_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="base_zynq_xbar_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="base_zynq_rst_ps7_0_50M_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="base_zynq_axi_dma_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_auto_pc_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_auto_pc_0"/>
   <BlockFileSet Type="BlockSrcs" Name="base_zynq_processing_system7_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_AXIS_Test_Component_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_xlconcat_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_axi_dma_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="base_zynq_rst_ps7_0_50M_0"/>
 </GenRun>

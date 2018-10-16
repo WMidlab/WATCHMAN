@@ -17,7 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7z010clg400-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -38,9 +37,11 @@ add_files /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0_board.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0.xdc]
+set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_axi_dma_0_0/base_zynq_axi_dma_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_axi_dma_0_0/base_zynq_axi_dma_0_0.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_axi_dma_0_0/base_zynq_axi_dma_0_0_clocks.xdc]
+set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_xbar_0/base_zynq_xbar_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_auto_pc_1/base_zynq_auto_pc_1_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_auto_pc_0/base_zynq_auto_pc_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/base_zynq_ooc.xdc]
@@ -53,9 +54,6 @@ set_property used_in_implementation false [get_files -all /home/jonathan/GitProj
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc
-set_property used_in_implementation false [get_files /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc]
-
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 0

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Tue Oct  2 13:12:03 2018
+| Date         : Tue Oct 16 11:13:05 2018
 | Host         : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 | Command      : report_methodology -file base_zynq_wrapper_methodology_drc_routed.rpt -pb base_zynq_wrapper_methodology_drc_routed.pb -rpx base_zynq_wrapper_methodology_drc_routed.rpx
 | Design       : base_zynq_wrapper
@@ -20,7 +20,7 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: checkpoint_base_zynq_wrapper
+          Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
              Violations found: 2

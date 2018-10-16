@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date             : Tue Oct  2 13:12:05 2018
+| Date             : Tue Oct 16 11:13:07 2018
 | Host             : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 | Command          : report_power -file base_zynq_wrapper_power_routed.rpt -pb base_zynq_wrapper_power_summary_routed.pb -rpx base_zynq_wrapper_power_routed.rpx
 | Design           : base_zynq_wrapper
@@ -30,11 +30,11 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 1.690        |
+| Total On-Chip Power (W)  | 1.694        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 1.571        |
-| Device Static (W)        | 0.119        |
+| Dynamic (W)              | 1.574        |
+| Device Static (W)        | 0.121        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 65.5         |
 | Junction Temperature (C) | 44.5         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.004 |        3 |       --- |             --- |
-| Slice Logic              |    <0.001 |     5916 |       --- |             --- |
-|   LUT as Logic           |    <0.001 |     2121 |     17600 |           12.05 |
+| Slice Logic              |     0.001 |     5902 |       --- |             --- |
+|   LUT as Logic           |    <0.001 |     2106 |     17600 |           11.97 |
 |   CARRY4                 |    <0.001 |      155 |      4400 |            3.52 |
 |   Register               |    <0.001 |     2750 |     35200 |            7.81 |
 |   LUT as Distributed RAM |    <0.001 |       16 |      6000 |            0.27 |
 |   LUT as Shift Register  |    <0.001 |      119 |      6000 |            1.98 |
 |   Others                 |     0.000 |      327 |       --- |             --- |
-| Signals                  |     0.001 |     4374 |       --- |             --- |
+| Signals                  |     0.002 |     4391 |       --- |             --- |
 | Block RAM                |    <0.001 |      1.5 |        60 |            2.50 |
-| PS7                      |     1.564 |        1 |       --- |             --- |
-| Static Power             |     0.119 |          |           |                 |
-| Total                    |     1.690 |          |           |                 |
+| PS7                      |     1.567 |        1 |       --- |             --- |
+| Static Power             |     0.121 |          |           |                 |
+| Total                    |     1.694 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -91,7 +91,7 @@ Table of Contents
 | Vccpaux   |       1.800 |     0.084 |       0.073 |      0.010 |
 | Vccpll    |       1.800 |     0.017 |       0.014 |      0.003 |
 | Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
-| Vcco_mio0 |       1.800 |     0.003 |       0.002 |      0.001 |
+| Vcco_mio0 |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco_mio1 |       1.800 |     0.002 |       0.001 |      0.001 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
 +-----------+-------------+-----------+-------------+------------+
@@ -150,8 +150,8 @@ Table of Contents
 +-----------------------------------------------------------------------------------+-----------+
 | Name                                                                              | Power (W) |
 +-----------------------------------------------------------------------------------+-----------+
-| base_zynq_wrapper                                                                 |     1.571 |
-|   base_zynq_i                                                                     |     1.571 |
+| base_zynq_wrapper                                                                 |     1.574 |
+|   base_zynq_i                                                                     |     1.574 |
 |     AXIS_Test_Component_0                                                         |    <0.001 |
 |       U0                                                                          |    <0.001 |
 |         AXIS_Peripheral_v2_0_M00_AXIS_inst                                        |    <0.001 |
@@ -286,8 +286,8 @@ Table of Contents
 |                             rstblk                                                |    <0.001 |
 |                               ngwrdrst.grst.g7serrst.gnsckt_wrst.rst_wr_reg2_inst |    <0.001 |
 |               USE_WRITE.write_data_inst                                           |    <0.001 |
-|     processing_system7_0                                                          |     1.565 |
-|       inst                                                                        |     1.565 |
+|     processing_system7_0                                                          |     1.567 |
+|       inst                                                                        |     1.567 |
 |     ps7_0_axi_periph                                                              |     0.003 |
 |       s00_couplers                                                                |     0.002 |
 |         auto_pc                                                                   |     0.002 |

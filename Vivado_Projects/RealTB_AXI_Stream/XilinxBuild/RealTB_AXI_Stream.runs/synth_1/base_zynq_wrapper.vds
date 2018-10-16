@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Tue Oct  2 13:05:59 2018
-# Process ID: 12527
+# Start of session at: Tue Oct 16 11:10:34 2018
+# Process ID: 16048
 # Current directory: /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1
 # Command line: vivado -log base_zynq_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source base_zynq_wrapper.tcl
 # Log file: /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/base_zynq_wrapper.vds
@@ -18,42 +18,42 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 12553 
+INFO: Helper process launched with PID 16053 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1307.965 ; gain = 81.848 ; free physical = 1000 ; free virtual = 9690
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1306.691 ; gain = 80.848 ; free physical = 2196 ; free virtual = 12878
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'base_zynq_wrapper' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/hdl/base_zynq_wrapper.vhd:40]
 INFO: [Synth 8-3491] module 'base_zynq' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1479' bound to instance 'base_zynq_i' of component 'base_zynq' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/hdl/base_zynq_wrapper.vhd:67]
 INFO: [Synth 8-638] synthesizing module 'base_zynq' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1509]
-INFO: [Synth 8-3491] module 'base_zynq_AXIS_Test_Component_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_AXIS_Test_Component_0_0_stub.vhdl:5' bound to instance 'AXIS_Test_Component_0' of component 'base_zynq_AXIS_Test_Component_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1909]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_AXIS_Test_Component_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_AXIS_Test_Component_0_0_stub.vhdl:40]
+INFO: [Synth 8-3491] module 'base_zynq_AXIS_Test_Component_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_AXIS_Test_Component_0_0_stub.vhdl:5' bound to instance 'AXIS_Test_Component_0' of component 'base_zynq_AXIS_Test_Component_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1909]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_AXIS_Test_Component_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_AXIS_Test_Component_0_0_stub.vhdl:40]
 WARNING: [Synth 8-5640] Port 'axi_dma_tstvec' is missing in component declaration [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1510]
-INFO: [Synth 8-3491] module 'base_zynq_axi_dma_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_axi_dma_0_0_stub.vhdl:5' bound to instance 'axi_dma_0' of component 'base_zynq_axi_dma_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1941]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_axi_dma_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_axi_dma_0_0_stub.vhdl:54]
+INFO: [Synth 8-3491] module 'base_zynq_axi_dma_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_axi_dma_0_0_stub.vhdl:5' bound to instance 'axi_dma_0' of component 'base_zynq_axi_dma_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1941]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_axi_dma_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_axi_dma_0_0_stub.vhdl:54]
 INFO: [Synth 8-638] synthesizing module 'base_zynq_axi_mem_intercon_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:789]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_84BNIE' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:580]
-INFO: [Synth 8-3491] module 'base_zynq_auto_pc_1' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'base_zynq_auto_pc_1' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:697]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_auto_pc_1' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_1_stub.vhdl:50]
+INFO: [Synth 8-3491] module 'base_zynq_auto_pc_1' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_1_stub.vhdl:5' bound to instance 'auto_pc' of component 'base_zynq_auto_pc_1' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_auto_pc_1' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_1_stub.vhdl:50]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_84BNIE' (1#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:580]
 INFO: [Synth 8-256] done synthesizing module 'base_zynq_axi_mem_intercon_0' (2#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:789]
-INFO: [Synth 8-3491] module 'base_zynq_processing_system7_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'base_zynq_processing_system7_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2029]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_processing_system7_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_processing_system7_0_0_stub.vhdl:122]
+INFO: [Synth 8-3491] module 'base_zynq_processing_system7_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_processing_system7_0_0_stub.vhdl:5' bound to instance 'processing_system7_0' of component 'base_zynq_processing_system7_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2029]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_processing_system7_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_processing_system7_0_0_stub.vhdl:122]
 INFO: [Synth 8-638] synthesizing module 'base_zynq_ps7_0_axi_periph_1' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:999]
 INFO: [Synth 8-638] synthesizing module 'm00_couplers_imp_QHT96L' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:55]
 INFO: [Synth 8-256] done synthesizing module 'm00_couplers_imp_QHT96L' (3#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:55]
 INFO: [Synth 8-638] synthesizing module 'm01_couplers_imp_11WP2HX' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:157]
 INFO: [Synth 8-256] done synthesizing module 'm01_couplers_imp_11WP2HX' (4#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:157]
 INFO: [Synth 8-638] synthesizing module 's00_couplers_imp_1JB4A1T' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:287]
-INFO: [Synth 8-3491] module 'base_zynq_auto_pc_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'base_zynq_auto_pc_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:470]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_auto_pc_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_0_stub.vhdl:70]
+INFO: [Synth 8-3491] module 'base_zynq_auto_pc_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_0_stub.vhdl:5' bound to instance 'auto_pc' of component 'base_zynq_auto_pc_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:470]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_auto_pc_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_auto_pc_0_stub.vhdl:70]
 INFO: [Synth 8-256] done synthesizing module 's00_couplers_imp_1JB4A1T' (5#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:287]
-INFO: [Synth 8-3491] module 'base_zynq_xbar_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'base_zynq_xbar_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1412]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_xbar_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_xbar_0_stub.vhdl:51]
+INFO: [Synth 8-3491] module 'base_zynq_xbar_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_xbar_0_stub.vhdl:5' bound to instance 'xbar' of component 'base_zynq_xbar_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1412]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_xbar_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_xbar_0_stub.vhdl:51]
 INFO: [Synth 8-256] done synthesizing module 'base_zynq_ps7_0_axi_periph_1' (6#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:999]
-INFO: [Synth 8-3491] module 'base_zynq_rst_ps7_0_50M_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_rst_ps7_0_50M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_50M' of component 'base_zynq_rst_ps7_0_50M_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2227]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_rst_ps7_0_50M_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_rst_ps7_0_50M_0_stub.vhdl:21]
-INFO: [Synth 8-3491] module 'base_zynq_xlconcat_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_xlconcat_0_0_stub.vhdl:5' bound to instance 'xlconcat_0' of component 'base_zynq_xlconcat_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2240]
-INFO: [Synth 8-638] synthesizing module 'base_zynq_xlconcat_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-12527-jonathan-Latitude-E7450/realtime/base_zynq_xlconcat_0_0_stub.vhdl:14]
+INFO: [Synth 8-3491] module 'base_zynq_rst_ps7_0_50M_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_rst_ps7_0_50M_0_stub.vhdl:5' bound to instance 'rst_ps7_0_50M' of component 'base_zynq_rst_ps7_0_50M_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2227]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_rst_ps7_0_50M_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_rst_ps7_0_50M_0_stub.vhdl:21]
+INFO: [Synth 8-3491] module 'base_zynq_xlconcat_0_0' declared at '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_xlconcat_0_0_stub.vhdl:5' bound to instance 'xlconcat_0' of component 'base_zynq_xlconcat_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:2240]
+INFO: [Synth 8-638] synthesizing module 'base_zynq_xlconcat_0_0' [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/.Xil/Vivado-16048-jonathan-Latitude-E7450/realtime/base_zynq_xlconcat_0_0_stub.vhdl:14]
 INFO: [Synth 8-256] done synthesizing module 'base_zynq' (7#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/synth/base_zynq.vhd:1509]
 INFO: [Synth 8-256] done synthesizing module 'base_zynq_wrapper' (8#1) [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/hdl/base_zynq_wrapper.vhd:40]
 WARNING: [Synth 8-3331] design s00_couplers_imp_1JB4A1T has unconnected port M_ACLK
@@ -71,7 +71,7 @@ WARNING: [Synth 8-3331] design s00_couplers_imp_84BNIE has unconnected port M_AR
 WARNING: [Synth 8-3331] design base_zynq_axi_mem_intercon_0 has unconnected port ACLK
 WARNING: [Synth 8-3331] design base_zynq_axi_mem_intercon_0 has unconnected port ARESETN
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1352.590 ; gain = 126.473 ; free physical = 1011 ; free virtual = 9701
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1352.316 ; gain = 126.473 ; free physical = 2204 ; free virtual = 12886
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -84,10 +84,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1352.590 ; gain = 126.473 ; free physical = 1011 ; free virtual = 9702
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1352.316 ; gain = 126.473 ; free physical = 2210 ; free virtual = 12892
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1352.590 ; gain = 126.473 ; free physical = 1011 ; free virtual = 9702
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1352.316 ; gain = 126.473 ; free physical = 2210 ; free virtual = 12892
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z010clg400-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -110,112 +110,6 @@ Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI
 Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_auto_pc_1/base_zynq_auto_pc_1/base_zynq_auto_pc_1_in_context.xdc] for cell 'base_zynq_i/axi_mem_intercon/s00_couplers/auto_pc'
 Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_auto_pc_0/base_zynq_auto_pc_0/base_zynq_auto_pc_0_in_context.xdc] for cell 'base_zynq_i/ps7_0_axi_periph/s00_couplers/auto_pc'
 Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/hw/bd/base_zynq/ip/base_zynq_auto_pc_0/base_zynq_auto_pc_0/base_zynq_auto_pc_0_in_context.xdc] for cell 'base_zynq_i/ps7_0_axi_periph/s00_couplers/auto_pc'
-Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tlast'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:1]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_S00_AXI_inst/s00_axi_intr'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:2]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[7]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:3]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[11]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:4]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[31]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:5]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[22]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:6]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[27]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:7]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[26]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:8]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[6]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:9]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[3]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:10]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[9]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:11]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[14]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:12]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[15]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:13]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[18]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:14]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[19]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:15]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[23]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:16]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[28]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:17]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[0]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:18]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[17]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:19]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[1]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:20]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[12]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:21]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[13]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:22]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[8]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:23]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[29]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:24]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[16]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:25]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[20]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:26]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[21]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:27]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[24]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:28]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[2]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:29]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[4]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:30]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[10]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:31]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[30]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:32]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[5]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:33]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/m00_axis_tdata[25]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:34]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[20]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:35]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[15]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:36]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[18]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:37]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[11]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:38]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[29]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:39]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[12]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:40]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[11]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:41]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[22]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:42]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[14]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:43]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[8]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:44]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[28]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:45]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[0]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:46]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[30]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:47]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[23]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:48]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[15]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:49]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[21]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:50]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[30]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:51]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[1]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:52]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[3]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:53]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[22]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:54]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[7]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:55]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[31]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:56]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[27]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:57]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[16]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:58]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[25]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:59]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[6]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:60]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[0]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:61]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[23]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:62]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[8]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:63]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[10]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:64]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[3]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:65]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[4]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:66]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[5]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:67]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[9]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:68]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[26]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:69]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[20]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:70]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[4]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:71]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[6]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:72]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[28]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:73]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[13]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:74]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[24]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:75]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[25]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:76]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[27]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:77]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[17]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:78]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[19]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:79]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[12]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:80]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[14]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:81]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[1]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:82]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[19]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:83]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[13]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:84]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[9]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:85]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[7]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:86]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[21]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:87]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[16]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:88]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[17]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:89]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[24]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:90]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[26]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:91]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[29]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:92]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[2]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:93]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[31]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:94]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/content_packet_s[2]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:95]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[5]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:96]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[10]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:97]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v1_0_M00_AXIS_inst/nbr_of_packets_s[18]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:98]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata[4]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:99]
-WARNING: [Vivado 12-507] No nets matched 'base_zynq_i/axi_dma_0/U0/s_axis_s2mm_tdata[0]'. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:100]
-INFO: [Common 17-14] Message 'Vivado 12-507' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc:100]
-Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/base_zynq_wrapper_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.srcs/constrs_1/new/Constraint_RealTB.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/base_zynq_wrapper_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/base_zynq_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
@@ -223,18 +117,16 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1626.168 ; gain = 0.000 ; free physical = 753 ; free virtual = 9443
-WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'base_zynq_i/axi_mem_intercon/s00_couplers/auto_pc' at clock pin 'aclk' is different from the actual clock period '20.000', this can lead to different synthesis results.
-WARNING: [Timing 38-316] Clock period '100.000' specified during out-of-context synthesis of instance 'base_zynq_i/ps7_0_axi_periph/s00_couplers/auto_pc' at clock pin 'aclk' is different from the actual clock period '20.000', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1619.926 ; gain = 0.000 ; free physical = 1960 ; free virtual = 12641
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1626.168 ; gain = 400.051 ; free physical = 831 ; free virtual = 9522
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1619.926 ; gain = 394.082 ; free physical = 2039 ; free virtual = 12719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:27 . Memory (MB): peak = 1626.168 ; gain = 400.051 ; free physical = 831 ; free virtual = 9522
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1619.926 ; gain = 394.082 ; free physical = 2039 ; free virtual = 12719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -511,10 +403,10 @@ Applied set_property DONT_TOUCH = true for base_zynq_i/AXIS_Test_Component_0. (c
 Applied set_property DONT_TOUCH = true for base_zynq_i/axi_mem_intercon/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for base_zynq_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 1626.168 ; gain = 400.051 ; free physical = 832 ; free virtual = 9523
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1619.926 ; gain = 394.082 ; free physical = 2040 ; free virtual = 12721
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 1626.168 ; gain = 400.051 ; free physical = 832 ; free virtual = 9523
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1619.926 ; gain = 394.082 ; free physical = 2040 ; free virtual = 12721
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -558,7 +450,7 @@ WARNING: [Synth 8-3331] design base_zynq_axi_mem_intercon_0 has unconnected port
 WARNING: [Synth 8-3331] design base_zynq_axi_mem_intercon_0 has unconnected port M00_ACLK
 WARNING: [Synth 8-3331] design base_zynq_axi_mem_intercon_0 has unconnected port M00_ARESETN
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:28 . Memory (MB): peak = 1626.168 ; gain = 400.051 ; free physical = 830 ; free virtual = 9522
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:26 . Memory (MB): peak = 1619.926 ; gain = 394.082 ; free physical = 2038 ; free virtual = 12720
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -572,13 +464,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'base_zynq_i/processing_system7_0/FCLK_CLK0' to pin 'base_zynq_i/processing_system7_0/bbstub_FCLK_CLK0/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:37 . Memory (MB): peak = 1629.168 ; gain = 403.051 ; free physical = 699 ; free virtual = 9392
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1625.926 ; gain = 400.082 ; free physical = 1912 ; free virtual = 12594
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:37 . Memory (MB): peak = 1629.168 ; gain = 403.051 ; free physical = 699 ; free virtual = 9392
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1625.926 ; gain = 400.082 ; free physical = 1912 ; free virtual = 12594
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -590,7 +482,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:37 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:35 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12593
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -614,7 +506,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -627,7 +519,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -639,25 +531,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -703,11 +595,11 @@ Report Instance Areas:
 |6     |      s00_couplers   |s00_couplers_imp_1JB4A1T     |   177|
 +------+---------------------+-----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.168 ; gain = 404.051 ; free physical = 697 ; free virtual = 9390
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.926 ; gain = 402.082 ; free physical = 1910 ; free virtual = 12592
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 1630.168 ; gain = 130.473 ; free physical = 754 ; free virtual = 9447
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1630.176 ; gain = 404.051 ; free physical = 754 ; free virtual = 9447
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1627.926 ; gain = 134.473 ; free physical = 1968 ; free virtual = 12650
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:36 . Memory (MB): peak = 1627.934 ; gain = 402.082 ; free physical = 1977 ; free virtual = 12659
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -715,11 +607,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-49 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
+47 Infos, 23 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:39 . Memory (MB): peak = 1650.168 ; gain = 435.656 ; free physical = 738 ; free virtual = 9431
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:37 . Memory (MB): peak = 1646.926 ; gain = 432.688 ; free physical = 1953 ; free virtual = 12635
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint '/home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/RealTB_AXI_Stream/XilinxBuild/RealTB_AXI_Stream.runs/synth_1/base_zynq_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file base_zynq_wrapper_utilization_synth.rpt -pb base_zynq_wrapper_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1650.168 ; gain = 0.000 ; free physical = 738 ; free virtual = 9431
-INFO: [Common 17-206] Exiting Vivado at Tue Oct  2 13:06:50 2018...
+report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1646.926 ; gain = 0.000 ; free physical = 1950 ; free virtual = 12632
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 16 11:11:22 2018...
