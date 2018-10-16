@@ -1,0 +1,478 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue Oct  9 09:50:55 2018
+# Process ID: 28506
+# Current directory: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.runs/design_1_AXIS_Test_Component_0_0_synth_1
+# Command line: vivado -log design_1_AXIS_Test_Component_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_AXIS_Test_Component_0_0.tcl
+# Log file: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.runs/design_1_AXIS_Test_Component_0_0_synth_1/design_1_AXIS_Test_Component_0_0.vds
+# Journal file: /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.runs/design_1_AXIS_Test_Component_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source design_1_AXIS_Test_Component_0_0.tcl -notrace
+Command: synth_design -top design_1_AXIS_Test_Component_0_0 -part xc7z010clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 28520 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 1337.188 ; gain = 81.887 ; free physical = 1303 ; free virtual = 23370
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'design_1_AXIS_Test_Component_0_0' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ip/design_1_AXIS_Test_Component_0_0/synth/design_1_AXIS_Test_Component_0_0.vhd:90]
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_M00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M00_AXIS_START_COUNT bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'AXIS_Test_Component_v2_0' declared at '/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Test_Component_v2_0.vhd:5' bound to instance 'U0' of component 'AXIS_Test_Component_v2_0' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ip/design_1_AXIS_Test_Component_0_0/synth/design_1_AXIS_Test_Component_0_0.vhd:176]
+INFO: [Synth 8-638] synthesizing module 'AXIS_Test_Component_v2_0' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Test_Component_v2_0.vhd:62]
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_M00_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M00_AXIS_START_COUNT bound to: 32 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-3491] module 'AXIS_Peripheral_v2_0_S00_AXI' declared at '/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_S00_AXI.vhd:6' bound to instance 'AXIS_Peripheral_v2_0_S00_AXI_inst' of component 'AXIS_Peripheral_v2_0_S00_AXI' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Test_Component_v2_0.vhd:130]
+INFO: [Synth 8-638] synthesizing module 'AXIS_Peripheral_v2_0_S00_AXI' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_S00_AXI.vhd:94]
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+WARNING: [Synth 8-614] signal 'reg' is read in the process but is not in the sensitivity list [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_S00_AXI.vhd:448]
+WARNING: [Synth 8-6014] Unused sequential element loc_addr_reg was removed.  [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_S00_AXI.vhd:257]
+INFO: [Synth 8-256] done synthesizing module 'AXIS_Peripheral_v2_0_S00_AXI' (1#1) [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_S00_AXI.vhd:94]
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_START_COUNT bound to: 32 - type: integer 
+INFO: [Synth 8-3491] module 'AXIS_Peripheral_v2_0_M00_AXIS' declared at '/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_M00_AXIS.vhd:7' bound to instance 'AXIS_Peripheral_v2_0_M00_AXIS_inst' of component 'AXIS_Peripheral_v2_0_M00_AXIS' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Test_Component_v2_0.vhd:165]
+INFO: [Synth 8-638] synthesizing module 'AXIS_Peripheral_v2_0_M00_AXIS' [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_M00_AXIS.vhd:45]
+	Parameter C_M_AXIS_TDATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_START_COUNT bound to: 32 - type: integer 
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_M00_AXIS.vhd:158]
+INFO: [Synth 8-256] done synthesizing module 'AXIS_Peripheral_v2_0_M00_AXIS' (2#1) [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Peripheral_v2_0_M00_AXIS.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'AXIS_Test_Component_v2_0' (3#1) [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ipshared/be41/hdl/AXIS_Test_Component_v2_0.vhd:62]
+INFO: [Synth 8-256] done synthesizing module 'design_1_AXIS_Test_Component_0_0' (4#1) [/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ip/design_1_AXIS_Test_Component_0_0/synth/design_1_AXIS_Test_Component_0_0.vhd:90]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_AWPROT[2]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_AWPROT[1]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_AWPROT[0]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_ARPROT[2]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_ARPROT[1]
+WARNING: [Synth 8-3331] design AXIS_Peripheral_v2_0_S00_AXI has unconnected port S_AXI_ARPROT[0]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1383.820 ; gain = 128.520 ; free physical = 1320 ; free virtual = 23389
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1383.820 ; gain = 128.520 ; free physical = 1296 ; free virtual = 23366
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1383.820 ; gain = 128.520 ; free physical = 1296 ; free virtual = 23366
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Constraints 18-5210] No constraint will be written out.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.18 . Memory (MB): peak = 1707.566 ; gain = 1.000 ; free physical = 252 ; free virtual = 22356
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:43 . Memory (MB): peak = 1707.566 ; gain = 452.266 ; free physical = 463 ; free virtual = 22570
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:43 . Memory (MB): peak = 1707.566 ; gain = 452.266 ; free physical = 463 ; free virtual = 22569
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:43 . Memory (MB): peak = 1707.566 ; gain = 452.266 ; free physical = 464 ; free virtual = 22571
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'intr_s_reg' in module 'AXIS_Peripheral_v2_0_S00_AXI'
+INFO: [Synth 8-5544] ROM "reg_reg[0]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[3]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[4]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "reg_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "S_AXI_INTR" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "intr_s" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "intr_s" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-802] inferred FSM for state register 'mst_exec_state_reg' in module 'AXIS_Peripheral_v2_0_M00_AXIS'
+INFO: [Synth 8-5545] ROM "saw_pointer" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "bit_pointer" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              001 |                               00
+               interrupt |                              010 |                               01
+                   reset |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'intr_s_reg' using encoding 'one-hot' in module 'AXIS_Peripheral_v2_0_S00_AXI'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                              001 |                               00
+            start_stream |                              010 |                               01
+             send_stream |                              100 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'mst_exec_state_reg' using encoding 'one-hot' in module 'AXIS_Peripheral_v2_0_M00_AXIS'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:44 . Memory (MB): peak = 1707.570 ; gain = 452.270 ; free physical = 434 ; free virtual = 22549
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     31 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 18    
+	                6 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 12    
+	   3 Input     32 Bit        Muxes := 5     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     31 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 50    
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   3 Input      3 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 11    
+	   4 Input      1 Bit        Muxes := 2     
+	   3 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module AXIS_Peripheral_v2_0_S00_AXI 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 11    
+	                6 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 10    
+	   2 Input      8 Bit        Muxes := 50    
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 6     
+Module AXIS_Peripheral_v2_0_M00_AXIS 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     31 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 7     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   3 Input     32 Bit        Muxes := 5     
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     31 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 3     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+	   4 Input      1 Bit        Muxes := 2     
+	   3 Input      1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[0]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[2]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[3]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[4]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[5]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[6]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[7]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[8]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "U0/AXIS_Peripheral_v2_0_S00_AXI_inst/reg_reg[9]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_awprot[2]
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_awprot[1]
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_awprot[0]
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_arprot[2]
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_arprot[1]
+WARNING: [Synth 8-3331] design design_1_AXIS_Test_Component_0_0 has unconnected port s00_axi_arprot[0]
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[1]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[2]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[3]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[3]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[4]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[4]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[5]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[5]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[6]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[6]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[7]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[7]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[8]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[8]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[9]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[9]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[10]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[10]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[11]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[11]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[12]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[12]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[13]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[13]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[14]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[14]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[15]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[15]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[16]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[16]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[17]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[17]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[18]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[18]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[19]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[19]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[20]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[20]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[21]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[21]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[22]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[22]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[23]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[23]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[24]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[24]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[25]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[25]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[26]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[26]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[27]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[27]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[28]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[28]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[29]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[29]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[30]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]'
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[30]' (FDE) to 'U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/bit_pointer_reg[31]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\U0/AXIS_Peripheral_v2_0_S00_AXI_inst/aw_en_reg )
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_rresp_reg[0]' (FDRE) to 'U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_rresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_rresp_reg[1] )
+INFO: [Synth 8-3886] merging instance 'U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_bresp_reg[0]' (FDRE) to 'U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_bresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_bresp_reg[1] )
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/aw_en_reg) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_awaddr_reg[1]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_awaddr_reg[0]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_bresp_reg[1]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_araddr_reg[1]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_araddr_reg[0]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+INFO: [Synth 8-3332] Sequential element (U0/AXIS_Peripheral_v2_0_S00_AXI_inst/axi_rresp_reg[1]) is unused and will be removed from module design_1_AXIS_Test_Component_0_0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:48 . Memory (MB): peak = 1707.570 ; gain = 452.270 ; free physical = 358 ; free virtual = 22481
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:01:01 . Memory (MB): peak = 1707.570 ; gain = 452.270 ; free physical = 672 ; free virtual = 22345
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:01:01 . Memory (MB): peak = 1707.570 ; gain = 452.270 ; free physical = 670 ; free virtual = 22344
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:01:02 . Memory (MB): peak = 1715.570 ; gain = 460.270 ; free physical = 775 ; free virtual = 22449
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:29 ; elapsed = 00:01:02 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1021 ; free virtual = 22694
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:29 ; elapsed = 00:01:02 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1021 ; free virtual = 22694
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1019 ; free virtual = 22692
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1018 ; free virtual = 22691
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1017 ; free virtual = 22690
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1017 ; free virtual = 22690
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    85|
+|2     |LUT1   |    67|
+|3     |LUT2   |    51|
+|4     |LUT3   |    67|
+|5     |LUT4   |   158|
+|6     |LUT5   |    27|
+|7     |LUT6   |   351|
+|8     |FDRE   |   534|
+|9     |FDSE   |     5|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------------------------------------+------------------------------+------+
+|      |Instance                               |Module                        |Cells |
++------+---------------------------------------+------------------------------+------+
+|1     |top                                    |                              |  1345|
+|2     |  U0                                   |AXIS_Test_Component_v2_0      |  1284|
+|3     |    AXIS_Peripheral_v2_0_M00_AXIS_inst |AXIS_Peripheral_v2_0_M00_AXIS |   746|
+|4     |    AXIS_Peripheral_v2_0_S00_AXI_inst  |AXIS_Peripheral_v2_0_S00_AXI  |   536|
++------+---------------------------------------+------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.574 ; gain = 460.273 ; free physical = 1017 ; free virtual = 22690
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 6 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:29 . Memory (MB): peak = 1715.574 ; gain = 136.527 ; free physical = 1067 ; free virtual = 22741
+Synthesis Optimization Complete : Time (s): cpu = 00:00:29 ; elapsed = 00:01:03 . Memory (MB): peak = 1715.578 ; gain = 460.273 ; free physical = 1067 ; free virtual = 22741
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 85 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+121 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:31 ; elapsed = 00:01:05 . Memory (MB): peak = 1715.578 ; gain = 471.840 ; free physical = 1254 ; free virtual = 22937
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint '/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.runs/design_1_AXIS_Test_Component_0_0_synth_1/design_1_AXIS_Test_Component_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP /home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.srcs/sources_1/bd/design_1/ip/design_1_AXIS_Test_Component_0_0/design_1_AXIS_Test_Component_0_0.xci
+INFO: [Coretcl 2-1174] Renamed 3 cell refs.
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint '/home/idlab-52/Desktop/GitVivado/Ky/WATCHMAN/Vivado_Projects/Main_Project/XilinxBuild/Watchman.runs/design_1_AXIS_Test_Component_0_0_synth_1/design_1_AXIS_Test_Component_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_AXIS_Test_Component_0_0_utilization_synth.rpt -pb design_1_AXIS_Test_Component_0_0_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.11 . Memory (MB): peak = 1739.590 ; gain = 0.000 ; free physical = 1847 ; free virtual = 23528
+INFO: [Common 17-206] Exiting Vivado at Tue Oct  9 09:52:13 2018...

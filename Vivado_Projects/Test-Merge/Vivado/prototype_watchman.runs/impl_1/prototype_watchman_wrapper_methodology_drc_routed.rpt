@@ -1,0 +1,55 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+| Date         : Tue Oct  9 16:04:37 2018
+| Host         : idlab52-OptiPlex-790 running 64-bit Ubuntu 14.04.5 LTS
+| Command      : report_methodology -file prototype_watchman_wrapper_methodology_drc_routed.rpt -pb prototype_watchman_wrapper_methodology_drc_routed.pb -rpx prototype_watchman_wrapper_methodology_drc_routed.rpx
+| Design       : prototype_watchman_wrapper
+| Device       : xc7z010clg400-1
+| Speed File   : -1
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 4
++-----------+----------+-----------------------+------------+
+| Rule      | Severity | Description           | Violations |
++-----------+----------+-----------------------+------------+
+| TIMING-16 | Warning  | Large setup violation | 4          |
++-----------+----------+-----------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -6.073 ns between prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/ramp_pointer_reg[1]/C (clocked by clk_fpga_0) and prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -6.159 ns between prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/ramp_pointer_reg[1]/C (clocked by clk_fpga_0) and prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -6.172 ns between prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/ramp_pointer_reg[1]/C (clocked by clk_fpga_0) and prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -6.176 ns between prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/ramp_pointer_reg[1]/C (clocked by clk_fpga_0) and prototype_watchman_i/AXIS_Test_Component_0/U0/AXIS_Peripheral_v2_0_M00_AXIS_inst/saw_pointer_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="interr" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="TxIntrHandler"/>
+			<item value="interr"/>
+			<item value="Error"/>
+			<item value="No config found"/>
+			<item value="the stream"/>
+			<item value="MAX_STREAM"/>
+			<item value="return_load"/>
+			<item value="return"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="335" key="DIALOG_WIDTH"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+		<item value="517" key="DIALOG_HEIGHT"/>
+		<item value="1302" key="DIALOG_X_ORIGIN"/>
+		<item value="270" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

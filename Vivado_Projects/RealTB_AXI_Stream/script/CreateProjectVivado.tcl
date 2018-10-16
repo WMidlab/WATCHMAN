@@ -8,7 +8,7 @@
 # Parameters
 
 # Project Name Definition
-set ProjectName "RealTB_AXI_Stream"
+set ProjectName "Watchman"
 
 # Set the reference directory for source file relative paths (by default the value is script directory path)
 set origin_dir "../"
@@ -46,10 +46,13 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set IP repository paths
 set obj [get_filesets sources_1]
 
+
 # OS select
 switch -glob -- [lindex $tcl_platform(os) 0] {
 	Win* { #Windows
-		set ip_list [list [exec cmd /c dir ${origin_dir}/hw/user_ip/]]
+		cd ../hw/user_ip/
+		set ip_list [list [exec cmd /c dir /B]]
+		cd ../../XilinxBuild/
 	}
 	Lin* { #Linux
 		set ip_list [list [exec ls ${origin_dir}/hw/user_ip/]]
@@ -65,13 +68,17 @@ if {[llength ip_list] > 0} {
 		set_property -name "ip_repo_paths" -value "[file normalize "${origin_dir}/hw/user_ip/${a}"]" -objects $obj
 	}
 }
-
+update_ip_catalog
 
 # Set Project BD for Project
 switch -glob -- [lindex $tcl_platform(os) 0] {
 	Win* { #Windows
-		set ProjectBD [exec cmd /c dir ${origin_dir}/hw/bd/]
-		set ProjectWrapper [file rootname [exec cmd /c dir ${origin_dir}/hw/bd/${ProjectBD}/hdl/]]
+		cd ../hw/bd/
+		set ProjectBD [exec cmd /c dir /B]
+		cd ../../XilinxBuild/
+		cd ../hw/bd/${ProjectBD}/hdl/
+		set ProjectWrapper [file rootname [exec cmd /c dir /B]]
+		cd ../../../../XilinxBuild/
 	}
 	Lin* { #Linux
 		set ProjectBD [exec ls ${origin_dir}/hw/bd/]
