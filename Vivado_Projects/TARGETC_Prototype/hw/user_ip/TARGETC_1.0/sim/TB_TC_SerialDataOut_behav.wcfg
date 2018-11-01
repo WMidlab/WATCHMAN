@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_TC_SerialDataOut_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_TC_SerialDataOut" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="858085810fs"></ZoomEndTime>
+      <Cursor1Time time="30000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="278"></NameColumnWidth>
+      <ValueColumnWidth column_width="130"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject type="other" fp_name="/TB_TC_SerialDataOut/DUT/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/DUT/HSCLK">
+      <obj_property name="ElementShortName">HSCLK</obj_property>
+      <obj_property name="ObjectShortName">HSCLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/DUT/eSmplSl_Any">
+      <obj_property name="ElementShortName">eSmplSl_Any</obj_property>
+      <obj_property name="ObjectShortName">eSmplSl_Any</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/DUT/eSS_Incr">
+      <obj_property name="ElementShortName">eSS_Incr</obj_property>
+      <obj_property name="ObjectShortName">eSS_Incr</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_TC_SerialDataOut/DUT/internal_cnt">
+      <obj_property name="ElementShortName">internal_cnt</obj_property>
+      <obj_property name="ObjectShortName">internal_cnt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/clk_sti">
+      <obj_property name="ElementShortName">clk_sti</obj_property>
+      <obj_property name="ObjectShortName">clk_sti</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/eTPG_sti">
+      <obj_property name="ElementShortName">eTPG_sti</obj_property>
+      <obj_property name="ObjectShortName">eTPG_sti</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/start_sti">
+      <obj_property name="ElementShortName">start_sti</obj_property>
+      <obj_property name="ObjectShortName">start_sti</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TC_SerialDataOut/eDO_sti">
+      <obj_property name="ElementShortName">eDO_sti[15:0]</obj_property>
+      <obj_property name="ObjectShortName">eDO_sti[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialDataOut/HSclk_obs">
+      <obj_property name="ElementShortName">HSclk_obs</obj_property>
+      <obj_property name="ObjectShortName">HSclk_obs</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_TC_SerialDataOut/CLK_PERIOD">
+      <obj_property name="ElementShortName">CLK_PERIOD</obj_property>
+      <obj_property name="ObjectShortName">CLK_PERIOD</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,166 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 TLS
+#  -string -flagsOSRD
+preplace port WL_CLK_N -pg 1 -y 380 -defaultsOSRD
+preplace port SSTIN_N -pg 1 -y 640 -defaultsOSRD
+preplace port RDAD_SIN -pg 1 -y 420 -defaultsOSRD
+preplace port DO_8 -pg 1 -y 980 -defaultsOSRD
+preplace port DO_15 -pg 1 -y 1120 -defaultsOSRD
+preplace port DDR -pg 1 -y 20 -defaultsOSRD
+preplace port SS_LD_DIR -pg 1 -y 580 -defaultsOSRD
+preplace port RDAD_CLK -pg 1 -y 400 -defaultsOSRD
+preplace port DO_9 -pg 1 -y 1000 -defaultsOSRD
+preplace port DO_16 -pg 1 -y 1140 -defaultsOSRD
+preplace port REGCLR -pg 1 -y 540 -defaultsOSRD
+preplace port SIN -pg 1 -y 80 -defaultsOSRD
+preplace port WL_CLK_P -pg 1 -y 360 -defaultsOSRD
+preplace port MONTIMING_N -pg 1 -y 820 -defaultsOSRD
+preplace port SSTIN_P -pg 1 -y 620 -defaultsOSRD
+preplace port SCLK -pg 1 -y 100 -defaultsOSRD
+preplace port RAMP -pg 1 -y 600 -defaultsOSRD
+preplace port SDA -pg 1 -y 1000 -defaultsOSRD
+preplace port HSCLK_N -pg 1 -y 160 -defaultsOSRD
+preplace port MONTIMING_P -pg 1 -y 800 -defaultsOSRD
+preplace port BB1 -pg 1 -y 660 -defaultsOSRD
+preplace port SAMPLESEL_ANY -pg 1 -y 460 -defaultsOSRD
+preplace port WR_CS_S0 -pg 1 -y 220 -defaultsOSRD
+preplace port SS_RESET -pg 1 -y 520 -defaultsOSRD
+preplace port BB2 -pg 1 -y -70 -defaultsOSRD
+preplace port SHOUT -pg 1 -y 760 -defaultsOSRD
+preplace port PCLK -pg 1 -y 120 -defaultsOSRD
+preplace port HSCLK_P -pg 1 -y 140 -defaultsOSRD
+preplace port WR_CS_S1 -pg 1 -y 240 -defaultsOSRD
+preplace port DO_1 -pg 1 -y 840 -defaultsOSRD
+preplace port BB4 -pg 1 -y -50 -defaultsOSRD
+preplace port WR_CS_S2 -pg 1 -y 260 -defaultsOSRD
+preplace port DO_2 -pg 1 -y 860 -defaultsOSRD
+preplace port BB5 -pg 1 -y 680 -defaultsOSRD
+preplace port WR_RS_S0 -pg 1 -y 180 -defaultsOSRD
+preplace port WR_CS_S3 -pg 1 -y 280 -defaultsOSRD
+preplace port GCC_RESET -pg 1 -y 340 -defaultsOSRD
+preplace port SS_INCR -pg 1 -y 480 -defaultsOSRD
+preplace port DO_10 -pg 1 -y 1020 -defaultsOSRD
+preplace port DO_3 -pg 1 -y 880 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 740 -defaultsOSRD
+preplace port WR_RS_S1 -pg 1 -y 200 -defaultsOSRD
+preplace port WR_CS_S4 -pg 1 -y 300 -defaultsOSRD
+preplace port DO_11 -pg 1 -y 1040 -defaultsOSRD
+preplace port DO_4 -pg 1 -y 720 -defaultsOSRD
+preplace port WR_CS_S5 -pg 1 -y 320 -defaultsOSRD
+preplace port SS_LD_SIN -pg 1 -y 560 -defaultsOSRD
+preplace port DO_12 -pg 1 -y 1060 -defaultsOSRD
+preplace port DO_5 -pg 1 -y 740 -defaultsOSRD
+preplace port SCL -pg 1 -y 940 -defaultsOSRD
+preplace port RDAD_DIR -pg 1 -y 440 -defaultsOSRD
+preplace port DO_13 -pg 1 -y 1080 -defaultsOSRD
+preplace port DO_6 -pg 1 -y 940 -defaultsOSRD
+preplace port DONE -pg 1 -y 780 -defaultsOSRD
+preplace port DO_14 -pg 1 -y 1100 -defaultsOSRD
+preplace port DO_7 -pg 1 -y 960 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 1 -y 390 -defaultsOSRD
+preplace inst axi_iic_0 -pg 1 -lvl 3 -y 1130 -defaultsOSRD
+preplace inst TARGETC_0 -pg 1 -lvl 3 -y 380 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 2 -y 990 -defaultsOSRD
+preplace inst iobuf_0 -pg 1 -lvl 4 -y 1020 -defaultsOSRD
+preplace inst iobuf_1 -pg 1 -lvl 4 -y 880 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -y 290 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y 630 -defaultsOSRD
+preplace netloc MONTIMING_P_1 1 0 3 NJ 800 1010J 780 1570J
+preplace netloc DO_16_1 1 0 2 NJ 1140 NJ
+preplace netloc TARGETC_0_tc_axi_rresp 1 2 1 1560
+preplace netloc axi_iic_0_sda_t 1 3 1 2240
+preplace netloc TARGETC_0_SSTIN 1 3 2 NJ 680 2410
+preplace netloc TARGETC_0_tc_axi_bvalid 1 2 1 1620
+preplace netloc processing_system7_0_FIXED_IO 1 1 4 950J -10 NJ -10 NJ -10 2480J
+preplace netloc TARGETC_0_HSCLK 1 3 2 2240 -50 NJ
+preplace netloc ps7_0_axi_periph_M00_AXI_rready 1 2 1 1630
+preplace netloc DO_9_1 1 0 2 NJ 1000 NJ
+preplace netloc TARGETC_0_SSVALID_INTR 1 0 4 -110J 770 NJ 770 NJ 770 2200
+preplace netloc TARGETC_0_SS_LD_SIN 1 3 2 NJ 540 2440
+preplace netloc ps7_0_axi_periph_M00_AXI_bready 1 2 1 1610
+preplace netloc DO_7_1 1 0 2 NJ 960 NJ
+preplace netloc TARGETC_0_PCLKxo 1 3 2 NJ 100 2590
+preplace netloc xlconcat_0_dout 1 2 1 1530
+preplace netloc TARGETC_0_SS_RESET 1 3 2 NJ 500 2460
+preplace netloc DO_11_1 1 0 2 NJ 1040 NJ
+preplace netloc M00_AXI_wready_1 1 2 1 1490
+preplace netloc DO_1_1 1 0 2 NJ 840 NJ
+preplace netloc DO_10_1 1 0 2 NJ 1020 NJ
+preplace netloc DO_8_1 1 0 2 NJ 980 NJ
+preplace netloc processing_system7_0_DDR 1 1 4 960J 0 NJ 0 NJ 0 2610J
+preplace netloc TARGETC_0_WR_RS_S0 1 3 2 NJ 160 2560
+preplace netloc ps7_0_axi_periph_M00_AXI_wvalid 1 2 1 1500
+preplace netloc ps7_0_axi_periph_M00_AXI_araddr 1 2 1 1530
+preplace netloc TARGETC_0_RDAD_SIN 1 3 2 NJ 400 2430
+preplace netloc TARGETC_0_WR_RS_S1 1 3 2 NJ 180 2550
+preplace netloc ps7_0_axi_periph_M00_AXI_wstrb 1 2 1 1470
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 1640
+preplace netloc MONTIMING_N_1 1 0 3 NJ 820 980J 760 1620J
+preplace netloc DONE_0_1 1 0 3 NJ 780 950J 720 1510J
+preplace netloc TARGETC_0_RDAD_CLK 1 3 2 NJ 380 2440
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 2 1010 550 1480J
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 -110 290 940
+preplace netloc TARGETC_0_tc_axi_bresp 1 2 1 1460
+preplace netloc iobuf_0_O 1 3 2 NJ 1130 2400
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 1440
+preplace netloc TARGETC_0_HSCLK_N 1 3 2 NJ 140 2570
+preplace netloc ps7_0_axi_periph_M00_AXI_awprot 1 2 1 1580
+preplace netloc TARGETC_0_WL_CLK_N 1 3 2 NJ 360 2450
+preplace netloc TARGETC_0_HSCLK_P 1 3 2 NJ 120 2580
+preplace netloc DO_14_1 1 0 2 NJ 1100 NJ
+preplace netloc TARGETC_0_RDAD_DIR 1 3 2 NJ 420 2420
+preplace netloc TARGETC_0_WR_CS_S0 1 3 2 NJ 200 2540
+preplace netloc DO_5_1 1 0 2 -140J 920 NJ
+preplace netloc TARGETC_0_WL_CLK_P 1 3 2 NJ 340 2460
+preplace netloc TARGETC_0_SS_LD_DIR 1 3 2 NJ 560 2430
+preplace netloc DO_12_1 1 0 2 NJ 1060 NJ
+preplace netloc TARGETC_0_WR_CS_S1 1 3 2 NJ 220 2530
+preplace netloc TARGETC_0_WR_CS_S2 1 3 2 NJ 240 2520
+preplace netloc TARGETC_0_WR_CS_S3 1 3 2 NJ 260 2510
+preplace netloc Net 1 4 1 2580
+preplace netloc TARGETC_0_eSmplSl_Any 1 3 2 NJ 440 2410
+preplace netloc SHOUT_1 1 0 3 -130J 490 990J 570 NJ
+preplace netloc TARGETC_0_WR_CS_S4 1 3 2 NJ 280 2500
+preplace netloc M00_AXI_awready_1 1 2 1 1590
+preplace netloc Net1 1 4 1 2560
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 -120 280 1000 560 1550
+preplace netloc TARGETC_0_SSTIN_N 1 3 2 NJ 620 2400
+preplace netloc TARGETC_0_SCLKxo 1 3 2 NJ 80 2600
+preplace netloc TARGETC_0_WR_CS_S5 1 3 2 NJ 300 2490
+preplace netloc TARGETC_0_MONTIMING 1 3 2 NJ 700 2600
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 2 NJ 690 1460
+preplace netloc ps7_0_axi_periph_M00_AXI_awvalid 1 2 1 1600
+preplace netloc DO_2_1 1 0 2 NJ 860 NJ
+preplace netloc TARGETC_0_SSTIN_P 1 3 2 NJ 600 2410
+preplace netloc TARGETC_0_GCC_RESET 1 3 2 NJ 320 2470
+preplace netloc DO_13_1 1 0 2 NJ 1080 NJ
+preplace netloc iobuf_1_O 1 3 2 2210 1090 2440
+preplace netloc TARGETC_0_eSS_Incr 1 3 2 NJ 460 2400
+preplace netloc DO_4_1 1 0 2 -120J 900 NJ
+preplace netloc DO_15_1 1 0 2 NJ 1120 NJ
+preplace netloc TARGETC_0_SINxo 1 3 2 NJ 60 2610
+preplace netloc axi_iic_0_scl_o 1 3 1 2200
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 980
+preplace netloc DO_3_1 1 0 2 NJ 880 NJ
+preplace netloc M00_AXI_arready_1 1 2 1 1510
+preplace netloc ps7_0_axi_periph_M00_AXI_awaddr 1 2 1 1520
+preplace netloc ARESETN_1 1 1 1 970
+preplace netloc ps7_0_axi_periph_M00_AXI_arprot 1 2 1 1550
+preplace netloc axi_iic_0_sda_o 1 3 1 2230
+preplace netloc ps7_0_axi_periph_M00_AXI_wdata 1 2 1 1570
+preplace netloc ps7_0_axi_periph_M00_AXI_arvalid 1 2 1 1480
+preplace netloc DO_6_1 1 0 2 NJ 940 NJ
+preplace netloc axi_iic_0_scl_t 1 3 1 2220
+preplace netloc TARGETC_0_eRAMPxo 1 3 2 NJ 580 2420
+preplace netloc TARGETC_0_tc_axi_rvalid 1 2 1 1540
+preplace netloc TARGETC_0_eRegCLRxo 1 3 2 NJ 520 2450
+preplace netloc TARGETC_0_tc_axi_rdata 1 2 1 1450
+levelinfo -pg 1 -160 710 1240 2030 2320 2630 -top -90 -bot 1270
+",
+}
+{
+   da_axi4_cnt: "6",
+   da_board_cnt: "3",
+   da_clkrst_cnt: "9",
+}
