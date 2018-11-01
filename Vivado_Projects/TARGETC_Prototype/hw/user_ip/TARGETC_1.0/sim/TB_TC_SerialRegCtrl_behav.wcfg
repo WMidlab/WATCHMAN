@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_TC_SerialRegCtrl_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_TC_SerialRegCtrl" />
+            <top_module name="register_pkg" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="31690476191fs"></ZoomEndTime>
+      <Cursor1Time time="495000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="278"></NameColumnWidth>
+      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject type="group" fp_name="group1764">
+      <obj_property name="label">Slave AXI - S00</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ACLK">
+         <obj_property name="ElementShortName">s00_axi_ACLK</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ACLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ARESETN">
+         <obj_property name="ElementShortName">s00_axi_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARESETN</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_AWADDR">
+         <obj_property name="ElementShortName">s00_axi_AWADDR[9:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_AWADDR[9:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_AWVALID">
+         <obj_property name="ElementShortName">s00_axi_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_AWVALID</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_WDATA">
+         <obj_property name="ElementShortName">s00_axi_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_WSTRB">
+         <obj_property name="ElementShortName">s00_axi_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_WVALID">
+         <obj_property name="ElementShortName">s00_axi_WVALID</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_WVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_BREADY">
+         <obj_property name="ElementShortName">s00_axi_BREADY</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ARADDR">
+         <obj_property name="ElementShortName">s00_axi_ARADDR[9:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARADDR[9:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ARVALID">
+         <obj_property name="ElementShortName">s00_axi_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_RREADY">
+         <obj_property name="ElementShortName">s00_axi_RREADY</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_RREADY</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ARREADY">
+         <obj_property name="ElementShortName">s00_axi_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_RDATA">
+         <obj_property name="ElementShortName">s00_axi_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_RRESP">
+         <obj_property name="ElementShortName">s00_axi_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_RVALID">
+         <obj_property name="ElementShortName">s00_axi_RVALID</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_RVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_WREADY">
+         <obj_property name="ElementShortName">s00_axi_WREADY</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_BRESP">
+         <obj_property name="ElementShortName">s00_axi_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_BVALID">
+         <obj_property name="ElementShortName">s00_axi_BVALID</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_BVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/s00_axi_AWREADY">
+         <obj_property name="ElementShortName">s00_axi_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_AWPROT">
+         <obj_property name="ElementShortName">s00_axi_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/s00_axi_ARPROT">
+         <obj_property name="ElementShortName">s00_axi_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARPROT[2:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/m00_axis_tready">
+      <obj_property name="ElementShortName">m00_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">m00_axis_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/sendIt">
+      <obj_property name="ElementShortName">sendIt</obj_property>
+      <obj_property name="ObjectShortName">sendIt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/readIt">
+      <obj_property name="ElementShortName">readIt</obj_property>
+      <obj_property name="ObjectShortName">readIt</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/sinxs">
+      <obj_property name="ElementShortName">sinxs</obj_property>
+      <obj_property name="ObjectShortName">sinxs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/sclkxobs">
+      <obj_property name="ElementShortName">sclkxobs</obj_property>
+      <obj_property name="ObjectShortName">sclkxobs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/pclkxobs">
+      <obj_property name="ElementShortName">pclkxobs</obj_property>
+      <obj_property name="ObjectShortName">pclkxobs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/shoutxs">
+      <obj_property name="ElementShortName">shoutxs</obj_property>
+      <obj_property name="ObjectShortName">shoutxs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/eRAMPxobs">
+      <obj_property name="ElementShortName">eRAMPxobs</obj_property>
+      <obj_property name="ObjectShortName">eRAMPxobs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/eRegCLRxobs">
+      <obj_property name="ElementShortName">eRegCLRxobs</obj_property>
+      <obj_property name="ObjectShortName">eRegCLRxobs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/simulation_end_s">
+      <obj_property name="ElementShortName">simulation_end_s</obj_property>
+      <obj_property name="ObjectShortName">simulation_end_s</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group1765">
+      <obj_property name="label">TARGETC CONTROL SERIAL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/CLK">
+         <obj_property name="ElementShortName">CLK</obj_property>
+         <obj_property name="ObjectShortName">CLK</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/LOAD_PERIOD">
+         <obj_property name="ElementShortName">LOAD_PERIOD[15:0]</obj_property>
+         <obj_property name="ObjectShortName">LOAD_PERIOD[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/LATCH_PERIOD">
+         <obj_property name="ElementShortName">LATCH_PERIOD[15:0]</obj_property>
+         <obj_property name="ObjectShortName">LATCH_PERIOD[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/UPDATE">
+         <obj_property name="ElementShortName">UPDATE</obj_property>
+         <obj_property name="ObjectShortName">UPDATE</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/REG_DATA_IN">
+         <obj_property name="ElementShortName">REG_DATA_IN[18:0]</obj_property>
+         <obj_property name="ObjectShortName">REG_DATA_IN[18:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/REG_DATA_OUT">
+         <obj_property name="ElementShortName">REG_DATA_OUT[18:0]</obj_property>
+         <obj_property name="ObjectShortName">REG_DATA_OUT[18:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/busy">
+         <obj_property name="ElementShortName">busy</obj_property>
+         <obj_property name="ObjectShortName">busy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SIN">
+         <obj_property name="ElementShortName">SIN</obj_property>
+         <obj_property name="ObjectShortName">SIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SCLK">
+         <obj_property name="ElementShortName">SCLK</obj_property>
+         <obj_property name="ObjectShortName">SCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/PCLK">
+         <obj_property name="ElementShortName">PCLK</obj_property>
+         <obj_property name="ObjectShortName">PCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SHOUT">
+         <obj_property name="ElementShortName">SHOUT</obj_property>
+         <obj_property name="ObjectShortName">SHOUT</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/STATE">
+         <obj_property name="ElementShortName">STATE</obj_property>
+         <obj_property name="ObjectShortName">STATE</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SIN_i">
+         <obj_property name="ElementShortName">SIN_i</obj_property>
+         <obj_property name="ObjectShortName">SIN_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SCLK_i">
+         <obj_property name="ElementShortName">SCLK_i</obj_property>
+         <obj_property name="ObjectShortName">SCLK_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/PCLK_i">
+         <obj_property name="ElementShortName">PCLK_i</obj_property>
+         <obj_property name="ObjectShortName">PCLK_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/SHOUT_i">
+         <obj_property name="ElementShortName">SHOUT_i</obj_property>
+         <obj_property name="ObjectShortName">SHOUT_i</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/cnt">
+         <obj_property name="ElementShortName">cnt</obj_property>
+         <obj_property name="ObjectShortName">cnt</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/ENABLE_COUNTER">
+         <obj_property name="ElementShortName">ENABLE_COUNTER</obj_property>
+         <obj_property name="ObjectShortName">ENABLE_COUNTER</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/INTERNAL_COUNTER">
+         <obj_property name="ElementShortName">INTERNAL_COUNTER[15:0]</obj_property>
+         <obj_property name="ObjectShortName">INTERNAL_COUNTER[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/UPDATE_REG">
+         <obj_property name="ElementShortName">UPDATE_REG[1:0]</obj_property>
+         <obj_property name="ObjectShortName">UPDATE_REG[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/UPDATE_START">
+         <obj_property name="ElementShortName">UPDATE_START</obj_property>
+         <obj_property name="ObjectShortName">UPDATE_START</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TC_SerialRegCtrl/DUT/TARGETC_SerialRegCtrl_inst/REGISTER_WIDTH">
+         <obj_property name="ElementShortName">REGISTER_WIDTH</obj_property>
+         <obj_property name="ObjectShortName">REGISTER_WIDTH</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
