@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Thu Nov  1 13:51:38 2018
+--Date        : Sat Dec  8 11:21:27 2018
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq_wrapper.bd
 --Design      : base_zynq_wrapper
@@ -15,6 +15,7 @@ entity base_zynq_wrapper is
   port (
     BB1 : out STD_LOGIC;
     BB2 : out STD_LOGIC;
+    BB3 : out STD_LOGIC;
     BB4 : out STD_LOGIC;
     BB5 : out STD_LOGIC;
     DDR_addr : inout STD_LOGIC_VECTOR ( 14 downto 0 );
@@ -115,12 +116,6 @@ architecture STRUCTURE of base_zynq_wrapper is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    SIN : out STD_LOGIC;
-    PCLK : out STD_LOGIC;
-    SCLK : out STD_LOGIC;
-    RAMP : out STD_LOGIC;
-    REGCLR : out STD_LOGIC;
-    SHOUT : in STD_LOGIC;
     DO_16 : in STD_LOGIC;
     DO_15 : in STD_LOGIC;
     DO_1 : in STD_LOGIC;
@@ -137,38 +132,45 @@ architecture STRUCTURE of base_zynq_wrapper is
     DO_10 : in STD_LOGIC;
     DO_8 : in STD_LOGIC;
     DO_9 : in STD_LOGIC;
-    SS_INCR : out STD_LOGIC;
+    SDA : inout STD_LOGIC;
+    SCL : inout STD_LOGIC;
     BB2 : out STD_LOGIC;
-    SAMPLESEL_ANY : out STD_LOGIC;
-    RDAD_SIN : out STD_LOGIC;
-    RDAD_DIR : out STD_LOGIC;
-    RDAD_CLK : out STD_LOGIC;
-    GCC_RESET : out STD_LOGIC;
-    SS_RESET : out STD_LOGIC;
-    SS_LD_SIN : out STD_LOGIC;
-    SS_LD_DIR : out STD_LOGIC;
-    SSTIN_N : out STD_LOGIC;
-    DONE : in STD_LOGIC;
+    BB4 : out STD_LOGIC;
+    SIN : out STD_LOGIC;
+    SCLK : out STD_LOGIC;
+    PCLK : out STD_LOGIC;
+    HSCLK_P : out STD_LOGIC;
+    HSCLK_N : out STD_LOGIC;
+    WR_RS_S1 : out STD_LOGIC;
+    WR_RS_S0 : out STD_LOGIC;
+    WR_CS_S0 : out STD_LOGIC;
+    WR_CS_S1 : out STD_LOGIC;
     WR_CS_S2 : out STD_LOGIC;
     WR_CS_S3 : out STD_LOGIC;
     WR_CS_S4 : out STD_LOGIC;
     WR_CS_S5 : out STD_LOGIC;
-    WR_RS_S0 : out STD_LOGIC;
-    WR_RS_S1 : out STD_LOGIC;
-    WR_CS_S0 : out STD_LOGIC;
-    WR_CS_S1 : out STD_LOGIC;
-    SSTIN_P : out STD_LOGIC;
-    BB1 : out STD_LOGIC;
-    BB5 : out STD_LOGIC;
-    MONTIMING_P : in STD_LOGIC;
-    MONTIMING_N : in STD_LOGIC;
-    HSCLK_P : out STD_LOGIC;
-    HSCLK_N : out STD_LOGIC;
+    GCC_RESET : out STD_LOGIC;
     WL_CLK_P : out STD_LOGIC;
     WL_CLK_N : out STD_LOGIC;
-    SDA : inout STD_LOGIC;
-    SCL : inout STD_LOGIC;
-    BB4 : out STD_LOGIC
+    RDAD_CLK : out STD_LOGIC;
+    RDAD_SIN : out STD_LOGIC;
+    RDAD_DIR : out STD_LOGIC;
+    SAMPLESEL_ANY : out STD_LOGIC;
+    SS_INCR : out STD_LOGIC;
+    SS_RESET : out STD_LOGIC;
+    REGCLR : out STD_LOGIC;
+    SS_LD_SIN : out STD_LOGIC;
+    SS_LD_DIR : out STD_LOGIC;
+    RAMP : out STD_LOGIC;
+    SSTIN_P : out STD_LOGIC;
+    SSTIN_N : out STD_LOGIC;
+    BB1 : out STD_LOGIC;
+    BB5 : out STD_LOGIC;
+    BB3 : out STD_LOGIC;
+    SHOUT : in STD_LOGIC;
+    MONTIMING_P : in STD_LOGIC;
+    MONTIMING_N : in STD_LOGIC;
+    DONE : in STD_LOGIC
   );
   end component base_zynq;
 begin
@@ -176,6 +178,7 @@ base_zynq_i: component base_zynq
      port map (
       BB1 => BB1,
       BB2 => BB2,
+      BB3 => BB3,
       BB4 => BB4,
       BB5 => BB5,
       DDR_addr(14 downto 0) => DDR_addr(14 downto 0),

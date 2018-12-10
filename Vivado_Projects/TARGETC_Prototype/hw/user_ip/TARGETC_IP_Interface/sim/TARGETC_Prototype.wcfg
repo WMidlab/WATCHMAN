@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TARGETC_Prototype_TB_FIFO_AXIS_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TARGETC_Prototype_TB_FIFO_AXIS" />
+            <top_module name="axi_lite_pkg" />
+            <top_module name="register_pkg" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="9000000001fs"></ZoomEndTime>
+      <Cursor1Time time="6359000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="191"></NameColumnWidth>
+      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="3" />
+   <wvobject type="group" fp_name="group10238">
+      <obj_property name="label">TARGETC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/s00_axi_ARESETN">
+         <obj_property name="ElementShortName">s00_axi_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">s00_axi_ARESETN</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/ClockBus_intl">
+         <obj_property name="ElementShortName">ClockBus_intl</obj_property>
+         <obj_property name="ObjectShortName">ClockBus_intl</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_ClockMgmt_inst/Timecounter">
+         <obj_property name="ElementShortName">Timecounter[63:0]</obj_property>
+         <obj_property name="ObjectShortName">Timecounter[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_ClockMgmt_inst/SSTIN_bufg">
+         <obj_property name="ElementShortName">SSTIN_bufg</obj_property>
+         <obj_property name="ObjectShortName">SSTIN_bufg</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/CtrlBus_IxSL">
+         <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
+         <obj_property name="ObjectShortName">CtrlBus_IxSL</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/CtrlBus_OxSL">
+         <obj_property name="ElementShortName">CtrlBus_OxSL</obj_property>
+         <obj_property name="ObjectShortName">CtrlBus_OxSL</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/SSVALID_INTR">
+         <obj_property name="ElementShortName">SSVALID_INTR</obj_property>
+         <obj_property name="ObjectShortName">SSVALID_INTR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/SSvalid">
+         <obj_property name="ElementShortName">SSvalid</obj_property>
+         <obj_property name="ObjectShortName">SSvalid</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group10237">
+         <obj_property name="label">AXI</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_aclk">
+            <obj_property name="ElementShortName">tc_axi_aclk</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_aclk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_aresetn">
+            <obj_property name="ElementShortName">tc_axi_aresetn</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_aresetn</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_awaddr">
+            <obj_property name="ElementShortName">tc_axi_awaddr[31:0]</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_awaddr[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_wdata">
+            <obj_property name="ElementShortName">tc_axi_wdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_wdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_araddr">
+            <obj_property name="ElementShortName">tc_axi_araddr[31:0]</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_araddr[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/tc_axi_rdata">
+            <obj_property name="ElementShortName">tc_axi_rdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">tc_axi_rdata[31:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group10258">
+         <obj_property name="label">Storage</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/WR_RS_S">
+            <obj_property name="ElementShortName">WR_RS_S[1:0]</obj_property>
+            <obj_property name="ObjectShortName">WR_RS_S[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/WR_CS_S">
+            <obj_property name="ElementShortName">WR_CS_S[5:0]</obj_property>
+            <obj_property name="ObjectShortName">WR_CS_S[5:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/WR_ADDR_S">
+            <obj_property name="ElementShortName">WR_ADDR_S[7:0]</obj_property>
+            <obj_property name="ObjectShortName">WR_ADDR_S[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RealWdoCnt">
+            <obj_property name="ElementShortName">RealWdoCnt</obj_property>
+            <obj_property name="ObjectShortName">RealWdoCnt</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/StorageCnt">
+            <obj_property name="ElementShortName">StorageCnt</obj_property>
+            <obj_property name="ObjectShortName">StorageCnt</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/LastStorageCnt">
+            <obj_property name="ElementShortName">LastStorageCnt</obj_property>
+            <obj_property name="ObjectShortName">LastStorageCnt</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RoundBuffer">
+            <obj_property name="ElementShortName">RoundBuffer[0:255]</obj_property>
+            <obj_property name="ObjectShortName">RoundBuffer[0:255]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/storage_stm">
+            <obj_property name="ElementShortName">storage_stm</obj_property>
+            <obj_property name="ObjectShortName">storage_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/fifo_intl">
+            <obj_property name="ElementShortName">fifo_intl</obj_property>
+            <obj_property name="ObjectShortName">fifo_intl</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/STO_DataIn_intl">
+            <obj_property name="ElementShortName">STO_DataIn_intl[100:0]</obj_property>
+            <obj_property name="ObjectShortName">STO_DataIn_intl[100:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/STO_WriteEn">
+            <obj_property name="ElementShortName">STO_WriteEn</obj_property>
+            <obj_property name="ObjectShortName">STO_WriteEn</obj_property>
+         </wvobject>
+         <wvobject fp_name="divider10259" type="divider">
+            <obj_property name="label">RDAD FIFO</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RDAD_ReadEn">
+            <obj_property name="ElementShortName">RDAD_ReadEn</obj_property>
+            <obj_property name="ObjectShortName">RDAD_ReadEn</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RDAD_DataOut">
+            <obj_property name="ElementShortName">RDAD_DataOut[100:0]</obj_property>
+            <obj_property name="ObjectShortName">RDAD_DataOut[100:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/fifo_intl">
+            <obj_property name="ElementShortName">fifo_intl</obj_property>
+            <obj_property name="ObjectShortName">fifo_intl</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RDAD_Empty">
+            <obj_property name="ElementShortName">RDAD_Empty</obj_property>
+            <obj_property name="ObjectShortName">RDAD_Empty</obj_property>
+         </wvobject>
+         <wvobject fp_name="divider10260" type="divider">
+            <obj_property name="label">DIG FIFO</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/DIG_Full">
+            <obj_property name="ElementShortName">DIG_Full</obj_property>
+            <obj_property name="ObjectShortName">DIG_Full</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/DIG_DataIn">
+            <obj_property name="ElementShortName">DIG_DataIn[8:0]</obj_property>
+            <obj_property name="ObjectShortName">DIG_DataIn[8:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/DIG_WriteEn">
+            <obj_property name="ElementShortName">DIG_WriteEn</obj_property>
+            <obj_property name="ObjectShortName">DIG_WriteEn</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/digsto_stm">
+            <obj_property name="ElementShortName">digsto_stm</obj_property>
+            <obj_property name="ObjectShortName">digsto_stm</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="divider14078" type="divider">
+         <obj_property name="label">RDAD</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD_CLK">
+         <obj_property name="ElementShortName">RDAD_CLK</obj_property>
+         <obj_property name="ObjectShortName">RDAD_CLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD_SIN">
+         <obj_property name="ElementShortName">RDAD_SIN</obj_property>
+         <obj_property name="ObjectShortName">RDAD_SIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD_DIR">
+         <obj_property name="ElementShortName">RDAD_DIR</obj_property>
+         <obj_property name="ObjectShortName">RDAD_DIR</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/rdad_stm">
+         <obj_property name="ElementShortName">rdad_stm</obj_property>
+         <obj_property name="ObjectShortName">rdad_stm</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD">
+         <obj_property name="ElementShortName">RDAD</obj_property>
+         <obj_property name="ObjectShortName">RDAD</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="divider14079" type="divider">
+         <obj_property name="label">WL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/WL">
+         <obj_property name="ElementShortName">WL</obj_property>
+         <obj_property name="ObjectShortName">WL</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/wlstate">
+         <obj_property name="ElementShortName">wlstate</obj_property>
+         <obj_property name="ObjectShortName">wlstate</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RAMP">
+         <obj_property name="ElementShortName">RAMP</obj_property>
+         <obj_property name="ObjectShortName">RAMP</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/GCC_RESET">
+         <obj_property name="ElementShortName">GCC_RESET</obj_property>
+         <obj_property name="ObjectShortName">GCC_RESET</obj_property>
+      </wvobject>
+      <wvobject fp_name="divider14080" type="divider">
+         <obj_property name="label">SS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/SS">
+         <obj_property name="ElementShortName">SS</obj_property>
+         <obj_property name="ObjectShortName">SS</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/HSCLK">
+         <obj_property name="ElementShortName">HSCLK</obj_property>
+         <obj_property name="ObjectShortName">HSCLK</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/hsout_stm">
+         <obj_property name="ElementShortName">hsout_stm</obj_property>
+         <obj_property name="ObjectShortName">hsout_stm</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/ss_incr_flg">
+         <obj_property name="ElementShortName">ss_incr_flg</obj_property>
+         <obj_property name="ObjectShortName">ss_incr_flg</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/SSBitCnt">
+         <obj_property name="ElementShortName">SSBitCnt</obj_property>
+         <obj_property name="ObjectShortName">SSBitCnt</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/SSCnt">
+         <obj_property name="ElementShortName">SSCnt</obj_property>
+         <obj_property name="ObjectShortName">SSCnt</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/DO">
+         <obj_property name="ElementShortName">DO[15:0]</obj_property>
+         <obj_property name="ObjectShortName">DO[15:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/SS_INCR">
+         <obj_property name="ElementShortName">SS_INCR</obj_property>
+         <obj_property name="ObjectShortName">SS_INCR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/SS_RESET">
+         <obj_property name="ElementShortName">SS_RESET</obj_property>
+         <obj_property name="ObjectShortName">SS_RESET</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/WDOTime">
+         <obj_property name="ElementShortName">WDOTime[63:0]</obj_property>
+         <obj_property name="ObjectShortName">WDOTime[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/DIGTime">
+         <obj_property name="ElementShortName">DIGTime[63:0]</obj_property>
+         <obj_property name="ObjectShortName">DIGTime[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/Trigger">
+         <obj_property name="ElementShortName">Trigger[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Trigger[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/WDONbr">
+         <obj_property name="ElementShortName">WDONbr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">WDONbr[8:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group10282">
+      <obj_property name="label">FIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/PRECvalid">
+         <obj_property name="ElementShortName">PRECvalid</obj_property>
+         <obj_property name="ObjectShortName">PRECvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/FIFOresponse">
+         <obj_property name="ElementShortName">FIFOresponse</obj_property>
+         <obj_property name="ObjectShortName">FIFOresponse</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/WDOTime">
+         <obj_property name="ElementShortName">WDOTime[63:0]</obj_property>
+         <obj_property name="ObjectShortName">WDOTime[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DIGTime">
+         <obj_property name="ElementShortName">DIGTime[63:0]</obj_property>
+         <obj_property name="ObjectShortName">DIGTime[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/Trigger">
+         <obj_property name="ElementShortName">Trigger[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Trigger[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/WDONBR">
+         <obj_property name="ElementShortName">WDONBR[8:0]</obj_property>
+         <obj_property name="ObjectShortName">WDONBR[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group10310">
+         <obj_property name="label">Channels</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH0">
+            <obj_property name="ElementShortName">CH0[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH0[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH1">
+            <obj_property name="ElementShortName">CH1[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH1[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH2">
+            <obj_property name="ElementShortName">CH2[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH2[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH3">
+            <obj_property name="ElementShortName">CH3[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH3[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH4">
+            <obj_property name="ElementShortName">CH4[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH4[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH5">
+            <obj_property name="ElementShortName">CH5[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH5[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH6">
+            <obj_property name="ElementShortName">CH6[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH6[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH7">
+            <obj_property name="ElementShortName">CH7[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH7[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH8">
+            <obj_property name="ElementShortName">CH8[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH8[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH9">
+            <obj_property name="ElementShortName">CH9[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH9[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH10">
+            <obj_property name="ElementShortName">CH10[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH10[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH11">
+            <obj_property name="ElementShortName">CH11[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH11[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH12">
+            <obj_property name="ElementShortName">CH12[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH12[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH13">
+            <obj_property name="ElementShortName">CH13[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH13[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH14">
+            <obj_property name="ElementShortName">CH14[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH14[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/CH15">
+            <obj_property name="ElementShortName">CH15[11:0]</obj_property>
+            <obj_property name="ObjectShortName">CH15[11:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/FIFOvalid">
+         <obj_property name="ElementShortName">FIFOvalid</obj_property>
+         <obj_property name="ObjectShortName">FIFOvalid</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/ready_i">
+         <obj_property name="ElementShortName">ready_i</obj_property>
+         <obj_property name="ObjectShortName">ready_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut">
+         <obj_property name="ElementShortName">DataOut[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut_stall">
+         <obj_property name="ElementShortName">DataOut_stall[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut_stall[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut_last">
+         <obj_property name="ElementShortName">DataOut_last[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut_last[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut_intl">
+         <obj_property name="ElementShortName">DataOut_intl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut_intl[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut_intlH">
+         <obj_property name="ElementShortName">DataOut_intlH[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut_intlH[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/DataOut_intlD">
+         <obj_property name="ElementShortName">DataOut_intlD[31:0]</obj_property>
+         <obj_property name="ObjectShortName">DataOut_intlD[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/fifo_wr_stm">
+         <obj_property name="ElementShortName">fifo_wr_stm</obj_property>
+         <obj_property name="ObjectShortName">fifo_wr_stm</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_FIFO/fifo_rd_stm">
+         <obj_property name="ElementShortName">fifo_rd_stm</obj_property>
+         <obj_property name="ObjectShortName">fifo_rd_stm</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group10311">
+      <obj_property name="label">AXIS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/TestStream">
+         <obj_property name="ElementShortName">TestStream</obj_property>
+         <obj_property name="ObjectShortName">TestStream</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/FIFOvalid">
+         <obj_property name="ElementShortName">FIFOvalid</obj_property>
+         <obj_property name="ObjectShortName">FIFOvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/FIFOdata">
+         <obj_property name="ElementShortName">FIFOdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">FIFOdata[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/StreamReady">
+         <obj_property name="ElementShortName">StreamReady</obj_property>
+         <obj_property name="ObjectShortName">StreamReady</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_ACLK">
+         <obj_property name="ElementShortName">M_AXIS_ACLK</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_ACLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_ARESETN">
+         <obj_property name="ElementShortName">M_AXIS_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_ARESETN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TVALID">
+         <obj_property name="ElementShortName">M_AXIS_TVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TVALID</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TDATA">
+         <obj_property name="ElementShortName">M_AXIS_TDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TDATA_intl">
+         <obj_property name="ElementShortName">M_AXIS_TDATA_intl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TDATA_intl[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TDATA_last">
+         <obj_property name="ElementShortName">M_AXIS_TDATA_last[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TDATA_last[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/cnt_stream_out">
+         <obj_property name="ElementShortName">cnt_stream_out</obj_property>
+         <obj_property name="ObjectShortName">cnt_stream_out</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TSTRB">
+         <obj_property name="ElementShortName">M_AXIS_TSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TLAST">
+         <obj_property name="ElementShortName">M_AXIS_TLAST</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TLAST</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TREADY">
+         <obj_property name="ElementShortName">M_AXIS_TREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TREADY</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/mst_exec_state">
+         <obj_property name="ElementShortName">mst_exec_state</obj_property>
+         <obj_property name="ObjectShortName">mst_exec_state</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -19,7 +19,13 @@ src/iic_DAC_LTC2657.o src/iic_DAC_LTC2657.o: ../src/iic_DAC_LTC2657.c \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xtime_l.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xiic.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xiic_l.h ../src/global.h
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xiic_l.h ../src/global.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bd.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_hw.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h \
+ ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h
 
 ../src/iic_DAC_LTC2657.h:
 
@@ -64,3 +70,15 @@ src/iic_DAC_LTC2657.o src/iic_DAC_LTC2657.o: ../src/iic_DAC_LTC2657.c \
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xiic_l.h:
 
 ../src/global.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_hw.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h:
+
+../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h:

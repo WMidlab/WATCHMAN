@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_aFIFO_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_aFIFO" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="21000000001fs"></ZoomEndTime>
+      <Cursor1Time time="21000000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="111"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wvobject type="logic" fp_name="/TB_aFIFO/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/ClockBus_intl">
+      <obj_property name="ElementShortName">ClockBus_intl</obj_property>
+      <obj_property name="ObjectShortName">ClockBus_intl</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/CtrlBus_IxSL_intl">
+      <obj_property name="ElementShortName">CtrlBus_IxSL_intl</obj_property>
+      <obj_property name="ObjectShortName">CtrlBus_IxSL_intl</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/rd_en">
+      <obj_property name="ElementShortName">rd_en</obj_property>
+      <obj_property name="ObjectShortName">rd_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/wr_en">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/data_sti">
+      <obj_property name="ElementShortName">data_sti[11:0]</obj_property>
+      <obj_property name="ObjectShortName">data_sti[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/simulation_end_s">
+      <obj_property name="ElementShortName">simulation_end_s</obj_property>
+      <obj_property name="ObjectShortName">simulation_end_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider118" type="divider">
+      <obj_property name="label">AFIFO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/RClk">
+      <obj_property name="ElementShortName">RClk</obj_property>
+      <obj_property name="ObjectShortName">RClk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/WClk">
+      <obj_property name="ElementShortName">WClk</obj_property>
+      <obj_property name="ObjectShortName">WClk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/DUT/Data_out">
+      <obj_property name="ElementShortName">Data_out[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Data_out[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/DUT/pNextWordToWrite">
+      <obj_property name="ElementShortName">pNextWordToWrite[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pNextWordToWrite[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/DUT/pNextWordToRead">
+      <obj_property name="ElementShortName">pNextWordToRead[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pNextWordToRead[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/Empty_out">
+      <obj_property name="ElementShortName">Empty_out</obj_property>
+      <obj_property name="ObjectShortName">Empty_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/empty">
+      <obj_property name="ElementShortName">empty</obj_property>
+      <obj_property name="ObjectShortName">empty</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/Full_out">
+      <obj_property name="ElementShortName">Full_out</obj_property>
+      <obj_property name="ObjectShortName">Full_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/full">
+      <obj_property name="ElementShortName">full</obj_property>
+      <obj_property name="ObjectShortName">full</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/looped">
+      <obj_property name="ElementShortName">looped</obj_property>
+      <obj_property name="ObjectShortName">looped</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_aFIFO/DUT/Equal">
+      <obj_property name="ElementShortName">Equal</obj_property>
+      <obj_property name="ObjectShortName">Equal</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/DUT/Fifo_count">
+      <obj_property name="ElementShortName">Fifo_count[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Fifo_count[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_aFIFO/DUT/Mem">
+      <obj_property name="ElementShortName">Mem[0:15][11:0]</obj_property>
+      <obj_property name="ObjectShortName">Mem[0:15][11:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>
