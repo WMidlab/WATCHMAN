@@ -1,10 +1,17 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+<<<<<<< HEAD
 // Date        : Thu Dec  6 10:13:47 2018
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim -rename_top base_zynq_xbar_0 -prefix
 //               base_zynq_xbar_0_ base_zynq_xbar_0_sim_netlist.v
+=======
+// Date        : Tue Oct 30 15:43:31 2018
+// Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
+// Command     : write_verilog -force -mode funcsim
+//               /home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_xbar_0/base_zynq_xbar_0_sim_netlist.v
+>>>>>>> master
 // Design      : base_zynq_xbar_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -12,18 +19,199 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
+<<<<<<< HEAD
+=======
+(* CHECK_LICENSE_TYPE = "base_zynq_xbar_0,axi_crossbar_v2_1_18_axi_crossbar,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_crossbar_v2_1_18_axi_crossbar,Vivado 2018.2" *) 
+(* NotValidForBitStream *)
+module base_zynq_xbar_0
+   (aclk,
+    aresetn,
+    s_axi_awaddr,
+    s_axi_awprot,
+    s_axi_awvalid,
+    s_axi_awready,
+    s_axi_wdata,
+    s_axi_wstrb,
+    s_axi_wvalid,
+    s_axi_wready,
+    s_axi_bresp,
+    s_axi_bvalid,
+    s_axi_bready,
+    s_axi_araddr,
+    s_axi_arprot,
+    s_axi_arvalid,
+    s_axi_arready,
+    s_axi_rdata,
+    s_axi_rresp,
+    s_axi_rvalid,
+    s_axi_rready,
+    m_axi_awaddr,
+    m_axi_awprot,
+    m_axi_awvalid,
+    m_axi_awready,
+    m_axi_wdata,
+    m_axi_wstrb,
+    m_axi_wvalid,
+    m_axi_wready,
+    m_axi_bresp,
+    m_axi_bvalid,
+    m_axi_bready,
+    m_axi_araddr,
+    m_axi_arprot,
+    m_axi_arvalid,
+    m_axi_arready,
+    m_axi_rdata,
+    m_axi_rresp,
+    m_axi_rvalid,
+    m_axi_rready);
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLKIF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLKIF, FREQ_HZ 1e+08, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI:M06_AXI:M07_AXI:M08_AXI:M09_AXI:M10_AXI:M11_AXI:M12_AXI:M13_AXI:M14_AXI:M15_AXI:S00_AXI:S01_AXI:S02_AXI:S03_AXI:S04_AXI:S05_AXI:S06_AXI:S07_AXI:S08_AXI:S09_AXI:S10_AXI:S11_AXI:S12_AXI:S13_AXI:S14_AXI:S15_AXI, ASSOCIATED_RESET ARESETN" *) input aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RSTIF RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RSTIF, POLARITY ACTIVE_LOW, TYPE INTERCONNECT" *) input aresetn;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *) input [31:0]s_axi_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT" *) input [2:0]s_axi_awprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWVALID" *) input [0:0]s_axi_awvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWREADY" *) output [0:0]s_axi_awready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WDATA" *) input [31:0]s_axi_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB" *) input [3:0]s_axi_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WVALID" *) input [0:0]s_axi_wvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI WREADY" *) output [0:0]s_axi_wready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BRESP" *) output [1:0]s_axi_bresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BVALID" *) output [0:0]s_axi_bvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI BREADY" *) input [0:0]s_axi_bready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI ARADDR" *) input [31:0]s_axi_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI ARPROT" *) input [2:0]s_axi_arprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI ARVALID" *) input [0:0]s_axi_arvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI ARREADY" *) output [0:0]s_axi_arready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RDATA" *) output [31:0]s_axi_rdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RRESP" *) output [1:0]s_axi_rresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RVALID" *) output [0:0]s_axi_rvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) input [0:0]s_axi_rready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWADDR [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI AWADDR [31:0] [63:32]" *) output [63:0]m_axi_awaddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWPROT [2:0] [2:0], xilinx.com:interface:aximm:1.0 M01_AXI AWPROT [2:0] [5:3]" *) output [5:0]m_axi_awprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI AWVALID [0:0] [1:1]" *) output [1:0]m_axi_awvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI AWREADY [0:0] [1:1]" *) input [1:0]m_axi_awready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WDATA [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI WDATA [31:0] [63:32]" *) output [63:0]m_axi_wdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WSTRB [3:0] [3:0], xilinx.com:interface:aximm:1.0 M01_AXI WSTRB [3:0] [7:4]" *) output [7:0]m_axi_wstrb;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI WVALID [0:0] [1:1]" *) output [1:0]m_axi_wvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI WREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI WREADY [0:0] [1:1]" *) input [1:0]m_axi_wready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI BRESP [1:0] [1:0], xilinx.com:interface:aximm:1.0 M01_AXI BRESP [1:0] [3:2]" *) input [3:0]m_axi_bresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI BVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI BVALID [0:0] [1:1]" *) input [1:0]m_axi_bvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI BREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI BREADY [0:0] [1:1]" *) output [1:0]m_axi_bready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARADDR [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI ARADDR [31:0] [63:32]" *) output [63:0]m_axi_araddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARPROT [2:0] [2:0], xilinx.com:interface:aximm:1.0 M01_AXI ARPROT [2:0] [5:3]" *) output [5:0]m_axi_arprot;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI ARVALID [0:0] [1:1]" *) output [1:0]m_axi_arvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI ARREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI ARREADY [0:0] [1:1]" *) input [1:0]m_axi_arready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RDATA [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI RDATA [31:0] [63:32]" *) input [63:0]m_axi_rdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RRESP [1:0] [1:0], xilinx.com:interface:aximm:1.0 M01_AXI RRESP [1:0] [3:2]" *) input [3:0]m_axi_rresp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RVALID [0:0] [1:1]" *) input [1:0]m_axi_rvalid;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RREADY [0:0] [1:1]" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, XIL_INTERFACENAME M01_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) output [1:0]m_axi_rready;
+
+  wire aclk;
+  wire aresetn;
+  wire [15:0]\^m_axi_araddr ;
+  wire [2:0]\^m_axi_arprot ;
+  wire [1:0]m_axi_arready;
+  wire [1:0]m_axi_arvalid;
+  wire [63:48]\^m_axi_awaddr ;
+  wire [1:0]m_axi_awready;
+  wire [1:0]m_axi_awvalid;
+  wire [1:0]m_axi_bready;
+  wire [3:0]m_axi_bresp;
+  wire [1:0]m_axi_bvalid;
+  wire [63:0]m_axi_rdata;
+  wire [1:0]m_axi_rready;
+  wire [3:0]m_axi_rresp;
+  wire [1:0]m_axi_rvalid;
+  wire [1:0]m_axi_wready;
+  wire [1:0]m_axi_wvalid;
+  wire [31:0]s_axi_araddr;
+  wire [2:0]s_axi_arprot;
+  wire [0:0]s_axi_arready;
+  wire [0:0]s_axi_arvalid;
+  wire [31:0]s_axi_awaddr;
+  wire [2:0]s_axi_awprot;
+  wire [0:0]s_axi_awready;
+  wire [0:0]s_axi_awvalid;
+  wire [0:0]s_axi_bready;
+  wire [1:0]s_axi_bresp;
+  wire [0:0]s_axi_bvalid;
+  wire [31:0]s_axi_rdata;
+  wire [0:0]s_axi_rready;
+  wire [1:0]s_axi_rresp;
+  wire [0:0]s_axi_rvalid;
+  wire [31:0]s_axi_wdata;
+  wire [0:0]s_axi_wready;
+  wire [3:0]s_axi_wstrb;
+  wire [0:0]s_axi_wvalid;
+
+  assign m_axi_araddr[63:48] = \^m_axi_awaddr [63:48];
+  assign m_axi_araddr[47:32] = \^m_axi_araddr [15:0];
+  assign m_axi_araddr[31:16] = \^m_axi_awaddr [63:48];
+  assign m_axi_araddr[15:0] = \^m_axi_araddr [15:0];
+  assign m_axi_arprot[5:3] = \^m_axi_arprot [2:0];
+  assign m_axi_arprot[2:0] = \^m_axi_arprot [2:0];
+  assign m_axi_awaddr[63:48] = \^m_axi_awaddr [63:48];
+  assign m_axi_awaddr[47:32] = \^m_axi_araddr [15:0];
+  assign m_axi_awaddr[31:16] = \^m_axi_awaddr [63:48];
+  assign m_axi_awaddr[15:0] = \^m_axi_araddr [15:0];
+  assign m_axi_awprot[5:3] = \^m_axi_arprot [2:0];
+  assign m_axi_awprot[2:0] = \^m_axi_arprot [2:0];
+  assign m_axi_wdata[63:32] = s_axi_wdata;
+  assign m_axi_wdata[31:0] = s_axi_wdata;
+  assign m_axi_wstrb[7:4] = s_axi_wstrb;
+  assign m_axi_wstrb[3:0] = s_axi_wstrb;
+  base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar inst
+       (.Q({\^m_axi_arprot ,\^m_axi_awaddr ,\^m_axi_araddr }),
+        .aclk(aclk),
+        .aresetn(aresetn),
+        .m_axi_arready(m_axi_arready),
+        .m_axi_arvalid(m_axi_arvalid),
+        .m_axi_awready(m_axi_awready),
+        .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_bready(m_axi_bready),
+        .m_axi_bresp(m_axi_bresp),
+        .m_axi_bvalid(m_axi_bvalid),
+        .m_axi_rdata(m_axi_rdata),
+        .m_axi_rready(m_axi_rready),
+        .m_axi_rresp(m_axi_rresp),
+        .m_axi_rvalid(m_axi_rvalid),
+        .m_axi_wready(m_axi_wready),
+        .m_axi_wvalid(m_axi_wvalid),
+        .s_axi_araddr(s_axi_araddr),
+        .s_axi_arprot(s_axi_arprot),
+        .s_axi_arready(s_axi_arready),
+        .s_axi_arvalid(s_axi_arvalid),
+        .s_axi_awaddr(s_axi_awaddr),
+        .s_axi_awprot(s_axi_awprot),
+        .s_axi_awready(s_axi_awready),
+        .s_axi_awvalid(s_axi_awvalid),
+        .s_axi_bready(s_axi_bready),
+        .s_axi_bresp(s_axi_bresp),
+        .s_axi_bvalid(s_axi_bvalid),
+        .\s_axi_rdata[31] ({s_axi_rdata,s_axi_rresp}),
+        .s_axi_rready(s_axi_rready),
+        .s_axi_rvalid(s_axi_rvalid),
+        .s_axi_wready(s_axi_wready),
+        .s_axi_wvalid(s_axi_wvalid));
+endmodule
+
+(* ORIG_REF_NAME = "axi_crossbar_v2_1_18_addr_arbiter_sasd" *) 
+>>>>>>> master
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
    (m_valid_i,
     SR,
     aa_grant_rnw,
     D,
+<<<<<<< HEAD
     target_mi_enc,
     Q,
     m_ready_d0,
+=======
+>>>>>>> master
     \m_ready_d_reg[2] ,
     s_axi_bvalid,
     m_axi_bready,
     \m_ready_d_reg[2]_0 ,
+<<<<<<< HEAD
     s_axi_wready,
     m_axi_wvalid,
     m_axi_awvalid,
@@ -37,12 +225,31 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
     s_axi_arready,
     s_axi_rvalid,
     \gen_axilite.s_axi_awready_i_reg_0 ,
+=======
+    \gen_axilite.s_axi_bvalid_i_reg ,
+    s_axi_wready,
+    \m_ready_d_reg[2]_1 ,
+    m_axi_wvalid,
+    m_axi_awvalid,
+    \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ,
+    s_ready_i_reg,
+    E,
+    m_axi_arvalid,
+    s_ready_i_reg_0,
+    s_axi_awready,
+    s_axi_arready,
+    s_axi_rvalid,
+    \m_atarget_enc_reg[0] ,
+    any_error,
+    \m_axi_arprot[2] ,
+>>>>>>> master
     aclk,
     aresetn_d,
     \m_ready_d_reg[0] ,
     s_axi_arvalid,
     s_axi_awvalid,
     m_ready_d,
+<<<<<<< HEAD
     \m_atarget_enc_reg[0] ,
     \m_atarget_enc_reg[0]_0 ,
     \m_atarget_hot_reg[3] ,
@@ -87,12 +294,59 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   output [0:0]s_axi_arready;
   output [0:0]s_axi_rvalid;
   output \gen_axilite.s_axi_awready_i_reg_0 ;
+=======
+    \gen_axilite.s_axi_awready_i_reg ,
+    \gen_axilite.s_axi_bvalid_i_reg_0 ,
+    Q,
+    s_axi_bready,
+    \m_atarget_enc_reg[0]_0 ,
+    s_axi_wvalid,
+    mi_wready,
+    m_atarget_enc,
+    m_axi_wready,
+    \gen_axilite.s_axi_arready_i_reg ,
+    m_ready_d_0,
+    m_valid_i_reg,
+    aa_rready,
+    \gen_axilite.s_axi_rvalid_i_reg ,
+    s_axi_rready,
+    sr_rvalid,
+    s_axi_arprot,
+    s_axi_awprot,
+    s_axi_araddr,
+    s_axi_awaddr);
+  output m_valid_i;
+  output [0:0]SR;
+  output aa_grant_rnw;
+  output [2:0]D;
+  output \m_ready_d_reg[2] ;
+  output [0:0]s_axi_bvalid;
+  output [1:0]m_axi_bready;
+  output \m_ready_d_reg[2]_0 ;
+  output \gen_axilite.s_axi_bvalid_i_reg ;
+  output [0:0]s_axi_wready;
+  output \m_ready_d_reg[2]_1 ;
+  output [1:0]m_axi_wvalid;
+  output [1:0]m_axi_awvalid;
+  output \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ;
+  output s_ready_i_reg;
+  output [0:0]E;
+  output [1:0]m_axi_arvalid;
+  output s_ready_i_reg_0;
+  output [0:0]s_axi_awready;
+  output [0:0]s_axi_arready;
+  output [0:0]s_axi_rvalid;
+  output \m_atarget_enc_reg[0] ;
+  output any_error;
+  output [34:0]\m_axi_arprot[2] ;
+>>>>>>> master
   input aclk;
   input aresetn_d;
   input \m_ready_d_reg[0] ;
   input [0:0]s_axi_arvalid;
   input [0:0]s_axi_awvalid;
   input [2:0]m_ready_d;
+<<<<<<< HEAD
   input \m_atarget_enc_reg[0] ;
   input \m_atarget_enc_reg[0]_0 ;
   input [3:0]\m_atarget_hot_reg[3] ;
@@ -107,31 +361,66 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   input sr_rvalid;
   input \gen_axilite.s_axi_arready_i_reg ;
   input m_valid_i_reg_0;
+=======
+  input \gen_axilite.s_axi_awready_i_reg ;
+  input \gen_axilite.s_axi_bvalid_i_reg_0 ;
+  input [1:0]Q;
+  input [0:0]s_axi_bready;
+  input \m_atarget_enc_reg[0]_0 ;
+  input [0:0]s_axi_wvalid;
+  input [0:0]mi_wready;
+  input [1:0]m_atarget_enc;
+  input [1:0]m_axi_wready;
+  input \gen_axilite.s_axi_arready_i_reg ;
+  input [1:0]m_ready_d_0;
+  input m_valid_i_reg;
+  input aa_rready;
+  input \gen_axilite.s_axi_rvalid_i_reg ;
+  input [0:0]s_axi_rready;
+  input sr_rvalid;
+>>>>>>> master
   input [2:0]s_axi_arprot;
   input [2:0]s_axi_awprot;
   input [31:0]s_axi_araddr;
   input [31:0]s_axi_awaddr;
+<<<<<<< HEAD
   input [0:0]mi_bvalid;
   input [0:0]mi_wready;
 
   wire [3:0]D;
   wire [0:0]E;
   wire [34:0]Q;
+=======
+
+  wire [2:0]D;
+  wire [0:0]E;
+  wire [1:0]Q;
+>>>>>>> master
   wire [0:0]SR;
   wire aa_grant_any;
   wire aa_grant_rnw;
   wire aa_rready;
   wire aclk;
+<<<<<<< HEAD
   wire aresetn_d;
   wire [1:0]\aresetn_d_reg[1] ;
   wire \gen_axilite.s_axi_arready_i_reg ;
   wire \gen_axilite.s_axi_awready_i_i_2_n_0 ;
   wire \gen_axilite.s_axi_awready_i_reg ;
   wire \gen_axilite.s_axi_awready_i_reg_0 ;
+=======
+  wire any_error;
+  wire aresetn_d;
+  wire \gen_axilite.s_axi_arready_i_reg ;
+  wire \gen_axilite.s_axi_awready_i_reg ;
+  wire \gen_axilite.s_axi_bvalid_i_reg ;
+  wire \gen_axilite.s_axi_bvalid_i_reg_0 ;
+>>>>>>> master
   wire \gen_axilite.s_axi_rvalid_i_reg ;
   wire \gen_no_arbiter.grant_rnw_i_1_n_0 ;
   wire \gen_no_arbiter.m_grant_hot_i[0]_i_1_n_0 ;
   wire \gen_no_arbiter.m_grant_hot_i[0]_i_2_n_0 ;
+<<<<<<< HEAD
   wire \gen_no_arbiter.m_grant_hot_i[0]_i_4_n_0 ;
   wire \gen_no_arbiter.m_valid_i_i_1_n_0 ;
   wire \gen_no_arbiter.s_ready_i[0]_i_1_n_0 ;
@@ -149,16 +438,43 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   wire [2:0]m_axi_wvalid;
   wire [2:0]m_ready_d;
   wire [0:0]m_ready_d0;
+=======
+  wire \gen_no_arbiter.m_grant_hot_i[0]_i_5_n_0 ;
+  wire \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ;
+  wire \gen_no_arbiter.m_valid_i_i_1_n_0 ;
+  wire \gen_no_arbiter.s_ready_i[0]_i_1_n_0 ;
+  wire [1:0]m_atarget_enc;
+  wire \m_atarget_enc_reg[0] ;
+  wire \m_atarget_enc_reg[0]_0 ;
+  wire \m_atarget_hot[2]_i_2_n_0 ;
+  wire \m_atarget_hot[2]_i_3_n_0 ;
+  wire \m_atarget_hot[2]_i_4_n_0 ;
+  wire \m_atarget_hot[2]_i_5_n_0 ;
+  wire \m_atarget_hot[2]_i_6_n_0 ;
+  wire [34:0]\m_axi_arprot[2] ;
+  wire [1:0]m_axi_arvalid;
+  wire [1:0]m_axi_awvalid;
+  wire [1:0]m_axi_bready;
+  wire [1:0]m_axi_wready;
+  wire [1:0]m_axi_wvalid;
+  wire [2:0]m_ready_d;
+>>>>>>> master
   wire [1:0]m_ready_d_0;
   wire \m_ready_d_reg[0] ;
   wire \m_ready_d_reg[2] ;
   wire \m_ready_d_reg[2]_0 ;
+<<<<<<< HEAD
   wire m_valid_i;
   wire m_valid_i_i_2_n_0;
   wire m_valid_i_i_3_n_0;
   wire m_valid_i_reg;
   wire m_valid_i_reg_0;
   wire [0:0]mi_bvalid;
+=======
+  wire \m_ready_d_reg[2]_1 ;
+  wire m_valid_i;
+  wire m_valid_i_reg;
+>>>>>>> master
   wire [0:0]mi_wready;
   wire p_0_in1_in;
   wire [48:1]s_amesg;
@@ -179,6 +495,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   wire [0:0]s_axi_rready;
   wire [0:0]s_axi_rvalid;
   wire [0:0]s_axi_wready;
+<<<<<<< HEAD
   wire [0:0]s_axi_wvalid;
   wire s_ready_i;
   wire s_ready_i_reg;
@@ -219,6 +536,32 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I1(m_valid_i),
         .I2(aa_grant_rnw),
         .O(\gen_axilite.s_axi_rvalid_i_reg ));
+=======
+  wire \s_axi_wready[0]_INST_0_i_2_n_0 ;
+  wire [0:0]s_axi_wvalid;
+  wire s_ready_i;
+  wire s_ready_i_reg;
+  wire s_ready_i_reg_0;
+  wire [1:1]\splitter_aw/m_ready_d0 ;
+  wire sr_rvalid;
+
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h0020)) 
+    \gen_axilite.s_axi_bvalid_i_i_2 
+       (.I0(s_axi_bready),
+        .I1(aa_grant_rnw),
+        .I2(m_valid_i),
+        .I3(m_ready_d[0]),
+        .O(\gen_axilite.s_axi_bvalid_i_reg ));
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT2 #(
+    .INIT(4'h7)) 
+    \gen_axilite.s_axi_rvalid_i_i_2 
+       (.I0(aa_grant_rnw),
+        .I1(m_valid_i),
+        .O(s_ready_i_reg_0));
+>>>>>>> master
   LUT6 #(
     .INIT(64'hFFFFFF5300000050)) 
     \gen_no_arbiter.grant_rnw_i_1 
@@ -529,211 +872,351 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[10]),
+<<<<<<< HEAD
         .Q(Q[9]),
+=======
+        .Q(\m_axi_arprot[2] [9]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[11] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[11]),
+<<<<<<< HEAD
         .Q(Q[10]),
+=======
+        .Q(\m_axi_arprot[2] [10]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[12] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[12]),
+<<<<<<< HEAD
         .Q(Q[11]),
+=======
+        .Q(\m_axi_arprot[2] [11]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[13] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[13]),
+<<<<<<< HEAD
         .Q(Q[12]),
+=======
+        .Q(\m_axi_arprot[2] [12]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[14] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[14]),
+<<<<<<< HEAD
         .Q(Q[13]),
+=======
+        .Q(\m_axi_arprot[2] [13]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[15] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[15]),
+<<<<<<< HEAD
         .Q(Q[14]),
+=======
+        .Q(\m_axi_arprot[2] [14]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[16] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[16]),
+<<<<<<< HEAD
         .Q(Q[15]),
+=======
+        .Q(\m_axi_arprot[2] [15]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[17] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[17]),
+<<<<<<< HEAD
         .Q(Q[16]),
+=======
+        .Q(\m_axi_arprot[2] [16]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[18] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[18]),
+<<<<<<< HEAD
         .Q(Q[17]),
+=======
+        .Q(\m_axi_arprot[2] [17]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[19] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[19]),
+<<<<<<< HEAD
         .Q(Q[18]),
+=======
+        .Q(\m_axi_arprot[2] [18]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[1] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[1]),
+<<<<<<< HEAD
         .Q(Q[0]),
+=======
+        .Q(\m_axi_arprot[2] [0]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[20] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[20]),
+<<<<<<< HEAD
         .Q(Q[19]),
+=======
+        .Q(\m_axi_arprot[2] [19]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[21] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[21]),
+<<<<<<< HEAD
         .Q(Q[20]),
+=======
+        .Q(\m_axi_arprot[2] [20]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[22] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[22]),
+<<<<<<< HEAD
         .Q(Q[21]),
+=======
+        .Q(\m_axi_arprot[2] [21]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[23] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[23]),
+<<<<<<< HEAD
         .Q(Q[22]),
+=======
+        .Q(\m_axi_arprot[2] [22]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[24] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[24]),
+<<<<<<< HEAD
         .Q(Q[23]),
+=======
+        .Q(\m_axi_arprot[2] [23]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[25] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[25]),
+<<<<<<< HEAD
         .Q(Q[24]),
+=======
+        .Q(\m_axi_arprot[2] [24]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[26] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[26]),
+<<<<<<< HEAD
         .Q(Q[25]),
+=======
+        .Q(\m_axi_arprot[2] [25]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[27] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[27]),
+<<<<<<< HEAD
         .Q(Q[26]),
+=======
+        .Q(\m_axi_arprot[2] [26]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[28] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[28]),
+<<<<<<< HEAD
         .Q(Q[27]),
+=======
+        .Q(\m_axi_arprot[2] [27]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[29] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[29]),
+<<<<<<< HEAD
         .Q(Q[28]),
+=======
+        .Q(\m_axi_arprot[2] [28]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[2] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[2]),
+<<<<<<< HEAD
         .Q(Q[1]),
+=======
+        .Q(\m_axi_arprot[2] [1]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[30] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[30]),
+<<<<<<< HEAD
         .Q(Q[29]),
+=======
+        .Q(\m_axi_arprot[2] [29]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[31] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[31]),
+<<<<<<< HEAD
         .Q(Q[30]),
+=======
+        .Q(\m_axi_arprot[2] [30]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[32] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[32]),
+<<<<<<< HEAD
         .Q(Q[31]),
+=======
+        .Q(\m_axi_arprot[2] [31]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[3] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[3]),
+<<<<<<< HEAD
         .Q(Q[2]),
+=======
+        .Q(\m_axi_arprot[2] [2]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[46] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[46]),
+<<<<<<< HEAD
         .Q(Q[32]),
+=======
+        .Q(\m_axi_arprot[2] [32]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[47] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[47]),
+<<<<<<< HEAD
         .Q(Q[33]),
+=======
+        .Q(\m_axi_arprot[2] [33]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[48] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[48]),
+<<<<<<< HEAD
         .Q(Q[34]),
+=======
+        .Q(\m_axi_arprot[2] [34]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[4] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[4]),
+<<<<<<< HEAD
         .Q(Q[3]),
+=======
+        .Q(\m_axi_arprot[2] [3]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[5] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[5]),
+<<<<<<< HEAD
         .Q(Q[4]),
+=======
+        .Q(\m_axi_arprot[2] [4]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[6] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[6]),
+<<<<<<< HEAD
         .Q(Q[5]),
+=======
+        .Q(\m_axi_arprot[2] [5]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[7] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[7]),
+<<<<<<< HEAD
         .Q(Q[6]),
+=======
+        .Q(\m_axi_arprot[2] [6]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[8] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[8]),
+<<<<<<< HEAD
         .Q(Q[7]),
+=======
+        .Q(\m_axi_arprot[2] [7]),
+>>>>>>> master
         .R(SR));
   FDRE \gen_no_arbiter.m_amesg_i_reg[9] 
        (.C(aclk),
         .CE(p_0_in1_in),
         .D(s_amesg[9]),
+<<<<<<< HEAD
         .Q(Q[8]),
+=======
+        .Q(\m_axi_arprot[2] [8]),
+>>>>>>> master
         .R(SR));
   LUT6 #(
     .INIT(64'h000000007F7F737F)) 
@@ -741,6 +1224,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
        (.I0(\gen_no_arbiter.m_grant_hot_i[0]_i_2_n_0 ),
         .I1(m_valid_i),
         .I2(aa_grant_rnw),
+<<<<<<< HEAD
         .I3(m_ready_d0),
         .I4(\m_ready_d_reg[0] ),
         .I5(\gen_no_arbiter.m_grant_hot_i[0]_i_4_n_0 ),
@@ -759,12 +1243,52 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   LUT5 #(
     .INIT(32'h5D5D5D5F)) 
     \gen_no_arbiter.m_grant_hot_i[0]_i_4 
+=======
+        .I3(\splitter_aw/m_ready_d0 ),
+        .I4(\m_ready_d_reg[0] ),
+        .I5(\gen_no_arbiter.m_grant_hot_i[0]_i_5_n_0 ),
+        .O(\gen_no_arbiter.m_grant_hot_i[0]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'h0000FF80)) 
+    \gen_no_arbiter.m_grant_hot_i[0]_i_2 
+       (.I0(\gen_axilite.s_axi_arready_i_reg ),
+        .I1(m_valid_i),
+        .I2(aa_grant_rnw),
+        .I3(m_ready_d_0[1]),
+        .I4(m_valid_i_reg),
+        .O(\gen_no_arbiter.m_grant_hot_i[0]_i_2_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT5 #(
+    .INIT(32'hF0F4F0F0)) 
+    \gen_no_arbiter.m_grant_hot_i[0]_i_3 
+       (.I0(aa_grant_rnw),
+        .I1(m_valid_i),
+        .I2(m_ready_d[1]),
+        .I3(\m_atarget_enc_reg[0]_0 ),
+        .I4(s_axi_wvalid),
+        .O(\splitter_aw/m_ready_d0 ));
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  LUT5 #(
+    .INIT(32'h5D5D5D5F)) 
+    \gen_no_arbiter.m_grant_hot_i[0]_i_5 
+>>>>>>> master
        (.I0(aresetn_d),
         .I1(m_valid_i),
         .I2(aa_grant_any),
         .I3(s_axi_arvalid),
         .I4(s_axi_awvalid),
+<<<<<<< HEAD
         .O(\gen_no_arbiter.m_grant_hot_i[0]_i_4_n_0 ));
+=======
+        .O(\gen_no_arbiter.m_grant_hot_i[0]_i_5_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  LUT2 #(
+    .INIT(4'hB)) 
+    \gen_no_arbiter.m_grant_hot_i[0]_i_7 
+       (.I0(aa_grant_rnw),
+        .I1(m_valid_i),
+        .O(\gen_no_arbiter.m_grant_hot_i_reg[0]_0 ));
+>>>>>>> master
   FDRE \gen_no_arbiter.m_grant_hot_i_reg[0] 
        (.C(aclk),
         .CE(1'b1),
@@ -778,7 +1302,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I1(\gen_no_arbiter.m_grant_hot_i[0]_i_2_n_0 ),
         .I2(m_valid_i),
         .I3(aa_grant_rnw),
+<<<<<<< HEAD
         .I4(m_ready_d0),
+=======
+        .I4(\splitter_aw/m_ready_d0 ),
+>>>>>>> master
         .I5(\m_ready_d_reg[0] ),
         .O(\gen_no_arbiter.m_valid_i_i_1_n_0 ));
   FDRE #(
@@ -789,7 +1317,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .D(\gen_no_arbiter.m_valid_i_i_1_n_0 ),
         .Q(m_valid_i),
         .R(SR));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
+=======
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+>>>>>>> master
   LUT3 #(
     .INIT(8'h40)) 
     \gen_no_arbiter.s_ready_i[0]_i_1 
@@ -806,6 +1338,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .Q(s_ready_i),
         .R(1'b0));
   (* SOFT_HLUTNM = "soft_lutpair8" *) 
+<<<<<<< HEAD
   LUT4 #(
     .INIT(16'h4000)) 
     \m_atarget_hot[0]_i_1 
@@ -893,19 +1426,120 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
     .INIT(16'h0080)) 
     \m_axi_arvalid[0]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [0]),
+=======
+  LUT2 #(
+    .INIT(4'h2)) 
+    \m_atarget_enc[0]_i_1 
+       (.I0(aresetn_d),
+        .I1(\m_atarget_hot[2]_i_2_n_0 ),
+        .O(\m_atarget_enc_reg[0] ));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \m_atarget_enc[1]_i_1 
+       (.I0(\m_atarget_hot[2]_i_2_n_0 ),
+        .I1(\m_atarget_hot[2]_i_3_n_0 ),
+        .O(any_error));
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \m_atarget_hot[0]_i_1 
+       (.I0(\m_atarget_hot[2]_i_3_n_0 ),
+        .I1(aa_grant_any),
+        .O(D[0]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \m_atarget_hot[1]_i_1 
+       (.I0(aa_grant_any),
+        .I1(\m_atarget_hot[2]_i_2_n_0 ),
+        .O(D[1]));
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  LUT3 #(
+    .INIT(8'h08)) 
+    \m_atarget_hot[2]_i_1 
+       (.I0(aa_grant_any),
+        .I1(\m_atarget_hot[2]_i_2_n_0 ),
+        .I2(\m_atarget_hot[2]_i_3_n_0 ),
+        .O(D[2]));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFFFFD)) 
+    \m_atarget_hot[2]_i_2 
+       (.I0(\m_atarget_hot[2]_i_4_n_0 ),
+        .I1(\m_atarget_hot[2]_i_5_n_0 ),
+        .I2(\m_axi_arprot[2] [19]),
+        .I3(\m_axi_arprot[2] [17]),
+        .I4(\m_axi_arprot[2] [18]),
+        .I5(\m_axi_arprot[2] [16]),
+        .O(\m_atarget_hot[2]_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000002)) 
+    \m_atarget_hot[2]_i_3 
+       (.I0(\m_atarget_hot[2]_i_4_n_0 ),
+        .I1(\m_atarget_hot[2]_i_6_n_0 ),
+        .I2(\m_axi_arprot[2] [19]),
+        .I3(\m_axi_arprot[2] [17]),
+        .I4(\m_axi_arprot[2] [18]),
+        .I5(\m_axi_arprot[2] [16]),
+        .O(\m_atarget_hot[2]_i_3_n_0 ));
+  LUT6 #(
+    .INIT(64'h0000000000000100)) 
+    \m_atarget_hot[2]_i_4 
+       (.I0(\m_axi_arprot[2] [26]),
+        .I1(\m_axi_arprot[2] [29]),
+        .I2(\m_axi_arprot[2] [28]),
+        .I3(\m_axi_arprot[2] [30]),
+        .I4(\m_axi_arprot[2] [31]),
+        .I5(\m_axi_arprot[2] [27]),
+        .O(\m_atarget_hot[2]_i_4_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFFFFFFFFFF7FF)) 
+    \m_atarget_hot[2]_i_5 
+       (.I0(\m_axi_arprot[2] [24]),
+        .I1(\m_axi_arprot[2] [22]),
+        .I2(\m_axi_arprot[2] [23]),
+        .I3(\m_axi_arprot[2] [21]),
+        .I4(\m_axi_arprot[2] [25]),
+        .I5(\m_axi_arprot[2] [20]),
+        .O(\m_atarget_hot[2]_i_5_n_0 ));
+  LUT6 #(
+    .INIT(64'hFFFFF7FFFFFFFFFF)) 
+    \m_atarget_hot[2]_i_6 
+       (.I0(\m_axi_arprot[2] [24]),
+        .I1(\m_axi_arprot[2] [22]),
+        .I2(\m_axi_arprot[2] [20]),
+        .I3(\m_axi_arprot[2] [25]),
+        .I4(\m_axi_arprot[2] [21]),
+        .I5(\m_axi_arprot[2] [23]),
+        .O(\m_atarget_hot[2]_i_6_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h0080)) 
+    \m_axi_arvalid[0]_INST_0 
+       (.I0(Q[0]),
+>>>>>>> master
         .I1(aa_grant_rnw),
         .I2(m_valid_i),
         .I3(m_ready_d_0[1]),
         .O(m_axi_arvalid[0]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \m_axi_arvalid[1]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [1]),
+=======
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'h0080)) 
+    \m_axi_arvalid[1]_INST_0 
+       (.I0(Q[1]),
+>>>>>>> master
         .I1(aa_grant_rnw),
         .I2(m_valid_i),
         .I3(m_ready_d_0[1]),
         .O(m_axi_arvalid[1]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h0080)) 
@@ -920,19 +1554,35 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
     .INIT(16'h0020)) 
     \m_axi_awvalid[0]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [0]),
+=======
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  LUT4 #(
+    .INIT(16'h0020)) 
+    \m_axi_awvalid[0]_INST_0 
+       (.I0(Q[0]),
+>>>>>>> master
         .I1(aa_grant_rnw),
         .I2(m_valid_i),
         .I3(m_ready_d[2]),
         .O(m_axi_awvalid[0]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \m_axi_awvalid[1]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [1]),
+=======
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT4 #(
+    .INIT(16'h0020)) 
+    \m_axi_awvalid[1]_INST_0 
+       (.I0(Q[1]),
+>>>>>>> master
         .I1(aa_grant_rnw),
         .I2(m_valid_i),
         .I3(m_ready_d[2]),
         .O(m_axi_awvalid[1]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h0020)) 
@@ -946,6 +1596,12 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
     .INIT(32'h00200000)) 
     \m_axi_bready[0]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [0]),
+=======
+  LUT5 #(
+    .INIT(32'h00200000)) 
+    \m_axi_bready[0]_INST_0 
+       (.I0(Q[0]),
+>>>>>>> master
         .I1(m_ready_d[0]),
         .I2(m_valid_i),
         .I3(aa_grant_rnw),
@@ -954,12 +1610,17 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   LUT5 #(
     .INIT(32'h00200000)) 
     \m_axi_bready[1]_INST_0 
+<<<<<<< HEAD
        (.I0(\m_atarget_hot_reg[3] [1]),
+=======
+       (.I0(Q[1]),
+>>>>>>> master
         .I1(m_ready_d[0]),
         .I2(m_valid_i),
         .I3(aa_grant_rnw),
         .I4(s_axi_bready),
         .O(m_axi_bready[1]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h00200000)) 
@@ -974,6 +1635,13 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
     .INIT(32'h00000800)) 
     \m_axi_wvalid[0]_INST_0 
        (.I0(\m_atarget_hot_reg[3] [0]),
+=======
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  LUT5 #(
+    .INIT(32'h00000800)) 
+    \m_axi_wvalid[0]_INST_0 
+       (.I0(Q[0]),
+>>>>>>> master
         .I1(s_axi_wvalid),
         .I2(m_ready_d[1]),
         .I3(m_valid_i),
@@ -982,12 +1650,17 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
   LUT5 #(
     .INIT(32'h00000800)) 
     \m_axi_wvalid[1]_INST_0 
+<<<<<<< HEAD
        (.I0(\m_atarget_hot_reg[3] [1]),
+=======
+       (.I0(Q[1]),
+>>>>>>> master
         .I1(s_axi_wvalid),
         .I2(m_ready_d[1]),
         .I3(m_valid_i),
         .I4(aa_grant_rnw),
         .O(m_axi_wvalid[1]));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
@@ -999,6 +1672,8 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I4(aa_grant_rnw),
         .O(m_axi_wvalid[2]));
   (* SOFT_HLUTNM = "soft_lutpair4" *) 
+=======
+>>>>>>> master
   LUT5 #(
     .INIT(32'h0080FFFF)) 
     \m_payload_i[34]_i_1 
@@ -1008,13 +1683,18 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(m_ready_d_0[0]),
         .I4(sr_rvalid),
         .O(E));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
+=======
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+>>>>>>> master
   LUT4 #(
     .INIT(16'h4555)) 
     \m_ready_d[2]_i_2 
        (.I0(m_ready_d[2]),
         .I1(aa_grant_rnw),
         .I2(m_valid_i),
+<<<<<<< HEAD
         .I3(\m_atarget_enc_reg[0] ),
         .O(\m_ready_d_reg[2] ));
   (* SOFT_HLUTNM = "soft_lutpair1" *) 
@@ -1063,6 +1743,30 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I4(aa_grant_rnw),
         .O(m_valid_i_i_3_n_0));
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
+=======
+        .I3(\gen_axilite.s_axi_awready_i_reg ),
+        .O(\m_ready_d_reg[2] ));
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT5 #(
+    .INIT(32'h0000FBFF)) 
+    \m_ready_d[2]_i_3 
+       (.I0(\gen_axilite.s_axi_bvalid_i_reg_0 ),
+        .I1(s_axi_bready),
+        .I2(aa_grant_rnw),
+        .I3(m_valid_i),
+        .I4(m_ready_d[0]),
+        .O(\m_ready_d_reg[2]_0 ));
+  LUT5 #(
+    .INIT(32'hA8AAAAAA)) 
+    m_valid_i_i_2
+       (.I0(aa_rready),
+        .I1(\gen_axilite.s_axi_rvalid_i_reg ),
+        .I2(m_ready_d_0[0]),
+        .I3(m_valid_i),
+        .I4(aa_grant_rnw),
+        .O(s_ready_i_reg));
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+>>>>>>> master
   LUT4 #(
     .INIT(16'h0040)) 
     \s_arvalid_reg[0]_i_1 
@@ -1097,21 +1801,32 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .D(\s_awvalid_reg[0]_i_1_n_0 ),
         .Q(s_awvalid_reg),
         .R(1'b0));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair11" *) 
+=======
+>>>>>>> master
   LUT2 #(
     .INIT(4'h8)) 
     \s_axi_arready[0]_INST_0 
        (.I0(aa_grant_rnw),
         .I1(s_ready_i),
         .O(s_axi_arready));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair10" *) 
+=======
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+>>>>>>> master
   LUT2 #(
     .INIT(4'h2)) 
     \s_axi_awready[0]_INST_0 
        (.I0(s_ready_i),
         .I1(aa_grant_rnw),
         .O(s_axi_awready));
+<<<<<<< HEAD
   (* SOFT_HLUTNM = "soft_lutpair2" *) 
+=======
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+>>>>>>> master
   LUT5 #(
     .INIT(32'h00000400)) 
     \s_axi_bvalid[0]_INST_0 
@@ -1119,15 +1834,22 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I1(m_valid_i),
         .I2(aa_grant_rnw),
         .I3(aa_grant_any),
+<<<<<<< HEAD
         .I4(\m_atarget_enc_reg[0]_0 ),
         .O(s_axi_bvalid));
   (* SOFT_HLUTNM = "soft_lutpair13" *) 
+=======
+        .I4(\gen_axilite.s_axi_bvalid_i_reg_0 ),
+        .O(s_axi_bvalid));
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+>>>>>>> master
   LUT2 #(
     .INIT(4'h8)) 
     \s_axi_rvalid[0]_INST_0 
        (.I0(aa_grant_any),
         .I1(sr_rvalid),
         .O(s_axi_rvalid));
+<<<<<<< HEAD
   LUT5 #(
     .INIT(32'h00000200)) 
     \s_axi_wready[0]_INST_0 
@@ -1147,6 +1869,36 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .O(s_ready_i_reg));
 endmodule
 
+=======
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  LUT2 #(
+    .INIT(4'h2)) 
+    \s_axi_wready[0]_INST_0 
+       (.I0(aa_grant_any),
+        .I1(\m_ready_d_reg[2]_1 ),
+        .O(s_axi_wready));
+  LUT6 #(
+    .INIT(64'hFABAFABFFFBAFFBF)) 
+    \s_axi_wready[0]_INST_0_i_1 
+       (.I0(\s_axi_wready[0]_INST_0_i_2_n_0 ),
+        .I1(mi_wready),
+        .I2(m_atarget_enc[1]),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_wready[0]),
+        .I5(m_axi_wready[1]),
+        .O(\m_ready_d_reg[2]_1 ));
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  LUT3 #(
+    .INIT(8'hFB)) 
+    \s_axi_wready[0]_INST_0_i_2 
+       (.I0(m_ready_d[1]),
+        .I1(m_valid_i),
+        .I2(aa_grant_rnw),
+        .O(\s_axi_wready[0]_INST_0_i_2_n_0 ));
+endmodule
+
+(* ORIG_REF_NAME = "axi_crossbar_v2_1_18_axi_crossbar" *) 
+>>>>>>> master
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
    (Q,
     \s_axi_rdata[31] ,
@@ -1163,17 +1915,28 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
     m_axi_rready,
     aresetn,
     aclk,
+<<<<<<< HEAD
     s_axi_arvalid,
     s_axi_awvalid,
     s_axi_bready,
     s_axi_wvalid,
+=======
+    s_axi_wvalid,
+    s_axi_arvalid,
+    s_axi_awvalid,
+    s_axi_bready,
+    m_axi_wready,
+>>>>>>> master
     s_axi_rready,
     m_axi_rresp,
     m_axi_rdata,
     m_axi_rvalid,
     m_axi_bvalid,
     m_axi_awready,
+<<<<<<< HEAD
     m_axi_wready,
+=======
+>>>>>>> master
     m_axi_arready,
     m_axi_bresp,
     s_axi_arprot,
@@ -1183,15 +1946,24 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   output [34:0]Q;
   output [33:0]\s_axi_rdata[31] ;
   output [0:0]s_axi_bvalid;
+<<<<<<< HEAD
   output [2:0]m_axi_bready;
   output [0:0]s_axi_wready;
   output [2:0]m_axi_wvalid;
   output [2:0]m_axi_awvalid;
   output [2:0]m_axi_arvalid;
+=======
+  output [1:0]m_axi_bready;
+  output [0:0]s_axi_wready;
+  output [1:0]m_axi_wvalid;
+  output [1:0]m_axi_awvalid;
+  output [1:0]m_axi_arvalid;
+>>>>>>> master
   output [1:0]s_axi_bresp;
   output [0:0]s_axi_awready;
   output [0:0]s_axi_arready;
   output [0:0]s_axi_rvalid;
+<<<<<<< HEAD
   output [2:0]m_axi_rready;
   input aresetn;
   input aclk;
@@ -1208,6 +1980,24 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   input [2:0]m_axi_wready;
   input [2:0]m_axi_arready;
   input [5:0]m_axi_bresp;
+=======
+  output [1:0]m_axi_rready;
+  input aresetn;
+  input aclk;
+  input [0:0]s_axi_wvalid;
+  input [0:0]s_axi_arvalid;
+  input [0:0]s_axi_awvalid;
+  input [0:0]s_axi_bready;
+  input [1:0]m_axi_wready;
+  input [0:0]s_axi_rready;
+  input [3:0]m_axi_rresp;
+  input [63:0]m_axi_rdata;
+  input [1:0]m_axi_rvalid;
+  input [1:0]m_axi_bvalid;
+  input [1:0]m_axi_awready;
+  input [1:0]m_axi_arready;
+  input [3:0]m_axi_bresp;
+>>>>>>> master
   input [2:0]s_axi_arprot;
   input [2:0]s_axi_awprot;
   input [31:0]s_axi_araddr;
@@ -1216,6 +2006,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   wire [34:0]Q;
   wire aclk;
   wire aresetn;
+<<<<<<< HEAD
   wire [2:0]m_axi_arready;
   wire [2:0]m_axi_arvalid;
   wire [2:0]m_axi_awready;
@@ -1229,6 +2020,21 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   wire [2:0]m_axi_rvalid;
   wire [2:0]m_axi_wready;
   wire [2:0]m_axi_wvalid;
+=======
+  wire [1:0]m_axi_arready;
+  wire [1:0]m_axi_arvalid;
+  wire [1:0]m_axi_awready;
+  wire [1:0]m_axi_awvalid;
+  wire [1:0]m_axi_bready;
+  wire [3:0]m_axi_bresp;
+  wire [1:0]m_axi_bvalid;
+  wire [63:0]m_axi_rdata;
+  wire [1:0]m_axi_rready;
+  wire [3:0]m_axi_rresp;
+  wire [1:0]m_axi_rvalid;
+  wire [1:0]m_axi_wready;
+  wire [1:0]m_axi_wvalid;
+>>>>>>> master
   wire [31:0]s_axi_araddr;
   wire [2:0]s_axi_arprot;
   wire [0:0]s_axi_arready;
@@ -1247,8 +2053,12 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   wire [0:0]s_axi_wvalid;
 
   base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd \gen_sasd.crossbar_sasd_0 
+<<<<<<< HEAD
        (.M_AXI_AWADDR(Q[31:0]),
         .Q(Q[34:32]),
+=======
+       (.Q(Q),
+>>>>>>> master
         .aclk(aclk),
         .aresetn(aresetn),
         .m_axi_arready(m_axi_arready),
@@ -1282,9 +2092,15 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
 
+<<<<<<< HEAD
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
    (M_AXI_AWADDR,
     Q,
+=======
+(* ORIG_REF_NAME = "axi_crossbar_v2_1_18_crossbar_sasd" *) 
+module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
+   (Q,
+>>>>>>> master
     \s_axi_rdata[31] ,
     s_axi_bvalid,
     m_axi_bready,
@@ -1299,23 +2115,35 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     m_axi_rready,
     aresetn,
     aclk,
+<<<<<<< HEAD
     s_axi_arvalid,
     s_axi_awvalid,
     s_axi_bready,
     s_axi_wvalid,
+=======
+    s_axi_wvalid,
+    s_axi_arvalid,
+    s_axi_awvalid,
+    s_axi_bready,
+    m_axi_wready,
+>>>>>>> master
     s_axi_rready,
     m_axi_rresp,
     m_axi_rdata,
     m_axi_rvalid,
     m_axi_bvalid,
     m_axi_awready,
+<<<<<<< HEAD
     m_axi_wready,
+=======
+>>>>>>> master
     m_axi_arready,
     m_axi_bresp,
     s_axi_arprot,
     s_axi_awprot,
     s_axi_araddr,
     s_axi_awaddr);
+<<<<<<< HEAD
   output [31:0]M_AXI_AWADDR;
   output [2:0]Q;
   output [33:0]\s_axi_rdata[31] ;
@@ -1325,10 +2153,21 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   output [2:0]m_axi_wvalid;
   output [2:0]m_axi_awvalid;
   output [2:0]m_axi_arvalid;
+=======
+  output [34:0]Q;
+  output [33:0]\s_axi_rdata[31] ;
+  output [0:0]s_axi_bvalid;
+  output [1:0]m_axi_bready;
+  output [0:0]s_axi_wready;
+  output [1:0]m_axi_wvalid;
+  output [1:0]m_axi_awvalid;
+  output [1:0]m_axi_arvalid;
+>>>>>>> master
   output [1:0]s_axi_bresp;
   output [0:0]s_axi_awready;
   output [0:0]s_axi_arready;
   output [0:0]s_axi_rvalid;
+<<<<<<< HEAD
   output [2:0]m_axi_rready;
   input aresetn;
   input aclk;
@@ -1345,11 +2184,30 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   input [2:0]m_axi_wready;
   input [2:0]m_axi_arready;
   input [5:0]m_axi_bresp;
+=======
+  output [1:0]m_axi_rready;
+  input aresetn;
+  input aclk;
+  input [0:0]s_axi_wvalid;
+  input [0:0]s_axi_arvalid;
+  input [0:0]s_axi_awvalid;
+  input [0:0]s_axi_bready;
+  input [1:0]m_axi_wready;
+  input [0:0]s_axi_rready;
+  input [3:0]m_axi_rresp;
+  input [63:0]m_axi_rdata;
+  input [1:0]m_axi_rvalid;
+  input [1:0]m_axi_bvalid;
+  input [1:0]m_axi_awready;
+  input [1:0]m_axi_arready;
+  input [3:0]m_axi_bresp;
+>>>>>>> master
   input [2:0]s_axi_arprot;
   input [2:0]s_axi_awprot;
   input [31:0]s_axi_araddr;
   input [31:0]s_axi_awaddr;
 
+<<<<<<< HEAD
   wire [31:0]M_AXI_AWADDR;
   wire [2:0]Q;
   wire aa_grant_rnw;
@@ -1368,10 +2226,30 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   wire addr_arbiter_inst_n_69;
   wire aresetn;
   wire aresetn_d;
+=======
+  wire [34:0]Q;
+  wire aa_grant_rnw;
+  wire aa_rready;
+  wire aclk;
+  wire addr_arbiter_inst_n_10;
+  wire addr_arbiter_inst_n_11;
+  wire addr_arbiter_inst_n_13;
+  wire addr_arbiter_inst_n_18;
+  wire addr_arbiter_inst_n_19;
+  wire addr_arbiter_inst_n_23;
+  wire addr_arbiter_inst_n_27;
+  wire addr_arbiter_inst_n_5;
+  wire addr_arbiter_inst_n_6;
+  wire any_error;
+  wire aresetn;
+  wire aresetn_d;
+  wire \gen_decerr.decerr_slave_inst_n_1 ;
+>>>>>>> master
   wire \gen_decerr.decerr_slave_inst_n_2 ;
   wire \gen_decerr.decerr_slave_inst_n_3 ;
   wire \gen_decerr.decerr_slave_inst_n_4 ;
   wire \gen_decerr.decerr_slave_inst_n_5 ;
+<<<<<<< HEAD
   wire \gen_decerr.decerr_slave_inst_n_6 ;
   wire [1:0]m_atarget_enc;
   wire \m_atarget_enc[0]_i_1_n_0 ;
@@ -1400,6 +2278,30 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   wire reg_slice_r_n_2;
   wire reg_slice_r_n_6;
   wire reg_slice_r_n_7;
+=======
+  wire [1:0]m_atarget_enc;
+  wire [2:0]m_atarget_hot;
+  wire [2:1]m_atarget_hot0;
+  wire [1:0]m_axi_arready;
+  wire [1:0]m_axi_arvalid;
+  wire [1:0]m_axi_awready;
+  wire [1:0]m_axi_awvalid;
+  wire [1:0]m_axi_bready;
+  wire [3:0]m_axi_bresp;
+  wire [1:0]m_axi_bvalid;
+  wire [63:0]m_axi_rdata;
+  wire [1:0]m_axi_rready;
+  wire [3:0]m_axi_rresp;
+  wire [1:0]m_axi_rvalid;
+  wire [1:0]m_axi_wready;
+  wire [1:0]m_axi_wvalid;
+  wire [1:0]m_ready_d;
+  wire [2:0]m_ready_d_0;
+  wire m_valid_i;
+  wire [2:2]mi_wready;
+  wire p_1_in;
+  wire reg_slice_r_n_2;
+>>>>>>> master
   wire reset;
   wire [31:0]s_axi_araddr;
   wire [2:0]s_axi_arprot;
@@ -1420,16 +2322,25 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   wire splitter_aw_n_0;
   wire splitter_aw_n_4;
   wire sr_rvalid;
+<<<<<<< HEAD
   wire [1:0]target_mi_enc;
 
   base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd addr_arbiter_inst
        (.D({addr_arbiter_inst_n_3,addr_arbiter_inst_n_4,addr_arbiter_inst_n_5,addr_arbiter_inst_n_6}),
         .E(p_1_in),
         .Q({Q,M_AXI_AWADDR}),
+=======
+
+  base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd addr_arbiter_inst
+       (.D({m_atarget_hot0,addr_arbiter_inst_n_5}),
+        .E(p_1_in),
+        .Q(m_atarget_hot[1:0]),
+>>>>>>> master
         .SR(reset),
         .aa_grant_rnw(aa_grant_rnw),
         .aa_rready(aa_rready),
         .aclk(aclk),
+<<<<<<< HEAD
         .aresetn_d(aresetn_d),
         .\aresetn_d_reg[1] ({reg_slice_r_n_6,reg_slice_r_n_7}),
         .\gen_axilite.s_axi_arready_i_reg (\gen_decerr.decerr_slave_inst_n_6 ),
@@ -1455,6 +2366,33 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .m_valid_i_reg(addr_arbiter_inst_n_60),
         .m_valid_i_reg_0(reg_slice_r_n_2),
         .mi_bvalid(mi_bvalid),
+=======
+        .any_error(any_error),
+        .aresetn_d(aresetn_d),
+        .\gen_axilite.s_axi_arready_i_reg (\gen_decerr.decerr_slave_inst_n_5 ),
+        .\gen_axilite.s_axi_awready_i_reg (\gen_decerr.decerr_slave_inst_n_3 ),
+        .\gen_axilite.s_axi_bvalid_i_reg (addr_arbiter_inst_n_11),
+        .\gen_axilite.s_axi_bvalid_i_reg_0 (\gen_decerr.decerr_slave_inst_n_2 ),
+        .\gen_axilite.s_axi_rvalid_i_reg (\gen_decerr.decerr_slave_inst_n_1 ),
+        .\gen_no_arbiter.m_grant_hot_i_reg[0]_0 (addr_arbiter_inst_n_18),
+        .m_atarget_enc(m_atarget_enc),
+        .\m_atarget_enc_reg[0] (addr_arbiter_inst_n_27),
+        .\m_atarget_enc_reg[0]_0 (\gen_decerr.decerr_slave_inst_n_4 ),
+        .\m_axi_arprot[2] (Q),
+        .m_axi_arvalid(m_axi_arvalid),
+        .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_bready(m_axi_bready),
+        .m_axi_wready(m_axi_wready),
+        .m_axi_wvalid(m_axi_wvalid),
+        .m_ready_d(m_ready_d_0),
+        .m_ready_d_0(m_ready_d),
+        .\m_ready_d_reg[0] (splitter_aw_n_0),
+        .\m_ready_d_reg[2] (addr_arbiter_inst_n_6),
+        .\m_ready_d_reg[2]_0 (addr_arbiter_inst_n_10),
+        .\m_ready_d_reg[2]_1 (addr_arbiter_inst_n_13),
+        .m_valid_i(m_valid_i),
+        .m_valid_i_reg(reg_slice_r_n_2),
+>>>>>>> master
         .mi_wready(mi_wready),
         .s_axi_araddr(s_axi_araddr),
         .s_axi_arprot(s_axi_arprot),
@@ -1470,9 +2408,15 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .s_axi_rvalid(s_axi_rvalid),
         .s_axi_wready(s_axi_wready),
         .s_axi_wvalid(s_axi_wvalid),
+<<<<<<< HEAD
         .s_ready_i_reg(addr_arbiter_inst_n_59),
         .sr_rvalid(sr_rvalid),
         .target_mi_enc(target_mi_enc));
+=======
+        .s_ready_i_reg(addr_arbiter_inst_n_19),
+        .s_ready_i_reg_0(addr_arbiter_inst_n_23),
+        .sr_rvalid(sr_rvalid));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     aresetn_d_reg
@@ -1482,21 +2426,35 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .Q(aresetn_d),
         .R(1'b0));
   base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave \gen_decerr.decerr_slave_inst 
+<<<<<<< HEAD
        (.Q(m_atarget_hot[3]),
+=======
+       (.Q(m_atarget_hot[2]),
+>>>>>>> master
         .SR(reset),
         .aa_rready(aa_rready),
         .aclk(aclk),
         .aresetn_d(aresetn_d),
+<<<<<<< HEAD
         .\gen_no_arbiter.grant_rnw_reg (addr_arbiter_inst_n_50),
         .\gen_no_arbiter.m_grant_hot_i_reg[0] (\gen_decerr.decerr_slave_inst_n_4 ),
         .\gen_no_arbiter.m_grant_hot_i_reg[0]_0 (\gen_decerr.decerr_slave_inst_n_5 ),
         .\m_atarget_enc_reg[1] (m_atarget_enc),
         .\m_atarget_hot_reg[3] (addr_arbiter_inst_n_69),
+=======
+        .\gen_no_arbiter.grant_rnw_reg (addr_arbiter_inst_n_23),
+        .\gen_no_arbiter.grant_rnw_reg_0 (addr_arbiter_inst_n_11),
+        .\gen_no_arbiter.m_grant_hot_i_reg[0] (\gen_decerr.decerr_slave_inst_n_2 ),
+        .\gen_no_arbiter.m_grant_hot_i_reg[0]_0 (\gen_decerr.decerr_slave_inst_n_3 ),
+        .\gen_no_arbiter.m_valid_i_reg (\gen_decerr.decerr_slave_inst_n_4 ),
+        .m_atarget_enc(m_atarget_enc),
+>>>>>>> master
         .m_axi_arready(m_axi_arready),
         .m_axi_awready(m_axi_awready),
         .m_axi_bvalid(m_axi_bvalid),
         .m_axi_rvalid(m_axi_rvalid),
         .m_axi_wready(m_axi_wready),
+<<<<<<< HEAD
         .\m_ready_d_reg[1] (\gen_decerr.decerr_slave_inst_n_6 ),
         .\m_ready_d_reg[1]_0 (addr_arbiter_inst_n_65),
         .\m_ready_d_reg[1]_1 (splitter_aw_n_4),
@@ -1524,20 +2482,37 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .I3(M_AXI_AWADDR[30]),
         .I4(M_AXI_AWADDR[29]),
         .O(\m_atarget_enc[1]_i_1_n_0 ));
+=======
+        .m_ready_d(m_ready_d[1]),
+        .\m_ready_d_reg[1] (\gen_decerr.decerr_slave_inst_n_5 ),
+        .\m_ready_d_reg[1]_0 (splitter_aw_n_4),
+        .mi_wready(mi_wready),
+        .s_ready_i_reg(\gen_decerr.decerr_slave_inst_n_1 ));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     \m_atarget_enc_reg[0] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(\m_atarget_enc[0]_i_1_n_0 ),
         .Q(m_atarget_enc[0]),
         .R(reset));
+=======
+        .D(addr_arbiter_inst_n_27),
+        .Q(m_atarget_enc[0]),
+        .R(1'b0));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     \m_atarget_enc_reg[1] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(\m_atarget_enc[1]_i_1_n_0 ),
+=======
+        .D(any_error),
+>>>>>>> master
         .Q(m_atarget_enc[1]),
         .R(reset));
   FDRE #(
@@ -1545,7 +2520,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     \m_atarget_hot_reg[0] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(addr_arbiter_inst_n_6),
+=======
+        .D(addr_arbiter_inst_n_5),
+>>>>>>> master
         .Q(m_atarget_hot[0]),
         .R(reset));
   FDRE #(
@@ -1553,7 +2532,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     \m_atarget_hot_reg[1] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(addr_arbiter_inst_n_5),
+=======
+        .D(m_atarget_hot0[1]),
+>>>>>>> master
         .Q(m_atarget_hot[1]),
         .R(reset));
   FDRE #(
@@ -1561,6 +2544,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     \m_atarget_hot_reg[2] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(addr_arbiter_inst_n_4),
         .Q(m_atarget_hot[2]),
         .R(reset));
@@ -1575,19 +2559,33 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice reg_slice_r
        (.E(p_1_in),
         .Q(m_atarget_enc),
+=======
+        .D(m_atarget_hot0[2]),
+        .Q(m_atarget_hot[2]),
+        .R(reset));
+  base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice reg_slice_r
+       (.E(p_1_in),
+        .Q(m_atarget_hot[1:0]),
+>>>>>>> master
         .SR(reset),
         .aa_grant_rnw(aa_grant_rnw),
         .aa_rready(aa_rready),
         .aclk(aclk),
+<<<<<<< HEAD
         .\aresetn_d_reg[0]_0 (addr_arbiter_inst_n_59),
         .\aresetn_d_reg[1]_0 (addr_arbiter_inst_n_60),
         .\m_atarget_hot_reg[2] (m_atarget_hot[2:0]),
+=======
+        .\gen_no_arbiter.grant_rnw_reg (addr_arbiter_inst_n_23),
+        .m_atarget_enc(m_atarget_enc),
+>>>>>>> master
         .m_axi_rdata(m_axi_rdata),
         .m_axi_rready(m_axi_rready),
         .m_axi_rresp(m_axi_rresp),
         .m_ready_d(m_ready_d[0]),
         .\m_ready_d_reg[1] (reg_slice_r_n_2),
         .m_valid_i(m_valid_i),
+<<<<<<< HEAD
         .m_valid_i_reg_0({reg_slice_r_n_6,reg_slice_r_n_7}),
         .\s_axi_rdata[31] (\s_axi_rdata[31] ),
         .s_axi_rready(s_axi_rready),
@@ -1609,16 +2607,42 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .I2(m_axi_bresp[5]),
         .I3(m_atarget_enc[1]),
         .I4(m_axi_bresp[3]),
+=======
+        .\s_axi_rdata[31] (\s_axi_rdata[31] ),
+        .s_axi_rready(s_axi_rready),
+        .s_ready_i_reg_0(addr_arbiter_inst_n_19),
+        .sr_rvalid(sr_rvalid));
+  LUT4 #(
+    .INIT(16'h33B8)) 
+    \s_axi_bresp[0]_INST_0 
+       (.I0(m_axi_bresp[2]),
+        .I1(m_atarget_enc[0]),
+        .I2(m_axi_bresp[0]),
+        .I3(m_atarget_enc[1]),
+        .O(s_axi_bresp[0]));
+  LUT4 #(
+    .INIT(16'h33B8)) 
+    \s_axi_bresp[1]_INST_0 
+       (.I0(m_axi_bresp[3]),
+        .I1(m_atarget_enc[0]),
+        .I2(m_axi_bresp[1]),
+        .I3(m_atarget_enc[1]),
+>>>>>>> master
         .O(s_axi_bresp[1]));
   base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter__parameterized0 splitter_ar
        (.aa_grant_rnw(aa_grant_rnw),
         .aclk(aclk),
         .aresetn_d(aresetn_d),
+<<<<<<< HEAD
         .\gen_axilite.s_axi_arready_i_reg (\gen_decerr.decerr_slave_inst_n_6 ),
+=======
+        .\gen_axilite.s_axi_arready_i_reg (\gen_decerr.decerr_slave_inst_n_5 ),
+>>>>>>> master
         .m_ready_d(m_ready_d),
         .m_valid_i(m_valid_i),
         .m_valid_i_reg(reg_slice_r_n_2));
   base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter splitter_aw
+<<<<<<< HEAD
        (.Q(m_atarget_hot[3]),
         .aa_grant_rnw(aa_grant_rnw),
         .aclk(aclk),
@@ -1632,11 +2656,27 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
         .m_ready_d(m_ready_d_0),
         .m_ready_d0(m_ready_d0),
         .\m_ready_d_reg[2]_0 (addr_arbiter_inst_n_45),
+=======
+       (.Q(m_atarget_hot[2]),
+        .aa_grant_rnw(aa_grant_rnw),
+        .aclk(aclk),
+        .aresetn_d(aresetn_d),
+        .\gen_axilite.s_axi_awready_i_reg (\gen_decerr.decerr_slave_inst_n_3 ),
+        .\gen_axilite.s_axi_awready_i_reg_0 (addr_arbiter_inst_n_13),
+        .\gen_axilite.s_axi_bvalid_i_reg (splitter_aw_n_4),
+        .\gen_axilite.s_axi_bvalid_i_reg_0 (\gen_decerr.decerr_slave_inst_n_2 ),
+        .\gen_no_arbiter.grant_rnw_reg (addr_arbiter_inst_n_18),
+        .\gen_no_arbiter.grant_rnw_reg_0 (addr_arbiter_inst_n_10),
+        .\gen_no_arbiter.m_grant_hot_i_reg[0] (splitter_aw_n_0),
+        .m_ready_d(m_ready_d_0),
+        .\m_ready_d_reg[2]_0 (addr_arbiter_inst_n_6),
+>>>>>>> master
         .m_valid_i(m_valid_i),
         .s_axi_bready(s_axi_bready),
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
 
+<<<<<<< HEAD
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
    (mi_bvalid,
     mi_wready,
@@ -1653,10 +2693,29 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
     aresetn_d,
     m_axi_rvalid,
     \m_atarget_enc_reg[1] ,
+=======
+(* ORIG_REF_NAME = "axi_crossbar_v2_1_18_decerr_slave" *) 
+module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
+   (mi_wready,
+    s_ready_i_reg,
+    \gen_no_arbiter.m_grant_hot_i_reg[0] ,
+    \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ,
+    \gen_no_arbiter.m_valid_i_reg ,
+    \m_ready_d_reg[1] ,
+    SR,
+    aclk,
+    Q,
+    m_ready_d,
+    \gen_no_arbiter.grant_rnw_reg ,
+    aresetn_d,
+    m_axi_rvalid,
+    m_atarget_enc,
+>>>>>>> master
     m_axi_bvalid,
     m_axi_awready,
     m_axi_wready,
     m_axi_arready,
+<<<<<<< HEAD
     \gen_no_arbiter.grant_rnw_reg ,
     \m_ready_d_reg[1]_1 ,
     aa_rready);
@@ -1681,6 +2740,31 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
   input [2:0]m_axi_arready;
   input \gen_no_arbiter.grant_rnw_reg ;
   input \m_ready_d_reg[1]_1 ;
+=======
+    \gen_no_arbiter.grant_rnw_reg_0 ,
+    \m_ready_d_reg[1]_0 ,
+    aa_rready);
+  output [0:0]mi_wready;
+  output s_ready_i_reg;
+  output \gen_no_arbiter.m_grant_hot_i_reg[0] ;
+  output \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ;
+  output \gen_no_arbiter.m_valid_i_reg ;
+  output \m_ready_d_reg[1] ;
+  input [0:0]SR;
+  input aclk;
+  input [0:0]Q;
+  input [0:0]m_ready_d;
+  input \gen_no_arbiter.grant_rnw_reg ;
+  input aresetn_d;
+  input [1:0]m_axi_rvalid;
+  input [1:0]m_atarget_enc;
+  input [1:0]m_axi_bvalid;
+  input [1:0]m_axi_awready;
+  input [1:0]m_axi_wready;
+  input [1:0]m_axi_arready;
+  input \gen_no_arbiter.grant_rnw_reg_0 ;
+  input \m_ready_d_reg[1]_0 ;
+>>>>>>> master
   input aa_rready;
 
   wire [0:0]Q;
@@ -1689,6 +2773,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
   wire aclk;
   wire aresetn_d;
   wire \gen_axilite.s_axi_arready_i_i_1_n_0 ;
+<<<<<<< HEAD
   wire \gen_axilite.s_axi_bvalid_i_i_1_n_0 ;
   wire \gen_axilite.s_axi_rvalid_i_i_1_n_0 ;
   wire \gen_no_arbiter.grant_rnw_reg ;
@@ -1719,6 +2804,40 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .I2(mi_arready),
         .I3(mi_rvalid),
         .I4(aresetn_d),
+=======
+  wire \gen_axilite.s_axi_awready_i_i_1_n_0 ;
+  wire \gen_axilite.s_axi_bvalid_i_i_1_n_0 ;
+  wire \gen_axilite.s_axi_rvalid_i_i_1_n_0 ;
+  wire \gen_no_arbiter.grant_rnw_reg ;
+  wire \gen_no_arbiter.grant_rnw_reg_0 ;
+  wire \gen_no_arbiter.m_grant_hot_i_reg[0] ;
+  wire \gen_no_arbiter.m_grant_hot_i_reg[0]_0 ;
+  wire \gen_no_arbiter.m_valid_i_reg ;
+  wire [1:0]m_atarget_enc;
+  wire [1:0]m_axi_arready;
+  wire [1:0]m_axi_awready;
+  wire [1:0]m_axi_bvalid;
+  wire [1:0]m_axi_rvalid;
+  wire [1:0]m_axi_wready;
+  wire [0:0]m_ready_d;
+  wire \m_ready_d_reg[1] ;
+  wire \m_ready_d_reg[1]_0 ;
+  wire [2:2]mi_arready;
+  wire [2:2]mi_bvalid;
+  wire [2:2]mi_rvalid;
+  wire [0:0]mi_wready;
+  wire s_ready_i_reg;
+
+  LUT6 #(
+    .INIT(64'hFF00FDFF00000000)) 
+    \gen_axilite.s_axi_arready_i_i_1 
+       (.I0(Q),
+        .I1(m_ready_d),
+        .I2(\gen_no_arbiter.grant_rnw_reg ),
+        .I3(mi_arready),
+        .I4(mi_rvalid),
+        .I5(aresetn_d),
+>>>>>>> master
         .O(\gen_axilite.s_axi_arready_i_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -1728,20 +2847,43 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .D(\gen_axilite.s_axi_arready_i_i_1_n_0 ),
         .Q(mi_arready),
         .R(1'b0));
+<<<<<<< HEAD
+=======
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+  LUT3 #(
+    .INIT(8'hE1)) 
+    \gen_axilite.s_axi_awready_i_i_1 
+       (.I0(\m_ready_d_reg[1]_0 ),
+        .I1(mi_bvalid),
+        .I2(mi_wready),
+        .O(\gen_axilite.s_axi_awready_i_i_1_n_0 ));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     \gen_axilite.s_axi_awready_i_reg 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(\m_atarget_hot_reg[3] ),
         .Q(mi_wready),
         .R(SR));
+=======
+        .D(\gen_axilite.s_axi_awready_i_i_1_n_0 ),
+        .Q(mi_wready),
+        .R(SR));
+  (* SOFT_HLUTNM = "soft_lutpair12" *) 
+>>>>>>> master
   LUT5 #(
     .INIT(32'h77770F00)) 
     \gen_axilite.s_axi_bvalid_i_i_1 
        (.I0(Q),
+<<<<<<< HEAD
         .I1(\gen_no_arbiter.grant_rnw_reg ),
         .I2(\m_ready_d_reg[1]_1 ),
+=======
+        .I1(\gen_no_arbiter.grant_rnw_reg_0 ),
+        .I2(\m_ready_d_reg[1]_0 ),
+>>>>>>> master
         .I3(mi_wready),
         .I4(mi_bvalid),
         .O(\gen_axilite.s_axi_bvalid_i_i_1_n_0 ));
@@ -1753,6 +2895,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .D(\gen_axilite.s_axi_bvalid_i_i_1_n_0 ),
         .Q(mi_bvalid),
         .R(SR));
+<<<<<<< HEAD
   LUT5 #(
     .INIT(32'h0FFF8800)) 
     \gen_axilite.s_axi_rvalid_i_i_1 
@@ -1761,6 +2904,17 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .I2(aa_rready),
         .I3(Q),
         .I4(mi_rvalid),
+=======
+  LUT6 #(
+    .INIT(64'h00FFFFFF02020000)) 
+    \gen_axilite.s_axi_rvalid_i_i_1 
+       (.I0(mi_arready),
+        .I1(m_ready_d),
+        .I2(\gen_no_arbiter.grant_rnw_reg ),
+        .I3(aa_rready),
+        .I4(Q),
+        .I5(mi_rvalid),
+>>>>>>> master
         .O(\gen_axilite.s_axi_rvalid_i_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -1770,6 +2924,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .D(\gen_axilite.s_axi_rvalid_i_i_1_n_0 ),
         .Q(mi_rvalid),
         .R(SR));
+<<<<<<< HEAD
   LUT6 #(
     .INIT(64'h33550F0033550FFF)) 
     \m_ready_d[1]_i_2 
@@ -1822,13 +2977,68 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_decerr_slave
         .O(\gen_no_arbiter.m_grant_hot_i_reg[0]_0 ));
 endmodule
 
+=======
+  LUT5 #(
+    .INIT(32'hF053FF53)) 
+    \gen_no_arbiter.m_grant_hot_i[0]_i_6 
+       (.I0(m_axi_wready[1]),
+        .I1(m_axi_wready[0]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_atarget_enc[1]),
+        .I4(mi_wready),
+        .O(\gen_no_arbiter.m_valid_i_reg ));
+  LUT5 #(
+    .INIT(32'h00CCAAF0)) 
+    \m_ready_d[1]_i_2 
+       (.I0(mi_arready),
+        .I1(m_axi_arready[1]),
+        .I2(m_axi_arready[0]),
+        .I3(m_atarget_enc[1]),
+        .I4(m_atarget_enc[0]),
+        .O(\m_ready_d_reg[1] ));
+  LUT5 #(
+    .INIT(32'h00F0CCAA)) 
+    \m_ready_d[2]_i_4 
+       (.I0(m_axi_awready[0]),
+        .I1(mi_wready),
+        .I2(m_axi_awready[1]),
+        .I3(m_atarget_enc[1]),
+        .I4(m_atarget_enc[0]),
+        .O(\gen_no_arbiter.m_grant_hot_i_reg[0]_0 ));
+  LUT5 #(
+    .INIT(32'hF035FF35)) 
+    m_valid_i_i_3
+       (.I0(m_axi_rvalid[0]),
+        .I1(mi_rvalid),
+        .I2(m_atarget_enc[1]),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rvalid[1]),
+        .O(s_ready_i_reg));
+  LUT5 #(
+    .INIT(32'hF530F53F)) 
+    \s_axi_bvalid[0]_INST_0_i_1 
+       (.I0(m_axi_bvalid[1]),
+        .I1(mi_bvalid),
+        .I2(m_atarget_enc[1]),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_bvalid[0]),
+        .O(\gen_no_arbiter.m_grant_hot_i_reg[0] ));
+endmodule
+
+(* ORIG_REF_NAME = "axi_crossbar_v2_1_18_splitter" *) 
+>>>>>>> master
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
    (\gen_no_arbiter.m_grant_hot_i_reg[0] ,
     m_ready_d,
     \gen_axilite.s_axi_bvalid_i_reg ,
     s_axi_bready,
+<<<<<<< HEAD
     \m_atarget_enc_reg[0] ,
     \m_atarget_enc_reg[0]_0 ,
+=======
+    \gen_axilite.s_axi_bvalid_i_reg_0 ,
+    \gen_axilite.s_axi_awready_i_reg ,
+>>>>>>> master
     \gen_no_arbiter.grant_rnw_reg ,
     s_axi_wvalid,
     Q,
@@ -1836,15 +3046,24 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
     aa_grant_rnw,
     \m_ready_d_reg[2]_0 ,
     \gen_no_arbiter.grant_rnw_reg_0 ,
+<<<<<<< HEAD
     m_ready_d0,
+=======
+    \gen_axilite.s_axi_awready_i_reg_0 ,
+>>>>>>> master
     aresetn_d,
     aclk);
   output \gen_no_arbiter.m_grant_hot_i_reg[0] ;
   output [2:0]m_ready_d;
   output \gen_axilite.s_axi_bvalid_i_reg ;
   input [0:0]s_axi_bready;
+<<<<<<< HEAD
   input \m_atarget_enc_reg[0] ;
   input \m_atarget_enc_reg[0]_0 ;
+=======
+  input \gen_axilite.s_axi_bvalid_i_reg_0 ;
+  input \gen_axilite.s_axi_awready_i_reg ;
+>>>>>>> master
   input \gen_no_arbiter.grant_rnw_reg ;
   input [0:0]s_axi_wvalid;
   input [0:0]Q;
@@ -1852,7 +3071,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
   input aa_grant_rnw;
   input \m_ready_d_reg[2]_0 ;
   input \gen_no_arbiter.grant_rnw_reg_0 ;
+<<<<<<< HEAD
   input [0:0]m_ready_d0;
+=======
+  input \gen_axilite.s_axi_awready_i_reg_0 ;
+>>>>>>> master
   input aresetn_d;
   input aclk;
 
@@ -1860,6 +3083,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
   wire aa_grant_rnw;
   wire aclk;
   wire aresetn_d;
+<<<<<<< HEAD
   wire \gen_axilite.s_axi_bvalid_i_reg ;
   wire \gen_no_arbiter.grant_rnw_reg ;
   wire \gen_no_arbiter.grant_rnw_reg_0 ;
@@ -1868,6 +3092,16 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
   wire \m_atarget_enc_reg[0]_0 ;
   wire [2:0]m_ready_d;
   wire [0:0]m_ready_d0;
+=======
+  wire \gen_axilite.s_axi_awready_i_reg ;
+  wire \gen_axilite.s_axi_awready_i_reg_0 ;
+  wire \gen_axilite.s_axi_bvalid_i_reg ;
+  wire \gen_axilite.s_axi_bvalid_i_reg_0 ;
+  wire \gen_no_arbiter.grant_rnw_reg ;
+  wire \gen_no_arbiter.grant_rnw_reg_0 ;
+  wire \gen_no_arbiter.m_grant_hot_i_reg[0] ;
+  wire [2:0]m_ready_d;
+>>>>>>> master
   wire \m_ready_d[0]_i_1_n_0 ;
   wire \m_ready_d[1]_i_1_n_0 ;
   wire \m_ready_d[2]_i_1_n_0 ;
@@ -1878,7 +3112,11 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
 
   LUT6 #(
     .INIT(64'hFFFFFFFFFFDFFFFF)) 
+<<<<<<< HEAD
     \gen_axilite.s_axi_bvalid_i_i_2 
+=======
+    \gen_axilite.s_axi_bvalid_i_i_3 
+>>>>>>> master
        (.I0(s_axi_wvalid),
         .I1(m_ready_d[1]),
         .I2(Q),
@@ -1888,15 +3126,24 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
         .O(\gen_axilite.s_axi_bvalid_i_reg ));
   LUT6 #(
     .INIT(64'h55555151FFFF51FF)) 
+<<<<<<< HEAD
     \gen_no_arbiter.m_grant_hot_i[0]_i_3 
        (.I0(m_ready_d[0]),
         .I1(s_axi_bready),
         .I2(\m_atarget_enc_reg[0] ),
         .I3(\m_atarget_enc_reg[0]_0 ),
+=======
+    \gen_no_arbiter.m_grant_hot_i[0]_i_4 
+       (.I0(m_ready_d[0]),
+        .I1(s_axi_bready),
+        .I2(\gen_axilite.s_axi_bvalid_i_reg_0 ),
+        .I3(\gen_axilite.s_axi_awready_i_reg ),
+>>>>>>> master
         .I4(\gen_no_arbiter.grant_rnw_reg ),
         .I5(m_ready_d[2]),
         .O(\gen_no_arbiter.m_grant_hot_i_reg[0] ));
   LUT6 #(
+<<<<<<< HEAD
     .INIT(64'h8A88CFCC00000000)) 
     \m_ready_d[0]_i_1 
        (.I0(\m_ready_d_reg[2]_0 ),
@@ -1924,6 +3171,35 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter
         .I2(\m_atarget_enc_reg[0] ),
         .I3(\gen_no_arbiter.grant_rnw_reg_0 ),
         .I4(m_ready_d0),
+=======
+    .INIT(64'h2222332300000000)) 
+    \m_ready_d[0]_i_1 
+       (.I0(\m_ready_d_reg[2]_0 ),
+        .I1(\gen_no_arbiter.grant_rnw_reg_0 ),
+        .I2(s_axi_wvalid),
+        .I3(\gen_axilite.s_axi_awready_i_reg_0 ),
+        .I4(m_ready_d[1]),
+        .I5(aresetn_d),
+        .O(\m_ready_d[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hEEEE00E000000000)) 
+    \m_ready_d[1]_i_1 
+       (.I0(\m_ready_d_reg[2]_0 ),
+        .I1(\gen_no_arbiter.grant_rnw_reg_0 ),
+        .I2(s_axi_wvalid),
+        .I3(\gen_axilite.s_axi_awready_i_reg_0 ),
+        .I4(m_ready_d[1]),
+        .I5(aresetn_d),
+        .O(\m_ready_d[1]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'h4444554500000000)) 
+    \m_ready_d[2]_i_1 
+       (.I0(\m_ready_d_reg[2]_0 ),
+        .I1(\gen_no_arbiter.grant_rnw_reg_0 ),
+        .I2(s_axi_wvalid),
+        .I3(\gen_axilite.s_axi_awready_i_reg_0 ),
+        .I4(m_ready_d[1]),
+>>>>>>> master
         .I5(aresetn_d),
         .O(\m_ready_d[2]_i_1_n_0 ));
   FDRE #(
@@ -1956,16 +3232,28 @@ endmodule
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter__parameterized0
    (m_ready_d,
     aresetn_d,
+<<<<<<< HEAD
     aa_grant_rnw,
     m_valid_i,
     \gen_axilite.s_axi_arready_i_reg ,
+=======
+    \gen_axilite.s_axi_arready_i_reg ,
+    m_valid_i,
+    aa_grant_rnw,
+>>>>>>> master
     m_valid_i_reg,
     aclk);
   output [1:0]m_ready_d;
   input aresetn_d;
+<<<<<<< HEAD
   input aa_grant_rnw;
   input m_valid_i;
   input \gen_axilite.s_axi_arready_i_reg ;
+=======
+  input \gen_axilite.s_axi_arready_i_reg ;
+  input m_valid_i;
+  input aa_grant_rnw;
+>>>>>>> master
   input m_valid_i_reg;
   input aclk;
 
@@ -1980,6 +3268,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter__parameterized0
   wire m_valid_i_reg;
 
   LUT6 #(
+<<<<<<< HEAD
     .INIT(64'h0000000000AA002A)) 
     \m_ready_d[0]_i_1 
        (.I0(aresetn_d),
@@ -1997,6 +3286,25 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter__parameterized0
         .I2(m_valid_i),
         .I3(m_ready_d[1]),
         .I4(\gen_axilite.s_axi_arready_i_reg ),
+=======
+    .INIT(64'h0000000000002AAA)) 
+    \m_ready_d[0]_i_1 
+       (.I0(aresetn_d),
+        .I1(\gen_axilite.s_axi_arready_i_reg ),
+        .I2(m_valid_i),
+        .I3(aa_grant_rnw),
+        .I4(m_ready_d[1]),
+        .I5(m_valid_i_reg),
+        .O(\m_ready_d[0]_i_1_n_0 ));
+  LUT6 #(
+    .INIT(64'hAAAA800000000000)) 
+    \m_ready_d[1]_i_1 
+       (.I0(aresetn_d),
+        .I1(\gen_axilite.s_axi_arready_i_reg ),
+        .I2(m_valid_i),
+        .I3(aa_grant_rnw),
+        .I4(m_ready_d[1]),
+>>>>>>> master
         .I5(m_valid_i_reg),
         .O(\m_ready_d[1]_i_1_n_0 ));
   FDRE #(
@@ -2017,11 +3325,16 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_splitter__parameterized0
         .R(1'b0));
 endmodule
 
+<<<<<<< HEAD
+=======
+(* ORIG_REF_NAME = "axi_register_slice_v2_1_17_axic_register_slice" *) 
+>>>>>>> master
 module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
    (sr_rvalid,
     aa_rready,
     \m_ready_d_reg[1] ,
     m_axi_rready,
+<<<<<<< HEAD
     m_valid_i_reg_0,
     \s_axi_rdata[31] ,
     \aresetn_d_reg[1]_0 ,
@@ -2035,11 +3348,26 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
     Q,
     m_axi_rdata,
     \m_atarget_hot_reg[2] ,
+=======
+    \s_axi_rdata[31] ,
+    aclk,
+    s_ready_i_reg_0,
+    m_ready_d,
+    \gen_no_arbiter.grant_rnw_reg ,
+    s_axi_rready,
+    aa_grant_rnw,
+    m_valid_i,
+    m_atarget_enc,
+    m_axi_rresp,
+    m_axi_rdata,
+    Q,
+>>>>>>> master
     SR,
     E);
   output sr_rvalid;
   output aa_rready;
   output \m_ready_d_reg[1] ;
+<<<<<<< HEAD
   output [2:0]m_axi_rready;
   output [1:0]m_valid_i_reg_0;
   output [33:0]\s_axi_rdata[31] ;
@@ -2054,6 +3382,21 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
   input [1:0]Q;
   input [95:0]m_axi_rdata;
   input [2:0]\m_atarget_hot_reg[2] ;
+=======
+  output [1:0]m_axi_rready;
+  output [33:0]\s_axi_rdata[31] ;
+  input aclk;
+  input s_ready_i_reg_0;
+  input [0:0]m_ready_d;
+  input \gen_no_arbiter.grant_rnw_reg ;
+  input [0:0]s_axi_rready;
+  input aa_grant_rnw;
+  input m_valid_i;
+  input [1:0]m_atarget_enc;
+  input [3:0]m_axi_rresp;
+  input [63:0]m_axi_rdata;
+  input [1:0]Q;
+>>>>>>> master
   input [0:0]SR;
   input [0:0]E;
 
@@ -2063,6 +3406,7 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
   wire aa_grant_rnw;
   wire aa_rready;
   wire aclk;
+<<<<<<< HEAD
   wire \aresetn_d_reg[0]_0 ;
   wire \aresetn_d_reg[1]_0 ;
   wire [2:0]\m_atarget_hot_reg[2] ;
@@ -2088,13 +3432,30 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
   wire \m_payload_i[5]_i_2_n_0 ;
   wire \m_payload_i[6]_i_2_n_0 ;
   wire \m_payload_i[7]_i_2_n_0 ;
+=======
+  wire \aresetn_d_reg_n_0_[0] ;
+  wire \aresetn_d_reg_n_0_[1] ;
+  wire \gen_no_arbiter.grant_rnw_reg ;
+  wire [1:0]m_atarget_enc;
+  wire [63:0]m_axi_rdata;
+  wire [1:0]m_axi_rready;
+  wire [3:0]m_axi_rresp;
+>>>>>>> master
   wire \m_payload_i_reg_n_0_[0] ;
   wire [0:0]m_ready_d;
   wire \m_ready_d_reg[1] ;
   wire m_valid_i;
+<<<<<<< HEAD
   wire [1:0]m_valid_i_reg_0;
   wire [33:0]\s_axi_rdata[31] ;
   wire [0:0]s_axi_rready;
+=======
+  wire m_valid_i_i_1_n_0;
+  wire [33:0]\s_axi_rdata[31] ;
+  wire [0:0]s_axi_rready;
+  wire s_ready_i_i_1_n_0;
+  wire s_ready_i_reg_0;
+>>>>>>> master
   wire [34:0]skid_buffer;
   wire \skid_buffer[10]_i_1_n_0 ;
   wire \skid_buffer[11]_i_1_n_0 ;
@@ -2154,28 +3515,45 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
        (.C(aclk),
         .CE(1'b1),
         .D(1'b1),
+<<<<<<< HEAD
         .Q(m_valid_i_reg_0[0]),
+=======
+        .Q(\aresetn_d_reg_n_0_[0] ),
+>>>>>>> master
         .R(SR));
   FDRE #(
     .INIT(1'b0)) 
     \aresetn_d_reg[1] 
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(m_valid_i_reg_0[0]),
         .Q(m_valid_i_reg_0[1]),
         .R(SR));
   (* SOFT_HLUTNM = "soft_lutpair32" *) 
+=======
+        .D(\aresetn_d_reg_n_0_[0] ),
+        .Q(\aresetn_d_reg_n_0_[1] ),
+        .R(SR));
+>>>>>>> master
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_rready[0]_INST_0 
        (.I0(aa_rready),
+<<<<<<< HEAD
         .I1(\m_atarget_hot_reg[2] [0]),
         .O(m_axi_rready[0]));
   (* SOFT_HLUTNM = "soft_lutpair31" *) 
+=======
+        .I1(Q[0]),
+        .O(m_axi_rready[0]));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+>>>>>>> master
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_rready[1]_INST_0 
        (.I0(aa_rready),
+<<<<<<< HEAD
         .I1(\m_atarget_hot_reg[2] [1]),
         .O(m_axi_rready[1]));
   (* SOFT_HLUTNM = "soft_lutpair31" *) 
@@ -2646,6 +4024,349 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
        (.I0(\skid_buffer[9]_i_1_n_0 ),
         .I1(aa_rready),
         .I2(\skid_buffer_reg_n_0_[9] ),
+=======
+        .I1(Q[1]),
+        .O(m_axi_rready[1]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[10]_i_1 
+       (.I0(m_axi_rdata[39]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[7]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[10] ),
+        .O(skid_buffer[10]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[11]_i_1 
+       (.I0(m_axi_rdata[40]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[8]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[11] ),
+        .O(skid_buffer[11]));
+  LUT6 #(
+    .INIT(64'h3300FCFCAAAAAAAA)) 
+    \m_payload_i[12]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[12] ),
+        .I1(m_atarget_enc[1]),
+        .I2(m_axi_rdata[9]),
+        .I3(m_axi_rdata[41]),
+        .I4(m_atarget_enc[0]),
+        .I5(aa_rready),
+        .O(skid_buffer[12]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[13]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[13] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[42]),
+        .I5(m_axi_rdata[10]),
+        .O(skid_buffer[13]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[14]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[14] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[43]),
+        .I5(m_axi_rdata[11]),
+        .O(skid_buffer[14]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[15]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[15] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[44]),
+        .I5(m_axi_rdata[12]),
+        .O(skid_buffer[15]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[16]_i_1 
+       (.I0(m_axi_rdata[45]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[13]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[16] ),
+        .O(skid_buffer[16]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[17]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[17] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[46]),
+        .I5(m_axi_rdata[14]),
+        .O(skid_buffer[17]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[18]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[18] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[47]),
+        .I5(m_axi_rdata[15]),
+        .O(skid_buffer[18]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[19]_i_1 
+       (.I0(m_axi_rdata[48]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[16]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[19] ),
+        .O(skid_buffer[19]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[1]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[1] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rresp[2]),
+        .I5(m_axi_rresp[0]),
+        .O(skid_buffer[1]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[20]_i_1 
+       (.I0(m_axi_rdata[49]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[17]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[20] ),
+        .O(skid_buffer[20]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[21]_i_1 
+       (.I0(m_axi_rdata[50]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[18]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[21] ),
+        .O(skid_buffer[21]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[22]_i_1 
+       (.I0(m_axi_rdata[51]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[19]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[22] ),
+        .O(skid_buffer[22]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[23]_i_1 
+       (.I0(m_axi_rdata[52]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[20]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[23] ),
+        .O(skid_buffer[23]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[24]_i_1 
+       (.I0(m_axi_rdata[53]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[21]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[24] ),
+        .O(skid_buffer[24]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[25]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[25] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[54]),
+        .I5(m_axi_rdata[22]),
+        .O(skid_buffer[25]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[26]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[26] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[55]),
+        .I5(m_axi_rdata[23]),
+        .O(skid_buffer[26]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[27]_i_1 
+       (.I0(m_axi_rdata[56]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[24]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[27] ),
+        .O(skid_buffer[27]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[28]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[28] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[57]),
+        .I5(m_axi_rdata[25]),
+        .O(skid_buffer[28]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[29]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[29] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[58]),
+        .I5(m_axi_rdata[26]),
+        .O(skid_buffer[29]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[2]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[2] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rresp[3]),
+        .I5(m_axi_rresp[1]),
+        .O(skid_buffer[2]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[30]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[30] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[59]),
+        .I5(m_axi_rdata[27]),
+        .O(skid_buffer[30]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[31]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[31] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[60]),
+        .I5(m_axi_rdata[28]),
+        .O(skid_buffer[31]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[32]_i_1 
+       (.I0(m_axi_rdata[61]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[29]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[32] ),
+        .O(skid_buffer[32]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[33]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[33] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[62]),
+        .I5(m_axi_rdata[30]),
+        .O(skid_buffer[33]));
+  LUT6 #(
+    .INIT(64'h0CFFAAAA0CF0AAAA)) 
+    \m_payload_i[34]_i_2 
+       (.I0(\skid_buffer_reg_n_0_[34] ),
+        .I1(m_axi_rdata[63]),
+        .I2(m_atarget_enc[1]),
+        .I3(m_atarget_enc[0]),
+        .I4(aa_rready),
+        .I5(m_axi_rdata[31]),
+        .O(skid_buffer[34]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[3]_i_1 
+       (.I0(m_axi_rdata[32]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[0]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[3] ),
+        .O(skid_buffer[3]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[4]_i_1 
+       (.I0(m_axi_rdata[33]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[1]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[4] ),
+        .O(skid_buffer[4]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[5]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[5] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[34]),
+        .I5(m_axi_rdata[2]),
+        .O(skid_buffer[5]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[6]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[6] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[35]),
+        .I5(m_axi_rdata[3]),
+        .O(skid_buffer[6]));
+  LUT6 #(
+    .INIT(64'h3AFA0AFA3ACA0ACA)) 
+    \m_payload_i[7]_i_1 
+       (.I0(\skid_buffer_reg_n_0_[7] ),
+        .I1(m_atarget_enc[1]),
+        .I2(aa_rready),
+        .I3(m_atarget_enc[0]),
+        .I4(m_axi_rdata[36]),
+        .I5(m_axi_rdata[4]),
+        .O(skid_buffer[7]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[8]_i_1 
+       (.I0(m_axi_rdata[37]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[5]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[8] ),
+        .O(skid_buffer[8]));
+  LUT6 #(
+    .INIT(64'h2320FFFF23200000)) 
+    \m_payload_i[9]_i_1 
+       (.I0(m_axi_rdata[38]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[6]),
+        .I4(aa_rready),
+        .I5(\skid_buffer_reg_n_0_[9] ),
+>>>>>>> master
         .O(skid_buffer[9]));
   FDRE \m_payload_i_reg[0] 
        (.C(aclk),
@@ -2867,19 +4588,49 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
         .I4(m_valid_i),
         .I5(m_ready_d),
         .O(\m_ready_d_reg[1] ));
+<<<<<<< HEAD
+=======
+  LUT6 #(
+    .INIT(64'h88808888AAAAAAAA)) 
+    m_valid_i_i_1
+       (.I0(\aresetn_d_reg_n_0_[1] ),
+        .I1(sr_rvalid),
+        .I2(m_ready_d),
+        .I3(\gen_no_arbiter.grant_rnw_reg ),
+        .I4(s_axi_rready),
+        .I5(s_ready_i_reg_0),
+        .O(m_valid_i_i_1_n_0));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     m_valid_i_reg
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(\aresetn_d_reg[1]_0 ),
         .Q(sr_rvalid),
         .R(1'b0));
+=======
+        .D(m_valid_i_i_1_n_0),
+        .Q(sr_rvalid),
+        .R(1'b0));
+  LUT6 #(
+    .INIT(64'h8A8A8AAA8A8A8A8A)) 
+    s_ready_i_i_1
+       (.I0(\aresetn_d_reg_n_0_[0] ),
+        .I1(s_ready_i_reg_0),
+        .I2(sr_rvalid),
+        .I3(m_ready_d),
+        .I4(\gen_no_arbiter.grant_rnw_reg ),
+        .I5(s_axi_rready),
+        .O(s_ready_i_i_1_n_0));
+>>>>>>> master
   FDRE #(
     .INIT(1'b0)) 
     s_ready_i_reg
        (.C(aclk),
         .CE(1'b1),
+<<<<<<< HEAD
         .D(\aresetn_d_reg[0]_0 ),
         .Q(aa_rready),
         .R(1'b0));
@@ -3024,6 +4775,139 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
         .I2(Q[1]),
         .I3(Q[0]),
         .I4(m_axi_rdata[6]),
+=======
+        .D(s_ready_i_i_1_n_0),
+        .Q(aa_rready),
+        .R(1'b0));
+  (* SOFT_HLUTNM = "soft_lutpair13" *) 
+  LUT4 #(
+    .INIT(16'h7F70)) 
+    \skid_buffer[0]_i_1 
+       (.I0(m_atarget_enc[1]),
+        .I1(m_atarget_enc[0]),
+        .I2(aa_rready),
+        .I3(\skid_buffer_reg_n_0_[0] ),
+        .O(skid_buffer[0]));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[10]_i_1 
+       (.I0(m_axi_rdata[39]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[7]),
+        .O(\skid_buffer[10]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[11]_i_1 
+       (.I0(m_axi_rdata[40]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[8]),
+        .O(\skid_buffer[11]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[16]_i_1 
+       (.I0(m_axi_rdata[45]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[13]),
+        .O(\skid_buffer[16]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[19]_i_1 
+       (.I0(m_axi_rdata[48]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[16]),
+        .O(\skid_buffer[19]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[20]_i_1 
+       (.I0(m_axi_rdata[49]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[17]),
+        .O(\skid_buffer[20]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[21]_i_1 
+       (.I0(m_axi_rdata[50]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[18]),
+        .O(\skid_buffer[21]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[22]_i_1 
+       (.I0(m_axi_rdata[51]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[19]),
+        .O(\skid_buffer[22]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[23]_i_1 
+       (.I0(m_axi_rdata[52]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[20]),
+        .O(\skid_buffer[23]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[24]_i_1 
+       (.I0(m_axi_rdata[53]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[21]),
+        .O(\skid_buffer[24]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[27]_i_1 
+       (.I0(m_axi_rdata[56]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[24]),
+        .O(\skid_buffer[27]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[32]_i_1 
+       (.I0(m_axi_rdata[61]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[29]),
+        .O(\skid_buffer[32]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[3]_i_1 
+       (.I0(m_axi_rdata[32]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[0]),
+        .O(\skid_buffer[3]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[4]_i_1 
+       (.I0(m_axi_rdata[33]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[1]),
+        .O(\skid_buffer[4]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[8]_i_1 
+       (.I0(m_axi_rdata[37]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[5]),
+        .O(\skid_buffer[8]_i_1_n_0 ));
+  LUT4 #(
+    .INIT(16'h2320)) 
+    \skid_buffer[9]_i_1 
+       (.I0(m_axi_rdata[38]),
+        .I1(m_atarget_enc[1]),
+        .I2(m_atarget_enc[0]),
+        .I3(m_axi_rdata[6]),
+>>>>>>> master
         .O(\skid_buffer[9]_i_1_n_0 ));
   FDRE \skid_buffer_reg[0] 
        (.C(aclk),
@@ -3236,6 +5120,7 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
         .Q(\skid_buffer_reg_n_0_[9] ),
         .R(1'b0));
 endmodule
+<<<<<<< HEAD
 
 (* CHECK_LICENSE_TYPE = "base_zynq_xbar_0,axi_crossbar_v2_1_18_axi_crossbar,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "axi_crossbar_v2_1_18_axi_crossbar,Vivado 2018.2" *) 
 (* NotValidForBitStream *)
@@ -3417,6 +5302,8 @@ module base_zynq_xbar_0
         .s_axi_wready(s_axi_wready),
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
+=======
+>>>>>>> master
 `ifndef GLBL
 `define GLBL
 `timescale  1 ps / 1 ps

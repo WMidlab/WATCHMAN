@@ -6,7 +6,10 @@
 #include "xscugic.h"
 #include "xil_printf.h"
 #include "xtime_l.h"
+<<<<<<< HEAD
 #include "xaxidma.h"
+=======
+>>>>>>> master
 
 #include "global.h"
 #include "TARGETC_RegisterMap.h"
@@ -19,15 +22,25 @@
 XScuGic Intc;
 
 
+<<<<<<< HEAD
+=======
+//extern int TPG_intr_flg;
+//extern int SSVALID_intr_flg;
+
+
+>>>>>>> master
 // Prototypes
 void platform_setup_interrupts(void);
 void platform_enable_interrupts(void);
 void platform_cleanup_interrupts(void);
 
 void SSVALID_IntrHandler(void);
+<<<<<<< HEAD
 int AxiDma_Initialize(void);
 void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst);
 void XAxiDma_SimpleTransfer_Hej(XAxiDma *InstancePtr, UINTPTR BuffAddr, int LengthOfBytes);
+=======
+>>>>>>> master
 
 #endif
 

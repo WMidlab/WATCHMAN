@@ -9,6 +9,7 @@ void platform_setup_interrupts(void)
 	SSVALID_intr_flg = 0;
 	TPG_intr_flg = 0;
 
+<<<<<<< HEAD
 	// Setup AxiDMA
 	Status = AxiDma_Initialize();
 	if(Status != XST_SUCCESS){
@@ -17,6 +18,8 @@ void platform_setup_interrupts(void)
 		return Status;
 	}
 
+=======
+>>>>>>> master
 	IntcConfig = XScuGic_LookupConfig(XPAR_SCUGIC_0_DEVICE_ID);
 	if (IntcConfig == NULL){
 		xil_printf("In %s: XScuGic Look up config failed...\r\n",
@@ -32,6 +35,7 @@ void platform_setup_interrupts(void)
 	}
 
 	// set the priority to 0xA0 (highest 0xF8, lowest 0x00) and a trigger for a rising edge 0x3.
+<<<<<<< HEAD
 	
 	//SSVALID Interrupt
 	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR, 0xA1, 0x3);
@@ -39,14 +43,22 @@ void platform_setup_interrupts(void)
 	//AXIDMA Interrupt
 	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR, 0xA1, 0x3);
 	
+=======
+	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR, 0xA1, 0x3);
+	
+>>>>>>> master
 	Xil_ExceptionInit();
 
 	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
 			(Xil_ExceptionHandler)XScuGic_InterruptHandler,
 			(void *)&Intc);
+<<<<<<< HEAD
 			
 	
 	//Connect Interruptions		
+=======
+
+>>>>>>> master
 	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR,
 							(Xil_InterruptHandler)SSVALID_IntrHandler,
 							&Intc);
@@ -55,6 +67,7 @@ void platform_setup_interrupts(void)
 				__func__);
 		return ;
 	}
+<<<<<<< HEAD
 	
 	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR,
 							(Xil_InterruptHandler)AxiDMA_IntrHandler,
@@ -64,6 +77,9 @@ void platform_setup_interrupts(void)
 				__func__);
 		return ;
 	}
+=======
+
+>>>>>>> master
 
 	return;
 }
@@ -79,10 +95,14 @@ void platform_enable_interrupts()
 	TC_ERROR_intr_flg = 0;
 	 
 	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
+<<<<<<< HEAD
 	XScuGic_Enable(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR);
 
 	XAxiDma_IntrEnable(&AxiDmaInstance, XAXIDMA_IRQ_IOC_MASK, XAXIDMA_DEVICE_TO_DMA);
 	
+=======
+
+>>>>>>> master
 	Xil_ExceptionEnableMask(XIL_EXCEPTION_IRQ);
 
 	return;
@@ -93,8 +113,11 @@ void platform_cleanup_interrupts()
 {
 	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
 	
+<<<<<<< HEAD
 	XAxiDma_IntrDisable(&AxiDmaInstance, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
 	
+=======
+>>>>>>> master
 	Xil_ICacheDisable();
 	Xil_DCacheDisable();
 	return;
@@ -112,11 +135,15 @@ void SSVALID_IntrHandler(void){
 		}
 		else{
 			SSVALID_intr_flg = 1;
+<<<<<<< HEAD
 
 			//printf("%d\t%d\t",regptr[TC_RDAD_ADDR_REG],regptr[TC_SS_SELECT_REG]);
 			//printf("%d %d\t%d\t",test.oddeven,test.addr,test.sscnt);
 			decToHexa(regptr[TC_RDAD_ADDR_REG]);
 			xil_printf("\t");
+=======
+			printf("%d\t",regptr[TC_RDAD_ADDR_REG]*32+regptr[TC_SS_SELECT_REG]);
+>>>>>>> master
 			
 			printf("%d\t",regptr[TC_eDO_CH0_REG]);
 			printf("%d\t",regptr[TC_eDO_CH1_REG]);
@@ -130,6 +157,22 @@ void SSVALID_IntrHandler(void){
 				xil_printf("ERROR \r\n");
 			}
 		}
+<<<<<<< HEAD
+=======
+		//GetTargetCStatus();
+		
+		//Reading Sample
+	//	printf("CH0:\t%d\r\n",regptr[TC_eDO_CH0_REG]);
+	/*	decToHexa(regptr[TC_eDO_CH0_REG]);
+		xil_printf("\t");
+		decToBin(regptr[TC_eDO_CH0_REG]);
+		xil_printf("\r\n");
+		xil_printf("CH1:\t");
+		decToHexa(regptr[TC_eDO_CH1_REG]);
+		xil_printf("\t");
+		decToBin(regptr[TC_eDO_CH1_REG]);
+		xil_printf("\r\n");*/
+>>>>>>> master
 		
 		ControlRegisterWrite(SSACK_MASK,ENABLE);
 		//GetTargetCStatus();
@@ -144,6 +187,7 @@ void SSVALID_IntrHandler(void){
 		SSVALID_intr_flg = 0;
 	}
 }
+<<<<<<< HEAD
 int AxiDma_Initialize(void)
 {
 	int Status = XST_SUCCESS;
@@ -250,4 +294,6 @@ void XAxiDma_SimpleTransfer_Hej(XAxiDma *InstancePtr, UINTPTR BuffAddr, int Leng
 
 	XAxiDma_WriteReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET, XAXIDMA_BUFFLEN_OFFSET, LengthOfBytes);
 }
+=======
+>>>>>>> master
 

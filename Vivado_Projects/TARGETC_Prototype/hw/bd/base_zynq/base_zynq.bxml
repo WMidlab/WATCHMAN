@@ -13,11 +13,9 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0.xci" Type="IP">
         <Instance HierarchyPath="rst_ps7_0_50M"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1537405636" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -170,3 +168,6 @@
     </FileCollection>
   </CompositeFile>
 </Root>
+
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1537405636" IsTrackable="true" IsStatusTracked="true"/>
+        <UsedIn Val="SIMULATION"/>

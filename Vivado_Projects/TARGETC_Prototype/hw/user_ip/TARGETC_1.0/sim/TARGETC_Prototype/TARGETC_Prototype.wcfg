@@ -3,9 +3,15 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
+<<<<<<< HEAD
       <db_ref path="TARGETC_Prototype_TB_FIFO_AXIS_behav.wdb" id="1">
          <top_modules>
             <top_module name="TARGETC_Prototype_TB_FIFO_AXIS" />
+=======
+      <db_ref path="TARGETC_Prototype_TB_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TARGETC_Prototype_TB" />
+>>>>>>> master
             <top_module name="axi_lite_pkg" />
             <top_module name="glbl" />
             <top_module name="register_pkg" />
@@ -17,6 +23,7 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="1001000000001fs"></ZoomEndTime>
+<<<<<<< HEAD
       <Cursor1Time time="335768504000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
@@ -468,5 +475,372 @@
          <obj_property name="ElementShortName">mst_exec_state</obj_property>
          <obj_property name="ObjectShortName">mst_exec_state</obj_property>
       </wvobject>
+=======
+      <Cursor1Time time="781248333000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="126"></NameColumnWidth>
+      <ValueColumnWidth column_width="155"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/s00_axi_ACLK">
+      <obj_property name="ElementShortName">s00_axi_ACLK</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_ACLK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/simulation_end_s">
+      <obj_property name="ElementShortName">simulation_end_s</obj_property>
+      <obj_property name="ObjectShortName">simulation_end_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/DOE">
+      <obj_property name="ElementShortName">DOE</obj_property>
+      <obj_property name="ObjectShortName">DOE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/CtrlBus_OxMS">
+      <obj_property name="ElementShortName">CtrlBus_OxMS</obj_property>
+      <obj_property name="ObjectShortName">CtrlBus_OxMS</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/CtrlBus_IxMS">
+      <obj_property name="ElementShortName">CtrlBus_IxMS</obj_property>
+      <obj_property name="ObjectShortName">CtrlBus_IxMS</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/s00_axi_ARESETN">
+      <obj_property name="ElementShortName">s00_axi_ARESETN</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_ARESETN</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider246" type="divider">
+      <obj_property name="label">AXI WRITE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/s00_axi_AWADDR">
+      <obj_property name="ElementShortName">s00_axi_AWADDR[9:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_AWADDR[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/s00_axi_WDATA">
+      <obj_property name="ElementShortName">s00_axi_WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider245" type="divider">
+      <obj_property name="label">AXI READ</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/s00_axi_ARADDR">
+      <obj_property name="ElementShortName">s00_axi_ARADDR[9:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_ARADDR[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TARGETC_Prototype_TB/s00_axi_RDATA">
+      <obj_property name="ElementShortName">s00_axi_RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_RDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group329">
+      <obj_property name="label">TC_RegControl</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/AxiBusIn">
+         <obj_property name="ElementShortName">AxiBusIn</obj_property>
+         <obj_property name="ObjectShortName">AxiBusIn</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/AxiBusOut">
+         <obj_property name="ElementShortName">AxiBusOut</obj_property>
+         <obj_property name="ObjectShortName">AxiBusOut</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/TC_ADDR_s">
+         <obj_property name="ElementShortName">TC_ADDR_s[6:0]</obj_property>
+         <obj_property name="ObjectShortName">TC_ADDR_s[6:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/TC_DATA_s">
+         <obj_property name="ElementShortName">TC_DATA_s[11:0]</obj_property>
+         <obj_property name="ObjectShortName">TC_DATA_s[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/STATUS_intl">
+         <obj_property name="ElementShortName">STATUS_intl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">STATUS_intl[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_Control_inst/TCReg">
+         <obj_property name="ElementShortName">TCReg[0:150][31:0]</obj_property>
+         <obj_property name="ObjectShortName">TCReg[0:150][31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group1256">
+      <obj_property name="label">TC_Serial Out Register</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/busy">
+         <obj_property name="ElementShortName">busy</obj_property>
+         <obj_property name="ObjectShortName">busy</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SIN">
+         <obj_property name="ElementShortName">SIN</obj_property>
+         <obj_property name="ObjectShortName">SIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SCLK">
+         <obj_property name="ElementShortName">SCLK</obj_property>
+         <obj_property name="ObjectShortName">SCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/PCLK">
+         <obj_property name="ElementShortName">PCLK</obj_property>
+         <obj_property name="ObjectShortName">PCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SIN_i">
+         <obj_property name="ElementShortName">SIN_i</obj_property>
+         <obj_property name="ObjectShortName">SIN_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SCLK_i">
+         <obj_property name="ElementShortName">SCLK_i</obj_property>
+         <obj_property name="ObjectShortName">SCLK_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/PCLK_i">
+         <obj_property name="ElementShortName">PCLK_i</obj_property>
+         <obj_property name="ObjectShortName">PCLK_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SHOUT_i">
+         <obj_property name="ElementShortName">SHOUT_i</obj_property>
+         <obj_property name="ObjectShortName">SHOUT_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/SHOUT">
+         <obj_property name="ElementShortName">SHOUT</obj_property>
+         <obj_property name="ObjectShortName">SHOUT</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/STATE">
+         <obj_property name="ElementShortName">STATE</obj_property>
+         <obj_property name="ObjectShortName">STATE</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SerialRegCtrl_inst/INTERNAL_COUNTER">
+         <obj_property name="ElementShortName">INTERNAL_COUNTER[15:0]</obj_property>
+         <obj_property name="ObjectShortName">INTERNAL_COUNTER[15:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group221">
+      <obj_property name="label">TC_ClockMgmt</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/rst">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/clk">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/WL_CLK_DIV">
+         <obj_property name="ElementShortName">WL_CLK_DIV[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WL_CLK_DIV[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/SCLK">
+         <obj_property name="ElementShortName">SCLK</obj_property>
+         <obj_property name="ObjectShortName">SCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/HSCLK">
+         <obj_property name="ElementShortName">HSCLK</obj_property>
+         <obj_property name="ObjectShortName">HSCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/HSCLK_P">
+         <obj_property name="ElementShortName">HSCLK_P</obj_property>
+         <obj_property name="ObjectShortName">HSCLK_P</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/HSCLK_N">
+         <obj_property name="ElementShortName">HSCLK_N</obj_property>
+         <obj_property name="ObjectShortName">HSCLK_N</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/WL_CLK">
+         <obj_property name="ElementShortName">WL_CLK</obj_property>
+         <obj_property name="ObjectShortName">WL_CLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/WL_CLK_P">
+         <obj_property name="ElementShortName">WL_CLK_P</obj_property>
+         <obj_property name="ObjectShortName">WL_CLK_P</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/WL_CLK_N">
+         <obj_property name="ElementShortName">WL_CLK_N</obj_property>
+         <obj_property name="ObjectShortName">WL_CLK_N</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/RDAD_CLK">
+         <obj_property name="ElementShortName">RDAD_CLK</obj_property>
+         <obj_property name="ObjectShortName">RDAD_CLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/SSTIN">
+         <obj_property name="ElementShortName">SSTIN</obj_property>
+         <obj_property name="ObjectShortName">SSTIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/SSTIN_P">
+         <obj_property name="ElementShortName">SSTIN_P</obj_property>
+         <obj_property name="ObjectShortName">SSTIN_P</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/SSTIN_N">
+         <obj_property name="ElementShortName">SSTIN_N</obj_property>
+         <obj_property name="ObjectShortName">SSTIN_N</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/locked_intl">
+         <obj_property name="ElementShortName">locked_intl</obj_property>
+         <obj_property name="ObjectShortName">locked_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/PLL_LOCKED">
+         <obj_property name="ElementShortName">PLL_LOCKED</obj_property>
+         <obj_property name="ObjectShortName">PLL_LOCKED</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/ClkDivider_inst/clk_i">
+         <obj_property name="ElementShortName">clk_i</obj_property>
+         <obj_property name="ObjectShortName">clk_i</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/ClkDivider_inst/clk_o">
+         <obj_property name="ElementShortName">clk_o</obj_property>
+         <obj_property name="ObjectShortName">clk_o</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/ClkDivider_inst/div">
+         <obj_property name="ElementShortName">div[31:0]</obj_property>
+         <obj_property name="ObjectShortName">div[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_ClockMgmt_inst/ClkDivider_inst/cnt">
+         <obj_property name="ElementShortName">cnt[31:0]</obj_property>
+         <obj_property name="ObjectShortName">cnt[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group79">
+      <obj_property name="label">TC_SamStoDig</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/ClockBus">
+         <obj_property name="ElementShortName">ClockBus</obj_property>
+         <obj_property name="ObjectShortName">ClockBus</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/WR_RS_S">
+         <obj_property name="ElementShortName">WR_RS_S[1:0]</obj_property>
+         <obj_property name="ObjectShortName">WR_RS_S[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/WR_CS_S">
+         <obj_property name="ElementShortName">WR_CS_S[5:0]</obj_property>
+         <obj_property name="ObjectShortName">WR_CS_S[5:0]</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/storage_stm">
+         <obj_property name="ElementShortName">storage_stm</obj_property>
+         <obj_property name="ObjectShortName">storage_stm</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/RDAD_CLK">
+         <obj_property name="ElementShortName">RDAD_CLK</obj_property>
+         <obj_property name="ObjectShortName">RDAD_CLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/RDAD_SIN">
+         <obj_property name="ElementShortName">RDAD_SIN</obj_property>
+         <obj_property name="ObjectShortName">RDAD_SIN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/RDAD_DIR">
+         <obj_property name="ElementShortName">RDAD_DIR</obj_property>
+         <obj_property name="ObjectShortName">RDAD_DIR</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group1316">
+         <obj_property name="label">RDAD STM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/rdad_stm">
+            <obj_property name="ElementShortName">rdad_stm</obj_property>
+            <obj_property name="ObjectShortName">rdad_stm</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/BitCnt">
+            <obj_property name="ElementShortName">BitCnt</obj_property>
+            <obj_property name="ObjectShortName">BitCnt</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/StoAddr">
+            <obj_property name="ElementShortName">StoAddr[8:0]</obj_property>
+            <obj_property name="ObjectShortName">StoAddr[8:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/done_flg">
+            <obj_property name="ElementShortName">done_flg</obj_property>
+            <obj_property name="ObjectShortName">done_flg</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/RDAD">
+            <obj_property name="ElementShortName">RDAD</obj_property>
+            <obj_property name="ObjectShortName">RDAD</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/RAMP">
+         <obj_property name="ElementShortName">RAMP</obj_property>
+         <obj_property name="ObjectShortName">RAMP</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/GCC_RESET">
+         <obj_property name="ElementShortName">GCC_RESET</obj_property>
+         <obj_property name="ObjectShortName">GCC_RESET</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group1317">
+         <obj_property name="label">Wilkinson STM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/wlcnt">
+            <obj_property name="ElementShortName">wlcnt[10:0]</obj_property>
+            <obj_property name="ObjectShortName">wlcnt[10:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/wlstate">
+            <obj_property name="ElementShortName">wlstate</obj_property>
+            <obj_property name="ObjectShortName">wlstate</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/WL">
+            <obj_property name="ElementShortName">WL</obj_property>
+            <obj_property name="ObjectShortName">WL</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/WL_CNT_EN">
+            <obj_property name="ElementShortName">WL_CNT_EN</obj_property>
+            <obj_property name="ObjectShortName">WL_CNT_EN</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/WL_CNT_INTL">
+            <obj_property name="ElementShortName">WL_CNT_INTL[15:0]</obj_property>
+            <obj_property name="ObjectShortName">WL_CNT_INTL[15:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SS_INCR">
+         <obj_property name="ElementShortName">SS_INCR</obj_property>
+         <obj_property name="ObjectShortName">SS_INCR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/SS_RESET">
+         <obj_property name="ElementShortName">SS_RESET</obj_property>
+         <obj_property name="ObjectShortName">SS_RESET</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/HSCLK">
+         <obj_property name="ElementShortName">HSCLK</obj_property>
+         <obj_property name="ObjectShortName">HSCLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/SSVALID_INTR">
+         <obj_property name="ElementShortName">SSVALID_INTR</obj_property>
+         <obj_property name="ObjectShortName">SSVALID_INTR</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group1320">
+         <obj_property name="label">SS STM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SSCnt">
+            <obj_property name="ElementShortName">SSCnt</obj_property>
+            <obj_property name="ObjectShortName">SSCnt</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SSBitCnt">
+            <obj_property name="ElementShortName">SSBitCnt</obj_property>
+            <obj_property name="ObjectShortName">SSBitCnt</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/ss_incr_flg">
+            <obj_property name="ElementShortName">ss_incr_flg</obj_property>
+            <obj_property name="ObjectShortName">ss_incr_flg</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/hsout_stm">
+            <obj_property name="ElementShortName">hsout_stm</obj_property>
+            <obj_property name="ObjectShortName">hsout_stm</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SS_CNT_EN">
+            <obj_property name="ElementShortName">SS_CNT_EN</obj_property>
+            <obj_property name="ObjectShortName">SS_CNT_EN</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SS_CNT_INTL">
+            <obj_property name="ElementShortName">SS_CNT_INTL[15:0]</obj_property>
+            <obj_property name="ObjectShortName">SS_CNT_INTL[15:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB/DUT/TC_SamStoDig_inst/SS">
+            <obj_property name="ElementShortName">SS</obj_property>
+            <obj_property name="ObjectShortName">SS</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+      </wvobject>
+>>>>>>> master
    </wvobject>
 </wave_config>

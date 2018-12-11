@@ -6,7 +6,11 @@ use ieee.numeric_std.all;
 package AXI_Lite_pkg is
 
 	constant C_S_AXI_DATA_WIDTH	: integer	:= 32;
+<<<<<<< HEAD
 	constant C_S_AXI_ADDR_WIDTH	: integer	:= 32;
+=======
+	constant C_S_AXI_ADDR_WIDTH	: integer	:= 10;
+>>>>>>> master
 			
 	type AXI_Lite_Inputs is record
 		aclk	:  std_logic;

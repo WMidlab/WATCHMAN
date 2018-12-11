@@ -4,7 +4,11 @@ use ieee.numeric_std.all;
  
 entity module_fifo_regs_no_flags is
   generic (
+<<<<<<< HEAD
     g_WIDTH : natural := 32;
+=======
+    g_WIDTH : natural := 8;
+>>>>>>> master
     g_DEPTH : integer := 32
     );
   port (
@@ -37,6 +41,7 @@ architecture rtl of module_fifo_regs_no_flags is
   signal w_FULL  : std_logic;
   signal w_EMPTY : std_logic;
    
+<<<<<<< HEAD
   signal o_rd_data_intl : std_logic_vector(g_WIDTH-1 downto 0);
   
 begin
@@ -46,16 +51,29 @@ begin
   begin
     if rising_edge(i_clk) then
       if i_rst_sync = '0' then
+=======
+begin
+ 
+  p_CONTROL : process (i_clk) is
+  begin
+    if rising_edge(i_clk) then
+      if i_rst_sync = '1' then
+>>>>>>> master
         r_FIFO_COUNT <= 0;
         r_WR_INDEX   <= 0;
         r_RD_INDEX   <= 0;
       else
  
         -- Keeps track of the total number of words in the FIFO
+<<<<<<< HEAD
         --if (i_wr_en = '1' and rd_en_dly = '0') then
         if (i_wr_en = '1' and i_rd_en = '0') then
           r_FIFO_COUNT <= r_FIFO_COUNT + 1;
         --elsif (i_wr_en = '0' and rd_en_dly = '1') then
+=======
+        if (i_wr_en = '1' and i_rd_en = '0') then
+          r_FIFO_COUNT <= r_FIFO_COUNT + 1;
+>>>>>>> master
         elsif (i_wr_en = '0' and i_rd_en = '1') then
           r_FIFO_COUNT <= r_FIFO_COUNT - 1;
         end if;
@@ -71,11 +89,16 @@ begin
  
         -- Keeps track of the read index (and controls roll-over)        
         if (i_rd_en = '1' and w_EMPTY = '0') then
+<<<<<<< HEAD
         	if r_RD_INDEX = g_DEPTH-1 then
+=======
+          if r_RD_INDEX = g_DEPTH-1 then
+>>>>>>> master
             r_RD_INDEX <= 0;
           else
             r_RD_INDEX <= r_RD_INDEX + 1;
           end if;
+<<<<<<< HEAD
 		end if;
 		        
 --			o_rd_data_intl <= r_FIFO_DATA(r_RD_INDEX+2);
@@ -89,6 +112,9 @@ begin
 --        else
 --        	o_rd_data_intl <= r_FIFO_DATA(0);
 --        end if;
+=======
+        end if;
+>>>>>>> master
  
         -- Registers the input data when there is a write
         if i_wr_en = '1' then
@@ -99,17 +125,40 @@ begin
     end if;                             -- rising_edge(i_clk)
   end process p_CONTROL;
    
+<<<<<<< HEAD
 --  o_rd_data <= o_rd_data_intl; --r_FIFO_DATA(r_RD_INDEX);
 
 	o_rd_data	<= r_FIFO_DATA(r_RD_INDEX);
 	
+=======
+  o_rd_data <= r_FIFO_DATA(r_RD_INDEX);
+ 
+>>>>>>> master
   w_FULL  <= '1' when r_FIFO_COUNT = g_DEPTH else '0';
   w_EMPTY <= '1' when r_FIFO_COUNT = 0       else '0';
  
   o_full  <= w_FULL;
   o_empty <= w_EMPTY;
    
+<<<<<<< HEAD
 --  end process p_ASSERT;
+=======
+  -- ASSERTION LOGIC - Not synthesized
+  -- synthesis translate_off
+ 
+  p_ASSERT : process (i_clk) is
+  begin
+    if rising_edge(i_clk) then
+      if i_wr_en = '1' and w_FULL = '1' then
+        report "ASSERT FAILURE - MODULE_REGISTER_FIFO: FIFO IS FULL AND BEING WRITTEN " severity failure;
+      end if;
+ 
+      if i_rd_en = '1' and w_EMPTY = '1' then
+        report "ASSERT FAILURE - MODULE_REGISTER_FIFO: FIFO IS EMPTY AND BEING READ " severity failure;
+      end if;
+    end if;
+  end process p_ASSERT;
+>>>>>>> master
  
   -- synthesis translate_on
 end rtl;

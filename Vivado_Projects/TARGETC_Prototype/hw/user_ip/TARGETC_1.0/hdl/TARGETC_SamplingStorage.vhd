@@ -6,7 +6,11 @@ use work.TARGETC_pkg.all;
 
 entity TARGETC_SamplingStorage is
 	Port ( 
+<<<<<<< HEAD
 	--CLK : 			in  STD_LOGIC;
+=======
+	CLK : 			in  STD_LOGIC;
+>>>>>>> master
 	RST : 			in	STD_Logic;
 	
 	DISCH_PERIOD :	in	std_logic_vector(15 downto 0);
@@ -33,9 +37,13 @@ entity TARGETC_SamplingStorage is
 	SS_RESET:		out std_logic;
 	
 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+<<<<<<< HEAD
 	CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
 	
 	FIFOresponse:		in std_logic
+=======
+	CtrlBus_OxSL:		out	T_CtrlBus_OxSL --Outputs from Control Master
+>>>>>>> master
 	
 	);
 	
@@ -43,6 +51,7 @@ end TARGETC_SamplingStorage;
 
 architecture Behavioral of TARGETC_SamplingStorage is
 
+<<<<<<< HEAD
 	
 
 	type storagestate is (
@@ -65,6 +74,13 @@ architecture Behavioral of TARGETC_SamplingStorage is
 	signal CtrlStorage : CtrlStorageArray; 
 	signal StorageAddr	:	std_logic_vector(7 downto 0) := (others => '0');
 	signal StoEndWindow: std_logic_vector(8 downto 0) := (others => '0');
+=======
+	type storagestate is (IDLE,START,STOP);
+	signal storage_stm : storagestate := IDLE;
+	
+	signal CtrlStorage : CtrlStorageArray; 
+	signal StorageAddr	:	std_logic_vector(7 downto 0) := (others => '0');
+>>>>>>> master
 	
 	signal odd, even 	:	std_logic_vector(8 downto 0) := (others => '0');
 	
@@ -73,7 +89,10 @@ architecture Behavioral of TARGETC_SamplingStorage is
 		IDLE,
 		READY,
 		RESPREADY,
+<<<<<<< HEAD
 		SET_RDAD_ADDR,
+=======
+>>>>>>> master
 		
 		INCRWAIT,
 		LOW_SET0,
@@ -84,11 +103,15 @@ architecture Behavioral of TARGETC_SamplingStorage is
 		VALID,
 		RESPVALID,
 		RESPVALID2,
+<<<<<<< HEAD
 		IDLERESET,
 		FIFOTEST_DATA,
 		FIFOTEST_VALID,
 		FIFOTEST_RESPVALID,
 		FIFOTEST_RESPVALID2
+=======
+		IDLERESET
+>>>>>>> master
 	);
 	signal rdad_stm : state_type := IDLE;
 	signal hsout_stm : state_type := IDLE;
@@ -107,11 +130,18 @@ architecture Behavioral of TARGETC_SamplingStorage is
 	);
 	signal wlstate : wilkinson_type := IDLE;
 	
+<<<<<<< HEAD
 	signal StoAddr : std_logic_vector(7 downto 0) := (others => '0');
 	
 	signal RD_Addr	:std_logic_vector(8 downto 0) := (others => '0');
 	signal RDADEndWindow:std_logic_vector(8 downto 0) := (others => '0');
 	 
+=======
+	signal StoAddr : std_logic_vector(8 downto 0) := (others => '0');
+	signal RD_Addr	:std_logic_vector(8 downto 0) := (others => '0');
+	
+	signal StoAddr_DFF : std_logic_vector(8 downto 0) := (others => '0');
+>>>>>>> master
 	signal BitCnt : integer := 8;
 	
 	signal wlcnt : std_logic_vector(10 downto 0) := (others => '0');
@@ -136,30 +166,43 @@ architecture Behavioral of TARGETC_SamplingStorage is
 		response:	std_logic;
 	end record;	
 	
+<<<<<<< HEAD
 	signal STO:		T_HANDSHAKE;
+=======
+>>>>>>> master
 	signal RDAD:	T_HANDSHAKE;
 	signal WL:		T_HANDSHAKE;
 	signal SS:		T_HANDSHAKE;
 
+<<<<<<< HEAD
 	signal oddeven : std_logic := '0';
 	signal WindowCnt : std_logic_vector(8 downto 0);
+=======
+>>>>>>> master
 	signal WL_CNT_EN : std_logic := '0';
 	signal WL_CNT_INTL	: UNSIGNED(15 downto 0) := x"0000";
 
 	signal SS_CNT_EN : std_logic := '0';
 	signal SS_CNT_INTL	: UNSIGNED(15 downto 0) := x"0000";
 
+<<<<<<< HEAD
 	signal RetAddr_intl : T_ReturnAddress;
+=======
+>>>>>>> master
 
   	signal SSBitCnt :	integer := 0;
   	signal SSCnt :	integer := 0;
 	signal ss_incr_flg : std_logic := '0';
+<<<<<<< HEAD
 	
 	signal WL_CNT_EN_intl : std_logic := '0';
 	
 	signal CtrlDO_intl :	eDO_BUS_TYPE;
 	signal TestFIFO_window : integer;
 	signal TestFIFO_cnt : integer;
+=======
+	signal done_flg :		std_logic;
+>>>>>>> master
 begin
 
 	-- --------------------------------------------------------------------------------
@@ -204,6 +247,7 @@ begin
 	begin
 		if RST = '0' or CtrlBus_IxSL.SWRESET = '0' then
 			storage_stm <= IDLE;
+<<<<<<< HEAD
 			StorageAddr <= (others =>'1');
 			CtrlStorage.dirty <= (others => '1');
 			CtrlStorage.digit <= (others => '1');
@@ -211,10 +255,19 @@ begin
 			WR_RS_S	<= DUMMY_ROW;
 			WR_CS_S	<= DUMMY_COL;
 			STO.valid <= '0';
+=======
+			StorageAddr <= (others =>'0');
+			CtrlStorage.dirty <= (others => '0');
+			CtrlStorage.digit <= (others => '0');
+			
+			WR_RS_S(1 downto 0) <= (others => '0');
+			WR_CS_S(5 downto 0) <= (others => '0');
+>>>>>>> master
 		else
 			if rising_edge(ClockBus.SSTIN) then
 				case storage_stm is
 					when IDLE =>
+<<<<<<< HEAD
 						STO.response <= '0';
 						STO.ready <= '1';
 						STO.valid <= '0';
@@ -292,6 +345,46 @@ begin
 						StorageAddr <= (others => '1');
 						WR_RS_S	<= DUMMY_ROW;
 						WR_CS_S	<= DUMMY_COL;
+=======
+						if(CtrlBus_IxSL.StartStorage = '1') then
+						--if(StartStorage = '1') then
+							storage_stm <= START;
+						else
+							storage_stm <= IDLE;
+						end if;
+						
+					when START =>
+						if(to_integer(unsigned(StorageAddr)) < 255) then
+							-- Change Address
+							WR_RS_S(1 downto 0) <= StorageAddr(1 downto 0);
+							WR_CS_S(5 downto 0) <= StorageAddr(7 downto 2);
+				
+							CtrlStorage.dirty(to_integer(unsigned(odd))) <= '1';
+							CtrlStorage.dirty(to_integer(unsigned(even))) <= '1';
+							
+							-- Write Two times dirty bit for odd and even
+				
+							StorageAddr <= std_logic_vector(unsigned(StorageAddr) + 1);
+						else
+							StorageAddr <= (others => '1');
+							WR_RS_S(1 downto 0) <= (others => '1');
+							WR_CS_S(5 downto 0) <= (others => '1');
+							
+							storage_stm <= STOP;
+						end if;
+					when STOP =>
+						--nop
+						StorageAddr <= (others => '1');
+						WR_RS_S(1 downto 0) <= (others => '1');
+						WR_CS_S(5 downto 0) <= (others => '1');
+							
+						storage_stm <= STOP;
+					when others =>
+						--nop
+						StorageAddr <= (others => '0');
+						WR_RS_S(1 downto 0) <= (others => '0');
+						WR_CS_S(5 downto 0) <= (others => '0');
+>>>>>>> master
 							
 						storage_stm <= IDLE;					
 				end case;
@@ -301,6 +394,7 @@ begin
 	
 	process(StorageAddr)
 	begin
+<<<<<<< HEAD
 		odd <= StorageAddr(7 downto 2) & StorageAddr(1 downto 0) & '0';
 		even <= StorageAddr(7 downto 2) & StorageAddr(1 downto 0) & '1';
 	end process;
@@ -308,6 +402,17 @@ begin
 
 	--CtrlBus_OxSL.Storage <= '1' when storage_stm = STOP else '0';
 	--StorageBusy <= '0' when storage_stm = STOP else '1';
+=======
+		--odd <= StorageAddr & '0';
+		odd <= StorageAddr(7 downto 2) & '0' & StorageAddr(1 downto 0);
+		--even <= StorageAddr & '1';
+		even <= StorageAddr(7 downto 2) & '1' & StorageAddr(1 downto 0);
+	end process;
+	
+
+	CtrlBus_OxSL.Storage <= '1' when storage_stm = STOP else '0';
+	StorageBusy <= '0' when storage_stm = STOP else '1';
+>>>>>>> master
 	
 	-- Digitilization Readout the Samples Storage Location
 	process(RST,ClockBus.RDAD_CLK,CtrlBus_IxSL.SWRESET)
@@ -319,13 +424,21 @@ begin
 			BitCnt <= 8;
 			StoAddr <= (others => '0');
 			RD_Addr <= (others => '0');
+<<<<<<< HEAD
 			--CtrlBus_OxSL.RD_ADDR <= (others => '0');
+=======
+			
+>>>>>>> master
 			RDAD.response <= '0';
 			RDAD.ready <= '0';
 			RDAD.busy <= '0';
 			RDAD.valid <= '0';
 			RDAD_stm <= IDLE;
+<<<<<<< HEAD
 			oddeven <= '0';
+=======
+			done_flg <= '0';
+>>>>>>> master
 		else
 			if rising_edge(ClockBus.RDAD_CLK) then
 				case rdad_stm is
@@ -333,11 +446,16 @@ begin
 						RDAD_CLK_intl 	<= '0';
 						RDAD_SIN_intl 	<= '0';
 						RDAD_DIR_intl 	<= '0';
+<<<<<<< HEAD
 						RDAD.ready <= '1';
+=======
+						
+>>>>>>> master
 						RDAD.valid <= '0';
 						RDAD.busy <= '0';
 						--BitCnt <= 10;
 						BitCnt <= 0;
+<<<<<<< HEAD
 						RDAD.response <= '0';
 --						if(StorageBusy = '0' and WL.busy = '0' and SS.busy = '0' and done_flg = '0') then -- Storage Done Digitilization can start
 --							rdad_stm <= LOW_SET0;
@@ -391,6 +509,18 @@ begin
 							else
 								rdad_stm <= SET_RDAD_ADDR;
 							end if;
+=======
+						
+						RD_Addr <= StoAddr(8 downto 3) & StoAddr(0) & StoAddr(2 downto 1);
+						
+						if(StorageBusy = '0' and WL.busy = '0' and SS.busy = '0' and done_flg = '0') then -- Storage Done Digitilization can start
+							rdad_stm <= LOW_SET0;
+							RDAD.busy <= '1';
+						else
+							rdad_stm <= IDLE;
+						end if;
+						
+>>>>>>> master
 					when LOW_SET0 =>
 						RDAD_CLK_intl 	<= '0';
 						
@@ -419,7 +549,11 @@ begin
 								RDAD_DIR_intl <= '0';
 								rdad_stm <= VALID;
 								RDAD.valid <= '1';
+<<<<<<< HEAD
 								RDAD.busy <= '1';
+=======
+								RDAD.busy <= '0';
+>>>>>>> master
 							else
 								RDAD_DIR_intl 	<= '1';
 								--BitCnt <= BitCnt - 1;
@@ -432,6 +566,7 @@ begin
 						
 					when VALID =>
 						RDAD_SIN_intl 	<= '0'; --MSB First
+<<<<<<< HEAD
 						
 						--CtrlBus_OxSL.RD_ADDR <= StoAddr;
 						
@@ -467,6 +602,28 @@ begin
 						else
 							RDAD.valid <= '0';
 							rdad_stm <= RESPVALID;
+=======
+						if (WL.ready = '0') then
+							rdad_stm <= VALID;
+							
+							--New 
+							
+						else
+							rdad_stm <= RESPVALID;
+						end if;
+					when RESPVALID =>
+						if (WL.response = '1') then
+							if StoAddr /=  "111111111" then
+								StoAddr <= std_logic_vector(unsigned(StoAddr)+1);
+								rdad_stm <= IDLE;
+								RDAD.valid <= '0';
+								RDAD.busy <= '1';
+							else
+								done_flg <= '1';
+								RDAD.busy <= '0';
+								StoAddr <= (others => '1');
+							end if;
+>>>>>>> master
 						end if;	
 					when others	=>
 						-- nop
@@ -475,6 +632,13 @@ begin
 		end if;	
 	end process;
 	
+<<<<<<< HEAD
+=======
+	StoAddr_DFF <= 	StoAddr when rdad_stm = VALID else
+					StoAddr_DFF;
+	
+	CtrlBus_OxSL.RD_ADDR <= StoAddr_DFF;
+>>>>>>> master
 	
 	RDAD_CLK 	<= RDAD_CLK_intl;
 	RDAD_SIN 	<= RDAD_SIN_intl;
@@ -492,7 +656,10 @@ begin
 			WL.ready <= '0';
 			WL.busy <= '0';
 			WL.valid <= '0';
+<<<<<<< HEAD
 			WL_CNT_EN_intl <= '0';
+=======
+>>>>>>> master
 			wlstate <= IDLE;
 		else
 			if rising_edge(ClockBus.WL_CLK) then
@@ -502,6 +669,7 @@ begin
 						WL.response <= '0';
 						WL.ready <= '1';
 						wlstate <= READY;
+<<<<<<< HEAD
 						GCC_RESET_intl <= '1';
 					
 					when READY =>
@@ -520,33 +688,62 @@ begin
 						if (RDAD.valid = '0') then
 							WL.valid <= '0';
 							--WL.ready <= '0';
+=======
+						GCC_RESET_intl <= '0';
+					
+					when READY =>
+						if (RDAD.valid = '1') then
+							wlstate <= RESPREADY;
+						else
+							wlstate <= READY;
+						end if;
+					when RESPREADY =>	
+						WL.response <= '1';
+						WL.busy <= '1';
+						if (RDAD.valid = '0') then
+							WL.valid <= '0';
+							WL.ready <= '0';
+>>>>>>> master
 							GCC_RESET_intl <= '1';
 							wlstate <= CLEAR;
 						else
 							wlstate <= RESPREADY;
 						end if;
 						
+<<<<<<< HEAD
 						WL_CNT_EN_intl <= '0';
 						
+=======
+>>>>>>> master
 					when CLEAR =>
 						WL.response <= '0';
 						GCC_RESET_intl <= '0';
 						
 						wlcnt <= (others =>'0');
 						RAMP_intl <= '1';
+<<<<<<< HEAD
 						
 						WL_CNT_EN_intl <= '1';
 						
+=======
+>>>>>>> master
 						wlstate <= START;
 					when START =>
 						if(wlcnt = "11111111111" ) then
 							WL.valid <= '1';
+<<<<<<< HEAD
 							WL.ready <= '0';
 							wlstate <= VALID;
 							wlcnt <= (others =>'0');
 							WL_CNT_EN_intl <= '0';
 						else
 							WL_CNT_EN_intl <= '1';
+=======
+							WL.ready <= '1';
+							wlstate <= VALID;
+							wlcnt <= (others =>'0');
+						else
+>>>>>>> master
 							wlstate <= START;
 							wlcnt <= std_logic_vector(unsigned(wlcnt)+1);
 						end if;
@@ -572,7 +769,10 @@ begin
 						end if;
 					
 					when RAMP_DISCH =>
+<<<<<<< HEAD
 						WL.ready <= '0';
+=======
+>>>>>>> master
 						if (SS.busy = '1') then
 							RAMP_intl <= '1';
 							WL_CNT_EN <= '0';
@@ -585,7 +785,11 @@ begin
 								WL.ready <= '1';
 								WL.valid <= '0';
 								wlstate <= IDLE;
+<<<<<<< HEAD
 								GCC_RESET_intl <= '1';
+=======
+								
+>>>>>>> master
 								WL_CNT_EN <= '0';
 							end if;
 						end if;	
@@ -604,8 +808,11 @@ begin
 	--					'0';
 						
 	GCC_RESET 	<= GCC_RESET_intl;
+<<<<<<< HEAD
 	CtrlBus_OxSL.RAMP_CNT	<= WL_CNT_EN_intl;
 	
+=======
+>>>>>>> master
 	
 	process (ClockBus.HSCLK,SS_CNT_EN) begin
 	if (SS_CNT_EN = '0') then
@@ -628,8 +835,12 @@ begin
 			SS.valid <= '0';
 			SS_INCR_flg <= '0';
 			hsout_stm <= IDLE;
+<<<<<<< HEAD
 			--CtrlBus_OxSL.SS_SELECT <= (others => '0');
 			RetAddr_intl.SS_SELECT <= (others => '0');
+=======
+			
+>>>>>>> master
 			SScnt <= 0;
 			SSBitcnt <= 0;
 			
@@ -659,11 +870,14 @@ begin
 							--hsout_stm <= LOW_SET0;
 							SS_CNT_EN <= '1';
 							hsout_stm <= INCRWAIT;
+<<<<<<< HEAD
 						elsif (CtrlBus_IxSL.TestFIFO = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then	-- New
 							TestFIFO_cnt <= 0;
 							TestFIFO_window <= 0;
 							SS.busy <= '1';
 							hsout_stm <= FIFOTEST_DATA;
+=======
+>>>>>>> master
 						elsif (WL.valid = '1') then
 							SS_INCR_flg <= '0';
 							hsout_stm <= RESPREADY;
@@ -674,6 +888,7 @@ begin
 						
 						SScnt <= 0;
 						SSBitcnt <= 0;
+<<<<<<< HEAD
 					
 					when FIFOTEST_DATA => 
 						
@@ -730,6 +945,8 @@ begin
 						end if;
 					
 						
+=======
+>>>>>>> master
 					when RESPREADY =>
 						SS.response <= '1';
 						SS.busy <= '1';
@@ -770,6 +987,7 @@ begin
 						-- SAmple the output of TARGETC
 						if SSBitCnt > 1 then
 						
+<<<<<<< HEAD
 							CtrlDO_intl.CH0(SSBitCnt-2) <= DO(0);
 							CtrlDO_intl.CH1(SSBitCnt-2) <= DO(1);
 							CtrlDO_intl.CH2(SSBitCnt-2) <= DO(2);
@@ -810,6 +1028,28 @@ begin
 							--CtrlBus_OxSL.DO_BUS.CH13(SSBitCnt-2) <= DO(13);
 							--CtrlBus_OxSL.DO_BUS.CH14(SSBitCnt-2) <= DO(14);
 							--CtrlBus_OxSL.DO_BUS.CH15(SSBitCnt-2) <= DO(15);
+=======
+							-- LSB First 
+							CtrlBus_OxSL.DO_BUS.CH0(SSBitCnt-2) <= DO(0);
+							CtrlBus_OxSL.DO_BUS.CH1(SSBitCnt-2) <= DO(1);
+							CtrlBus_OxSL.DO_BUS.CH2(SSBitCnt-2) <= DO(2);
+							CtrlBus_OxSL.DO_BUS.CH3(SSBitCnt-2) <= DO(3);
+					
+							CtrlBus_OxSL.DO_BUS.CH4(SSBitCnt-2) <= DO(4);
+							CtrlBus_OxSL.DO_BUS.CH5(SSBitCnt-2) <= DO(5);
+							CtrlBus_OxSL.DO_BUS.CH6(SSBitCnt-2) <= DO(6);
+							CtrlBus_OxSL.DO_BUS.CH7(SSBitCnt-2) <= DO(7);
+					
+							CtrlBus_OxSL.DO_BUS.CH8(SSBitCnt-2) <= DO(8);
+							CtrlBus_OxSL.DO_BUS.CH9(SSBitCnt-2) <= DO(9);
+							CtrlBus_OxSL.DO_BUS.CH10(SSBitCnt-2) <=DO(10);
+							CtrlBus_OxSL.DO_BUS.CH11(SSBitCnt-2) <= DO(11);
+					
+							CtrlBus_OxSL.DO_BUS.CH12(SSBitCnt-2) <= DO(12);
+							CtrlBus_OxSL.DO_BUS.CH13(SSBitCnt-2) <= DO(13);
+							CtrlBus_OxSL.DO_BUS.CH14(SSBitCnt-2) <= DO(14);
+							CtrlBus_OxSL.DO_BUS.CH15(SSBitCnt-2) <= DO(15);
+>>>>>>> master
 						end if;
 							
 						HSCLK_intl <= '0';
@@ -834,9 +1074,14 @@ begin
 						hsout_stm <= RESPVALID;
 					when RESPVALID =>
 						HSCLK_intl <= '0';
+<<<<<<< HEAD
 						--CtrlBus_OxSL.SS_SELECT <= std_logic_vector(to_unsigned(SScnt,CtrlBus_OxSL.SS_SELECT'length)); 
 						RetAddr_intl.SS_SELECT <=std_logic_vector(to_unsigned(SScnt, RetAddr_intl.SS_SELECT'length)); 
 						if (CtrlBus_IxSL.SSACK = '1' and CtrlBus_IxSL.SAMPLEMODE = '0') or (FIFOresponse = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+=======
+						
+						if CtrlBus_IxSL.SSACK = '1' then
+>>>>>>> master
 							
 							SS.valid <= '0';
 							hsout_stm <= RESPVALID2;
@@ -848,8 +1093,12 @@ begin
 						end if;
 					
 					when RESPVALID2 =>
+<<<<<<< HEAD
 						--if CtrlBus_IxSL.SSACK = '0' then
 						if (CtrlBus_IxSL.SSACK = '0' and CtrlBus_IxSL.SAMPLEMODE = '0') or (FIFOresponse = '0' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+=======
+						if CtrlBus_IxSL.SSACK = '0' then
+>>>>>>> master
 							if (SS_INCR_flg = '0') then
 								SScnt <= SScnt + 1;
 								if(SScnt < 31) then
@@ -868,7 +1117,10 @@ begin
 							end if;
 						end if;
 					when IDLERESET =>
+<<<<<<< HEAD
 						SS.busy <= '0';
+=======
+>>>>>>> master
 						SS_RESET_intl <= '1';
 						hsout_stm <= IDLE;
 					when others =>
@@ -877,8 +1129,12 @@ begin
 			end if;
 		end if;		
 	end process;
+<<<<<<< HEAD
 	
 	CtrlBus_OxSL.DO_BUS <= CtrlDO_intl;
+=======
+	CtrlBus_OxSL.SS_SELECT <= std_logic_vector(to_unsigned(SScnt,CtrlBus_OxSL.SS_SELECT'length)); 
+>>>>>>> master
 	
 	SS_RESET 	<= SS_RESET_intl;
 	--SS_RESET 	<= '0';
@@ -886,6 +1142,7 @@ begin
 	HSCLK 		<= HSCLK_intl;
 	-- Input/Output Refresh
 
+<<<<<<< HEAD
 	CtrlBus_OxSL.RetAddr <= Pack(RetAddr_intl);
 
 
@@ -894,5 +1151,9 @@ begin
 								'1' when WL.busy = '1' else
 								'1' when SS.busy = '1' else
 								 '0';
+=======
+	CtrlBus_OxSL.SSvalid	<= SS.valid;	-- Status on AXI Lite
+	
+>>>>>>> master
 end Behavioral;
 

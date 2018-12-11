@@ -1,7 +1,11 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+<<<<<<< HEAD
 // Date        : Sat Dec  8 09:32:21 2018
+=======
+// Date        : Tue Oct 30 15:43:12 2018
+>>>>>>> master
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim
 //               /home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_axi_iic_0_0/base_zynq_axi_iic_0_0_sim_netlist.v

@@ -53,6 +53,7 @@ architecture arch_imp of TC_Control is
 	signal byte_index	: integer;
 	signal aw_en	: std_logic;
 
+<<<<<<< HEAD
  	signal start_write_stm : 	Pulse_State_Type := IDLE; 
     signal ss_incr_stm : 		Pulse_State_Type := IDLE; 
     signal rdad_stm : 			Pulse_State_Type := IDLE; 
@@ -60,6 +61,13 @@ architecture arch_imp of TC_Control is
     signal SSack_stm : 			Pulse_State_Type := IDLE; 
     signal TestStream_stm : 	Pulse_State_Type := IDLE; 
     signal testfifo_stm:		Pulse_State_Type := IDLE;
+=======
+ 	signal start_write_stm : Pulse_State_Type := IDLE; 
+    signal ss_incr_stm : Pulse_State_Type := IDLE; 
+    signal rdad_stm : Pulse_State_Type := IDLE; 
+    signal startstorage_stm : Pulse_State_Type := IDLE;
+    signal SSack_stm : Pulse_State_Type := IDLE; 
+>>>>>>> master
     
     signal TC_ADDR_s :	std_logic_vector(6 downto 0);
     signal TC_DATA_s:	std_logic_vector(11 downto 0);
@@ -69,6 +77,11 @@ architecture arch_imp of TC_Control is
     
 	signal TCReg: slv_array(0 to TC_REGISTER_NUMBER);
     
+<<<<<<< HEAD
+=======
+    signal SWRESET_sig : std_logic;
+    
+>>>>>>> master
 begin
 	-- I/O Connections assignments
 
@@ -370,11 +383,19 @@ begin
 	    	case to_integer(unsigned(loc_addr)) is
 	    		when TC_STATUS_REG =>
 	        		reg_data_out <= status_intl;
+<<<<<<< HEAD
+=======
+	        	when TC_RDAD_ADDR_REG =>
+	        		reg_data_out <= "00000000000000000000000" & CtrlBus_IxMS.RD_ADDR;
+	        	when TC_SS_SELECT_REG =>
+	        		reg_data_out <= CtrlBus_IxMS.SS_SELECT;
+>>>>>>> master
 	        	when TC_DATA_OUT_REG =>
 	        		reg_data_out <= "0000000000000" & CtrlBus_IxMS.TC_BUS(18 downto 0);
 	        	when TC_eDO_CH0_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH0;
 	        	when TC_eDO_CH1_REG =>
+<<<<<<< HEAD
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH1;
 	        	when TC_eDO_CH2_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH2;
@@ -404,6 +425,37 @@ begin
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH14;	
 	        	when TC_eDO_CH15_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;	
+=======
+	        		reg_data_out <= x"10000" & CtrlBus_IxMS.DO_BUS.CH1;
+	        	when TC_eDO_CH2_REG =>
+	        		reg_data_out <= x"20000" & CtrlBus_IxMS.DO_BUS.CH2;
+	        	when TC_eDO_CH3_REG =>
+	        		reg_data_out <= x"30000" & CtrlBus_IxMS.DO_BUS.CH3;
+	        	when TC_eDO_CH4_REG =>
+	        		reg_data_out <= x"40000" & CtrlBus_IxMS.DO_BUS.CH4;
+	        	when TC_eDO_CH5_REG =>
+	        		reg_data_out <= x"50000" & CtrlBus_IxMS.DO_BUS.CH5;
+	        	when TC_eDO_CH6_REG =>
+	        		reg_data_out <= x"60000" & CtrlBus_IxMS.DO_BUS.CH6;	
+	        	when TC_eDO_CH7_REG =>
+	        		reg_data_out <= x"70000" & CtrlBus_IxMS.DO_BUS.CH7;	
+	        	when TC_eDO_CH8_REG =>
+	        		reg_data_out <= x"80000" & CtrlBus_IxMS.DO_BUS.CH8;	
+	        	when TC_eDO_CH9_REG =>
+	        		reg_data_out <= x"90000" & CtrlBus_IxMS.DO_BUS.CH9;	
+	        	when TC_eDO_CH10_REG =>
+	        		reg_data_out <= x"A0000" & CtrlBus_IxMS.DO_BUS.CH10;	
+	        	when TC_eDO_CH11_REG =>
+	        		reg_data_out <= x"B0000" & CtrlBus_IxMS.DO_BUS.CH11;	
+	        	when TC_eDO_CH12_REG =>
+	        		reg_data_out <= x"C0000" & CtrlBus_IxMS.DO_BUS.CH12;	
+	        	when TC_eDO_CH13_REG =>
+	        		reg_data_out <= x"D0000" & CtrlBus_IxMS.DO_BUS.CH13;	
+	        	when TC_eDO_CH14_REG =>
+	        		reg_data_out <= x"E0000" & CtrlBus_IxMS.DO_BUS.CH14;	
+	        	when TC_eDO_CH15_REG =>
+	        		reg_data_out <= x"F0000" & CtrlBus_IxMS.DO_BUS.CH15;	
+>>>>>>> master
 	    		when others =>
 	    			reg_data_out <= TCReg(to_integer(unsigned(loc_addr)));
 	    	end case;
@@ -414,6 +466,7 @@ begin
 	end process; 
 
 	-- Output register or memory read data
+<<<<<<< HEAD
 	process(AxiBusIn.ACLK,AxiBusIn.ARESETN) is
 	begin
 		if (AxiBusIn.ARESETN = '0') then
@@ -430,6 +483,23 @@ begin
 				end if;   
 			end if;
 		end if;
+=======
+	process( AxiBusIn.ACLK ) is
+	begin
+	  if (rising_edge (AxiBusIn.ACLK)) then
+	    if ( AxiBusIn.ARESETN = '0' ) then
+	      axi_rdata  <= (others => '0');
+	    else
+	      if (slv_reg_rden = '1') then
+	        -- When there is a valid read address (S_AXI_ARVALID) with 
+	        -- acceptance of read address by the slave (axi_arready), 
+	        -- output the read dada 
+	        -- Read address mux
+	          axi_rdata <= reg_data_out;     -- register read data
+	      end if;   
+	    end if;
+	  end if;
+>>>>>>> master
 	end process;
     
     	-- --------------------------------------------------------------------------------
@@ -527,15 +597,26 @@ begin
     
     -- --------------------------------------------------------------------------------
 	-- Start Storage Command Start
+<<<<<<< HEAD
     process(AxiBusIn.ARESETN,ClockBus.SSTIN) is
+=======
+    process(AxiBusIn.ARESETN,AxiBusIn.ACLK) is
+>>>>>>> master
     begin
     	if (AxiBusIn.ARESETN = '0') then
         	startstorage_stm <= IDLE;
         else  
+<<<<<<< HEAD
             if (rising_edge(ClockBus.SSTIN)) then
                 case startstorage_stm is
                     when IDLE =>
                         if ((TCReg(TC_CONTROL_REG) and C_WINDOW_MASK) = C_WINDOW_MASK) then
+=======
+            if (rising_edge(AxiBusIn.ACLK)) then
+                case startstorage_stm is
+                    when IDLE =>
+                        if ((TCReg(TC_CONTROL_REG) and C_STARTSTORAGE_MASK) = C_STARTSTORAGE_MASK) then
+>>>>>>> master
                             startstorage_stm <= PULSE;    
                         else
                             startstorage_stm <= IDLE;
@@ -543,7 +624,11 @@ begin
                     when PULSE =>
                         startstorage_stm <= RESET;
                     when RESET =>	-- Wait for user PS clear register
+<<<<<<< HEAD
                         if ((TCReg(TC_CONTROL_REG) and C_WINDOW_MASK) = C_WINDOW_MASK)then
+=======
+                        if ((TCReg(TC_CONTROL_REG) and C_STARTSTORAGE_MASK) = C_STARTSTORAGE_MASK)then
+>>>>>>> master
                             startstorage_stm <= RESET;    
                         else
                             startstorage_stm <= IDLE;
@@ -554,8 +639,13 @@ begin
     end process;
   
       
+<<<<<<< HEAD
     CtrlBus_OxMS.WindowStorage		<= '1' when startstorage_stm = PULSE else '0';
 	--CtrlBus_OxMS.StartStorage		<= '0' when startstorage_stm = IDLE else '1';
+=======
+    --CtrlBus_OxMS.StartStorage		<= '1' when startstorage_stm = PULSE else '0';
+	CtrlBus_OxMS.StartStorage		<= '0' when startstorage_stm = IDLE else '1';
+>>>>>>> master
 	  
     -- --------------------------------------------------------------------------------
 	-- Acknowledge the read of sample
@@ -586,6 +676,7 @@ begin
     end process;
     
 	--CtrlBus_OxMS.SSAck		<= '1' when SSack_stm = PULSE else '0';
+<<<<<<< HEAD
 	CtrlBus_OxMS.SSAck		<= '0' when SSack_stm = IDLE else '1';   --
 	
 	-- --------------------------------------------------------------------------------
@@ -651,14 +742,22 @@ begin
     CtrlBus_OxMS.TestFIFO 		<= '1' when testfifo_stm = PULSE else '0';
 
 	-- --------------------------------------------------------------------------------
+=======
+	CtrlBus_OxMS.SSAck		<= '0' when SSack_stm = IDLE else '1';
+
+>>>>>>> master
 
 	-- ADDR and DATA to TARGETC Register
 	CtrlBus_OxMS.TC_BUS <= TC_ADDR_s & TC_DATA_s;
 	TC_ADDR_s <= std_logic_vector(to_unsigned(to_integer(unsigned(TCReg(TC_ADDR_REG))) - 1, TC_ADDR_s'length)); 
 	TC_DATA_s <= TCReg(to_integer(unsigned(TCReg(TC_ADDR_REG))))(11 downto 0);
     
+<<<<<<< HEAD
     CtrlBus_OxMS.WL_CLK_DIV <=  TCReg(TC_WL_DIV_REG); 
     
+=======
+    CtrlBus_OxMS.WL_CLK_DIV <= x"00000004";
+>>>>>>> master
     
     CtrlBus_OxMS.Test_PCLK 	<= 	TCReg(TC_CONTROL_REG)(C_PCLK_BIT); 
     CtrlBus_OxMS.Test_SCLK 	<= 	TCReg(TC_CONTROL_REG)(C_SCLK_BIT);
@@ -666,6 +765,7 @@ begin
     CtrlBus_OxMS.RAMP 		<= 	TCReg(TC_CONTROL_REG)(C_eRAMP_BIT);
     CtrlBus_OxMS.RegCLR 		<= 	TCReg(TC_CONTROL_REG)(C_eRegCLR_BIT);
     CtrlBus_OxMS.SmplSl_Any 	<= 	TCReg(TC_CONTROL_REG)(C_TPG_BIT);
+<<<<<<< HEAD
    	CtrlBus_OxMS.SS_RESET		<= 	TCReg(TC_CONTROL_REG)(C_SS_RESET_BIT);
    	CtrlBus_OxMS.SWRESET		<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
    
@@ -673,6 +773,10 @@ begin
 	CtrlBus_OxMS.NBRWINDOW		<= TCReg(TC_NBRWINDOW_REG);  
 	
 	CtrlBus_OxMS.SAMPLEMODE		<= TCReg(TC_CONTROL_REG)(C_SMODE_BIT);  
+=======
+   
+   	CtrlBus_OxMS.SWRESET		<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
+>>>>>>> master
     --SWRESET_sig					<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
     
 	-- STATUS Register Update
@@ -691,6 +795,14 @@ begin
     		tmp :=	tmp and (not C_LOCKED_MASK);
     	end if;
     	
+<<<<<<< HEAD
+=======
+    	if (CtrlBus_IxMS.Storage = '1') then
+    		tmp :=	tmp  or C_STORAGE_MASK;
+    	else
+    		tmp :=	tmp and (not C_STORAGE_MASK);
+    	end if;
+>>>>>>> master
     	
     	if (CtrlBus_IxMS.SSvalid = '1') then
     		tmp :=	tmp  or C_SSVALID_MASK;
@@ -698,11 +810,19 @@ begin
     		tmp :=	tmp and (not C_SSVALID_MASK);
     	end if;
     	
+<<<<<<< HEAD
     	if (CtrlBus_IxMS.WindowBusy = '1') then
     		tmp :=	tmp  or C_WINDOWBUSY_MASK;
     	else
     		tmp :=	tmp and (not C_WINDOWBUSY_MASK);
     	end if;
+=======
+  --  	if (SWRESET_sig = '1') or (AxiBusIn.ARESETN = '1') then
+  --  		tmp :=	tmp  or C_RESET_MASK;
+  --  	else
+  --  		tmp :=	tmp and (not C_RESET_MASK);
+  --  	end if;
+>>>>>>> master
     	
     	STATUS_intl <= tmp;
     	
