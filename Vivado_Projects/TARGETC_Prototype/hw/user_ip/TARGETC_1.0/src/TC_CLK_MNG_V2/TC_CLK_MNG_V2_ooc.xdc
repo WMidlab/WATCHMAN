@@ -54,5 +54,9 @@
 ############################################################
 # Clock Period Constraints                                 #
 ############################################################
+<<<<<<< HEAD
+#create_clock -period 10.000 [get_ports REF_CLK_IN]
+=======
 #create_clock -period 10.000 [get_ports clk_in1]
+>>>>>>> master
 

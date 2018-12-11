@@ -256,7 +256,11 @@ input [5 : 0] S_AXI_HP0_AWID;
 input [5 : 0] S_AXI_HP0_WID;
 input [31 : 0] S_AXI_HP0_WDATA;
 input [3 : 0] S_AXI_HP0_WSTRB;
+<<<<<<< HEAD
+input [1 : 0] IRQ_F2P;
+=======
 input [0 : 0] IRQ_F2P;
+>>>>>>> master
 output FCLK_CLK0;
 output FCLK_CLK1;
 output FCLK_RESET0_N;

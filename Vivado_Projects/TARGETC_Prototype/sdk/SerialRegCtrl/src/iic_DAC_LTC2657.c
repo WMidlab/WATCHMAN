@@ -33,6 +33,18 @@ int DAC_LTC2657_initialize(float voltage){
 	*/
 	
 	//Voltage 
+<<<<<<< HEAD
+	int intvolt = (int)(65536.0 * voltage / 2.5);	
+	printf("Voltage : %lf\t%d\r\n",voltage,intvolt);
+
+	WriteBuffer[0] = 0x0F;	//0b00111111;
+	WriteBuffer[1] = intvolt>>8;	//0b10000000; // MSB First
+	WriteBuffer[2] = intvolt & 0x00FF;	//0b00000000; // LSB Last
+
+	int i;
+	for(i=0; i <5 ; i++){
+		Status = XIic_MasterSend(&Iic,WriteBuffer,4);	// +1 for I2C address
+=======
 	int intvolt = 65536 * voltage / 2.5;	
 	xil_printf("Voltage : %f\t%d",voltage,intvolt);
 	
@@ -44,6 +56,7 @@ int DAC_LTC2657_initialize(float voltage){
 	int i;
 	for(i=0; i <5 ; i++){
 		Status = XIic_MasterSend(&Iic,WriteBuffer,4);
+>>>>>>> master
 		if(Status == XST_SUCCESS){
 			break;
 		}
@@ -52,11 +65,17 @@ int DAC_LTC2657_initialize(float voltage){
 		return XST_FAILURE;
 	sleep(1);
 	
+<<<<<<< HEAD
+	WriteBuffer[0] = 0x1F;	//0b00111111;
+	WriteBuffer[1] = intvolt>>8;	//0b10000000; // MSB First
+	WriteBuffer[2] = intvolt & 0x00FF;	//0b00000000; // LSB Last
+=======
 	
 	xil_printf("Update\r\n");
 	WriteBuffer[0] = 0x1F;	//0b00111111;
 	WriteBuffer[1] = 0x80;	//0b10000000; // MSB First
 	WriteBuffer[2] = 0x00;	//0b00000000; // LSB Last
+>>>>>>> master
 
 	for(i=0; i <5 ; i++){
 		Status = XIic_MasterSend(&Iic,WriteBuffer,4);

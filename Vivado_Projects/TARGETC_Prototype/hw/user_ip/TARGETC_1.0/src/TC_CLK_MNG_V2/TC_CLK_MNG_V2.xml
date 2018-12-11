@@ -1347,12 +1347,20 @@
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_versioninformation</spirit:name>
+        <spirit:displayName>Version Information</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:docs.versioninfo</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_versioninformation_view_fileset</spirit:localName>
+=======
         <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
         <spirit:displayName>Synthesis</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
         <spirit:modelName>clk_wiz_v6_0_1</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+>>>>>>> master
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
@@ -1366,6 +1374,15 @@
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_elaborateports</spirit:name>
+        <spirit:displayName>Elaborate Ports</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:elaborate.ports</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:80a280ec</spirit:value>
+=======
         <spirit:name>xilinx_anylanguagesynthesiswrapper</spirit:name>
         <spirit:displayName>Synthesis Wrapper</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
@@ -1381,46 +1398,98 @@
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:edc8d4aa</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:modelName>clk_wiz_v6_0_1</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+=======
         <spirit:name>xilinx_implementation</spirit:name>
         <spirit:displayName>Implementation</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
+>>>>>>> master
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
+<<<<<<< HEAD
+            <spirit:value>Wed Oct 31 02:15:05 UTC 2018</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:b0c85c40</spirit:value>
+=======
             <spirit:value>Wed Oct 31 01:36:06 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:edc8d4aa</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_anylanguagesimulationwrapper</spirit:name>
+        <spirit:displayName>Simulation Wrapper</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
+        <spirit:modelName>TC_CLK_MNG_V2</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesimulationwrapper_view_fileset</spirit:localName>
+=======
         <spirit:name>xilinx_versioninformation</spirit:name>
         <spirit:displayName>Version Information</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:docs.versioninfo</spirit:envIdentifier>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_versioninformation_view_fileset</spirit:localName>
+>>>>>>> master
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
+<<<<<<< HEAD
+            <spirit:value>Wed Oct 31 02:15:05 UTC 2018</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:b0c85c40</spirit:value>
+=======
             <spirit:value>Wed Oct 31 01:36:06 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:edc8d4aa</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:modelName>clk_wiz_v6_0_1</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Fri Nov 02 20:25:57 UTC 2018</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:93ea1235</spirit:value>
+=======
         <spirit:name>xilinx_elaborateports</spirit:name>
         <spirit:displayName>Elaborate Ports</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:elaborate.ports</spirit:envIdentifier>
@@ -1428,44 +1497,78 @@
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:80a280ec</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_anylanguagesynthesiswrapper</spirit:name>
+        <spirit:displayName>Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:modelName>TC_CLK_MNG_V2</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesiswrapper_view_fileset</spirit:localName>
+=======
         <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
         <spirit:displayName>Simulation</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
         <spirit:modelName>clk_wiz_v6_0_1</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+>>>>>>> master
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
+<<<<<<< HEAD
+            <spirit:value>Fri Nov 02 20:25:57 UTC 2018</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:93ea1235</spirit:value>
+=======
             <spirit:value>Wed Oct 31 02:15:05 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:b0c85c40</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
       <spirit:view>
+<<<<<<< HEAD
+        <spirit:name>xilinx_implementation</spirit:name>
+        <spirit:displayName>Implementation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
+=======
         <spirit:name>xilinx_anylanguagesimulationwrapper</spirit:name>
         <spirit:displayName>Simulation Wrapper</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
         <spirit:modelName>TC_CLK_MNG_V2</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_anylanguagesimulationwrapper_view_fileset</spirit:localName>
+>>>>>>> master
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
+<<<<<<< HEAD
+            <spirit:value>Fri Nov 02 20:25:57 UTC 2018</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>8:93ea1235</spirit:value>
+=======
             <spirit:value>Wed Oct 31 02:15:05 UTC 2018</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>8:b0c85c40</spirit:value>
+>>>>>>> master
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3823,6 +3926,20 @@
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
+<<<<<<< HEAD
+      <spirit:name>xilinx_versioninformation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>doc/clk_wiz_v6_0_changelog.txt</spirit:name>
+        <spirit:userFileType>text</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>mmcm_pll_drp_func_7s_mmcm.vh</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>TC_CLK_MNG_V2.xdc</spirit:name>
@@ -3842,36 +3959,57 @@
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_7s_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_7s_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_plus_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_plus_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+        <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+=======
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
@@ -3881,13 +4019,38 @@
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
+<<<<<<< HEAD
+      <spirit:name>xilinx_anylanguagesimulationwrapper_view_fileset</spirit:name>
+=======
       <spirit:name>xilinx_anylanguagesynthesiswrapper_view_fileset</spirit:name>
+>>>>>>> master
       <spirit:file>
         <spirit:name>TC_CLK_MNG_V2.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
+<<<<<<< HEAD
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>TC_CLK_MNG_V2.xdc</spirit:name>
+        <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>TC_CLK_MNG_V2_ooc.xdc</spirit:name>
+        <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>mmcm_pll_drp_func_7s_mmcm.vh</spirit:name>
+        <spirit:fileType>verilogSource</spirit:fileType>
+=======
       <spirit:name>xilinx_implementation_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>TC_CLK_MNG_V2_board.xdc</spirit:name>
@@ -3910,41 +4073,57 @@
         <spirit:name>mmcm_pll_drp_func_7s_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_7s_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+=======
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+=======
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+=======
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_plus_pll.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+=======
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
       <spirit:file>
         <spirit:name>mmcm_pll_drp_func_us_plus_mmcm.vh</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
+<<<<<<< HEAD
+=======
         <spirit:userFileType>USED_IN_ipstatic</spirit:userFileType>
+>>>>>>> master
         <spirit:isIncludeFile>true</spirit:isIncludeFile>
         <spirit:logicalName>clk_wiz_v6_0_1</spirit:logicalName>
       </spirit:file>
@@ -3954,12 +4133,29 @@
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
+<<<<<<< HEAD
+      <spirit:name>xilinx_anylanguagesynthesiswrapper_view_fileset</spirit:name>
+=======
       <spirit:name>xilinx_anylanguagesimulationwrapper_view_fileset</spirit:name>
+>>>>>>> master
       <spirit:file>
         <spirit:name>TC_CLK_MNG_V2.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
+<<<<<<< HEAD
+    <spirit:fileSet>
+      <spirit:name>xilinx_implementation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>TC_CLK_MNG_V2_board.xdc</spirit:name>
+        <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:userFileType>USED_IN_board</spirit:userFileType>
+        <spirit:userFileType>USED_IN_implementation</spirit:userFileType>
+        <spirit:userFileType>USED_IN_synthesis</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+=======
+>>>>>>> master
   </spirit:fileSets>
   <spirit:description>The Clocking Wizard creates an HDL file (Verilog or VHDL) that contains a clocking circuit customized to the user&apos;s clocking requirements.</spirit:description>
   <spirit:parameters>

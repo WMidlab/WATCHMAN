@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="base_zynq" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1541100154"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1541100154"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1541100154"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1541100154"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1544465311"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1544465311"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1544465311"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1544465311"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
@@ -13,11 +13,9 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0.xci" Type="IP">
         <Instance HierarchyPath="rst_ps7_0_50M"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1537405636" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -36,14 +34,6 @@
       <File Name="ip/base_zynq_ps7_0_axi_periph_1/base_zynq_ps7_0_axi_periph_1.xci" Type="IP">
         <Instance HierarchyPath="ps7_0_axi_periph"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="1537405307" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/base_zynq_TARGETC_0_0/base_zynq_TARGETC_0_0.xci" Type="IP">
-        <Instance HierarchyPath="TARGETC_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -89,6 +79,62 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="ip/base_zynq_axistream_0_0/base_zynq_axistream_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axistream_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_axi_dma_0_0/base_zynq_axi_dma_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_dma_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_axi_interconnect_0_0/base_zynq_axi_interconnect_0_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0"/>
+        <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_xlconcat_1_0/base_zynq_xlconcat_1_0.xci" Type="IP">
+        <Instance HierarchyPath="xlconcat_1"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_FifoManagerV4_0_0/base_zynq_FifoManagerV4_0_0.xci" Type="IP">
+        <Instance HierarchyPath="FifoManagerV4_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_TARGETC_IP_Prototype_0_1/base_zynq_TARGETC_IP_Prototype_0_1.xci" Type="IP">
+        <Instance HierarchyPath="TARGETC_IP_Prototype_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_auto_pc_1/base_zynq_auto_pc_1.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="ip/base_zynq_auto_pc_0/base_zynq_auto_pc_0.xci" Type="IP">
         <Instance HierarchyPath="ps7_0_axi_periph/s00_couplers/auto_pc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -122,3 +168,6 @@
     </FileCollection>
   </CompositeFile>
 </Root>
+
+        <Properties IsEditable="false" IsVisible="true" Timestamp="1537405636" IsTrackable="true" IsStatusTracked="true"/>
+        <UsedIn Val="SIMULATION"/>

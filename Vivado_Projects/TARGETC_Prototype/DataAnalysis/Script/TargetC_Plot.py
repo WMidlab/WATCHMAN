@@ -22,9 +22,15 @@ for line in f1:
 
     x.append(c[0])
     ch0.append(c[1]-0x00000000)
+<<<<<<< HEAD
+    ch1.append(c[2]-0x30000000)
+    #ch2.append(c[3]-0x20000000)
+    #ch3.append(c[4]-0x30000000)
+=======
     ch1.append(c[2]-0x10000000)
     ch2.append(c[3]-0x20000000)
     ch3.append(c[4]-0x30000000)
+>>>>>>> master
 
 
 # N = 100
@@ -33,8 +39,13 @@ for line in f1:
 
 plt.plot(x,ch0,'k')
 plt.plot(x,ch1,'b')
+<<<<<<< HEAD
+#plt.plot(x,ch2,'g')
+#plt.plot(x,ch3,'r')
+=======
 plt.plot(x,ch2,'g')
 plt.plot(x,ch3,'r')
+>>>>>>> master
 #
 # #Format Plot
 plt.xlabel('X some numbers')

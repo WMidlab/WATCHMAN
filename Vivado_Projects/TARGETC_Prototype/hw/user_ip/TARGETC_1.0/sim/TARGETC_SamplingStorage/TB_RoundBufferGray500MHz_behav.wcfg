@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_RoundBufferGray500MHz_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_RoundBufferGray500MHz" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1858333334fs"></ZoomStartTime>
+      <ZoomEndTime time="3230333335fs"></ZoomEndTime>
+      <Cursor1Time time="2599000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="99"></NameColumnWidth>
+      <ValueColumnWidth column_width="143"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="31" />
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/clk500MHz">
+      <obj_property name="ElementShortName">clk500MHz</obj_property>
+      <obj_property name="ObjectShortName">clk500MHz</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/ClockBus">
+      <obj_property name="ElementShortName">ClockBus</obj_property>
+      <obj_property name="ObjectShortName">ClockBus</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/RST">
+      <obj_property name="ElementShortName">RST</obj_property>
+      <obj_property name="ObjectShortName">RST</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/CtrlBus_IxSL">
+      <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
+      <obj_property name="ObjectShortName">CtrlBus_IxSL</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9098" type="divider">
+      <obj_property name="label">Sample Counter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/cnt">
+      <obj_property name="ElementShortName">cnt[63:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/timecnt">
+      <obj_property name="ElementShortName">timecnt</obj_property>
+      <obj_property name="ObjectShortName">timecnt</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_RoundBufferGray500MHz/DUT/RealWdoCnt">
+      <obj_property name="ElementShortName">RealWdoCnt</obj_property>
+      <obj_property name="ObjectShortName">RealWdoCnt</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_RoundBufferGray500MHz/DUT/storage_stm">
+      <obj_property name="ElementShortName">storage_stm</obj_property>
+      <obj_property name="ObjectShortName">storage_stm</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/fifo_intl">
+      <obj_property name="ElementShortName">fifo_intl</obj_property>
+      <obj_property name="ObjectShortName">fifo_intl</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9081" type="divider">
+      <obj_property name="label">TARGETC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/WR_RS_S">
+      <obj_property name="ElementShortName">WR_RS_S[1:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_RS_S[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/WR_CS_S">
+      <obj_property name="ElementShortName">WR_CS_S[5:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_CS_S[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/WR_ADDR_S">
+      <obj_property name="ElementShortName">WR_ADDR_S[7:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_ADDR_S[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9085" type="divider">
+      <obj_property name="label">STO to RDAD</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/RDAD_ReadEn">
+      <obj_property name="ElementShortName">RDAD_ReadEn</obj_property>
+      <obj_property name="ObjectShortName">RDAD_ReadEn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/RDAD_DataOut">
+      <obj_property name="ElementShortName">RDAD_DataOut[100:0]</obj_property>
+      <obj_property name="ObjectShortName">RDAD_DataOut[100:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/RDAD_Empty">
+      <obj_property name="ElementShortName">RDAD_Empty</obj_property>
+      <obj_property name="ObjectShortName">RDAD_Empty</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/STO_DataIn_intl">
+      <obj_property name="ElementShortName">STO_DataIn_intl[100:0]</obj_property>
+      <obj_property name="ObjectShortName">STO_DataIn_intl[100:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/STO_WriteEn">
+      <obj_property name="ElementShortName">STO_WriteEn</obj_property>
+      <obj_property name="ObjectShortName">STO_WriteEn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/STO_Full">
+      <obj_property name="ElementShortName">STO_Full</obj_property>
+      <obj_property name="ObjectShortName">STO_Full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/RDAD_STO_AFIFO/Mem">
+      <obj_property name="ElementShortName">Mem[0:15][100:0]</obj_property>
+      <obj_property name="ObjectShortName">Mem[0:15][100:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9093" type="divider">
+      <obj_property name="label">DIG to STO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_RoundBufferGray500MHz/DUT/digsto_stm">
+      <obj_property name="ElementShortName">digsto_stm</obj_property>
+      <obj_property name="ObjectShortName">digsto_stm</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/DIG_Full">
+      <obj_property name="ElementShortName">DIG_Full</obj_property>
+      <obj_property name="ObjectShortName">DIG_Full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/DIG_DataIn">
+      <obj_property name="ElementShortName">DIG_DataIn[8:0]</obj_property>
+      <obj_property name="ObjectShortName">DIG_DataIn[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/DIG_WriteEn">
+      <obj_property name="ElementShortName">DIG_WriteEn</obj_property>
+      <obj_property name="ObjectShortName">DIG_WriteEn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/STO_ReadEn">
+      <obj_property name="ElementShortName">STO_ReadEn</obj_property>
+      <obj_property name="ObjectShortName">STO_ReadEn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_RoundBufferGray500MHz/DUT/DIG_Empty_intl">
+      <obj_property name="ElementShortName">DIG_Empty_intl</obj_property>
+      <obj_property name="ObjectShortName">DIG_Empty_intl</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider9310" type="divider">
+      <obj_property name="label">RoundBuffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBufferGray500MHz/DUT/RoundBuffer">
+      <obj_property name="ElementShortName">RoundBuffer[0:255]</obj_property>
+      <obj_property name="ObjectShortName">RoundBuffer[0:255]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>

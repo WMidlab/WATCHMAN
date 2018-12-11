@@ -82,10 +82,20 @@
 	
 	#define			SS_RESET_MASK	0x00000100
 	#define			RDAD_MASK		0x00000200
+<<<<<<< HEAD
+	#define			WINDOW_MASK		0x00000400
+	#define			SSACK_MASK		0x00000800
+
+	#define			SWRESET_MASK	0x00001000
+	#define			SMODE_MASK		0x00002000	//SAMPLEMODE = 0, SSACK action else it's trhough AXI-DMA
+	#define			TESTSTREAM_MASK	0x00004000
+	
+=======
 	#define			STARTSTORAGE_MASK		0x00000400
 	#define			SSACK_MASK		0x00000800
 
 	#define			SWRESET_MASK	0x00001000
+>>>>>>> master
 	
 #define TC_STATUS_REG		130
 	//MASK
@@ -117,12 +127,26 @@
 #define TC_eDO_CH13_REG		146
 #define TC_eDO_CH14_REG		147
 #define TC_eDO_CH15_REG		148
+<<<<<<< HEAD
+
+#define TC_RDAD_ADDR_REG	149
+#define TC_SS_SELECT_REG	150
+
+#define TC_FSTWINDOW_REG	151
+#define TC_NBRWINDOW_REG	152
+
+	// Global Variables
+	static int* regptr = XPAR_TARGETC_0_TC_AXI_BASEADDR;
+	
+	
+=======
 #define TC_RDAD_ADDR_REG	149
 #define TC_SS_SELECT_REG	150
 
 	// Global Variables
 	static int* regptr = XPAR_TARGETC_0_TC_AXI_BASEADDR;
 	
+>>>>>>> master
 //	int TPG_intr_flg;
 //	int SSVALID_intr_flg;
 
