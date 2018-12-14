@@ -5,11 +5,7 @@ use ieee.numeric_std.all;
 -- Package for the use
 package TARGETC_pkg is
   
-<<<<<<< HEAD
   	constant TC_REGISTER_NUMBER:		integer := 153;
-=======
-  	constant TC_REGISTER_NUMBER:		integer := 150;
->>>>>>> master
 	
 -- ------------------------------------------------------
 --	Register Map Target C
@@ -71,7 +67,6 @@ package TARGETC_pkg is
  		
  		constant C_SS_RESET_MASK:		std_logic_vector(31 downto 0) := x"00000100";
  		constant C_RDAD_MASK:			std_logic_vector(31 downto 0) := x"00000200";
-<<<<<<< HEAD
  		constant C_WINDOW_MASK:			std_logic_vector(31 downto 0) := x"00000400";
  		constant C_SSACK_MASK:			std_logic_vector(31 downto 0) := x"00000800";
 		
@@ -79,11 +74,6 @@ package TARGETC_pkg is
 		constant C_SMODE_MASK:			std_logic_vector(31 downto 0) := x"00002000";
 		constant C_TESTSTREAM_MASK:		std_logic_vector(31 downto 0) := x"00004000";			
 		constant C_TESTFIFO_MASK:		std_logic_vector(31 downto 0) := x"00008000";			
-=======
- 		constant C_STARTSTORAGE_MASK:	std_logic_vector(31 downto 0) := x"00000400";
- 		constant C_SSACK_MASK:			std_logic_vector(31 downto 0) := x"00000800";
-		constant C_SWRESET_MASK:		std_logic_vector(31 downto 0) := x"00001000";
->>>>>>> master
 		
 		--BIT
 		constant C_WRITE_BIT:		integer := 0;
@@ -102,40 +92,24 @@ package TARGETC_pkg is
 		constant C_SSACK_BIT:		integer := 11;
 		
 		constant C_SWRESET_BIT:		integer := 12;	
-<<<<<<< HEAD
 		constant C_SMODE_BIT:		integer := 13;
 		constant C_TESTSTREAM_BIT:	integer	:= 14;
 		constant C_TESTFIFO_BIT:	integer := 15;
-=======
-		
->>>>>>> master
 		
 	constant TC_STATUS_REG : 	integer := 130;
 		--MASK
 		constant C_BUSY_MASK:	std_logic_vector(31 downto 0) := x"00000001";
 		constant C_LOCKED_MASK:	std_logic_vector(31 downto 0) := x"00000002";
-<<<<<<< HEAD
 		--constant C_STORAGE_MASK:	std_logic_vector(31 downto 0) := x"00000004";	
 		constant C_SSVALID_MASK:	std_logic_vector(31 downto 0) := x"00000008";	
 		constant C_WINDOWBUSY_MASK:		std_logic_vector(31 downto 0) := x"00000010";	
-=======
-		constant C_STORAGE_MASK:	std_logic_vector(31 downto 0) := x"00000004";	
-		constant C_SSVALID_MASK:	std_logic_vector(31 downto 0) := x"00000008";	
-		--constant C_RESET_MASK:		std_logic_vector(31 downto 0) := x"00000010";	
->>>>>>> master
 	
 		--BIT
 		constant C_BUSY_BIT:	integer := 0;
 		constant C_LOCKED_BIT:	integer := 1;
-<<<<<<< HEAD
 		--constant C_STORAGE_BIT:	integer := 2;
 		constant C_SSVALID_BIT:	integer := 3;
 		constant C_WINDOWBUSY_BIT:	integer := 4;
-=======
-		constant C_STORAGE_BIT:	integer := 2;
-		constant C_SSVALID_BIT:	integer := 3;
-		--constant C_RESET_BIT:	integer := 4;
->>>>>>> master
 		
 	constant TC_ADDR_REG :		integer := 131;
 	constant TC_DATA_OUT_REG:	integer := 132;
@@ -161,18 +135,11 @@ package TARGETC_pkg is
 	constant TC_eDO_CH14_REG:	integer := 147;
 	constant TC_eDO_CH15_REG:	integer := 148;
 	
-<<<<<<< HEAD
 	
 	constant TC_FSTWINDOW_REG:	integer := 151;
 	constant TC_NBRWINDOW_REG:	integer := 152;
 	
 	constant TC_WL_DIV_REG:		integer := 153;
-=======
-	constant TC_RDAD_ADDR_REG: 	integer := 149;
-	constant TC_SS_SELECT_REG:	integer := 150;
-	--constant TC_FSTWINDOW_REG:	integer := 149;
-	--constant TC_NBRWINDOW_REG:	integer := 150;
->>>>>>> master
 	
 	--type eDO_ARRAY is array (0 downto 15) of std_logic_vector(11 downto 0);
 	type eDO_LINE is array (11 downto 0) of std_logic;
@@ -218,7 +185,6 @@ package TARGETC_pkg is
 		RAMP : 	std_logic;
     	RegCLR : 	std_logic; 
 		SmplSl_Any:	std_logic;
-<<<<<<< HEAD
 		SS_RESET:	std_logic;
 		RDAD :			std_logic;
 		SSAck:			std_logic;
@@ -230,12 +196,6 @@ package TARGETC_pkg is
 		SAMPLEMODE:		std_logic;
 		TestStream:		std_logic;
 		TestFiFo:		std_logic;
-=======
-		
-		RDAD :			std_logic;
-		StartStorage:	std_logic;
-		SSAck:			std_logic;
->>>>>>> master
 		--FirstWindow : std_logic_vector(31 downto 0);
 		--NbrOfWindow : std_logic_vector(31 downto 0);
 		
@@ -243,7 +203,6 @@ package TARGETC_pkg is
 	subtype T_CtrlBus_IxSL is T_CtrlBus_OxMS;
 	subtype T_CtrlBus_OxMS_Intl is T_CtrlBus_OxMS;
 	
-<<<<<<< HEAD
 	
 	type T_CtrlBus_IxMS is record
 		
@@ -258,20 +217,6 @@ package TARGETC_pkg is
 		WindowBusy:		std_logic;		
 		SSvalid:		std_logic;
 		RAMP_Cnt:		std_logic;
-=======
-	type T_CtrlBus_IxMS is record
-		
-		TC_BUS: 		std_logic_vector(18 downto 0);
-		RD_ADDR:		std_logic_vector(8 downto 0);
-		SS_SELECT:		std_logic_vector(31 downto 0);
-		DO_BUS :		eDO_BUS_TYPE;
-		BUSY:			std_logic;
-		PLL_LOCKED:		std_logic;
-		STORAGE :		std_logic;
-		
-				
-		SSvalid:		std_logic;
->>>>>>> master
 	end record;
 	subtype T_CtrlBus_OxSL is T_CtrlBus_IxMS;
 	subtype T_CtrlBus_IxMS_Intl is T_CtrlBus_IxMS;
@@ -288,10 +233,7 @@ package TARGETC_pkg is
 		WL_CLK:			std_logic;		-- Pin#57 to Pin#58
 		RDAD_CLK:		std_logic;		-- Pin#61
 		SSTIN:			std_logic;
-<<<<<<< HEAD
 		CLK500MHz:		std_logic;
-=======
->>>>>>> master
 	end record;
 	
 	type slv_array is array (integer range <>) of std_logic_vector(31 downto 0);
@@ -301,20 +243,12 @@ package TARGETC_pkg is
 		dirty :		std_logic_vector(511 downto 0);
 		digit :		std_logic_vector(511 downto 0);
 	end record;
-<<<<<<< HEAD
 	
 
     		
-=======
-			
->>>>>>> master
 end TARGETC_pkg;
 
 package body TARGETC_pkg is
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 end TARGETC_pkg;

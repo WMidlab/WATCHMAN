@@ -15,13 +15,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="660125000000fs"></ZoomStartTime>
-      <ZoomEndTime time="666755000001fs"></ZoomEndTime>
-      <Cursor1Time time="662595000000fs"></Cursor1Time>
+      <ZoomStartTime time="1131666666fs"></ZoomStartTime>
+      <ZoomEndTime time="1202131666667fs"></ZoomEndTime>
+      <Cursor1Time time="844838589000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="191"></NameColumnWidth>
-      <ValueColumnWidth column_width="74"></ValueColumnWidth>
+      <NameColumnWidth column_width="183"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="3" />
    <wvobject type="group" fp_name="group10238">
@@ -48,11 +48,11 @@
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/CtrlBus_IxSL">
          <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
          <obj_property name="ObjectShortName">CtrlBus_IxSL</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/CtrlBus_OxSL">
          <obj_property name="ElementShortName">CtrlBus_OxSL</obj_property>
          <obj_property name="ObjectShortName">CtrlBus_OxSL</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/SSVALID_INTR">
          <obj_property name="ElementShortName">SSVALID_INTR</obj_property>
@@ -119,13 +119,13 @@
             <obj_property name="ElementShortName">LastStorageCnt</obj_property>
             <obj_property name="ObjectShortName">LastStorageCnt</obj_property>
          </wvobject>
-         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RoundBuffer">
-            <obj_property name="ElementShortName">RoundBuffer[0:255]</obj_property>
-            <obj_property name="ObjectShortName">RoundBuffer[0:255]</obj_property>
-         </wvobject>
          <wvobject type="other" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/storage_stm">
             <obj_property name="ElementShortName">storage_stm</obj_property>
             <obj_property name="ObjectShortName">storage_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RoundBuffer">
+            <obj_property name="ElementShortName">RoundBuffer[0:255]</obj_property>
+            <obj_property name="ObjectShortName">RoundBuffer[0:255]</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/fifo_intl">
             <obj_property name="ElementShortName">fifo_intl</obj_property>
@@ -159,6 +159,14 @@
          <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RoundBuffer_inst/RDAD_Empty">
             <obj_property name="ElementShortName">RDAD_Empty</obj_property>
             <obj_property name="ObjectShortName">RDAD_Empty</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD_DataOut">
+            <obj_property name="ElementShortName">RDAD_DataOut[105:0]</obj_property>
+            <obj_property name="ObjectShortName">RDAD_DataOut[105:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/fifo_intl">
+            <obj_property name="ElementShortName">fifo_intl</obj_property>
+            <obj_property name="ObjectShortName">fifo_intl</obj_property>
          </wvobject>
          <wvobject fp_name="divider10260" type="divider">
             <obj_property name="label">DIG FIFO</obj_property>
@@ -466,6 +474,7 @@
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TDATA">
          <obj_property name="ElementShortName">M_AXIS_TDATA[31:0]</obj_property>
          <obj_property name="ObjectShortName">M_AXIS_TDATA[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT_AXIS/M_AXIS_TDATA_intl">
          <obj_property name="ElementShortName">M_AXIS_TDATA_intl[31:0]</obj_property>

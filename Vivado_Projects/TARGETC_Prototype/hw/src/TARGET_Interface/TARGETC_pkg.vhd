@@ -75,6 +75,8 @@ package TARGETC_pkg is
 		constant C_TESTSTREAM_MASK:		std_logic_vector(31 downto 0) := x"00004000";			
 		constant C_TESTFIFO_MASK:		std_logic_vector(31 downto 0) := x"00008000";			
 		
+		constant C_PS_BUSY_MASK:		std_logic_vector(31 downto 0) := x"00010000";
+		
 		--BIT
 		constant C_WRITE_BIT:		integer := 0;
 		constant C_PCLK_BIT:		integer := 1;
@@ -95,6 +97,8 @@ package TARGETC_pkg is
 		constant C_SMODE_BIT:		integer := 13;
 		constant C_TESTSTREAM_BIT:	integer	:= 14;
 		constant C_TESTFIFO_BIT:	integer := 15;
+		
+		constant C_PS_BUSY_BIT:		integer := 16;
 		
 	constant TC_STATUS_REG : 	integer := 130;
 		--MASK
@@ -202,6 +206,7 @@ package TARGETC_pkg is
 		SAMPLEMODE:		std_logic;
 		TestStream:		std_logic;
 		TestFiFo:		std_logic;
+		PSBusy:			std_logic;
 		--FirstWindow : std_logic_vector(31 downto 0);
 		--NbrOfWindow : std_logic_vector(31 downto 0);
 		

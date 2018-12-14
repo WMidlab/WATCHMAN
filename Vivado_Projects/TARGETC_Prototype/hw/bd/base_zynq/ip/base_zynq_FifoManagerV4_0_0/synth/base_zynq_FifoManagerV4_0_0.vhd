@@ -81,6 +81,7 @@ ENTITY base_zynq_FifoManagerV4_0_0 IS
     CH15 : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
     FIFOvalid : OUT STD_LOGIC;
     ready_i : IN STD_LOGIC;
+    PSBUSY_i : IN STD_LOGIC;
     DataOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END base_zynq_FifoManagerV4_0_0;
@@ -119,6 +120,7 @@ ARCHITECTURE base_zynq_FifoManagerV4_0_0_arch OF base_zynq_FifoManagerV4_0_0 IS
       CH15 : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
       FIFOvalid : OUT STD_LOGIC;
       ready_i : IN STD_LOGIC;
+      PSBUSY_i : IN STD_LOGIC;
       DataOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT FifoManagerV4;
@@ -166,6 +168,7 @@ BEGIN
       CH15 => CH15,
       FIFOvalid => FIFOvalid,
       ready_i => ready_i,
+      PSBUSY_i => PSBUSY_i,
       DataOut => DataOut
     );
 END base_zynq_FifoManagerV4_0_0_arch;

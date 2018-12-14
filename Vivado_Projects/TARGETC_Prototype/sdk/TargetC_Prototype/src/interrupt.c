@@ -215,6 +215,8 @@ int AxiDma_Initialize(void)
 void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 	uint32_t IrqStatus;
 
+	struct ele_list_st *ptrele;
+
 	/* Read pending interrupts */
 	IrqStatus = XAxiDma_IntrGetIrq(AxiDmaInst, XAXIDMA_DEVICE_TO_DMA);
 
@@ -240,7 +242,26 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 	if ((IrqStatus & XAXIDMA_IRQ_IOC_MASK)) {
 		//transfer_data(PtrData, NBR_DATA*4);
 		//XTime_GetTime(&tEnd_dma);
-		axidma_rx_done = 1;
+
+
+		ptrele = malloc(sizeof(struct ele_list_st));
+		if(ptrele == NULL){
+			printf("TMP malloc - FAILED\r\n");
+		}
+		ptrele->pnext = NULL;
+
+		axiptr->pnext = ptrele;
+		axiptr = ptrele;
+	 	Xil_DCacheFlushRange(&(ptrele->wdo), sizeof(struct window_st));
+		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(ptrele->wdo), sizeof(struct window_st));
+
+		if(cntwindow >= NBRWINDOWS-1){
+			axidma_rx_done = 1;
+			cntwindow = 0;
+		}
+		else{
+			cntwindow++;
+		}
 	}
 }
 

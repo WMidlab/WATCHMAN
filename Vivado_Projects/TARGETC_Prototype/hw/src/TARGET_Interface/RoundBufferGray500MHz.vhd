@@ -364,8 +364,13 @@ begin
 									RoundBuffer(SampledWindow256).wr1_en <= '0';
 									RoundBuffer(SampledWindow256).wr2_en <= '1';
 								else
-									RoundBuffer(SampledWindow256).wr1_en <= '1';
-									RoundBuffer(SampledWindow256).wr2_en <= '0';
+									if LastStorageCnt = 2 then
+										RoundBuffer(SampledWindow256).wr1_en <= '0';
+										RoundBuffer(SampledWindow256).wr2_en <= '0';
+									else
+										RoundBuffer(SampledWindow256).wr1_en <= '1';
+										RoundBuffer(SampledWindow256).wr2_en <= '0';
+									end if;
 								end if;
 							when others =>
 								if StorageCnt+1 = to_integer(unsigned(CtrlBus_IxSL.NBRWINDOW(8 downto 0))) then

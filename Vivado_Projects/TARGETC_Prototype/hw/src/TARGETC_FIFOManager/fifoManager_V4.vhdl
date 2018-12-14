@@ -45,6 +45,7 @@ entity FifoManagerV4 is
 		-- DATA TO STREAM
 		FIFOvalid:	out	std_logic;
 		ready_i:		in 	std_logic;
+		PSBUSY_i:		in	std_logic;
 		DataOut:	out	std_logic_vector(C_M_AXIS_TDATA_WIDTH-1 downto 0)
 	);
 end FifoManagerV4;
@@ -150,6 +151,11 @@ architecture rtl of FifoManagerV4 is
 	signal rd_en_v : std_logic_vector(15 downto 0);
 	signal full :	std_logic_vector(15 downto 0);
 	signal empty :	std_logic_vector(15 downto 0);
+	
+	signal WDOTime_intl	:	std_logic_vector(63 downto 0);
+	signal DIGTime_intl	:	std_logic_vector(63 downto 0);
+	signal Trigger_intl	:	std_logic_vector(31 downto 0);
+	signal WDONBR_intl :	std_logic_vector(8 downto 0);
 	
 	signal DataOut_stall : std_logic_vector(31 downto 0);
 	signal DataOut_last : std_logic_vector(31 downto 0);
@@ -298,12 +304,17 @@ begin
 					
 				when WR_TEMPO =>
 					wr_en <= '0';
-					fifo_wr_stm <= VALID;		
+					fifo_wr_stm <= VALID;
+		
 				WHEN VALID => 
 					
 					
 					if(full = x"FFFF") then
 						FIFO_WR.valid <= '1';	-- The FiFOS are Full of data, all samples got
+						WDOTime_intl	<= WDOTime;
+						DIGTime_intl	<= DIGTime;
+						Trigger_intl	<= Trigger;
+						WDONBR_intl		<= WDONBR;
 						fifo_wr_stm <= RESPVALID;
 					else
 						FIFO_WR.valid <= '0';	-- The FiFOS are Full of data, all samples got
@@ -367,7 +378,7 @@ begin
 					FIFO_RD.response <= '0';
 					cnt_fifo <= (others => '0');
 					--if(ready_i = '1' and TestStream = '1') then
-					if(ready_i = '1' ) then
+					if(ready_i = '1' and PSBUSY_i = '0') then
 						--FIFOvalid <= '1';
 						fifo_rd_stm <= WRxRD_HEADER;
 						DataOut_intlH <= WDOTime(31 downto 0);
@@ -387,21 +398,21 @@ begin
 						
 						case cnt_fifo is
 							when "000000000" =>
-								DataOut_intlH <= WDOTime(31 downto 0);
+								DataOut_intlH <= WDOTime_intl(31 downto 0);
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
 							when "000000001" =>
-								DataOut_intlH <= WDOTime(63 downto 32);
+								DataOut_intlH <= WDOTime_intl(63 downto 32);
 								
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
 							when "000000010" =>
-								DataOut_intlH <= DIGTime(31 downto 0);
+								DataOut_intlH <= DIGTime_intl(31 downto 0);
 								
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
 							when "000000011" =>
-								DataOut_intlH <= DIGTime(63 downto 32);
+								DataOut_intlH <= DIGTime_intl(63 downto 32);
 								
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
@@ -411,7 +422,7 @@ begin
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
 							when "000000101" =>
-								DataOut_intlH <= x"0000" & "0000000" & WDONBR;
+								DataOut_intlH <= x"0000" & "0000000" & WDONBR_intl;
 								FIFOvalid <= '1';
 								fifo_rd_stm <= WRxRD_HEADER;
 							when others =>
