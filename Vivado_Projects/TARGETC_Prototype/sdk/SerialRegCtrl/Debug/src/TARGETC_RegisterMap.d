@@ -6,7 +6,6 @@ src/TARGETC_RegisterMap.o src/TARGETC_RegisterMap.o: \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters_ps.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/bspconfig.h \
-<<<<<<< HEAD
  ../src/global.h ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xstatus.h \
@@ -20,9 +19,6 @@ src/TARGETC_RegisterMap.o src/TARGETC_RegisterMap.o: \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xpseudo_asm_gcc.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h
-=======
- ../src/global.h
->>>>>>> master
 
 ../src/TARGETC_RegisterMap.h:
 
@@ -41,7 +37,6 @@ src/TARGETC_RegisterMap.o src/TARGETC_RegisterMap.o: \
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/bspconfig.h:
 
 ../src/global.h:
-<<<<<<< HEAD
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h:
 
@@ -68,5 +63,3 @@ src/TARGETC_RegisterMap.o src/TARGETC_RegisterMap.o: \
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h:
-=======
->>>>>>> master

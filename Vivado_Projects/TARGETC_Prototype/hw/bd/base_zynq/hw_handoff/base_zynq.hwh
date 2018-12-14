@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Dec  8 11:21:28 2018" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Dec 14 09:53:03 2018" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="base_zynq" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -490,6 +490,7 @@
             <CONNECTION INSTANCE="axistream_0" PORT="StreamReady"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="PSBUSY_i" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="DataOut" RIGHT="0" SIGIS="undef" SIGNAME="FifoManagerV4_0_DataOut">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axistream_0" PORT="FIFOdata"/>
@@ -812,6 +813,7 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="TestStream" SIGIS="undef"/>
+        <PORT DIR="O" NAME="PSBusy" SIGIS="undef"/>
         <PORT DIR="I" NAME="FIFOresponse" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOresponse">
           <CONNECTIONS>
             <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFOresponse"/>
@@ -5340,7 +5342,6 @@
             <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_s2mm_aclk"/>
             <CONNECTION INSTANCE="axistream_0" PORT="M_AXIS_ACLK"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -5349,6 +5350,7 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CLK"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aclk"/>
           </CONNECTIONS>
         </PORT>
@@ -6575,7 +6577,6 @@
             <CONNECTION INSTANCE="axi_iic_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="axistream_0" PORT="M_AXIS_ARESETN"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="nRST"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
@@ -6583,6 +6584,7 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="nRST"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>

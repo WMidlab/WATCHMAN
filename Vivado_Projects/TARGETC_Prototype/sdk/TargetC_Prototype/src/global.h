@@ -17,7 +17,6 @@
 	
 	int samplecnt;
 	
-	static int window[MAX_WINDOW*512];
 	XAxiDma AxiDmaInstance;
 	
 //	struct window_st{
@@ -43,7 +42,10 @@
 	};
 	
 	struct ele_list_st *head;
+	struct ele_list_st *axiptr;
+
+	int cntwindow;
+	int NBRWINDOWS;
 	
-	struct ele_list_st *head2;
 
 #endif  /* end of protection macro */

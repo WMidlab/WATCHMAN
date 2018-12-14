@@ -5,35 +5,23 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters_ps.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/bspconfig.h \
-<<<<<<< HEAD
  ../src/global.h ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xstatus.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_assert.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bd.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_hw.h \
-=======
- ../src/global.h ../src/iic_DAC_LTC2657.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xstatus.h \
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_assert.h \
->>>>>>> master
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_io.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xpseudo_asm.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xreg_cortexa9.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xpseudo_asm_gcc.h \
-<<<<<<< HEAD
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../src/iic_DAC_LTC2657.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic.h \
-=======
->>>>>>> master
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic_hw.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_exception.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xtime_l.h \
@@ -57,7 +45,6 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
 
 ../src/global.h:
 
-<<<<<<< HEAD
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:
@@ -69,19 +56,6 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bd.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_hw.h:
-=======
-../src/iic_DAC_LTC2657.h:
-
-../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xparameters.h:
-
-../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h:
-
-../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic.h:
-
-../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xstatus.h:
-
-../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_assert.h:
->>>>>>> master
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_io.h:
 
@@ -93,7 +67,6 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xpseudo_asm_gcc.h:
 
-<<<<<<< HEAD
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xdebug.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h:
@@ -106,8 +79,6 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic.h:
 
-=======
->>>>>>> master
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic_hw.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_exception.h:

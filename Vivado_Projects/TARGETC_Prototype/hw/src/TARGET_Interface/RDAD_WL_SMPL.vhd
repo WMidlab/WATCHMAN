@@ -84,6 +84,7 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 		READY,
 		
 		FIFOREAD,
+		FIFOEVAL,
 		WD1_SET_RDAD_ADDR,
 		WD1_LOW_SET0, WD1_LOW_SET1, WD1_HIGH_SET1, WD1_HIGH_SET0,
 		WD1_VALID,
@@ -247,13 +248,18 @@ begin
 						if (RDAD_Empty = '0') then	-- Something to read from the FIFO
 							rdad_stm <= FIFOREAD;
 							
-						CtrlBus_OxSL.Test3 <= '1';
+							CtrlBus_OxSL.Test3 <= '1';
 							RDAD_ReadEn <= '1';
 						else
 							rdad_stm <= READY;
 						end if;
-					
 					when FIFOREAD =>
+						RDAD.response <= '1';
+						RDAD.busy <= '1';
+					
+						RDAD_ReadEn <= '0';
+						rdad_stm <= FIFOEVAL;
+					when FIFOEVAL =>
 						RDAD.response <= '1';
 						RDAD.busy <= '1';
 					
@@ -309,11 +315,13 @@ begin
 						RDAD_SIN_intl 	<= '0'; --MSB First
 												
 						if (WL.response = '1') then
-							RDAD.valid <= '1';
-							rdad_stm <= WD1_VALID;
-						else
 							RDAD.valid <= '0';
+							--rdad_stm <= WD1_VALID;
 							rdad_stm <= WD1_RESPVALID;
+						else
+							RDAD.valid <= '1';
+							--rdad_stm <= WD1_RESPVALID;
+							rdad_stm <= WD1_VALID;
 						end if;
 					when WD1_RESPVALID =>
 						if (WL.response = '0') then	--Wilkinson 				
@@ -370,11 +378,13 @@ begin
 						RDAD_SIN_intl 	<= '0'; --MSB First
 												
 						if (WL.response = '1') then
-							RDAD.valid <= '1';
-							rdad_stm <= WD2_VALID;
-						else
 							RDAD.valid <= '0';
+							--rdad_stm <= WD2_VALID;
 							rdad_stm <= WD2_RESPVALID;
+						else
+							RDAD.valid <= '1';
+							--rdad_stm <= WD2_RESPVALID;
+							rdad_stm <= WD2_VALID;
 						end if;
 					when WD2_RESPVALID =>
 						if (WL.response = '0') then	--Wilkinson 				
@@ -622,7 +632,7 @@ begin
 							TestFIFO_window <= 0;
 							SS.busy <= '1';
 							hsout_stm <= FIFOTEST_DATA;
-						elsif (WL.valid = '1') and (CtrlBus_IxSL.SAMPLEMODE = '1')then
+						elsif (WL.valid = '1') and (CtrlBus_IxSL.SAMPLEMODE = '1') then
 							SS_RESET_intl <= '1';
 							SS_INCR_flg <= '0';
 							CtrlBus_OxSL.Test5 <= '1';

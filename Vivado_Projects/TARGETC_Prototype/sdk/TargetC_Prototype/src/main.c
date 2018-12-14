@@ -32,7 +32,6 @@ int main(void)
 	int status;
 	int timeout= 5;
 	int tmp = 0;
-	int NBRWINDOWS = 3;
 
 	head = NULL;
 	
@@ -45,14 +44,12 @@ int main(void)
     xil_printf("\n\r*** TARGETC : Testing Software *** \n\r");
     xil_printf("*** ************************** *** \n\r");
 
-	xil_printf("Sizef struct : %d\r\n",sizeof(struct window_st));
-	
     // Test I2C
     status = DAC_LTC2657_initialize();
     if(status != XST_SUCCESS){
     	xil_printf("ERROR:\tFailure to initialize I2C DAC LT2657\r\n");
     }
-    status = DAC_LTC2657_SetChannelVoltage(CHANNEL_ALL,2.25);	//Vped = 1.25
+    status = DAC_LTC2657_SetChannelVoltage(CHANNEL_ALL,2.00);	//Vped = 1.25
     if(status != XST_SUCCESS){
     	xil_printf("ERROR:\tFailure to set voltages I2C DAC LT2657\r\n");
     }
@@ -115,10 +112,10 @@ int main(void)
     TestPatternGenerator(0xA69);
 	sleep(1);
 	
-	TestPatternGenerator(0x555);
+	//TestPatternGenerator(0x555);
     sleep(1);
 
-    TestPatternGenerator(0x111);
+    //TestPatternGenerator(0x111);
 	sleep(1);
 
 
@@ -391,45 +388,32 @@ int main(void)
 		//GetTargetCStatus();
 		//GetTargetCControl();
 		
-		NBRWINDOWS = 1;
+		NBRWINDOWS = 2;
 
-		
-		head2 = malloc(sizeof(struct ele_list_st));
-		if(head2 == NULL){
-			printf("Fuck malloc\r\n");
+		head = malloc(sizeof(struct ele_list_st));
+		if(head == NULL){
+			printf("Head Malloc - FAILED\r\n");
 		}
-		head2->pnext = NULL;
+		head->pnext = NULL;
+		axiptr = head;
 		
 		for(int i= 0; i< 512; i++){
-			head2->wdo.data[i] = i;
+			head->wdo.data[i] = i;
 		}
 
-	 	Xil_DCacheFlushRange(&(head2->wdo), sizeof(struct window_st));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(head2->wdo), sizeof(struct window_st));
+	 	Xil_DCacheFlushRange(&(head->wdo), sizeof(struct window_st));
+		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(head->wdo), sizeof(struct window_st));
 	  
+	  	cntwindow = 0;
 		samplecnt = 0;
 
-		regptr[TC_FSTWINDOW_REG] = 10;
+		regptr[TC_FSTWINDOW_REG] = 6;
 		regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
 
 		ControlRegisterWrite(SMODE_MASK ,ENABLE);
 		ControlRegisterWrite(SS_TPG_MASK ,ENABLE);
 		ControlRegisterWrite(WINDOW_MASK,ENABLE);
-		
-//		if (regptr[TC_CONTROL_REG] & WINDOW_MASK){
-//			xil_printf("Window Enabled\r\n");
-//		}
-//		else{
-//			timeout= 5;
-//			tmp = 0;
-//			while(timeout && !(regptr[TC_CONTROL_REG] & WINDOW_MASK)){
-//				ControlRegisterWrite(WINDOW_MASK,ENABLE);
-//				sleep(1);
-//				xil_printf("... ");
-//				timeout--;
-//			}
-//			xil_printf("\r\n");
-//		}
+
 		sleep(1);
 		ControlRegisterWrite(WINDOW_MASK,DISABLE);
 		
@@ -437,7 +421,7 @@ int main(void)
 		tmp = 0;
 		while(timeout && !axidma_rx_done){
 			sleep(1);
-			xil_printf("...\r\n");
+			xil_printf("%d...\r\n",cntwindow);
 			timeout--;
 		}
 		xil_printf("\r\n");
@@ -445,50 +429,60 @@ int main(void)
 
 		if(axidma_rx_done){
 			//sleep(1);
-			Xil_DCacheInvalidateRange(&(head2->wdo), sizeof(struct window_st));
+			while(head->pnext != NULL){
+				Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
+		
+				xil_printf("HEADER\r\n");
+				xil_printf("------------\r\n");
+		
 			
-			xil_printf("HEADER\r\n");
-			xil_printf("------------\r\n");
-			
+				for(int i=0; i<6; i++){
+					xil_printf("Header%d:\t%d\r\n",i,head->wdo.header[i]);
+				}
+				xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
+				xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
+				xil_printf(">>>\r\n");
+		
+				for(int i=0; i<32;i++){
 
-			for(int i=0; i<6; i++){
-				xil_printf("Header%d:\t%d\r\n",i,head2->wdo.header[i]);
+						xil_printf("%d\t",head->wdo.data[i]);
+						xil_printf("%d\t",head->wdo.data[i + 32]);
+						xil_printf("%d\t",head->wdo.data[i + 32*2]);
+						xil_printf("%d\t",head->wdo.data[i + 32*3]);
+
+						xil_printf("%d\t",head->wdo.data[i + 32*4]);
+						xil_printf("%d\t",head->wdo.data[i + 32*5]);
+						xil_printf("%d\t",head->wdo.data[i + 32*6]);
+						xil_printf("%d\t",head->wdo.data[i + 32*7]);
+
+						xil_printf("%d\t",head->wdo.data[i + 32*8]);
+						xil_printf("%d\t",head->wdo.data[i + 32*9]);
+						xil_printf("%d\t",head->wdo.data[i + 32*10]);
+						xil_printf("%d\t",head->wdo.data[i + 32*11]);
+
+						xil_printf("%d\t",head->wdo.data[i + 32*12]);
+						xil_printf("%d\t",head->wdo.data[i + 32*13]);
+						xil_printf("%d\t",head->wdo.data[i + 32*14]);
+						xil_printf("%d\r\n",head->wdo.data[i + 32*15]);
+				}
+				xil_printf("<<<\r\n");
+				xil_printf("\r\n");
+		
+				//Increment List
+				tmp = head;
+				
+				head = head->pnext;
+				free(tmp);
 			}
-			xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
-			xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
-			xil_printf(">>>\r\n");
-			for(int i=0; i<32;i++){
-
-				xil_printf("%d\t",head2->wdo.data[i]);
-				xil_printf("%d\t",head2->wdo.data[i + 32]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*2]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*3]);
-
-				xil_printf("%d\t",head2->wdo.data[i + 32*4]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*5]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*6]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*7]);
-
-				xil_printf("%d\t",head2->wdo.data[i + 32*8]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*9]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*10]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*11]);
-
-				xil_printf("%d\t",head2->wdo.data[i + 32*12]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*13]);
-				xil_printf("%d\t",head2->wdo.data[i + 32*14]);
-				xil_printf("%d\r\n",head2->wdo.data[i + 32*15]);
-			}
-			xil_printf("<<<\r\n");
-			xil_printf("\r\n");
 			
-			axidma_rx_done = 0;
-
 		}
 		else{
 			xil_printf("No interrupts\r\n");
 		}
+
+		axidma_rx_done = 0;
 		
+		free(head);
 
 		ControlRegisterWrite(SMODE_MASK,DISABLE);
 		sleep(1);	
@@ -511,7 +505,6 @@ int main(void)
 			if(regptr[TC_STATUS_REG] & TEST_5_MASK){
 				xil_printf("T5\t");
 			}
-	free(head2);
 // PEDESTAL SUBSTRACTION INIT WINDOW 0 only
 
 /*	int PEDROUNDS = 20;

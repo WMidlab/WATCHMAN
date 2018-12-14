@@ -98,6 +98,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 		
 		-- FIFO
 			TestStream:		out std_logic;
+			PSBusy:			out std_logic;
 			FIFOresponse:	in	std_logic;
 			CH0 :			out	std_logic_vector(11 downto 0);
 			CH1 :			out	std_logic_vector(11 downto 0);
@@ -176,6 +177,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 		-- DATA TO STREAM
 		FIFOvalid:	out	std_logic;
 		ready_i:		in 	std_logic;
+		PSBusy_i:			in std_logic;
 		DataOut:	out	std_logic_vector(C_M_AXIS_TDATA_WIDTH-1 downto 0)
 	);
 	end component FifoManagerV4;
@@ -270,7 +272,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 	signal M_AXIS_TREADY_sti:	std_logic := '0';
 	signal FIFOValid_sti:	std_logic := '0';
 	signal ready_sti :		std_logic := '0';
-	
+	signal PUBusy_sti:		std_logic;
 	signal TestStream_sti : std_logic;
 	signal fifodata_sti : std_logic_vector(31 downto 0);
 	
@@ -365,6 +367,7 @@ begin
 		
 	-- FIFO
 		TestStream	=> TestStream_sti,
+		PSBusy		=> PUBusy_sti,
 		FIFOresponse	=> FIFOresponse_intl,
 		CH0 		=> FIFOData_intl.CH0,
 		CH1 		=> FIFOData_intl.CH1,
@@ -467,6 +470,7 @@ begin
 		-- DATA TO STREAM
 		FIFOvalid	=> FIFOvalid_sti,
 		ready_i		=> ready_sti,
+		PSBusy_i	=> PUBusy_sti,
 		DataOut		=> FIFOData_sti
 	);
 
@@ -790,7 +794,7 @@ begin
 		
 		report "Start Storage!";
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_FSTWINDOW_REG*4, s00_axi_AWADDR'length));
-		s00_axi_WDATA<= x"00000010";
+		s00_axi_WDATA<= x"00000005";
 		s00_axi_WSTRB<=b"1111";
 		sendIt<='1';                --Start AXI Write to Slave
 		wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
@@ -798,7 +802,7 @@ begin
 		wait until s00_axi_BVALID = '0';  --AXI Write finished		
 
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_NBRWINDOW_REG*4, s00_axi_AWADDR'length));
-		s00_axi_WDATA<= x"00000001";
+		s00_axi_WDATA<= x"00000002";
 		s00_axi_WSTRB<=b"1111";
 		sendIt<='1';                --Start AXI Write to Slave
 		wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
@@ -825,18 +829,108 @@ begin
 		wait until s00_axi_BVALID = '0';  --AXI Write finished
 				
 			for I in 0 to 31 loop
-		
-				while (ssvalid_intl = '0') loop
-					wait for 1 ns;
-				end loop;
-				--FIFOresponse_intl <= '1';
 				
-				while (ssvalid_intl = '1') loop
-					wait for 1 ns;
-				end loop;
-				--FIFOresponse_intl <= '0';
-				
-			end loop;
+						while (ssvalid_intl = '0') loop
+							wait for 1 ns;
+						end loop;
+						--FIFOresponse_intl <= '1';
+						
+						while (ssvalid_intl = '1') loop
+							wait for 1 ns;
+						end loop;
+						--FIFOresponse_intl <= '0';
+						
+					end loop;
+					
+					for I in 0 to 31 loop
+							
+						while (ssvalid_intl = '0') loop
+							wait for 1 ns;
+						end loop;
+						--FIFOresponse_intl <= '1';
+						
+						while (ssvalid_intl = '1') loop
+							wait for 1 ns;
+						end loop;
+						--FIFOresponse_intl <= '0';
+						
+					end loop;	
+				report "Start Storage with PS BUSY!";
+					s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_FSTWINDOW_REG*4, s00_axi_AWADDR'length));
+					s00_axi_WDATA<= x"00000007";
+					s00_axi_WSTRB<=b"1111";
+					sendIt<='1';                --Start AXI Write to Slave
+					wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+					wait until s00_axi_BVALID = '1';
+					wait until s00_axi_BVALID = '0';  --AXI Write finished		
+			
+					s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_NBRWINDOW_REG*4, s00_axi_AWADDR'length));
+					s00_axi_WDATA<= x"00000002";
+					s00_axi_WSTRB<=b"1111";
+					sendIt<='1';                --Start AXI Write to Slave
+					wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+					wait until s00_axi_BVALID = '1';
+					wait until s00_axi_BVALID = '0';  --AXI Write finished		
+							
+					
+					s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+					s00_axi_WDATA<= C_WINDOW_MASK or C_SMODE_MASK or C_SWRESET_MASK;
+					s00_axi_WSTRB<=b"1111";
+					sendIt<='1';                --Start AXI Write to Slave
+					wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+					wait until s00_axi_BVALID = '1';
+					wait until s00_axi_BVALID = '0';  --AXI Write finished
+					
+					wait for 1 us;
+
+					s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+					s00_axi_WDATA<= C_SMODE_MASK or C_SWRESET_MASK or C_PS_BUSY_MASK;
+					s00_axi_WSTRB<=b"1111";
+					sendIt<='1';                --Start AXI Write to Slave
+					wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+					wait until s00_axi_BVALID = '1';
+					wait until s00_axi_BVALID = '0';  --AXI Write finished
+					
+					wait for 200 us;							
+
+
+					s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+					s00_axi_WDATA<= C_SMODE_MASK or C_SWRESET_MASK;
+					s00_axi_WSTRB<=b"1111";
+					sendIt<='1';                --Start AXI Write to Slave
+					wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+					wait until s00_axi_BVALID = '1';
+					wait until s00_axi_BVALID = '0';  --AXI Write finished
+					
+						for I in 0 to 31 loop
+							
+									while (ssvalid_intl = '0') loop
+										wait for 1 ns;
+									end loop;
+									--FIFOresponse_intl <= '1';
+									
+									while (ssvalid_intl = '1') loop
+										wait for 1 ns;
+									end loop;
+									--FIFOresponse_intl <= '0';
+									
+								end loop;
+								
+								for I in 0 to 31 loop
+											
+										while (ssvalid_intl = '0') loop
+											wait for 1 ns;
+										end loop;
+										--FIFOresponse_intl <= '1';
+										
+										while (ssvalid_intl = '1') loop
+											wait for 1 ns;
+										end loop;
+										--FIFOresponse_intl <= '0';
+										
+									end loop;
+							
+
 		report "Finished Cleaning up";
 		
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));

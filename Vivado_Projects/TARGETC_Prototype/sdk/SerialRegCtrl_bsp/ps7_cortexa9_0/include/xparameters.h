@@ -41,7 +41,6 @@
 
 /******************************************************************/
 
-<<<<<<< HEAD
 /* Definitions for driver AXIDMA */
 #define XPAR_XAXIDMA_NUM_INSTANCES 1
 
@@ -92,8 +91,6 @@
 
 /******************************************************************/
 
-=======
->>>>>>> master
 
 /* Definitions for peripheral PS7_DDR_0 */
 #define XPAR_PS7_DDR_0_S_AXI_BASEADDR 0x00100000
@@ -351,19 +348,13 @@
 
 /* Definitions for Fabric interrupts connected to ps7_scugic_0 */
 #define XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR 61U
-<<<<<<< HEAD
 #define XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR 62U
-=======
->>>>>>> master
 
 /******************************************************************/
 
 /* Canonical definitions for Fabric interrupts connected to ps7_scugic_0 */
 #define XPAR_FABRIC_TARGETC_0_VEC_ID XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR
-<<<<<<< HEAD
 #define XPAR_FABRIC_AXIDMA_0_VEC_ID XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR
-=======
->>>>>>> master
 
 /******************************************************************/
 

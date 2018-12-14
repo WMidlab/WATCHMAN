@@ -1,6 +1,2 @@
    text	   data	    bss	    dec	    hex	filename
-<<<<<<< HEAD
   95144	   4280	  27408	 126832	  1ef70	SerialRegCtrl.elf
-=======
-  87528	   4216	  23472	 115216	  1c210	SerialRegCtrl.elf
->>>>>>> master

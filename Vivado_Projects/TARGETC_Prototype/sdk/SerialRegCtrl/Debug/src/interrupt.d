@@ -16,7 +16,6 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xscugic_hw.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_exception.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_printf.h \
-<<<<<<< HEAD
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xtime_l.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h \
@@ -26,10 +25,6 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
  ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../src/global.h ../src/TARGETC_RegisterMap.h ../src/platform.h \
  ../src/platform_config.h
-=======
- ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xtime_l.h ../src/global.h \
- ../src/TARGETC_RegisterMap.h ../src/platform.h ../src/platform_config.h
->>>>>>> master
 
 ../src/interrupt.h:
 
@@ -69,7 +64,6 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xtime_l.h:
 
-<<<<<<< HEAD
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma.h:
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xaxidma_bdring.h:
@@ -82,8 +76,6 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
 
 ../../SerialRegCtrl_bsp/ps7_cortexa9_0/include/xil_cache.h:
 
-=======
->>>>>>> master
 ../src/global.h:
 
 ../src/TARGETC_RegisterMap.h:

@@ -10,9 +10,14 @@ package WindowCPU_pkg is
 	constant CMD_BOTH_EN : 	std_logic_vector(2 downto 0) := "010";
 	constant CMD_WR1_EN_DIS : 	std_logic_vector(2 downto 0) := "011";
 	constant CMD_WR2_EN_DIS : 	std_logic_vector(2 downto 0) := "100";
+	constant CMD_WR1_MARKED : 	std_logic_vector(2 downto 0) := "101";
+	constant CMD_WR2_MARKED : 	std_logic_vector(2 downto 0) := "110";
+	constant CMD_BOTH_MARKED : 	std_logic_vector(2 downto 0) := "111";
 
 	type Bus_t is array (0 to 15) of std_logic_vector(7 downto 0);
+	type TrigInfoBus_t is array (0 to 15) of std_logic_vector(11 downto 0);
     
+    type MODE_t is (EVEN, ODD);
 end WindowCPU_pkg;
 
 package body WindowCPU_pkg is

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_Trigger_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_Trigger" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+            <top_module name="windowcpu_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="3037100000fs"></ZoomStartTime>
+      <ZoomEndTime time="3072500001fs"></ZoomEndTime>
+      <Cursor1Time time="3039700000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="154"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/nrst">
+      <obj_property name="ElementShortName">nrst</obj_property>
+      <obj_property name="ObjectShortName">nrst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/clk1GHz">
+      <obj_property name="ElementShortName">clk1GHz</obj_property>
+      <obj_property name="ObjectShortName">clk1GHz</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/PLL_LOCKED_intl">
+      <obj_property name="ElementShortName">PLL_LOCKED_intl</obj_property>
+      <obj_property name="ObjectShortName">PLL_LOCKED_intl</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/clockbus_intl">
+      <obj_property name="ElementShortName">clockbus_intl</obj_property>
+      <obj_property name="ObjectShortName">clockbus_intl</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/sync">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_Trigger/cnt1ns">
+      <obj_property name="ElementShortName">cnt1ns</obj_property>
+      <obj_property name="ObjectShortName">cnt1ns</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/CLK">
+      <obj_property name="ElementShortName">CLK</obj_property>
+      <obj_property name="ObjectShortName">CLK</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/samplecnt">
+      <obj_property name="ElementShortName">samplecnt[3:0]</obj_property>
+      <obj_property name="ObjectShortName">samplecnt[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/CntWdo256">
+      <obj_property name="ElementShortName">CntWdo256[3:0]</obj_property>
+      <obj_property name="ObjectShortName">CntWdo256[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/CntWdo512">
+      <obj_property name="ElementShortName">CntWdo512[3:0]</obj_property>
+      <obj_property name="ObjectShortName">CntWdo512[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/trigger">
+      <obj_property name="ElementShortName">trigger</obj_property>
+      <obj_property name="ObjectShortName">trigger</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/trigger_reg">
+      <obj_property name="ElementShortName">trigger_reg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">trigger_reg[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/valid">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/prevWdo">
+      <obj_property name="ElementShortName">prevWdo</obj_property>
+      <obj_property name="ObjectShortName">prevWdo</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/currWdo">
+      <obj_property name="ElementShortName">currWdo</obj_property>
+      <obj_property name="ObjectShortName">currWdo</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/nextWdo">
+      <obj_property name="ElementShortName">nextWdo</obj_property>
+      <obj_property name="ObjectShortName">nextWdo</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/wr1_trig">
+      <obj_property name="ElementShortName">wr1_trig</obj_property>
+      <obj_property name="ObjectShortName">wr1_trig</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_Trigger/Trigger_inst/wr2_trig">
+      <obj_property name="ElementShortName">wr2_trig</obj_property>
+      <obj_property name="ObjectShortName">wr2_trig</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/LEstate">
+      <obj_property name="ElementShortName">LEstate[3:0]</obj_property>
+      <obj_property name="ObjectShortName">LEstate[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_Trigger/Trigger_inst/TEstate">
+      <obj_property name="ElementShortName">TEstate[3:0]</obj_property>
+      <obj_property name="ObjectShortName">TEstate[3:0]</obj_property>
+   </wvobject>
+</wave_config>

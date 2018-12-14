@@ -59,6 +59,7 @@ architecture arch_imp of TC_Control is
     signal startstorage_stm : 	Pulse_State_Type := IDLE;
     signal SSack_stm : 			Pulse_State_Type := IDLE; 
     signal TestStream_stm : 	Pulse_State_Type := IDLE; 
+    signal PSBusy_stm : 	Pulse_State_Type := IDLE; 
     signal testfifo_stm:		Pulse_State_Type := IDLE;
     
     signal TC_ADDR_s :	std_logic_vector(6 downto 0);
@@ -650,6 +651,35 @@ begin
     
     CtrlBus_OxMS.TestFIFO 		<= '1' when testfifo_stm = PULSE else '0';
 
+	-- --------------------------------------------------------------------------------
+	-- PS Busy for new frame
+    process(AxiBusIn.ARESETN,AxiBusIn.ACLK) is
+    begin
+    	if (AxiBusIn.ARESETN = '0') then
+    		PSBusy_stm <= IDLE;
+        else	
+        	if (rising_edge(AxiBusIn.ACLK)) then
+                case PSBusy_stm is
+                    when IDLE =>
+                        if ((TCReg(TC_CONTROL_REG) and C_PS_BUSY_MASK) = C_PS_BUSY_MASK) then
+                            PSBusy_stm <= PULSE;    
+                        else
+                            PSBusy_stm <= IDLE;
+                        end if;
+                    when PULSE =>
+                        PSBusy_stm <= RESET;
+                    when RESET =>	-- Wait for user PS clear register
+                        if ((TCReg(TC_CONTROL_REG) and C_PS_BUSY_MASK) = C_PS_BUSY_MASK) then
+                            PSBusy_stm <= RESET;    
+                        else
+                            PSBusy_stm <= IDLE;
+                        end if; 
+                   end case;
+             end if;
+        end if;
+    end process;
+    
+	CtrlBus_OxMS.PSBusy		<= '0' when PSBusy_stm = IDLE else '1';
 	-- --------------------------------------------------------------------------------
 
 	-- ADDR and DATA to TARGETC Register

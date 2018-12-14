@@ -120,6 +120,7 @@ entity TARGETC_IP_Prototype is
 		WDONbr:				out std_logic_vector(8 downto 0);
 		
 		TestStream:		out std_logic;
+		PSBusy:			out	std_logic;
 		FIFOresponse:	in	std_logic;
 		CH0 :			out	std_logic_vector(11 downto 0);
 		CH1 :			out	std_logic_vector(11 downto 0);
@@ -544,7 +545,8 @@ begin
 
 	TestStream	<= CtrlBusOut_intl.TestStream;
 	SSvalid		<= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '1' else '0';
-
+	PSBusy		<= CtrlBusOut_intl.PSBusy;
+	
 	--NbrWindow	<= CtrlBusOut_intl.NBRWINDOW;
 
 	-- DEBUG
