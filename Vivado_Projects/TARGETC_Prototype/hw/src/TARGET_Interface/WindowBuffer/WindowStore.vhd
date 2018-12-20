@@ -14,14 +14,14 @@ entity WindowStore is
 
 	ClockBus:		in T_ClockBus;
 	Timecounter:	in std_logic_vector(63 downto 0);
-	
+
 	-- Normal Operation
 	valid:		in	std_logic_vector(NBRWINDOWS-1 downto 0);
 	wr1_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
 	Wr2_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
-	
---	triginfo:	in TrigInfoBus_t;
-	
+
+	triginfo:	in TrigInfoBus_t(NBRWINDOWS-1 downto 0);
+
 	-- FIFO out for Reading RDAD
     RDAD_ReadEn  :in  std_logic;
     RDAD_DataOut : out std_logic_vector(100+5 downto 0);
@@ -50,7 +50,7 @@ architecture Behavioral of WindowStore is
         WClk        :in  std_logic
     );
 	end component aFifo;
-	
+
 	component MUX256x8 is
 	Port (
 		A : in	std_logic_vector(255 downto 0);
@@ -60,15 +60,15 @@ architecture Behavioral of WindowStore is
 
 	signal Full_out_intl    : std_logic;
 	signal WriteEn_intl  : std_logic;
-	
+
 	signal curr_Timecounter:	std_logic_vector(63 downto 0);
 	signal prev_Timecounter:	std_logic_vector(63 downto 0);
-	
+
 	signal NewEvent : std_logic;
 	signal data_in_intl : std_logic_vector(105 downto 0);
-	
+
 	signal valid_dly : 	std_logic_vector(NBRWINDOWS-1 downto 0);
-	signal enablewdo:	std_logic_vector(NBRWINDOWS-1 downto 0);	
+	signal enablewdo:	std_logic_vector(NBRWINDOWS-1 downto 0);
 	signal tmp_256:		std_logic_vector(255 downto 0);
 	signal windowstore : std_logic_vector(7 downto 0);
 begin
@@ -85,8 +85,8 @@ begin
 	GEN_en : for I in 0 to NBRWINDOWS-1 generate
 		enablewdo(I) <=  '1' when (valid(I) = '1' and valid_dly(I)= '0') else '0';
 	end generate;
-	
-	
+
+
 	tmp_256(NBRWINDOWS-1 downto 0) <= enablewdo;
 	tmp_256(255 downto NBRWINDOWS) <= (others => '0');
 	Mux : MUX256x8
@@ -95,19 +95,19 @@ begin
 		A	=> tmp_256,
 		B	=> windowstore
 	);
-	
+
 	Data_in_intl(58+5 downto 0)		<= prev_TimeCounter;
 	Data_in_intl(66+5 downto 59+5)	<= windowstore;
 	Data_in_intl(67+5)				<= wr1_en(to_integer(unsigned(windowstore)));
 	Data_in_intl(68+5)				<= wr2_en(to_integer(unsigned(windowstore)));
 --	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo;
-	Data_in_intl(100+5 downto 69+5)	<= (others => '0');
-	
+	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo(to_integer(unsigned(windowstore)));
+
   	WriteEn_intl <= '1' when enablewdo /= std_logic_vector(to_unsigned(0,enablewdo'length)) else '0';
-	
+
 	-- Detect a change in any of the windows
 	-- if change from 10 something else discard
-	
+
 	-- RDAD and Storage FIFO
 	RDAD_STO_AFIFO :  aFifo
     generic map(
@@ -127,7 +127,7 @@ begin
         WriteEn_in  => WriteEn_intl,
         WClk        => ClockBus.CLK250MHz
     );
-    
+
    	process(ClockBus.SSTIN, nRST)
 	begin
 		if nrst = '0' then
@@ -140,6 +140,6 @@ begin
 			end if;
 		end if;
 	end process;
-    
+
 
 end Behavioral;

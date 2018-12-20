@@ -25,6 +25,7 @@ void platform_enable_interrupts(void);
 void platform_cleanup_interrupts(void);
 
 void SSVALID_IntrHandler(void);
+void Trigger_IntrHandler(void);
 int AxiDma_Initialize(void);
 void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst);
 void XAxiDma_SimpleTransfer_Hej(XAxiDma *InstancePtr, UINTPTR BuffAddr, int LengthOfBytes);

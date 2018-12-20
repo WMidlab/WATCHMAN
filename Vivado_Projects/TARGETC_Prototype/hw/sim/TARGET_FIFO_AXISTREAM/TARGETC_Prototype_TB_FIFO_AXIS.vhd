@@ -121,6 +121,17 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			CH15 :			out	std_logic_vector(11 downto 0);
 			SSvalid:		out std_logic;
 			
+				-- Trigger 
+			TrigA :			in std_logic;
+			TrigB :			in std_logic;
+			TrigC :			in std_logic;
+			TrigD :			in std_logic;
+		
+			TrigA_intr :	out std_logic;
+			TrigB_intr :	out std_logic;
+			TrigC_intr :	out std_logic;
+			TrigD_intr :	out std_logic;
+			
 			--NbrWindow:		out	std_logic_vector(31 downto 0);
 			WDOTime:			out std_logic_vector(63 downto 0);
 			DIGTime:			out std_logic_vector(63 downto 0);
@@ -391,6 +402,16 @@ begin
 		SSvalid			=> SSvalid_intl,
 		--NbrWindow => NBRWINDOW_sti,
 		
+			-- Trigger 
+		TrigA => '0',
+		TrigB => '0',
+		TrigC => '0',
+		TrigD => '0',
+		
+		TrigA_intr=> open,
+		TrigB_intr=> open,
+		TrigC_intr=> open,
+		TrigD_intr=> open,
 		--Header Information
 		WDOTime	=> WDOTime_intl,
 		DIGTime => DIGTime_intl,
@@ -567,6 +588,8 @@ begin
 		variable locked_flg : integer;
 		variable storage_flg : integer;
 		variable ssvalid : integer;
+		
+		variable window : integer;
 		
 	begin
 		simulation_end_s <= '0';
@@ -932,6 +955,69 @@ begin
 							
 
 		report "Finished Cleaning up";
+		
+		wait for 10 us;
+		
+		for J in 0 to 511 loop
+			window := J;
+			report "Window :" & integer'image(window);
+			
+			for I in 0 to 9 loop
+		
+				s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_FSTWINDOW_REG*4, s00_axi_AWADDR'length));
+				s00_axi_WDATA<= std_logic_vector(to_unsigned(window,32));
+				s00_axi_WSTRB<=b"1111";
+				sendIt<='1';                --Start AXI Write to Slave
+				wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+				wait until s00_axi_BVALID = '1';
+				wait until s00_axi_BVALID = '0';  --AXI Write finished		
+
+				s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_NBRWINDOW_REG*4, s00_axi_AWADDR'length));
+				s00_axi_WDATA<= x"00000001";
+				s00_axi_WSTRB<=b"1111";
+				sendIt<='1';                --Start AXI Write to Slave
+				wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+				wait until s00_axi_BVALID = '1';
+				wait until s00_axi_BVALID = '0';  --AXI Write finished		
+				
+		
+				s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+				s00_axi_WDATA<= C_WINDOW_MASK or C_SMODE_MASK or C_SWRESET_MASK;
+				s00_axi_WSTRB<=b"1111";
+				sendIt<='1';                --Start AXI Write to Slave
+				wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+				wait until s00_axi_BVALID = '1';
+				wait until s00_axi_BVALID = '0';  --AXI Write finished
+		
+				wait for 10 us;
+		
+				s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+				s00_axi_WDATA<= C_SMODE_MASK or C_SWRESET_MASK;
+				s00_axi_WSTRB<=b"1111";
+				sendIt<='1';                --Start AXI Write to Slave
+				wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+				wait until s00_axi_BVALID = '1';
+				wait until s00_axi_BVALID = '0';  --AXI Write finished
+				
+				for I in 0 to 31 loop
+			
+					while (ssvalid_intl = '0') loop
+						wait for 1 ns;
+					end loop;
+					--FIFOresponse_intl <= '1';
+			
+					while (ssvalid_intl = '1') loop
+						wait for 1 ns;
+					end loop;
+					--FIFOresponse_intl <= '0';
+			
+				end loop;
+		
+			end loop;
+			wait for 1 us;
+		end loop;
+		
+		-- --------------------------------------
 		
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
 		s00_axi_WDATA<= C_SWRESET_MASK;

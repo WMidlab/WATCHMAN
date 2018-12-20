@@ -37,6 +37,11 @@ void platform_setup_interrupts(void)
 	//XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR, 0xA1, 0x3);
 	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR, 0xA1, 0x3);
 
+/*	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGA_INTR_INTR, 0xA1, 0x3);
+	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGB_INTR_INTR, 0xA1, 0x3);
+	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGC_INTR_INTR, 0xA1, 0x3);
+	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGD_INTR_INTR, 0xA1, 0x3);
+*/
 	//AXIDMA Interrupt
 	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR, 0xA1, 0x3);
 	
@@ -51,15 +56,37 @@ void platform_setup_interrupts(void)
 //	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR,
 //								(Xil_InterruptHandler)SSVALID_IntrHandler,
 //								&Intc);
-	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR,
-								(Xil_InterruptHandler)SSVALID_IntrHandler,
-								&Intc);
+/*
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGA_INTR_INTR,(Xil_InterruptHandler)Trigger_IntrHandler,&Intc);
 	if (Status != XST_SUCCESS) {
-		xil_printf("In %s: TIMER_IRPT_INTR failed...\r\n",
-				__func__);
+		xil_printf("In %s: Trigger Intr A failed...\r\n",__func__);
+		return ;
+	}
+
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGB_INTR_INTR,(Xil_InterruptHandler)Trigger_IntrHandler,&Intc);
+	if (Status != XST_SUCCESS) {
+		xil_printf("In %s: Trigger Intr B failed...\r\n",__func__);
 		return ;
 	}
 	
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGC_INTR_INTR,(Xil_InterruptHandler)Trigger_IntrHandler,&Intc);
+	if (Status != XST_SUCCESS) {
+		xil_printf("In %s: Trigger Intr C failed...\r\n",__func__);
+		return ;
+	}
+	
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGD_INTR_INTR,(Xil_InterruptHandler)Trigger_IntrHandler,&Intc);
+	if (Status != XST_SUCCESS) {
+		xil_printf("In %s: Trigger Intr D failed...\r\n",__func__);
+		return ;
+	}
+*/
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR,(Xil_InterruptHandler)SSVALID_IntrHandler,&Intc);
+	if (Status != XST_SUCCESS) {
+		xil_printf("In %s: TIMER_IRPT_INTR failed...\r\n",__func__);
+		return ;
+	}
+
 	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR,
 							(Xil_InterruptHandler)AxiDMA_IntrHandler,
 							&AxiDmaInstance);
@@ -85,6 +112,11 @@ void platform_enable_interrupts()
 //	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
 	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR);
 
+/*	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGA_INTR_INTR);
+	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGB_INTR_INTR);
+	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGC_INTR_INTR);
+	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGD_INTR_INTR);
+*/
 	XScuGic_Enable(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR);
 
 	XAxiDma_IntrEnable(&AxiDmaInstance, XAXIDMA_IRQ_IOC_MASK, XAXIDMA_DEVICE_TO_DMA);
@@ -99,12 +131,40 @@ void platform_cleanup_interrupts()
 {
 //	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
 	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR);
+
+	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGA_INTR_INTR);
+	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGB_INTR_INTR);
+	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGC_INTR_INTR);
+	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_TRIGD_INTR_INTR);
 	
 	XAxiDma_IntrDisable(&AxiDmaInstance, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
 	
 	Xil_ICacheDisable();
 	Xil_DCacheDisable();
 	return;
+}
+
+//Trigger handler
+void Trigger_IntrHandler(void){
+	if (regptr[TC_TRIGA_REG] != 0){
+		xil_printf("Trig A:\t%d | %d ns\r\n",regptr[TC_TRIGA_REG],regptr[TC_TRIGA_REG]*4);
+	}
+	
+	if (regptr[TC_TRIGB_REG] != 0){
+		xil_printf("Trig B:\t%d | %d ns\r\n",regptr[TC_TRIGB_REG],regptr[TC_TRIGB_REG]*4);
+	}
+	
+	if (regptr[TC_TRIGC_REG] != 0){
+		xil_printf("Trig C:\t%d | %d ns\r\n",regptr[TC_TRIGC_REG],regptr[TC_TRIGC_REG]*4);
+	}
+	
+	if (regptr[TC_TRIGD_REG] != 0){
+		xil_printf("Trig D:\t%d | %d ns\r\n",regptr[TC_TRIGD_REG],regptr[TC_TRIGD_REG]*4);
+	}
+	
+	ControlRegisterWrite(TRIG_CLEAR_MASK,ENABLE);
+	ControlRegisterWrite(TRIG_CLEAR_MASK,DISABLE);
+	
 }
 
 // Uer Functions for interrupt handler
@@ -244,24 +304,25 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 		//XTime_GetTime(&tEnd_dma);
 
 
-		ptrele = malloc(sizeof(struct ele_list_st));
-		if(ptrele == NULL){
-			printf("TMP malloc - FAILED\r\n");
-		}
-		ptrele->pnext = NULL;
-
-		axiptr->pnext = ptrele;
-		axiptr = ptrele;
-	 	Xil_DCacheFlushRange(&(ptrele->wdo), sizeof(struct window_st));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(ptrele->wdo), sizeof(struct window_st));
-
-		if(cntwindow >= NBRWINDOWS-1){
-			axidma_rx_done = 1;
-			cntwindow = 0;
-		}
-		else{
-			cntwindow++;
-		}
+//		ptrele = malloc(sizeof(struct ele_list_st));
+//		if(ptrele == NULL){
+//			printf("TMP malloc - FAILED\r\n");
+//		}
+//		ptrele->pnext = NULL;
+//
+//		axiptr->pnext = ptrele;
+//		axiptr = ptrele;
+//	 	Xil_DCacheFlushRange(&(ptrele->wdo), sizeof(struct window_st));
+//		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(ptrele->wdo), sizeof(struct window_st));
+//
+//		if(cntwindow >= NBRWINDOWS-1){
+//			axidma_rx_done = 1;
+//			cntwindow = 0;
+//		}
+//		else{
+//			cntwindow++;
+//		}
+		axidma_rx_done = 1;
 	}
 }
 

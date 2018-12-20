@@ -15,9 +15,15 @@ package WindowCPU_pkg is
 	constant CMD_BOTH_MARKED : 	std_logic_vector(2 downto 0) := "111";
 
 	type Bus_t is array (0 to 15) of std_logic_vector(7 downto 0);
-	type TrigInfoBus_t is array (0 to 15) of std_logic_vector(11 downto 0);
-    
+	type TrigInfoBus_t is array (integer range <>) of std_logic_vector(11 downto 0);
+
     type MODE_t is (EVEN, ODD);
+
+    type t_triggerinformation is record
+        trig :  std_logic_vector(3 downto 0);
+        last :  std_logic_vector(3 downto 0);
+        long :  std_logic_vector(3 downto 0);
+    end record;
 end WindowCPU_pkg;
 
 package body WindowCPU_pkg is

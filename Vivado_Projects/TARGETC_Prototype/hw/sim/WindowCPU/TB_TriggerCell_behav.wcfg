@@ -3,9 +3,9 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="TB_TriggerCell_behav.wdb" id="1">
+      <db_ref path="TB_TriggerCPU_behav.wdb" id="1">
          <top_modules>
-            <top_module name="TB_TriggerCell" />
+            <top_module name="TB_TriggerCPU" />
             <top_module name="glbl" />
             <top_module name="simulation_pkg" />
             <top_module name="targetc_pkg" />
@@ -14,170 +14,329 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8920166666fs"></ZoomStartTime>
-      <ZoomEndTime time="9245166667fs"></ZoomEndTime>
-      <Cursor1Time time="9028667000fs"></Cursor1Time>
+      <ZoomStartTime time="8507000000fs"></ZoomStartTime>
+      <ZoomEndTime time="9218000001fs"></ZoomEndTime>
+      <Cursor1Time time="8805000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="143"></NameColumnWidth>
-      <ValueColumnWidth column_width="135"></ValueColumnWidth>
+      <ValueColumnWidth column_width="91"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="17" />
-   <wvobject type="logic" fp_name="/TB_TriggerCell/nrst">
+   <WVObjectSize size="36" />
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/nrst">
       <obj_property name="ElementShortName">nrst</obj_property>
       <obj_property name="ObjectShortName">nrst</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/clk">
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_TriggerCell/last">
-      <obj_property name="ElementShortName">last[1:0]</obj_property>
-      <obj_property name="ObjectShortName">last[1:0]</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/Trigger">
+      <obj_property name="ElementShortName">Trigger</obj_property>
+      <obj_property name="ObjectShortName">Trigger</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/wr1_trig">
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/CurAddr">
+      <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/nclr_intl">
+      <obj_property name="ElementShortName">nclr_intl</obj_property>
+      <obj_property name="ObjectShortName">nclr_intl</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/nREARM_intl">
+      <obj_property name="ElementShortName">nREARM_intl</obj_property>
+      <obj_property name="ObjectShortName">nREARM_intl</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/valid_obs">
+      <obj_property name="ElementShortName">valid_obs</obj_property>
+      <obj_property name="ObjectShortName">valid_obs</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/response_sti">
+      <obj_property name="ElementShortName">response_sti</obj_property>
+      <obj_property name="ObjectShortName">response_sti</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/response_i">
+      <obj_property name="ElementShortName">response_i</obj_property>
+      <obj_property name="ObjectShortName">response_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/valid_o">
+      <obj_property name="ElementShortName">valid_o</obj_property>
+      <obj_property name="ObjectShortName">valid_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/SCnt">
+      <obj_property name="ElementShortName">SCnt[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SCnt[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_TriggerCPU/DUT/trigger_stm">
+      <obj_property name="ElementShortName">trigger_stm</obj_property>
+      <obj_property name="ObjectShortName">trigger_stm</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/Trigger_REG">
+      <obj_property name="ElementShortName">Trigger_REG[1:0]</obj_property>
+      <obj_property name="ObjectShortName">Trigger_REG[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr1_trig">
       <obj_property name="ElementShortName">wr1_trig</obj_property>
       <obj_property name="ObjectShortName">wr1_trig</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/wr2_trig">
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr2_trig">
       <obj_property name="ElementShortName">wr2_trig</obj_property>
       <obj_property name="ObjectShortName">wr2_trig</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_TriggerCell/TriggerSignal">
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/last">
+      <obj_property name="ElementShortName">last</obj_property>
+      <obj_property name="ObjectShortName">last</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/nexttrigger">
+      <obj_property name="ElementShortName">nexttrigger</obj_property>
+      <obj_property name="ObjectShortName">nexttrigger</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/NEXTWDO_OUT">
+      <obj_property name="ElementShortName">NEXTWDO_OUT</obj_property>
+      <obj_property name="ObjectShortName">NEXTWDO_OUT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/PREVWDO_IN">
+      <obj_property name="ElementShortName">PREVWDO_IN</obj_property>
+      <obj_property name="ObjectShortName">PREVWDO_IN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/prevtrigger">
+      <obj_property name="ElementShortName">prevtrigger</obj_property>
+      <obj_property name="ObjectShortName">prevtrigger</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/PREVWDO_OUT">
+      <obj_property name="ElementShortName">PREVWDO_OUT</obj_property>
+      <obj_property name="ObjectShortName">PREVWDO_OUT</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/NEXTWDO_IN">
+      <obj_property name="ElementShortName">NEXTWDO_IN</obj_property>
+      <obj_property name="ObjectShortName">NEXTWDO_IN</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/TriggerSignal">
       <obj_property name="ElementShortName">TriggerSignal[15:0]</obj_property>
       <obj_property name="ObjectShortName">TriggerSignal[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/prevtrigger_sti">
-      <obj_property name="ElementShortName">prevtrigger_sti</obj_property>
-      <obj_property name="ObjectShortName">prevtrigger_sti</obj_property>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/TriggerSignal_intl">
+      <obj_property name="ElementShortName">TriggerSignal_intl[15:0]</obj_property>
+      <obj_property name="ObjectShortName">TriggerSignal_intl[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/nexttrigger_obs">
-      <obj_property name="ElementShortName">nexttrigger_obs</obj_property>
-      <obj_property name="ObjectShortName">nexttrigger_obs</obj_property>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/cells_en_intl">
+      <obj_property name="ElementShortName">cells_en_intl[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cells_en_intl[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/NEXTWDO_OUT_obs">
-      <obj_property name="ElementShortName">NEXTWDO_OUT_obs</obj_property>
-      <obj_property name="ObjectShortName">NEXTWDO_OUT_obs</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr1_trig_intl">
+      <obj_property name="ElementShortName">wr1_trig_intl</obj_property>
+      <obj_property name="ObjectShortName">wr1_trig_intl</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/NEXTWDO_IN_sti">
-      <obj_property name="ElementShortName">NEXTWDO_IN_sti</obj_property>
-      <obj_property name="ObjectShortName">NEXTWDO_IN_sti</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr1_trig_reg">
+      <obj_property name="ElementShortName">wr1_trig_reg</obj_property>
+      <obj_property name="ObjectShortName">wr1_trig_reg</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/PREVWDO_OUT_obs">
-      <obj_property name="ElementShortName">PREVWDO_OUT_obs</obj_property>
-      <obj_property name="ObjectShortName">PREVWDO_OUT_obs</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr2_trig_intl">
+      <obj_property name="ElementShortName">wr2_trig_intl</obj_property>
+      <obj_property name="ObjectShortName">wr2_trig_intl</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/PREVWDO_IN_sti">
-      <obj_property name="ElementShortName">PREVWDO_IN_sti</obj_property>
-      <obj_property name="ObjectShortName">PREVWDO_IN_sti</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/wr2_trig_reg">
+      <obj_property name="ElementShortName">wr2_trig_reg</obj_property>
+      <obj_property name="ObjectShortName">wr2_trig_reg</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/Next_EvenOdd">
-      <obj_property name="ElementShortName">Next_EvenOdd</obj_property>
-      <obj_property name="ObjectShortName">Next_EvenOdd</obj_property>
+   <wvobject type="array" fp_name="/TB_TriggerCPU/DUT/lastbus">
+      <obj_property name="ElementShortName">lastbus[1:0]</obj_property>
+      <obj_property name="ObjectShortName">lastbus[1:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/Prev_EvenOdd">
-      <obj_property name="ElementShortName">Prev_EvenOdd</obj_property>
-      <obj_property name="ObjectShortName">Prev_EvenOdd</obj_property>
+   <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/last_reg">
+      <obj_property name="ElementShortName">last_reg</obj_property>
+      <obj_property name="ObjectShortName">last_reg</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_TriggerCell/Trig_EvenOdd">
-      <obj_property name="ElementShortName">Trig_EvenOdd</obj_property>
-      <obj_property name="ObjectShortName">Trig_EvenOdd</obj_property>
-   </wvobject>
-   <wvobject type="group" fp_name="group840">
-      <obj_property name="label">EVEN</obj_property>
+   <wvobject fp_name="divider26488" type="divider">
+      <obj_property name="label">CELLS</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_EVEN/TriggerSignal">
-         <obj_property name="ElementShortName">TriggerSignal[7:0]</obj_property>
-         <obj_property name="ObjectShortName">TriggerSignal[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group26489">
+      <obj_property name="label">CELL0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/wr_en">
-         <obj_property name="ElementShortName">wr_en</obj_property>
-         <obj_property name="ObjectShortName">wr_en</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/nCLR">
+         <obj_property name="ElementShortName">nCLR</obj_property>
+         <obj_property name="ObjectShortName">nCLR</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/last">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/cell_en">
+         <obj_property name="ElementShortName">cell_en</obj_property>
+         <obj_property name="ObjectShortName">cell_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/wr_trig">
+         <obj_property name="ElementShortName">wr_trig</obj_property>
+         <obj_property name="ObjectShortName">wr_trig</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/last">
          <obj_property name="ElementShortName">last</obj_property>
          <obj_property name="ObjectShortName">last</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/nexttrigger">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/nexttrigger">
          <obj_property name="ElementShortName">nexttrigger</obj_property>
          <obj_property name="ObjectShortName">nexttrigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/NEXTWDO_OUT">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/NEXTWDO_OUT">
          <obj_property name="ElementShortName">NEXTWDO_OUT</obj_property>
          <obj_property name="ObjectShortName">NEXTWDO_OUT</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/PREVWDO_IN">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/PREVWDO_IN">
          <obj_property name="ElementShortName">PREVWDO_IN</obj_property>
          <obj_property name="ObjectShortName">PREVWDO_IN</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/prevtrigger">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/prevtrigger">
          <obj_property name="ElementShortName">prevtrigger</obj_property>
          <obj_property name="ObjectShortName">prevtrigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/PREVWDO_OUT">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/PREVWDO_OUT">
          <obj_property name="ElementShortName">PREVWDO_OUT</obj_property>
          <obj_property name="ObjectShortName">PREVWDO_OUT</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_EVEN/NEXTWDO_IN">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/TrigCell0/NEXTWDO_IN">
          <obj_property name="ElementShortName">NEXTWDO_IN</obj_property>
          <obj_property name="ObjectShortName">NEXTWDO_IN</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_EVEN/wrtrigBus">
-         <obj_property name="ElementShortName">wrtrigBus[7:0]</obj_property>
-         <obj_property name="ObjectShortName">wrtrigBus[7:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_EVEN/lastBus">
-         <obj_property name="ElementShortName">lastBus[7:0]</obj_property>
-         <obj_property name="ObjectShortName">lastBus[7:0]</obj_property>
-      </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group852">
-      <obj_property name="label">ODD</obj_property>
+   <wvobject type="group" fp_name="group27412">
+      <obj_property name="label">CELL1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_ODD/TriggerSignal">
-         <obj_property name="ElementShortName">TriggerSignal[7:0]</obj_property>
-         <obj_property name="ObjectShortName">TriggerSignal[7:0]</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/wr_en">
-         <obj_property name="ElementShortName">wr_en</obj_property>
-         <obj_property name="ObjectShortName">wr_en</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/nCLR">
+         <obj_property name="ElementShortName">nCLR</obj_property>
+         <obj_property name="ObjectShortName">nCLR</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/last">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/wr_trig">
+         <obj_property name="ElementShortName">wr_trig</obj_property>
+         <obj_property name="ObjectShortName">wr_trig</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/last">
          <obj_property name="ElementShortName">last</obj_property>
          <obj_property name="ObjectShortName">last</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/nexttrigger">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/nexttrigger">
          <obj_property name="ElementShortName">nexttrigger</obj_property>
          <obj_property name="ObjectShortName">nexttrigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/NEXTWDO_OUT">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/NEXTWDO_OUT">
          <obj_property name="ElementShortName">NEXTWDO_OUT</obj_property>
          <obj_property name="ObjectShortName">NEXTWDO_OUT</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/PREVWDO_IN">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/PREVWDO_IN">
          <obj_property name="ElementShortName">PREVWDO_IN</obj_property>
          <obj_property name="ObjectShortName">PREVWDO_IN</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/prevtrigger">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/prevtrigger">
          <obj_property name="ElementShortName">prevtrigger</obj_property>
          <obj_property name="ObjectShortName">prevtrigger</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/PREVWDO_OUT">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/PREVWDO_OUT">
          <obj_property name="ElementShortName">PREVWDO_OUT</obj_property>
          <obj_property name="ObjectShortName">PREVWDO_OUT</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_TriggerCell/WT_ODD/NEXTWDO_IN">
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(1)\/TriggerCellX/NEXTWDO_IN">
          <obj_property name="ElementShortName">NEXTWDO_IN</obj_property>
          <obj_property name="ObjectShortName">NEXTWDO_IN</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_ODD/wrtrigBus">
-         <obj_property name="ElementShortName">wrtrigBus[7:0]</obj_property>
-         <obj_property name="ObjectShortName">wrtrigBus[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group35810">
+      <obj_property name="label">CELL2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/TB_TriggerCell/WT_ODD/lastBus">
-         <obj_property name="ElementShortName">lastBus[7:0]</obj_property>
-         <obj_property name="ObjectShortName">lastBus[7:0]</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/nCLR">
+         <obj_property name="ElementShortName">nCLR</obj_property>
+         <obj_property name="ObjectShortName">nCLR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/cell_en">
+         <obj_property name="ElementShortName">cell_en</obj_property>
+         <obj_property name="ObjectShortName">cell_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/wr_trig">
+         <obj_property name="ElementShortName">wr_trig</obj_property>
+         <obj_property name="ObjectShortName">wr_trig</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/last">
+         <obj_property name="ElementShortName">last</obj_property>
+         <obj_property name="ObjectShortName">last</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/nexttrigger">
+         <obj_property name="ElementShortName">nexttrigger</obj_property>
+         <obj_property name="ObjectShortName">nexttrigger</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/NEXTWDO_OUT">
+         <obj_property name="ElementShortName">NEXTWDO_OUT</obj_property>
+         <obj_property name="ObjectShortName">NEXTWDO_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/PREVWDO_IN">
+         <obj_property name="ElementShortName">PREVWDO_IN</obj_property>
+         <obj_property name="ObjectShortName">PREVWDO_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/prevtrigger">
+         <obj_property name="ElementShortName">prevtrigger</obj_property>
+         <obj_property name="ObjectShortName">prevtrigger</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/PREVWDO_OUT">
+         <obj_property name="ElementShortName">PREVWDO_OUT</obj_property>
+         <obj_property name="ObjectShortName">PREVWDO_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(2)\/TriggerCellX/NEXTWDO_IN">
+         <obj_property name="ElementShortName">NEXTWDO_IN</obj_property>
+         <obj_property name="ObjectShortName">NEXTWDO_IN</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group35822">
+      <obj_property name="label">CELL3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/trigger">
+         <obj_property name="ElementShortName">trigger</obj_property>
+         <obj_property name="ObjectShortName">trigger</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/nCLR">
+         <obj_property name="ElementShortName">nCLR</obj_property>
+         <obj_property name="ObjectShortName">nCLR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/cell_en">
+         <obj_property name="ElementShortName">cell_en</obj_property>
+         <obj_property name="ObjectShortName">cell_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/wr_trig">
+         <obj_property name="ElementShortName">wr_trig</obj_property>
+         <obj_property name="ObjectShortName">wr_trig</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/last">
+         <obj_property name="ElementShortName">last</obj_property>
+         <obj_property name="ObjectShortName">last</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/nexttrigger">
+         <obj_property name="ElementShortName">nexttrigger</obj_property>
+         <obj_property name="ObjectShortName">nexttrigger</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/NEXTWDO_OUT">
+         <obj_property name="ElementShortName">NEXTWDO_OUT</obj_property>
+         <obj_property name="ObjectShortName">NEXTWDO_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/PREVWDO_IN">
+         <obj_property name="ElementShortName">PREVWDO_IN</obj_property>
+         <obj_property name="ObjectShortName">PREVWDO_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/prevtrigger">
+         <obj_property name="ElementShortName">prevtrigger</obj_property>
+         <obj_property name="ObjectShortName">prevtrigger</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/PREVWDO_OUT">
+         <obj_property name="ElementShortName">PREVWDO_OUT</obj_property>
+         <obj_property name="ObjectShortName">PREVWDO_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TriggerCPU/DUT/WT_EVEN/\GEN_TriggerCell(3)\/TriggerCellX/NEXTWDO_IN">
+         <obj_property name="ElementShortName">NEXTWDO_IN</obj_property>
+         <obj_property name="ObjectShortName">NEXTWDO_IN</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Fri Dec 14 09:54:38 2018
+// Date        : Thu Dec 20 09:07:24 2018
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim
 //               /home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_FifoManagerV4_0_0/base_zynq_FifoManagerV4_0_0_sim_netlist.v
@@ -45,7 +45,7 @@ module base_zynq_FifoManagerV4_0_0
     PSBUSY_i,
     DataOut);
   input nRST;
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK, FREQ_HZ 1e+08, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0" *) input CLK;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 CLK CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME CLK, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0" *) input CLK;
   input PRECvalid;
   output FIFOresponse;
   input [63:0]WDOTime;

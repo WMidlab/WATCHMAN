@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 -- Package for the use
 package TARGETC_pkg is
   
-  	constant TC_REGISTER_NUMBER:		integer := 154;
+  	constant TC_REGISTER_NUMBER:		integer := 158;
 	
 -- ------------------------------------------------------
 --	Register Map Target C
@@ -56,7 +56,8 @@ package TARGETC_pkg is
  	constant TC_CONTROL_REG : 			integer := 129;
  		--MASK
  		constant C_WRITE_MASK:				std_logic_vector(31 downto 0) := x"00000001";
- 		--constant C_SS_INCR_MASK:			std_logic_vector(31 downto 0) := x"00000002";
+ 		constant C_TRIG_CLEAR_MASK:			std_logic_vector(31 downto 0) := x"00000002";
+ 		
  		--constant C_SS_TPG_MASK:				std_logic_vector(31 downto 0) := x"00000004";
 		--constant C_WRITE_MASK:				std_logic_vector(31 downto 0) := x"00000008";
 		
@@ -79,7 +80,8 @@ package TARGETC_pkg is
 		
 		--BIT
 		constant C_WRITE_BIT:		integer := 0;
-		constant C_PCLK_BIT:		integer := 1;
+		--constant C_PCLK_BIT:		integer := 1;
+		constant C_TRIG_CLEAR_BIT:		integer := 1;
 		constant C_SCLK_BIT:		integer := 2;
 		constant C_SIN_BIT:			integer := 3;
 		
@@ -151,6 +153,11 @@ package TARGETC_pkg is
 	
 	constant TC_WL_DIV_REG:		integer := 153;
 	
+	constant TC_TRIGA_REG:		integer := 154;
+	constant TC_TRIGB_REG:		integer := 155;
+	constant TC_TRIGC_REG:		integer := 156;
+	constant TC_TRIGD_REG:		integer := 157;
+	
 	--type eDO_ARRAY is array (0 downto 15) of std_logic_vector(11 downto 0);
 	type eDO_LINE is array (11 downto 0) of std_logic;
 	type eDO_ARRAY is array (0 downto 15) of eDO_LINE;
@@ -189,9 +196,6 @@ package TARGETC_pkg is
 		
 		SS_INCR:		std_logic;
 		
-		Test_PCLK:		std_logic;
-		Test_SCLK : 	std_logic;
-		Test_SIN : 	 	std_logic;
 		RAMP : 	std_logic;
     	RegCLR : 	std_logic; 
 		SmplSl_Any:	std_logic;
@@ -207,6 +211,8 @@ package TARGETC_pkg is
 		TestStream:		std_logic;
 		TestFiFo:		std_logic;
 		PSBusy:			std_logic;
+		
+		TrigCntClear:	std_logic;
 		--FirstWindow : std_logic_vector(31 downto 0);
 		--NbrOfWindow : std_logic_vector(31 downto 0);
 		
@@ -228,6 +234,11 @@ package TARGETC_pkg is
 		WindowBusy:		std_logic;		
 		SSvalid:		std_logic;
 		RAMP_Cnt:		std_logic;
+		
+		TrigACnt:		std_logic_vector(31 downto 0);
+		TrigBCnt:		std_logic_vector(31 downto 0);
+		TrigCCnt:		std_logic_vector(31 downto 0);
+		TrigDCnt:		std_logic_vector(31 downto 0);
 		
 		Test0:	std_logic;
 		Test1:	std_logic;

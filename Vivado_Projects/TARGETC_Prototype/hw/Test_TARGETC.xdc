@@ -34,6 +34,12 @@ set_property PULLUP true [get_ports {HCMPA}];
 set_property PULLUP true [get_ports {HCMPC}];
 set_property PULLUP true [get_ports {HCMPD}];
 
+
+set_property PACKAGE_PIN W14 [get_ports TRIGA]
+set_property PACKAGE_PIN U15 [get_ports TRIGB]
+set_property PACKAGE_PIN R16 [get_ports TRIGC]
+set_property PACKAGE_PIN M18 [get_ports TRIGD]
+
 set_property PACKAGE_PIN Y16 [get_ports MONTIMING_P]
 set_property PACKAGE_PIN Y17 [get_ports MONTIMING_N]
 
@@ -43,18 +49,12 @@ set_property PACKAGE_PIN T16 [get_ports SS_LD_SIN]
 set_property PACKAGE_PIN W15 [get_ports REGCLR]
 
 
-set_property PACKAGE_PIN W14 [get_ports {TRIGA}];           #{LA04_P}];  # "W14.JX1_LVDS_7_P.JX1.30.LA04_P"
-set_property PACKAGE_PIN U15 [get_ports {TRIGB}];   #{LA07_N}];  # "U15.JX1_LVDS_10_N.JX1.43.LA07_N"
-
 set_property PACKAGE_PIN W20 [get_ports DO_5]
-
-
 set_property PACKAGE_PIN Y19 [get_ports DO_8]
 set_property PACKAGE_PIN Y18 [get_ports DO_7]
 set_property PACKAGE_PIN W16 [get_ports DO_1]
 set_property PACKAGE_PIN V16 [get_ports RAMP]
 set_property PACKAGE_PIN R17 [get_ports SS_RESET]
-set_property PACKAGE_PIN R16 [get_ports {TRIGC}];       #{LA12_P}];  # "R16.JX1_LVDS_18_P.JX1.67.LA12_P"
 set_property PACKAGE_PIN R18 [get_ports DO_10]
 set_property PACKAGE_PIN T17 [get_ports DO_6]
 set_property PACKAGE_PIN V18 [get_ports DO_13]
@@ -84,7 +84,6 @@ set_property PACKAGE_PIN F17 [get_ports DO_16]
 set_property PACKAGE_PIN F16 [get_ports DO_9]
 set_property PACKAGE_PIN L20 [get_ports WR_CS_S4]
 set_property PACKAGE_PIN L19 [get_ports RDAD_DIR]
-set_property PACKAGE_PIN M18 [get_ports {TRIGD}];           #{LA25_N}];  # "M18.JX2_LVDS_8_N.JX2.43.LA25_N"
 set_property PACKAGE_PIN M17 [get_ports SAMPLESEL_ANY]
 set_property PACKAGE_PIN J19 [get_ports WR_CS_S2]
 set_property PACKAGE_PIN K19 [get_ports WR_CS_S3]
@@ -139,13 +138,13 @@ set_property PACKAGE_PIN P14 [get_ports SSTIN_P]
 set_property PACKAGE_PIN R14 [get_ports SSTIN_N]
 set_property IOSTANDARD LVDS_25 [get_ports MONTIMING_P]
 set_property IOSTANDARD LVDS_25 [get_ports MONTIMING_N]
-set_property IOSTANDARD LVCMOS25 [get_ports {TRIGA}];           #{LA04_N}];  # "Y14.JX1_LVDS_7_N.JX1.32.LA04_N"
+set_property IOSTANDARD LVCMOS25 [get_ports TRIGA]
 set_property IOSTANDARD LVCMOS25 [get_ports BB3]
 set_property IOSTANDARD LVCMOS25 [get_ports SS_LD_SIN]
 set_property IOSTANDARD LVCMOS25 [get_ports SS_LD_DIR]
 set_property IOSTANDARD LVCMOS25 [get_ports REGCLR]
 set_property IOSTANDARD LVCMOS25 [get_ports BB4]
-set_property IOSTANDARD LVCMOS25 [get_ports {TRIGB}];           #{LA07_P}];  # "U14.JX1_LVDS_10_P.JX1.41.LA07_P"
+set_property IOSTANDARD LVCMOS25 [get_ports TRIGB]
 set_property IOSTANDARD LVCMOS25 [get_ports {LDAC}];            #{LA08_N}];  # "U20.JX1_LVDS_14_N.JX1.55.LA08_N"
 set_property IOSTANDARD LVCMOS25 [get_ports {BB6}];             #{LA08_P}];  # "T20.JX1_LVDS_14_P.JX1.53.LA08_P"
 set_property IOSTANDARD LVCMOS25 [get_ports DO_5]
@@ -153,7 +152,7 @@ set_property IOSTANDARD LVCMOS25 [get_ports DO_7]
 set_property IOSTANDARD LVCMOS25 [get_ports DO_8]
 set_property IOSTANDARD LVCMOS25 [get_ports RAMP]
 set_property IOSTANDARD LVCMOS25 [get_ports DO_1]
-set_property IOSTANDARD LVCMOS25 [get_ports {TRIGC}];           #{LA12_N}];  # "R17.JX1_LVDS_18_N.JX1.69.LA12_N"
+set_property IOSTANDARD LVCMOS25 [get_ports TRIGC]
 set_property IOSTANDARD LVCMOS25 [get_ports SS_RESET]
 set_property IOSTANDARD LVCMOS25 [get_ports DO_6]
 set_property IOSTANDARD LVCMOS25 [get_ports DO_10]
@@ -184,7 +183,7 @@ set_property IOSTANDARD LVDS_25 [get_ports WL_CLK_N]
 set_property PACKAGE_PIN M19 [get_ports WL_CLK_P]
 set_property PACKAGE_PIN M20 [get_ports WL_CLK_N]
 set_property IOSTANDARD LVCMOS25 [get_ports SAMPLESEL_ANY]
-set_property IOSTANDARD LVCMOS25 [get_ports {TRIGD}];           #{LA25_P}];  # "M17.JX2_LVDS_8_P.JX2.41.LA25_P"
+set_property IOSTANDARD LVCMOS25 [get_ports TRIGD]
 set_property IOSTANDARD LVCMOS25 [get_ports WR_CS_S2]
 set_property IOSTANDARD LVCMOS25 [get_ports WR_CS_S3]
 set_property IOSTANDARD LVCMOS25 [get_ports WR_CS_S0]
@@ -203,3 +202,41 @@ set_property IOSTANDARD LVCMOS25 [get_ports SHOUT]
 set_property IOSTANDARD LVCMOS25 [get_ports PCLK]
 set_property IOSTANDARD LVCMOS25 [get_ports SCLK]
 set_property IOSTANDARD LVCMOS25 [get_ports SIN]
+
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[3]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[1]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[14]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[15]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[16]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[2]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[4]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[5]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[6]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[7]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[8]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[9]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[10]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[11]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[12]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[13]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[0]}]
+set_property MARK_DEBUG true [get_nets base_zynq_i/axi_dma_0/m_axi_s2mm_wlast]
+set_property MARK_DEBUG true [get_nets base_zynq_i/axi_dma_0/m_axi_s2mm_wready]
+set_property MARK_DEBUG true [get_nets base_zynq_i/axi_dma_0/m_axi_s2mm_wvalid]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[22]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[18]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[17]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[19]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[20]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[29]}]
+set_property MARK_DEBUG true [get_nets base_zynq_i/axi_dma_0/m_axi_s2mm_aclk]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[30]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[31]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[21]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[27]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[28]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[23]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[24]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[25]}]
+set_property MARK_DEBUG true [get_nets {base_zynq_i/axi_dma_0/m_axi_s2mm_wdata[26]}]
+

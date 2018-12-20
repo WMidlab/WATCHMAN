@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Thu Dec  6 10:13:47 2018
+// Date        : Fri Dec  7 08:53:07 2018
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim -rename_top base_zynq_xbar_0 -prefix
 //               base_zynq_xbar_0_ base_zynq_xbar_0_sim_netlist.v
@@ -195,7 +195,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I4(mi_bvalid),
         .I5(mi_wready),
         .O(\gen_axilite.s_axi_awready_i_reg_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'hFBFF)) 
     \gen_axilite.s_axi_awready_i_i_2 
@@ -204,14 +204,14 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_ready_d[1]),
         .I3(s_axi_wvalid),
         .O(\gen_axilite.s_axi_awready_i_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \gen_axilite.s_axi_awready_i_i_3 
        (.I0(aa_grant_rnw),
         .I1(m_valid_i),
         .O(\gen_axilite.s_axi_awready_i_reg ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \gen_axilite.s_axi_rvalid_i_i_2 
@@ -745,7 +745,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I4(\m_ready_d_reg[0] ),
         .I5(\gen_no_arbiter.m_grant_hot_i[0]_i_4_n_0 ),
         .O(\gen_no_arbiter.m_grant_hot_i[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT5 #(
     .INIT(32'h0000F0F8)) 
     \gen_no_arbiter.m_grant_hot_i[0]_i_2 
@@ -755,7 +755,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(\gen_axilite.s_axi_arready_i_reg ),
         .I4(m_valid_i_reg_0),
         .O(\gen_no_arbiter.m_grant_hot_i[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT5 #(
     .INIT(32'h5D5D5D5F)) 
     \gen_no_arbiter.m_grant_hot_i[0]_i_4 
@@ -789,7 +789,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .D(\gen_no_arbiter.m_valid_i_i_1_n_0 ),
         .Q(m_valid_i),
         .R(SR));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \gen_no_arbiter.s_ready_i[0]_i_1 
@@ -805,7 +805,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .D(\gen_no_arbiter.s_ready_i[0]_i_1_n_0 ),
         .Q(s_ready_i),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT4 #(
     .INIT(16'h4000)) 
     \m_atarget_hot[0]_i_1 
@@ -821,7 +821,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
        (.I0(target_mi_enc[0]),
         .I1(aa_grant_any),
         .O(D[1]));
-  (* SOFT_HLUTNM = "soft_lutpair8" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_atarget_hot[2]_i_1 
@@ -888,7 +888,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I4(Q[20]),
         .I5(Q[22]),
         .O(\m_atarget_hot[3]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair7" *) 
+  (* SOFT_HLUTNM = "soft_lutpair11" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \m_axi_arvalid[0]_INST_0 
@@ -897,7 +897,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_valid_i),
         .I3(m_ready_d_0[1]),
         .O(m_axi_arvalid[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \m_axi_arvalid[1]_INST_0 
@@ -906,7 +906,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_valid_i),
         .I3(m_ready_d_0[1]),
         .O(m_axi_arvalid[1]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT4 #(
     .INIT(16'h0080)) 
     \m_axi_arvalid[2]_INST_0 
@@ -924,7 +924,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_valid_i),
         .I3(m_ready_d[2]),
         .O(m_axi_awvalid[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair9" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \m_axi_awvalid[1]_INST_0 
@@ -933,7 +933,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_valid_i),
         .I3(m_ready_d[2]),
         .O(m_axi_awvalid[1]));
-  (* SOFT_HLUTNM = "soft_lutpair9" *) 
+  (* SOFT_HLUTNM = "soft_lutpair10" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \m_axi_awvalid[2]_INST_0 
@@ -960,7 +960,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(aa_grant_rnw),
         .I4(s_axi_bready),
         .O(m_axi_bready[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h00200000)) 
     \m_axi_bready[2]_INST_0 
@@ -970,6 +970,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(aa_grant_rnw),
         .I4(s_axi_bready),
         .O(m_axi_bready[2]));
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     \m_axi_wvalid[0]_INST_0 
@@ -988,7 +989,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(m_valid_i),
         .I4(aa_grant_rnw),
         .O(m_axi_wvalid[1]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h00000800)) 
     \m_axi_wvalid[2]_INST_0 
@@ -998,7 +999,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(m_valid_i),
         .I4(aa_grant_rnw),
         .O(m_axi_wvalid[2]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h0080FFFF)) 
     \m_payload_i[34]_i_1 
@@ -1008,7 +1009,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(m_ready_d_0[0]),
         .I4(sr_rvalid),
         .O(E));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair7" *) 
   LUT4 #(
     .INIT(16'h4555)) 
     \m_ready_d[2]_i_2 
@@ -1017,7 +1018,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I2(m_valid_i),
         .I3(\m_atarget_enc_reg[0] ),
         .O(\m_ready_d_reg[2] ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     \m_ready_d[2]_i_3 
@@ -1043,7 +1044,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I1(m_valid_i_i_2_n_0),
         .I2(m_valid_i_i_3_n_0),
         .O(m_valid_i_reg));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT5 #(
     .INIT(32'h8AAAAAAA)) 
     m_valid_i_i_2
@@ -1062,7 +1063,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .I3(m_valid_i),
         .I4(aa_grant_rnw),
         .O(m_valid_i_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair11" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT4 #(
     .INIT(16'h0040)) 
     \s_arvalid_reg[0]_i_1 
@@ -1104,14 +1105,13 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
        (.I0(aa_grant_rnw),
         .I1(s_ready_i),
         .O(s_axi_arready));
-  (* SOFT_HLUTNM = "soft_lutpair10" *) 
+  (* SOFT_HLUTNM = "soft_lutpair8" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \s_axi_awready[0]_INST_0 
        (.I0(s_ready_i),
         .I1(aa_grant_rnw),
         .O(s_axi_awready));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT5 #(
     .INIT(32'h00000400)) 
     \s_axi_bvalid[0]_INST_0 
@@ -1147,7 +1147,488 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd
         .O(s_ready_i_reg));
 endmodule
 
+(* C_AXI_ADDR_WIDTH = "32" *) (* C_AXI_ARUSER_WIDTH = "1" *) (* C_AXI_AWUSER_WIDTH = "1" *) 
+(* C_AXI_BUSER_WIDTH = "1" *) (* C_AXI_DATA_WIDTH = "32" *) (* C_AXI_ID_WIDTH = "1" *) 
+(* C_AXI_PROTOCOL = "2" *) (* C_AXI_RUSER_WIDTH = "1" *) (* C_AXI_SUPPORTS_USER_SIGNALS = "0" *) 
+(* C_AXI_WUSER_WIDTH = "1" *) (* C_CONNECTIVITY_MODE = "0" *) (* C_DEBUG = "1" *) 
+(* C_FAMILY = "zynq" *) (* C_M_AXI_ADDR_WIDTH = "96'b000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000011101" *) (* C_M_AXI_BASE_ADDR = "192'b000000000000000000000000000000000100000001000000000000000000000000000000000000000000000000000000010000010110000000000000000000000000000000000000000000000000000001100000000000000000000000000000" *) 
+(* C_M_AXI_READ_CONNECTIVITY = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) (* C_M_AXI_READ_ISSUING = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) (* C_M_AXI_SECURE = "96'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" *) 
+(* C_M_AXI_WRITE_CONNECTIVITY = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) (* C_M_AXI_WRITE_ISSUING = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) (* C_NUM_ADDR_RANGES = "1" *) 
+(* C_NUM_MASTER_SLOTS = "3" *) (* C_NUM_SLAVE_SLOTS = "1" *) (* C_R_REGISTER = "1" *) 
+(* C_S_AXI_ARB_PRIORITY = "0" *) (* C_S_AXI_BASE_ID = "0" *) (* C_S_AXI_READ_ACCEPTANCE = "1" *) 
+(* C_S_AXI_SINGLE_THREAD = "1" *) (* C_S_AXI_THREAD_ID_WIDTH = "0" *) (* C_S_AXI_WRITE_ACCEPTANCE = "1" *) 
+(* DowngradeIPIdentifiedWarnings = "yes" *) (* P_ADDR_DECODE = "1" *) (* P_AXI3 = "1" *) 
+(* P_AXI4 = "0" *) (* P_AXILITE = "2" *) (* P_AXILITE_SIZE = "3'b010" *) 
+(* P_FAMILY = "zynq" *) (* P_INCR = "2'b01" *) (* P_LEN = "8" *) 
+(* P_LOCK = "1" *) (* P_M_AXI_ERR_MODE = "96'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" *) (* P_M_AXI_SUPPORTS_READ = "3'b111" *) 
+(* P_M_AXI_SUPPORTS_WRITE = "3'b111" *) (* P_ONES = "65'b11111111111111111111111111111111111111111111111111111111111111111" *) (* P_RANGE_CHECK = "1" *) 
+(* P_S_AXI_BASE_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* P_S_AXI_HIGH_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) (* P_S_AXI_SUPPORTS_READ = "1'b1" *) 
+(* P_S_AXI_SUPPORTS_WRITE = "1'b1" *) 
 module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
+   (aclk,
+    aresetn,
+    s_axi_awid,
+    s_axi_awaddr,
+    s_axi_awlen,
+    s_axi_awsize,
+    s_axi_awburst,
+    s_axi_awlock,
+    s_axi_awcache,
+    s_axi_awprot,
+    s_axi_awqos,
+    s_axi_awuser,
+    s_axi_awvalid,
+    s_axi_awready,
+    s_axi_wid,
+    s_axi_wdata,
+    s_axi_wstrb,
+    s_axi_wlast,
+    s_axi_wuser,
+    s_axi_wvalid,
+    s_axi_wready,
+    s_axi_bid,
+    s_axi_bresp,
+    s_axi_buser,
+    s_axi_bvalid,
+    s_axi_bready,
+    s_axi_arid,
+    s_axi_araddr,
+    s_axi_arlen,
+    s_axi_arsize,
+    s_axi_arburst,
+    s_axi_arlock,
+    s_axi_arcache,
+    s_axi_arprot,
+    s_axi_arqos,
+    s_axi_aruser,
+    s_axi_arvalid,
+    s_axi_arready,
+    s_axi_rid,
+    s_axi_rdata,
+    s_axi_rresp,
+    s_axi_rlast,
+    s_axi_ruser,
+    s_axi_rvalid,
+    s_axi_rready,
+    m_axi_awid,
+    m_axi_awaddr,
+    m_axi_awlen,
+    m_axi_awsize,
+    m_axi_awburst,
+    m_axi_awlock,
+    m_axi_awcache,
+    m_axi_awprot,
+    m_axi_awregion,
+    m_axi_awqos,
+    m_axi_awuser,
+    m_axi_awvalid,
+    m_axi_awready,
+    m_axi_wid,
+    m_axi_wdata,
+    m_axi_wstrb,
+    m_axi_wlast,
+    m_axi_wuser,
+    m_axi_wvalid,
+    m_axi_wready,
+    m_axi_bid,
+    m_axi_bresp,
+    m_axi_buser,
+    m_axi_bvalid,
+    m_axi_bready,
+    m_axi_arid,
+    m_axi_araddr,
+    m_axi_arlen,
+    m_axi_arsize,
+    m_axi_arburst,
+    m_axi_arlock,
+    m_axi_arcache,
+    m_axi_arprot,
+    m_axi_arregion,
+    m_axi_arqos,
+    m_axi_aruser,
+    m_axi_arvalid,
+    m_axi_arready,
+    m_axi_rid,
+    m_axi_rdata,
+    m_axi_rresp,
+    m_axi_rlast,
+    m_axi_ruser,
+    m_axi_rvalid,
+    m_axi_rready);
+  input aclk;
+  input aresetn;
+  input [0:0]s_axi_awid;
+  input [31:0]s_axi_awaddr;
+  input [7:0]s_axi_awlen;
+  input [2:0]s_axi_awsize;
+  input [1:0]s_axi_awburst;
+  input [0:0]s_axi_awlock;
+  input [3:0]s_axi_awcache;
+  input [2:0]s_axi_awprot;
+  input [3:0]s_axi_awqos;
+  input [0:0]s_axi_awuser;
+  input [0:0]s_axi_awvalid;
+  output [0:0]s_axi_awready;
+  input [0:0]s_axi_wid;
+  input [31:0]s_axi_wdata;
+  input [3:0]s_axi_wstrb;
+  input [0:0]s_axi_wlast;
+  input [0:0]s_axi_wuser;
+  input [0:0]s_axi_wvalid;
+  output [0:0]s_axi_wready;
+  output [0:0]s_axi_bid;
+  output [1:0]s_axi_bresp;
+  output [0:0]s_axi_buser;
+  output [0:0]s_axi_bvalid;
+  input [0:0]s_axi_bready;
+  input [0:0]s_axi_arid;
+  input [31:0]s_axi_araddr;
+  input [7:0]s_axi_arlen;
+  input [2:0]s_axi_arsize;
+  input [1:0]s_axi_arburst;
+  input [0:0]s_axi_arlock;
+  input [3:0]s_axi_arcache;
+  input [2:0]s_axi_arprot;
+  input [3:0]s_axi_arqos;
+  input [0:0]s_axi_aruser;
+  input [0:0]s_axi_arvalid;
+  output [0:0]s_axi_arready;
+  output [0:0]s_axi_rid;
+  output [31:0]s_axi_rdata;
+  output [1:0]s_axi_rresp;
+  output [0:0]s_axi_rlast;
+  output [0:0]s_axi_ruser;
+  output [0:0]s_axi_rvalid;
+  input [0:0]s_axi_rready;
+  output [2:0]m_axi_awid;
+  output [95:0]m_axi_awaddr;
+  output [23:0]m_axi_awlen;
+  output [8:0]m_axi_awsize;
+  output [5:0]m_axi_awburst;
+  output [2:0]m_axi_awlock;
+  output [11:0]m_axi_awcache;
+  output [8:0]m_axi_awprot;
+  output [11:0]m_axi_awregion;
+  output [11:0]m_axi_awqos;
+  output [2:0]m_axi_awuser;
+  output [2:0]m_axi_awvalid;
+  input [2:0]m_axi_awready;
+  output [2:0]m_axi_wid;
+  output [95:0]m_axi_wdata;
+  output [11:0]m_axi_wstrb;
+  output [2:0]m_axi_wlast;
+  output [2:0]m_axi_wuser;
+  output [2:0]m_axi_wvalid;
+  input [2:0]m_axi_wready;
+  input [2:0]m_axi_bid;
+  input [5:0]m_axi_bresp;
+  input [2:0]m_axi_buser;
+  input [2:0]m_axi_bvalid;
+  output [2:0]m_axi_bready;
+  output [2:0]m_axi_arid;
+  output [95:0]m_axi_araddr;
+  output [23:0]m_axi_arlen;
+  output [8:0]m_axi_arsize;
+  output [5:0]m_axi_arburst;
+  output [2:0]m_axi_arlock;
+  output [11:0]m_axi_arcache;
+  output [8:0]m_axi_arprot;
+  output [11:0]m_axi_arregion;
+  output [11:0]m_axi_arqos;
+  output [2:0]m_axi_aruser;
+  output [2:0]m_axi_arvalid;
+  input [2:0]m_axi_arready;
+  input [2:0]m_axi_rid;
+  input [95:0]m_axi_rdata;
+  input [5:0]m_axi_rresp;
+  input [2:0]m_axi_rlast;
+  input [2:0]m_axi_ruser;
+  input [2:0]m_axi_rvalid;
+  output [2:0]m_axi_rready;
+
+  wire \<const0> ;
+  wire aclk;
+  wire aresetn;
+  wire [15:0]\^m_axi_araddr ;
+  wire [2:0]\^m_axi_arprot ;
+  wire [2:0]m_axi_arready;
+  wire [2:0]m_axi_arvalid;
+  wire [95:80]\^m_axi_awaddr ;
+  wire [2:0]m_axi_awready;
+  wire [2:0]m_axi_awvalid;
+  wire [2:0]m_axi_bready;
+  wire [5:0]m_axi_bresp;
+  wire [2:0]m_axi_bvalid;
+  wire [95:0]m_axi_rdata;
+  wire [2:0]m_axi_rready;
+  wire [5:0]m_axi_rresp;
+  wire [2:0]m_axi_rvalid;
+  wire [2:0]m_axi_wready;
+  wire [2:0]m_axi_wvalid;
+  wire [31:0]s_axi_araddr;
+  wire [2:0]s_axi_arprot;
+  wire [0:0]s_axi_arready;
+  wire [0:0]s_axi_arvalid;
+  wire [31:0]s_axi_awaddr;
+  wire [2:0]s_axi_awprot;
+  wire [0:0]s_axi_awready;
+  wire [0:0]s_axi_awvalid;
+  wire [0:0]s_axi_bready;
+  wire [1:0]s_axi_bresp;
+  wire [0:0]s_axi_bvalid;
+  wire [31:0]s_axi_rdata;
+  wire [0:0]s_axi_rready;
+  wire [1:0]s_axi_rresp;
+  wire [0:0]s_axi_rvalid;
+  wire [31:0]s_axi_wdata;
+  wire [0:0]s_axi_wready;
+  wire [3:0]s_axi_wstrb;
+  wire [0:0]s_axi_wvalid;
+
+  assign m_axi_araddr[95:80] = \^m_axi_awaddr [95:80];
+  assign m_axi_araddr[79:64] = \^m_axi_araddr [15:0];
+  assign m_axi_araddr[63:48] = \^m_axi_awaddr [95:80];
+  assign m_axi_araddr[47:32] = \^m_axi_araddr [15:0];
+  assign m_axi_araddr[31:16] = \^m_axi_awaddr [95:80];
+  assign m_axi_araddr[15:0] = \^m_axi_araddr [15:0];
+  assign m_axi_arburst[5] = \<const0> ;
+  assign m_axi_arburst[4] = \<const0> ;
+  assign m_axi_arburst[3] = \<const0> ;
+  assign m_axi_arburst[2] = \<const0> ;
+  assign m_axi_arburst[1] = \<const0> ;
+  assign m_axi_arburst[0] = \<const0> ;
+  assign m_axi_arcache[11] = \<const0> ;
+  assign m_axi_arcache[10] = \<const0> ;
+  assign m_axi_arcache[9] = \<const0> ;
+  assign m_axi_arcache[8] = \<const0> ;
+  assign m_axi_arcache[7] = \<const0> ;
+  assign m_axi_arcache[6] = \<const0> ;
+  assign m_axi_arcache[5] = \<const0> ;
+  assign m_axi_arcache[4] = \<const0> ;
+  assign m_axi_arcache[3] = \<const0> ;
+  assign m_axi_arcache[2] = \<const0> ;
+  assign m_axi_arcache[1] = \<const0> ;
+  assign m_axi_arcache[0] = \<const0> ;
+  assign m_axi_arid[2] = \<const0> ;
+  assign m_axi_arid[1] = \<const0> ;
+  assign m_axi_arid[0] = \<const0> ;
+  assign m_axi_arlen[23] = \<const0> ;
+  assign m_axi_arlen[22] = \<const0> ;
+  assign m_axi_arlen[21] = \<const0> ;
+  assign m_axi_arlen[20] = \<const0> ;
+  assign m_axi_arlen[19] = \<const0> ;
+  assign m_axi_arlen[18] = \<const0> ;
+  assign m_axi_arlen[17] = \<const0> ;
+  assign m_axi_arlen[16] = \<const0> ;
+  assign m_axi_arlen[15] = \<const0> ;
+  assign m_axi_arlen[14] = \<const0> ;
+  assign m_axi_arlen[13] = \<const0> ;
+  assign m_axi_arlen[12] = \<const0> ;
+  assign m_axi_arlen[11] = \<const0> ;
+  assign m_axi_arlen[10] = \<const0> ;
+  assign m_axi_arlen[9] = \<const0> ;
+  assign m_axi_arlen[8] = \<const0> ;
+  assign m_axi_arlen[7] = \<const0> ;
+  assign m_axi_arlen[6] = \<const0> ;
+  assign m_axi_arlen[5] = \<const0> ;
+  assign m_axi_arlen[4] = \<const0> ;
+  assign m_axi_arlen[3] = \<const0> ;
+  assign m_axi_arlen[2] = \<const0> ;
+  assign m_axi_arlen[1] = \<const0> ;
+  assign m_axi_arlen[0] = \<const0> ;
+  assign m_axi_arlock[2] = \<const0> ;
+  assign m_axi_arlock[1] = \<const0> ;
+  assign m_axi_arlock[0] = \<const0> ;
+  assign m_axi_arprot[8:6] = \^m_axi_arprot [2:0];
+  assign m_axi_arprot[5:3] = \^m_axi_arprot [2:0];
+  assign m_axi_arprot[2:0] = \^m_axi_arprot [2:0];
+  assign m_axi_arqos[11] = \<const0> ;
+  assign m_axi_arqos[10] = \<const0> ;
+  assign m_axi_arqos[9] = \<const0> ;
+  assign m_axi_arqos[8] = \<const0> ;
+  assign m_axi_arqos[7] = \<const0> ;
+  assign m_axi_arqos[6] = \<const0> ;
+  assign m_axi_arqos[5] = \<const0> ;
+  assign m_axi_arqos[4] = \<const0> ;
+  assign m_axi_arqos[3] = \<const0> ;
+  assign m_axi_arqos[2] = \<const0> ;
+  assign m_axi_arqos[1] = \<const0> ;
+  assign m_axi_arqos[0] = \<const0> ;
+  assign m_axi_arregion[11] = \<const0> ;
+  assign m_axi_arregion[10] = \<const0> ;
+  assign m_axi_arregion[9] = \<const0> ;
+  assign m_axi_arregion[8] = \<const0> ;
+  assign m_axi_arregion[7] = \<const0> ;
+  assign m_axi_arregion[6] = \<const0> ;
+  assign m_axi_arregion[5] = \<const0> ;
+  assign m_axi_arregion[4] = \<const0> ;
+  assign m_axi_arregion[3] = \<const0> ;
+  assign m_axi_arregion[2] = \<const0> ;
+  assign m_axi_arregion[1] = \<const0> ;
+  assign m_axi_arregion[0] = \<const0> ;
+  assign m_axi_arsize[8] = \<const0> ;
+  assign m_axi_arsize[7] = \<const0> ;
+  assign m_axi_arsize[6] = \<const0> ;
+  assign m_axi_arsize[5] = \<const0> ;
+  assign m_axi_arsize[4] = \<const0> ;
+  assign m_axi_arsize[3] = \<const0> ;
+  assign m_axi_arsize[2] = \<const0> ;
+  assign m_axi_arsize[1] = \<const0> ;
+  assign m_axi_arsize[0] = \<const0> ;
+  assign m_axi_aruser[2] = \<const0> ;
+  assign m_axi_aruser[1] = \<const0> ;
+  assign m_axi_aruser[0] = \<const0> ;
+  assign m_axi_awaddr[95:80] = \^m_axi_awaddr [95:80];
+  assign m_axi_awaddr[79:64] = \^m_axi_araddr [15:0];
+  assign m_axi_awaddr[63:48] = \^m_axi_awaddr [95:80];
+  assign m_axi_awaddr[47:32] = \^m_axi_araddr [15:0];
+  assign m_axi_awaddr[31:16] = \^m_axi_awaddr [95:80];
+  assign m_axi_awaddr[15:0] = \^m_axi_araddr [15:0];
+  assign m_axi_awburst[5] = \<const0> ;
+  assign m_axi_awburst[4] = \<const0> ;
+  assign m_axi_awburst[3] = \<const0> ;
+  assign m_axi_awburst[2] = \<const0> ;
+  assign m_axi_awburst[1] = \<const0> ;
+  assign m_axi_awburst[0] = \<const0> ;
+  assign m_axi_awcache[11] = \<const0> ;
+  assign m_axi_awcache[10] = \<const0> ;
+  assign m_axi_awcache[9] = \<const0> ;
+  assign m_axi_awcache[8] = \<const0> ;
+  assign m_axi_awcache[7] = \<const0> ;
+  assign m_axi_awcache[6] = \<const0> ;
+  assign m_axi_awcache[5] = \<const0> ;
+  assign m_axi_awcache[4] = \<const0> ;
+  assign m_axi_awcache[3] = \<const0> ;
+  assign m_axi_awcache[2] = \<const0> ;
+  assign m_axi_awcache[1] = \<const0> ;
+  assign m_axi_awcache[0] = \<const0> ;
+  assign m_axi_awid[2] = \<const0> ;
+  assign m_axi_awid[1] = \<const0> ;
+  assign m_axi_awid[0] = \<const0> ;
+  assign m_axi_awlen[23] = \<const0> ;
+  assign m_axi_awlen[22] = \<const0> ;
+  assign m_axi_awlen[21] = \<const0> ;
+  assign m_axi_awlen[20] = \<const0> ;
+  assign m_axi_awlen[19] = \<const0> ;
+  assign m_axi_awlen[18] = \<const0> ;
+  assign m_axi_awlen[17] = \<const0> ;
+  assign m_axi_awlen[16] = \<const0> ;
+  assign m_axi_awlen[15] = \<const0> ;
+  assign m_axi_awlen[14] = \<const0> ;
+  assign m_axi_awlen[13] = \<const0> ;
+  assign m_axi_awlen[12] = \<const0> ;
+  assign m_axi_awlen[11] = \<const0> ;
+  assign m_axi_awlen[10] = \<const0> ;
+  assign m_axi_awlen[9] = \<const0> ;
+  assign m_axi_awlen[8] = \<const0> ;
+  assign m_axi_awlen[7] = \<const0> ;
+  assign m_axi_awlen[6] = \<const0> ;
+  assign m_axi_awlen[5] = \<const0> ;
+  assign m_axi_awlen[4] = \<const0> ;
+  assign m_axi_awlen[3] = \<const0> ;
+  assign m_axi_awlen[2] = \<const0> ;
+  assign m_axi_awlen[1] = \<const0> ;
+  assign m_axi_awlen[0] = \<const0> ;
+  assign m_axi_awlock[2] = \<const0> ;
+  assign m_axi_awlock[1] = \<const0> ;
+  assign m_axi_awlock[0] = \<const0> ;
+  assign m_axi_awprot[8:6] = \^m_axi_arprot [2:0];
+  assign m_axi_awprot[5:3] = \^m_axi_arprot [2:0];
+  assign m_axi_awprot[2:0] = \^m_axi_arprot [2:0];
+  assign m_axi_awqos[11] = \<const0> ;
+  assign m_axi_awqos[10] = \<const0> ;
+  assign m_axi_awqos[9] = \<const0> ;
+  assign m_axi_awqos[8] = \<const0> ;
+  assign m_axi_awqos[7] = \<const0> ;
+  assign m_axi_awqos[6] = \<const0> ;
+  assign m_axi_awqos[5] = \<const0> ;
+  assign m_axi_awqos[4] = \<const0> ;
+  assign m_axi_awqos[3] = \<const0> ;
+  assign m_axi_awqos[2] = \<const0> ;
+  assign m_axi_awqos[1] = \<const0> ;
+  assign m_axi_awqos[0] = \<const0> ;
+  assign m_axi_awregion[11] = \<const0> ;
+  assign m_axi_awregion[10] = \<const0> ;
+  assign m_axi_awregion[9] = \<const0> ;
+  assign m_axi_awregion[8] = \<const0> ;
+  assign m_axi_awregion[7] = \<const0> ;
+  assign m_axi_awregion[6] = \<const0> ;
+  assign m_axi_awregion[5] = \<const0> ;
+  assign m_axi_awregion[4] = \<const0> ;
+  assign m_axi_awregion[3] = \<const0> ;
+  assign m_axi_awregion[2] = \<const0> ;
+  assign m_axi_awregion[1] = \<const0> ;
+  assign m_axi_awregion[0] = \<const0> ;
+  assign m_axi_awsize[8] = \<const0> ;
+  assign m_axi_awsize[7] = \<const0> ;
+  assign m_axi_awsize[6] = \<const0> ;
+  assign m_axi_awsize[5] = \<const0> ;
+  assign m_axi_awsize[4] = \<const0> ;
+  assign m_axi_awsize[3] = \<const0> ;
+  assign m_axi_awsize[2] = \<const0> ;
+  assign m_axi_awsize[1] = \<const0> ;
+  assign m_axi_awsize[0] = \<const0> ;
+  assign m_axi_awuser[2] = \<const0> ;
+  assign m_axi_awuser[1] = \<const0> ;
+  assign m_axi_awuser[0] = \<const0> ;
+  assign m_axi_wdata[95:64] = s_axi_wdata;
+  assign m_axi_wdata[63:32] = s_axi_wdata;
+  assign m_axi_wdata[31:0] = s_axi_wdata;
+  assign m_axi_wid[2] = \<const0> ;
+  assign m_axi_wid[1] = \<const0> ;
+  assign m_axi_wid[0] = \<const0> ;
+  assign m_axi_wlast[2] = \<const0> ;
+  assign m_axi_wlast[1] = \<const0> ;
+  assign m_axi_wlast[0] = \<const0> ;
+  assign m_axi_wstrb[11:8] = s_axi_wstrb;
+  assign m_axi_wstrb[7:4] = s_axi_wstrb;
+  assign m_axi_wstrb[3:0] = s_axi_wstrb;
+  assign m_axi_wuser[2] = \<const0> ;
+  assign m_axi_wuser[1] = \<const0> ;
+  assign m_axi_wuser[0] = \<const0> ;
+  assign s_axi_bid[0] = \<const0> ;
+  assign s_axi_buser[0] = \<const0> ;
+  assign s_axi_rid[0] = \<const0> ;
+  assign s_axi_rlast[0] = \<const0> ;
+  assign s_axi_ruser[0] = \<const0> ;
+  GND GND
+       (.G(\<const0> ));
+  base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd \gen_sasd.crossbar_sasd_0 
+       (.Q({\^m_axi_arprot ,\^m_axi_awaddr ,\^m_axi_araddr }),
+        .aclk(aclk),
+        .aresetn(aresetn),
+        .m_axi_arready(m_axi_arready),
+        .m_axi_arvalid(m_axi_arvalid),
+        .m_axi_awready(m_axi_awready),
+        .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_bready(m_axi_bready),
+        .m_axi_bresp(m_axi_bresp),
+        .m_axi_bvalid(m_axi_bvalid),
+        .m_axi_rdata(m_axi_rdata),
+        .m_axi_rready(m_axi_rready),
+        .m_axi_rresp(m_axi_rresp),
+        .m_axi_rvalid(m_axi_rvalid),
+        .m_axi_wready(m_axi_wready),
+        .m_axi_wvalid(m_axi_wvalid),
+        .s_axi_araddr(s_axi_araddr),
+        .s_axi_arprot(s_axi_arprot),
+        .s_axi_arready(s_axi_arready),
+        .s_axi_arvalid(s_axi_arvalid),
+        .s_axi_awaddr(s_axi_awaddr),
+        .s_axi_awprot(s_axi_awprot),
+        .s_axi_awready(s_axi_awready),
+        .s_axi_awvalid(s_axi_awvalid),
+        .s_axi_bready(s_axi_bready),
+        .s_axi_bresp(s_axi_bresp),
+        .s_axi_bvalid(s_axi_bvalid),
+        .\s_axi_rdata[31] ({s_axi_rdata,s_axi_rresp}),
+        .s_axi_rready(s_axi_rready),
+        .s_axi_rvalid(s_axi_rvalid),
+        .s_axi_wready(s_axi_wready),
+        .s_axi_wvalid(s_axi_wvalid));
+endmodule
+
+module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
    (Q,
     \s_axi_rdata[31] ,
     s_axi_bvalid,
@@ -1214,144 +1695,6 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar
   input [31:0]s_axi_awaddr;
 
   wire [34:0]Q;
-  wire aclk;
-  wire aresetn;
-  wire [2:0]m_axi_arready;
-  wire [2:0]m_axi_arvalid;
-  wire [2:0]m_axi_awready;
-  wire [2:0]m_axi_awvalid;
-  wire [2:0]m_axi_bready;
-  wire [5:0]m_axi_bresp;
-  wire [2:0]m_axi_bvalid;
-  wire [95:0]m_axi_rdata;
-  wire [2:0]m_axi_rready;
-  wire [5:0]m_axi_rresp;
-  wire [2:0]m_axi_rvalid;
-  wire [2:0]m_axi_wready;
-  wire [2:0]m_axi_wvalid;
-  wire [31:0]s_axi_araddr;
-  wire [2:0]s_axi_arprot;
-  wire [0:0]s_axi_arready;
-  wire [0:0]s_axi_arvalid;
-  wire [31:0]s_axi_awaddr;
-  wire [2:0]s_axi_awprot;
-  wire [0:0]s_axi_awready;
-  wire [0:0]s_axi_awvalid;
-  wire [0:0]s_axi_bready;
-  wire [1:0]s_axi_bresp;
-  wire [0:0]s_axi_bvalid;
-  wire [33:0]\s_axi_rdata[31] ;
-  wire [0:0]s_axi_rready;
-  wire [0:0]s_axi_rvalid;
-  wire [0:0]s_axi_wready;
-  wire [0:0]s_axi_wvalid;
-
-  base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd \gen_sasd.crossbar_sasd_0 
-       (.M_AXI_AWADDR(Q[31:0]),
-        .Q(Q[34:32]),
-        .aclk(aclk),
-        .aresetn(aresetn),
-        .m_axi_arready(m_axi_arready),
-        .m_axi_arvalid(m_axi_arvalid),
-        .m_axi_awready(m_axi_awready),
-        .m_axi_awvalid(m_axi_awvalid),
-        .m_axi_bready(m_axi_bready),
-        .m_axi_bresp(m_axi_bresp),
-        .m_axi_bvalid(m_axi_bvalid),
-        .m_axi_rdata(m_axi_rdata),
-        .m_axi_rready(m_axi_rready),
-        .m_axi_rresp(m_axi_rresp),
-        .m_axi_rvalid(m_axi_rvalid),
-        .m_axi_wready(m_axi_wready),
-        .m_axi_wvalid(m_axi_wvalid),
-        .s_axi_araddr(s_axi_araddr),
-        .s_axi_arprot(s_axi_arprot),
-        .s_axi_arready(s_axi_arready),
-        .s_axi_arvalid(s_axi_arvalid),
-        .s_axi_awaddr(s_axi_awaddr),
-        .s_axi_awprot(s_axi_awprot),
-        .s_axi_awready(s_axi_awready),
-        .s_axi_awvalid(s_axi_awvalid),
-        .s_axi_bready(s_axi_bready),
-        .s_axi_bresp(s_axi_bresp),
-        .s_axi_bvalid(s_axi_bvalid),
-        .\s_axi_rdata[31] (\s_axi_rdata[31] ),
-        .s_axi_rready(s_axi_rready),
-        .s_axi_rvalid(s_axi_rvalid),
-        .s_axi_wready(s_axi_wready),
-        .s_axi_wvalid(s_axi_wvalid));
-endmodule
-
-module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
-   (M_AXI_AWADDR,
-    Q,
-    \s_axi_rdata[31] ,
-    s_axi_bvalid,
-    m_axi_bready,
-    s_axi_wready,
-    m_axi_wvalid,
-    m_axi_awvalid,
-    m_axi_arvalid,
-    s_axi_bresp,
-    s_axi_awready,
-    s_axi_arready,
-    s_axi_rvalid,
-    m_axi_rready,
-    aresetn,
-    aclk,
-    s_axi_arvalid,
-    s_axi_awvalid,
-    s_axi_bready,
-    s_axi_wvalid,
-    s_axi_rready,
-    m_axi_rresp,
-    m_axi_rdata,
-    m_axi_rvalid,
-    m_axi_bvalid,
-    m_axi_awready,
-    m_axi_wready,
-    m_axi_arready,
-    m_axi_bresp,
-    s_axi_arprot,
-    s_axi_awprot,
-    s_axi_araddr,
-    s_axi_awaddr);
-  output [31:0]M_AXI_AWADDR;
-  output [2:0]Q;
-  output [33:0]\s_axi_rdata[31] ;
-  output [0:0]s_axi_bvalid;
-  output [2:0]m_axi_bready;
-  output [0:0]s_axi_wready;
-  output [2:0]m_axi_wvalid;
-  output [2:0]m_axi_awvalid;
-  output [2:0]m_axi_arvalid;
-  output [1:0]s_axi_bresp;
-  output [0:0]s_axi_awready;
-  output [0:0]s_axi_arready;
-  output [0:0]s_axi_rvalid;
-  output [2:0]m_axi_rready;
-  input aresetn;
-  input aclk;
-  input [0:0]s_axi_arvalid;
-  input [0:0]s_axi_awvalid;
-  input [0:0]s_axi_bready;
-  input [0:0]s_axi_wvalid;
-  input [0:0]s_axi_rready;
-  input [5:0]m_axi_rresp;
-  input [95:0]m_axi_rdata;
-  input [2:0]m_axi_rvalid;
-  input [2:0]m_axi_bvalid;
-  input [2:0]m_axi_awready;
-  input [2:0]m_axi_wready;
-  input [2:0]m_axi_arready;
-  input [5:0]m_axi_bresp;
-  input [2:0]s_axi_arprot;
-  input [2:0]s_axi_awprot;
-  input [31:0]s_axi_araddr;
-  input [31:0]s_axi_awaddr;
-
-  wire [31:0]M_AXI_AWADDR;
-  wire [2:0]Q;
   wire aa_grant_rnw;
   wire aa_rready;
   wire aclk;
@@ -1425,7 +1768,7 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
   base_zynq_xbar_0_axi_crossbar_v2_1_18_addr_arbiter_sasd addr_arbiter_inst
        (.D({addr_arbiter_inst_n_3,addr_arbiter_inst_n_4,addr_arbiter_inst_n_5,addr_arbiter_inst_n_6}),
         .E(p_1_in),
-        .Q({Q,M_AXI_AWADDR}),
+        .Q(Q),
         .SR(reset),
         .aa_grant_rnw(aa_grant_rnw),
         .aa_rready(aa_rready),
@@ -1510,9 +1853,9 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     \m_atarget_enc[0]_i_1 
        (.I0(target_mi_enc[0]),
         .I1(target_mi_enc[1]),
-        .I2(M_AXI_AWADDR[31]),
-        .I3(M_AXI_AWADDR[30]),
-        .I4(M_AXI_AWADDR[29]),
+        .I2(Q[31]),
+        .I3(Q[30]),
+        .I4(Q[29]),
         .O(\m_atarget_enc[0]_i_1_n_0 ));
   (* SOFT_HLUTNM = "soft_lutpair33" *) 
   LUT5 #(
@@ -1520,9 +1863,9 @@ module base_zynq_xbar_0_axi_crossbar_v2_1_18_crossbar_sasd
     \m_atarget_enc[1]_i_1 
        (.I0(target_mi_enc[0]),
         .I1(target_mi_enc[1]),
-        .I2(M_AXI_AWADDR[31]),
-        .I3(M_AXI_AWADDR[30]),
-        .I4(M_AXI_AWADDR[29]),
+        .I2(Q[31]),
+        .I3(Q[30]),
+        .I4(Q[29]),
         .O(\m_atarget_enc[1]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -2171,7 +2514,7 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
        (.I0(aa_rready),
         .I1(\m_atarget_hot_reg[2] [0]),
         .O(m_axi_rready[0]));
-  (* SOFT_HLUTNM = "soft_lutpair31" *) 
+  (* SOFT_HLUTNM = "soft_lutpair32" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \m_axi_rready[1]_INST_0 
@@ -2883,7 +3226,7 @@ module base_zynq_xbar_0_axi_register_slice_v2_1_17_axic_register_slice
         .D(\aresetn_d_reg[0]_0 ),
         .Q(aa_rready),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair32" *) 
+  (* SOFT_HLUTNM = "soft_lutpair31" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \skid_buffer[0]_i_1 
@@ -3280,7 +3623,7 @@ module base_zynq_xbar_0
     m_axi_rresp,
     m_axi_rvalid,
     m_axi_rready);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLKIF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLKIF, FREQ_HZ 1e+08, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI:M06_AXI:M07_AXI:M08_AXI:M09_AXI:M10_AXI:M11_AXI:M12_AXI:M13_AXI:M14_AXI:M15_AXI:S00_AXI:S01_AXI:S02_AXI:S03_AXI:S04_AXI:S05_AXI:S06_AXI:S07_AXI:S08_AXI:S09_AXI:S10_AXI:S11_AXI:S12_AXI:S13_AXI:S14_AXI:S15_AXI, ASSOCIATED_RESET ARESETN" *) input aclk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLKIF CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLKIF, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF M00_AXI:M01_AXI:M02_AXI:M03_AXI:M04_AXI:M05_AXI:M06_AXI:M07_AXI:M08_AXI:M09_AXI:M10_AXI:M11_AXI:M12_AXI:M13_AXI:M14_AXI:M15_AXI:S00_AXI:S01_AXI:S02_AXI:S03_AXI:S04_AXI:S05_AXI:S06_AXI:S07_AXI:S08_AXI:S09_AXI:S10_AXI:S11_AXI:S12_AXI:S13_AXI:S14_AXI:S15_AXI, ASSOCIATED_RESET ARESETN" *) input aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RSTIF RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RSTIF, POLARITY ACTIVE_LOW, TYPE INTERCONNECT" *) input aresetn;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR" *) input [31:0]s_axi_awaddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT" *) input [2:0]s_axi_awprot;
@@ -3300,7 +3643,7 @@ module base_zynq_xbar_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RDATA" *) output [31:0]s_axi_rdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RRESP" *) output [1:0]s_axi_rresp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RVALID" *) output [0:0]s_axi_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) input [0:0]s_axi_rready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S00_AXI RREADY" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 8, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) input [0:0]s_axi_rready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWADDR [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI AWADDR [31:0] [63:32], xilinx.com:interface:aximm:1.0 M02_AXI AWADDR [31:0] [95:64]" *) output [95:0]m_axi_awaddr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWPROT [2:0] [2:0], xilinx.com:interface:aximm:1.0 M01_AXI AWPROT [2:0] [5:3], xilinx.com:interface:aximm:1.0 M02_AXI AWPROT [2:0] [8:6]" *) output [8:0]m_axi_awprot;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI AWVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI AWVALID [0:0] [1:1], xilinx.com:interface:aximm:1.0 M02_AXI AWVALID [0:0] [2:2]" *) output [2:0]m_axi_awvalid;
@@ -3319,15 +3662,16 @@ module base_zynq_xbar_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RDATA [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI RDATA [31:0] [63:32], xilinx.com:interface:aximm:1.0 M02_AXI RDATA [31:0] [95:64]" *) input [95:0]m_axi_rdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RRESP [1:0] [1:0], xilinx.com:interface:aximm:1.0 M01_AXI RRESP [1:0] [3:2], xilinx.com:interface:aximm:1.0 M02_AXI RRESP [1:0] [5:4]" *) input [5:0]m_axi_rresp;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RVALID [0:0] [1:1], xilinx.com:interface:aximm:1.0 M02_AXI RVALID [0:0] [2:2]" *) input [2:0]m_axi_rvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RREADY [0:0] [1:1], xilinx.com:interface:aximm:1.0 M02_AXI RREADY [0:0] [2:2]" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, XIL_INTERFACENAME M01_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, XIL_INTERFACENAME M02_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 1e+08, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) output [2:0]m_axi_rready;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M00_AXI RREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RREADY [0:0] [1:1], xilinx.com:interface:aximm:1.0 M02_AXI RREADY [0:0] [2:2]" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, XIL_INTERFACENAME M01_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, XIL_INTERFACENAME M02_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) output [2:0]m_axi_rready;
 
   wire aclk;
   wire aresetn;
-  wire [15:0]\^m_axi_araddr ;
-  wire [2:0]\^m_axi_arprot ;
+  wire [95:0]m_axi_araddr;
+  wire [8:0]m_axi_arprot;
   wire [2:0]m_axi_arready;
   wire [2:0]m_axi_arvalid;
-  wire [95:80]\^m_axi_awaddr ;
+  wire [95:0]m_axi_awaddr;
+  wire [8:0]m_axi_awprot;
   wire [2:0]m_axi_awready;
   wire [2:0]m_axi_awvalid;
   wire [2:0]m_axi_bready;
@@ -3337,7 +3681,9 @@ module base_zynq_xbar_0
   wire [2:0]m_axi_rready;
   wire [5:0]m_axi_rresp;
   wire [2:0]m_axi_rvalid;
+  wire [95:0]m_axi_wdata;
   wire [2:0]m_axi_wready;
+  wire [11:0]m_axi_wstrb;
   wire [2:0]m_axi_wvalid;
   wire [31:0]s_axi_araddr;
   wire [2:0]s_axi_arprot;
@@ -3358,63 +3704,172 @@ module base_zynq_xbar_0
   wire [0:0]s_axi_wready;
   wire [3:0]s_axi_wstrb;
   wire [0:0]s_axi_wvalid;
+  wire [5:0]NLW_inst_m_axi_arburst_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_arcache_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_arid_UNCONNECTED;
+  wire [23:0]NLW_inst_m_axi_arlen_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_arlock_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_arqos_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_arregion_UNCONNECTED;
+  wire [8:0]NLW_inst_m_axi_arsize_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_aruser_UNCONNECTED;
+  wire [5:0]NLW_inst_m_axi_awburst_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_awcache_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_awid_UNCONNECTED;
+  wire [23:0]NLW_inst_m_axi_awlen_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_awlock_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_awqos_UNCONNECTED;
+  wire [11:0]NLW_inst_m_axi_awregion_UNCONNECTED;
+  wire [8:0]NLW_inst_m_axi_awsize_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_awuser_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_wid_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_wlast_UNCONNECTED;
+  wire [2:0]NLW_inst_m_axi_wuser_UNCONNECTED;
+  wire [0:0]NLW_inst_s_axi_bid_UNCONNECTED;
+  wire [0:0]NLW_inst_s_axi_buser_UNCONNECTED;
+  wire [0:0]NLW_inst_s_axi_rid_UNCONNECTED;
+  wire [0:0]NLW_inst_s_axi_rlast_UNCONNECTED;
+  wire [0:0]NLW_inst_s_axi_ruser_UNCONNECTED;
 
-  assign m_axi_araddr[95:80] = \^m_axi_awaddr [95:80];
-  assign m_axi_araddr[79:64] = \^m_axi_araddr [15:0];
-  assign m_axi_araddr[63:48] = \^m_axi_awaddr [95:80];
-  assign m_axi_araddr[47:32] = \^m_axi_araddr [15:0];
-  assign m_axi_araddr[31:16] = \^m_axi_awaddr [95:80];
-  assign m_axi_araddr[15:0] = \^m_axi_araddr [15:0];
-  assign m_axi_arprot[8:6] = \^m_axi_arprot [2:0];
-  assign m_axi_arprot[5:3] = \^m_axi_arprot [2:0];
-  assign m_axi_arprot[2:0] = \^m_axi_arprot [2:0];
-  assign m_axi_awaddr[95:80] = \^m_axi_awaddr [95:80];
-  assign m_axi_awaddr[79:64] = \^m_axi_araddr [15:0];
-  assign m_axi_awaddr[63:48] = \^m_axi_awaddr [95:80];
-  assign m_axi_awaddr[47:32] = \^m_axi_araddr [15:0];
-  assign m_axi_awaddr[31:16] = \^m_axi_awaddr [95:80];
-  assign m_axi_awaddr[15:0] = \^m_axi_araddr [15:0];
-  assign m_axi_awprot[8:6] = \^m_axi_arprot [2:0];
-  assign m_axi_awprot[5:3] = \^m_axi_arprot [2:0];
-  assign m_axi_awprot[2:0] = \^m_axi_arprot [2:0];
-  assign m_axi_wdata[95:64] = s_axi_wdata;
-  assign m_axi_wdata[63:32] = s_axi_wdata;
-  assign m_axi_wdata[31:0] = s_axi_wdata;
-  assign m_axi_wstrb[11:8] = s_axi_wstrb;
-  assign m_axi_wstrb[7:4] = s_axi_wstrb;
-  assign m_axi_wstrb[3:0] = s_axi_wstrb;
+  (* C_AXI_ADDR_WIDTH = "32" *) 
+  (* C_AXI_ARUSER_WIDTH = "1" *) 
+  (* C_AXI_AWUSER_WIDTH = "1" *) 
+  (* C_AXI_BUSER_WIDTH = "1" *) 
+  (* C_AXI_DATA_WIDTH = "32" *) 
+  (* C_AXI_ID_WIDTH = "1" *) 
+  (* C_AXI_PROTOCOL = "2" *) 
+  (* C_AXI_RUSER_WIDTH = "1" *) 
+  (* C_AXI_SUPPORTS_USER_SIGNALS = "0" *) 
+  (* C_AXI_WUSER_WIDTH = "1" *) 
+  (* C_CONNECTIVITY_MODE = "0" *) 
+  (* C_DEBUG = "1" *) 
+  (* C_FAMILY = "zynq" *) 
+  (* C_M_AXI_ADDR_WIDTH = "96'b000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000011101" *) 
+  (* C_M_AXI_BASE_ADDR = "192'b000000000000000000000000000000000100000001000000000000000000000000000000000000000000000000000000010000010110000000000000000000000000000000000000000000000000000001100000000000000000000000000000" *) 
+  (* C_M_AXI_READ_CONNECTIVITY = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) 
+  (* C_M_AXI_READ_ISSUING = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) 
+  (* C_M_AXI_SECURE = "96'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" *) 
+  (* C_M_AXI_WRITE_CONNECTIVITY = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) 
+  (* C_M_AXI_WRITE_ISSUING = "96'b000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001" *) 
+  (* C_NUM_ADDR_RANGES = "1" *) 
+  (* C_NUM_MASTER_SLOTS = "3" *) 
+  (* C_NUM_SLAVE_SLOTS = "1" *) 
+  (* C_R_REGISTER = "1" *) 
+  (* C_S_AXI_ARB_PRIORITY = "0" *) 
+  (* C_S_AXI_BASE_ID = "0" *) 
+  (* C_S_AXI_READ_ACCEPTANCE = "1" *) 
+  (* C_S_AXI_SINGLE_THREAD = "1" *) 
+  (* C_S_AXI_THREAD_ID_WIDTH = "0" *) 
+  (* C_S_AXI_WRITE_ACCEPTANCE = "1" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* P_ADDR_DECODE = "1" *) 
+  (* P_AXI3 = "1" *) 
+  (* P_AXI4 = "0" *) 
+  (* P_AXILITE = "2" *) 
+  (* P_AXILITE_SIZE = "3'b010" *) 
+  (* P_FAMILY = "zynq" *) 
+  (* P_INCR = "2'b01" *) 
+  (* P_LEN = "8" *) 
+  (* P_LOCK = "1" *) 
+  (* P_M_AXI_ERR_MODE = "96'b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" *) 
+  (* P_M_AXI_SUPPORTS_READ = "3'b111" *) 
+  (* P_M_AXI_SUPPORTS_WRITE = "3'b111" *) 
+  (* P_ONES = "65'b11111111111111111111111111111111111111111111111111111111111111111" *) 
+  (* P_RANGE_CHECK = "1" *) 
+  (* P_S_AXI_BASE_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
+  (* P_S_AXI_HIGH_ID = "64'b0000000000000000000000000000000000000000000000000000000000000000" *) 
+  (* P_S_AXI_SUPPORTS_READ = "1'b1" *) 
+  (* P_S_AXI_SUPPORTS_WRITE = "1'b1" *) 
   base_zynq_xbar_0_axi_crossbar_v2_1_18_axi_crossbar inst
-       (.Q({\^m_axi_arprot ,\^m_axi_awaddr ,\^m_axi_araddr }),
-        .aclk(aclk),
+       (.aclk(aclk),
         .aresetn(aresetn),
+        .m_axi_araddr(m_axi_araddr),
+        .m_axi_arburst(NLW_inst_m_axi_arburst_UNCONNECTED[5:0]),
+        .m_axi_arcache(NLW_inst_m_axi_arcache_UNCONNECTED[11:0]),
+        .m_axi_arid(NLW_inst_m_axi_arid_UNCONNECTED[2:0]),
+        .m_axi_arlen(NLW_inst_m_axi_arlen_UNCONNECTED[23:0]),
+        .m_axi_arlock(NLW_inst_m_axi_arlock_UNCONNECTED[2:0]),
+        .m_axi_arprot(m_axi_arprot),
+        .m_axi_arqos(NLW_inst_m_axi_arqos_UNCONNECTED[11:0]),
         .m_axi_arready(m_axi_arready),
+        .m_axi_arregion(NLW_inst_m_axi_arregion_UNCONNECTED[11:0]),
+        .m_axi_arsize(NLW_inst_m_axi_arsize_UNCONNECTED[8:0]),
+        .m_axi_aruser(NLW_inst_m_axi_aruser_UNCONNECTED[2:0]),
         .m_axi_arvalid(m_axi_arvalid),
+        .m_axi_awaddr(m_axi_awaddr),
+        .m_axi_awburst(NLW_inst_m_axi_awburst_UNCONNECTED[5:0]),
+        .m_axi_awcache(NLW_inst_m_axi_awcache_UNCONNECTED[11:0]),
+        .m_axi_awid(NLW_inst_m_axi_awid_UNCONNECTED[2:0]),
+        .m_axi_awlen(NLW_inst_m_axi_awlen_UNCONNECTED[23:0]),
+        .m_axi_awlock(NLW_inst_m_axi_awlock_UNCONNECTED[2:0]),
+        .m_axi_awprot(m_axi_awprot),
+        .m_axi_awqos(NLW_inst_m_axi_awqos_UNCONNECTED[11:0]),
         .m_axi_awready(m_axi_awready),
+        .m_axi_awregion(NLW_inst_m_axi_awregion_UNCONNECTED[11:0]),
+        .m_axi_awsize(NLW_inst_m_axi_awsize_UNCONNECTED[8:0]),
+        .m_axi_awuser(NLW_inst_m_axi_awuser_UNCONNECTED[2:0]),
         .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_bid({1'b0,1'b0,1'b0}),
         .m_axi_bready(m_axi_bready),
         .m_axi_bresp(m_axi_bresp),
+        .m_axi_buser({1'b0,1'b0,1'b0}),
         .m_axi_bvalid(m_axi_bvalid),
         .m_axi_rdata(m_axi_rdata),
+        .m_axi_rid({1'b0,1'b0,1'b0}),
+        .m_axi_rlast({1'b1,1'b1,1'b1}),
         .m_axi_rready(m_axi_rready),
         .m_axi_rresp(m_axi_rresp),
+        .m_axi_ruser({1'b0,1'b0,1'b0}),
         .m_axi_rvalid(m_axi_rvalid),
+        .m_axi_wdata(m_axi_wdata),
+        .m_axi_wid(NLW_inst_m_axi_wid_UNCONNECTED[2:0]),
+        .m_axi_wlast(NLW_inst_m_axi_wlast_UNCONNECTED[2:0]),
         .m_axi_wready(m_axi_wready),
+        .m_axi_wstrb(m_axi_wstrb),
+        .m_axi_wuser(NLW_inst_m_axi_wuser_UNCONNECTED[2:0]),
         .m_axi_wvalid(m_axi_wvalid),
         .s_axi_araddr(s_axi_araddr),
+        .s_axi_arburst({1'b0,1'b0}),
+        .s_axi_arcache({1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_arid(1'b0),
+        .s_axi_arlen({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_arlock(1'b0),
         .s_axi_arprot(s_axi_arprot),
+        .s_axi_arqos({1'b0,1'b0,1'b0,1'b0}),
         .s_axi_arready(s_axi_arready),
+        .s_axi_arsize({1'b0,1'b0,1'b0}),
+        .s_axi_aruser(1'b0),
         .s_axi_arvalid(s_axi_arvalid),
         .s_axi_awaddr(s_axi_awaddr),
+        .s_axi_awburst({1'b0,1'b0}),
+        .s_axi_awcache({1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_awid(1'b0),
+        .s_axi_awlen({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .s_axi_awlock(1'b0),
         .s_axi_awprot(s_axi_awprot),
+        .s_axi_awqos({1'b0,1'b0,1'b0,1'b0}),
         .s_axi_awready(s_axi_awready),
+        .s_axi_awsize({1'b0,1'b0,1'b0}),
+        .s_axi_awuser(1'b0),
         .s_axi_awvalid(s_axi_awvalid),
+        .s_axi_bid(NLW_inst_s_axi_bid_UNCONNECTED[0]),
         .s_axi_bready(s_axi_bready),
         .s_axi_bresp(s_axi_bresp),
+        .s_axi_buser(NLW_inst_s_axi_buser_UNCONNECTED[0]),
         .s_axi_bvalid(s_axi_bvalid),
-        .\s_axi_rdata[31] ({s_axi_rdata,s_axi_rresp}),
+        .s_axi_rdata(s_axi_rdata),
+        .s_axi_rid(NLW_inst_s_axi_rid_UNCONNECTED[0]),
+        .s_axi_rlast(NLW_inst_s_axi_rlast_UNCONNECTED[0]),
         .s_axi_rready(s_axi_rready),
+        .s_axi_rresp(s_axi_rresp),
+        .s_axi_ruser(NLW_inst_s_axi_ruser_UNCONNECTED[0]),
         .s_axi_rvalid(s_axi_rvalid),
+        .s_axi_wdata(s_axi_wdata),
+        .s_axi_wid(1'b0),
+        .s_axi_wlast(1'b1),
         .s_axi_wready(s_axi_wready),
+        .s_axi_wstrb(s_axi_wstrb),
+        .s_axi_wuser(1'b0),
         .s_axi_wvalid(s_axi_wvalid));
 endmodule
 `ifndef GLBL

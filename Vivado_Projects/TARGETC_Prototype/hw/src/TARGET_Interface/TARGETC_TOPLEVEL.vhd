@@ -143,6 +143,17 @@ entity TARGETC_IP_Prototype is
 		CH15 :			out	std_logic_vector(11 downto 0);
 		SSvalid:		out std_logic;
 
+		-- Trigger 
+		TrigA :			in std_logic;
+		TrigB :			in std_logic;
+		TrigC :			in std_logic;
+		TrigD :			in std_logic;
+		
+		TrigA_intr :	out std_logic;
+		TrigB_intr :	out std_logic;
+		TrigC_intr :	out std_logic;
+		TrigD_intr :	out std_logic;
+
 		-- DEBUG SIGNALS
 		SSVALID_INTR:	out	std_logic;
 		--HSCLK:			out std_logic;
@@ -163,7 +174,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	-------------------------------------------------------
 
 	--! Clock Management for the different CLK needed inside the ASIC
-	component TC_ClockManagementV2 is
+	component TC_ClockManagementV3 is
 	port (
 	-- TARGET C Ports for control and function
 		nrst:			in	std_logic;
@@ -191,7 +202,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		SSTIN_N:		out std_logic		-- Pin#126 		
 
 	);
-	end component TC_ClockManagementV2;
+	end component TC_ClockManagementV3;
 
 	--! Communication with PS side through AXI Lite and Control Signals
 	component TC_Control is
@@ -350,10 +361,14 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
     signal timecounter_intl : std_logic_vector(63 downto 0);
     
+    signal TrigA_reg : std_logic_vector(1 downto 0);
+    signal TrigB_reg : std_logic_vector(1 downto 0);
+    signal TrigC_reg : std_logic_vector(1 downto 0);
+    signal TrigD_reg : std_logic_vector(1 downto 0);
 begin
 
 
-	TC_ClockMgmt_inst : TC_ClockManagementV2
+	TC_ClockMgmt_inst : TC_ClockManagementV3
 	port map(
 		nrst				=> CtrlBusOut_intl.SWRESET,
 		--rst				=> tc_axi_aresetn,
@@ -567,4 +582,62 @@ begin
 
 		O	=> MONTIMING
 	);
+	
+	process(CtrlBusOut_intl.TrigCntClear,tc_axi_aresetn,ClockBus_intl.Clk250Mhz)
+	begin
+		if (tc_axi_aresetn = '0') or (CtrlBusOut_intl.TrigCntClear = '1') then
+			CtrlBusIn_intl.TrigACnt <= (others => '0');
+			CtrlBusIn_intl.TrigBCnt <= (others => '0');
+			CtrlBusIn_intl.TrigCCnt <= (others => '0');
+			CtrlBusIn_intl.TrigDCnt <= (others => '0');
+		else
+			if rising_edge(ClockBus_intl.Clk250Mhz) then
+				if TrigA = '1' then
+					CtrlBusIn_intl.TrigACnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigACnt) + 1);
+				end if;
+				if TrigB = '1' then
+					CtrlBusIn_intl.TrigBCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigBCnt) + 1);
+				end if;
+				if TrigC = '1' then
+					CtrlBusIn_intl.TrigCCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigCCnt) + 1);
+				end if;
+				if TrigD = '1' then
+					CtrlBusIn_intl.TrigDCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigDCnt) + 1);
+				end if;
+				
+				TrigA_reg <= TrigA_reg(0) & TrigA;
+				TrigB_reg <= TrigB_reg(0) & TrigB;
+				TrigC_reg <= TrigC_reg(0) & TrigC;
+				TrigD_reg <= TrigD_reg(0) & TrigD;
+				
+				if(TrigA_reg = "10") then
+					--TrigA_intr <= '1';
+				else
+					TrigA_intr <= '0';
+				end if;
+				
+				if(TrigB_reg = "10") then
+					--TrigB_intr <= '1';
+				else
+					TrigB_intr <= '0';
+				end if;
+				
+				if(TrigC_reg = "10") then
+					--TrigC_intr <= '1';
+				else
+					TrigC_intr <= '0';
+				end if;
+				
+				if(TrigD_reg = "10") then
+					--TrigD_intr <= '1';
+				else
+					TrigD_intr <= '0';
+				end if;
+			end if;
+		end if;
+	end process;
+
+	
+	
+	
 end arch_imp;

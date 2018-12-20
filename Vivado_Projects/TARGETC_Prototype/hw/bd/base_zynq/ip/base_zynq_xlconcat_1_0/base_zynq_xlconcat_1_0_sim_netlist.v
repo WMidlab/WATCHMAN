@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Wed Nov  7 12:53:31 2018
+// Date        : Fri Dec 14 15:42:18 2018
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim
 //               /home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_xlconcat_1_0/base_zynq_xlconcat_1_0_sim_netlist.v
@@ -17,14 +17,30 @@
 module base_zynq_xlconcat_1_0
    (In0,
     In1,
+    In2,
+    In3,
+    In4,
+    In5,
     dout);
   input [0:0]In0;
   input [0:0]In1;
-  output [1:0]dout;
+  input [0:0]In2;
+  input [0:0]In3;
+  input [0:0]In4;
+  input [0:0]In5;
+  output [5:0]dout;
 
   wire [0:0]In0;
   wire [0:0]In1;
+  wire [0:0]In2;
+  wire [0:0]In3;
+  wire [0:0]In4;
+  wire [0:0]In5;
 
+  assign dout[5] = In5;
+  assign dout[4] = In4;
+  assign dout[3] = In3;
+  assign dout[2] = In2;
   assign dout[1] = In1;
   assign dout[0] = In0;
 endmodule

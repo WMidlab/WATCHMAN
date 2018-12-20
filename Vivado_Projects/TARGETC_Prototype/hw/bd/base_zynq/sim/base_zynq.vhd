@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Fri Dec 14 09:53:02 2018
+--Date        : Thu Dec 20 09:03:16 2018
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq.bd
 --Design      : base_zynq
@@ -1777,6 +1777,10 @@ entity base_zynq is
     SS_LD_DIR : out STD_LOGIC;
     SS_LD_SIN : out STD_LOGIC;
     SS_RESET : out STD_LOGIC;
+    TRIGA : in STD_LOGIC;
+    TRIGB : in STD_LOGIC;
+    TRIGC : in STD_LOGIC;
+    TRIGD : in STD_LOGIC;
     WL_CLK_N : out STD_LOGIC;
     WL_CLK_P : out STD_LOGIC;
     WR_CS_S0 : out STD_LOGIC;
@@ -1884,9 +1888,8 @@ architecture STRUCTURE of base_zynq is
     S_AXI_HP0_WID : in STD_LOGIC_VECTOR ( 5 downto 0 );
     S_AXI_HP0_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
     S_AXI_HP0_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    IRQ_F2P : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    IRQ_F2P : in STD_LOGIC_VECTOR ( 5 downto 0 );
     FCLK_CLK0 : out STD_LOGIC;
-    FCLK_CLK1 : out STD_LOGIC;
     FCLK_RESET0_N : out STD_LOGIC;
     MIO : inout STD_LOGIC_VECTOR ( 53 downto 0 );
     DDR_CAS_n : inout STD_LOGIC;
@@ -2043,7 +2046,11 @@ architecture STRUCTURE of base_zynq is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+    In2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In3 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In5 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   end component base_zynq_xlconcat_1_0;
   component base_zynq_axistream_0_0 is
@@ -2176,6 +2183,14 @@ architecture STRUCTURE of base_zynq is
     CH14 : out STD_LOGIC_VECTOR ( 11 downto 0 );
     CH15 : out STD_LOGIC_VECTOR ( 11 downto 0 );
     SSvalid : out STD_LOGIC;
+    TrigA : in STD_LOGIC;
+    TrigB : in STD_LOGIC;
+    TrigC : in STD_LOGIC;
+    TrigD : in STD_LOGIC;
+    TrigA_intr : out STD_LOGIC;
+    TrigB_intr : out STD_LOGIC;
+    TrigC_intr : out STD_LOGIC;
+    TrigD_intr : out STD_LOGIC;
     SSVALID_INTR : out STD_LOGIC;
     SSTIN : out STD_LOGIC;
     MONTIMING : out STD_LOGIC;
@@ -2207,7 +2222,6 @@ architecture STRUCTURE of base_zynq is
   signal MONTIMING_P_1 : STD_LOGIC;
   signal Net : STD_LOGIC;
   signal Net1 : STD_LOGIC;
-  signal Net2 : STD_LOGIC;
   signal SHOUT_1 : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_CH0 : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal TARGETC_IP_Prototype_0_CH1 : STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -2249,6 +2263,10 @@ architecture STRUCTURE of base_zynq is
   signal TARGETC_IP_Prototype_0_SS_LD_SIN : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_SS_RESET : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_SSvalid : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_TrigA_intr : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_TrigB_intr : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_TrigC_intr : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_TrigD_intr : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_Trigger : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal TARGETC_IP_Prototype_0_WDONbr : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal TARGETC_IP_Prototype_0_WDOTime : STD_LOGIC_VECTOR ( 63 downto 0 );
@@ -2262,6 +2280,10 @@ architecture STRUCTURE of base_zynq is
   signal TARGETC_IP_Prototype_0_WR_CS_S5 : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_WR_RS_S0 : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_WR_RS_S1 : STD_LOGIC;
+  signal TRIGA_1 : STD_LOGIC;
+  signal TRIGB_1 : STD_LOGIC;
+  signal TRIGC_1 : STD_LOGIC;
+  signal TRIGD_1 : STD_LOGIC;
   signal axi_dma_0_M_AXI_S2MM_AWADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_dma_0_M_AXI_S2MM_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axi_dma_0_M_AXI_S2MM_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -2423,7 +2445,7 @@ architecture STRUCTURE of base_zynq is
   signal ps7_0_axi_periph_M02_AXI_WVALID : STD_LOGIC;
   signal rst_ps7_0_50M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal NLW_TARGETC_IP_Prototype_0_DOE_UNCONNECTED : STD_LOGIC;
   signal NLW_TARGETC_IP_Prototype_0_PSBusy_UNCONNECTED : STD_LOGIC;
   signal NLW_TARGETC_IP_Prototype_0_TestStream_UNCONNECTED : STD_LOGIC;
@@ -2523,6 +2545,10 @@ begin
   SS_LD_DIR <= TARGETC_IP_Prototype_0_SS_LD_DIR;
   SS_LD_SIN <= TARGETC_IP_Prototype_0_SS_LD_SIN;
   SS_RESET <= TARGETC_IP_Prototype_0_SS_RESET;
+  TRIGA_1 <= TRIGA;
+  TRIGB_1 <= TRIGB;
+  TRIGC_1 <= TRIGC;
+  TRIGD_1 <= TRIGD;
   WL_CLK_N <= TARGETC_IP_Prototype_0_WL_CLK_N;
   WL_CLK_P <= TARGETC_IP_Prototype_0_WL_CLK_P;
   WR_CS_S0 <= TARGETC_IP_Prototype_0_WR_CS_S0;
@@ -2601,8 +2627,8 @@ TARGETC_IP_Prototype_0: component base_zynq_TARGETC_IP_Prototype_0_1
       RDAD_DIR => TARGETC_IP_Prototype_0_RDAD_DIR,
       RDAD_SIN => TARGETC_IP_Prototype_0_RDAD_SIN,
       REGCLR => TARGETC_IP_Prototype_0_REGCLR,
-      RefCLK_i1 => Net2,
-      RefCLK_i2 => Net2,
+      RefCLK_i1 => processing_system7_0_FCLK_CLK0,
+      RefCLK_i2 => processing_system7_0_FCLK_CLK0,
       SAMPLESEL_ANY => TARGETC_IP_Prototype_0_SAMPLESEL_ANY,
       SCLK => TARGETC_IP_Prototype_0_SCLK,
       SHOUT => SHOUT_1,
@@ -2617,6 +2643,14 @@ TARGETC_IP_Prototype_0: component base_zynq_TARGETC_IP_Prototype_0_1
       SS_RESET => TARGETC_IP_Prototype_0_SS_RESET,
       SSvalid => TARGETC_IP_Prototype_0_SSvalid,
       TestStream => NLW_TARGETC_IP_Prototype_0_TestStream_UNCONNECTED,
+      TrigA => TRIGA_1,
+      TrigA_intr => TARGETC_IP_Prototype_0_TrigA_intr,
+      TrigB => TRIGB_1,
+      TrigB_intr => TARGETC_IP_Prototype_0_TrigB_intr,
+      TrigC => TRIGC_1,
+      TrigC_intr => TARGETC_IP_Prototype_0_TrigC_intr,
+      TrigD => TRIGD_1,
+      TrigD_intr => TARGETC_IP_Prototype_0_TrigD_intr,
       Trigger(31 downto 0) => TARGETC_IP_Prototype_0_Trigger(31 downto 0),
       WDONbr(8 downto 0) => TARGETC_IP_Prototype_0_WDONbr(8 downto 0),
       WDOTime(63 downto 0) => TARGETC_IP_Prototype_0_WDOTime(63 downto 0),
@@ -2818,9 +2852,8 @@ processing_system7_0: component base_zynq_processing_system7_0_0
       DDR_VRP => FIXED_IO_ddr_vrp,
       DDR_WEB => DDR_we_n,
       FCLK_CLK0 => processing_system7_0_FCLK_CLK0,
-      FCLK_CLK1 => Net2,
       FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
-      IRQ_F2P(1 downto 0) => xlconcat_1_dout(1 downto 0),
+      IRQ_F2P(5 downto 0) => xlconcat_1_dout(5 downto 0),
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,
       M_AXI_GP0_ARADDR(31 downto 0) => processing_system7_0_M_AXI_GP0_ARADDR(31 downto 0),
@@ -3053,6 +3086,10 @@ xlconcat_1: component base_zynq_xlconcat_1_0
      port map (
       In0(0) => TARGETC_IP_Prototype_0_SSVALID_INTR,
       In1(0) => axi_dma_0_s2mm_introut,
-      dout(1 downto 0) => xlconcat_1_dout(1 downto 0)
+      In2(0) => TARGETC_IP_Prototype_0_TrigA_intr,
+      In3(0) => TARGETC_IP_Prototype_0_TrigB_intr,
+      In4(0) => TARGETC_IP_Prototype_0_TrigC_intr,
+      In5(0) => TARGETC_IP_Prototype_0_TrigD_intr,
+      dout(5 downto 0) => xlconcat_1_dout(5 downto 0)
     );
 end STRUCTURE;

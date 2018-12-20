@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -11,7 +10,7 @@ entity WindowControl is
 	);
 	Port (
 	nrst : 			in	STD_Logic;
-	
+
 	ClockBus:		in T_ClockBus;
 	Timecounter:	in std_logic_vector(63 downto 0);
 
@@ -21,14 +20,14 @@ entity WindowControl is
 
 	WR_RS_S:		out std_logic_vector(1 downto 0);
 	WR_CS_S:		out std_logic_vector(5 downto 0);
-	
+
 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
---	CtrlBus_OxSL:		out T_CtrlBus_OxSL; 
+--	CtrlBus_OxSL:		out T_CtrlBus_OxSL;
 	SampleCnt:		out std_logic_vector(3 downto 0);
 	CurAddr:		out	std_logic_vector(7 downto 0);
 	NextBus_In:		in Bus_t;
 	PrevBus_In:		in Bus_t;
-	
+
     -- FIFO IN for Digiting
     DIG_Full	: out	std_logic;
     DIG_DataIn	: in	std_logic_vector(8 downto 0);
@@ -71,12 +70,12 @@ architecture Behavioral of WindowControl is
         WClk        :in  std_logic
     );
 	end component aFifo;
-	
+
 	type storagestate is (
 		IDLE,
 		READY,
 		RESPREADY,
-			
+
 		EVALUATE,
 		MARK_WINDOW
 	);
@@ -88,28 +87,28 @@ architecture Behavioral of WindowControl is
 		WRITING
 	);
 	signal digsto_stm : digstoragestate;
-	
-	
+
+
 	signal PREVBus_intl :		Bus_t;
 	signal NEXTBus_intl :		Bus_t;
-	
+
 	signal MarkWindow : std_logic_vector(7 downto 0);
 	signal NextMarkWindow : std_logic_vector(7 downto 0);
-	
+
 	signal WR_ADDR_s : std_logic_vector(7 downto 0);
 	signal busy_intl : std_logic;
 	signal NextAddr_intl : std_logic_vector(7 downto 0);
 	signal PrevAddr_intl : std_logic_vector(7 downto 0);
-	
+
 	signal cmdbus_intl : std_logic_vector(2 downto 0);
 	signal cmdwdo_en_intl: std_logic_vector(NBRWINDOWS-1 downto 0);
-	
+
 	signal FstWindow512 : std_logic_vector(8 downto 0);
 	signal CntWindow512 : std_logic_vector(8 downto 0);
-	
+
 	signal DIG_Empty_intl, STO_ReadEn : std_logic;
 	signal DIG_DataOut_intl : std_logic_vector(8 downto 0);
-	
+
 begin
 
 	SampleCnt <= Timecounter(3 downto 0);
@@ -167,7 +166,7 @@ begin
 			end if;
 		end if;
 	end process;
-	
+
 	CurAddr	<= WR_ADDR_S;
 	WR_RS_S <= WR_ADDR_S(1 downto 0);	-- TARGET C : Write Row Select
 	WR_CS_S <= WR_ADDR_S(7 downto 2);
@@ -179,15 +178,15 @@ begin
 			storage_stm <= IDLE;
 			FstWindow512 <= (others => '0');
 			CntWindow512 <= (others => '0');
-			
+
 			cmdbus_intl <= (others => '0');
 			cmdwdo_en_intl <= (others => '0');
 			busy_intl <= '0';
 		else
-			if rising_edge(ClockBus.CLK250MHz) then	
-				-- State Machine for Storing	
+			if rising_edge(ClockBus.CLK250MHz) then
+				-- State Machine for Storing
 				cmdwdo_en_intl <= (others => '0');
-				
+
 				case storage_stm is
 					when IDLE =>
 						cmdwdo_en_intl <= (others => '0');
@@ -203,25 +202,25 @@ begin
 						else
 							storage_stm <= READY;
 						end if;
-					
+
 					when RESPREADY =>
-						if(CtrlBus_IxSL.WindowStorage = '0') then	
+						if(CtrlBus_IxSL.WindowStorage = '0') then
 							--storage_stm <= STORAGE;
 							busy_intl <= '1';
 							storage_stm <= EVALUATE;
-							
+
 						else
 							busy_intl <= '0';
 							storage_stm <= RESPREADY;
-						end if;	
-					
+						end if;
+
 					when EVALUATE =>
 						cmdwdo_en_intl <= (others => '0');
 						-- Waiting to have the next window
 						if NextAddr_intl = FstWindow512(8 downto 1) then
 							storage_stm <= MARK_WINDOW;
 							MarkWindow <= NextAddr_intl;
-							
+
 							if FstWindow512(0) = '0' then
 								case CntWindow512 is
 									when "000000000" =>
@@ -233,7 +232,7 @@ begin
 										cmdbus_intl <= CMD_BOTH_MARKED;
 										cmdwdo_en_intl(to_integer(unsigned(NextAddr_intl))) <= '1';
 										CntWindow512 <= std_logic_vector(unsigned(CntWindow512) - 2);
-								end case;	
+								end case;
 							else
 								case CntWindow512 is
 									when "000000000" =>
@@ -241,18 +240,18 @@ begin
 										cmdbus_intl <= CMD_WR2_MARKED;
 										cmdwdo_en_intl(to_integer(unsigned(NextAddr_intl))) <= '1';
 										CntWindow512 <= std_logic_vector(unsigned(CntWindow512) - 1);
-								end case;	
+								end case;
 							end if;
 							storage_stm <= MARK_WINDOW;
 						else
 							storage_stm <= EVALUATE;
 						end if;
-					
+
 					when MARK_WINDOW =>
 						cmdwdo_en_intl <= (others => '0');
 						MarkWindow <= NextMarkWindow;
-						
-						if to_integer(unsigned(CntWindow512)) /= 0 then 
+
+						if to_integer(unsigned(CntWindow512)) /= 0 then
 							-- Check if FSTWINDOW is ODD or EVEN
 							if FstWindow512(0) = '0' then
 								case CntWindow512 is
@@ -277,16 +276,16 @@ begin
 										cmdbus_intl <= CMD_BOTH_MARKED;
 										cmdwdo_en_intl(to_integer(unsigned(NextMarkWindow))) <= '1';
 										CntWindow512 <= std_logic_vector(unsigned(CntWindow512) - 2);
-								end case;								
-							end if;	
+								end case;
+							end if;
 						else
 							busy_intl <= '0';
 							storage_stm <= IDLE;
 						end if;
 					when others =>
 				end case;
-				
-				
+
+
 				-- State Machine for Reading the windows digitized
 				case digsto_stm is
 					when IDLE =>
@@ -298,20 +297,20 @@ begin
 							STO_ReadEn <= '0';
 						end if;
 					when READING =>
-						
+
 						digsto_stm <= WRITING;
 						STO_ReadEn <= '0';
 
 					when WRITING =>
-						if Busy_intl = '0' then 
-							
+						if Busy_intl = '0' then
+
 							cmdwdo_en_intl(to_integer(unsigned(DIG_DataOut_intl(8 downto 1)))) <= '1';
 							if DIG_DataOut_intl(0) = '0' then
 								cmdbus_intl <= CMD_WR1_EN_DIS;
 							else
 								cmdbus_intl <= CMD_WR2_EN_DIS;
 							end if;
-						
+
 							digsto_stm <= IDLE;
 						else
 							digsto_stm <= WRITING;
@@ -323,10 +322,10 @@ begin
 			end if;
 		end if;
 	end process;
-	
-	
-	-- OUTPUT 
+
+
+	-- OUTPUT
 	cmdbus <= cmdbus_intl;
 	cmdwdo_en <= cmdwdo_en_intl;
-	
+
 end Behavioral;
