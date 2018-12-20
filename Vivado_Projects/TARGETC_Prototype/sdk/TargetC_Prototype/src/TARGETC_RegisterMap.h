@@ -77,6 +77,8 @@
 #define TC_CONTROL_REG 		 129
 	//MASK for bits in TC_CONTROL_REG
 	#define			WRITE_MASK		0x00000001
+	#define			TRIG_CLEAR_MASK 0x00000002
+	
 	#define			PCLK_MASK		0x00000002
 	#define			SCLK_MASK		0x00000004
 	#define			SIN_MASK		0x00000008
@@ -148,6 +150,12 @@
 	#define WL_CLK_200MHz	0x00000002
 	#define WL_CLK_250MHz	0x00000003
 	#define WL_CLK_300MHz	0x00000004
+
+	
+#define TC_TRIGA_REG	 154
+#define TC_TRIGB_REG	 155
+#define TC_TRIGC_REG	 156
+#define TC_TRIGD_REG	 157
 
 	// Global Variables
 	//static int* regptr = XPAR_TARGETC_0_TC_AXI_BASEADDR;

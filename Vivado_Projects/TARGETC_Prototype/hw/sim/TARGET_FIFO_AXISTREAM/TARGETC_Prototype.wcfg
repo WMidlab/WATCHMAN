@@ -15,12 +15,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1131666666fs"></ZoomStartTime>
-      <ZoomEndTime time="1202131666667fs"></ZoomEndTime>
-      <Cursor1Time time="844838589000fs"></Cursor1Time>
+      <ZoomStartTime time="3903533334fs"></ZoomStartTime>
+      <ZoomEndTime time="4044333335fs"></ZoomEndTime>
+      <Cursor1Time time="3955000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="183"></NameColumnWidth>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="3" />
@@ -41,9 +41,9 @@
          <obj_property name="ElementShortName">Timecounter[63:0]</obj_property>
          <obj_property name="ObjectShortName">Timecounter[63:0]</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_ClockMgmt_inst/SSTIN_bufg">
-         <obj_property name="ElementShortName">SSTIN_bufg</obj_property>
-         <obj_property name="ObjectShortName">SSTIN_bufg</obj_property>
+      <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_ClockMgmt_inst/sstin_bufg">
+         <obj_property name="ElementShortName">sstin_bufg</obj_property>
+         <obj_property name="ObjectShortName">sstin_bufg</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/CtrlBus_IxSL">
          <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
@@ -209,6 +209,15 @@
          <obj_property name="ElementShortName">rdad_stm</obj_property>
          <obj_property name="ObjectShortName">rdad_stm</obj_property>
       </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RD_Addr">
+         <obj_property name="ElementShortName">RD_Addr[8:0]</obj_property>
+         <obj_property name="ObjectShortName">RD_Addr[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/fifo_intl">
+         <obj_property name="ElementShortName">fifo_intl</obj_property>
+         <obj_property name="ObjectShortName">fifo_intl</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RDAD">
          <obj_property name="ElementShortName">RDAD</obj_property>
          <obj_property name="ObjectShortName">RDAD</obj_property>
@@ -230,6 +239,10 @@
       <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/RAMP">
          <obj_property name="ElementShortName">RAMP</obj_property>
          <obj_property name="ObjectShortName">RAMP</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/WDONbr_WL">
+         <obj_property name="ElementShortName">WDONbr_WL[8:0]</obj_property>
+         <obj_property name="ObjectShortName">WDONbr_WL[8:0]</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/TARGETC_Prototype_TB_FIFO_AXIS/DUT/TC_RDAD_WL_SS/GCC_RESET">
          <obj_property name="ElementShortName">GCC_RESET</obj_property>

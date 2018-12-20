@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Fri Dec 14 09:53:02 2018
+--Date        : Thu Dec 20 09:03:16 2018
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq_wrapper.bd
 --Design      : base_zynq_wrapper
@@ -79,6 +79,10 @@ entity base_zynq_wrapper is
     SS_LD_DIR : out STD_LOGIC;
     SS_LD_SIN : out STD_LOGIC;
     SS_RESET : out STD_LOGIC;
+    TRIGA : in STD_LOGIC;
+    TRIGB : in STD_LOGIC;
+    TRIGC : in STD_LOGIC;
+    TRIGD : in STD_LOGIC;
     WL_CLK_N : out STD_LOGIC;
     WL_CLK_P : out STD_LOGIC;
     WR_CS_S0 : out STD_LOGIC;
@@ -170,7 +174,11 @@ architecture STRUCTURE of base_zynq_wrapper is
     SHOUT : in STD_LOGIC;
     MONTIMING_P : in STD_LOGIC;
     MONTIMING_N : in STD_LOGIC;
-    DONE : in STD_LOGIC
+    DONE : in STD_LOGIC;
+    TRIGD : in STD_LOGIC;
+    TRIGC : in STD_LOGIC;
+    TRIGB : in STD_LOGIC;
+    TRIGA : in STD_LOGIC
   );
   end component base_zynq;
 begin
@@ -242,6 +250,10 @@ base_zynq_i: component base_zynq
       SS_LD_DIR => SS_LD_DIR,
       SS_LD_SIN => SS_LD_SIN,
       SS_RESET => SS_RESET,
+      TRIGA => TRIGA,
+      TRIGB => TRIGB,
+      TRIGC => TRIGC,
+      TRIGD => TRIGD,
       WL_CLK_N => WL_CLK_N,
       WL_CLK_P => WL_CLK_P,
       WR_CS_S0 => WR_CS_S0,

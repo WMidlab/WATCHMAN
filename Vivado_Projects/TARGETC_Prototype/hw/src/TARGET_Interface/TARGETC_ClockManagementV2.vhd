@@ -286,7 +286,7 @@ begin
 		CLKOUT6      => open,
 		-- Input clock control
 		CLKFBIN      => clkFbIn_WL,
-		CLKIN1       => clk2,
+		CLKIN1       => clk1,
 		CLKIN2       => '0',
 		-- Tied to always select the primary input clock
 		CLKINSEL     => '1',

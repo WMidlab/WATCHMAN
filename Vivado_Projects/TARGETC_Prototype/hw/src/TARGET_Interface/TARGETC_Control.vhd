@@ -59,8 +59,9 @@ architecture arch_imp of TC_Control is
     signal startstorage_stm : 	Pulse_State_Type := IDLE;
     signal SSack_stm : 			Pulse_State_Type := IDLE; 
     signal TestStream_stm : 	Pulse_State_Type := IDLE; 
-    signal PSBusy_stm : 	Pulse_State_Type := IDLE; 
+    signal PSBusy_stm : 		Pulse_State_Type := IDLE; 
     signal testfifo_stm:		Pulse_State_Type := IDLE;
+    signal ClearTrigger_stm:	Pulse_State_Type := IDLE;
     
     signal TC_ADDR_s :	std_logic_vector(6 downto 0);
     signal TC_DATA_s:	std_logic_vector(11 downto 0);
@@ -266,7 +267,14 @@ begin
 						-- Read Only
 					when TC_eDO_CH15_REG =>
 						-- Read Only
-
+					when TC_TRIGA_REG =>
+						-- Read Only
+					when TC_TRIGB_REG =>
+						-- Read Only
+					when TC_TRIGC_REG =>
+						-- Read Only
+					when TC_TRIGD_REG =>
+						-- Read Only
 					when others =>
 						for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 							if ( AxiBusIn.WSTRB(byte_index) = '1' ) then
@@ -404,7 +412,17 @@ begin
 	        	when TC_eDO_CH14_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH14;	
 	        	when TC_eDO_CH15_REG =>
-	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;	
+	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;
+	        	
+	        	when TC_TRIGA_REG =>
+	        		reg_data_out <= CtrlBus_IxMS.TrigACnt;	
+	    		when TC_TRIGB_REG =>
+	        		reg_data_out <= CtrlBus_IxMS.TrigBCnt;	
+	    		when TC_TRIGC_REG =>
+	        		reg_data_out <= CtrlBus_IxMS.TrigCCnt;	
+	    		when TC_TRIGD_REG =>
+	        		reg_data_out <= CtrlBus_IxMS.TrigDCnt;	
+	    		
 	    		when others =>
 	    			reg_data_out <= TCReg(to_integer(unsigned(loc_addr)));
 	    	end case;
@@ -680,6 +698,37 @@ begin
     end process;
     
 	CtrlBus_OxMS.PSBusy		<= '0' when PSBusy_stm = IDLE else '1';
+	
+	-- --------------------------------------------------------------------------------
+	-- Acknowledge the read of sample
+    process(AxiBusIn.ARESETN,AxiBusIn.ACLK) is
+    begin
+    	if (AxiBusIn.ARESETN = '0') then
+    		ClearTrigger_stm <= IDLE;
+        else	
+        	if (rising_edge(AxiBusIn.ACLK)) then
+                case ClearTrigger_stm is
+                    when IDLE =>
+                        if ((TCReg(TC_CONTROL_REG) and C_TESTSTREAM_MASK) = C_TESTSTREAM_MASK) then
+                            ClearTrigger_stm <= PULSE;    
+                        else
+                            ClearTrigger_stm <= IDLE;
+                        end if;
+                    when PULSE =>
+                        ClearTrigger_stm <= RESET;
+                    when RESET =>	-- Wait for user PS clear register
+                        if ((TCReg(TC_CONTROL_REG) and C_TESTSTREAM_MASK) = C_TESTSTREAM_MASK) then
+                            ClearTrigger_stm <= RESET;    
+                        else
+                            ClearTrigger_stm <= IDLE;
+                        end if; 
+                   end case;
+             end if;
+        end if;
+    end process;
+    
+	--CtrlBus_OxMS.SSAck		<= '1' when SSack_stm = PULSE else '0';
+	CtrlBus_OxMS.TrigCntClear		<= '0' when ClearTrigger_stm = IDLE else '1';
 	-- --------------------------------------------------------------------------------
 
 	-- ADDR and DATA to TARGETC Register
@@ -688,11 +737,7 @@ begin
 	TC_DATA_s <= TCReg(to_integer(unsigned(TCReg(TC_ADDR_REG))))(11 downto 0);
     
     CtrlBus_OxMS.WL_CLK_DIV <=  TCReg(TC_WL_DIV_REG); 
-    
-    
-    CtrlBus_OxMS.Test_PCLK 	<= 	TCReg(TC_CONTROL_REG)(C_PCLK_BIT); 
-    CtrlBus_OxMS.Test_SCLK 	<= 	TCReg(TC_CONTROL_REG)(C_SCLK_BIT);
-    CtrlBus_OxMS.Test_SIN 	<= 	TCReg(TC_CONTROL_REG)(C_SIN_BIT);
+
     CtrlBus_OxMS.RAMP 		<= 	TCReg(TC_CONTROL_REG)(C_eRAMP_BIT);
     CtrlBus_OxMS.RegCLR 		<= 	TCReg(TC_CONTROL_REG)(C_eRegCLR_BIT);
     CtrlBus_OxMS.SmplSl_Any 	<= 	TCReg(TC_CONTROL_REG)(C_TPG_BIT);
