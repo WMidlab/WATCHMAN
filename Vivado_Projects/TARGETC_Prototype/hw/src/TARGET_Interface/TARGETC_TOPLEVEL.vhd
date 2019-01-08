@@ -118,7 +118,7 @@ entity TARGETC_IP_Prototype is
 		DIGTime:			out std_logic_vector(63 downto 0);
 		Trigger:			out std_logic_vector(31 downto 0);
 		WDONbr:				out std_logic_vector(8 downto 0);
-		
+
 		TestStream:		out std_logic;
 		PSBusy:			out	std_logic;
 		FIFOresponse:	in	std_logic;
@@ -143,12 +143,12 @@ entity TARGETC_IP_Prototype is
 		CH15 :			out	std_logic_vector(11 downto 0);
 		SSvalid:		out std_logic;
 
-		-- Trigger 
+		-- Trigger
 		TrigA :			in std_logic;
 		TrigB :			in std_logic;
 		TrigC :			in std_logic;
 		TrigD :			in std_logic;
-		
+
 		TrigA_intr :	out std_logic;
 		TrigB_intr :	out std_logic;
 		TrigC_intr :	out std_logic;
@@ -180,26 +180,26 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		nrst:			in	std_logic;
 		clk1:			in 	std_logic;	-- Clock for the TARGETC SCLK
 		clk2:			in 	std_logic;	-- Clock for the TARGETC SCLK
-		
+
 		WL_CLK_DIV:		in 	std_logic_vector(31 downto 0); -- Clock Divider Through DFF
-		
+
 		PLL_LOCKED:		out	std_logic;
-		
+
 		ClockBus:		out T_ClockBus;
-		
+
 		Timecounter:	out std_logic_vector(63 downto 0);
-		
-		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44		
-		 
+
+		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44
+
 		-- LVDS Differential Pair
 		HSCLK_P:		out std_logic;		-- Pin#43
 		HSCLK_N:		out std_logic;		-- Pin#44
-	
+
 		WL_CLK_P:		out std_logic;		-- Pin#57
 		WL_CLK_N:		out std_logic;		-- Pin#58
-		
-		SSTIN_P:		out std_logic;		-- Pin#125 		
-		SSTIN_N:		out std_logic		-- Pin#126 		
+
+		SSTIN_P:		out std_logic;		-- Pin#125
+		SSTIN_N:		out std_logic		-- Pin#126
 
 	);
 	end component TC_ClockManagementV3;
@@ -242,84 +242,112 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		       	SHOUT: in	STD_LOGIC);
 	end component TARGETX_DAC_CONTROL;
 
-	component RoundBufferGray500MHz is
-		Generic (
-		MAXWINDOWS : integer := 4
-		);
-		Port ( 
-		RST : 			in	STD_Logic;
-	
-		ClockBus:		in T_ClockBus;
+	-- component RoundBufferGray500MHz is
+	-- 	Generic (
+	-- 	MAXWINDOWS : integer := 4
+	-- 	);
+	-- 	Port (
+	-- 	RST : 			in	STD_Logic;
+	--
+	-- 	ClockBus:		in T_ClockBus;
+	--
+	-- 	TimeCounter:	in	std_logic_vector(63 downto 0);
+	-- 	--eTPG :			in std_logic;
+	--
+	-- 	WR_RS_S:		out std_logic_vector(1 downto 0);
+	-- 	WR_CS_S:		out std_logic_vector(5 downto 0);
+	--
+	--
+	-- 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+	-- 	CtrlBus_OxSL:		out T_CtrlBus_OxSL;
+	--
+	-- 	-- FIFO out for Reading RDAD
+	-- 	RDAD_ReadEn  :in  std_logic;
+	-- 	RDAD_DataOut : out std_logic_vector(100+5 downto 0);
+	-- 	--RDAD_CLK     :in  std_logic;	-- RDAD CLK
+	-- 	RDAD_Empty	: out std_logic;
+	--
+	-- 	-- FIFO IN for Digiting
+	-- 	DIG_Full	: out	std_logic;
+	-- 	DIG_DataIn	: in	std_logic_vector(8 downto 0);
+	-- 	DIG_WriteEn	: in	std_logic
+	-- 	--DIG_CLK   	: in	std_logic
+	-- 	);
+	-- end component RoundBufferGray500MHz;
 
-		TimeCounter:	in	std_logic_vector(63 downto 0);
-		--eTPG :			in std_logic;
-	
-		WR_RS_S:		out std_logic_vector(1 downto 0);
-		WR_CS_S:		out std_logic_vector(5 downto 0);
-
-	
-		CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
-		CtrlBus_OxSL:		out T_CtrlBus_OxSL; 
-		
-		-- FIFO out for Reading RDAD
-		RDAD_ReadEn  :in  std_logic;
-		RDAD_DataOut : out std_logic_vector(100+5 downto 0);	
-		--RDAD_CLK     :in  std_logic;	-- RDAD CLK
-		RDAD_Empty	: out std_logic;
-		 
-		-- FIFO IN for Digiting
-		DIG_Full	: out	std_logic;
-		DIG_DataIn	: in	std_logic_vector(8 downto 0);
-		DIG_WriteEn	: in	std_logic
-		--DIG_CLK   	: in	std_logic
+	component RoundBuffer is
+		generic(
+			NBRWINDOWS : integer := 16
 		);
-	end component RoundBufferGray500MHz;
-	
+		port(
+			nrst : 			in	std_Logic;
+			ClockBus:		in T_ClockBus;
+			Timecounter:	in std_logic_vector(63 downto 0);
+
+			trigger : 		in std_logic_vector(3 downto 0);
+
+			WR_RS_S:		out std_logic_vector(1 downto 0);
+			WR_CS_S:		out std_logic_vector(5 downto 0);
+
+			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+
+			RDAD_ReadEn  :in  std_logic;
+			RDAD_DataOut : out std_logic_vector(100+5 downto 0);
+			RDAD_Empty	: out std_logic;
+
+			-- FIFO IN for Digiting
+		    DIG_Full	: out	std_logic;
+		    DIG_DataIn	: in	std_logic_vector(8 downto 0);
+		    DIG_WriteEn	: in	std_logic
+
+		);
+	end component RoundBuffer;
+
 	component TARGETC_RDAD_WL_SMPL is
-		Port ( 
+		Port (
 		--CLK : 			in  STD_LOGIC;
 		RST : 			in	STD_Logic;
-	
+
 		DISCH_PERIOD :	in	std_logic_vector(15 downto 0);
 		INCR_WAIT_PERIOD:	in std_logic_vector(15 downto 0);
-	
+
 		ClockBus:		in T_ClockBus;
 		TimeCounter:	in std_logic_vector(63 downto 0);
-		
+
 		RDAD_CLK:		out	std_logic;		-- Pin#61
 		RDAD_SIN:		out	std_logic;		-- Pin#62
 		RDAD_DIR:		out	std_logic;		-- Pin#63
-	
+
 		-- Fifo from storage
 		RDAD_ReadEn  :	out	std_logic;
-		RDAD_DataOut : 	in	std_logic_vector(100+5 downto 0);	
+		RDAD_DataOut : 	in	std_logic_vector(100+5 downto 0);
 		--RDAD_CLK     :	out	std_logic;	-- RDAD CLK
 		RDAD_Empty	: 	in 	std_logic;
-		
+
 		-- FIFO IN for Digiting
 		DIG_Full	: in	std_logic;
 		DIG_DataIn	: out	std_logic_vector(8 downto 0);
 		DIG_WriteEn	: out	std_logic;
-		
+
 		RAMP:			out	std_logic;
 		GCC_RESET:		out	std_logic;
-	
+
 		HSCLK : 			out  STD_LOGIC;
-		
+
 		DO : 			in std_logic_vector(15 downto 0);
 		SS_INCR:		out std_logic;
 		SS_RESET:		out std_logic;
-	
+
 		CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
 		CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
 
 		WDOTime:			out std_logic_vector(63 downto 0);
 		DIGTime:			out std_logic_vector(63 downto 0);
 		Trigger:			out std_logic_vector(31 downto 0);
-		WDONbr:				out std_logic_vector(8 downto 0);	
-		
+		WDONbr:				out std_logic_vector(8 downto 0);
+
 		FIFOresponse:		in std_logic
-	
+
 		);
 	end component TARGETC_RDAD_WL_SMPL;
 
@@ -353,18 +381,20 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 	signal RDAD_ReadEn_intl  :  std_logic;
 	signal RDAD_DataOut_intl : std_logic_vector(100+5 downto 0);
-    signal RDAD_Empty_intl     :  std_logic;	
-    
+    signal RDAD_Empty_intl     :  std_logic;
+
     signal DIG_DataIn_intl	: std_logic_vector(8 downto 0);
     signal DIG_WriteEn_intl	: std_logic;
     signal DIG_Full_intl	: std_logic;
 
     signal timecounter_intl : std_logic_vector(63 downto 0);
-    
+
     signal TrigA_reg : std_logic_vector(1 downto 0);
     signal TrigB_reg : std_logic_vector(1 downto 0);
     signal TrigC_reg : std_logic_vector(1 downto 0);
     signal TrigD_reg : std_logic_vector(1 downto 0);
+
+	signal trigger_intl : std_logic_vector(3 downto 0);
 begin
 
 
@@ -379,7 +409,7 @@ begin
 		--PLL_LOCKED		=> Test,
 
 		ClockBus	=> ClockBus_intl,
-		
+
 		timecounter		=> timecounter_intl,
 
 		HSCLKdif		=> HSCLK_dif,
@@ -447,35 +477,62 @@ begin
 		SHOUT	=> SHOUT
 	);
 
-	TC_RoundBuffer_inst :RoundBufferGray500MHz
-	generic map(
-		MAXWINDOWS => 4
-	)
-	port map(
-		RST => tc_axi_aresetn,
-	
-		ClockBus	=> ClockBus_intl,
-		
-		TimeCounter	=> timecounter_intl,
-		--eTPG :			in std_logic;
-	
-		WR_RS_S		=> WR_RS_S_intl,
-		WR_CS_S		=> WR_CS_S_intl,
-	
-		CtrlBus_IxSL	=> CtrlBusOut_intl,
-		CtrlBus_OxSL	=> CtrlBusIn_intl,
-		
-		RDAD_ReadEn => RDAD_ReadEn_intl,
-		RDAD_DataOut => RDAD_DataOut_intl,
-		RDAD_Empty 	=> RDAD_Empty_intl,
-		
-		DIG_DataIn	=> DIG_DataIn_intl,
-    	DIG_WriteEn	=> DIG_WriteEn_intl,
-    	DIG_Full	=> DIG_Full_intl
-	);
-	
-	TC_RDAD_WL_SS :	 TARGETC_RDAD_WL_SMPL 
-	Port map( 
+	--
+	-- TC_RoundBuffer_inst :RoundBufferGray500MHz
+	-- generic map(
+	-- 	MAXWINDOWS => 4
+	-- )
+	-- port map(
+	-- 	RST => tc_axi_aresetn,
+	--
+	-- 	ClockBus	=> ClockBus_intl,
+	--
+	-- 	TimeCounter	=> timecounter_intl,
+	-- 	--eTPG :			in std_logic;
+	--
+	-- 	WR_RS_S		=> WR_RS_S_intl,
+	-- 	WR_CS_S		=> WR_CS_S_intl,
+	--
+	-- 	CtrlBus_IxSL	=> CtrlBusOut_intl,
+	-- 	CtrlBus_OxSL	=> CtrlBusIn_intl,
+	--
+	-- 	RDAD_ReadEn => RDAD_ReadEn_intl,
+	-- 	RDAD_DataOut => RDAD_DataOut_intl,
+	-- 	RDAD_Empty 	=> RDAD_Empty_intl,
+	--
+	-- 	DIG_DataIn	=> DIG_DataIn_intl,
+    -- 	DIG_WriteEn	=> DIG_WriteEn_intl,
+    -- 	DIG_Full	=> DIG_Full_intl
+	-- );
+	TC_RoundBuffer : RoundBuffer
+		generic map(
+			NBRWINDOWS => 256
+		)
+		port map(
+			nrst 		=> tc_axi_aresetn,
+			ClockBus	=> 	ClockBus_intl,
+			Timecounter	=> timecounter_intl,
+
+			trigger		=> trigger_intl,
+
+			WR_RS_S		=> WR_RS_S_intl,
+			WR_CS_S		=> WR_CS_S_intl,
+
+			CtrlBus_IxSL=> CtrlBusOut_intl,
+
+			RDAD_ReadEn  => RDAD_ReadEn_intl,
+			RDAD_DataOut => RDAD_DataOut_intl,
+			RDAD_Empty	=> RDAD_Empty_intl,
+
+			-- FIFO IN for Digiting
+			DIG_Full	=> DIG_Full_intl,
+			DIG_DataIn	=> DIG_DataIn_intl,
+			DIG_WriteEn	=> DIG_WriteEn_intl
+
+		);
+
+	TC_RDAD_WL_SS :	 TARGETC_RDAD_WL_SMPL
+	Port map(
 		RST 	=> tc_axi_aresetn,
 
 		DISCH_PERIOD	=> x"0064",
@@ -486,17 +543,17 @@ begin
 		RDAD_CLK		=> RDAD_CLK,
 		RDAD_SIN		=> RDAD_SIN,
 		RDAD_DIR		=> RDAD_DIR,
-	
+
 		-- Fifo from storage
 		RDAD_ReadEn	=> RDAD_ReadEn_intl,
 		RDAD_DataOut => RDAD_DataOut_intl,
 		RDAD_Empty	=> RDAD_Empty_intl,
-		
+
 		-- FIFO IN for Digiting
 		DIG_Full	=> DIG_Full_intl,
 		DIG_DataIn		=> DIG_DataIn_intl,
 		DIG_WriteEn	=> DIG_WriteEn_intl,
-    	
+
 		RAMP			=> RAMP,
 		GCC_RESET		=> GCC_RESET,
 
@@ -517,7 +574,7 @@ begin
 
 		FIFOresponse	=> FIFOresponse
 	);
-		
+
 	SAMPLESEL_ANY <= CtrlBusOut_intl.SmplSl_Any;
 	REGCLR <= CtrlBusOut_intl.REGCLR;
 
@@ -561,7 +618,7 @@ begin
 	TestStream	<= CtrlBusOut_intl.TestStream;
 	SSvalid		<= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '1' else '0';
 	PSBusy		<= CtrlBusOut_intl.PSBusy;
-	
+
 	--NbrWindow	<= CtrlBusOut_intl.NBRWINDOW;
 
 	-- DEBUG
@@ -569,7 +626,7 @@ begin
 	RAMP_CNT <= ClockBus_intl.Clk250Mhz;
 	SSVALID_INTR <= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '0' else '0';
 	--HSCLK <= HSCLK_dif;
-	
+
 	SSTIN <= ClockBus_intl.SSTIN;
 
 	IBUFDS_MonTiming : IBUFDS
@@ -582,62 +639,12 @@ begin
 
 		O	=> MONTIMING
 	);
-	
-	process(CtrlBusOut_intl.TrigCntClear,tc_axi_aresetn,ClockBus_intl.Clk250Mhz)
-	begin
-		if (tc_axi_aresetn = '0') or (CtrlBusOut_intl.TrigCntClear = '1') then
-			CtrlBusIn_intl.TrigACnt <= (others => '0');
-			CtrlBusIn_intl.TrigBCnt <= (others => '0');
-			CtrlBusIn_intl.TrigCCnt <= (others => '0');
-			CtrlBusIn_intl.TrigDCnt <= (others => '0');
-		else
-			if rising_edge(ClockBus_intl.Clk250Mhz) then
-				if TrigA = '1' then
-					CtrlBusIn_intl.TrigACnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigACnt) + 1);
-				end if;
-				if TrigB = '1' then
-					CtrlBusIn_intl.TrigBCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigBCnt) + 1);
-				end if;
-				if TrigC = '1' then
-					CtrlBusIn_intl.TrigCCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigCCnt) + 1);
-				end if;
-				if TrigD = '1' then
-					CtrlBusIn_intl.TrigDCnt <= std_logic_vector(unsigned(CtrlBusIn_intl.TrigDCnt) + 1);
-				end if;
-				
-				TrigA_reg <= TrigA_reg(0) & TrigA;
-				TrigB_reg <= TrigB_reg(0) & TrigB;
-				TrigC_reg <= TrigC_reg(0) & TrigC;
-				TrigD_reg <= TrigD_reg(0) & TrigD;
-				
-				if(TrigA_reg = "10") then
-					--TrigA_intr <= '1';
-				else
-					TrigA_intr <= '0';
-				end if;
-				
-				if(TrigB_reg = "10") then
-					--TrigB_intr <= '1';
-				else
-					TrigB_intr <= '0';
-				end if;
-				
-				if(TrigC_reg = "10") then
-					--TrigC_intr <= '1';
-				else
-					TrigC_intr <= '0';
-				end if;
-				
-				if(TrigD_reg = "10") then
-					--TrigD_intr <= '1';
-				else
-					TrigD_intr <= '0';
-				end if;
-			end if;
-		end if;
-	end process;
 
-	
-	
-	
+	-- Trigger signal to RoundBuffer
+	Trigger_intl <= TrigD & TrigC & TrigB & TrigA;
+	TrigA_intr <= '0';
+	TrigB_intr <= '0';
+	TrigC_intr <= '0';
+	TrigD_intr <= '0';
+
 end arch_imp;

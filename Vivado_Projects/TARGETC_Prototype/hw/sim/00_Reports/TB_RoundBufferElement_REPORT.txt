@@ -1,0 +1,5 @@
+RDAD_DataOut_obs: 2384Time WDO: 2384WR_ADDR: 150WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
+RDAD_DataOut_obs: 2400Time WDO: 2400WR_ADDR: 151WR1: '0'WR2: '1'Trig Long: 0Trig Last: 1Trig : 1 
+RDAD_DataOut_obs: 2640Time WDO: 2640WR_ADDR: 166WR1: '1'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
+RDAD_DataOut_obs: 2656Time WDO: 2656WR_ADDR: 167WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 3 
+RDAD_DataOut_obs: 2672Time WDO: 2672WR_ADDR: 168WR1: '0'WR2: '0'Trig Long: 0Trig Last: 3Trig : 3 

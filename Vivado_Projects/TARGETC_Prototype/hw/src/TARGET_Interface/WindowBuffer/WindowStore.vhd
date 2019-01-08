@@ -20,7 +20,7 @@ entity WindowStore is
 	wr1_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
 	Wr2_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
 
-	triginfo:	in TrigInfoBus_t(NBRWINDOWS-1 downto 0);
+	triginfo:	in t_triginfobus(NBRWINDOWS-1 downto 0);
 
 	-- FIFO out for Reading RDAD
     RDAD_ReadEn  :in  std_logic;
@@ -96,6 +96,7 @@ begin
 		B	=> windowstore
 	);
 
+	-- Old Style Data Record Now
 	Data_in_intl(58+5 downto 0)		<= prev_TimeCounter;
 	Data_in_intl(66+5 downto 59+5)	<= windowstore;
 	Data_in_intl(67+5)				<= wr1_en(to_integer(unsigned(windowstore)));

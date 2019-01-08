@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
--- Date        : Thu Dec 20 09:11:01 2018
+-- Date        : Tue Jan  8 11:54:07 2019
 -- Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
--- Command     : write_vhdl -force -mode synth_stub
---               /home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_TARGETC_IP_Prototype_0_1/base_zynq_TARGETC_IP_Prototype_0_1_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub {/home/jonathan/Desktop/Link to
+--               TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_TARGETC_IP_Prototype_0_1/base_zynq_TARGETC_IP_Prototype_0_1_stub.vhdl}
 -- Design      : base_zynq_TARGETC_IP_Prototype_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z010clg400-1

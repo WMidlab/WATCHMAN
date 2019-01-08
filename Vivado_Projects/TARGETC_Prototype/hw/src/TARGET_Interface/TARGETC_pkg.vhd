@@ -256,7 +256,7 @@ package TARGETC_pkg is
 --		BUSY	=> open;
 --		PLL_LOCKED => open;
 --		STORAGE => open;
-	
+
 	type T_ClockBus is record
 		SCLK :	 		STD_LOGIC;		-- Pin#36
 		HSCLK:			std_logic;		-- Pin#43 to Pin#44
@@ -266,6 +266,7 @@ package TARGETC_pkg is
 		--CLK500MHz:		std_logic;
 		CLK250MHz:		std_logic;
 	end record;
+	
 	
 	type slv_array is array (integer range <>) of std_logic_vector(31 downto 0);
 	

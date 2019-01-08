@@ -4,6 +4,7 @@ use ieee.numeric_std.all;
 use work.simulation_pkg.all;
 use work.TARGETC_pkg.all;
 use work.WindowCPU_pkg.all;
+use std.textio.all;
 
 entity TB_RoundBufferElement is
 end TB_RoundBufferElement;
@@ -211,6 +212,9 @@ architecture implementation of TB_RoundBufferElement is
 	constant CLK_PERIOD : time := 4 ns;
 	constant CLK100MHz_PERIOD	: time := 10 ns;
 
+	--Variable for TB
+	file fd : text open WRITE_MODE is "/home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/sim/00_Reports/TB_RoundBufferElement_REPORT.txt";
+
 begin
 
 	TC_ClockMgmt_inst : TC_ClockManagementV2
@@ -403,6 +407,33 @@ begin
     clock_generator(clk,simulation_end_s, CLK_PERIOD);
 	clock_generator(Refclk,simulation_end_s, CLK100MHz_PERIOD);
 
+	RDADRead : Process
+		variable L : Line;
+	begin
+		RDAD_READEn_sti <= '0';
+		wait until nrst = '1';
+		loop
+			--wait until empty_obs = '0';
+			if empty_obs = '0' then
+				wait for 2 us ;
+				wait until rising_Edge(ClockBus_intl.RDAD_CLK);
+				RDAD_ReadEn_sti <= '1';
+				wait until rising_Edge(ClockBus_intl.RDAD_CLK);
+				RDAD_READEn_sti <= '0';
+				wait until rising_Edge(ClockBus_intl.RDAD_CLK);
+
+				WRITE(L,string'("RDAD_DataOut_obs: " & integer'image(to_integer(unsigned(RDAD_DataOut_obs))) & CR));
+				WRITE(L,string'("Time WDO: " &  integer'image(to_integer(unsigned(RDAD_DataOut_obs(63 downto 0)))) & CR));
+				WRITE(L,string'("WR_ADDR: " & integer'image(to_integer(unsigned(RDAD_DataOut_obs(66+5 downto 64)))) & CR));
+				WRITE(L,string'("WR1: " & std_logic'image(RDAD_DataOut_obs(67+5)) & CR));
+				WRITE(L,string'("WR2: " & std_logic'image(RDAD_DataOut_obs(68+5)) & CR));
+				WRITE(L,string'(" " & CR));
+
+				WRITELINE(fd,L);
+			end if;
+			wait for 2 us;
+		end loop;
+	end process;
 
 	tb : process
 		variable test : integer	:= 0;
@@ -411,54 +442,21 @@ begin
 		nrst <= '0';
 		CtrlBus_IxSL_intl.SWRESET <= '1';
 		trigger_sti <= "0000";
-		RDAD_READEn_sti <= '0';
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
 		wait for 10 us;
 		nrst <= '1';
 		wait for 10 us;
-
-		report "Start CMD : WINDOW 10 NBR 1";
-		wait until rising_edge(ClockBus_intl.CLK250MHz);
-		CtrlBus_IxSL_intl.WindowStorage <= '0';
-		CtrlBus_IxSL_intl.FSTWINDOW <= x"0000000A";
-		CtrlBus_IxSL_intl.NBRWINDOW <= x"00000001";
-		wait until rising_edge(ClockBus_intl.CLK250MHz);
-		CtrlBus_IxSL_intl.WindowStorage <= '1';
-		wait for 1 us;
-		CtrlBus_IxSL_intl.WindowStorage <= '0';
-		--cmd_en(5) <= '0';
-		wait until empty_obs = '0';
-		wait for 2 us ;
-		wait until rising_Edge(ClockBus_intl.RDAD_CLK);
-		RDAD_ReadEn_sti <= '1';
-		wait until rising_Edge(ClockBus_intl.RDAD_CLK);
-		RDAD_READEn_sti <= '0';
-		wait until rising_Edge(ClockBus_intl.RDAD_CLK);
-
-		report "RDAD_DataOut_obs: " & integer'image(to_integer(unsigned(RDAD_DataOut_obs)));
-		report "Time WDO :" & integer'image(to_integer(unsigned(RDAD_DataOut_obs(63 downto 0))));
-		report "WR_ADDR :" & integer'image(to_integer(unsigned(RDAD_DataOut_obs(66+5 downto 64))));
-		report "WR1 :" & std_logic'image(RDAD_DataOut_obs(67+5));
-		report "WR2 :" & std_logic'image(RDAD_DataOut_obs(68+5));
-
-		wait for 1 us;
-		if RDAD_DataOut_obs(67+5) = '0' then
-			DIG_DataIn_sti <= RDAD_DataOut_obs(66+5 downto 64) & '0';
-		else
-			DIG_DataIn_sti <= RDAD_DataOut_obs(66+5 downto 64) & '1';
-		end if;
-		wait until rising_edge(ClockBus_intl.CLK250MHz);
-		DIG_WriteEn_sti <= '1';
-		wait for 4 ns;
-		DIG_WriteEn_sti <= '0';
-		wait for 5 us;
+		wait for 13 * 64 ns;
+		wait for 32 ns;
 
 		report "Trigger Test";
 		wait until rising_edge(ClockBus_intl.CLK250MHz);
 		trigger_sti <= "0001" after 1 ns;
 		wait for 16*3 ns; -- Trigger long of 4 * 4 ns
 		trigger_sti <= "0000" after 1 ns;
+
 		wait;
+
 	end process;
 
 end implementation;

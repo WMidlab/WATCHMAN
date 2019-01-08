@@ -97,7 +97,7 @@ architecture implementation of TriggerCPU is
 	);
 
 	signal trigger_stm : state_t := IDLE;
-	signal Trigger_REG : std_logic_vector(1 downto 0);
+	signal Trigger_REG, PREV_REG, NEXT_REG : std_logic_vector(1 downto 0);
 begin
 
 	process(nRST,CLK)
@@ -121,6 +121,8 @@ begin
 			if rising_edge(clk)  then
 
 				Trigger_Reg <= Trigger_REG(0) & Trigger;
+				PREV_Reg	<= PREV_Reg(0) & PREVWDO_IN;
+				NEXT_Reg	<= NEXT_Reg(0) & NEXTWDO_IN;
 
 				case trigger_stm is
 					when IDLE =>
@@ -136,24 +138,39 @@ begin
 								last_reg <= '0';
 							end if;
 
+						-- elsif PREVWDO_IN = '1' then
+						-- 	trigger_stm <= VALID;
+						--
+						-- 	--Update Outputs
+						-- 	wr1_trig <= '1';
+						-- 	wr2_trig <= '0';
+						-- 	last <= 	'0';
+						--
+						-- 	nCLR_intl <= '0';
 						else
-							trigger_stm <= IDLE;
+							if wr1_trig_intl = '0' or wr2_trig_intl = '0' then
+								trigger_stm <= VALID;
+
+								wr1_trig <= wr1_trig_intl;
+								wr2_trig <= wr2_trig_intl;
+
+								if lastbus /= "00" then
+									last <= '1';
+								else
+									last <= '0';
+								end if;
+
+								nCLR_intl <= '0';
+							else
+								trigger_stm <= IDLE;
+							end if;
 						end if;
 					when UPDATE =>
 						if CurAddr = std_logic_vector(to_unsigned(ADDRESS,8)) then
 
 
-							if wr1_trig_intl = '1' and wr1_trig_reg = '1' then
-								wr1_trig_reg <= '1';
-							else
-								wr1_trig_reg <= '0';
-							end if;
-
-							if wr2_trig_intl = '1' and wr2_trig_reg = '1' then
-								wr2_trig_reg <= '1';
-							else
-								wr2_trig_reg <= '0';
-							end if;
+							wr1_trig_reg <= wr1_trig_intl;
+							wr2_trig_reg <= wr2_trig_intl;
 
 							if lastbus /= "00" or last_reg = '1' then
 								last_reg <= '1';
@@ -161,7 +178,7 @@ begin
 								last_reg <= '0';
 							end if;
 
-							if SCnt /= "1111" then
+							if SCnt /= "1111"  then
 								trigger_stm <= UPDATE;
 							else
 								if wr1_trig_reg = '0' or wr2_trig_reg = '0' then
@@ -201,12 +218,13 @@ begin
 					when RESPVALID =>
 						if (response_i = '0') then
 							nCLR_intl <= '1';
-							if (Trigger_Reg = "10") or (Trigger_Reg = "00") then
-								nREARM_intl <= '0';
-								trigger_stm <= REARM;
-							else
+							if ((Trigger_Reg = "01") or (Trigger_Reg = "11")) or ((PREV_Reg="01")or(PREV_Reg="11")) then
 								nREARM_intl <= '1';
 								trigger_stm <= RESPVALID;
+							else
+								nREARM_intl <= '0';
+								trigger_stm <= REARM;
+
 							end if;
 						end if;
 					when REARM =>
