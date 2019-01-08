@@ -3,9 +3,9 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="TB_WindowCPU_behav.wdb" id="1">
+      <db_ref path="TB_WindowCPUV2_behav.wdb" id="1">
          <top_modules>
-            <top_module name="TB_WindowCPU" />
+            <top_module name="TB_WindowCPUV2" />
             <top_module name="glbl" />
             <top_module name="simulation_pkg" />
             <top_module name="targetc_pkg" />
@@ -14,279 +14,119 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="36362000000fs"></ZoomStartTime>
-      <ZoomEndTime time="36680000001fs"></ZoomEndTime>
-      <Cursor1Time time="36627000000fs"></Cursor1Time>
+      <ZoomStartTime time="20988166667fs"></ZoomStartTime>
+      <ZoomEndTime time="21125166668fs"></ZoomEndTime>
+      <Cursor1Time time="21011000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="157"></NameColumnWidth>
-      <ValueColumnWidth column_width="135"></ValueColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="65" />
-   <wvobject type="logic" fp_name="/TB_WindowCPU/nrst">
-      <obj_property name="ElementShortName">nrst</obj_property>
-      <obj_property name="ObjectShortName">nrst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/CtrlBus_IxSL">
-      <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
-      <obj_property name="ObjectShortName">CtrlBus_IxSL</obj_property>
+   <WVObjectSize size="25" />
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/ClockBus">
+      <obj_property name="ElementShortName">ClockBus</obj_property>
+      <obj_property name="ObjectShortName">ClockBus</obj_property>
       <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/clockbus_intl">
-      <obj_property name="ElementShortName">clockbus_intl</obj_property>
-      <obj_property name="ObjectShortName">clockbus_intl</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/timecounter_intl">
-      <obj_property name="ElementShortName">timecounter_intl[63:0]</obj_property>
-      <obj_property name="ObjectShortName">timecounter_intl[63:0]</obj_property>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/Timecounter">
+      <obj_property name="ElementShortName">Timecounter[63:0]</obj_property>
+      <obj_property name="ObjectShortName">Timecounter[63:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/curr_Timecounter">
-      <obj_property name="ElementShortName">curr_Timecounter[63:0]</obj_property>
-      <obj_property name="ObjectShortName">curr_Timecounter[63:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/trigger">
+      <obj_property name="ElementShortName">trigger</obj_property>
+      <obj_property name="ObjectShortName">trigger</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/prev_Timecounter">
-      <obj_property name="ElementShortName">prev_Timecounter[63:0]</obj_property>
-      <obj_property name="ObjectShortName">prev_Timecounter[63:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/prevtrigger">
+      <obj_property name="ElementShortName">prevtrigger</obj_property>
+      <obj_property name="ObjectShortName">prevtrigger</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/cmd_sti">
-      <obj_property name="ElementShortName">cmd_sti[2:0]</obj_property>
-      <obj_property name="ObjectShortName">cmd_sti[2:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/cmd_en">
-      <obj_property name="ElementShortName">cmd_en[15:0]</obj_property>
-      <obj_property name="ObjectShortName">cmd_en[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/PREVBus_intl">
-      <obj_property name="ElementShortName">PREVBus_intl[0:15][7:0]</obj_property>
-      <obj_property name="ObjectShortName">PREVBus_intl[0:15][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/NEXTBus_intl">
-      <obj_property name="ElementShortName">NEXTBus_intl[0:15][7:0]</obj_property>
-      <obj_property name="ObjectShortName">NEXTBus_intl[0:15][7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="divider44098" type="divider">
-      <obj_property name="label">CONTROL</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/TB_WindowCPU/WDOCONTROL/storage_stm">
-      <obj_property name="ElementShortName">storage_stm</obj_property>
-      <obj_property name="ObjectShortName">storage_stm</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/TB_WindowCPU/WDOCONTROL/digsto_stm">
-      <obj_property name="ElementShortName">digsto_stm</obj_property>
-      <obj_property name="ObjectShortName">digsto_stm</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/WDOCONTROL/busy_intl">
-      <obj_property name="ElementShortName">busy_intl</obj_property>
-      <obj_property name="ObjectShortName">busy_intl</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/WR_ADDR_s">
-      <obj_property name="ElementShortName">WR_ADDR_s[7:0]</obj_property>
-      <obj_property name="ObjectShortName">WR_ADDR_s[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/NextAddr_intl">
-      <obj_property name="ElementShortName">NextAddr_intl[7:0]</obj_property>
-      <obj_property name="ObjectShortName">NextAddr_intl[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/PrevAddr_intl">
-      <obj_property name="ElementShortName">PrevAddr_intl[7:0]</obj_property>
-      <obj_property name="ObjectShortName">PrevAddr_intl[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/MarkWindow">
-      <obj_property name="ElementShortName">MarkWindow[7:0]</obj_property>
-      <obj_property name="ObjectShortName">MarkWindow[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/NextMarkWindow">
-      <obj_property name="ElementShortName">NextMarkWindow[7:0]</obj_property>
-      <obj_property name="ObjectShortName">NextMarkWindow[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/FstWindow512">
-      <obj_property name="ElementShortName">FstWindow512[8:0]</obj_property>
-      <obj_property name="ObjectShortName">FstWindow512[8:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/CntWindow512">
-      <obj_property name="ElementShortName">CntWindow512[8:0]</obj_property>
-      <obj_property name="ObjectShortName">CntWindow512[8:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/cmdbus">
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/cmdbus">
       <obj_property name="ElementShortName">cmdbus[2:0]</obj_property>
       <obj_property name="ObjectShortName">cmdbus[2:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOCONTROL/cmdwdo_en">
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/cmdwdo_en">
       <obj_property name="ElementShortName">cmdwdo_en[15:0]</obj_property>
       <obj_property name="ObjectShortName">cmdwdo_en[15:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="divider27832" type="divider">
-      <obj_property name="label">STORE</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/WR_ADDR_s">
+      <obj_property name="ElementShortName">WR_ADDR_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_ADDR_s[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/valid">
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/CurAddr">
+      <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/NextAddr_intl">
+      <obj_property name="ElementShortName">NextAddr_intl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">NextAddr_intl[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/PrevAddr_intl">
+      <obj_property name="ElementShortName">PrevAddr_intl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PrevAddr_intl[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/CtrlBus_IxSL">
+      <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
+      <obj_property name="ObjectShortName">CtrlBus_IxSL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/SampleCnt">
+      <obj_property name="ElementShortName">SampleCnt[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SampleCnt[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/NextBus_In">
+      <obj_property name="ElementShortName">NextBus_In[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">NextBus_In[0:15][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/WDOCONTROL/PrevBus_In">
+      <obj_property name="ElementShortName">PrevBus_In[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">PrevBus_In[0:15][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/TB_WindowCPUV2/WDOCONTROL/trigger_stm">
+      <obj_property name="ElementShortName">trigger_stm</obj_property>
+      <obj_property name="ObjectShortName">trigger_stm</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/prevWdo_LE">
+      <obj_property name="ElementShortName">prevWdo_LE</obj_property>
+      <obj_property name="ObjectShortName">prevWdo_LE</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/nextWdo_TE">
+      <obj_property name="ElementShortName">nextWdo_TE</obj_property>
+      <obj_property name="ObjectShortName">nextWdo_TE</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/valid">
       <obj_property name="ElementShortName">valid[15:0]</obj_property>
       <obj_property name="ObjectShortName">valid[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/valid_dly">
-      <obj_property name="ElementShortName">valid_dly[15:0]</obj_property>
-      <obj_property name="ObjectShortName">valid_dly[15:0]</obj_property>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/wr1_en">
+      <obj_property name="ElementShortName">wr1_en[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wr1_en[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/enablewdo">
-      <obj_property name="ElementShortName">enablewdo[15:0]</obj_property>
-      <obj_property name="ObjectShortName">enablewdo[15:0]</obj_property>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/wr2_en">
+      <obj_property name="ElementShortName">wr2_en[15:0]</obj_property>
+      <obj_property name="ObjectShortName">wr2_en[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/tmp_256">
-      <obj_property name="ElementShortName">tmp_256[255:0]</obj_property>
-      <obj_property name="ObjectShortName">tmp_256[255:0]</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/empty_obs">
+      <obj_property name="ElementShortName">empty_obs</obj_property>
+      <obj_property name="ObjectShortName">empty_obs</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/Mux/A">
-      <obj_property name="ElementShortName">A[255:0]</obj_property>
-      <obj_property name="ObjectShortName">A[255:0]</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/RDAD_READEn_sti">
+      <obj_property name="ElementShortName">RDAD_READEn_sti</obj_property>
+      <obj_property name="ObjectShortName">RDAD_READEn_sti</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/Mux/B">
-      <obj_property name="ElementShortName">B[7:0]</obj_property>
-      <obj_property name="ObjectShortName">B[7:0]</obj_property>
+   <wvobject type="array" fp_name="/TB_WindowCPUV2/RDAD_DataOut_obs">
+      <obj_property name="ElementShortName">RDAD_DataOut_obs[105:0]</obj_property>
+      <obj_property name="ObjectShortName">RDAD_DataOut_obs[105:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/windowstore">
-      <obj_property name="ElementShortName">windowstore[7:0]</obj_property>
-      <obj_property name="ObjectShortName">windowstore[7:0]</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/flg_LE">
+      <obj_property name="ElementShortName">flg_LE</obj_property>
+      <obj_property name="ObjectShortName">flg_LE</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/data_in_intl">
-      <obj_property name="ElementShortName">data_in_intl[105:0]</obj_property>
-      <obj_property name="ObjectShortName">data_in_intl[105:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/WDOSTORE/WriteEn_intl">
-      <obj_property name="ElementShortName">WriteEn_intl</obj_property>
-      <obj_property name="ObjectShortName">WriteEn_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/WDOSTORE/RDAD_ReadEn">
-      <obj_property name="ElementShortName">RDAD_ReadEn</obj_property>
-      <obj_property name="ObjectShortName">RDAD_ReadEn</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/RDAD_DataOut">
-      <obj_property name="ElementShortName">RDAD_DataOut[105:0]</obj_property>
-      <obj_property name="ObjectShortName">RDAD_DataOut[105:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/WDOSTORE/RDAD_Empty">
-      <obj_property name="ElementShortName">RDAD_Empty</obj_property>
-      <obj_property name="ObjectShortName">RDAD_Empty</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/WDOSTORE/RDAD_STO_AFIFO/Mem">
-      <obj_property name="ElementShortName">Mem[0:15][105:0]</obj_property>
-      <obj_property name="ObjectShortName">Mem[0:15][105:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="divider13215" type="divider">
-      <obj_property name="label">CPU 5</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/ADDRESS">
-      <obj_property name="ElementShortName">ADDRESS</obj_property>
-      <obj_property name="ObjectShortName">ADDRESS</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr1_en_intl">
-      <obj_property name="ElementShortName">wr1_en_intl</obj_property>
-      <obj_property name="ObjectShortName">wr1_en_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr2_en_intl">
-      <obj_property name="ElementShortName">wr2_en_intl</obj_property>
-      <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr1_en">
-      <obj_property name="ElementShortName">wr1_en</obj_property>
-      <obj_property name="ObjectShortName">wr1_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr2_en">
-      <obj_property name="ElementShortName">wr2_en</obj_property>
-      <obj_property name="ObjectShortName">wr2_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/valid_o">
-      <obj_property name="ElementShortName">valid_o</obj_property>
-      <obj_property name="ObjectShortName">valid_o</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr1_mark_flg">
-      <obj_property name="ElementShortName">wr1_mark_flg</obj_property>
-      <obj_property name="ObjectShortName">wr1_mark_flg</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr2_mark_flg">
-      <obj_property name="ElementShortName">wr2_mark_flg</obj_property>
-      <obj_property name="ObjectShortName">wr2_mark_flg</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr1_reg">
-      <obj_property name="ElementShortName">wr1_reg[1:0]</obj_property>
-      <obj_property name="ObjectShortName">wr1_reg[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr2_reg">
-      <obj_property name="ElementShortName">wr2_reg[1:0]</obj_property>
-      <obj_property name="ObjectShortName">wr2_reg[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr1_flg">
-      <obj_property name="ElementShortName">wr1_flg</obj_property>
-      <obj_property name="ObjectShortName">wr1_flg</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/wr2_flg">
-      <obj_property name="ElementShortName">wr2_flg</obj_property>
-      <obj_property name="ObjectShortName">wr2_flg</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/TB_WindowCPU/\GEN_CPU(5)\/CPUX/CPU_stm">
-      <obj_property name="ElementShortName">CPU_stm</obj_property>
-      <obj_property name="ObjectShortName">CPU_stm</obj_property>
-   </wvobject>
-   <wvobject fp_name="divider23592" type="divider">
-      <obj_property name="label">CPU2</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/valid_o">
-      <obj_property name="ElementShortName">valid_o</obj_property>
-      <obj_property name="ObjectShortName">valid_o</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/ADDRESS">
-      <obj_property name="ElementShortName">ADDRESS</obj_property>
-      <obj_property name="ObjectShortName">ADDRESS</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/CurAddr">
-      <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
-      <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/PREVBus_IN">
-      <obj_property name="ElementShortName">PREVBus_IN[7:0]</obj_property>
-      <obj_property name="ObjectShortName">PREVBus_IN[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/PREVBus_OUT">
-      <obj_property name="ElementShortName">PREVBus_OUT[7:0]</obj_property>
-      <obj_property name="ObjectShortName">PREVBus_OUT[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/NEXTBus_IN">
-      <obj_property name="ElementShortName">NEXTBus_IN[7:0]</obj_property>
-      <obj_property name="ObjectShortName">NEXTBus_IN[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/NEXTBus_OUT">
-      <obj_property name="ElementShortName">NEXTBus_OUT[7:0]</obj_property>
-      <obj_property name="ObjectShortName">NEXTBus_OUT[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr1_en_intl">
-      <obj_property name="ElementShortName">wr1_en_intl</obj_property>
-      <obj_property name="ObjectShortName">wr1_en_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr2_en_intl">
-      <obj_property name="ElementShortName">wr2_en_intl</obj_property>
-      <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr1_mark_flg">
-      <obj_property name="ElementShortName">wr1_mark_flg</obj_property>
-      <obj_property name="ObjectShortName">wr1_mark_flg</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr2_mark_flg">
-      <obj_property name="ElementShortName">wr2_mark_flg</obj_property>
-      <obj_property name="ObjectShortName">wr2_mark_flg</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr1_flg">
-      <obj_property name="ElementShortName">wr1_flg</obj_property>
-      <obj_property name="ObjectShortName">wr1_flg</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_WindowCPU/\GEN_CPU(2)\/CPUX/wr2_flg">
-      <obj_property name="ElementShortName">wr2_flg</obj_property>
-      <obj_property name="ObjectShortName">wr2_flg</obj_property>
+   <wvobject type="logic" fp_name="/TB_WindowCPUV2/WDOCONTROL/flg_TE">
+      <obj_property name="ElementShortName">flg_TE</obj_property>
+      <obj_property name="ObjectShortName">flg_TE</obj_property>
    </wvobject>
 </wave_config>

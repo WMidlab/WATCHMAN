@@ -22,11 +22,6 @@ entity WindowCPU is
 	TrigInfo_IN:	in t_triggerinformation;
 	TrigInfo_OUT:	out std_logic_vector(11 downto 0);
 
-	wr1_trig :		in std_logic;
-	wr2_trig :		in std_logic;
-	valid_i	:		in std_logic;
-	response_o:		out std_logic;
-
 	wr1_en :		out std_logic;
 	wr2_en :		out	std_logic;
 	valid_o	:		out std_logic;
@@ -114,47 +109,17 @@ begin
 							wr2_flg <= '1';
 						when CMD_WR1_MARKED =>
 							wr1_mark_flg <= '1';
-							TrigInfo_marked <= (others => '0');
+							TrigInfo_marked <= TrigInfo_IN.long & TrigInfo_IN.last & TrigInfo_IN.trig;
 						when CMD_WR2_MARKED =>
 							wr2_mark_flg <= '1';
-							TrigInfo_marked <= (others => '0');
+							TrigInfo_marked <= TrigInfo_IN.long & TrigInfo_IN.last & TrigInfo_IN.trig;
 						when CMD_BOTH_MARKED =>
 							wr1_mark_flg <= '1';
 							wr2_mark_flg <= '1';
-							TrigInfo_marked <= (others => '0');
+							TrigInfo_marked <= TrigInfo_IN.long & TrigInfo_IN.last & TrigInfo_IN.trig;
 						when others =>
 					end case;
 				end if;
-
-				-- Trigger
-				case trigger_stm is
-					when IDLE =>
-						response_o <= '0';
-						trigger_stm <= READY;
-					when READY =>
-						if valid_i = '1' then
-							response_o <= '1';
-							trigger_stm <= RESPREADY;
-						else
-							response_o <= '0';
-							trigger_stm <= READY;
-						end if;
-					when RESPREADY =>
-
-						if valid_i = '0' then
-							response_o <= '0';
-							trigger_stm <= IDLE;
-
-							-- Mark
-							wr1_mark_flg <= wr1_trig;
-							wr2_mark_flg <= wr2_trig;
-							TrigInfo_marked <= TrigInfo_IN.long & TrigInfo_IN.last & TrigInfo_IN.trig;
-						else
-							response_o <= '1';
-							trigger_stm <= RESPREADY;
-						end if;
-					when others =>
-				end case;
 
 				-- Marked STM
 				if CurAddr = NEXTBus_IN then
