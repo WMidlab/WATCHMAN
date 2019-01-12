@@ -275,7 +275,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	-- 	);
 	-- end component RoundBufferGray500MHz;
 
-	component RoundBuffer is
+	component RoundBufferV4 is
 		generic(
 			NBRWINDOWS : integer := 16
 		);
@@ -292,7 +292,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
 
 			RDAD_ReadEn  :in  std_logic;
-			RDAD_DataOut : out std_logic_vector(100+5 downto 0);
+			RDAD_DataOut : out std_logic_vector(85 downto 0);
 			RDAD_Empty	: out std_logic;
 
 			-- FIFO IN for Digiting
@@ -301,7 +301,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		    DIG_WriteEn	: in	std_logic
 
 		);
-	end component RoundBuffer;
+	end component RoundBufferV4;
 
 	component TARGETC_RDAD_WL_SMPL is
 		Port (
@@ -320,7 +320,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 		-- Fifo from storage
 		RDAD_ReadEn  :	out	std_logic;
-		RDAD_DataOut : 	in	std_logic_vector(100+5 downto 0);
+		RDAD_DataOut : 	in	std_logic_vector(85 downto 0);
 		--RDAD_CLK     :	out	std_logic;	-- RDAD CLK
 		RDAD_Empty	: 	in 	std_logic;
 
@@ -343,7 +343,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 		WDOTime:			out std_logic_vector(63 downto 0);
 		DIGTime:			out std_logic_vector(63 downto 0);
-		Trigger:			out std_logic_vector(31 downto 0);
+		Trigger:			out std_logic_vector(11 downto 0);
 		WDONbr:				out std_logic_vector(8 downto 0);
 
 		FIFOresponse:		in std_logic
@@ -380,7 +380,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	signal tc_axi_intr:		std_logic;
 
 	signal RDAD_ReadEn_intl  :  std_logic;
-	signal RDAD_DataOut_intl : std_logic_vector(100+5 downto 0);
+	signal RDAD_DataOut_intl : std_logic_vector(85 downto 0);
     signal RDAD_Empty_intl     :  std_logic;
 
     signal DIG_DataIn_intl	: std_logic_vector(8 downto 0);
@@ -395,6 +395,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
     signal TrigD_reg : std_logic_vector(1 downto 0);
 
 	signal trigger_intl : std_logic_vector(3 downto 0);
+	signal TriggerInfor_intl : std_logic_vector(11 downto 0);
 begin
 
 
@@ -504,7 +505,7 @@ begin
     -- 	DIG_WriteEn	=> DIG_WriteEn_intl,
     -- 	DIG_Full	=> DIG_Full_intl
 	-- );
-	TC_RoundBuffer : RoundBuffer
+	TC_RoundBuffer : RoundBufferV4
 		generic map(
 			NBRWINDOWS => 256
 		)
@@ -569,11 +570,13 @@ begin
 
 		WDOTime	=> WDOTime,
 		DIGTime => DIGTime,
-		Trigger => Trigger,
+		Trigger => TriggerInfor_intl,
 		WDONbr => WDONBR,
 
 		FIFOresponse	=> FIFOresponse
 	);
+
+	Trigger <= x"00000" & TriggerInfor_intl;
 
 	SAMPLESEL_ANY <= CtrlBusOut_intl.SmplSl_Any;
 	REGCLR <= CtrlBusOut_intl.REGCLR;

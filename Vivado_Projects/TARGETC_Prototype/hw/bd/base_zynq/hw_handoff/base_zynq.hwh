@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jan  8 11:46:20 2019" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Jan 12 10:46:14 2019" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="base_zynq" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -5402,6 +5402,7 @@
             <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_aclk"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="m_axi_s2mm_aclk"/>
             <CONNECTION INSTANCE="axistream_0" PORT="M_AXIS_ACLK"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ACLK"/>
@@ -5410,7 +5411,6 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CLK"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RefCLK_i1"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RefCLK_i2"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aclk"/>
@@ -6633,6 +6633,7 @@
             <CONNECTION INSTANCE="axi_iic_0" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="axi_dma_0" PORT="axi_resetn"/>
             <CONNECTION INSTANCE="axistream_0" PORT="M_AXIS_ARESETN"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="nRST"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ARESETN"/>
@@ -6640,7 +6641,6 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="nRST"/>
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>

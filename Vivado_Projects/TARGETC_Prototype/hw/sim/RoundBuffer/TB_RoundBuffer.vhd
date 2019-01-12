@@ -40,7 +40,7 @@ architecture implementation of TB_RoundBuffer is
 	);
 	end component TC_ClockManagementV3;
 
-	component RoundBuffer is
+	component RoundBufferV4 is
 		generic(
 			NBRWINDOWS : integer := 16
 		);
@@ -57,7 +57,7 @@ architecture implementation of TB_RoundBuffer is
 			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
 
 			RDAD_ReadEn  :in  std_logic;
-			RDAD_DataOut : out std_logic_vector(100+5 downto 0);
+			RDAD_DataOut : out std_logic_vector(85 downto 0);
 			RDAD_Empty	: out std_logic;
 
 			-- FIFO IN for Digiting
@@ -66,7 +66,7 @@ architecture implementation of TB_RoundBuffer is
 		    DIG_WriteEn	: in	std_logic
 
 		);
-	end component RoundBuffer;
+	end component RoundBufferV4;
 
 	-- -------------------------------------------------------------
 	-- Constant
@@ -89,7 +89,7 @@ architecture implementation of TB_RoundBuffer is
 	signal CtrlBus_IxSL_intl : T_CtrlBus_OxMS_Intl;
 
 	signal RDAD_READEn_sti : std_logic;
-	signal RDAD_DataOut_obs : std_logic_vector(100+5 downto 0);
+	signal RDAD_DataOut_obs : std_logic_vector(85 downto 0);
 	signal RDAD_Empty_obs:	std_logic;
 
 	signal DIG_Full_obs:	std_logic;
@@ -131,7 +131,7 @@ begin
 		SSTIN_N 		=> open
 	);
 
-	TC_RoundBuffer : RoundBuffer
+	TC_RoundBuffer : RoundBufferV4
 		generic map(
 			NBRWINDOWS => NBRWINDOWS
 		)
@@ -201,6 +201,7 @@ begin
 		trigger_sti <= (others =>'0');
 		CtrlBus_IxSL_intl.SWRESET <= '1';
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		CtrlBus_IxSL_intl.CPUMode <= '1';
 		wait for 10 us;
 		nrst <= '1';
 		wait for 10 us;
@@ -219,6 +220,44 @@ begin
 		trigger_sti(0) <= '0';
 		wait for 20 ns;
 		trigger_sti <= (others =>'0');
+
+		wait for 1 us;
+		wait for 47 ns;
+		report "Leading Edge";
+		trigger_sti <= "0001";
+		wait for 58 ns;
+		trigger_sti <= "0000";
+
+		wait for 1 us;
+		wait for 47 ns;
+		report "Too Long Edge";
+		trigger_sti <= "0001";
+		wait for 64*4 ns;
+		trigger_sti <= "0000";
+
+		wait for 10 us;
+		CtrlBus_IxSL_intl.CPUMode <= '0';
+		wait for 1 us;
+
+		CtrlBus_IxSL_intl.FSTWINDOW <= x"00000000";
+		CtrlBus_IxSL_intl.NBRWINDOW <= x"00000001";
+
+		CtrlBus_IxSL_intl.WindowStorage <= '1';
+		wait for 10 ns;
+		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		wait for 1 us;
+
+		wait for 20 us;
+		CtrlBus_IxSL_intl.FSTWINDOW <= x"0000000A";
+		CtrlBus_IxSL_intl.NBRWINDOW <= x"00000003";
+
+		CtrlBus_IxSL_intl.WindowStorage <= '1';
+		wait for 10 ns;
+		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		wait for 1 us;
+
+
+
 
     	wait;
 	end process;

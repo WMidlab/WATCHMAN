@@ -65,7 +65,7 @@ architecture Behavioral of WindowStore is
 	signal prev_Timecounter:	std_logic_vector(63 downto 0);
 
 	signal NewEvent : std_logic;
-	signal data_in_intl : std_logic_vector(105 downto 0);
+	signal data_in_intl : std_logic_vector(85 downto 0);
 
 	signal valid_dly : 	std_logic_vector(NBRWINDOWS-1 downto 0);
 	signal enablewdo:	std_logic_vector(NBRWINDOWS-1 downto 0);
@@ -97,12 +97,12 @@ begin
 	);
 
 	-- Old Style Data Record Now
-	Data_in_intl(58+5 downto 0)		<= prev_TimeCounter;
-	Data_in_intl(66+5 downto 59+5)	<= windowstore;
-	Data_in_intl(67+5)				<= wr1_en(to_integer(unsigned(windowstore)));
-	Data_in_intl(68+5)				<= wr2_en(to_integer(unsigned(windowstore)));
---	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo;
-	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo(to_integer(unsigned(windowstore)));
+	Data_in_intl(63 downto 0)		<= prev_TimeCounter;
+	Data_in_intl(71 downto 64)	<= windowstore;
+	Data_in_intl(72)				<= wr1_en(to_integer(unsigned(windowstore)));
+	Data_in_intl(73)				<= wr2_en(to_integer(unsigned(windowstore)));
+	--	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo(to_integer(unsigned(windowstore)));
+	Data_in_intl(85 downto 74)	<= triginfo(to_integer(unsigned(windowstore)));
 
   	WriteEn_intl <= '1' when enablewdo /= std_logic_vector(to_unsigned(0,enablewdo'length)) else '0';
 
@@ -112,7 +112,7 @@ begin
 	-- RDAD and Storage FIFO
 	RDAD_STO_AFIFO :  aFifo
     generic map(
-        DATA_WIDTH => 106,
+        DATA_WIDTH => 86,
         ADDR_WIDTH => 4	--Maybe more ?
     )
     port map (

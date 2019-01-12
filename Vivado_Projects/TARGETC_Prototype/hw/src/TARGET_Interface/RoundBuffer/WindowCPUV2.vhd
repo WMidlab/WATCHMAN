@@ -39,7 +39,6 @@ end WindowCPUV2;
 
 architecture Behavioral of WindowCPUV2 is
 
-
 	signal wr1_en_intl : std_logic;
 	signal wr2_en_intl : std_logic;
 
@@ -311,10 +310,15 @@ begin
 	wr1_en	<= '0' when wr1_en_intl = '0' else '1';
 	wr2_en	<= '0' when wr2_en_intl = '0' else '1';
 
-	PREVBus_intl <= std_logic_vector(to_unsigned(ADDRESS,PREVBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else PREVBus_In;
+	-- PREVBus_intl <= std_logic_vector(to_unsigned(ADDRESS,PREVBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else PREVBus_In;
+	--
+	-- NEXTBus_intl <= std_logic_vector(to_unsigned(ADDRESS,NEXTBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else NEXTBus_In;
+	--
+	-- PREVBus_Out <= PREVBus_intl;
+	-- NEXTBus_Out <= NEXTBus_intl;
 
-	NEXTBus_intl <= std_logic_vector(to_unsigned(ADDRESS,NEXTBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else NEXTBus_In;
+	PREVBus_Out <= std_logic_vector(to_unsigned(ADDRESS,PREVBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else PREVBus_In;
+	--
+	NEXTBus_Out <= std_logic_vector(to_unsigned(ADDRESS,NEXTBus_intl'length)) when ((wr1_en_intl='1') and (wr2_en_intl='1')) else NEXTBus_In;
 
-	PREVBus_Out <= PREVBus_intl;
-	NEXTBus_Out <= NEXTBus_intl;
 end Behavioral;
