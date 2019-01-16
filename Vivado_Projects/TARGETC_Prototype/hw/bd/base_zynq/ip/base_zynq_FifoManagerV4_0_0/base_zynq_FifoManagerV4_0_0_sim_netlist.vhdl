@@ -1,10 +1,10 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
--- Date        : Fri Jan 11 14:48:52 2019
+-- Date        : Tue Jan 15 07:23:53 2019
 -- Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
--- Command     : write_vhdl -force -mode funcsim {/home/jonathan/Desktop/Link to
---               TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_FifoManagerV4_0_0/base_zynq_FifoManagerV4_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/jonathan/Desktop/LinktoTARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_FifoManagerV4_0_0/base_zynq_FifoManagerV4_0_0_sim_netlist.vhdl
 -- Design      : base_zynq_FifoManagerV4_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -18506,7 +18506,7 @@ architecture STRUCTURE of base_zynq_FifoManagerV4_0_0 is
   attribute x_interface_info : string;
   attribute x_interface_info of CLK : signal is "xilinx.com:signal:clock:1.0 CLK CLK";
   attribute x_interface_parameter : string;
-  attribute x_interface_parameter of CLK : signal is "XIL_INTERFACENAME CLK, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0";
+  attribute x_interface_parameter of CLK : signal is "XIL_INTERFACENAME CLK, FREQ_HZ 1e+08, PHASE 0.000, CLK_DOMAIN base_zynq_processing_system7_0_0_FCLK_CLK0";
 begin
 U0: entity work.base_zynq_FifoManagerV4_0_0_FifoManagerV4
      port map (

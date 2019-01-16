@@ -66,6 +66,7 @@ architecture Behavioral of WindowStoreV3 is
 	signal wr_addr : std_logic_vector(7 downto 0);
 
 	signal wr_en, wr_en_dly, wr1_en_dly, wr2_en_dly : std_logic;
+	signal wr1_en_clkd, wr2_en_clkd : std_logic;
 	signal Wr_Addr_dly : std_logic_vector(7 downto 0);
 
 	signal	TrigInfoDly, TrigInfoBuf, TrigInfoBuf_dly : std_logic_vector(11 downto 0);
@@ -83,15 +84,23 @@ begin
 	process(ClockBus.CLK250MHz)
 	begin
 		if rising_edge(ClockBus.Clk250Mhz) then
+			wr1_en_clkd <= wr1_en;
+			wr2_en_clkd <= wr2_en;
+		end if;
+	end process;
+
+	process(ClockBus.CLK250MHz)
+	begin
+		if rising_edge(ClockBus.Clk250Mhz) then
 
 			Wr_Addr_dly <= wr_addr;
-			wr1_en_dly <= wr1_en;
-			wr2_en_dly <= wr2_en;
+			wr1_en_dly <= wr1_en_clkd;
+			wr2_en_dly <= wr2_en_clkd;
 
 			case writeEn_stm is
 				when IDLE =>
 					if ((wr1_en = '0') or (wr2_en = '0')) then
-						if ((Wr_Addr_dly /= wr_addr) or (wr1_en /= wr1_en_dly) or (wr2_en /= wr2_en_dly)) then
+						if ((Wr_Addr_dly /= wr_addr) or (wr1_en_clkd /= wr1_en_dly) or (wr2_en_clkd /= wr2_en_dly)) then
 							writeEn_stm <= PULSE;
 							WriteEn_intl <= '1';
 						else

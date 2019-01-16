@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use work.WindowCPU_PKG.all;
+use work.WindowCPU_pkg.all;
 use work.TARGETC_pkg.all;
 
 entity SingleTrigger is

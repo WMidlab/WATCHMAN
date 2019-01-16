@@ -123,24 +123,46 @@ begin
         WClk        => ClockBus.WL_CLK
     );
 
-	NextAddr_intl <=	NextAddr_in;
-	PrevAddr_intl <= 	PrevAddr_in;
+	process(ClockBus.CLK250MHz,nrst)
+	begin
+		if nrst = '0' then
+			NextAddr_intl	<= x"01";
+			PrevAddr_intl	<= x"FF";
+		else
+			if rising_edge(ClockBus.CLK250MHz) then
+				NextAddr_intl <=	NextAddr_in;
+				PrevAddr_intl <=	PrevAddr_in;
+			end if;
+		end if;
+	end process;
 
 	-- Address Change Write Storage Area
 	process(ClockBus.SSTIN,nRST)
+		-- variable curidx : integer := to_integer(unsigned(NextAddr_intl));
+		-- variable oldidx : integer := to_integer(unsigned(WR_ADDR_S));
 	begin
 		if nrst = '0' then
 			WR_ADDR_S <= (others => '0');
+
+			-- Init the CPUs
+			CurAddrBit <= (0 => '1', others => '0');
+
+			OldAddr_intl <= x"FF";
+			OldAddrBit <= (255 => '1', others => '0');
 		else
 			if rising_edge(ClockBus.SSTIN) then
-				WR_ADDR_S <= NextAddr_intl;
-				OldAddr_intl <= WR_ADDR_S;
+				WR_ADDR_S 		<= NextAddr_intl;
+				OldAddr_intl 	<= WR_ADDR_S;
 
 				OldAddrBit <= (others => '0');
 				OldAddrBit(to_integer(unsigned(WR_ADDR_S))) <= '1';
+				--OldAddrBit <= (oldidx => '1', others => '0');
 
 				CurAddrBit <= (others => '0');
 				CurAddrBit(to_integer(unsigned(NextAddr_intl))) <= '1';
+				--CurAddrBit <= (curidx => '1', others => '0');
+
+
 			end if;
 		end if;
 	end process;

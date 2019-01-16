@@ -55,6 +55,19 @@ end TARGETC_RDAD_WL_SMPL;
 
 architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 
+	component clkcrossing_buf is
+		generic(
+			NBITS : integer := 32
+		);
+		port (
+			nrst:	in	std_logic;
+			DA: 	in	std_logic_vector(NBITS-1 downto 0);
+			QB:		out	std_logic_vector(NBITS-1 downto 0);
+			ClkA:	in	std_logic;
+			ClkB:	in	std_logic
+		);
+	end component clkcrossing_buf;
+
 	--State
 	type state_type is (
 		IDLE,
@@ -177,7 +190,7 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 		trig : std_logic_vector(11 downto 0);
 	end record;
 	signal fifo_intl : fiforec;
-
+	signal NBRWINDOW_clkd : std_logic_vector(31 downto 0);
 begin
 
 	-- --------------------------------------------------------------------------------
@@ -186,11 +199,19 @@ begin
 	CtrlBus_OxSL.BUSY	<= 'Z';
 	CtrlBus_OxSL.PLL_LOCKED <= 'Z';
 
-	CtrlBus_OxSL.Test0 <= 'Z';
-	CtrlBus_OxSL.Test1 <= 'Z';
-	CtrlBus_OxSL.Test2 <= 'Z';
 	-- --------------------------------------------------------------------------------
 
+	BUF_NBRWINDOWS : clkcrossing_buf
+		generic map(
+			NBITS => 32
+		)
+		port map(
+			nrst	=>	RST,
+			DA		=>	CtrlBus_IxSL.NBRWINDOW,
+			QB		=> 	NBRWINDOW_clkd,
+			ClkA	=> 	ClockBus.CLK250MHz,
+			ClkB	=> ClockBus.HSCLK
+		);
 	--counter process
 	process (ClockBus.WL_CLK,WL_CNT_EN) begin
 		if (WL_CNT_EN = '0') then
@@ -221,7 +242,7 @@ begin
 			RDAD_stm <= IDLE;
 
 			RDAD_ReadEn <= '0';
-			CtrlBus_OxSL.Test3 <= '0';
+
 		else
 			if rising_edge(ClockBus.RDAD_CLK) then
 				case rdad_stm is
@@ -248,7 +269,6 @@ begin
 						if (RDAD_Empty = '0') then	-- Something to read from the FIFO
 							rdad_stm <= FIFOREAD;
 
-							CtrlBus_OxSL.Test3 <= '1';
 							RDAD_ReadEn <= '1';
 						else
 							rdad_stm <= READY;
@@ -438,7 +458,6 @@ begin
 			WDONbr_WL <= (others => '0');
 			Trigger_WL <= (others => '0');
 
-			CtrlBus_OxSL.Test4 <= '0';
 		else
 			if rising_edge(ClockBus.WL_CLK) then
 				case wlstate is
@@ -465,7 +484,6 @@ begin
 						if (RDAD.valid = '0') then
 							WL.valid <= '0';
 							--WL.ready <= '0';
-							CtrlBus_OxSL.Test4 <= '1';
 							GCC_RESET_intl <= '1';
 							wlstate <= CLEAR;
 						else
@@ -600,7 +618,6 @@ begin
 			DIGTime <=(others => '0');
 			WDONbr <= (others => '0');
 			Trigger <= (others => '0');
-			CtrlBus_OxSL.Test5 <= '0';
 		else
 			if rising_edge(ClockBus.HSCLK) then
 
@@ -635,7 +652,6 @@ begin
 						elsif (WL.valid = '1') and (CtrlBus_IxSL.SAMPLEMODE = '1') then
 							SS_RESET_intl <= '1';
 							SS_INCR_flg <= '0';
-							CtrlBus_OxSL.Test5 <= '1';
 							hsout_stm <= RESPREADY;
 							SS.busy <= '1';
 						else
@@ -691,7 +707,7 @@ begin
 								TestFIFO_cnt <= TestFIFO_cnt + 1;
 							else
 								TestFIFO_cnt <= 0;
-								if (TestFIFO_window < to_integer(unsigned(CtrlBus_IxSL.NBRWINDOW)-1)) then
+								if (TestFIFO_window < to_integer(unsigned(NBRWINDOW_clkd)-1)) then
 									hsout_stm <= FIFOTEST_DATA;
 									TestFIFO_window <= TestFIFO_window + 1;
 								else

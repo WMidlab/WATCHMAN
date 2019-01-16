@@ -65,7 +65,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./Desktop/Link to TARGETC_Prototype/hw/bd
+  set origin_dir ./Desktop/LinktoTARGETC_Prototype/hw/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -187,6 +187,10 @@ proc create_root_design { parentCell } {
   set DO_15 [ create_bd_port -dir I DO_15 ]
   set DO_16 [ create_bd_port -dir I DO_16 ]
   set GCC_RESET [ create_bd_port -dir O GCC_RESET ]
+  set HCMPA [ create_bd_port -dir O -from 0 -to 0 HCMPA ]
+  set HCMPB [ create_bd_port -dir O -from 0 -to 0 HCMPB ]
+  set HCMPC [ create_bd_port -dir O -from 0 -to 0 HCMPC ]
+  set HCMPD [ create_bd_port -dir O -from 0 -to 0 HCMPD ]
   set HSCLK_N [ create_bd_port -dir O HSCLK_N ]
   set HSCLK_P [ create_bd_port -dir O HSCLK_P ]
   set MONTIMING_N [ create_bd_port -dir I MONTIMING_N ]
@@ -1124,8 +1128,15 @@ proc create_root_design { parentCell } {
   # Create instance: xlconcat_1, and set properties
   set xlconcat_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_1 ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {6} \
+   CONFIG.NUM_PORTS {2} \
  ] $xlconcat_1
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+   CONFIG.CONST_WIDTH {1} \
+ ] $xlconstant_0
 
   # Create interface connections
   connect_bd_intf_net -intf_net axi_dma_0_M_AXI_S2MM [get_bd_intf_pins axi_dma_0/M_AXI_S2MM] [get_bd_intf_pins axi_interconnect_0/S00_AXI]
@@ -1158,13 +1169,16 @@ proc create_root_design { parentCell } {
   connect_bd_net -net DO_8_1 [get_bd_ports DO_8] [get_bd_pins xlconcat_0/In7]
   connect_bd_net -net DO_9_1 [get_bd_ports DO_9] [get_bd_pins xlconcat_0/In8]
   connect_bd_net -net FifoManagerV4_0_DataOut [get_bd_pins FifoManagerV4_0/DataOut] [get_bd_pins axistream_0/FIFOdata]
-  connect_bd_net -net FifoManagerV4_0_FIFOresponse [get_bd_ports BB2] [get_bd_pins FifoManagerV4_0/FIFOresponse] [get_bd_pins TARGETC_IP_Prototype_0/FIFOresponse]
-  connect_bd_net -net FifoManagerV4_0_FIFOvalid [get_bd_ports BB4] [get_bd_pins FifoManagerV4_0/FIFOvalid] [get_bd_pins axistream_0/FIFOvalid]
+  connect_bd_net -net FifoManagerV4_0_FIFOresponse [get_bd_pins FifoManagerV4_0/FIFOresponse] [get_bd_pins TARGETC_IP_Prototype_0/FIFOresponse]
+  connect_bd_net -net FifoManagerV4_0_FIFOvalid [get_bd_pins FifoManagerV4_0/FIFOvalid] [get_bd_pins axistream_0/FIFOvalid]
   connect_bd_net -net MONTIMING_N_1 [get_bd_ports MONTIMING_N] [get_bd_pins TARGETC_IP_Prototype_0/MONTIMING_N]
   connect_bd_net -net MONTIMING_P_1 [get_bd_ports MONTIMING_P] [get_bd_pins TARGETC_IP_Prototype_0/MONTIMING_P]
   connect_bd_net -net Net [get_bd_ports SDA] [get_bd_pins iobuf_0/IO]
   connect_bd_net -net Net1 [get_bd_ports SCL] [get_bd_pins iobuf_1/IO]
   connect_bd_net -net SHOUT_1 [get_bd_ports SHOUT] [get_bd_pins TARGETC_IP_Prototype_0/SHOUT]
+  connect_bd_net -net TARGETC_IP_Prototype_0_BB2 [get_bd_ports BB2] [get_bd_pins TARGETC_IP_Prototype_0/BB2]
+  connect_bd_net -net TARGETC_IP_Prototype_0_BB3 [get_bd_ports BB3] [get_bd_pins TARGETC_IP_Prototype_0/BB3]
+  connect_bd_net -net TARGETC_IP_Prototype_0_BB4 [get_bd_ports BB4] [get_bd_pins TARGETC_IP_Prototype_0/BB4]
   connect_bd_net -net TARGETC_IP_Prototype_0_CH0 [get_bd_pins FifoManagerV4_0/CH0] [get_bd_pins TARGETC_IP_Prototype_0/CH0]
   connect_bd_net -net TARGETC_IP_Prototype_0_CH1 [get_bd_pins FifoManagerV4_0/CH1] [get_bd_pins TARGETC_IP_Prototype_0/CH1]
   connect_bd_net -net TARGETC_IP_Prototype_0_CH2 [get_bd_pins FifoManagerV4_0/CH2] [get_bd_pins TARGETC_IP_Prototype_0/CH2]
@@ -1185,10 +1199,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TARGETC_IP_Prototype_0_GCC_RESET [get_bd_ports GCC_RESET] [get_bd_pins TARGETC_IP_Prototype_0/GCC_RESET]
   connect_bd_net -net TARGETC_IP_Prototype_0_HSCLK_N [get_bd_ports HSCLK_N] [get_bd_pins TARGETC_IP_Prototype_0/HSCLK_N]
   connect_bd_net -net TARGETC_IP_Prototype_0_HSCLK_P [get_bd_ports HSCLK_P] [get_bd_pins TARGETC_IP_Prototype_0/HSCLK_P]
-  connect_bd_net -net TARGETC_IP_Prototype_0_MONTIMING [get_bd_ports BB5] [get_bd_pins TARGETC_IP_Prototype_0/MONTIMING]
+  connect_bd_net -net TARGETC_IP_Prototype_0_MONTIMING [get_bd_ports BB5] [get_bd_pins TARGETC_IP_Prototype_0/BB5]
   connect_bd_net -net TARGETC_IP_Prototype_0_PCLK [get_bd_ports PCLK] [get_bd_pins TARGETC_IP_Prototype_0/PCLK]
   connect_bd_net -net TARGETC_IP_Prototype_0_RAMP [get_bd_ports RAMP] [get_bd_pins TARGETC_IP_Prototype_0/RAMP]
-  connect_bd_net -net TARGETC_IP_Prototype_0_RAMP_CNT [get_bd_ports BB3] [get_bd_pins TARGETC_IP_Prototype_0/RAMP_CNT]
   connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_CLK [get_bd_ports RDAD_CLK] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_CLK]
   connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_DIR [get_bd_ports RDAD_DIR] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_DIR]
   connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_SIN [get_bd_ports RDAD_SIN] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_SIN]
@@ -1196,7 +1209,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TARGETC_IP_Prototype_0_SAMPLESEL_ANY [get_bd_ports SAMPLESEL_ANY] [get_bd_pins TARGETC_IP_Prototype_0/SAMPLESEL_ANY]
   connect_bd_net -net TARGETC_IP_Prototype_0_SCLK [get_bd_ports SCLK] [get_bd_pins TARGETC_IP_Prototype_0/SCLK]
   connect_bd_net -net TARGETC_IP_Prototype_0_SIN [get_bd_ports SIN] [get_bd_pins TARGETC_IP_Prototype_0/SIN]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN [get_bd_ports BB1] [get_bd_pins TARGETC_IP_Prototype_0/SSTIN]
+  connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN [get_bd_ports BB1] [get_bd_pins TARGETC_IP_Prototype_0/BB1]
   connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN_N [get_bd_ports SSTIN_N] [get_bd_pins TARGETC_IP_Prototype_0/SSTIN_N]
   connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN_P [get_bd_ports SSTIN_P] [get_bd_pins TARGETC_IP_Prototype_0/SSTIN_P]
   connect_bd_net -net TARGETC_IP_Prototype_0_SSVALID_INTR [get_bd_pins TARGETC_IP_Prototype_0/SSVALID_INTR] [get_bd_pins xlconcat_1/In0]
@@ -1205,10 +1218,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TARGETC_IP_Prototype_0_SS_LD_SIN [get_bd_ports SS_LD_SIN] [get_bd_pins TARGETC_IP_Prototype_0/SS_LD_SIN]
   connect_bd_net -net TARGETC_IP_Prototype_0_SS_RESET [get_bd_ports SS_RESET] [get_bd_pins TARGETC_IP_Prototype_0/SS_RESET]
   connect_bd_net -net TARGETC_IP_Prototype_0_SSvalid [get_bd_pins FifoManagerV4_0/PRECvalid] [get_bd_pins TARGETC_IP_Prototype_0/SSvalid]
-  connect_bd_net -net TARGETC_IP_Prototype_0_TrigA_intr [get_bd_pins TARGETC_IP_Prototype_0/TrigA_intr] [get_bd_pins xlconcat_1/In2]
-  connect_bd_net -net TARGETC_IP_Prototype_0_TrigB_intr [get_bd_pins TARGETC_IP_Prototype_0/TrigB_intr] [get_bd_pins xlconcat_1/In3]
-  connect_bd_net -net TARGETC_IP_Prototype_0_TrigC_intr [get_bd_pins TARGETC_IP_Prototype_0/TrigC_intr] [get_bd_pins xlconcat_1/In4]
-  connect_bd_net -net TARGETC_IP_Prototype_0_TrigD_intr [get_bd_pins TARGETC_IP_Prototype_0/TrigD_intr] [get_bd_pins xlconcat_1/In5]
   connect_bd_net -net TARGETC_IP_Prototype_0_Trigger [get_bd_pins FifoManagerV4_0/Trigger] [get_bd_pins TARGETC_IP_Prototype_0/Trigger]
   connect_bd_net -net TARGETC_IP_Prototype_0_WDONbr [get_bd_pins FifoManagerV4_0/WDONBR] [get_bd_pins TARGETC_IP_Prototype_0/WDONbr]
   connect_bd_net -net TARGETC_IP_Prototype_0_WDOTime [get_bd_pins FifoManagerV4_0/WDOTime] [get_bd_pins TARGETC_IP_Prototype_0/WDOTime]
@@ -1239,6 +1248,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins FifoManagerV4_0/nRST] [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axistream_0/M_AXIS_ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins TARGETC_IP_Prototype_0/DO] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins processing_system7_0/IRQ_F2P] [get_bd_pins xlconcat_1/dout]
+  connect_bd_net -net xlconstant_0_dout [get_bd_ports HCMPA] [get_bd_ports HCMPB] [get_bd_ports HCMPC] [get_bd_ports HCMPD] [get_bd_pins xlconstant_0/dout]
 
   # Create address segments
   create_bd_addr_seg -range 0x40000000 -offset 0x00000000 [get_bd_addr_spaces axi_dma_0/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM

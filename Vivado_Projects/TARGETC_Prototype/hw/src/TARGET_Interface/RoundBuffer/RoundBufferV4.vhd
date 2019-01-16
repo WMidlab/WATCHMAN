@@ -27,7 +27,9 @@ entity RoundBufferV4 is
 		-- FIFO IN for Digiting
 	    DIG_Full	: out	std_logic;
 	    DIG_DataIn	: in	std_logic_vector(8 downto 0);
-	    DIG_WriteEn	: in	std_logic
+	    DIG_WriteEn	: in	std_logic;
+
+		sDEBUG :	out std_logic_vector(7 downto 0)
 
 	);
 end RoundBufferV4;
@@ -43,24 +45,15 @@ architecture implementation of RoundBufferV4 is
 		nrst : 			in	std_Logic;
 	--	SSTIN:			in std_logic;
 		CLK:			in 	std_logic;
-		oddeven	:		in 	std_logic;
 
 		--Window Part
-		CPUMode:		in	std_logic;
-		CPUBus :		inout	std_logic_vector(10 downto 0);
+		CPUBus :		in	std_logic_vector(10 downto 0);
 
 		wr1_en:			out	std_logic;
 		wr2_en:			out	std_logic;
 
-		--Trigger Information for Brain
-		Trig:			in 	std_logic;
-		TrigDly:		in std_logic;
-		Last:			in	std_logic;
-		LE : 			in	std_logic;
-		TE : 			in	std_logic;
-
 		--CurAddr:		in 	std_logic_vector(7 downto 0);
-		CurAddrBit:		in std_logic;
+		CurAddrBit:		in 	std_logic;
 		--OldAddr:		in	std_logic_vector(7 downto 0);
 		OldAddrBit:		in std_logic;
 
@@ -69,8 +62,8 @@ architecture implementation of RoundBufferV4 is
 		NEXTBus_IN :	in	std_logic;
 		NEXTBus_OUT :	out	std_logic;
 
-		NextAddr : 		inout std_logic_vector(7 downto 0);
-		PrevAddr :		inout std_logic_vector(7 downto 0)
+		NextAddr : 		inout 	std_logic_vector(7 downto 0);
+		PrevAddr :		inout 	std_logic_vector(7 downto 0)
 		);
 
 	end component WindowBrain;
@@ -136,7 +129,33 @@ architecture implementation of RoundBufferV4 is
 
 	end component WindowBrainControl;
 
-	component TriggerBrainControl is
+	-- component TriggerBrainControl is
+	-- 	Generic(
+	-- 		NBRWINDOWS : integer := 16;
+	-- 		MIN_LE_TIME : integer := 3;	-- All times are x4 ns so 2 is equal to 8ns = 12 samples before rise of trigger
+	-- 		MIN_TE_TIME : integer := 1; -- 4 ns after falling of trigger
+	-- 		MAX_TRIG_TIME: integer := 32
+	-- 	);
+	-- 	Port (
+	-- 	nrst : 			in	STD_Logic;
+	-- 	ClockBus:		in T_ClockBus;
+	-- 	SCnt:			in	std_logic_vector(2 downto 0);
+	--
+	-- 	trigger : 		in std_logic_vector(3 downto 0);
+	--
+	-- 	-- Interface to WindowCPU
+	-- 	CurAddr:		in std_logic_vector(7 downto 0);
+	-- 	PrevAddr:		in std_logic_vector(7 downto 0);
+	-- 	NextAddr:		in std_logic_vector(7 downto 0);
+	--
+	-- 	CPUMode:		in 	std_logic;
+	-- 	CPUBus:			out	std_logic_vector(10 downto 0);
+	-- 	TriggerInfo :	out std_logic_vector(11 downto 0)
+	--
+	-- 	);
+	-- end component TriggerBrainControl;
+
+	component TriggerBrainControlV2 is
 		Generic(
 			NBRWINDOWS : integer := 16;
 			MIN_LE_TIME : integer := 3;	-- All times are x4 ns so 2 is equal to 8ns = 12 samples before rise of trigger
@@ -146,23 +165,20 @@ architecture implementation of RoundBufferV4 is
 		Port (
 		nrst : 			in	STD_Logic;
 		ClockBus:		in T_ClockBus;
-		SCnt:			in std_logic_vector(2 downto 0);
+		SCnt:			in	std_logic_vector(3 downto 0);
 
 		trigger : 		in std_logic_vector(3 downto 0);
 
-		Trig_out:		out	std_logic;
-		TrigDly:		out std_logic;
-		Last_out:		out	std_logic;
-		prevWdo_LE: 	out	std_logic;
-		nextWdo_TE: 	out	std_logic;
-
 		-- Interface to WindowCPU
-		CPUMode:		in std_logic;
-		TriggerInfo :		out std_logic_vector(11 downto 0)
+		CurAddr:		in 	std_logic_vector(7 downto 0);
+		OldAddr:		in	std_logic_vector(7 downto 0);
+
+		CPUMode:		in 	std_logic;
+		CPUBus:			out	std_logic_vector(10 downto 0);
+		TriggerInfo :	out std_logic_vector(11 downto 0)
 
 		);
-	end component TriggerBrainControl;
-
+	end component TriggerBrainControlV2;
 
 	-- -------------------------------------------------------------
 	-- SIGNALS
@@ -204,18 +220,10 @@ begin
 			Port map(
 			nrst			=> nrst,
 			CLK				=> ClockBus.CLK250MHz,
-			oddeven			=> timecounter(3),
-			CPUMode			=> CtrlBus_IxSL.CPUMode,
 			CPUBus 			=> Bus_intl,
 
 			wr1_en 			=> wr1_en_bus,
 			wr2_en			=> wr2_en_bus,
-
-			Trig			=> Trig_intl,
-			TrigDly 		=> TrigDly_intl,
-			Last			=> Last_intl,
-			TE				=> TE_intl,
-			LE				=> LE_intl,
 
 			--CurAddr			=> CurWindowCnt,
 			CurAddrBit			=> CurAddrBit_s(I),
@@ -241,20 +249,10 @@ begin
 		Port map(
 		nrst			=> nrst,
 		CLK				=> ClockBus.CLK250MHz,
-		oddeven			=> timecounter(3),
-
-
-		CPUMode			=> CtrlBus_IxSL.CPUMode,
 		CPUBus 			=> Bus_intl,
 
 		wr1_en 			=> wr1_en_bus,
 		wr2_en			=> wr2_en_bus,
-
-		Trig			=> Trig_intl,
-		TrigDly 		=> TrigDly_intl,
-		Last			=> Last_intl,
-		TE				=> TE_intl,
-		LE				=> LE_intl,
 
 		--CurAddr			=> CurWindowCnt,
 		CurAddrBit			=> CurAddrBit_s(0),
@@ -280,20 +278,11 @@ begin
 		Port map(
 		nrst			=> nrst,
 		CLK				=> ClockBus.CLK250MHz,
-		oddeven			=> timecounter(3),
 
-
-		CPUMode			=> CtrlBus_IxSL.CPUMode,
 		CPUBus 			=> Bus_intl,
 
 		wr1_en 			=> wr1_en_bus,
 		wr2_en			=> wr2_en_bus,
-
-		Trig			=> Trig_intl,
-		TrigDly 		=> TrigDly_intl,
-		Last			=> Last_intl,
-		TE				=> TE_intl,
-		LE				=> LE_intl,
 
 		--CurAddr			=> CurWindowCnt,
 		CurAddrBit			=> CurAddrBit_s(NBRWINDOWS-1),
@@ -333,8 +322,6 @@ begin
 		OldAddr			=> OldWindowCnt,
 		OldAddrBit		=> OldAddrBit_s,
 
-		--NextBus_In	=> NEXTBus_intl,
-		--PrevBus_In	=> PREVBus_intl,
 		NextAddr_in		=> NextAddrBus,
 		PrevAddr_in		=> PrevAddrBus,
 
@@ -343,31 +330,47 @@ begin
 		DIG_DataIn		=> DIG_DataIn,
 		DIG_WriteEn		=> DIG_WriteEn
 		);
-	WDOTRIGGER : TriggerBrainControl
-			Generic map(
-				NBRWINDOWS => NBRWINDOWS,
-				MIN_LE_TIME => 3,
-				MIN_TE_TIME => 1
-			)
-			Port map(
-			nrst			=> nrst,
-			ClockBus		=> ClockBus,
-			--timecounter		=> timecounter,
-			SCnt	=> timecounter(2 downto 0),
+		WDOTRIGGER : TriggerBrainControlV2
+				Generic map(
+					NBRWINDOWS => NBRWINDOWS,
+					MIN_LE_TIME => 3,
+					MIN_TE_TIME => 1
+				)
+				Port map(
+				nrst			=> nrst,
+				ClockBus		=> ClockBus,
+				SCnt	=> timecounter(3 downto 0),
 
-			trigger 	=> trigger,
+				trigger 	=> trigger,
 
-			Trig_out		=> Trig_intl,
-			TrigDly 		=> TrigDly_intl,
-			Last_out		=> Last_intl,
-			prevWdo_LE		=> LE_intl,
-			nextWdo_TE		=> TE_intl,
-
-			-- Interface to WindowCPU
-			CPUMode			=> Ctrlbus_ixsl.CPUMode,
-			TriggerInfo		=> TrigInfo_intl
-
-			);
+				-- Interface to WindowCPU
+				CPUMode			=> Ctrlbus_ixsl.CPUMode,
+				CPUBus 			=> Bus_intl,
+				TriggerInfo		=> TrigInfo_intl,
+				curaddr  		=> CurWindowCnt,
+				OldAddr			=> OldWindowCnt
+				);
+		-- WDOTRIGGER : TriggerBrainControl
+		-- 		Generic map(
+		-- 			NBRWINDOWS => NBRWINDOWS,
+		-- 			MIN_LE_TIME => 3,
+		-- 			MIN_TE_TIME => 1
+		-- 		)
+		-- 		Port map(
+		-- 		nrst			=> nrst,
+		-- 		ClockBus		=> ClockBus,
+		-- 		SCnt	=> timecounter(2 downto 0),
+		--
+		-- 		trigger 	=> trigger,
+		--
+		-- 		-- Interface to WindowCPU
+		-- 		CPUMode			=> Ctrlbus_ixsl.CPUMode,
+		-- 		CPUBus 			=> Bus_intl,
+		-- 		TriggerInfo		=> TrigInfo_intl,
+		-- 		curaddr  		=> CurWindowCnt,
+		-- 		NextAddr		=> NextAddrBus,
+		-- 		PrevAddr		=> PrevAddrBus
+		-- 		);
 
 	WDOSTORE : WindowStoreV3
 		Generic map(
@@ -392,5 +395,15 @@ begin
 		RDAD_DataOut => RDAD_DataOut,
 		RDAD_Empty	=> 	RDAD_Empty
 		);
+
+		--Debug
+		sDEBUG(0)	<= '0';
+		sDEBUG(1)	<= '0';
+		sDEBUG(2)	<= CtrlBus_IxSL.CPUMode;
+		sDEBUG(3)	<= CtrlBus_IxSL.WindowStorage;
+		sDEBUG(4)	<= Trig_intl;
+		sDEBUG(5)	<= RDAD_ReadEn;
+		sDEBUG(6)	<= '0';
+		sDEBUG(7)	<= '0';
 
 end implementation;

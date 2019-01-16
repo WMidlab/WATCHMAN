@@ -15,15 +15,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="42742400000fs"></ZoomStartTime>
-      <ZoomEndTime time="42804200001fs"></ZoomEndTime>
-      <Cursor1Time time="42776700000fs"></Cursor1Time>
+      <ZoomStartTime time="21777333333fs"></ZoomStartTime>
+      <ZoomEndTime time="22475333334fs"></ZoomEndTime>
+      <Cursor1Time time="22355000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="184"></NameColumnWidth>
-      <ValueColumnWidth column_width="143"></ValueColumnWidth>
+      <NameColumnWidth column_width="181"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="66" />
+   <WVObjectSize size="65" />
    <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/nrst">
       <obj_property name="ElementShortName">nrst</obj_property>
       <obj_property name="ObjectShortName">nrst</obj_property>
@@ -37,14 +37,6 @@
       <obj_property name="ElementShortName">Timecounter[63:0]</obj_property>
       <obj_property name="ObjectShortName">Timecounter[63:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/prevWdo_LE">
-      <obj_property name="ElementShortName">prevWdo_LE</obj_property>
-      <obj_property name="ObjectShortName">prevWdo_LE</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/nextWdo_TE">
-      <obj_property name="ElementShortName">nextWdo_TE</obj_property>
-      <obj_property name="ObjectShortName">nextWdo_TE</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CtrlBus_IxSL">
       <obj_property name="ElementShortName">CtrlBus_IxSL</obj_property>
@@ -147,25 +139,33 @@
       <obj_property name="ObjectShortName">OldAddrBit_s[255:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CurWindowCnt">
-      <obj_property name="ElementShortName">CurWindowCnt[7:0]</obj_property>
-      <obj_property name="ObjectShortName">CurWindowCnt[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/WR_ADDR_s">
       <obj_property name="ElementShortName">WR_ADDR_s[7:0]</obj_property>
       <obj_property name="ObjectShortName">WR_ADDR_s[7:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/NextAddr_intl">
-      <obj_property name="ElementShortName">NextAddr_intl[7:0]</obj_property>
-      <obj_property name="ObjectShortName">NextAddr_intl[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/CurAddr">
+      <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/OldAddr">
+      <obj_property name="ElementShortName">OldAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">OldAddr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CurWindowCnt">
+      <obj_property name="ElementShortName">CurWindowCnt[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurWindowCnt[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/PrevAddr_intl">
       <obj_property name="ElementShortName">PrevAddr_intl[7:0]</obj_property>
       <obj_property name="ObjectShortName">PrevAddr_intl[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/NextAddr_intl">
+      <obj_property name="ElementShortName">NextAddr_intl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">NextAddr_intl[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="divider898" type="divider">
       <obj_property name="label">BUS</obj_property>
@@ -194,29 +194,159 @@
    <wvobject type="group" fp_name="group957">
       <obj_property name="label">WDOTRIGGER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Trig_out">
-         <obj_property name="ElementShortName">Trig_out</obj_property>
-         <obj_property name="ObjectShortName">Trig_out</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Last_out">
-         <obj_property name="ElementShortName">Last_out</obj_property>
-         <obj_property name="ObjectShortName">Last_out</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/prevWdo_LE">
-         <obj_property name="ElementShortName">prevWdo_LE</obj_property>
-         <obj_property name="ObjectShortName">prevWdo_LE</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/nextWdo_TE">
-         <obj_property name="ElementShortName">nextWdo_TE</obj_property>
-         <obj_property name="ObjectShortName">nextWdo_TE</obj_property>
-      </wvobject>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/CPUMode">
          <obj_property name="ElementShortName">CPUMode</obj_property>
          <obj_property name="ObjectShortName">CPUMode</obj_property>
       </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/CurAddr">
+         <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/OldAddr">
+         <obj_property name="ElementShortName">OldAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">OldAddr[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/prev_OldAddr_intl">
+         <obj_property name="ElementShortName">prev_OldAddr_intl[7:0]</obj_property>
+         <obj_property name="ObjectShortName">prev_OldAddr_intl[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Old_Wr_en">
+         <obj_property name="ElementShortName">Old_Wr_en[1:0]</obj_property>
+         <obj_property name="ObjectShortName">Old_Wr_en[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/SCnt">
+         <obj_property name="ElementShortName">SCnt[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SCnt[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/D_wr1_en">
+         <obj_property name="ElementShortName">D_wr1_en</obj_property>
+         <obj_property name="ObjectShortName">D_wr1_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/D_wr2_en">
+         <obj_property name="ElementShortName">D_wr2_en</obj_property>
+         <obj_property name="ObjectShortName">D_wr2_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Wr1_en_dly">
+         <obj_property name="ElementShortName">Wr1_en_dly</obj_property>
+         <obj_property name="ObjectShortName">Wr1_en_dly</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Wr2_en_dly">
+         <obj_property name="ElementShortName">Wr2_en_dly</obj_property>
+         <obj_property name="ObjectShortName">Wr2_en_dly</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/trigger">
          <obj_property name="ElementShortName">trigger[3:0]</obj_property>
          <obj_property name="ObjectShortName">trigger[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/TrigInfo_Bus">
+         <obj_property name="ElementShortName">TrigInfo_Bus[11:0]</obj_property>
+         <obj_property name="ObjectShortName">TrigInfo_Bus[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/TrigInfo_Bus_dly">
+         <obj_property name="ElementShortName">TrigInfo_Bus_dly[11:0]</obj_property>
+         <obj_property name="ObjectShortName">TrigInfo_Bus_dly[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/old_triginfo">
+         <obj_property name="ElementShortName">old_triginfo[11:0]</obj_property>
+         <obj_property name="ObjectShortName">old_triginfo[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/SCnt">
+         <obj_property name="ElementShortName">SCnt[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SCnt[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/CPUBus">
+         <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
+         <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/trig_intl">
+         <obj_property name="ElementShortName">trig_intl</obj_property>
+         <obj_property name="ObjectShortName">trig_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/trigdly_intl">
+         <obj_property name="ElementShortName">trigdly_intl</obj_property>
+         <obj_property name="ObjectShortName">trigdly_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/last_intl">
+         <obj_property name="ElementShortName">last_intl</obj_property>
+         <obj_property name="ObjectShortName">last_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/LE_intl">
+         <obj_property name="ElementShortName">LE_intl</obj_property>
+         <obj_property name="ObjectShortName">LE_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/TE_intl">
+         <obj_property name="ElementShortName">TE_intl</obj_property>
+         <obj_property name="ObjectShortName">TE_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/flg_TE">
+         <obj_property name="ElementShortName">flg_TE</obj_property>
+         <obj_property name="ObjectShortName">flg_TE</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/flg_LE">
+         <obj_property name="ElementShortName">flg_LE</obj_property>
+         <obj_property name="ObjectShortName">flg_LE</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group6201">
+      <obj_property name="label">WDOSTORE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="other" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/writeEn_stm">
+         <obj_property name="ElementShortName">writeEn_stm</obj_property>
+         <obj_property name="ObjectShortName">writeEn_stm</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/WriteEn_intl">
+         <obj_property name="ElementShortName">WriteEn_intl</obj_property>
+         <obj_property name="ObjectShortName">WriteEn_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr1_en">
+         <obj_property name="ElementShortName">wr1_en</obj_property>
+         <obj_property name="ObjectShortName">wr1_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr2_en">
+         <obj_property name="ElementShortName">wr2_en</obj_property>
+         <obj_property name="ObjectShortName">wr2_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr1_en_dly">
+         <obj_property name="ElementShortName">wr1_en_dly</obj_property>
+         <obj_property name="ObjectShortName">wr1_en_dly</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr2_en_dly">
+         <obj_property name="ElementShortName">wr2_en_dly</obj_property>
+         <obj_property name="ObjectShortName">wr2_en_dly</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr1_en_clkd">
+         <obj_property name="ElementShortName">wr1_en_clkd</obj_property>
+         <obj_property name="ObjectShortName">wr1_en_clkd</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr2_en_clkd">
+         <obj_property name="ElementShortName">wr2_en_clkd</obj_property>
+         <obj_property name="ObjectShortName">wr2_en_clkd</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/windowstore">
+         <obj_property name="ElementShortName">windowstore[7:0]</obj_property>
+         <obj_property name="ObjectShortName">windowstore[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr_addr">
+         <obj_property name="ElementShortName">wr_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">wr_addr[7:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/Wr_Addr_dly">
+         <obj_property name="ElementShortName">Wr_Addr_dly[7:0]</obj_property>
+         <obj_property name="ObjectShortName">Wr_Addr_dly[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/TriggerInfo">
+         <obj_property name="ElementShortName">TriggerInfo[11:0]</obj_property>
+         <obj_property name="ObjectShortName">TriggerInfo[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/TrigInfoDly">
+         <obj_property name="ElementShortName">TrigInfoDly[11:0]</obj_property>
+         <obj_property name="ObjectShortName">TrigInfoDly[11:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="divider886" type="divider">
@@ -240,6 +370,7 @@
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/trigger">
       <obj_property name="ElementShortName">trigger[3:0]</obj_property>
       <obj_property name="ObjectShortName">trigger[3:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/TriggerInfo">
       <obj_property name="ElementShortName">TriggerInfo[11:0]</obj_property>
@@ -281,6 +412,16 @@
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/windowstore">
       <obj_property name="ElementShortName">windowstore[7:0]</obj_property>
       <obj_property name="ObjectShortName">windowstore[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/CurAddr">
+      <obj_property name="ElementShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurAddr[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOCONTROL/WR_ADDR_s">
+      <obj_property name="ElementShortName">WR_ADDR_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_ADDR_s[7:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOSTORE/wr_addr">
@@ -330,29 +471,9 @@
       <obj_property name="label">CPU</obj_property>
       <obj_property name="DisplayName">label</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/oddeven">
-      <obj_property name="ElementShortName">oddeven</obj_property>
-      <obj_property name="ObjectShortName">oddeven</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Trig_out">
-      <obj_property name="ElementShortName">Trig_out</obj_property>
-      <obj_property name="ObjectShortName">Trig_out</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/TrigDly_intl">
       <obj_property name="ElementShortName">TrigDly_intl</obj_property>
       <obj_property name="ObjectShortName">TrigDly_intl</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/Last_out">
-      <obj_property name="ElementShortName">Last_out</obj_property>
-      <obj_property name="ObjectShortName">Last_out</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/prevWdo_LE">
-      <obj_property name="ElementShortName">prevWdo_LE</obj_property>
-      <obj_property name="ObjectShortName">prevWdo_LE</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/WDOTRIGGER/nextWdo_TE">
-      <obj_property name="ElementShortName">nextWdo_TE</obj_property>
-      <obj_property name="ObjectShortName">nextWdo_TE</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/Bus_intl">
       <obj_property name="ElementShortName">Bus_intl[10:0]</obj_property>
@@ -401,14 +522,6 @@
          <obj_property name="ElementShortName">wr2_en_intl</obj_property>
          <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/wr">
-         <obj_property name="ElementShortName">wr</obj_property>
-         <obj_property name="ObjectShortName">wr</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/cur_wr">
-         <obj_property name="ElementShortName">cur_wr</obj_property>
-         <obj_property name="ObjectShortName">cur_wr</obj_property>
-      </wvobject>
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/PREVBus_IN">
          <obj_property name="ElementShortName">PREVBus_IN</obj_property>
          <obj_property name="ObjectShortName">PREVBus_IN</obj_property>
@@ -440,14 +553,6 @@
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/wr2_en">
          <obj_property name="ElementShortName">wr2_en</obj_property>
          <obj_property name="ObjectShortName">wr2_en</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/wr">
-         <obj_property name="ElementShortName">wr</obj_property>
-         <obj_property name="ObjectShortName">wr</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/cur_wr">
-         <obj_property name="ElementShortName">cur_wr</obj_property>
-         <obj_property name="ObjectShortName">cur_wr</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/PREVBus_IN">
          <obj_property name="ElementShortName">PREVBus_IN</obj_property>
@@ -501,23 +606,11 @@
          <obj_property name="ElementShortName">wr2_en_intl</obj_property>
          <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(151)\/CPUX/wr">
-         <obj_property name="ElementShortName">wr</obj_property>
-         <obj_property name="ObjectShortName">wr</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(151)\/CPUX/cur_wr">
-         <obj_property name="ElementShortName">cur_wr</obj_property>
-         <obj_property name="ObjectShortName">cur_wr</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group30568">
       <obj_property name="label">CPU0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPU0/CPUMode">
-         <obj_property name="ElementShortName">CPUMode</obj_property>
-         <obj_property name="ObjectShortName">CPUMode</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPU0/CPUBus">
          <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
          <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
@@ -553,6 +646,51 @@
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPU0/wr2_en_intl">
          <obj_property name="ElementShortName">wr2_en_intl</obj_property>
          <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group6716">
+      <obj_property name="label">CPU255</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/CurAddrBit">
+         <obj_property name="ElementShortName">CurAddrBit</obj_property>
+         <obj_property name="ObjectShortName">CurAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/wr1_en_intl">
+         <obj_property name="ElementShortName">wr1_en_intl</obj_property>
+         <obj_property name="ObjectShortName">wr1_en_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/wr2_en_intl">
+         <obj_property name="ElementShortName">wr2_en_intl</obj_property>
+         <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/OldAddrBit">
+         <obj_property name="ElementShortName">OldAddrBit</obj_property>
+         <obj_property name="ObjectShortName">OldAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/PREVBus_IN">
+         <obj_property name="ElementShortName">PREVBus_IN</obj_property>
+         <obj_property name="ObjectShortName">PREVBus_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/PREVBus_OUT">
+         <obj_property name="ElementShortName">PREVBus_OUT</obj_property>
+         <obj_property name="ObjectShortName">PREVBus_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/NEXTBus_IN">
+         <obj_property name="ElementShortName">NEXTBus_IN</obj_property>
+         <obj_property name="ObjectShortName">NEXTBus_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/NEXTBus_OUT">
+         <obj_property name="ElementShortName">NEXTBus_OUT</obj_property>
+         <obj_property name="ObjectShortName">NEXTBus_OUT</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/NextAddr">
+         <obj_property name="ElementShortName">NextAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">NextAddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/PrevAddr">
+         <obj_property name="ElementShortName">PrevAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">PrevAddr[7:0]</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

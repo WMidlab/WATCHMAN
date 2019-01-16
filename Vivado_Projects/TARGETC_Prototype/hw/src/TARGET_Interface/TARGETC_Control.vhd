@@ -22,6 +22,19 @@ end TC_Control;
 
 architecture arch_imp of TC_Control is
 
+	component clkcrossing_buf is
+		generic(
+			NBITS : integer := 32
+		);
+		port (
+			nrst:	in	std_logic;
+			DA: 	in	std_logic_vector(NBITS-1 downto 0);
+			QB:		out	std_logic_vector(NBITS-1 downto 0);
+			ClkA:	in	std_logic;
+			ClkB:	in	std_logic
+		);
+	end component clkcrossing_buf;
+
 	-- AXI4LITE signals
 	signal axi_awaddr	: std_logic_vector(C_S_AXI_ADDR_WIDTH-1 downto 0);
 	signal axi_awready	: std_logic;
@@ -61,7 +74,6 @@ architecture arch_imp of TC_Control is
     signal TestStream_stm : 	Pulse_State_Type := IDLE;
     signal PSBusy_stm : 		Pulse_State_Type := IDLE;
     signal testfifo_stm:		Pulse_State_Type := IDLE;
-    signal ClearTrigger_stm:	Pulse_State_Type := IDLE;
 
     signal TC_ADDR_s :	std_logic_vector(6 downto 0);
     signal TC_DATA_s:	std_logic_vector(11 downto 0);
@@ -267,14 +279,6 @@ begin
 						-- Read Only
 					when TC_eDO_CH15_REG =>
 						-- Read Only
-					when TC_TRIGA_REG =>
-						-- Read Only
-					when TC_TRIGB_REG =>
-						-- Read Only
-					when TC_TRIGC_REG =>
-						-- Read Only
-					when TC_TRIGD_REG =>
-						-- Read Only
 					when others =>
 						for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 							if ( AxiBusIn.WSTRB(byte_index) = '1' ) then
@@ -413,15 +417,6 @@ begin
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH14;
 	        	when TC_eDO_CH15_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;
-
-	        	when TC_TRIGA_REG =>
-	        		reg_data_out <= CtrlBus_IxMS.TrigACnt;
-	    		when TC_TRIGB_REG =>
-	        		reg_data_out <= CtrlBus_IxMS.TrigBCnt;
-	    		when TC_TRIGC_REG =>
-	        		reg_data_out <= CtrlBus_IxMS.TrigCCnt;
-	    		when TC_TRIGD_REG =>
-	        		reg_data_out <= CtrlBus_IxMS.TrigDCnt;
 
 	    		when others =>
 	    			reg_data_out <= TCReg(to_integer(unsigned(loc_addr)));
@@ -699,38 +694,6 @@ begin
 
 	CtrlBus_OxMS.PSBusy		<= '0' when PSBusy_stm = IDLE else '1';
 
-	-- --------------------------------------------------------------------------------
-	-- Acknowledge the read of sample
-    process(AxiBusIn.ARESETN,AxiBusIn.ACLK) is
-    begin
-    	if (AxiBusIn.ARESETN = '0') then
-    		ClearTrigger_stm <= IDLE;
-        else
-        	if (rising_edge(AxiBusIn.ACLK)) then
-                case ClearTrigger_stm is
-                    when IDLE =>
-                        if ((TCReg(TC_CONTROL_REG) and C_TESTSTREAM_MASK) = C_TESTSTREAM_MASK) then
-                            ClearTrigger_stm <= PULSE;
-                        else
-                            ClearTrigger_stm <= IDLE;
-                        end if;
-                    when PULSE =>
-                        ClearTrigger_stm <= RESET;
-                    when RESET =>	-- Wait for user PS clear register
-                        if ((TCReg(TC_CONTROL_REG) and C_TESTSTREAM_MASK) = C_TESTSTREAM_MASK) then
-                            ClearTrigger_stm <= RESET;
-                        else
-                            ClearTrigger_stm <= IDLE;
-                        end if;
-                   end case;
-             end if;
-        end if;
-    end process;
-
-	--CtrlBus_OxMS.SSAck		<= '1' when SSack_stm = PULSE else '0';
-	CtrlBus_OxMS.TrigCntClear		<= '0' when ClearTrigger_stm = IDLE else '1';
-	-- --------------------------------------------------------------------------------
-
 
 	-- ADDR and DATA to TARGETC Register
 	CtrlBus_OxMS.TC_BUS <= TC_ADDR_s & TC_DATA_s;
@@ -745,11 +708,66 @@ begin
    	CtrlBus_OxMS.SS_RESET		<= 	TCReg(TC_CONTROL_REG)(C_SS_RESET_BIT);
    	CtrlBus_OxMS.SWRESET		<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
 
-	CtrlBus_OxMS.FSTWINDOW		<= TCReg(TC_FSTWINDOW_REG);
-	CtrlBus_OxMS.NBRWINDOW		<= TCReg(TC_NBRWINDOW_REG);
+	-- CtrlBus_OxMS.FSTWINDOW		<= TCReg(TC_FSTWINDOW_REG);
+	-- CtrlBus_OxMS.NBRWINDOW		<= TCReg(TC_NBRWINDOW_REG);
+	--
+	-- CtrlBus_OxMS.SAMPLEMODE		<= TCReg(TC_CONTROL_REG)(C_SMODE_BIT);
+	-- CtrlBus_OxMS.CPUMODE		<= TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT);
 
-	CtrlBus_OxMS.SAMPLEMODE		<= TCReg(TC_CONTROL_REG)(C_SMODE_BIT);
-	CtrlBus_OxMS.CPUMODE		<= TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT);
+	BUF_CPUMODE : clkcrossing_buf
+		generic map(
+			NBITS => 1
+		)
+		port map(
+			nrst	=>	AxiBusIn.ARESETN,
+			DA		=>	 TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT),
+			QB		=> 	CtrlBus_OxMS.CPUMODE,
+			ClkA	=> 	AxiBusIn.ACLK,
+			ClkB	=> ClockBus.CLK250MHz
+		);
+
+	BUF_SAMPLEMODE : clkcrossing_buf
+		generic map(
+			NBITS => 1
+		)
+		port map(
+			nrst	=>	AxiBusIn.ARESETN,
+			DA		=>	 TCReg(TC_CONTROL_REG)(C_SMODE_BIT),
+			QB		=> 	CtrlBus_OxMS.SAMPLEMODE	,
+			ClkA	=> 	AxiBusIn.ACLK,
+			ClkB	=> ClockBus.HSCLK
+		);
+
+	BUF_NBRWINDOWS : clkcrossing_buf
+		generic map(
+			NBITS => 32
+		)
+		port map(
+			nrst	=>	AxiBusIn.ARESETN,
+			DA		=>	TCReg(TC_NBRWINDOW_REG),
+			QB		=> 	CtrlBus_OxMS.NBRWINDOW,
+			ClkA	=> 	AxiBusIn.ACLK,
+			ClkB	=> ClockBus.CLK250MHz
+		);
+
+	BUF_FSTWINDOWS : clkcrossing_buf
+		generic map(
+			NBITS => 32
+		)
+		port map(
+			nrst	=>	AxiBusIn.ARESETN,
+			DA		=>	TCReg(TC_FSTWINDOW_REG),
+			QB		=> 	CtrlBus_OxMS.FSTWINDOW,
+			ClkA	=> 	AxiBusIn.ACLK,
+			ClkB	=> ClockBus.CLK250MHz
+		);
+
+	CtrlBus_OxMS.BB1_sel		<= TCReg(TC_DEBUGSEL_REG)(2 downto 0);
+	CtrlBus_OxMS.BB2_sel		<= TCReg(TC_DEBUGSEL_REG)(5 downto 3);
+	CtrlBus_OxMS.BB3_sel		<= TCReg(TC_DEBUGSEL_REG)(8 downto 6);
+	CtrlBus_OxMS.BB4_sel		<= TCReg(TC_DEBUGSEL_REG)(11 downto 9);
+	CtrlBus_OxMS.BB5_sel		<= TCReg(TC_DEBUGSEL_REG)(14 downto 12);
+
     --SWRESET_sig					<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
 
 	-- STATUS Register Update
@@ -781,69 +799,9 @@ begin
     		tmp :=	tmp and (not C_WINDOWBUSY_MASK);
     	end if;
 
-    	-- Test Bits
-    	if (CtrlBus_IxMS.Test0 = '1') then
-    		tmp :=	tmp  or C_TEST_0_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_0_MASK);
-    	end if;
-
-       	if (CtrlBus_IxMS.Test1 = '1') then
-    		tmp :=	tmp  or C_TEST_1_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_1_MASK);
-    	end if;
-
-    	if (CtrlBus_IxMS.Test2 = '1') then
-    		tmp :=	tmp  or C_TEST_2_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_2_MASK);
-    	end if;
-
-    	if (CtrlBus_IxMS.Test3 = '1') then
-    		tmp :=	tmp  or C_TEST_3_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_3_MASK);
-    	end if;
-
-    	if (CtrlBus_IxMS.Test4 = '1') then
-    		tmp :=	tmp  or C_TEST_4_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_4_MASK);
-    	end if;
-
-    	if (CtrlBus_IxMS.Test5 = '1') then
-    		tmp :=	tmp  or C_TEST_5_MASK;
-    	else
-    		tmp :=	tmp and (not C_TEST_5_MASK);
-    	end if;
-
     	STATUS_intl <= tmp;
 
     end process;
---    TCReg(TC_STATUS_REG)	<= STATUS_intl;
-
-
-    -- eDO Sample Test Points Readouts
---    TCReg(TC_eDO_CH0_REG) <= x"00000" & CtrlBus_IxMS.DO_BUS.CH0 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH1_REG) <= x"10000" & CtrlBus_IxMS.DO_BUS.CH1 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH2_REG) <= x"20000" & CtrlBus_IxMS.DO_BUS.CH2 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH3_REG) <= x"30000" & CtrlBus_IxMS.DO_BUS.CH3 when AxiBusIn.ARESETN = '1' else (others => '0');
-
---    TCReg(TC_eDO_CH4_REG) <= x"40000" & CtrlBus_IxMS.DO_BUS.CH4 when AxiBusIn.ARESETN = '1' else (others => '0');
---   TCReg(TC_eDO_CH5_REG) <= x"50000" & CtrlBus_IxMS.DO_BUS.CH5 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH6_REG) <= x"60000" & CtrlBus_IxMS.DO_BUS.CH6 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH7_REG) <= x"70000" & CtrlBus_IxMS.DO_BUS.CH7 when AxiBusIn.ARESETN = '1' else (others => '0');
-
---    TCReg(TC_eDO_CH8_REG) <= x"80000" & CtrlBus_IxMS.DO_BUS.CH8 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH9_REG) <= x"90000" & CtrlBus_IxMS.DO_BUS.CH9 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH10_REG) <= x"A0000" & CtrlBus_IxMS.DO_BUS.CH10 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH11_REG) <= x"B0000" & CtrlBus_IxMS.DO_BUS.CH11 when AxiBusIn.ARESETN = '1' else (others => '0');
-
---    TCReg(TC_eDO_CH12_REG) <= x"C0000" & CtrlBus_IxMS.DO_BUS.CH12 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH13_REG) <= x"D0000" & CtrlBus_IxMS.DO_BUS.CH13 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH14_REG) <= x"E0000" & CtrlBus_IxMS.DO_BUS.CH14 when AxiBusIn.ARESETN = '1' else (others => '0');
---    TCReg(TC_eDO_CH15_REG) <= x"F0000" & CtrlBus_IxMS.DO_BUS.CH15 when AxiBusIn.ARESETN = '1' else (others => '0');
 
 
 end arch_imp;

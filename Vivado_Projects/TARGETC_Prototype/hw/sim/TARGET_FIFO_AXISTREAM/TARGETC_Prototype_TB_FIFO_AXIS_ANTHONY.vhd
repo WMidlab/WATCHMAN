@@ -128,22 +128,21 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			TrigC :			in std_logic;
 			TrigD :			in std_logic;
 
-			TrigA_intr :	out std_logic;
-			TrigB_intr :	out std_logic;
-			TrigC_intr :	out std_logic;
-			TrigD_intr :	out std_logic;
-
 			--NbrWindow:		out	std_logic_vector(31 downto 0);
 			WDOTime:			out std_logic_vector(63 downto 0);
 			DIGTime:			out std_logic_vector(63 downto 0);
 			Trigger:			out std_logic_vector(31 downto 0);
 			WDONbr:				out std_logic_vector(8 downto 0);
-		-- DEBUG SIGNALS
+		
+					-- Interrupt SIGNALS
 			SSVALID_INTR:	out	std_logic;
-			--HSCLK:			out std_logic;
-			SSTIN:			out	std_logic;
-			MONTIMING:		out std_logic;
-			RAMP_CNT:		out std_logic
+	
+			-- DEBUG OUTPUTs
+			BB1 :	out std_logic;
+			BB2 :	out std_logic;
+			BB3 :	out std_logic;
+			BB4 :	out std_logic;
+			BB5 :	out std_logic
 		);
 	end component TARGETC_IP_Prototype;
 
@@ -412,21 +411,20 @@ begin
 		TrigC => '0',
 		TrigD => '0',
 
-		TrigA_intr=> open,
-		TrigB_intr=> open,
-		TrigC_intr=> open,
-		TrigD_intr=> open,
 		--Header Information
 		WDOTime	=> WDOTime_intl,
 		DIGTime => DIGTime_intl,
 		Trigger => Trigger_intl,
 		WDONbr => WDONBR_intl,
+	
 	-- DEBUG SIGNALS
 		SSVALID_INTR	=> open,
 	--	HSCLK			=> open,
-		SSTIN			=> open,
-		MONTIMING		=> open,
-		RAMP_CNT		=> open
+		BB1			=> open,
+		BB2		=> open,
+		BB3		=> open,
+		BB4		=> open,
+		BB5		=> open
 	);
 
 	DUT_AXIS : axistream

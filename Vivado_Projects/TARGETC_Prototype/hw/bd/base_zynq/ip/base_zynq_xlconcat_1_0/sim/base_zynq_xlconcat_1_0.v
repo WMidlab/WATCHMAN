@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2018 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -56,20 +56,12 @@
 module base_zynq_xlconcat_1_0 (
   In0,
   In1,
-  In2,
-  In3,
-  In4,
-  In5,
   dout
 );
 
 input wire [0 : 0] In0;
 input wire [0 : 0] In1;
-input wire [0 : 0] In2;
-input wire [0 : 0] In3;
-input wire [0 : 0] In4;
-input wire [0 : 0] In5;
-output wire [5 : 0] dout;
+output wire [1 : 0] dout;
 
   xlconcat_v2_1_1_xlconcat #(
     .IN0_WIDTH(1),
@@ -104,15 +96,15 @@ output wire [5 : 0] dout;
     .IN29_WIDTH(1),
     .IN30_WIDTH(1),
     .IN31_WIDTH(1),
-    .dout_width(6),
-    .NUM_PORTS(6)
+    .dout_width(2),
+    .NUM_PORTS(2)
   ) inst (
     .In0(In0),
     .In1(In1),
-    .In2(In2),
-    .In3(In3),
-    .In4(In4),
-    .In5(In5),
+    .In2(1'B0),
+    .In3(1'B0),
+    .In4(1'B0),
+    .In5(1'B0),
     .In6(1'B0),
     .In7(1'B0),
     .In8(1'B0),

@@ -149,19 +149,15 @@ entity TARGETC_IP_Prototype is
 		TrigC :			in std_logic;
 		TrigD :			in std_logic;
 
-		TrigA_intr :	out std_logic;
-		TrigB_intr :	out std_logic;
-		TrigC_intr :	out std_logic;
-		TrigD_intr :	out std_logic;
-
-		-- DEBUG SIGNALS
+		-- Interrupt SIGNALS
 		SSVALID_INTR:	out	std_logic;
-		--HSCLK:			out std_logic;
-		SSTIN:			out	std_logic;
-		MONTIMING:		out std_logic;
-		RAMP_CNT:		out std_logic
 
-		--NbrWindow:		out	std_logic_vector(31 downto 0)
+		-- DEBUG OUTPUTs
+		BB1 :	out std_logic;
+		BB2 :	out std_logic;
+		BB3 :	out std_logic;
+		BB4 :	out std_logic;
+		BB5 :	out std_logic
 	);
 end TARGETC_IP_Prototype;
 
@@ -277,7 +273,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 	component RoundBufferV4 is
 		generic(
-			NBRWINDOWS : integer := 16
+			NBRWINDOWS : integer := 128
 		);
 		port(
 			nrst : 			in	std_Logic;
@@ -298,8 +294,9 @@ architecture arch_imp of TARGETC_IP_Prototype is
 			-- FIFO IN for Digiting
 		    DIG_Full	: out	std_logic;
 		    DIG_DataIn	: in	std_logic_vector(8 downto 0);
-		    DIG_WriteEn	: in	std_logic
+		    DIG_WriteEn	: in	std_logic;
 
+			sDEBUG :	out std_logic_vector(7 downto 0)
 		);
 	end component RoundBufferV4;
 
@@ -362,6 +359,13 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		);
 	end component;
 
+	component DebugCore is
+	port(
+		O : 		out std_logic ;
+		sel:		in	std_logic_vector(2 downto 0);
+		I : 		in std_logic_vector(7 downto 0)
+		);
+	end component;
 	-------------------------------------------------------
 	-- Signal Declaration
 	-------------------------------------------------------
@@ -389,13 +393,15 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
     signal timecounter_intl : std_logic_vector(63 downto 0);
 
-    signal TrigA_reg : std_logic_vector(1 downto 0);
-    signal TrigB_reg : std_logic_vector(1 downto 0);
-    signal TrigC_reg : std_logic_vector(1 downto 0);
-    signal TrigD_reg : std_logic_vector(1 downto 0);
+	signal nTrigA, nTrigB, nTrigC, nTrigD : std_logic;
 
 	signal trigger_intl : std_logic_vector(3 downto 0);
 	signal TriggerInfor_intl : std_logic_vector(11 downto 0);
+
+	--DEBUG Signals
+	signal MONTIMING_s : std_logic;
+	signal Debug_intl : std_logic_vector(7 downto 0);
+	signal Debug_RoundBuffer : std_logic_vector(7 downto 0);
 begin
 
 
@@ -528,7 +534,9 @@ begin
 			-- FIFO IN for Digiting
 			DIG_Full	=> DIG_Full_intl,
 			DIG_DataIn	=> DIG_DataIn_intl,
-			DIG_WriteEn	=> DIG_WriteEn_intl
+			DIG_WriteEn	=> DIG_WriteEn_intl,
+
+			sDEBUG => Debug_RoundBuffer
 
 		);
 
@@ -624,14 +632,10 @@ begin
 
 	--NbrWindow	<= CtrlBusOut_intl.NBRWINDOW;
 
-	-- DEBUG
-	--RAMP_CNT <= CtrlBusIn_intl.RAMP_CNT;
-	RAMP_CNT <= ClockBus_intl.Clk250Mhz;
+	-- Interrupt Interface
 	SSVALID_INTR <= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '0' else '0';
-	--HSCLK <= HSCLK_dif;
 
-	SSTIN <= ClockBus_intl.SSTIN;
-
+	-- Timing Buffer
 	IBUFDS_MonTiming : IBUFDS
 	generic map(
 		IOSTANDARD  => "LVDS_25"
@@ -640,14 +644,57 @@ begin
 		I	=> MONTIMING_P,
 		IB	=> MONTIMING_N,
 
-		O	=> MONTIMING
+		O	=> MONTIMING_s
 	);
 
 	-- Trigger signal to RoundBuffer
-	Trigger_intl <= TrigD & TrigC & TrigB & TrigA;
-	TrigA_intr <= '0';
-	TrigB_intr <= '0';
-	TrigC_intr <= '0';
-	TrigD_intr <= '0';
+	nTrigA <= not TrigA;
+	nTrigB <= not TrigB;	-- Signal are inverted Pulse is negative and not positiv
+	nTrigC <= not TrigC;
+	nTrigD <= not TrigD;
 
+	Trigger_intl <= nTrigD & nTrigC & nTrigB & nTrigA;
+
+	-- Debug Core
+	Debug_intl(0) <= ClockBus_intl.SSTIN;
+	Debug_intl(1) <= MONTIMING_s;
+	Debug_intl(7 downto 2) <= Debug_RoundBuffer(7 downto 2);
+
+	BB1_Debug_inst : DebugCore
+	port map(
+		O	=> BB1,
+		I	=> Debug_intl,
+		sel	=> CtrlBusOut_intl.BB1_sel
+	);
+
+	BB2_Debug_inst : DebugCore
+	port map(
+		O	=> BB2,
+		I	=> Debug_intl,
+
+		sel	=> CtrlBusOut_intl.BB2_sel
+	);
+
+	BB3_Debug_inst : DebugCore
+	port map(
+		O	=> BB3,
+		I	=> Debug_intl,
+
+		sel	=> CtrlBusOut_intl.BB3_sel
+	);
+
+	BB4_Debug_inst : DebugCore
+	port map(
+		O	=> BB4,
+		I	=> Debug_intl,
+
+		sel	=> CtrlBusOut_intl.BB4_sel
+	);
+	BB5_Debug_inst : DebugCore
+	port map(
+		O	=> BB5,
+		I	=> Debug_intl,
+
+		sel	=> CtrlBusOut_intl.BB5_sel
+	);
 end arch_imp;

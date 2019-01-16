@@ -103,7 +103,7 @@ package TARGETC_pkg is
 
 		constant C_PS_BUSY_BIT:		integer := 16;
         constant C_CPUMODE_BIT:     integer := 17;
-        
+
 	constant TC_STATUS_REG : 	integer := 130;
 		--MASK
 		constant C_BUSY_MASK:	std_logic_vector(31 downto 0) := x"00000001";
@@ -155,10 +155,7 @@ package TARGETC_pkg is
 
 	constant TC_WL_DIV_REG:		integer := 153;
 
-	constant TC_TRIGA_REG:		integer := 154;
-	constant TC_TRIGB_REG:		integer := 155;
-	constant TC_TRIGC_REG:		integer := 156;
-	constant TC_TRIGD_REG:		integer := 157;
+	constant TC_DEBUGSEL_REG:		integer := 154;
 
 	--type eDO_ARRAY is array (0 downto 15) of std_logic_vector(11 downto 0);
 	type eDO_LINE is array (11 downto 0) of std_logic;
@@ -214,8 +211,14 @@ package TARGETC_pkg is
 		TestFiFo:		std_logic;
 		PSBusy:			std_logic;
 
-		TrigCntClear:	std_logic;
         CPUMode:        std_logic;
+
+        BB1_sel:        std_logic_vector(2 downto 0);
+        BB2_sel:        std_logic_vector(2 downto 0);
+        BB3_sel:        std_logic_vector(2 downto 0);
+        BB4_sel:        std_logic_vector(2 downto 0);
+        BB5_sel:        std_logic_vector(2 downto 0);
+
 	end record;
 	subtype T_CtrlBus_IxSL is T_CtrlBus_OxMS;
 	subtype T_CtrlBus_OxMS_Intl is T_CtrlBus_OxMS;
@@ -234,18 +237,6 @@ package TARGETC_pkg is
 		WindowBusy:		std_logic;
 		SSvalid:		std_logic;
 		RAMP_Cnt:		std_logic;
-
-		TrigACnt:		std_logic_vector(31 downto 0);
-		TrigBCnt:		std_logic_vector(31 downto 0);
-		TrigCCnt:		std_logic_vector(31 downto 0);
-		TrigDCnt:		std_logic_vector(31 downto 0);
-
-		Test0:	std_logic;
-		Test1:	std_logic;
-		Test2:	std_logic;
-		Test3:	std_logic;
-		Test4:	std_logic;
-		Test5:	std_logic;
 
 	end record;
 	subtype T_CtrlBus_OxSL is T_CtrlBus_IxMS;
