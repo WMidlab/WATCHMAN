@@ -43,6 +43,7 @@ architecture implementation of RoundBufferV4 is
 		Port (
 
 		nrst : 			in	std_Logic;
+		CLR :			in	std_Logic;
 	--	SSTIN:			in std_logic;
 		CLK:			in 	std_logic;
 
@@ -210,7 +211,32 @@ architecture implementation of RoundBufferV4 is
 
 	signal CurAddrBit_s:		std_logic_vector(NBRWINDOWS-1 downto 0);
 	signal OldAddrBit_s:		std_logic_vector(NBRWINDOWS-1 downto 0);
+
+	signal clr_intl : std_logic;
+
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+	attribute DONT_TOUCH of GEN_CPU: label is "TRUE";
+	attribute DONT_TOUCH of CPU0: label is "TRUE";
+	attribute DONT_TOUCH of CPULast: label is "TRUE";
+
+	attribute DONT_TOUCH of PREVBus_intl: signal is "TRUE";
+	attribute DONT_TOUCH of NEXTBus_intl: signal is "TRUE";
+
+	attribute DONT_TOUCH of CurWindowCnt: signal is "TRUE";
+	attribute DONT_TOUCH of OldWindowCnt: signal is "TRUE";
+
+	attribute DONT_TOUCH of NextAddrBus: signal is "TRUE";
+	attribute DONT_TOUCH of PrevAddrBus: signal is "TRUE";
+
+	attribute DONT_TOUCH of wr1_en_bus: signal is "TRUE";
+	attribute DONT_TOUCH of wr2_en_bus: signal is "TRUE";
+
 begin
+
+	clr_intl <= '1'	when timecounter(3 downto 0) = "0000" else '0';
 
 	GEN_CPU : for I in 1 to (NBRWINDOWS-2) generate
 		CPUX : WindowBrain
@@ -219,6 +245,7 @@ begin
 			)
 			Port map(
 			nrst			=> nrst,
+			clr				=> clr_intl,
 			CLK				=> ClockBus.CLK250MHz,
 			CPUBus 			=> Bus_intl,
 
@@ -248,6 +275,7 @@ begin
 		)
 		Port map(
 		nrst			=> nrst,
+		clr				=> clr_intl,
 		CLK				=> ClockBus.CLK250MHz,
 		CPUBus 			=> Bus_intl,
 
@@ -277,6 +305,7 @@ begin
 		)
 		Port map(
 		nrst			=> nrst,
+		clr				=> clr_intl,
 		CLK				=> ClockBus.CLK250MHz,
 
 		CPUBus 			=> Bus_intl,

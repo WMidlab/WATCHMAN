@@ -402,6 +402,12 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	signal MONTIMING_s : std_logic;
 	signal Debug_intl : std_logic_vector(7 downto 0);
 	signal Debug_RoundBuffer : std_logic_vector(7 downto 0);
+
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+	attribute DONT_TOUCH of TC_RoundBuffer: label is "TRUE";
 begin
 
 

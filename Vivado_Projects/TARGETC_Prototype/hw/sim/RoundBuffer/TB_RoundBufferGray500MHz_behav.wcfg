@@ -15,15 +15,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="21777333333fs"></ZoomStartTime>
-      <ZoomEndTime time="22475333334fs"></ZoomEndTime>
-      <Cursor1Time time="22355000000fs"></Cursor1Time>
+      <ZoomStartTime time="20155466667fs"></ZoomStartTime>
+      <ZoomEndTime time="20296666668fs"></ZoomEndTime>
+      <Cursor1Time time="20199467000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="181"></NameColumnWidth>
+      <NameColumnWidth column_width="173"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="65" />
+   <WVObjectSize size="66" />
    <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/nrst">
       <obj_property name="ElementShortName">nrst</obj_property>
       <obj_property name="ObjectShortName">nrst</obj_property>
@@ -498,10 +498,20 @@
       <obj_property name="ElementShortName">PrevAddr[7:0]</obj_property>
       <obj_property name="ObjectShortName">PrevAddr[7:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="group" fp_name="group1812">
       <obj_property name="label">CPU149</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/CurAddrBit">
+         <obj_property name="ElementShortName">CurAddrBit</obj_property>
+         <obj_property name="ObjectShortName">CurAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/OldAddrBit">
+         <obj_property name="ElementShortName">OldAddrBit</obj_property>
+         <obj_property name="ObjectShortName">OldAddrBit</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(149)\/CPUX/CPUBus">
          <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
          <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
@@ -542,6 +552,15 @@
    <wvobject type="group" fp_name="group1400">
       <obj_property name="label">CPU150</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/CurAddrBit">
+         <obj_property name="ElementShortName">CurAddrBit</obj_property>
+         <obj_property name="ObjectShortName">CurAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/OldAddrBit">
+         <obj_property name="ElementShortName">OldAddrBit</obj_property>
+         <obj_property name="ObjectShortName">OldAddrBit</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(150)\/CPUX/CPUBus">
          <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
          <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
@@ -574,6 +593,15 @@
    <wvobject type="group" fp_name="group6022">
       <obj_property name="label">CPU151</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(151)\/CPUX/CurAddrBit">
+         <obj_property name="ElementShortName">CurAddrBit</obj_property>
+         <obj_property name="ObjectShortName">CurAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(151)\/CPUX/OldAddrBit">
+         <obj_property name="ElementShortName">OldAddrBit</obj_property>
+         <obj_property name="ObjectShortName">OldAddrBit</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(151)\/CPUX/wr1_en">
          <obj_property name="ElementShortName">wr1_en</obj_property>
          <obj_property name="ObjectShortName">wr1_en</obj_property>
@@ -607,10 +635,54 @@
          <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject type="group" fp_name="group20564">
+      <obj_property name="label">CPU152</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/CurAddrBit">
+         <obj_property name="ElementShortName">CurAddrBit</obj_property>
+         <obj_property name="ObjectShortName">CurAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/OldAddrBit">
+         <obj_property name="ElementShortName">OldAddrBit</obj_property>
+         <obj_property name="ObjectShortName">OldAddrBit</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/PREVBus_IN">
+         <obj_property name="ElementShortName">PREVBus_IN</obj_property>
+         <obj_property name="ObjectShortName">PREVBus_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/PREVBus_OUT">
+         <obj_property name="ElementShortName">PREVBus_OUT</obj_property>
+         <obj_property name="ObjectShortName">PREVBus_OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/NEXTBus_IN">
+         <obj_property name="ElementShortName">NEXTBus_IN</obj_property>
+         <obj_property name="ObjectShortName">NEXTBus_IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/NEXTBus_OUT">
+         <obj_property name="ElementShortName">NEXTBus_OUT</obj_property>
+         <obj_property name="ObjectShortName">NEXTBus_OUT</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/NextAddr">
+         <obj_property name="ElementShortName">NextAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">NextAddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/PrevAddr">
+         <obj_property name="ElementShortName">PrevAddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">PrevAddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/wr1_en_intl">
+         <obj_property name="ElementShortName">wr1_en_intl</obj_property>
+         <obj_property name="ObjectShortName">wr1_en_intl</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/\GEN_CPU(152)\/CPUX/wr2_en_intl">
+         <obj_property name="ElementShortName">wr2_en_intl</obj_property>
+         <obj_property name="ObjectShortName">wr2_en_intl</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject type="group" fp_name="group30568">
       <obj_property name="label">CPU0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPU0/CPUBus">
          <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
          <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
@@ -651,7 +723,6 @@
    <wvobject type="group" fp_name="group6716">
       <obj_property name="label">CPU255</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/TB_RoundBuffer/TC_RoundBuffer/CPULAST/CurAddrBit">
          <obj_property name="ElementShortName">CurAddrBit</obj_property>
          <obj_property name="ObjectShortName">CurAddrBit</obj_property>

@@ -27,8 +27,6 @@ entity WindowBrainControl is
 	OldAddr:		out	std_logic_vector(7 downto 0);
 	OldAddrBit:		out std_logic_vector(NBRWINDOWS-1 downto 0);
 
-	--	NextBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
-	--	PrevBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
 	NextAddr_in : 	in std_logic_vector(7 downto 0);
 	PrevAddr_in :	in std_logic_vector(7 downto 0);
 

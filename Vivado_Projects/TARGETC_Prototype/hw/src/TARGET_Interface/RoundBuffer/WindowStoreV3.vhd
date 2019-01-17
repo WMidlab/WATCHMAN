@@ -71,6 +71,14 @@ architecture Behavioral of WindowStoreV3 is
 
 	signal	TrigInfoDly, TrigInfoBuf, TrigInfoBuf_dly : std_logic_vector(11 downto 0);
 
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+
+	attribute DONT_TOUCH of writeEn_stm : signal is "TRUE";
+	attribute DONT_TOUCH of WriteEn_intl : signal is "TRUE";
+
 begin
 
 	-- Old Style Data Record Now

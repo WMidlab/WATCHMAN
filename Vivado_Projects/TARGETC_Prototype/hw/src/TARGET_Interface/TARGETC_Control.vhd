@@ -720,8 +720,8 @@ begin
 		)
 		port map(
 			nrst	=>	AxiBusIn.ARESETN,
-			DA		=>	 TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT),
-			QB		=> 	CtrlBus_OxMS.CPUMODE,
+			DA(0)		=>	 TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT),
+			QB(0)		=> 	CtrlBus_OxMS.CPUMODE,
 			ClkA	=> 	AxiBusIn.ACLK,
 			ClkB	=> ClockBus.CLK250MHz
 		);
@@ -732,8 +732,8 @@ begin
 		)
 		port map(
 			nrst	=>	AxiBusIn.ARESETN,
-			DA		=>	 TCReg(TC_CONTROL_REG)(C_SMODE_BIT),
-			QB		=> 	CtrlBus_OxMS.SAMPLEMODE	,
+			DA(0)		=>	 TCReg(TC_CONTROL_REG)(C_SMODE_BIT),
+			QB(0)		=> 	CtrlBus_OxMS.SAMPLEMODE	,
 			ClkA	=> 	AxiBusIn.ACLK,
 			ClkB	=> ClockBus.HSCLK
 		);

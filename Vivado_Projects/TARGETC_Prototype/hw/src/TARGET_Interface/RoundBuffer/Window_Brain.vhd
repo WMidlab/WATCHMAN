@@ -12,6 +12,7 @@ entity WindowBrain is
 	Port (
 
 	nrst : 			in	std_Logic;
+	CLR :			in	std_Logic;
 --	SSTIN:			in std_logic;
 	CLK:			in 	std_logic;
 
@@ -42,13 +43,21 @@ architecture Behavioral of WindowBrain is
 	signal wr1_en_intl : std_logic;
 	signal wr2_en_intl : std_logic;
 
-	signal wr1_flg, flg_LE, flg_TE: std_logic;
-	signal wr2_flg : std_logic;
-
-	--signal wr, cur_wr : std_logic;
-	signal oldaddr_flg, mode_flg : std_logic;
+	signal wr1_flg	: std_logic;
+	signal wr2_flg 	: std_logic;
 
 	signal CPUCmd_Bus : t_CommandBus;
+
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+
+	attribute DONT_TOUCH of wr1_en_intl: signal is "TRUE";
+	attribute DONT_TOUCH of wr2_en_intl: signal is "TRUE";
+
+	attribute DONT_TOUCH of wr1_flg: signal is "TRUE";
+	attribute DONT_TOUCH of wr2_flg: signal is "TRUE";
 
 begin
 
@@ -61,12 +70,6 @@ begin
 			wr1_flg <= '0';
 			wr2_flg <= '0';
 
-			flg_LE <= '0';
-			flg_TE <= '0';
-
-			--CPUCmd_Bus.addr <= (others => '0');
-			--CPUCmd_Bus.cmd <= CMD_NOP;
-			--CPUBus <= CMD_NOP & x"00";
 		else
 			if rising_edge(clk) then
 
@@ -92,9 +95,6 @@ begin
 
 				-- Re-Entry STM
 				if CurAddrBit = '0' and PREVBus_In = '0' and NextBus_In = '0' then
-
-					flg_LE <= '0';
-					flg_TE <= '0';
 
 					if (wr1_flg = '1') then
 						wr1_en_intl <= '1';
@@ -122,9 +122,9 @@ begin
 --	wr <= 	'1' when ((wr1_en_intl = '1') and (wr2_en_intl='1')) else '0';
 --	cur_wr <= '1' when ((CurAddrBit = '0') and (wr = '1')) else '0';
 
-	process(CLK,nrst)
+	process(CLK,nrst,CLR)
 	begin
-		if nrst='0' then
+		if nrst='0' or CLR= '1' then
 			PrevAddr <= (others => 'Z');
 			NextAddr <= (others => 'Z');
 			PREVBus_Out <= '0';
