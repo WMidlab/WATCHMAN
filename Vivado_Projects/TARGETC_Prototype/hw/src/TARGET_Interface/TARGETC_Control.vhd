@@ -417,7 +417,8 @@ begin
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH14;
 	        	when TC_eDO_CH15_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;
-
+				when TC_ADDR_READOUT =>
+					reg_data_out <= x"0" & CtrlBus_IxMS.SS_read & CtrlBus_IxMS.WL_read & CtrlBus_IxMS.RDAD_read;
 	    		when others =>
 	    			reg_data_out <= TCReg(to_integer(unsigned(loc_addr)));
 	    	end case;
@@ -706,7 +707,7 @@ begin
     CtrlBus_OxMS.RegCLR 		<= 	TCReg(TC_CONTROL_REG)(C_eRegCLR_BIT);
     CtrlBus_OxMS.SmplSl_Any 	<= 	TCReg(TC_CONTROL_REG)(C_TPG_BIT);
    	CtrlBus_OxMS.SS_RESET		<= 	TCReg(TC_CONTROL_REG)(C_SS_RESET_BIT);
-   	CtrlBus_OxMS.SWRESET		<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
+   	CtrlBus_OxMS.SW_nRST		<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
 
 	-- CtrlBus_OxMS.FSTWINDOW		<= TCReg(TC_FSTWINDOW_REG);
 	-- CtrlBus_OxMS.NBRWINDOW		<= TCReg(TC_NBRWINDOW_REG);
@@ -768,7 +769,6 @@ begin
 	CtrlBus_OxMS.BB4_sel		<= TCReg(TC_DEBUGSEL_REG)(11 downto 9);
 	CtrlBus_OxMS.BB5_sel		<= TCReg(TC_DEBUGSEL_REG)(14 downto 12);
 
-    --SWRESET_sig					<= 	TCReg(TC_CONTROL_REG)(C_SWRESET_BIT);
 
 	-- STATUS Register Update
     process(AxiBusIn.ACLK)

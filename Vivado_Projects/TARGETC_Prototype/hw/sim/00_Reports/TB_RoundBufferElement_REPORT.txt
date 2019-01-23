@@ -6,6 +6,6 @@ RDAD_DataOut_obs: 2944Time WDO: 2944WR_ADDR: 185WR1: '0'WR2: '0'Trig Long: 
 RDAD_DataOut_obs: 3216Time WDO: 3216WR_ADDR: 202WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
 RDAD_DataOut_obs: 3232Time WDO: 3232WR_ADDR: 203WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
 RDAD_DataOut_obs: 3248Time WDO: 3248WR_ADDR: 204WR1: '0'WR2: '0'Trig Long: 1Trig Last: 1Trig : 1 
-RDAD_DataOut_obs: 8048Time WDO: 8048WR_ADDR: 0WR1: '0'WR2: '1'Trig Long: 0Trig Last: 0Trig : 0 
-RDAD_DataOut_obs: 12080Time WDO: 12080WR_ADDR: 5WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 0 
-RDAD_DataOut_obs: 12096Time WDO: 12096WR_ADDR: 6WR1: '0'WR2: '1'Trig Long: 0Trig Last: 0Trig : 0 
+RDAD_DataOut_obs: 8176Time WDO: 8176WR_ADDR: 0WR1: '0'WR2: '1'Trig Long: 0Trig Last: 0Trig : 0 
+RDAD_DataOut_obs: 12352Time WDO: 12352WR_ADDR: 5WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 0 
+RDAD_DataOut_obs: 20448Time WDO: 20448WR_ADDR: 0WR1: '0'WR2: '1'Trig Long: 0Trig Last: 0Trig : 0 

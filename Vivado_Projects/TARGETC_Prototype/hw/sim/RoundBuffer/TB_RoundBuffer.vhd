@@ -40,12 +40,12 @@ architecture implementation of TB_RoundBuffer is
 	);
 	end component TC_ClockManagementV3;
 
-	component RoundBufferV4 is
+	component RoundBufferV5 is
 		generic(
 			NBRWINDOWS : integer := 16
 		);
 		port(
-			nrst : 			in	std_Logic;
+			--nrst : 			in	std_Logic;
 			ClockBus:		in T_ClockBus;
 			Timecounter:	in std_logic_vector(63 downto 0);
 
@@ -66,7 +66,7 @@ architecture implementation of TB_RoundBuffer is
 		    DIG_WriteEn	: in	std_logic
 
 		);
-	end component RoundBufferV4;
+	end component RoundBufferV5;
 
 	-- -------------------------------------------------------------
 	-- Constant
@@ -108,7 +108,7 @@ begin
 
 	TC_ClockMgmt_inst : TC_ClockManagementV3
 	port map(
-		nrst				=> nrst,
+		nrst				=> CtrlBus_IxSL_intl.SW_nRST,
 		clk1		 		=> RefCLK,
 		clk2		 		=> RefCLK,
 		WL_CLK_DIV 		=> (others =>'0'),
@@ -131,12 +131,12 @@ begin
 		SSTIN_N 		=> open
 	);
 
-	TC_RoundBuffer : RoundBufferV4
+	TC_RoundBuffer : RoundBufferV5
 		generic map(
 			NBRWINDOWS => NBRWINDOWS
 		)
 		port map(
-			nrst 		=> nrst,
+			--nrst 		=> nrst,
 			ClockBus	=> 	ClockBus_intl,
 			Timecounter	=> timecounter_intl,
 
@@ -188,6 +188,45 @@ begin
 				WRITE(L,string'(" " & CR));
 
 				WRITELINE(fd,L);
+
+				wait for 1 ns;
+				--DIG back Process
+				DIG_WriteEn_sti <= '0';
+				if RDAD_DataOut_obs(73 downto 72) = "00" then
+					DIG_DataIn_sti	<= RDAD_DataOut_obs(66+5 downto 64) & '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+
+					wait for 1 us;
+
+					DIG_DataIn_sti	<= RDAD_DataOut_obs(66+5 downto 64) & '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+
+				elsif  RDAD_DataOut_obs(73 downto 72) = "01" then
+					DIG_DataIn_sti	<= RDAD_DataOut_obs(66+5 downto 64) & '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+
+				elsif  RDAD_DataOut_obs(73 downto 72) = "10" then
+					DIG_DataIn_sti	<= RDAD_DataOut_obs(66+5 downto 64) & '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '1';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+					DIG_WriteEn_sti <= '0';
+					wait until rising_Edge(ClockBus_intl.WL_CLK);
+				end if;
+
+
 			end if;
 			wait for 10 ns;
 		end loop;
@@ -198,12 +237,14 @@ begin
 	begin
 		simulation_end_s <= '0';
 		nrst <= '0';
+		CtrlBus_IxSL_intl.SW_nRST <= '0';
+
 		trigger_sti <= (others =>'0');
-		CtrlBus_IxSL_intl.SWRESET <= '1';
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
 		CtrlBus_IxSL_intl.CPUMode <= '1';
 		wait for 10 us;
 		nrst <= '1';
+		CtrlBus_IxSL_intl.SW_nRST <= '1';
 		wait for 10 us;
 
 		report "Start CMD : WINDOW 10 NBR 1";
@@ -255,8 +296,24 @@ begin
 		wait for 10 ns;
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
 		wait for 1 us;
+		wait for 20 us;
+		report " Read window 0";
+		CtrlBus_IxSL_intl.FSTWINDOW <= x"00000000";
+		CtrlBus_IxSL_intl.NBRWINDOW <= x"00000001";
 
+		CtrlBus_IxSL_intl.WindowStorage <= '1';
+		wait for 10 ns;
+		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		wait for 1 us;
+		wait for 20 us;
+		report " Read window 1";
+		CtrlBus_IxSL_intl.FSTWINDOW <= x"00000001";
+		CtrlBus_IxSL_intl.NBRWINDOW <= x"00000001";
 
+		CtrlBus_IxSL_intl.WindowStorage <= '1';
+		wait for 10 ns;
+		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		wait for 1 us;
 
 
     	wait;

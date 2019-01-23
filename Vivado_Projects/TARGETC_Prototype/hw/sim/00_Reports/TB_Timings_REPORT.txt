@@ -1,0 +1,5 @@
+Timings for simulation (From Order AXI to AXIS TLast):
+WDO : 	0 1	63881000 ps
+
+WDO : 	1 1	65470000 ps
+

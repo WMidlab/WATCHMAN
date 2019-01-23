@@ -15,6 +15,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 	component TARGETC_IP_Prototype is
 		port (
 		-- TARGET C Ports for control and function
+			SW_nRST : out std_logic;
 
 			RefCLK_i1 :		in std_logic;	--! Clock for the TARGETC PLL
 			RefCLK_i2 :		in std_logic;	--! Clock for the TARGETC PLL
@@ -133,10 +134,10 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			DIGTime:			out std_logic_vector(63 downto 0);
 			Trigger:			out std_logic_vector(31 downto 0);
 			WDONbr:				out std_logic_vector(8 downto 0);
-		
+
 					-- Interrupt SIGNALS
 			SSVALID_INTR:	out	std_logic;
-	
+
 			-- DEBUG OUTPUTs
 			BB1 :	out std_logic;
 			BB2 :	out std_logic;
@@ -202,6 +203,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 		port (
 			-- Users to add ports here
 			TestStream:			in std_logic;
+			SW_nRST:			in std_logic;
 
 			FIFOvalid:			in std_logic;
 			FIFOdata:			in std_logic_vector(C_M_AXIS_TDATA_WIDTH-1 downto 0);
@@ -293,6 +295,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 	signal Trigger_intl:			 std_logic_vector(31 downto 0);
 	signal WDONbr_intl:				 std_logic_vector(8 downto 0);
 
+	signal SW_nRST_intl: std_logic;
 	--Variable for TB
 	file fd : text open WRITE_MODE is "/home/jonathan/VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/sim/00_Reports/TB_Timings_REPORT.txt";
 begin
@@ -300,6 +303,7 @@ begin
 
 	DUT : TARGETC_IP_Prototype
 	port map (
+		SW_nRST => SW_nRST_intl,
 
 		RefCLK_i1 => s00_axi_aclk,
 		RefCLK_i2 => s00_axi_aclk,
@@ -416,7 +420,7 @@ begin
 		DIGTime => DIGTime_intl,
 		Trigger => Trigger_intl,
 		WDONbr => WDONBR_intl,
-	
+
 	-- DEBUG SIGNALS
 		SSVALID_INTR	=> open,
 	--	HSCLK			=> open,
@@ -436,6 +440,7 @@ begin
 		port map(
 			-- Users to add ports here
 			TestStream	=> TestStream_sti,
+			SW_nRST	=> SW_nRST_intl,
 
 			FIFOvalid	=> FIFOvalid_sti,
 			FIFOdata	=> FIFOData_sti,
@@ -458,7 +463,7 @@ begin
 		C_M_AXIS_TDATA_WIDTH	=> 32
 	)
 	port map(
-		nRST	=> s00_axi_aresetn,
+		nRST	=> SW_nRST_intl,
 		CLK		=> s00_axi_aclk,
 
 		PRECvalid	=> SSvalid_intl,
@@ -688,8 +693,8 @@ begin
 
 		for J in 0 to 511 loop
 			window := J;
-			for K in 1 to 16 loop
-				nbrwindow := K;
+			--for K in 1 to 16 loop
+				nbrwindow := 1;
 
 				WRITE(L,string'("WDO : " & HT & integer'image(window) &" "&  integer'image(nbrwindow)));
 				report "Window :" & integer'image(window)& " "& integer'image(nbrwindow);
@@ -760,7 +765,7 @@ begin
 				v_TIME := now - V_TIME;
 				WRITE(L,string'(HT & time'image(v_Time) & CR & LF));
 				WRITELINE(fd,L);
-			end loop;
+			--end loop;
 		end loop;
 
 		-- --------------------------------------

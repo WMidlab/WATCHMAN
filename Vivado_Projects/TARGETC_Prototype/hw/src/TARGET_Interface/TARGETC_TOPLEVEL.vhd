@@ -30,7 +30,7 @@ entity TARGETC_IP_Prototype is
 	port (
 
 
-
+		SW_nRST:	out std_logic;
 		--! @name Reference Clock
 		RefCLK_i1 :		in std_logic;	--! Clock for the TARGETC PLL
 		RefCLK_i2 :		in std_logic;	--! Clock for the TARGETC PLL
@@ -271,12 +271,12 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	-- 	);
 	-- end component RoundBufferGray500MHz;
 
-	component RoundBufferV4 is
+	component RoundBufferV5 is
 		generic(
 			NBRWINDOWS : integer := 128
 		);
 		port(
-			nrst : 			in	std_Logic;
+			--nrst : 			in	std_Logic;
 			ClockBus:		in T_ClockBus;
 			Timecounter:	in std_logic_vector(63 downto 0);
 
@@ -298,12 +298,12 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 			sDEBUG :	out std_logic_vector(7 downto 0)
 		);
-	end component RoundBufferV4;
+	end component RoundBufferV5;
 
 	component TARGETC_RDAD_WL_SMPL is
 		Port (
 		--CLK : 			in  STD_LOGIC;
-		RST : 			in	STD_Logic;
+		--RST : 			in	STD_Logic;
 
 		DISCH_PERIOD :	in	std_logic_vector(15 downto 0);
 		INCR_WAIT_PERIOD:	in std_logic_vector(15 downto 0);
@@ -413,7 +413,7 @@ begin
 
 	TC_ClockMgmt_inst : TC_ClockManagementV3
 	port map(
-		nrst				=> CtrlBusOut_intl.SWRESET,
+		nrst				=> CtrlBusOut_intl.SW_nRST,
 		--rst				=> tc_axi_aresetn,
 		clk1		 		=> RefCLK_i1,
 		clk2		 		=> RefCLK_i2,
@@ -517,12 +517,12 @@ begin
     -- 	DIG_WriteEn	=> DIG_WriteEn_intl,
     -- 	DIG_Full	=> DIG_Full_intl
 	-- );
-	TC_RoundBuffer : RoundBufferV4
+	TC_RoundBuffer : RoundBufferV5
 		generic map(
 			NBRWINDOWS => 256
 		)
 		port map(
-			nrst 		=> tc_axi_aresetn,
+			--nrst 		=> CtrlBusOut_intl.SW_nRST,
 			ClockBus	=> 	ClockBus_intl,
 			Timecounter	=> timecounter_intl,
 
@@ -548,7 +548,7 @@ begin
 
 	TC_RDAD_WL_SS :	 TARGETC_RDAD_WL_SMPL
 	Port map(
-		RST 	=> tc_axi_aresetn,
+		--RST 	=> CtrlBusOut_intl.SW_nRST,
 
 		DISCH_PERIOD	=> x"0064",
 		INCR_WAIT_PERIOD => x"0032",
@@ -637,6 +637,7 @@ begin
 	PSBusy		<= CtrlBusOut_intl.PSBusy;
 
 	--NbrWindow	<= CtrlBusOut_intl.NBRWINDOW;
+	SW_nRST <= CtrlBusOut_intl.SW_nRST;
 
 	-- Interrupt Interface
 	SSVALID_INTR <= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '0' else '0';
@@ -666,41 +667,41 @@ begin
 	Debug_intl(1) <= MONTIMING_s;
 	Debug_intl(7 downto 2) <= Debug_RoundBuffer(7 downto 2);
 
-	BB1_Debug_inst : DebugCore
-	port map(
-		O	=> BB1,
-		I	=> Debug_intl,
-		sel	=> CtrlBusOut_intl.BB1_sel
-	);
-
-	BB2_Debug_inst : DebugCore
-	port map(
-		O	=> BB2,
-		I	=> Debug_intl,
-
-		sel	=> CtrlBusOut_intl.BB2_sel
-	);
-
-	BB3_Debug_inst : DebugCore
-	port map(
-		O	=> BB3,
-		I	=> Debug_intl,
-
-		sel	=> CtrlBusOut_intl.BB3_sel
-	);
-
-	BB4_Debug_inst : DebugCore
-	port map(
-		O	=> BB4,
-		I	=> Debug_intl,
-
-		sel	=> CtrlBusOut_intl.BB4_sel
-	);
-	BB5_Debug_inst : DebugCore
-	port map(
-		O	=> BB5,
-		I	=> Debug_intl,
-
-		sel	=> CtrlBusOut_intl.BB5_sel
-	);
+	-- BB1_Debug_inst : DebugCore
+	-- port map(
+	-- 	O	=> BB1,
+	-- 	I	=> Debug_intl,
+	-- 	sel	=> CtrlBusOut_intl.BB1_sel
+	-- );
+	--
+	-- BB2_Debug_inst : DebugCore
+	-- port map(
+	-- 	O	=> BB2,
+	-- 	I	=> Debug_intl,
+	--
+	-- 	sel	=> CtrlBusOut_intl.BB2_sel
+	-- );
+	--
+	-- BB3_Debug_inst : DebugCore
+	-- port map(
+	-- 	O	=> BB3,
+	-- 	I	=> Debug_intl,
+	--
+	-- 	sel	=> CtrlBusOut_intl.BB3_sel
+	-- );
+	--
+	-- BB4_Debug_inst : DebugCore
+	-- port map(
+	-- 	O	=> BB4,
+	-- 	I	=> Debug_intl,
+	--
+	-- 	sel	=> CtrlBusOut_intl.BB4_sel
+	-- );
+	-- BB5_Debug_inst : DebugCore
+	-- port map(
+	-- 	O	=> BB5,
+	-- 	I	=> Debug_intl,
+	--
+	-- 	sel	=> CtrlBusOut_intl.BB5_sel
+	-- );
 end arch_imp;

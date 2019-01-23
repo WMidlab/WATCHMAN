@@ -55,6 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY base_zynq_axistream_0_0 IS
   PORT (
+    SW_nRST : IN STD_LOGIC;
     TestStream : IN STD_LOGIC;
     FIFOvalid : IN STD_LOGIC;
     FIFOdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -79,6 +80,7 @@ ARCHITECTURE base_zynq_axistream_0_0_arch OF base_zynq_axistream_0_0 IS
       FIFO_NBR_MAX : INTEGER
     );
     PORT (
+      SW_nRST : IN STD_LOGIC;
       TestStream : IN STD_LOGIC;
       FIFOvalid : IN STD_LOGIC;
       FIFOdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -120,6 +122,7 @@ BEGIN
       FIFO_NBR_MAX => 518
     )
     PORT MAP (
+      SW_nRST => SW_nRST,
       TestStream => TestStream,
       FIFOvalid => FIFOvalid,
       FIFOdata => FIFOdata,

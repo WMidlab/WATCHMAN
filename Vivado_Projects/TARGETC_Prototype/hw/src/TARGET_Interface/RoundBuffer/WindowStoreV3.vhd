@@ -22,7 +22,9 @@ entity WindowStoreV3 is
 	wr1_en:		in	std_logic;
 	wr2_en:		in	std_logic;
 
-	windowstore:	in std_logic_vector(7 downto 0);
+	ValidAddr:	in	std_logic;
+	CurAddr:	in std_logic_vector(7 downto 0);
+	OldAddr:	in std_logic_vector(7 downto 0);
 
 	-- FIFO out for Reading RDAD
     RDAD_ReadEn  :in  std_logic;
@@ -53,7 +55,13 @@ architecture Behavioral of WindowStoreV3 is
     );
 	end component aFifo;
 
-	signal writeEn_stm : Pulse_State_Type := IDLE;
+	type T_storestate is(
+		IDLE,
+		PREPARE,
+		PULSE
+	);
+
+	signal writeEn_stm : T_storestate := IDLE;
 
 	signal Full_out_intl    : std_logic;
 	signal WriteEn_intl  : std_logic;
@@ -75,50 +83,64 @@ architecture Behavioral of WindowStoreV3 is
 	-- Constraints on Signals
 	-- -------------------------------------------------------------
 	attribute DONT_TOUCH : string;
-
+	--attribute DONT_TOUCH of RDAD_STO_AFIFO : label is "TRUE";
 	attribute DONT_TOUCH of writeEn_stm : signal is "TRUE";
 	attribute DONT_TOUCH of WriteEn_intl : signal is "TRUE";
 
 begin
 
 	-- Old Style Data Record Now
-	Data_in_intl(63 downto 0)		<= prev_TimeCounter;
-	Data_in_intl(71 downto 64)	<= Wr_Addr;
-	Data_in_intl(72)				<= wr1_en;
-	Data_in_intl(73)				<= wr2_en;
-	Data_in_intl(85 downto 74)	<= (others => '0') when CPUMode = '0' else
-									TrigInfoDly ;
-
-	process(ClockBus.CLK250MHz)
-	begin
-		if rising_edge(ClockBus.Clk250Mhz) then
-			wr1_en_clkd <= wr1_en;
-			wr2_en_clkd <= wr2_en;
-		end if;
-	end process;
+	-- Data_in_intl(63 downto 0)		<= prev_TimeCounter;
+	-- Data_in_intl(71 downto 64)	<= OldAddr;
+	-- Data_in_intl(72)				<= wr1_en;
+	-- Data_in_intl(73)				<= wr2_en;
+	-- Data_in_intl(85 downto 74)	<= (others => '0') when CPUMode = '0' else
+	-- 								TrigInfoDly;
 
 	process(ClockBus.CLK250MHz)
 	begin
 		if rising_edge(ClockBus.Clk250Mhz) then
 
-			Wr_Addr_dly <= wr_addr;
-			wr1_en_dly <= wr1_en_clkd;
-			wr2_en_dly <= wr2_en_clkd;
+			if ValidAddr = '1' then
+				wr1_en_dly <= wr1_en;
+				wr2_en_dly <= wr2_en;
+			else
+				wr1_en_dly <= '0';
+				wr2_en_dly <= '0';
+			end if;
 
 			case writeEn_stm is
 				when IDLE =>
-					if ((wr1_en = '0') or (wr2_en = '0')) then
-						if ((Wr_Addr_dly /= wr_addr) or (wr1_en_clkd /= wr1_en_dly) or (wr2_en_clkd /= wr2_en_dly)) then
-							writeEn_stm <= PULSE;
-							WriteEn_intl <= '1';
+					if ValidAddr = '1' then
+						Data_in_intl(63 downto 0)		<= prev_TimeCounter;
+						Data_in_intl(71 downto 64)	<= OldAddr;
+						Data_in_intl(72)				<= wr1_en;
+						Data_in_intl(73)				<= wr2_en;
+						if CPUMode = '0' then
+							Data_in_intl(85 downto 74)	<= (others => '0');
+						else
+							Data_in_intl(85 downto 74) <= TrigInfoDly;
+						end if;
+					end if;
+
+					if (((wr1_en = '0') and (wr1_en_dly='1')) or ((wr2_en = '0') and (wr2_en_dly = '1')) ) then
+					-- if ((wr1_en = '0') or (wr2_en = '0')) then
+					-- 	if ((Wr_Addr_dly /= wr_addr) or (wr1_en_clkd /= wr1_en_dly) or (wr2_en_clkd /= wr2_en_dly)) then
+							--writeEn_stm <= PULSE;
+							writeEn_stm <= PREPARE;
+							--WriteEn_intl <= '1';
 						else
 							WriteEn_intl <= '0';
-							writeEn_stm <= IDLE;
+							--writeEn_stm <= IDLE;
 						end if;
-					else
 						WriteEn_intl <= '0';
-						writeEn_stm <= IDLE;
-					end if;
+					-- else
+					-- 	WriteEn_intl <= '0';
+					-- 	writeEn_stm <= IDLE;
+					-- end if;
+				when PREPARE =>
+					WriteEn_intl <= '1';
+					writeEn_stm <= PULSE;
 				when PULSE =>
 					WriteEn_intl <= '0';
 					writeEn_stm <= IDLE;
@@ -147,18 +169,19 @@ begin
 		end if;
 	end process;
 
-	process(ClockBus.SSTIN, nRST)
+	process(ClockBus.CLK250MHz, nRST)
  begin
 	 if nrst = '0' then
 		 curr_TimeCounter <= (others => '0');
 		 prev_TimeCounter <= (others => '0');
 	 else
-		 if rising_edge(ClockBus.SSTIN) then
-			 wr_addr <= windowstore;
+		if rising_edge(ClockBus.CLK250MHz) then
+			 if ValidAddr = '0' then
 			 --TrigInfoDly <= TrigInfoBuf_dly;
-			 curr_TimeCounter <= Timecounter;
-			 prev_TimeCounter <= curr_Timecounter;
-		 end if;
+				curr_TimeCounter <= Timecounter;
+				prev_TimeCounter <= curr_Timecounter;
+		 	end if;
+		end if;
 	 end if;
  end process;
 

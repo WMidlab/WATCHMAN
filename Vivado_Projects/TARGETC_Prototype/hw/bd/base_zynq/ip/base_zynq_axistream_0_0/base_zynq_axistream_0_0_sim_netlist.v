@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Tue Jan 15 07:23:34 2019
+// Date        : Fri Jan 18 15:24:33 2019
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 // Command     : write_verilog -force -mode funcsim
 //               /home/jonathan/Desktop/LinktoTARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_axistream_0_0/base_zynq_axistream_0_0_sim_netlist.v
@@ -16,7 +16,8 @@
 (* x_core_info = "axistream,Vivado 2018.2" *) 
 (* NotValidForBitStream *)
 module base_zynq_axistream_0_0
-   (TestStream,
+   (SW_nRST,
+    TestStream,
     FIFOvalid,
     FIFOdata,
     StreamReady,
@@ -27,6 +28,7 @@ module base_zynq_axistream_0_0
     M_AXIS_TSTRB,
     M_AXIS_TLAST,
     M_AXIS_TREADY);
+  input SW_nRST;
   input TestStream;
   input FIFOvalid;
   input [31:0]FIFOdata;
@@ -48,6 +50,7 @@ module base_zynq_axistream_0_0
   wire M_AXIS_TLAST;
   wire M_AXIS_TREADY;
   wire M_AXIS_TVALID;
+  wire SW_nRST;
   wire StreamReady;
   wire TestStream;
 
@@ -64,6 +67,7 @@ module base_zynq_axistream_0_0
         .M_AXIS_TLAST(M_AXIS_TLAST),
         .M_AXIS_TREADY(M_AXIS_TREADY),
         .M_AXIS_TVALID(M_AXIS_TVALID),
+        .SW_nRST(SW_nRST),
         .StreamReady(StreamReady),
         .TestStream(TestStream));
   VCC VCC
@@ -76,9 +80,10 @@ module base_zynq_axistream_0_0_axistream
     M_AXIS_TDATA,
     M_AXIS_TVALID,
     M_AXIS_TLAST,
+    M_AXIS_ARESETN,
+    SW_nRST,
     TestStream,
     FIFOvalid,
-    M_AXIS_ARESETN,
     M_AXIS_TREADY,
     M_AXIS_ACLK,
     FIFOdata);
@@ -86,9 +91,10 @@ module base_zynq_axistream_0_0_axistream
   output [31:0]M_AXIS_TDATA;
   output M_AXIS_TVALID;
   output M_AXIS_TLAST;
+  input M_AXIS_ARESETN;
+  input SW_nRST;
   input TestStream;
   input FIFOvalid;
-  input M_AXIS_ARESETN;
   input M_AXIS_TREADY;
   input M_AXIS_ACLK;
   input [31:0]FIFOdata;
@@ -107,13 +113,14 @@ module base_zynq_axistream_0_0_axistream
   wire [31:0]M_AXIS_TDATA;
   wire \M_AXIS_TDATA[31]_INST_0_i_1_n_0 ;
   wire [31:0]M_AXIS_TDATA_intl;
-  wire [31:0]M_AXIS_TDATA_intl1_in;
+  wire [31:0]M_AXIS_TDATA_intl0_in;
   wire M_AXIS_TDATA_intl_1;
   wire [31:0]M_AXIS_TDATA_last;
   wire M_AXIS_TDATA_last_0;
   wire M_AXIS_TLAST;
   wire M_AXIS_TREADY;
   wire M_AXIS_TVALID;
+  wire SW_nRST;
   wire StreamReady;
   wire StreamReady_intl_i_1_n_0;
   wire StreamReady_intl_i_2_n_0;
@@ -152,7 +159,6 @@ module base_zynq_axistream_0_0_axistream
   wire \cnt_stream_out[29]_i_1_n_0 ;
   wire \cnt_stream_out[2]_i_1_n_0 ;
   wire \cnt_stream_out[30]_i_1_n_0 ;
-  wire \cnt_stream_out[31]_i_1_n_0 ;
   wire \cnt_stream_out[31]_i_3_n_0 ;
   wire \cnt_stream_out[3]_i_1_n_0 ;
   wire \cnt_stream_out[4]_i_1_n_0 ;
@@ -255,6 +261,7 @@ module base_zynq_axistream_0_0_axistream
   wire \cnt_stream_out_reg_n_0_[8] ;
   wire \cnt_stream_out_reg_n_0_[9] ;
   (* RTL_KEEP = "yes" *) wire [2:0]mst_exec_state;
+  wire mst_exec_state0;
   wire mst_exec_state1;
   wire mst_exec_state1_carry__0_i_1_n_0;
   wire mst_exec_state1_carry__0_i_2_n_0;
@@ -300,11 +307,12 @@ module base_zynq_axistream_0_0_axistream
   wire [3:0]NLW_mst_exec_state1_carry__2_O_UNCONNECTED;
 
   (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT2 #(
-    .INIT(4'h8)) 
+  LUT3 #(
+    .INIT(8'h80)) 
     \FSM_sequential_mst_exec_state[0]_i_1 
        (.I0(\FSM_sequential_mst_exec_state[0]_i_2_n_0 ),
         .I1(M_AXIS_ARESETN),
+        .I2(SW_nRST),
         .O(\FSM_sequential_mst_exec_state[0]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'hFBF2F0FA0142000A)) 
@@ -316,14 +324,14 @@ module base_zynq_axistream_0_0_axistream
         .I4(mst_exec_state1),
         .I5(mst_exec_state[0]),
         .O(\FSM_sequential_mst_exec_state[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'hE200)) 
+  LUT5 #(
+    .INIT(32'hE2000000)) 
     \FSM_sequential_mst_exec_state[1]_i_1 
        (.I0(mst_exec_state[1]),
         .I1(\FSM_sequential_mst_exec_state[2]_i_2_n_0 ),
         .I2(\FSM_sequential_mst_exec_state[1]_i_2_n_0 ),
         .I3(M_AXIS_ARESETN),
+        .I4(SW_nRST),
         .O(\FSM_sequential_mst_exec_state[1]_i_1_n_0 ));
   LUT6 #(
     .INIT(64'h0040004040FF40AA)) 
@@ -336,14 +344,14 @@ module base_zynq_axistream_0_0_axistream
         .I5(mst_exec_state[0]),
         .O(\FSM_sequential_mst_exec_state[1]_i_2_n_0 ));
   LUT6 #(
-    .INIT(64'h2222E22200000000)) 
+    .INIT(64'h000000002222E222)) 
     \FSM_sequential_mst_exec_state[2]_i_1 
        (.I0(mst_exec_state[2]),
         .I1(\FSM_sequential_mst_exec_state[2]_i_2_n_0 ),
         .I2(\FSM_sequential_mst_exec_state[2]_i_3_n_0 ),
         .I3(TestStream),
         .I4(FIFOvalid),
-        .I5(M_AXIS_ARESETN),
+        .I5(mst_exec_state0),
         .O(\FSM_sequential_mst_exec_state[2]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'h054F0F0F)) 
@@ -393,7 +401,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[0]),
         .O(M_AXIS_TDATA[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
+  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[10]_INST_0 
@@ -610,7 +618,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[4]),
         .O(M_AXIS_TDATA[4]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[5]_INST_0 
@@ -618,7 +626,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[5]),
         .O(M_AXIS_TDATA[5]));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
+  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[6]_INST_0 
@@ -626,7 +634,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[6]),
         .O(M_AXIS_TDATA[6]));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
+  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[7]_INST_0 
@@ -634,7 +642,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[7]),
         .O(M_AXIS_TDATA[7]));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
+  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[8]_INST_0 
@@ -642,7 +650,7 @@ module base_zynq_axistream_0_0_axistream
         .I1(\M_AXIS_TDATA[31]_INST_0_i_1_n_0 ),
         .I2(M_AXIS_TDATA_last[8]),
         .O(M_AXIS_TDATA[8]));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \M_AXIS_TDATA[9]_INST_0 
@@ -658,7 +666,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[0]));
+        .O(M_AXIS_TDATA_intl0_in[0]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[10]_i_1 
@@ -667,7 +675,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[10]));
+        .O(M_AXIS_TDATA_intl0_in[10]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[11]_i_1 
@@ -676,7 +684,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[11]));
+        .O(M_AXIS_TDATA_intl0_in[11]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[12]_i_1 
@@ -685,7 +693,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[12]));
+        .O(M_AXIS_TDATA_intl0_in[12]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[13]_i_1 
@@ -694,7 +702,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[13]));
+        .O(M_AXIS_TDATA_intl0_in[13]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[14]_i_1 
@@ -703,7 +711,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[14]));
+        .O(M_AXIS_TDATA_intl0_in[14]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[15]_i_1 
@@ -712,7 +720,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[15]));
+        .O(M_AXIS_TDATA_intl0_in[15]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[16]_i_1 
@@ -721,7 +729,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[16]));
+        .O(M_AXIS_TDATA_intl0_in[16]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[17]_i_1 
@@ -730,7 +738,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[17]));
+        .O(M_AXIS_TDATA_intl0_in[17]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[18]_i_1 
@@ -739,7 +747,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[18]));
+        .O(M_AXIS_TDATA_intl0_in[18]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[19]_i_1 
@@ -748,7 +756,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[19]));
+        .O(M_AXIS_TDATA_intl0_in[19]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[1]_i_1 
@@ -757,7 +765,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[1]));
+        .O(M_AXIS_TDATA_intl0_in[1]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[20]_i_1 
@@ -766,7 +774,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[20]));
+        .O(M_AXIS_TDATA_intl0_in[20]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[21]_i_1 
@@ -775,7 +783,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[21]));
+        .O(M_AXIS_TDATA_intl0_in[21]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[22]_i_1 
@@ -784,7 +792,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[22]));
+        .O(M_AXIS_TDATA_intl0_in[22]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[23]_i_1 
@@ -793,7 +801,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[23]));
+        .O(M_AXIS_TDATA_intl0_in[23]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[24]_i_1 
@@ -802,7 +810,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[24]));
+        .O(M_AXIS_TDATA_intl0_in[24]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[25]_i_1 
@@ -811,7 +819,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[25]));
+        .O(M_AXIS_TDATA_intl0_in[25]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[26]_i_1 
@@ -820,7 +828,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[26]));
+        .O(M_AXIS_TDATA_intl0_in[26]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[27]_i_1 
@@ -829,7 +837,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[27]));
+        .O(M_AXIS_TDATA_intl0_in[27]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[28]_i_1 
@@ -838,7 +846,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[28]));
+        .O(M_AXIS_TDATA_intl0_in[28]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[29]_i_1 
@@ -847,7 +855,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[29]));
+        .O(M_AXIS_TDATA_intl0_in[29]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[2]_i_1 
@@ -856,7 +864,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[2]));
+        .O(M_AXIS_TDATA_intl0_in[2]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[30]_i_1 
@@ -865,7 +873,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[30]));
+        .O(M_AXIS_TDATA_intl0_in[30]));
   LUT6 #(
     .INIT(64'h00880088000088F0)) 
     \M_AXIS_TDATA_intl[31]_i_1 
@@ -884,7 +892,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[31]));
+        .O(M_AXIS_TDATA_intl0_in[31]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[3]_i_1 
@@ -893,7 +901,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[3]));
+        .O(M_AXIS_TDATA_intl0_in[3]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[4]_i_1 
@@ -902,7 +910,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[4]));
+        .O(M_AXIS_TDATA_intl0_in[4]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[5]_i_1 
@@ -911,7 +919,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[5]));
+        .O(M_AXIS_TDATA_intl0_in[5]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[6]_i_1 
@@ -920,7 +928,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[6]));
+        .O(M_AXIS_TDATA_intl0_in[6]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[7]_i_1 
@@ -929,7 +937,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[7]));
+        .O(M_AXIS_TDATA_intl0_in[7]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[8]_i_1 
@@ -938,7 +946,7 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[8]));
+        .O(M_AXIS_TDATA_intl0_in[8]));
   LUT5 #(
     .INIT(32'h000CCCAA)) 
     \M_AXIS_TDATA_intl[9]_i_1 
@@ -947,199 +955,199 @@ module base_zynq_axistream_0_0_axistream
         .I2(mst_exec_state[1]),
         .I3(mst_exec_state[0]),
         .I4(mst_exec_state[2]),
-        .O(M_AXIS_TDATA_intl1_in[9]));
+        .O(M_AXIS_TDATA_intl0_in[9]));
   FDRE \M_AXIS_TDATA_intl_reg[0] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[0]),
+        .D(M_AXIS_TDATA_intl0_in[0]),
         .Q(M_AXIS_TDATA_intl[0]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[10] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[10]),
+        .D(M_AXIS_TDATA_intl0_in[10]),
         .Q(M_AXIS_TDATA_intl[10]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[11] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[11]),
+        .D(M_AXIS_TDATA_intl0_in[11]),
         .Q(M_AXIS_TDATA_intl[11]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[12] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[12]),
+        .D(M_AXIS_TDATA_intl0_in[12]),
         .Q(M_AXIS_TDATA_intl[12]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[13] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[13]),
+        .D(M_AXIS_TDATA_intl0_in[13]),
         .Q(M_AXIS_TDATA_intl[13]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[14] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[14]),
+        .D(M_AXIS_TDATA_intl0_in[14]),
         .Q(M_AXIS_TDATA_intl[14]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[15] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[15]),
+        .D(M_AXIS_TDATA_intl0_in[15]),
         .Q(M_AXIS_TDATA_intl[15]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[16] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[16]),
+        .D(M_AXIS_TDATA_intl0_in[16]),
         .Q(M_AXIS_TDATA_intl[16]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[17] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[17]),
+        .D(M_AXIS_TDATA_intl0_in[17]),
         .Q(M_AXIS_TDATA_intl[17]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[18] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[18]),
+        .D(M_AXIS_TDATA_intl0_in[18]),
         .Q(M_AXIS_TDATA_intl[18]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[19] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[19]),
+        .D(M_AXIS_TDATA_intl0_in[19]),
         .Q(M_AXIS_TDATA_intl[19]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[1] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[1]),
+        .D(M_AXIS_TDATA_intl0_in[1]),
         .Q(M_AXIS_TDATA_intl[1]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[20] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[20]),
+        .D(M_AXIS_TDATA_intl0_in[20]),
         .Q(M_AXIS_TDATA_intl[20]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[21] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[21]),
+        .D(M_AXIS_TDATA_intl0_in[21]),
         .Q(M_AXIS_TDATA_intl[21]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[22] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[22]),
+        .D(M_AXIS_TDATA_intl0_in[22]),
         .Q(M_AXIS_TDATA_intl[22]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[23] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[23]),
+        .D(M_AXIS_TDATA_intl0_in[23]),
         .Q(M_AXIS_TDATA_intl[23]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[24] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[24]),
+        .D(M_AXIS_TDATA_intl0_in[24]),
         .Q(M_AXIS_TDATA_intl[24]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[25] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[25]),
+        .D(M_AXIS_TDATA_intl0_in[25]),
         .Q(M_AXIS_TDATA_intl[25]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[26] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[26]),
+        .D(M_AXIS_TDATA_intl0_in[26]),
         .Q(M_AXIS_TDATA_intl[26]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[27] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[27]),
+        .D(M_AXIS_TDATA_intl0_in[27]),
         .Q(M_AXIS_TDATA_intl[27]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[28] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[28]),
+        .D(M_AXIS_TDATA_intl0_in[28]),
         .Q(M_AXIS_TDATA_intl[28]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[29] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[29]),
+        .D(M_AXIS_TDATA_intl0_in[29]),
         .Q(M_AXIS_TDATA_intl[29]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[2] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[2]),
+        .D(M_AXIS_TDATA_intl0_in[2]),
         .Q(M_AXIS_TDATA_intl[2]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[30] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[30]),
+        .D(M_AXIS_TDATA_intl0_in[30]),
         .Q(M_AXIS_TDATA_intl[30]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[31] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[31]),
+        .D(M_AXIS_TDATA_intl0_in[31]),
         .Q(M_AXIS_TDATA_intl[31]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[3] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[3]),
+        .D(M_AXIS_TDATA_intl0_in[3]),
         .Q(M_AXIS_TDATA_intl[3]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[4] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[4]),
+        .D(M_AXIS_TDATA_intl0_in[4]),
         .Q(M_AXIS_TDATA_intl[4]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[5] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[5]),
+        .D(M_AXIS_TDATA_intl0_in[5]),
         .Q(M_AXIS_TDATA_intl[5]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[6] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[6]),
+        .D(M_AXIS_TDATA_intl0_in[6]),
         .Q(M_AXIS_TDATA_intl[6]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[7] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[7]),
+        .D(M_AXIS_TDATA_intl0_in[7]),
         .Q(M_AXIS_TDATA_intl[7]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[8] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[8]),
+        .D(M_AXIS_TDATA_intl0_in[8]),
         .Q(M_AXIS_TDATA_intl[8]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_intl_reg[9] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_intl_1),
-        .D(M_AXIS_TDATA_intl1_in[9]),
+        .D(M_AXIS_TDATA_intl0_in[9]),
         .Q(M_AXIS_TDATA_intl[9]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   LUT5 #(
     .INIT(32'h000000E2)) 
     \M_AXIS_TDATA_last[31]_i_1 
@@ -1154,193 +1162,193 @@ module base_zynq_axistream_0_0_axistream
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[0]),
         .Q(M_AXIS_TDATA_last[0]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[10] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[10]),
         .Q(M_AXIS_TDATA_last[10]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[11] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[11]),
         .Q(M_AXIS_TDATA_last[11]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[12] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[12]),
         .Q(M_AXIS_TDATA_last[12]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[13] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[13]),
         .Q(M_AXIS_TDATA_last[13]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[14] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[14]),
         .Q(M_AXIS_TDATA_last[14]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[15] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[15]),
         .Q(M_AXIS_TDATA_last[15]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[16] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[16]),
         .Q(M_AXIS_TDATA_last[16]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[17] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[17]),
         .Q(M_AXIS_TDATA_last[17]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[18] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[18]),
         .Q(M_AXIS_TDATA_last[18]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[19] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[19]),
         .Q(M_AXIS_TDATA_last[19]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[1] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[1]),
         .Q(M_AXIS_TDATA_last[1]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[20] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[20]),
         .Q(M_AXIS_TDATA_last[20]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[21] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[21]),
         .Q(M_AXIS_TDATA_last[21]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[22] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[22]),
         .Q(M_AXIS_TDATA_last[22]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[23] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[23]),
         .Q(M_AXIS_TDATA_last[23]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[24] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[24]),
         .Q(M_AXIS_TDATA_last[24]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[25] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[25]),
         .Q(M_AXIS_TDATA_last[25]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[26] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[26]),
         .Q(M_AXIS_TDATA_last[26]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[27] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[27]),
         .Q(M_AXIS_TDATA_last[27]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[28] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[28]),
         .Q(M_AXIS_TDATA_last[28]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[29] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[29]),
         .Q(M_AXIS_TDATA_last[29]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[2] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[2]),
         .Q(M_AXIS_TDATA_last[2]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[30] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[30]),
         .Q(M_AXIS_TDATA_last[30]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[31] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[31]),
         .Q(M_AXIS_TDATA_last[31]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[3] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[3]),
         .Q(M_AXIS_TDATA_last[3]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[4] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[4]),
         .Q(M_AXIS_TDATA_last[4]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[5] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[5]),
         .Q(M_AXIS_TDATA_last[5]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[6] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[6]),
         .Q(M_AXIS_TDATA_last[6]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[7] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[7]),
         .Q(M_AXIS_TDATA_last[7]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[8] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[8]),
         .Q(M_AXIS_TDATA_last[8]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \M_AXIS_TDATA_last_reg[9] 
        (.C(M_AXIS_ACLK),
         .CE(M_AXIS_TDATA_last_0),
         .D(FIFOdata[9]),
         .Q(M_AXIS_TDATA_last[9]),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   LUT6 #(
     .INIT(64'h0000000000C0C0AA)) 
     StreamReady_INST_0
@@ -1361,12 +1369,13 @@ module base_zynq_axistream_0_0_axistream
         .I4(mst_exec_state1),
         .I5(StreamReady_intl_reg_n_0),
         .O(StreamReady_intl_i_1_n_0));
-  LUT3 #(
-    .INIT(8'h10)) 
+  LUT4 #(
+    .INIT(16'h1000)) 
     StreamReady_intl_i_2
        (.I0(mst_exec_state[2]),
         .I1(mst_exec_state[0]),
         .I2(M_AXIS_ARESETN),
+        .I3(SW_nRST),
         .O(StreamReady_intl_i_2_n_0));
   FDRE #(
     .INIT(1'b0)) 
@@ -1376,12 +1385,14 @@ module base_zynq_axistream_0_0_axistream
         .D(StreamReady_intl_i_1_n_0),
         .Q(StreamReady_intl_reg_n_0),
         .R(1'b0));
-  LUT3 #(
-    .INIT(8'h80)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT4 #(
+    .INIT(16'h8000)) 
     axis_tlast_delay_i_1
        (.I0(axis_tlast_delay_i_2_n_0),
         .I1(axis_tlast_delay_i_3_n_0),
         .I2(M_AXIS_ARESETN),
+        .I3(SW_nRST),
         .O(axis_tlast_delay_i_1_n_0));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
@@ -1449,14 +1460,15 @@ module base_zynq_axistream_0_0_axistream
         .D(axis_tlast_delay_i_1_n_0),
         .Q(M_AXIS_TLAST),
         .R(1'b0));
-  LUT5 #(
-    .INIT(32'h0A280000)) 
+  LUT6 #(
+    .INIT(64'h0A28000000000000)) 
     axis_tvalid_delay_i_1
        (.I0(mst_exec_state1),
         .I1(mst_exec_state[1]),
         .I2(mst_exec_state[2]),
         .I3(mst_exec_state[0]),
         .I4(M_AXIS_ARESETN),
+        .I5(SW_nRST),
         .O(axis_tvalid_delay_i_1_n_0));
   FDRE axis_tvalid_delay_reg
        (.C(M_AXIS_ACLK),
@@ -1680,11 +1692,12 @@ module base_zynq_axistream_0_0_axistream
         .I3(mst_exec_state[0]),
         .I4(\cnt_stream_out_reg[31]_i_4_n_6 ),
         .O(\cnt_stream_out[30]_i_1_n_0 ));
-  LUT1 #(
-    .INIT(2'h1)) 
+  LUT2 #(
+    .INIT(4'h7)) 
     \cnt_stream_out[31]_i_1 
-       (.I0(M_AXIS_ARESETN),
-        .O(\cnt_stream_out[31]_i_1_n_0 ));
+       (.I0(SW_nRST),
+        .I1(M_AXIS_ARESETN),
+        .O(mst_exec_state0));
   LUT6 #(
     .INIT(64'h333000303E320232)) 
     \cnt_stream_out[31]_i_2 
@@ -1772,25 +1785,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[0]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[0] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[10] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[10]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[10] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[11] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[11]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[11] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[12] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[12]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[12] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[12]_i_2 
        (.CI(\cnt_stream_out_reg[8]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[12]_i_2_n_0 ,\cnt_stream_out_reg[12]_i_2_n_1 ,\cnt_stream_out_reg[12]_i_2_n_2 ,\cnt_stream_out_reg[12]_i_2_n_3 }),
@@ -1803,25 +1816,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[13]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[13] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[14] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[14]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[14] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[15] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[15]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[15] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[16] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[16]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[16] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[16]_i_2 
        (.CI(\cnt_stream_out_reg[12]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[16]_i_2_n_0 ,\cnt_stream_out_reg[16]_i_2_n_1 ,\cnt_stream_out_reg[16]_i_2_n_2 ,\cnt_stream_out_reg[16]_i_2_n_3 }),
@@ -1834,31 +1847,31 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[17]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[17] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[18] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[18]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[18] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[19] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[19]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[19] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[1] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[1]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[1] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[20] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[20]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[20] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[20]_i_2 
        (.CI(\cnt_stream_out_reg[16]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[20]_i_2_n_0 ,\cnt_stream_out_reg[20]_i_2_n_1 ,\cnt_stream_out_reg[20]_i_2_n_2 ,\cnt_stream_out_reg[20]_i_2_n_3 }),
@@ -1871,25 +1884,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[21]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[21] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[22] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[22]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[22] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[23] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[23]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[23] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[24] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[24]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[24] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[24]_i_2 
        (.CI(\cnt_stream_out_reg[20]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[24]_i_2_n_0 ,\cnt_stream_out_reg[24]_i_2_n_1 ,\cnt_stream_out_reg[24]_i_2_n_2 ,\cnt_stream_out_reg[24]_i_2_n_3 }),
@@ -1902,25 +1915,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[25]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[25] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[26] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[26]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[26] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[27] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[27]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[27] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[28] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[28]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[28] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[28]_i_2 
        (.CI(\cnt_stream_out_reg[24]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[28]_i_2_n_0 ,\cnt_stream_out_reg[28]_i_2_n_1 ,\cnt_stream_out_reg[28]_i_2_n_2 ,\cnt_stream_out_reg[28]_i_2_n_3 }),
@@ -1933,25 +1946,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[29]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[29] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[2] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[2]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[2] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[30] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[30]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[30] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[31] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[31]_i_3_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[31] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[31]_i_4 
        (.CI(\cnt_stream_out_reg[28]_i_2_n_0 ),
         .CO({\NLW_cnt_stream_out_reg[31]_i_4_CO_UNCONNECTED [3:2],\cnt_stream_out_reg[31]_i_4_n_2 ,\cnt_stream_out_reg[31]_i_4_n_3 }),
@@ -1964,13 +1977,13 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[3]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[3] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[4] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[4]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[4] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[4]_i_2 
        (.CI(1'b0),
         .CO({\cnt_stream_out_reg[4]_i_2_n_0 ,\cnt_stream_out_reg[4]_i_2_n_1 ,\cnt_stream_out_reg[4]_i_2_n_2 ,\cnt_stream_out_reg[4]_i_2_n_3 }),
@@ -1983,25 +1996,25 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[5]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[5] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[6] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[6]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[6] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[7] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[7]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[7] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   FDRE \cnt_stream_out_reg[8] 
        (.C(M_AXIS_ACLK),
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[8]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[8] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 \cnt_stream_out_reg[8]_i_2 
        (.CI(\cnt_stream_out_reg[4]_i_2_n_0 ),
         .CO({\cnt_stream_out_reg[8]_i_2_n_0 ,\cnt_stream_out_reg[8]_i_2_n_1 ,\cnt_stream_out_reg[8]_i_2_n_2 ,\cnt_stream_out_reg[8]_i_2_n_3 }),
@@ -2014,7 +2027,7 @@ module base_zynq_axistream_0_0_axistream
         .CE(cnt_stream_out),
         .D(\cnt_stream_out[9]_i_1_n_0 ),
         .Q(\cnt_stream_out_reg_n_0_[9] ),
-        .R(\cnt_stream_out[31]_i_1_n_0 ));
+        .R(mst_exec_state0));
   CARRY4 mst_exec_state1_carry
        (.CI(1'b0),
         .CO({mst_exec_state1_carry_n_0,mst_exec_state1_carry_n_1,mst_exec_state1_carry_n_2,mst_exec_state1_carry_n_3}),

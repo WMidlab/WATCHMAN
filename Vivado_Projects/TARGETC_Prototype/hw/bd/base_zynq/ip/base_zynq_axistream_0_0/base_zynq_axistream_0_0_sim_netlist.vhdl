@@ -1,7 +1,7 @@
 -- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
--- Date        : Tue Jan 15 07:23:34 2019
+-- Date        : Fri Jan 18 15:24:33 2019
 -- Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/jonathan/Desktop/LinktoTARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_axistream_0_0/base_zynq_axistream_0_0_sim_netlist.vhdl
@@ -20,9 +20,10 @@ entity base_zynq_axistream_0_0_axistream is
     M_AXIS_TDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
     M_AXIS_TVALID : out STD_LOGIC;
     M_AXIS_TLAST : out STD_LOGIC;
+    M_AXIS_ARESETN : in STD_LOGIC;
+    SW_nRST : in STD_LOGIC;
     TestStream : in STD_LOGIC;
     FIFOvalid : in STD_LOGIC;
-    M_AXIS_ARESETN : in STD_LOGIC;
     M_AXIS_TREADY : in STD_LOGIC;
     M_AXIS_ACLK : in STD_LOGIC;
     FIFOdata : in STD_LOGIC_VECTOR ( 31 downto 0 )
@@ -41,7 +42,7 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   signal \FSM_sequential_mst_exec_state[2]_i_3_n_0\ : STD_LOGIC;
   signal \M_AXIS_TDATA[31]_INST_0_i_1_n_0\ : STD_LOGIC;
   signal M_AXIS_TDATA_intl : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal M_AXIS_TDATA_intl1_in : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal M_AXIS_TDATA_intl0_in : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal M_AXIS_TDATA_intl_1 : STD_LOGIC;
   signal M_AXIS_TDATA_last : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal M_AXIS_TDATA_last_0 : STD_LOGIC;
@@ -81,7 +82,6 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   signal \cnt_stream_out[29]_i_1_n_0\ : STD_LOGIC;
   signal \cnt_stream_out[2]_i_1_n_0\ : STD_LOGIC;
   signal \cnt_stream_out[30]_i_1_n_0\ : STD_LOGIC;
-  signal \cnt_stream_out[31]_i_1_n_0\ : STD_LOGIC;
   signal \cnt_stream_out[31]_i_3_n_0\ : STD_LOGIC;
   signal \cnt_stream_out[3]_i_1_n_0\ : STD_LOGIC;
   signal \cnt_stream_out[4]_i_1_n_0\ : STD_LOGIC;
@@ -186,6 +186,7 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   signal mst_exec_state : STD_LOGIC_VECTOR ( 2 downto 0 );
   attribute RTL_KEEP : string;
   attribute RTL_KEEP of mst_exec_state : signal is "yes";
+  signal mst_exec_state0 : STD_LOGIC;
   signal mst_exec_state1 : STD_LOGIC;
   signal \mst_exec_state1_carry__0_i_1_n_0\ : STD_LOGIC;
   signal \mst_exec_state1_carry__0_i_2_n_0\ : STD_LOGIC;
@@ -231,7 +232,6 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   signal \NLW_mst_exec_state1_carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   attribute SOFT_HLUTNM : string;
   attribute SOFT_HLUTNM of \FSM_sequential_mst_exec_state[0]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \FSM_sequential_mst_exec_state[1]_i_1\ : label is "soft_lutpair0";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_mst_exec_state_reg[0]\ : label is "send_test_stream:011,start_test_stream:100,idle:000,data_stream_stall:001,data_stream:010";
   attribute KEEP : string;
@@ -241,7 +241,7 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   attribute FSM_ENCODED_STATES of \FSM_sequential_mst_exec_state_reg[2]\ : label is "send_test_stream:011,start_test_stream:100,idle:000,data_stream_stall:001,data_stream:010";
   attribute KEEP of \FSM_sequential_mst_exec_state_reg[2]\ : label is "yes";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[0]_INST_0\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[10]_INST_0\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[10]_INST_0\ : label is "soft_lutpair5";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[11]_INST_0\ : label is "soft_lutpair6";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[12]_INST_0\ : label is "soft_lutpair7";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[13]_INST_0\ : label is "soft_lutpair7";
@@ -267,19 +267,21 @@ architecture STRUCTURE of base_zynq_axistream_0_0_axistream is
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[31]_INST_0\ : label is "soft_lutpair16";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[3]_INST_0\ : label is "soft_lutpair4";
   attribute SOFT_HLUTNM of \M_AXIS_TDATA[4]_INST_0\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[5]_INST_0\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[6]_INST_0\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[7]_INST_0\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[8]_INST_0\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \M_AXIS_TDATA[9]_INST_0\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[5]_INST_0\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[6]_INST_0\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[7]_INST_0\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[8]_INST_0\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \M_AXIS_TDATA[9]_INST_0\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of axis_tlast_delay_i_1 : label is "soft_lutpair0";
 begin
-\FSM_sequential_mst_exec_state[0]_i_1\: unisim.vcomponents.LUT2
+\FSM_sequential_mst_exec_state[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"8"
+      INIT => X"80"
     )
         port map (
       I0 => \FSM_sequential_mst_exec_state[0]_i_2_n_0\,
       I1 => M_AXIS_ARESETN,
+      I2 => SW_nRST,
       O => \FSM_sequential_mst_exec_state[0]_i_1_n_0\
     );
 \FSM_sequential_mst_exec_state[0]_i_2\: unisim.vcomponents.LUT6
@@ -295,15 +297,16 @@ begin
       I5 => mst_exec_state(0),
       O => \FSM_sequential_mst_exec_state[0]_i_2_n_0\
     );
-\FSM_sequential_mst_exec_state[1]_i_1\: unisim.vcomponents.LUT4
+\FSM_sequential_mst_exec_state[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"E200"
+      INIT => X"E2000000"
     )
         port map (
       I0 => mst_exec_state(1),
       I1 => \FSM_sequential_mst_exec_state[2]_i_2_n_0\,
       I2 => \FSM_sequential_mst_exec_state[1]_i_2_n_0\,
       I3 => M_AXIS_ARESETN,
+      I4 => SW_nRST,
       O => \FSM_sequential_mst_exec_state[1]_i_1_n_0\
     );
 \FSM_sequential_mst_exec_state[1]_i_2\: unisim.vcomponents.LUT6
@@ -321,7 +324,7 @@ begin
     );
 \FSM_sequential_mst_exec_state[2]_i_1\: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"2222E22200000000"
+      INIT => X"000000002222E222"
     )
         port map (
       I0 => mst_exec_state(2),
@@ -329,7 +332,7 @@ begin
       I2 => \FSM_sequential_mst_exec_state[2]_i_3_n_0\,
       I3 => TestStream,
       I4 => FIFOvalid,
-      I5 => M_AXIS_ARESETN,
+      I5 => mst_exec_state0,
       O => \FSM_sequential_mst_exec_state[2]_i_1_n_0\
     );
 \FSM_sequential_mst_exec_state[2]_i_2\: unisim.vcomponents.LUT5
@@ -720,7 +723,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(0)
+      O => M_AXIS_TDATA_intl0_in(0)
     );
 \M_AXIS_TDATA_intl[10]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -732,7 +735,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(10)
+      O => M_AXIS_TDATA_intl0_in(10)
     );
 \M_AXIS_TDATA_intl[11]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -744,7 +747,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(11)
+      O => M_AXIS_TDATA_intl0_in(11)
     );
 \M_AXIS_TDATA_intl[12]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -756,7 +759,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(12)
+      O => M_AXIS_TDATA_intl0_in(12)
     );
 \M_AXIS_TDATA_intl[13]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -768,7 +771,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(13)
+      O => M_AXIS_TDATA_intl0_in(13)
     );
 \M_AXIS_TDATA_intl[14]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -780,7 +783,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(14)
+      O => M_AXIS_TDATA_intl0_in(14)
     );
 \M_AXIS_TDATA_intl[15]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -792,7 +795,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(15)
+      O => M_AXIS_TDATA_intl0_in(15)
     );
 \M_AXIS_TDATA_intl[16]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -804,7 +807,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(16)
+      O => M_AXIS_TDATA_intl0_in(16)
     );
 \M_AXIS_TDATA_intl[17]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -816,7 +819,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(17)
+      O => M_AXIS_TDATA_intl0_in(17)
     );
 \M_AXIS_TDATA_intl[18]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -828,7 +831,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(18)
+      O => M_AXIS_TDATA_intl0_in(18)
     );
 \M_AXIS_TDATA_intl[19]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -840,7 +843,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(19)
+      O => M_AXIS_TDATA_intl0_in(19)
     );
 \M_AXIS_TDATA_intl[1]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -852,7 +855,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(1)
+      O => M_AXIS_TDATA_intl0_in(1)
     );
 \M_AXIS_TDATA_intl[20]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -864,7 +867,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(20)
+      O => M_AXIS_TDATA_intl0_in(20)
     );
 \M_AXIS_TDATA_intl[21]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -876,7 +879,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(21)
+      O => M_AXIS_TDATA_intl0_in(21)
     );
 \M_AXIS_TDATA_intl[22]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -888,7 +891,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(22)
+      O => M_AXIS_TDATA_intl0_in(22)
     );
 \M_AXIS_TDATA_intl[23]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -900,7 +903,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(23)
+      O => M_AXIS_TDATA_intl0_in(23)
     );
 \M_AXIS_TDATA_intl[24]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -912,7 +915,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(24)
+      O => M_AXIS_TDATA_intl0_in(24)
     );
 \M_AXIS_TDATA_intl[25]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -924,7 +927,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(25)
+      O => M_AXIS_TDATA_intl0_in(25)
     );
 \M_AXIS_TDATA_intl[26]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -936,7 +939,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(26)
+      O => M_AXIS_TDATA_intl0_in(26)
     );
 \M_AXIS_TDATA_intl[27]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -948,7 +951,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(27)
+      O => M_AXIS_TDATA_intl0_in(27)
     );
 \M_AXIS_TDATA_intl[28]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -960,7 +963,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(28)
+      O => M_AXIS_TDATA_intl0_in(28)
     );
 \M_AXIS_TDATA_intl[29]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -972,7 +975,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(29)
+      O => M_AXIS_TDATA_intl0_in(29)
     );
 \M_AXIS_TDATA_intl[2]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -984,7 +987,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(2)
+      O => M_AXIS_TDATA_intl0_in(2)
     );
 \M_AXIS_TDATA_intl[30]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -996,7 +999,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(30)
+      O => M_AXIS_TDATA_intl0_in(30)
     );
 \M_AXIS_TDATA_intl[31]_i_1\: unisim.vcomponents.LUT6
     generic map(
@@ -1021,7 +1024,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(31)
+      O => M_AXIS_TDATA_intl0_in(31)
     );
 \M_AXIS_TDATA_intl[3]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1033,7 +1036,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(3)
+      O => M_AXIS_TDATA_intl0_in(3)
     );
 \M_AXIS_TDATA_intl[4]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1045,7 +1048,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(4)
+      O => M_AXIS_TDATA_intl0_in(4)
     );
 \M_AXIS_TDATA_intl[5]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1057,7 +1060,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(5)
+      O => M_AXIS_TDATA_intl0_in(5)
     );
 \M_AXIS_TDATA_intl[6]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1069,7 +1072,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(6)
+      O => M_AXIS_TDATA_intl0_in(6)
     );
 \M_AXIS_TDATA_intl[7]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1081,7 +1084,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(7)
+      O => M_AXIS_TDATA_intl0_in(7)
     );
 \M_AXIS_TDATA_intl[8]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1093,7 +1096,7 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(8)
+      O => M_AXIS_TDATA_intl0_in(8)
     );
 \M_AXIS_TDATA_intl[9]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1105,263 +1108,263 @@ begin
       I2 => mst_exec_state(1),
       I3 => mst_exec_state(0),
       I4 => mst_exec_state(2),
-      O => M_AXIS_TDATA_intl1_in(9)
+      O => M_AXIS_TDATA_intl0_in(9)
     );
 \M_AXIS_TDATA_intl_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(0),
+      D => M_AXIS_TDATA_intl0_in(0),
       Q => M_AXIS_TDATA_intl(0),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[10]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(10),
+      D => M_AXIS_TDATA_intl0_in(10),
       Q => M_AXIS_TDATA_intl(10),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[11]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(11),
+      D => M_AXIS_TDATA_intl0_in(11),
       Q => M_AXIS_TDATA_intl(11),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[12]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(12),
+      D => M_AXIS_TDATA_intl0_in(12),
       Q => M_AXIS_TDATA_intl(12),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[13]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(13),
+      D => M_AXIS_TDATA_intl0_in(13),
       Q => M_AXIS_TDATA_intl(13),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[14]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(14),
+      D => M_AXIS_TDATA_intl0_in(14),
       Q => M_AXIS_TDATA_intl(14),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[15]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(15),
+      D => M_AXIS_TDATA_intl0_in(15),
       Q => M_AXIS_TDATA_intl(15),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[16]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(16),
+      D => M_AXIS_TDATA_intl0_in(16),
       Q => M_AXIS_TDATA_intl(16),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[17]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(17),
+      D => M_AXIS_TDATA_intl0_in(17),
       Q => M_AXIS_TDATA_intl(17),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[18]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(18),
+      D => M_AXIS_TDATA_intl0_in(18),
       Q => M_AXIS_TDATA_intl(18),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[19]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(19),
+      D => M_AXIS_TDATA_intl0_in(19),
       Q => M_AXIS_TDATA_intl(19),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(1),
+      D => M_AXIS_TDATA_intl0_in(1),
       Q => M_AXIS_TDATA_intl(1),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[20]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(20),
+      D => M_AXIS_TDATA_intl0_in(20),
       Q => M_AXIS_TDATA_intl(20),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[21]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(21),
+      D => M_AXIS_TDATA_intl0_in(21),
       Q => M_AXIS_TDATA_intl(21),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[22]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(22),
+      D => M_AXIS_TDATA_intl0_in(22),
       Q => M_AXIS_TDATA_intl(22),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[23]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(23),
+      D => M_AXIS_TDATA_intl0_in(23),
       Q => M_AXIS_TDATA_intl(23),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[24]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(24),
+      D => M_AXIS_TDATA_intl0_in(24),
       Q => M_AXIS_TDATA_intl(24),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[25]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(25),
+      D => M_AXIS_TDATA_intl0_in(25),
       Q => M_AXIS_TDATA_intl(25),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[26]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(26),
+      D => M_AXIS_TDATA_intl0_in(26),
       Q => M_AXIS_TDATA_intl(26),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[27]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(27),
+      D => M_AXIS_TDATA_intl0_in(27),
       Q => M_AXIS_TDATA_intl(27),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[28]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(28),
+      D => M_AXIS_TDATA_intl0_in(28),
       Q => M_AXIS_TDATA_intl(28),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[29]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(29),
+      D => M_AXIS_TDATA_intl0_in(29),
       Q => M_AXIS_TDATA_intl(29),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(2),
+      D => M_AXIS_TDATA_intl0_in(2),
       Q => M_AXIS_TDATA_intl(2),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[30]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(30),
+      D => M_AXIS_TDATA_intl0_in(30),
       Q => M_AXIS_TDATA_intl(30),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[31]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(31),
+      D => M_AXIS_TDATA_intl0_in(31),
       Q => M_AXIS_TDATA_intl(31),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(3),
+      D => M_AXIS_TDATA_intl0_in(3),
       Q => M_AXIS_TDATA_intl(3),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(4),
+      D => M_AXIS_TDATA_intl0_in(4),
       Q => M_AXIS_TDATA_intl(4),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(5),
+      D => M_AXIS_TDATA_intl0_in(5),
       Q => M_AXIS_TDATA_intl(5),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(6),
+      D => M_AXIS_TDATA_intl0_in(6),
       Q => M_AXIS_TDATA_intl(6),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(7),
+      D => M_AXIS_TDATA_intl0_in(7),
       Q => M_AXIS_TDATA_intl(7),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(8),
+      D => M_AXIS_TDATA_intl0_in(8),
       Q => M_AXIS_TDATA_intl(8),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_intl_reg[9]\: unisim.vcomponents.FDRE
      port map (
       C => M_AXIS_ACLK,
       CE => M_AXIS_TDATA_intl_1,
-      D => M_AXIS_TDATA_intl1_in(9),
+      D => M_AXIS_TDATA_intl0_in(9),
       Q => M_AXIS_TDATA_intl(9),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last[31]_i_1\: unisim.vcomponents.LUT5
     generic map(
@@ -1381,7 +1384,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(0),
       Q => M_AXIS_TDATA_last(0),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -1389,7 +1392,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(10),
       Q => M_AXIS_TDATA_last(10),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -1397,7 +1400,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(11),
       Q => M_AXIS_TDATA_last(11),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -1405,7 +1408,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(12),
       Q => M_AXIS_TDATA_last(12),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[13]\: unisim.vcomponents.FDRE
      port map (
@@ -1413,7 +1416,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(13),
       Q => M_AXIS_TDATA_last(13),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -1421,7 +1424,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(14),
       Q => M_AXIS_TDATA_last(14),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -1429,7 +1432,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(15),
       Q => M_AXIS_TDATA_last(15),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -1437,7 +1440,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(16),
       Q => M_AXIS_TDATA_last(16),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[17]\: unisim.vcomponents.FDRE
      port map (
@@ -1445,7 +1448,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(17),
       Q => M_AXIS_TDATA_last(17),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -1453,7 +1456,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(18),
       Q => M_AXIS_TDATA_last(18),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -1461,7 +1464,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(19),
       Q => M_AXIS_TDATA_last(19),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -1469,7 +1472,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(1),
       Q => M_AXIS_TDATA_last(1),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -1477,7 +1480,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(20),
       Q => M_AXIS_TDATA_last(20),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[21]\: unisim.vcomponents.FDRE
      port map (
@@ -1485,7 +1488,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(21),
       Q => M_AXIS_TDATA_last(21),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -1493,7 +1496,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(22),
       Q => M_AXIS_TDATA_last(22),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -1501,7 +1504,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(23),
       Q => M_AXIS_TDATA_last(23),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -1509,7 +1512,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(24),
       Q => M_AXIS_TDATA_last(24),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[25]\: unisim.vcomponents.FDRE
      port map (
@@ -1517,7 +1520,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(25),
       Q => M_AXIS_TDATA_last(25),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -1525,7 +1528,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(26),
       Q => M_AXIS_TDATA_last(26),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -1533,7 +1536,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(27),
       Q => M_AXIS_TDATA_last(27),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -1541,7 +1544,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(28),
       Q => M_AXIS_TDATA_last(28),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[29]\: unisim.vcomponents.FDRE
      port map (
@@ -1549,7 +1552,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(29),
       Q => M_AXIS_TDATA_last(29),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -1557,7 +1560,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(2),
       Q => M_AXIS_TDATA_last(2),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -1565,7 +1568,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(30),
       Q => M_AXIS_TDATA_last(30),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -1573,7 +1576,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(31),
       Q => M_AXIS_TDATA_last(31),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[3]\: unisim.vcomponents.FDRE
      port map (
@@ -1581,7 +1584,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(3),
       Q => M_AXIS_TDATA_last(3),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -1589,7 +1592,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(4),
       Q => M_AXIS_TDATA_last(4),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[5]\: unisim.vcomponents.FDRE
      port map (
@@ -1597,7 +1600,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(5),
       Q => M_AXIS_TDATA_last(5),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -1605,7 +1608,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(6),
       Q => M_AXIS_TDATA_last(6),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -1613,7 +1616,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(7),
       Q => M_AXIS_TDATA_last(7),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -1621,7 +1624,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(8),
       Q => M_AXIS_TDATA_last(8),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \M_AXIS_TDATA_last_reg[9]\: unisim.vcomponents.FDRE
      port map (
@@ -1629,7 +1632,7 @@ begin
       CE => M_AXIS_TDATA_last_0,
       D => FIFOdata(9),
       Q => M_AXIS_TDATA_last(9),
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 StreamReady_INST_0: unisim.vcomponents.LUT6
     generic map(
@@ -1657,14 +1660,15 @@ StreamReady_intl_i_1: unisim.vcomponents.LUT6
       I5 => StreamReady_intl_reg_n_0,
       O => StreamReady_intl_i_1_n_0
     );
-StreamReady_intl_i_2: unisim.vcomponents.LUT3
+StreamReady_intl_i_2: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"10"
+      INIT => X"1000"
     )
         port map (
       I0 => mst_exec_state(2),
       I1 => mst_exec_state(0),
       I2 => M_AXIS_ARESETN,
+      I3 => SW_nRST,
       O => StreamReady_intl_i_2_n_0
     );
 StreamReady_intl_reg: unisim.vcomponents.FDRE
@@ -1678,14 +1682,15 @@ StreamReady_intl_reg: unisim.vcomponents.FDRE
       Q => StreamReady_intl_reg_n_0,
       R => '0'
     );
-axis_tlast_delay_i_1: unisim.vcomponents.LUT3
+axis_tlast_delay_i_1: unisim.vcomponents.LUT4
     generic map(
-      INIT => X"80"
+      INIT => X"8000"
     )
         port map (
       I0 => axis_tlast_delay_i_2_n_0,
       I1 => axis_tlast_delay_i_3_n_0,
       I2 => M_AXIS_ARESETN,
+      I3 => SW_nRST,
       O => axis_tlast_delay_i_1_n_0
     );
 axis_tlast_delay_i_2: unisim.vcomponents.LUT6
@@ -1774,9 +1779,9 @@ axis_tlast_delay_reg: unisim.vcomponents.FDRE
       Q => M_AXIS_TLAST,
       R => '0'
     );
-axis_tvalid_delay_i_1: unisim.vcomponents.LUT5
+axis_tvalid_delay_i_1: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"0A280000"
+      INIT => X"0A28000000000000"
     )
         port map (
       I0 => mst_exec_state1,
@@ -1784,6 +1789,7 @@ axis_tvalid_delay_i_1: unisim.vcomponents.LUT5
       I2 => mst_exec_state(2),
       I3 => mst_exec_state(0),
       I4 => M_AXIS_ARESETN,
+      I5 => SW_nRST,
       O => axis_tvalid_delay_i_1_n_0
     );
 axis_tvalid_delay_reg: unisim.vcomponents.FDRE
@@ -2082,13 +2088,14 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       I4 => \cnt_stream_out_reg[31]_i_4_n_6\,
       O => \cnt_stream_out[30]_i_1_n_0\
     );
-\cnt_stream_out[31]_i_1\: unisim.vcomponents.LUT1
+\cnt_stream_out[31]_i_1\: unisim.vcomponents.LUT2
     generic map(
-      INIT => X"1"
+      INIT => X"7"
     )
         port map (
-      I0 => M_AXIS_ARESETN,
-      O => \cnt_stream_out[31]_i_1_n_0\
+      I0 => SW_nRST,
+      I1 => M_AXIS_ARESETN,
+      O => mst_exec_state0
     );
 \cnt_stream_out[31]_i_2\: unisim.vcomponents.LUT6
     generic map(
@@ -2205,7 +2212,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[0]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[0]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[10]\: unisim.vcomponents.FDRE
      port map (
@@ -2213,7 +2220,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[10]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[10]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[11]\: unisim.vcomponents.FDRE
      port map (
@@ -2221,7 +2228,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[11]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[11]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[12]\: unisim.vcomponents.FDRE
      port map (
@@ -2229,7 +2236,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[12]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[12]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[12]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2255,7 +2262,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[13]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[13]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[14]\: unisim.vcomponents.FDRE
      port map (
@@ -2263,7 +2270,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[14]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[14]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[15]\: unisim.vcomponents.FDRE
      port map (
@@ -2271,7 +2278,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[15]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[15]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[16]\: unisim.vcomponents.FDRE
      port map (
@@ -2279,7 +2286,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[16]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[16]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[16]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2305,7 +2312,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[17]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[17]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[18]\: unisim.vcomponents.FDRE
      port map (
@@ -2313,7 +2320,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[18]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[18]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[19]\: unisim.vcomponents.FDRE
      port map (
@@ -2321,7 +2328,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[19]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[19]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[1]\: unisim.vcomponents.FDRE
      port map (
@@ -2329,7 +2336,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[1]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[1]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[20]\: unisim.vcomponents.FDRE
      port map (
@@ -2337,7 +2344,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[20]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[20]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[20]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2363,7 +2370,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[21]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[21]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[22]\: unisim.vcomponents.FDRE
      port map (
@@ -2371,7 +2378,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[22]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[22]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[23]\: unisim.vcomponents.FDRE
      port map (
@@ -2379,7 +2386,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[23]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[23]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[24]\: unisim.vcomponents.FDRE
      port map (
@@ -2387,7 +2394,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[24]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[24]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[24]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2413,7 +2420,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[25]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[25]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[26]\: unisim.vcomponents.FDRE
      port map (
@@ -2421,7 +2428,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[26]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[26]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[27]\: unisim.vcomponents.FDRE
      port map (
@@ -2429,7 +2436,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[27]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[27]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[28]\: unisim.vcomponents.FDRE
      port map (
@@ -2437,7 +2444,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[28]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[28]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[28]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2463,7 +2470,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[29]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[29]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[2]\: unisim.vcomponents.FDRE
      port map (
@@ -2471,7 +2478,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[2]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[2]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[30]\: unisim.vcomponents.FDRE
      port map (
@@ -2479,7 +2486,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[30]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[30]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[31]\: unisim.vcomponents.FDRE
      port map (
@@ -2487,7 +2494,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[31]_i_3_n_0\,
       Q => \cnt_stream_out_reg_n_0_[31]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[31]_i_4\: unisim.vcomponents.CARRY4
      port map (
@@ -2512,7 +2519,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[3]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[3]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[4]\: unisim.vcomponents.FDRE
      port map (
@@ -2520,7 +2527,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[4]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[4]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[4]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2546,7 +2553,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[5]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[5]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[6]\: unisim.vcomponents.FDRE
      port map (
@@ -2554,7 +2561,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[6]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[6]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[7]\: unisim.vcomponents.FDRE
      port map (
@@ -2562,7 +2569,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[7]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[7]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[8]\: unisim.vcomponents.FDRE
      port map (
@@ -2570,7 +2577,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[8]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[8]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 \cnt_stream_out_reg[8]_i_2\: unisim.vcomponents.CARRY4
      port map (
@@ -2596,7 +2603,7 @@ axis_tvalid_delay_reg: unisim.vcomponents.FDRE
       CE => cnt_stream_out,
       D => \cnt_stream_out[9]_i_1_n_0\,
       Q => \cnt_stream_out_reg_n_0_[9]\,
-      R => \cnt_stream_out[31]_i_1_n_0\
+      R => mst_exec_state0
     );
 mst_exec_state1_carry: unisim.vcomponents.CARRY4
      port map (
@@ -2866,6 +2873,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity base_zynq_axistream_0_0 is
   port (
+    SW_nRST : in STD_LOGIC;
     TestStream : in STD_LOGIC;
     FIFOvalid : in STD_LOGIC;
     FIFOdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2919,6 +2927,7 @@ U0: entity work.base_zynq_axistream_0_0_axistream
       M_AXIS_TLAST => M_AXIS_TLAST,
       M_AXIS_TREADY => M_AXIS_TREADY,
       M_AXIS_TVALID => M_AXIS_TVALID,
+      SW_nRST => SW_nRST,
       StreamReady => StreamReady,
       TestStream => TestStream
     );

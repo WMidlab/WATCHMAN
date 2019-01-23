@@ -55,6 +55,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY base_zynq_TARGETC_IP_Prototype_0_1 IS
   PORT (
+    SW_nRST : OUT STD_LOGIC;
     RefCLK_i1 : IN STD_LOGIC;
     RefCLK_i2 : IN STD_LOGIC;
     tc_axi_aclk : IN STD_LOGIC;
@@ -154,6 +155,7 @@ ARCHITECTURE base_zynq_TARGETC_IP_Prototype_0_1_arch OF base_zynq_TARGETC_IP_Pro
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF base_zynq_TARGETC_IP_Prototype_0_1_arch: ARCHITECTURE IS "yes";
   COMPONENT TARGETC_IP_Prototype IS
     PORT (
+      SW_nRST : OUT STD_LOGIC;
       RefCLK_i1 : IN STD_LOGIC;
       RefCLK_i2 : IN STD_LOGIC;
       tc_axi_aclk : IN STD_LOGIC;
@@ -291,6 +293,7 @@ ARCHITECTURE base_zynq_TARGETC_IP_Prototype_0_1_arch OF base_zynq_TARGETC_IP_Pro
 BEGIN
   U0 : TARGETC_IP_Prototype
     PORT MAP (
+      SW_nRST => SW_nRST,
       RefCLK_i1 => RefCLK_i1,
       RefCLK_i2 => RefCLK_i2,
       tc_axi_aclk => tc_axi_aclk,

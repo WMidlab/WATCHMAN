@@ -156,6 +156,7 @@ package TARGETC_pkg is
 	constant TC_WL_DIV_REG:		integer := 153;
 
 	constant TC_DEBUGSEL_REG:		integer := 154;
+    constant TC_ADDR_READOUT:       integer := 155;
 
 	--type eDO_ARRAY is array (0 downto 15) of std_logic_vector(11 downto 0);
 	type eDO_LINE is array (11 downto 0) of std_logic;
@@ -187,7 +188,7 @@ package TARGETC_pkg is
 	--type CtrlSignalBus_Outputs is record
 	type T_CtrlBus_OxMS is record
 
-		SWRESET:			std_logic;	--Software Reset
+		SW_nRST:			std_logic;	--Software Reset
 
 		WL_CLK_DIV:		std_logic_vector(31 downto 0);
 		WRITEREG:		std_logic;
@@ -237,6 +238,10 @@ package TARGETC_pkg is
 		WindowBusy:		std_logic;
 		SSvalid:		std_logic;
 		RAMP_Cnt:		std_logic;
+
+        RDAD_read:      std_logic_vector(9 downto 0);
+        WL_read:      std_logic_vector(8 downto 0);
+        SS_read:      std_logic_vector(8 downto 0);
 
 	end record;
 	subtype T_CtrlBus_OxSL is T_CtrlBus_IxMS;

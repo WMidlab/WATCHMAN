@@ -69,6 +69,30 @@ architecture implementation of RoundBufferV4 is
 
 	end component WindowBrain;
 
+	-- component WindowBrain_GEN is
+	-- 	generic(
+	-- 		NBRWINDOWS : integer := 16
+	-- 	);
+	-- 	Port (
+	--
+	-- 	nrst : 			in	std_Logic;
+	-- 	CLR :			in	std_Logic;
+	-- 	CLK:			in 	std_logic;
+	--
+	-- 	--Window Part
+	-- 	CPUBus :		in	std_logic_vector(10 downto 0);
+	--
+	-- 	wr1_en:			out	std_logic;
+	-- 	wr2_en:			out	std_logic;
+	--
+	-- 	CurAddrBit:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
+	-- 	OldAddrBit:		in std_logic_vector(NBRWINDOWS-1 downto 0);
+	--
+	-- 	NextAddrBus : 		out std_logic_vector(7 downto 0);
+	-- 	PrevAddrBus :		out std_logic_vector(7 downto 0)
+	-- 	);
+	-- end component WindowBrain_GEN;
+
 	component WindowStoreV3 is
 		Generic(
 			NBRWINDOWS : integer := 16
@@ -191,8 +215,6 @@ architecture implementation of RoundBufferV4 is
 
 	--signal PREVBus_intl :		Bus_t(NBRWINDOWS-1 downto 0);
 	--signal NEXTBus_intl :		Bus_t(NBRWINDOWS-1 downto 0);
-	signal PREVBus_intl :		std_logic_vector(NBRWINDOWS-1 downto 0);
-	signal NEXTBus_intl :		std_logic_vector(NBRWINDOWS-1 downto 0);
 
 	signal NextAddrBus : 		std_logic_vector(7 downto 0);
 	signal PrevAddrBus :		std_logic_vector(7 downto 0);
@@ -218,12 +240,15 @@ architecture implementation of RoundBufferV4 is
 	-- Constraints on Signals
 	-- -------------------------------------------------------------
 	attribute DONT_TOUCH : string;
-	attribute DONT_TOUCH of GEN_CPU: label is "TRUE";
-	attribute DONT_TOUCH of CPU0: label is "TRUE";
-	attribute DONT_TOUCH of CPULast: label is "TRUE";
+--	attribute DONT_TOUCH of GEN_CPU: label is "TRUE";
+--	attribute DONT_TOUCH of CPU0: label is "TRUE";
+--	attribute DONT_TOUCH of CPULast: label is "TRUE";
+	attribute DONT_TOUCH of WDOCONTROL: label is "TRUE";
+	attribute DONT_TOUCH of WDOTRIGGER: label is "TRUE";
+	attribute DONT_TOUCH of WDOSTORE: label is "TRUE";
 
-	attribute DONT_TOUCH of PREVBus_intl: signal is "TRUE";
-	attribute DONT_TOUCH of NEXTBus_intl: signal is "TRUE";
+--	attribute DONT_TOUCH of PREVBus_intl: signal is "TRUE";
+--	attribute DONT_TOUCH of NEXTBus_intl: signal is "TRUE";
 
 	attribute DONT_TOUCH of CurWindowCnt: signal is "TRUE";
 	attribute DONT_TOUCH of OldWindowCnt: signal is "TRUE";
@@ -238,6 +263,26 @@ begin
 
 	clr_intl <= '1'	when timecounter(3 downto 0) = "0000" else '0';
 
+	-- GEN_CPU : WindowBrain_GEN
+	-- 	generic map(
+	-- 		NBRWINDOWS => 256
+	-- 	)
+	-- 	Port map(
+	-- 		nrst			=> nrst,
+	-- 		clr				=> clr_intl,
+	-- 		CLK				=> ClockBus.CLK250MHz,
+	-- 		CPUBus 			=> Bus_intl,
+	--
+	-- 		wr1_en 			=> wr1_en_bus,
+	-- 		wr2_en			=> wr2_en_bus,
+	--
+	-- 		CurAddrBit			=> CurAddrBit_s,
+	-- 		OldAddrBit			=> OldAddrBit_s,
+	--
+	-- 		NextAddrBus		=> NextAddrBus,
+	-- 		PrevAddrBus		=> PrevAddrBus
+	-- 	);
+	--
 	GEN_CPU : for I in 1 to (NBRWINDOWS-2) generate
 		CPUX : WindowBrain
 			generic map(

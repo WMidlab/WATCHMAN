@@ -99,6 +99,12 @@ architecture Behavioral of WindowBrainControl is
 
 	signal Bus_intl : t_CommandBus;
 
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+	attribute DONT_TOUCH of DIG_STO_AFIFO : label is "TRUE";
+	
 begin
 
     -- Digitizing and Storage FIFO

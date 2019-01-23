@@ -6,7 +6,7 @@ use work.TARGETC_pkg.all;
 
 entity TARGETC_RDAD_WL_SMPL is
 	Port (
-	RST : 			in	STD_Logic;
+	--RST : 			in	STD_Logic;
 
 	DISCH_PERIOD :	in	std_logic_vector(15 downto 0);
 	INCR_WAIT_PERIOD:	in std_logic_vector(15 downto 0);
@@ -206,7 +206,7 @@ begin
 			NBITS => 32
 		)
 		port map(
-			nrst	=>	RST,
+			nrst	=>	CtrlBus_IxSL.SW_nRST,
 			DA		=>	CtrlBus_IxSL.NBRWINDOW,
 			QB		=> 	NBRWINDOW_clkd,
 			ClkA	=> 	ClockBus.CLK250MHz,
@@ -225,9 +225,9 @@ begin
 
 
 	-- Digitilization Readout the Samples Storage Location
-	process(RST,ClockBus.RDAD_CLK,CtrlBus_IxSL.SWRESET)
+	process(CtrlBus_IxSL.SW_nRST,ClockBus.RDAD_CLK)
 	begin
-		if RST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+		if CtrlBus_IxSL.SW_nRST = '0' then
 			RDAD_CLK_intl 	<= '0';
 			RDAD_SIN_intl 	<= '0';
 			RDAD_DIR_intl 	<= '0';
@@ -296,6 +296,16 @@ begin
 								rdad_stm <= IDLE;
 							end if;
 						end if;
+
+						-- Save the information
+						fifo_intl.wdotime 	<= RDAD_DataOut(63 downto 0);
+						fifo_intl.addr 		<= RDAD_DataOut(71 downto 64);
+						fifo_intl.wr1	<= RDAD_DataOut(72);
+						fifo_intl.wr2	<= RDAD_DataOut(73);
+						fifo_intl.trig	<= RDAD_DataOut(85 downto 74);
+
+						--Test
+						CtrlBus_OxSL.RDAD_Read <= RDAD_DataOut(73 downto 64);
 			--WINDOW #1
 					when WD1_SET_RDAD_ADDR =>
 							if(WL.ready = '1') then
@@ -423,22 +433,15 @@ begin
 		end if;
 	end process;
 
-	fifo_intl.wdotime 	<= RDAD_DataOut(63 downto 0);
-	fifo_intl.addr 		<= RDAD_DataOut(71 downto 64);
-	fifo_intl.wr1	<= RDAD_DataOut(72);
-	fifo_intl.wr2	<= RDAD_DataOut(73);
-	fifo_intl.trig	<= RDAD_DataOut(85 downto 74);
-
-
 
 	RDAD_CLK 	<= RDAD_CLK_intl;
 	RDAD_SIN 	<= RDAD_SIN_intl;
 	RDAD_DIR 	<= RDAD_DIR_intl;
 
 	-- Wilkinson
-	process(RST,ClockBus.WL_CLK,CtrlBus_IxSL.SWRESET)
+	process(CtrlBus_IxSL.SW_nRST,ClockBus.WL_CLK)
 	begin
-		if RST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+		if CtrlBus_IxSL.SW_nRST = '0' then
 			RAMP_intl <= '0';	--Vdischarge
 			GCC_RESET_intl <= '1';
 			wlcnt <= (others => '0');
@@ -522,6 +525,9 @@ begin
 							DIG_WriteEn <= '1';
 							DIG_DataIn <= RD_Addr;
 
+							--Test
+							CtrlBus_OxSL.WL_Read <= RD_Addr;
+
 							-- 4 signals to FIFO Manager
 							WDOTime_WL	<= 	fifo_intl.wdotime;
 							DIGTime_WL <= TimeCounter;
@@ -595,9 +601,9 @@ begin
 	end process;
 
 	-- Process for Data Out
-	process(RST,ClockBus.HSCLK,CtrlBus_IxSL.SWRESET)
+	process(CtrlBus_IxSL.SW_nRST,ClockBus.HSCLK)
 	begin
-		if RST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+		if CtrlBus_IxSL.SW_nRST = '0' then
 
 			SS.response <= '0';
 			SS.ready <= '0';
@@ -734,6 +740,9 @@ begin
 							DIGTime <= 	DIGTime_WL;
 							Trigger <= Trigger_WL;
 							WDONbr <= WDONbr_WL;
+
+							--Test
+							CtrlBus_OxSL.SS_Read <= WDONbr_WL;
 						else
 							hsout_stm <= RESPREADY;
 						end if;

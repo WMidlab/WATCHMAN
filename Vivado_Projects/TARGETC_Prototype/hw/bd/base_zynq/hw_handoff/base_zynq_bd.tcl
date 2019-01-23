@@ -65,7 +65,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./Desktop/LinktoTARGETC_Prototype/hw/bd
+  set origin_dir ./VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -1218,6 +1218,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net TARGETC_IP_Prototype_0_SS_LD_SIN [get_bd_ports SS_LD_SIN] [get_bd_pins TARGETC_IP_Prototype_0/SS_LD_SIN]
   connect_bd_net -net TARGETC_IP_Prototype_0_SS_RESET [get_bd_ports SS_RESET] [get_bd_pins TARGETC_IP_Prototype_0/SS_RESET]
   connect_bd_net -net TARGETC_IP_Prototype_0_SSvalid [get_bd_pins FifoManagerV4_0/PRECvalid] [get_bd_pins TARGETC_IP_Prototype_0/SSvalid]
+  connect_bd_net -net TARGETC_IP_Prototype_0_SW_nRST [get_bd_pins FifoManagerV4_0/nRST] [get_bd_pins TARGETC_IP_Prototype_0/SW_nRST] [get_bd_pins axistream_0/SW_nRST]
   connect_bd_net -net TARGETC_IP_Prototype_0_Trigger [get_bd_pins FifoManagerV4_0/Trigger] [get_bd_pins TARGETC_IP_Prototype_0/Trigger]
   connect_bd_net -net TARGETC_IP_Prototype_0_WDONbr [get_bd_pins FifoManagerV4_0/WDONBR] [get_bd_pins TARGETC_IP_Prototype_0/WDONbr]
   connect_bd_net -net TARGETC_IP_Prototype_0_WDOTime [get_bd_pins FifoManagerV4_0/WDOTime] [get_bd_pins TARGETC_IP_Prototype_0/WDOTime]
@@ -1245,7 +1246,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net iobuf_1_O [get_bd_pins axi_iic_0/scl_i] [get_bd_pins iobuf_1/O]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins FifoManagerV4_0/CLK] [get_bd_pins TARGETC_IP_Prototype_0/RefCLK_i1] [get_bd_pins TARGETC_IP_Prototype_0/RefCLK_i2] [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axistream_0/M_AXIS_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_50M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins FifoManagerV4_0/nRST] [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axistream_0/M_AXIS_ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
+  connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axistream_0/M_AXIS_ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins TARGETC_IP_Prototype_0/DO] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins processing_system7_0/IRQ_F2P] [get_bd_pins xlconcat_1/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_ports HCMPA] [get_bd_ports HCMPB] [get_bd_ports HCMPC] [get_bd_ports HCMPD] [get_bd_pins xlconstant_0/dout]
