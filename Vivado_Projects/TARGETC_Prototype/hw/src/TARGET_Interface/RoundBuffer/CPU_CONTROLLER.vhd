@@ -113,6 +113,28 @@ architecture Behavioral of CPU_CONTROLLER is
     );
 	end component aFifo;
 
+	component LookupTable_LE is
+		generic(
+			MIN_LE_TIME : integer := 3	-- All times are x4 ns so 2 is equal to 8ns = 12 samples before rise of trigger
+		);
+		Port (
+			Clk:		in 	std_logic;
+			SCnt:		in 	std_logic_vector(3 downto 0);
+			prevWdo :	out	std_logic
+		);
+	end component LookupTable_LE;
+
+	-- component LookupTable_TE is
+	-- 	generic(
+	-- 		MIN_TE_TIME : integer := 1
+	-- 	);
+	-- 	Port (
+	-- 		Clk:		in 	std_logic;
+	-- 		SCnt:		in 	std_logic_vector(3 downto 0);
+	-- 		nextWdo :	out	std_logic
+	-- 	);
+	-- end component LookupTable_TE;
+
 	type storagestate is (
 		IDLE,
 		READY,
@@ -164,8 +186,10 @@ architecture Behavioral of CPU_CONTROLLER is
 
 	signal TrigInfo_intl, TrigInfo_intl_dly, Old_TrigInfo : std_logic_vector(11 downto 0);
 	signal Last_intl, Trig_intl : std_logic;
+	signal TriggerRegDly : std_logic_vector(1 downto 0);
 
 	signal valid : std_logic;
+	signal LE_intl, TE_intl : std_logic;
 	-- -------------------------------------------------------------
 	-- Constraints on Signals
 	-- -------------------------------------------------------------
@@ -179,6 +203,26 @@ architecture Behavioral of CPU_CONTROLLER is
 	attribute DONT_TOUCH of CTRL_CPUBUS : signal is "TRUE";
 
 begin
+
+	LE_LUT_inst : 	LookupTable_LE
+	generic map(
+		MIN_LE_TIME => 3--MIN_LE_TIME
+	)
+	port map(
+		clk	=> ClockBus.CLK250MHz,
+		SCnt	=>  Timecounter(3 downto 0),
+		prevWdo => LE_intl
+	);
+
+	-- TE_LUT_inst : 	LookupTable_TE
+	-- generic map(
+	-- 	MIN_TE_TIME => 2--MIN_TE_TIME
+	-- )
+	-- port map(
+	-- 	clk	=> ClockBus.CLK250MHz,
+	-- 	SCnt	=>  Timecounter(3 downto 0),
+	-- 	nextWdo => TE_intl
+	-- );
 
 	TRIG_CONTROL_inst : TRIGGER_CONTROLLER
 		Generic map(
@@ -197,7 +241,7 @@ begin
 
 	Trig_intl <= TrigInfo_intl(0) or TrigInfo_intl(1) or TrigInfo_intl(2) or TrigInfo_intl(3);
 
-	Last_intl <= TrigInfo_intl(4) or TrigInfo_intl(5) or TrigInfo_intl(6) or TrigInfo_intl(7);
+	--Last_intl <= TrigInfo_intl(4) or TrigInfo_intl(5) or TrigInfo_intl(6) or TrigInfo_intl(7);
 
 	GEN_DLY_TRIG : for I in 0 to 11 generate
 		Dly_Trig : BlockDelay
@@ -300,12 +344,18 @@ begin
 						--CurAddrBit <= (curidx => '1', others => '0');
 
 						CPUTime <= Timecounter;
+
 						Old_TrigInfo <= TrigInfo_intl_dly;
 						Old_Wr_en	<= not(wr2_en_dly) & not(wr1_en_dly);
 					when "0000" => --Time 1
 						valid <= '1'; -- After this the data is correct, time to stabilize
+
 					when others =>
 				end case;
+
+				if TriggerRegDly = "01" then
+					Old_TrigInfo <= TrigInfo_intl_dly;
+				end if;
 			end if;
 		end if;
 	end process;
@@ -363,12 +413,15 @@ begin
 				TRIG_CPUBUS <= CMD_NOP & x"00";
 				Trig_OldAddr_intl <= OldAddr_intl;
 				--Trig_intl_dly <= '0';
+				TriggerRegDly <= (others => '0');
 		else
 			if rising_edge(ClockBus.CLK250MHz) then
 
+				TriggerRegDly <= TriggerRegDly(0) & Trig_intl;
 				--Trig_intl_dly <= Trig_intl;
 				if valid = '1' then
 					if OldAddr_intl /= Trig_OldAddr_intl then
+					--if TimeCounter(3 downto 0) = "0000" then
 						Trig_OldAddr_intl <= OldAddr_intl;
 
 						--Send the command
@@ -390,8 +443,13 @@ begin
 							TRIG_CPUBUS <= DIGI_CPUBUS;
 						end if;
 					else
-						--TRIG_CPUBUS <= CMD_NOP & x"00";
-						TRIG_CPUBUS <= DIGI_CPUBUS;
+					-- 	--TRIG_CPUBUS <= CMD_NOP & x"00";
+					--TRIG_CPUBUS <= DIGI_CPUBUS;
+						if LE_intl = '1' and TriggerRegDly = "01" then
+							TRIG_CPUBUS <= CMD_WR2_MARKED & OldAddr_intl;
+						else
+							TRIG_CPUBUS <= DIGI_CPUBUS;
+						end if;
 					end if;
 				end if;
 			end if;
@@ -492,7 +550,7 @@ begin
 
 							if (to_integer(unsigned(CntWindow512)) /= 0) then
 
-								if OldAddr_intl /= Ctrl_OldAddr_intl and valid='0' then
+								if OldAddr_intl /= Ctrl_OldAddr_intl and valid='1' then
 
 								Ctrl_OldAddr_intl <= OldAddr_intl;
 

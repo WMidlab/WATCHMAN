@@ -10,7 +10,7 @@ entity LookupTable_TE is
 	);
 	Port (
 		clk:		in	std_logic;
-		SCnt:		in 	std_logic_vector(2 downto 0);
+		SCnt:		in 	std_logic_vector(3 downto 0);
 		nextWdo :	out	std_logic
 	);
 end LookupTable_TE;
@@ -29,7 +29,7 @@ begin
 	-- 		end if;
 	-- 	end if;
 	-- end process;
-	nextWdo <= 	'1' when (to_integer(unsigned(SCnt)) > (7-MIN_TE_TIME)) else
+	nextWdo <= 	'1' when (to_integer(unsigned(SCnt)) > (15-MIN_TE_TIME)) else
 				'0';
 
 end Behavioral;

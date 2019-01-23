@@ -315,6 +315,16 @@ begin
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
 		wait for 1 us;
 
+		wait for 20 us;
+		report " Read window 5 with 10";
+		CtrlBus_IxSL_intl.FSTWINDOW <= x"00000005";
+		CtrlBus_IxSL_intl.NBRWINDOW <= x"0000000A";
+
+		CtrlBus_IxSL_intl.WindowStorage <= '1';
+		wait for 10 ns;
+		CtrlBus_IxSL_intl.WindowStorage <= '0';
+		wait for 1 us;
+
 
     	wait;
 	end process;

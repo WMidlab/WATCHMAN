@@ -9,7 +9,7 @@ entity LookupTable_LE is
 	);
 	Port (
 		Clk:		in 	std_logic;
-		SCnt:		in 	std_logic_vector(2 downto 0);
+		SCnt:		in 	std_logic_vector(3 downto 0);
 		prevWdo :	out	std_logic
 	);
 end LookupTable_LE;
