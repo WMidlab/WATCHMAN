@@ -1754,26 +1754,6 @@
         <spirit:externalPortReference spirit:portRef="SSTIN_N"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WDOTime</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WDOTime"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="WDOTime"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_DIGTime</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="DIGTime"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="DIGTime"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_Trigger</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="Trigger"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="Trigger"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WDONbr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WDONbr"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="WDONBR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>TARGETC_IP_Prototype_0_CH0</spirit:name>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH0"/>
         <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH0"/>
@@ -1941,6 +1921,46 @@
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SW_nRST"/>
         <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="SW_nRST"/>
         <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="nRST"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_PSBusy</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="PSBusy"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="PSBUSY_i"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Time</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Time"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Time"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_WdoAddr</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_WdoAddr"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_WdoAddr"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_TrigInfo</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_TrigInfo"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_TrigInfo"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Spare</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Spare"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Spare"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Empty</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Empty"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Empty"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>FifoManagerV4_0_FIFO_ReadEn</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_ReadEn"/>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_ReadEn"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_TestFiFO</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TestFiFO"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="TestFIFO"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>

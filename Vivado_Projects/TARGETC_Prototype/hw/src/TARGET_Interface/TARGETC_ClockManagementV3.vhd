@@ -2,12 +2,12 @@
 -- Clock Wizard for :
 		-- |	Name	|	Period	|	Frequency	|
 		--  ------------|-----------|---------------|
-		-- |	SSTIN	|	64 ns	|	15.625 MHz	| 
+		-- |	SSTIN	|	64 ns	|	15.625 MHz	|
 		-- |	SCLK	|	...		|	250 MHz		|	Derived from SSTIN main clock 16*SSTIN
 		-- |	RDAD_CLK|	...		|	250 MHz		|	Derived from SSTIN main clock 16*SSTIN
 		-- |	HSCLK	|	...		|	250 MHz		|	Derived from SSTIN main clock 16*SSTIN
 		-- |	WL_CLK	|	...		|	MAXFREQ		|	Derived from SSTIN main clock but Variable [SSTIN:MAXFREQ]
-	
+
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -24,27 +24,28 @@ entity TC_ClockManagementV3 is
 		nrst:			in	std_logic;
 		clk1:			in 	std_logic;	-- Clock for the TARGETC SCLK
 		clk2:			in 	std_logic;	-- Clock for the TARGETC SCLK
-		
+		AXI_Clk:		in	std_logic;
+
 		WL_CLK_DIV:		in 	std_logic_vector(31 downto 0); -- Clock Divider Through DFF
-		
+
 		PLL_LOCKED:		out	std_logic;
-		
+
 		ClockBus:		out T_ClockBus;
 
-		Timecounter:	out std_logic_vector(63 downto 0);		-- Pin 
-		
-		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44		
-		 
+		Timecounter:	out std_logic_vector(63 downto 0);		-- Pin
+
+		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44
+
 		-- LVDS Differential Pair
 		HSCLK_P:		out std_logic;		-- Pin#43
 		HSCLK_N:		out std_logic;		-- Pin#44
-		
+
 		WL_CLK_P:		out std_logic;		-- Pin#57
 		WL_CLK_N:		out std_logic;		-- Pin#58
-		
-		SSTIN_P:		out std_logic;		-- Pin#125 		
-		SSTIN_N:		out std_logic		-- Pin#126 		
-		
+
+		SSTIN_P:		out std_logic;		-- Pin#125
+		SSTIN_N:		out std_logic		-- Pin#126
+
 	);
 end TC_ClockManagementV3;
 
@@ -65,8 +66,8 @@ architecture arch_imp of TC_ClockManagementV3 is
 		I : in std_ulogic
 	);
 	end component OBUFDS;
-		
-	component counter is 
+
+	component counter is
 	generic(
 		NBITS : integer := 8
 	);
@@ -75,16 +76,16 @@ architecture arch_imp of TC_ClockManagementV3 is
 		RST : in  std_logic;
 		Q : out std_logic_vector(NBITS-1 downto 0)
 	);
-	end component counter;	
+	end component counter;
 	-- --------------------------------------------------------------------------------
 	-- Signal Declaration
-	
+
 	signal locked_WL:	std_logic;
 	signal locked_general,locked_general2:	std_logic;
 	signal locked_intl:	std_logic;
-	
+
 	-- Internal Clock signals (intl)
-	
+
 	signal SCLKraw :		std_logic;
 	signal HSCLKraw :		std_logic;
 	signal RDAD_CLKraw :	std_logic;
@@ -94,12 +95,12 @@ architecture arch_imp of TC_ClockManagementV3 is
 	signal CLK150MHzraw :	std_logic;
 	signal CLK200MHzraw :	std_logic;
 	signal CLK250MHzraw :	std_logic;
-	
+
 	signal sstin_bufg : std_logic;
 	signal CLK100MHz_bufg :	std_logic;
 	signal CLK250MHz_bufg :	std_logic;
 
-	
+
 	signal SSTIN_intl:		std_logic;
 	signal SCLK_intl :		std_logic;
 	signal HSCLK_intl :		std_logic;
@@ -108,22 +109,22 @@ architecture arch_imp of TC_ClockManagementV3 is
 	signal CLK250MHz_intl :	std_logic;
 	signal WL_CLK_intl :		std_logic;
 
-	
+
 	signal WL_CLK_100MHz_bufg : std_logic;
 	signal WL_CLK_150MHz_bufg : std_logic;
 	signal WL_CLK_200MHz_bufg : std_logic;
 	signal WL_CLK_250MHz_bufg : std_logic;
 	signal WL_CLK_300MHz_bufg : std_logic;
-	
+
 	signal rst :		std_logic;
 	signal Timecounter_intl : std_logic_vector(63 downto 0);
 	signal clkFbOut_WL, clkFbOut : std_logic;
 	signal clkFbIn_WL, clkFbIn : std_logic;
-	
+
 begin
-	
+
 	rst <= not nrst;
-	
+
 	  -- MMCM to generate base and fast clocks
 	TC_CLK_MNG_inst : MMCME2_ADV
 	generic map(
@@ -194,41 +195,41 @@ begin
       port map (
          I => clkFbOut,
          O => clkFbIn
-   );  
+   );
 
 	BUFG_OUTCLK100 : BUFG
 	port map (
     	I => Clk100MHzRaw,
     	O => Clk100MHz_bufg
 	);
-	
+
 	BUFG_OUTCLK250 : BUFG
 	port map (
     	I => CLK250MHzRaw,
     	O => CLK250MHz_bufg
-	); 	
-	
-	
+	);
+
+
 	locked_intl <= 	'0' when locked_general = '0' else
 					'1';
-					
+
 	--CLK500MHz_intl <= '0' when locked_intl = '0' else CLK500MHzraw;
 	CLK250MHz_intl <= '0' when locked_intl = '0' else CLK250MHz_bufg;
-	
+
 	RDAD_CLK_intl <= '0' when locked_intl = '0' else Clk100MHz_bufg;
-	
+
 	SCLK_intl <= '0' when locked_intl = '0' else Clk100MHz_bufg;
-	
+
 	HSCLK_intl <= '0' when locked_intl = '0' else Clk100MHz_bufg;
 
 	WL_CLK_intl <= '0' when locked_intl = '0' else Clk100MHz_bufg;
-	
+
 	SSTIN_intl <= '0' when locked_intl = '0' else SSTIN_bufg;
-	
+
 	--	------------------------------------------------------------
 	-- Output For Standard and LVDS
-	
-	TimeCnt_inst : counter 
+
+	TimeCnt_inst : counter
 	generic map(
 		NBITS => 64
 	)
@@ -238,23 +239,23 @@ begin
 		Q 	=> Timecounter_intl
 	);
 	TimeCounter <= Timecounter_intl;
-	
+
 	SSTIN_bufg	<= not Timecounter_intl(3);
-	
+
 	ClockBus.SCLK 	<= SCLK_intl;
 	ClockBus.HSCLK	<= HSCLK_intl;
 	ClockBus.WL_CLK	<= WL_CLK_intl;
 	ClockBus.RDAD_CLK<= RDAD_CLK_intl;
 	ClockBus.CLK250MHz	<= CLK250MHz_intl;
 	ClockBus.SSTIN	<= SSTIN_intl;
-	
-	
-	
+	ClockBus.AXI_CLK <= AXI_Clk;
+
+
 	PLL_LOCKED <= locked_intl;
-	
+
 	OBUFDF_SSTIN : OBUFDS
 	generic map(
-		IOSTANDARD  => "LVDS_25"
+		IOSTANDARD  => "BLVDS_25"
 	)
 	port map(
 		O	=> SSTIN_P,
@@ -262,7 +263,7 @@ begin
 
 		I	=> SSTIN_intl
 	);
-	
+
 	OBUFDF_WL_CLK : OBUFDS
 	generic map(
 		IOSTANDARD  => "LVDS_25"
@@ -273,7 +274,7 @@ begin
 
 		I	=> WL_CLK_intl
 	);
-	
+
 	OBUFDF_HSCLK : OBUFDS
 	generic map(
 		IOSTANDARD  => "LVDS_25"
@@ -284,7 +285,5 @@ begin
 
 		I	=> HSCLKdif
 	);
-	
+
 end arch_imp;
-
-

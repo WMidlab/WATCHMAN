@@ -49,7 +49,7 @@ begin
 
 	arm(0)	<= '0';
 	arm(1)	<= '0';
-	arm(2)	<= Q(1) and Q(2);
+	arm(2)	<= Q(0) and Q(1);
 	arm(3)	<= arm(2) and Q(2);
 	arm(4)	<= arm(3) and Q(3);
 	
@@ -78,7 +78,7 @@ begin
       nrst 	=> nrst   
    );
    	
-   	for I in 1 to 4 generate
+   	GENMUX : for I in 1 to 4 generate
 	   	MX : MUX2x1
 		port map(
 			A	=> Q(I-1),
@@ -104,13 +104,14 @@ begin
 	tb : process
 		variable test : integer	:= 0;	
 	begin
-		rst <= '0';
-		simulation_end_s <= '0';  
-		wait for 2* CLK_PERIOD;
-		rst <= '1';
-		wait for 10 * CLK_PERIOD;
+		nrst <= '0';
 		ss_dir <= '0';
 		ss_sin <= '0';
+		simulation_end_s <= '0';  
+		wait for 2 us;
+		nrst <= '1';
+		wait for 10 * CLK_PERIOD;
+
 		
 		wait for 100 us;
 		

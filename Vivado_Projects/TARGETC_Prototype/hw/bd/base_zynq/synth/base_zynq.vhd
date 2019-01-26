@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Tue Jan 22 17:05:02 2019
+--Date        : Fri Jan 25 16:40:40 2019
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq.bd
 --Design      : base_zynq
@@ -1796,10 +1796,10 @@ entity base_zynq is
     WR_RS_S0 : out STD_LOGIC;
     WR_RS_S1 : out STD_LOGIC
   );
-  attribute core_generation_info : string;
-  attribute core_generation_info of base_zynq : entity is "base_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=22,numReposBlks=15,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_clkrst_cnt=9,synth_mode=OOC_per_IP}";
-  attribute hw_handoff : string;
-  attribute hw_handoff of base_zynq : entity is "base_zynq.hwdef";
+  attribute CORE_GENERATION_INFO : string;
+  attribute CORE_GENERATION_INFO of base_zynq : entity is "base_zynq,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=base_zynq,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=22,numReposBlks=15,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=5,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_board_cnt=3,da_clkrst_cnt=9,synth_mode=OOC_per_IP}";
+  attribute HW_HANDOFF : string;
+  attribute HW_HANDOFF of base_zynq : entity is "base_zynq.hwdef";
 end base_zynq;
 
 architecture STRUCTURE of base_zynq is
@@ -2080,10 +2080,13 @@ architecture STRUCTURE of base_zynq is
     CLK : in STD_LOGIC;
     PRECvalid : in STD_LOGIC;
     FIFOresponse : out STD_LOGIC;
-    WDOTime : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    DIGTime : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    Trigger : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    WDONBR : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    TestFIFO : in STD_LOGIC;
+    FIFO_ReadEn : out STD_LOGIC;
+    FIFO_Time : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    FIFO_WdoAddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    FIFO_TrigInfo : in STD_LOGIC_VECTOR ( 11 downto 0 );
+    FIFO_Spare : in STD_LOGIC_VECTOR ( 9 downto 0 );
+    FIFO_Empty : in STD_LOGIC;
     CH0 : in STD_LOGIC_VECTOR ( 11 downto 0 );
     CH1 : in STD_LOGIC_VECTOR ( 11 downto 0 );
     CH2 : in STD_LOGIC_VECTOR ( 11 downto 0 );
@@ -2166,10 +2169,13 @@ architecture STRUCTURE of base_zynq is
     SSTIN_N : out STD_LOGIC;
     MONTIMING_P : in STD_LOGIC;
     MONTIMING_N : in STD_LOGIC;
-    WDOTime : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    DIGTime : out STD_LOGIC_VECTOR ( 63 downto 0 );
-    Trigger : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    WDONbr : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    TestFiFO : out STD_LOGIC;
+    FIFO_ReadEn : in STD_LOGIC;
+    FIFO_Time : out STD_LOGIC_VECTOR ( 63 downto 0 );
+    FIFO_WdoAddr : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    FIFO_TrigInfo : out STD_LOGIC_VECTOR ( 11 downto 0 );
+    FIFO_Spare : out STD_LOGIC_VECTOR ( 9 downto 0 );
+    FIFO_Empty : out STD_LOGIC;
     TestStream : out STD_LOGIC;
     PSBusy : out STD_LOGIC;
     FIFOresponse : in STD_LOGIC;
@@ -2221,6 +2227,7 @@ architecture STRUCTURE of base_zynq is
   signal DO_8_1 : STD_LOGIC;
   signal DO_9_1 : STD_LOGIC;
   signal FifoManagerV4_0_DataOut : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal FifoManagerV4_0_FIFO_ReadEn : STD_LOGIC;
   signal FifoManagerV4_0_FIFOresponse : STD_LOGIC;
   signal FifoManagerV4_0_FIFOvalid : STD_LOGIC;
   signal MONTIMING_N_1 : STD_LOGIC;
@@ -2247,12 +2254,17 @@ architecture STRUCTURE of base_zynq is
   signal TARGETC_IP_Prototype_0_CH7 : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal TARGETC_IP_Prototype_0_CH8 : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal TARGETC_IP_Prototype_0_CH9 : STD_LOGIC_VECTOR ( 11 downto 0 );
-  signal TARGETC_IP_Prototype_0_DIGTime : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal TARGETC_IP_Prototype_0_FIFO_Empty : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_FIFO_Spare : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal TARGETC_IP_Prototype_0_FIFO_Time : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal TARGETC_IP_Prototype_0_FIFO_TrigInfo : STD_LOGIC_VECTOR ( 11 downto 0 );
+  signal TARGETC_IP_Prototype_0_FIFO_WdoAddr : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal TARGETC_IP_Prototype_0_GCC_RESET : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_HSCLK_N : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_HSCLK_P : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_MONTIMING : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_PCLK : STD_LOGIC;
+  signal TARGETC_IP_Prototype_0_PSBusy : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_RAMP : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_RDAD_CLK : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_RDAD_DIR : STD_LOGIC;
@@ -2271,9 +2283,7 @@ architecture STRUCTURE of base_zynq is
   signal TARGETC_IP_Prototype_0_SS_RESET : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_SSvalid : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_SW_nRST : STD_LOGIC;
-  signal TARGETC_IP_Prototype_0_Trigger : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal TARGETC_IP_Prototype_0_WDONbr : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal TARGETC_IP_Prototype_0_WDOTime : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal TARGETC_IP_Prototype_0_TestFiFO : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_WL_CLK_N : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_WL_CLK_P : STD_LOGIC;
   signal TARGETC_IP_Prototype_0_WR_CS_S0 : STD_LOGIC;
@@ -2452,7 +2462,6 @@ architecture STRUCTURE of base_zynq is
   signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_TARGETC_IP_Prototype_0_DOE_UNCONNECTED : STD_LOGIC;
-  signal NLW_TARGETC_IP_Prototype_0_PSBusy_UNCONNECTED : STD_LOGIC;
   signal NLW_TARGETC_IP_Prototype_0_TestStream_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_dma_0_s2mm_prmry_reset_out_n_UNCONNECTED : STD_LOGIC;
   signal NLW_axi_iic_0_iic2intc_irpt_UNCONNECTED : STD_LOGIC;
@@ -2475,37 +2484,37 @@ architecture STRUCTURE of base_zynq is
   signal NLW_rst_ps7_0_50M_mb_reset_UNCONNECTED : STD_LOGIC;
   signal NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute x_interface_info : string;
-  attribute x_interface_info of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
-  attribute x_interface_info of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
-  attribute x_interface_info of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
-  attribute x_interface_info of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
-  attribute x_interface_info of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
-  attribute x_interface_info of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
-  attribute x_interface_info of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
-  attribute x_interface_info of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
-  attribute x_interface_info of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
-  attribute x_interface_info of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
-  attribute x_interface_parameter : string;
-  attribute x_interface_parameter of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
-  attribute x_interface_info of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
-  attribute x_interface_info of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
-  attribute x_interface_info of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
-  attribute x_interface_info of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
-  attribute x_interface_info of SS_RESET : signal is "xilinx.com:signal:reset:1.0 RST.SS_RESET RST";
-  attribute x_interface_parameter of SS_RESET : signal is "XIL_INTERFACENAME RST.SS_RESET, POLARITY ACTIVE_LOW";
-  attribute x_interface_info of WL_CLK_N : signal is "xilinx.com:signal:clock:1.0 CLK.WL_CLK_N CLK";
-  attribute x_interface_parameter of WL_CLK_N : signal is "XIL_INTERFACENAME CLK.WL_CLK_N, CLK_DOMAIN base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_N, FREQ_HZ 100000000, PHASE 0.000";
-  attribute x_interface_info of WL_CLK_P : signal is "xilinx.com:signal:clock:1.0 CLK.WL_CLK_P CLK";
-  attribute x_interface_parameter of WL_CLK_P : signal is "XIL_INTERFACENAME CLK.WL_CLK_P, CLK_DOMAIN base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_P, FREQ_HZ 100000000, PHASE 0.000";
-  attribute x_interface_info of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
-  attribute x_interface_parameter of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute x_interface_info of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
-  attribute x_interface_info of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
-  attribute x_interface_info of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
-  attribute x_interface_info of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
-  attribute x_interface_info of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
-  attribute x_interface_info of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
+  attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
+  attribute X_INTERFACE_INFO of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
+  attribute X_INTERFACE_INFO of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
+  attribute X_INTERFACE_INFO of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
+  attribute X_INTERFACE_INFO of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
+  attribute X_INTERFACE_INFO of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
+  attribute X_INTERFACE_INFO of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
+  attribute X_INTERFACE_INFO of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
+  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
+  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
+  attribute X_INTERFACE_INFO of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
+  attribute X_INTERFACE_INFO of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
+  attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
+  attribute X_INTERFACE_INFO of SS_RESET : signal is "xilinx.com:signal:reset:1.0 RST.SS_RESET RST";
+  attribute X_INTERFACE_PARAMETER of SS_RESET : signal is "XIL_INTERFACENAME RST.SS_RESET, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of WL_CLK_N : signal is "xilinx.com:signal:clock:1.0 CLK.WL_CLK_N CLK";
+  attribute X_INTERFACE_PARAMETER of WL_CLK_N : signal is "XIL_INTERFACENAME CLK.WL_CLK_N, CLK_DOMAIN base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_N, FREQ_HZ 100000000, PHASE 0.000";
+  attribute X_INTERFACE_INFO of WL_CLK_P : signal is "xilinx.com:signal:clock:1.0 CLK.WL_CLK_P CLK";
+  attribute X_INTERFACE_PARAMETER of WL_CLK_P : signal is "XIL_INTERFACENAME CLK.WL_CLK_P, CLK_DOMAIN base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_P, FREQ_HZ 100000000, PHASE 0.000";
+  attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
+  attribute X_INTERFACE_PARAMETER of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute X_INTERFACE_INFO of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
+  attribute X_INTERFACE_INFO of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
+  attribute X_INTERFACE_INFO of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
+  attribute X_INTERFACE_INFO of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
+  attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
   BB1 <= TARGETC_IP_Prototype_0_SSTIN;
   BB2 <= TARGETC_IP_Prototype_0_BB2;
@@ -2587,15 +2596,18 @@ FifoManagerV4_0: component base_zynq_FifoManagerV4_0_0
       CH8(11 downto 0) => TARGETC_IP_Prototype_0_CH8(11 downto 0),
       CH9(11 downto 0) => TARGETC_IP_Prototype_0_CH9(11 downto 0),
       CLK => processing_system7_0_FCLK_CLK0,
-      DIGTime(63 downto 0) => TARGETC_IP_Prototype_0_DIGTime(63 downto 0),
       DataOut(31 downto 0) => FifoManagerV4_0_DataOut(31 downto 0),
+      FIFO_Empty => TARGETC_IP_Prototype_0_FIFO_Empty,
+      FIFO_ReadEn => FifoManagerV4_0_FIFO_ReadEn,
+      FIFO_Spare(9 downto 0) => TARGETC_IP_Prototype_0_FIFO_Spare(9 downto 0),
+      FIFO_Time(63 downto 0) => TARGETC_IP_Prototype_0_FIFO_Time(63 downto 0),
+      FIFO_TrigInfo(11 downto 0) => TARGETC_IP_Prototype_0_FIFO_TrigInfo(11 downto 0),
+      FIFO_WdoAddr(8 downto 0) => TARGETC_IP_Prototype_0_FIFO_WdoAddr(8 downto 0),
       FIFOresponse => FifoManagerV4_0_FIFOresponse,
       FIFOvalid => FifoManagerV4_0_FIFOvalid,
       PRECvalid => TARGETC_IP_Prototype_0_SSvalid,
-      PSBUSY_i => '0',
-      Trigger(31 downto 0) => TARGETC_IP_Prototype_0_Trigger(31 downto 0),
-      WDONBR(8 downto 0) => TARGETC_IP_Prototype_0_WDONbr(8 downto 0),
-      WDOTime(63 downto 0) => TARGETC_IP_Prototype_0_WDOTime(63 downto 0),
+      PSBUSY_i => TARGETC_IP_Prototype_0_PSBusy,
+      TestFIFO => TARGETC_IP_Prototype_0_TestFiFO,
       nRST => TARGETC_IP_Prototype_0_SW_nRST,
       ready_i => axistream_0_StreamReady
     );
@@ -2622,10 +2634,15 @@ TARGETC_IP_Prototype_0: component base_zynq_TARGETC_IP_Prototype_0_1
       CH7(11 downto 0) => TARGETC_IP_Prototype_0_CH7(11 downto 0),
       CH8(11 downto 0) => TARGETC_IP_Prototype_0_CH8(11 downto 0),
       CH9(11 downto 0) => TARGETC_IP_Prototype_0_CH9(11 downto 0),
-      DIGTime(63 downto 0) => TARGETC_IP_Prototype_0_DIGTime(63 downto 0),
       DO(15 downto 0) => xlconcat_0_dout(15 downto 0),
       DOE => NLW_TARGETC_IP_Prototype_0_DOE_UNCONNECTED,
       DONE => DONE_1,
+      FIFO_Empty => TARGETC_IP_Prototype_0_FIFO_Empty,
+      FIFO_ReadEn => FifoManagerV4_0_FIFO_ReadEn,
+      FIFO_Spare(9 downto 0) => TARGETC_IP_Prototype_0_FIFO_Spare(9 downto 0),
+      FIFO_Time(63 downto 0) => TARGETC_IP_Prototype_0_FIFO_Time(63 downto 0),
+      FIFO_TrigInfo(11 downto 0) => TARGETC_IP_Prototype_0_FIFO_TrigInfo(11 downto 0),
+      FIFO_WdoAddr(8 downto 0) => TARGETC_IP_Prototype_0_FIFO_WdoAddr(8 downto 0),
       FIFOresponse => FifoManagerV4_0_FIFOresponse,
       GCC_RESET => TARGETC_IP_Prototype_0_GCC_RESET,
       HSCLK_N => TARGETC_IP_Prototype_0_HSCLK_N,
@@ -2633,7 +2650,7 @@ TARGETC_IP_Prototype_0: component base_zynq_TARGETC_IP_Prototype_0_1
       MONTIMING_N => MONTIMING_N_1,
       MONTIMING_P => MONTIMING_P_1,
       PCLK => TARGETC_IP_Prototype_0_PCLK,
-      PSBusy => NLW_TARGETC_IP_Prototype_0_PSBusy_UNCONNECTED,
+      PSBusy => TARGETC_IP_Prototype_0_PSBusy,
       RAMP => TARGETC_IP_Prototype_0_RAMP,
       RDAD_CLK => TARGETC_IP_Prototype_0_RDAD_CLK,
       RDAD_DIR => TARGETC_IP_Prototype_0_RDAD_DIR,
@@ -2654,14 +2671,12 @@ TARGETC_IP_Prototype_0: component base_zynq_TARGETC_IP_Prototype_0_1
       SS_RESET => TARGETC_IP_Prototype_0_SS_RESET,
       SSvalid => TARGETC_IP_Prototype_0_SSvalid,
       SW_nRST => TARGETC_IP_Prototype_0_SW_nRST,
+      TestFiFO => TARGETC_IP_Prototype_0_TestFiFO,
       TestStream => NLW_TARGETC_IP_Prototype_0_TestStream_UNCONNECTED,
       TrigA => TRIGA_1,
       TrigB => TRIGB_1,
       TrigC => TRIGC_1,
       TrigD => TRIGD_1,
-      Trigger(31 downto 0) => TARGETC_IP_Prototype_0_Trigger(31 downto 0),
-      WDONbr(8 downto 0) => TARGETC_IP_Prototype_0_WDONbr(8 downto 0),
-      WDOTime(63 downto 0) => TARGETC_IP_Prototype_0_WDOTime(63 downto 0),
       WL_CLK_N => TARGETC_IP_Prototype_0_WL_CLK_N,
       WL_CLK_P => TARGETC_IP_Prototype_0_WL_CLK_P,
       WR_CS_S0 => TARGETC_IP_Prototype_0_WR_CS_S0,

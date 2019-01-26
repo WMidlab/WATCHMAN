@@ -130,11 +130,14 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			TrigD :			in std_logic;
 
 			--NbrWindow:		out	std_logic_vector(31 downto 0);
-			WDOTime:			out std_logic_vector(63 downto 0);
-			DIGTime:			out std_logic_vector(63 downto 0);
-			Trigger:			out std_logic_vector(31 downto 0);
-			WDONbr:				out std_logic_vector(8 downto 0);
+			FIFO_ReadEn:	in	std_logic;
+			FIFO_Time : 	out std_logic_vector(63 downto 0);
+			FIFO_WdoAddr : 	out std_logic_vector(8 downto 0);
+			FIFO_TrigInfo : out std_logic_vector(11 downto 0);
+			FIFO_Spare :	out std_logic_vector(9 downto 0);
+			FIFO_Empty	: 	out std_logic;
 
+			TestFIFO:		out std_logic;
 					-- Interrupt SIGNALS
 			SSVALID_INTR:	out	std_logic;
 
@@ -159,11 +162,15 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 		--DATA INCOMING
 		PRECvalid:	in	std_logic;
 		FIFOresponse:	out std_logic;
+
+		TestFIFO:		in std_logic;
 		--Header Information
-		WDOTime	:	in std_logic_vector(63 downto 0);
-		DIGTime	:	in std_logic_vector(63 downto 0);
-		Trigger	:	in std_logic_vector(31 downto 0);
-		WDONBR :	in std_logic_vector(8 downto 0);
+		FIFO_ReadEn:	out	std_logic;
+		FIFO_Time : 	in 	std_logic_vector(63 downto 0);
+		FIFO_WdoAddr : 	in 	std_logic_vector(8 downto 0);
+		FIFO_TrigInfo : in 	std_logic_vector(11 downto 0);
+		FIFO_Spare :	in 	std_logic_vector(9 downto 0);
+		FIFO_Empty	: 	in 	std_logic;
 
 		--Channels
 		CH0 :			in	std_logic_vector(11 downto 0);
@@ -258,6 +265,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 
 	signal DONE_sti:	std_logic;		-- Pin#94
 
+	signal TestFIFO_intl: std_logic;
 
     -- Signals for simulation
     signal simulation_end_s : std_logic := '0';
@@ -290,10 +298,12 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 	signal TestStream_sti : std_logic;
 	signal fifodata_sti : std_logic_vector(31 downto 0);
 
-	signal WDOTime_intl:			 std_logic_vector(63 downto 0);
-	signal DIGTime_intl:			 std_logic_vector(63 downto 0);
-	signal Trigger_intl:			 std_logic_vector(31 downto 0);
-	signal WDONbr_intl:				 std_logic_vector(8 downto 0);
+	signal ReadEn_intl :	std_logic;
+	signal Time_intl :		std_logic_vector(63 downto 0);
+	signal WdoAddr_intl:			 std_logic_vector(8 downto 0);
+	signal triginfo_intl:			 std_logic_vector(11 downto 0);
+	signal Spare_intl:				 std_logic_vector(9 downto 0);
+	signal Empty_intl:	std_logic;
 
 	signal SW_nRST_intl: std_logic;
 	--Variable for TB
@@ -385,7 +395,7 @@ begin
 
 	-- FIFO
 		TestStream	=> TestStream_sti,
-		PSBusy		=> PUBusy_sti,
+		PSBusy		=> open,
 		FIFOresponse	=> FIFOresponse_intl,
 		CH0 		=> FIFOData_intl.CH0,
 		CH1 		=> FIFOData_intl.CH1,
@@ -415,11 +425,14 @@ begin
 		TrigC => '0',
 		TrigD => '0',
 
+		TestFIFO => TestFIFO_intl,
 		--Header Information
-		WDOTime	=> WDOTime_intl,
-		DIGTime => DIGTime_intl,
-		Trigger => Trigger_intl,
-		WDONbr => WDONBR_intl,
+		FIFO_ReadEn	=> ReadEn_intl,
+		FIFO_Time 		=> Time_intl,
+		FIFO_WdoAddr 	=> WdoAddr_intl,
+		FIFO_TrigInfo  	=> TrigInfo_intl,
+		FIFO_Spare  		=> Spare_intl,
+		FIFO_Empty		=> Empty_intl,
 
 	-- DEBUG SIGNALS
 		SSVALID_INTR	=> open,
@@ -468,11 +481,16 @@ begin
 
 		PRECvalid	=> SSvalid_intl,
 		FIFOresponse	=> FIFOresponse_intl,
+
+
+		TestFIFO => TestFIFO_intl,
 		--Header Information
-		WDOTime	=> WDOTime_intl,
-		DIGTime => DIGTime_intl,
-		Trigger => Trigger_intl,
-		WDONbr => WDONBR_intl,
+		FIFO_ReadEn	=> ReadEn_intl,
+		FIFO_Time 		=> Time_intl,
+		FIFO_WdoAddr	=> WdoAddr_intl,
+		FIFO_TrigInfo 	=> TrigInfo_intl,
+		FIFO_Spare 		=> Spare_intl,
+		FIFO_Empty		=> Empty_intl,
 
 		--Channels
 		CH0 			=> FIFOData_intl.CH0,
@@ -687,14 +705,43 @@ begin
 		wait for 1 us;
 
 		M_AXIS_TREADY_sti <= '1';
+		
 		wait for 10 us;
-
+		report "FIFO TEST!";
+		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+		s00_axi_WDATA<= C_SMODE_MASK or C_SWRESET_MASK;
+		s00_axi_WSTRB<=b"1111";
+		sendIt<='1';                --Start AXI Write to Slave
+		wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+		wait until s00_axi_BVALID = '1';
+		wait until s00_axi_BVALID = '0';  --AXI Write finished
+		wait for 1 us;
+		
+		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+		s00_axi_WDATA<= C_SWRESET_MASK or C_TESTFIFO_MASK or  C_SMODE_MASK ;
+		s00_axi_WSTRB<=b"1111";
+		sendIt<='1';                --Start AXI Write to Slave
+		wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+		wait until s00_axi_BVALID = '1';
+		wait until s00_axi_BVALID = '0';  --AXI Write finished
+		wait for 10 us;
+		
+		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
+		s00_axi_WDATA<= C_SWRESET_MASK;
+		s00_axi_WSTRB<=b"1111";
+		sendIt<='1';                --Start AXI Write to Slave
+		wait for 1 ns; sendIt<='0'; --Clear Start Send Flag
+		wait until s00_axi_BVALID = '1';
+		wait until s00_axi_BVALID = '0';  --AXI Write finished
+		wait for 1 us;
+		wait for 20 us;
+		
 		WRITE(L,string'("Timings for simulation (From Order AXI to AXIS TLast):" & CR & LF));
 
 		for J in 0 to 511 loop
 			window := J;
 			--for K in 1 to 16 loop
-				nbrwindow := 1;
+				nbrwindow := 2;
 
 				WRITE(L,string'("WDO : " & HT & integer'image(window) &" "&  integer'image(nbrwindow)));
 				report "Window :" & integer'image(window)& " "& integer'image(nbrwindow);
@@ -751,6 +798,7 @@ begin
 						--FIFOresponse_intl <= '0';
 
 					end loop;
+
 				end loop;
 
 				while (M_AXIS_TLAST_obs = '0') loop
@@ -765,6 +813,7 @@ begin
 				v_TIME := now - V_TIME;
 				WRITE(L,string'(HT & time'image(v_Time) & CR & LF));
 				WRITELINE(fd,L);
+
 			--end loop;
 		end loop;
 
@@ -784,6 +833,23 @@ begin
     	wait;
 	end process;
 
+	process
+	BEGIN
+		while (M_AXIS_TLAST_obs = '0') loop
+			wait for 1 ns;
+		end loop;
+		--FIFOresponse_intl <= '1';
+
+		while (M_AXIS_TLAST_obs = '1') loop
+			wait for 1 ns;
+		end loop;
+
+		PUBusy_sti <= '1';
+		wait for 100 us;
+		PUBusy_sti <= '0';
+
+
+	end process;
 
 
 end implementation;

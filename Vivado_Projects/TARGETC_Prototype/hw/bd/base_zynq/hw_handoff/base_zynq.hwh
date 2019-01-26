@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jan 22 17:05:03 2019" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jan 25 16:40:42 2019" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="base_zynq" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -418,24 +418,39 @@
             <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFOresponse"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="WDOTime" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WDOTime">
+        <PORT DIR="I" NAME="TestFIFO" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_TestFiFO">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WDOTime"/>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TestFiFO"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="63" NAME="DIGTime" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_DIGTime">
+        <PORT DIR="O" NAME="FIFO_ReadEn" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFO_ReadEn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="DIGTime"/>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_ReadEn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="Trigger" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_Trigger">
+        <PORT DIR="I" LEFT="63" NAME="FIFO_Time" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Time">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="Trigger"/>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Time"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="8" NAME="WDONBR" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WDONbr">
+        <PORT DIR="I" LEFT="8" NAME="FIFO_WdoAddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_WdoAddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WDONbr"/>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_WdoAddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="11" NAME="FIFO_TrigInfo" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_TrigInfo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_TrigInfo"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="9" NAME="FIFO_Spare" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Spare">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Spare"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="FIFO_Empty" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Empty">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Empty"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="11" NAME="CH0" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH0">
@@ -528,7 +543,11 @@
             <CONNECTION INSTANCE="axistream_0" PORT="StreamReady"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="PSBUSY_i" SIGIS="undef"/>
+        <PORT DIR="I" NAME="PSBUSY_i" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PSBusy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="PSBusy"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="DataOut" RIGHT="0" SIGIS="undef" SIGNAME="FifoManagerV4_0_DataOut">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axistream_0" PORT="FIFOdata"/>
@@ -836,28 +855,47 @@
             <CONNECTION INSTANCE="External_Ports" PORT="MONTIMING_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="63" NAME="WDOTime" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WDOTime">
+        <PORT DIR="O" NAME="TestFiFO" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_TestFiFO">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="WDOTime"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="TestFIFO"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="63" NAME="DIGTime" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_DIGTime">
+        <PORT DIR="I" NAME="FIFO_ReadEn" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFO_ReadEn">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="DIGTime"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_ReadEn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="Trigger" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_Trigger">
+        <PORT DIR="O" LEFT="63" NAME="FIFO_Time" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Time">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="Trigger"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Time"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="WDONbr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WDONbr">
+        <PORT DIR="O" LEFT="8" NAME="FIFO_WdoAddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_WdoAddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="WDONBR"/>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_WdoAddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="11" NAME="FIFO_TrigInfo" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_TrigInfo">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_TrigInfo"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="9" NAME="FIFO_Spare" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Spare">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Spare"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="FIFO_Empty" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Empty">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Empty"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="TestStream" SIGIS="undef"/>
-        <PORT DIR="O" NAME="PSBusy" SIGIS="undef"/>
+        <PORT DIR="O" NAME="PSBusy" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PSBusy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="PSBUSY_i"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="FIFOresponse" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOresponse">
           <CONNECTIONS>
             <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFOresponse"/>

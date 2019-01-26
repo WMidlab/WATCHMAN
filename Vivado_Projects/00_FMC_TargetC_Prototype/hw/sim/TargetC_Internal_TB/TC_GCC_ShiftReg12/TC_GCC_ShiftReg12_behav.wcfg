@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TC_GCC_ShiftReg12_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TC_GCC_ShiftReg12" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1738254364fs"></ZoomEndTime>
+      <Cursor1Time time="103829000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="99"></NameColumnWidth>
+      <ValueColumnWidth column_width="127"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/nrst">
+      <obj_property name="ElementShortName">nrst</obj_property>
+      <obj_property name="ObjectShortName">nrst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/ss_incr">
+      <obj_property name="ElementShortName">ss_incr</obj_property>
+      <obj_property name="ObjectShortName">ss_incr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/n_ss_incr">
+      <obj_property name="ElementShortName">n_ss_incr</obj_property>
+      <obj_property name="ObjectShortName">n_ss_incr</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/srclk">
+      <obj_property name="ElementShortName">srclk</obj_property>
+      <obj_property name="ObjectShortName">srclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/n_srclk">
+      <obj_property name="ElementShortName">n_srclk</obj_property>
+      <obj_property name="ObjectShortName">n_srclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/DFF1_Q">
+      <obj_property name="ElementShortName">DFF1_Q</obj_property>
+      <obj_property name="ObjectShortName">DFF1_Q</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/DFF2_nQ">
+      <obj_property name="ElementShortName">DFF2_nQ</obj_property>
+      <obj_property name="ObjectShortName">DFF2_nQ</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/s">
+      <obj_property name="ElementShortName">s</obj_property>
+      <obj_property name="ObjectShortName">s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TC_GCC_ShiftReg12/sdaout">
+      <obj_property name="ElementShortName">sdaout</obj_property>
+      <obj_property name="ObjectShortName">sdaout</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TC_GCC_ShiftReg12/D">
+      <obj_property name="ElementShortName">D[11:0]</obj_property>
+      <obj_property name="ObjectShortName">D[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TC_GCC_ShiftReg12/Y_intl">
+      <obj_property name="ElementShortName">Y_intl[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Y_intl[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TC_GCC_ShiftReg12/Q">
+      <obj_property name="ElementShortName">Q[11:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[11:0]</obj_property>
+   </wvobject>
+</wave_config>

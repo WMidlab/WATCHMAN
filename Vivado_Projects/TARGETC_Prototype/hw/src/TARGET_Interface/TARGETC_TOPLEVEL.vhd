@@ -113,11 +113,19 @@ entity TARGETC_IP_Prototype is
 		MONTIMING_P:	in	std_logic;		-- Pin#118
 		MONTIMING_N:	in	std_logic;		-- Pin#117
 
+		TestFiFO:	out std_logic;
+
 		-- FIFO Interface
-		WDOTime:			out std_logic_vector(63 downto 0);
-		DIGTime:			out std_logic_vector(63 downto 0);
-		Trigger:			out std_logic_vector(31 downto 0);
-		WDONbr:				out std_logic_vector(8 downto 0);
+		FIFO_ReadEn:	in	std_logic;
+		FIFO_Time : 	out std_logic_vector(63 downto 0);
+		FIFO_WdoAddr : 	out std_logic_vector(8 downto 0);
+		FIFO_TrigInfo : out std_logic_vector(11 downto 0);
+		FIFO_Spare :	out std_logic_vector(9 downto 0);
+		FIFO_Empty	: 	out std_logic;
+		-- WDOTime:			out std_logic_vector(63 downto 0);
+		-- DIGTime:			out std_logic_vector(63 downto 0);
+		-- Trigger:			out std_logic_vector(31 downto 0);
+		-- WDONbr:				out std_logic_vector(8 downto 0);
 
 		TestStream:		out std_logic;
 		PSBusy:			out	std_logic;
@@ -177,6 +185,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		clk1:			in 	std_logic;	-- Clock for the TARGETC SCLK
 		clk2:			in 	std_logic;	-- Clock for the TARGETC SCLK
 
+		axi_clk:		in	std_logic;
 		WL_CLK_DIV:		in 	std_logic_vector(31 downto 0); -- Clock Divider Through DFF
 
 		PLL_LOCKED:		out	std_logic;
@@ -288,8 +297,15 @@ architecture arch_imp of TARGETC_IP_Prototype is
 			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
 
 			RDAD_ReadEn  :in  std_logic;
-			RDAD_DataOut : out std_logic_vector(85 downto 0);
+			RDAD_DataOut : out std_logic_vector(9 downto 0);
 			RDAD_Empty	: out std_logic;
+
+			AXI_ReadEn:	in	std_logic;
+			AXI_Time_DataOut : out std_logic_vector(63 downto 0);
+			AXI_WdoAddr_DataOut : out std_logic_vector(8 downto 0);
+			AXI_TrigInfo_DataOut : out std_logic_vector(11 downto 0);
+			AXI_Spare_DataOut :	out std_logic_vector(9 downto 0);
+			AXI_Empty	: out std_logic;
 
 			-- FIFO IN for Digiting
 		    DIG_Full	: out	std_logic;
@@ -317,10 +333,11 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 		-- Fifo from storage
 		RDAD_ReadEn  :	out	std_logic;
-		RDAD_DataOut : 	in	std_logic_vector(85 downto 0);
+		RDAD_DataOut : 	in	std_logic_vector(9 downto 0);
 		--RDAD_CLK     :	out	std_logic;	-- RDAD CLK
 		RDAD_Empty	: 	in 	std_logic;
 
+		TestFIFO:		out std_logic;
 		-- FIFO IN for Digiting
 		DIG_Full	: in	std_logic;
 		DIG_DataIn	: out	std_logic_vector(8 downto 0);
@@ -337,11 +354,6 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 		CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
 		CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
-
-		WDOTime:			out std_logic_vector(63 downto 0);
-		DIGTime:			out std_logic_vector(63 downto 0);
-		Trigger:			out std_logic_vector(11 downto 0);
-		WDONbr:				out std_logic_vector(8 downto 0);
 
 		FIFOresponse:		in std_logic
 
@@ -384,7 +396,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	signal tc_axi_intr:		std_logic;
 
 	signal RDAD_ReadEn_intl  :  std_logic;
-	signal RDAD_DataOut_intl : std_logic_vector(85 downto 0);
+	signal RDAD_DataOut_intl : std_logic_vector(9 downto 0);
     signal RDAD_Empty_intl     :  std_logic;
 
     signal DIG_DataIn_intl	: std_logic_vector(8 downto 0);
@@ -417,6 +429,7 @@ begin
 		--rst				=> tc_axi_aresetn,
 		clk1		 		=> RefCLK_i1,
 		clk2		 		=> RefCLK_i2,
+		axi_clk				=> tc_axi_aclk,
 		WL_CLK_DIV 		=> CtrlBusOut_intl.WL_CLK_DIV,
 		PLL_LOCKED		=> CtrlBusIn_intl.PLL_LOCKED,
 		--PLL_LOCKED		=> Test,
@@ -537,6 +550,14 @@ begin
 			RDAD_DataOut => RDAD_DataOut_intl,
 			RDAD_Empty	=> RDAD_Empty_intl,
 
+			-- FIFO <-> AXI Connection
+			AXI_ReadEn				=> FIFO_ReadEn,
+			AXI_Time_DataOut		=> FIFO_Time,
+			AXI_WdoAddr_DataOut		=> FIFO_WdoAddr,
+			AXI_TrigInfo_DataOut	=> FIFO_TrigInfo,
+			AXI_Spare_DataOut 		=> FIFO_Spare,
+			AXI_Empty				=> FIFO_Empty,
+
 			-- FIFO IN for Digiting
 			DIG_Full	=> DIG_Full_intl,
 			DIG_DataIn	=> DIG_DataIn_intl,
@@ -574,6 +595,7 @@ begin
 
 		HSCLK		=> HSCLK_dif,
 
+		TestFifo	=> TestFIFO,
 		-- Data Readout
 		DO 		=> DO,
 		SS_INCR	=> SS_INCR,
@@ -582,15 +604,8 @@ begin
 		CtrlBus_IxSL		=> CtrlBusOut_intl,
 		CtrlBus_OxSL		=> CtrlBusIn_intl,
 
-		WDOTime	=> WDOTime,
-		DIGTime => DIGTime,
-		Trigger => TriggerInfor_intl,
-		WDONbr => WDONBR,
-
 		FIFOresponse	=> FIFOresponse
 	);
-
-	Trigger <= x"00000" & TriggerInfor_intl;
 
 	SAMPLESEL_ANY <= CtrlBusOut_intl.SmplSl_Any;
 	REGCLR <= CtrlBusOut_intl.REGCLR;
@@ -667,6 +682,20 @@ begin
 	Debug_intl(1) <= MONTIMING_s;
 	Debug_intl(7 downto 2) <= Debug_RoundBuffer(7 downto 2);
 
+	BB1 <= ClockBus_intl.SSTIN;
+	BB5 <= MONTIMING_s;
+
+	-- OBUF_SSTIN : BUFG
+	-- port map(
+	-- 	O	=> BB1,
+	-- 	I	=> ClockBus_intl.SSTIN
+	-- );
+	--
+	-- OBUF_MONTIMING : BUFG
+	-- port map(
+	-- 	O	=> BB5,
+	-- 	I	=> MONTIMING_s
+	-- );
 	-- BB1_Debug_inst : DebugCore
 	-- port map(
 	-- 	O	=> BB1,

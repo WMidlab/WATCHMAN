@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_SampleSelect_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_SampleSelect" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="98872966667fs"></ZoomStartTime>
+      <ZoomEndTime time="99005166668fs"></ZoomEndTime>
+      <Cursor1Time time="98895000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="164"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/TB_SampleSelect/nrst">
+      <obj_property name="ElementShortName">nrst</obj_property>
+      <obj_property name="ObjectShortName">nrst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_SampleSelect/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_SampleSelect/ss_sin">
+      <obj_property name="ElementShortName">ss_sin</obj_property>
+      <obj_property name="ObjectShortName">ss_sin</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_SampleSelect/ss_dir">
+      <obj_property name="ElementShortName">ss_dir</obj_property>
+      <obj_property name="ObjectShortName">ss_dir</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_SampleSelect/Q">
+      <obj_property name="ElementShortName">Q[4:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[4:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_SampleSelect/nQ">
+      <obj_property name="ElementShortName">nQ[4:0]</obj_property>
+      <obj_property name="ObjectShortName">nQ[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_SampleSelect/ena">
+      <obj_property name="ElementShortName">ena[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ena[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_SampleSelect/arm">
+      <obj_property name="ElementShortName">arm[4:0]</obj_property>
+      <obj_property name="ObjectShortName">arm[4:0]</obj_property>
+   </wvobject>
+</wave_config>
