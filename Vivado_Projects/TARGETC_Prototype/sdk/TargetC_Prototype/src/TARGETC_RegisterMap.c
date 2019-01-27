@@ -39,28 +39,93 @@ int SetTargetCRegisters(void){
 	WriteRegister(TC_QBIAS_REG,		0);
 	WriteRegister(TC_VTRIMT_REG,	0x4d8);
 
-	WriteRegister(TC_VBIAS_REG,		0x4B0);	//
+	WriteRegister(TC_VBIAS_REG,		0x4B0);
 
-	WriteRegister(TC_VAPBUFF_REG,	0x3D9);	// 985(10)
-	//WriteRegister(TC_VADJP_REG,		0x480);	// 1152
+	WriteRegister(TC_VAPBUFF_REG,	0x3D9);
+	//WriteRegister(TC_VADJP_REG,		0x480);
 	WriteRegister(TC_VADJP_REG,		1020);
 
-	WriteRegister(TC_VANBUFF_REG,	0x426);	// 1062
-	//WriteRegister(TC_VADJN_REG,		0x8BB);	// 2235
-	WriteRegister(TC_VADJN_REG,		2430);	//2420 - 2450
+	WriteRegister(TC_VANBUFF_REG,	0x426);
+	//WriteRegister(TC_VADJN_REG,		0x8BB);
+	WriteRegister(TC_VADJN_REG,		2430);
 
 	WriteRegister(TC_SBBIAS_REG,	0x78E);
 	
 	WriteRegister(TC_VDISCH_REG,	0);
 	//WriteRegister(TC_ISEL_REG,		2600);
-	WriteRegister(TC_ISEL_REG,	0x8fc);	// 2300 good for Vped around 512
-
+	WriteRegister(TC_ISEL_REG,	0x8fc);
 	WriteRegister(TC_DBBIAS_REG,	0x690);
 
 	// Initial Base Value
-	WriteRegister(TC_CMPBIAS2_REG,	0x2D6); //726
-	WriteRegister(TC_PUBIAS_REG,	0xBCA);	//3018
-	WriteRegister(TC_CMPBIASIN_REG,	0x654); //1620
+	WriteRegister(TC_CMPBIAS2_REG,	0x2D6);
+	WriteRegister(TC_PUBIAS_REG,	0xBCA);
+	WriteRegister(TC_CMPBIASIN_REG,	0x654);
+
+	WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
+	WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
+
+	xil_printf("DONE\r\n");
+	xil_printf("\r\n");
+}
+
+/** **********************************************************
+ * @brief 	Set the TargetC Registers using AXI Lite control
+ *
+ * @param	  void
+ * @return	status
+ ************************************************************* */
+int SetTargetCRegisters_DLL(void){
+
+	xil_printf("*** DLL Option ***\n\r");
+
+	for(int i=0; i<64; i++){
+		WriteRegister(TC_VDLYTUNE_REG + i,	0);
+	}
+//	*** TARGETC Register Initial Values
+	WriteRegister(TC_SSTOUTFB_REG,		0x03a);
+
+	WriteRegister(TC_SSPIN_LE_REG,		1);	//TEST with SSPIN
+	WriteRegister(TC_SSPIN_TE_REG,		20);
+
+	WriteRegister(TC_WR_STRB2_LE_REG,	55);
+	WriteRegister(TC_WR_STRB2_TE_REG,	6);
+
+	WriteRegister(TC_WR2_ADDR_LE_REG,	61);
+	WriteRegister(TC_WR2_ADDR_TE_REG,	7);
+
+	WriteRegister(TC_WR_STRB1_LE_REG,	25);
+	WriteRegister(TC_WR_STRB1_TE_REG,	10);
+
+	WriteRegister(TC_WR1_ADDR_LE_REG,	55);
+	WriteRegister(TC_WR1_ADDR_TE_REG,	6);
+
+	WriteRegister(TC_VQBUFF_REG,	1100);
+	WriteRegister(TC_QBIAS_REG,		1500);
+	WriteRegister(TC_VTRIMT_REG,	0x4d8);
+
+	WriteRegister(TC_VBIAS_REG,		0x4B0);
+
+	//WriteRegister(TC_VAPBUFF_REG,	0x400);//0x3D9);
+	WriteRegister(TC_VAPBUFF_REG,	0x3D9);
+	
+	WriteRegister(TC_VADJP_REG,		0x480);
+	//WriteRegister(TC_VADJP_REG,		767);
+
+	WriteRegister(TC_VANBUFF_REG,	0);
+	//WriteRegister(TC_VADJN_REG,		0x8BB);
+	WriteRegister(TC_VADJN_REG,		2430);
+
+	WriteRegister(TC_SBBIAS_REG,	0x78E);
+	
+	WriteRegister(TC_VDISCH_REG,	0);
+	//WriteRegister(TC_ISEL_REG,		2600);
+	WriteRegister(TC_ISEL_REG,	0x8fc);
+	WriteRegister(TC_DBBIAS_REG,	0x690);
+
+	// Initial Base Value
+	WriteRegister(TC_CMPBIAS2_REG,	0x2D6);
+	WriteRegister(TC_PUBIAS_REG,	0xBCA);
+	WriteRegister(TC_CMPBIASIN_REG,	0x654);
 
 	WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
 	WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable

@@ -1,15 +1,17 @@
 
-set_property DONT_TOUCH true [get_cells base_zynq_i/TARGETC_0/U0/TC_Control_inst/axi_rdata*]
-set_property DONT_TOUCH true [get_cells base_zynq_i/TARGETC_0/U0/TC_SerialRegCtrl_inst/axi_rdata*]
-set_property DONT_TOUCH true [get_cells base_zynq_i/FifoManager_0/U0/FSM_sequential_fifo_wr_stm*]
+#set_property DONT_TOUCH true [get_cells base_zynq_i/TARGETC_0/U0/TC_Control_inst/axi_rdata*]
+#set_property DONT_TOUCH true [get_cells base_zynq_i/TARGETC_0/U0/TC_SerialRegCtrl_inst/axi_rdata*]
+#set_property DONT_TOUCH true [get_cells base_zynq_i/FifoManager_0/U0/FSM_sequential_fifo_wr_stm*]
+#set_property DONT_TOUCH true [get_cells base_zynq_i/TARGETC_IP_Prototype_0/U0/TC_RoundBuffer/WDOCONTROL/flg_TE_i*]
 
+#set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_Control_inst/axi_rdata*]
+#set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_Control_inst/data0*]
+#set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_SerialRegCtrl_inst/axi_rdata*]
+#set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/FifoManager_0/U0/FSM_sequential_fifo_wr_stm*]
 
-
-set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_Control_inst/axi_rdata*]
-set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_Control_inst/data0*]
-set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_0/U0/TC_SerialRegCtrl_inst/axi_rdata*]
-set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/FifoManager_0/U0/FSM_sequential_fifo_wr_stm*]
-
+set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets {base_zynq_i/TARGETC_IP_Prototype_0/U0/TC_RoundBuffer/GEN_CPU[100].CPUX/NEXTBus_intl*}]
+set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets {base_zynq_i/TARGETC_IP_Prototype_0/U0/TC_RoundBuffer/CPULAST/NEXTBus_intl*}]
+set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets base_zynq_i/TARGETC_IP_Prototype_0/U0/TC_RoundBuffer/WDOCONTROL/PREVBus_intl*]
 
 set_property PACKAGE_PIN G20 [get_ports {PB1}];  			# "G20.JX2_LVDS_16_N.JX2.69.PB1"
 
@@ -25,14 +27,14 @@ set_property PACKAGE_PIN Y14 [get_ports BB3]
 set_property PACKAGE_PIN U14 [get_ports BB4]
 set_property PACKAGE_PIN U20 [get_ports {BB6}];     #{LA08_N}];  # "U20.JX1_LVDS_14_N.JX1.55.LA08_N"
 
-set_property PACKAGE_PIN P19 [get_ports {HCMPB}];           #{LA00_CC_N}];  # "P19.JX1_LVDS_12_N.JX1.49.LA00_CC_N"
-set_property PACKAGE_PIN N18 [get_ports {HCMPA}];           #{LA00_CC_P}];  # "N18.JX1_LVDS_12_P.JX1.47.LA00_CC_P"
-set_property PACKAGE_PIN P20 [get_ports {HCMPC}];           #{LA01_CC_N}];  # "P20.JX1_LVDS_13_N.JX1.50.LA01_CC_N"
-set_property PACKAGE_PIN N20 [get_ports {HCMPD}];           #{LA01_CC_P}];  # "N20.JX1_LVDS_13_P.JX1.48.LA01_CC_P"
-set_property PULLUP true [get_ports {HCMPB}];
-set_property PULLUP true [get_ports {HCMPA}];
-set_property PULLUP true [get_ports {HCMPC}];
-set_property PULLUP true [get_ports {HCMPD}];
+set_property PACKAGE_PIN P19 [get_ports {HCMPB[0]}]
+set_property PACKAGE_PIN N18 [get_ports {HCMPA[0]}]
+set_property PACKAGE_PIN P20 [get_ports {HCMPC[0]}]
+set_property PACKAGE_PIN N20 [get_ports {HCMPD[0]}]
+#set_property PULLUP true [get_ports {HCMPB}];
+#set_property PULLUP true [get_ports {HCMPA}];
+#set_property PULLUP true [get_ports {HCMPC}];
+#set_property PULLUP true [get_ports {HCMPD}];
 
 
 set_property PACKAGE_PIN W14 [get_ports TRIGA]
@@ -128,10 +130,10 @@ set_property PACKAGE_PIN L14 [get_ports SCLK]
 
 #IOSTANDARD
 #BANK 34
-set_property IOSTANDARD LVCMOS25 [get_ports {HCMPA}];       #{LA00_CC_N}];  # "P19.JX1_LVDS_12_N.JX1.49.LA00_CC_N"
-set_property IOSTANDARD LVCMOS25 [get_ports {HCMPB}];       #{LA00_CC_P}];  # "N18.JX1_LVDS_12_P.JX1.47.LA00_CC_P"
-set_property IOSTANDARD LVCMOS25 [get_ports {HCMPC}];       #{LA01_CC_N}];  # "P20.JX1_LVDS_13_N.JX1.50.LA01_CC_N"
-set_property IOSTANDARD LVCMOS25 [get_ports {HCMPD}];       #{LA01_CC_P}];  # "N20.JX1_LVDS_13_P.JX1.48.LA01_CC_P"
+set_property IOSTANDARD LVCMOS25 [get_ports {HCMPA[0]}]
+set_property IOSTANDARD LVCMOS25 [get_ports {HCMPB[0]}]
+set_property IOSTANDARD LVCMOS25 [get_ports {HCMPC[0]}]
+set_property IOSTANDARD LVCMOS25 [get_ports {HCMPD[0]}]
 set_property IOSTANDARD LVDS_25 [get_ports SSTIN_P]
 set_property IOSTANDARD LVDS_25 [get_ports SSTIN_N]
 set_property PACKAGE_PIN P14 [get_ports SSTIN_P]
@@ -202,4 +204,3 @@ set_property IOSTANDARD LVCMOS25 [get_ports SHOUT]
 set_property IOSTANDARD LVCMOS25 [get_ports PCLK]
 set_property IOSTANDARD LVCMOS25 [get_ports SCLK]
 set_property IOSTANDARD LVCMOS25 [get_ports SIN]
-

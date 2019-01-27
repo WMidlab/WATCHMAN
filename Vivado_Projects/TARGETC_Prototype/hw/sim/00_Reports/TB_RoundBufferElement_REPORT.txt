@@ -1,5 +1,21 @@
-RDAD_DataOut_obs: 2384Time WDO: 2384WR_ADDR: 150WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
-RDAD_DataOut_obs: 2400Time WDO: 2400WR_ADDR: 151WR1: '0'WR2: '1'Trig Long: 0Trig Last: 1Trig : 1 
-RDAD_DataOut_obs: 2640Time WDO: 2640WR_ADDR: 166WR1: '1'WR2: '0'Trig Long: 0Trig Last: 0Trig : 1 
-RDAD_DataOut_obs: 2656Time WDO: 2656WR_ADDR: 167WR1: '0'WR2: '0'Trig Long: 0Trig Last: 0Trig : 3 
-RDAD_DataOut_obs: 2672Time WDO: 2672WR_ADDR: 168WR1: '0'WR2: '0'Trig Long: 0Trig Last: 3Trig : 3 
+RDAD_DataOut_obs: 149WR_ADDR: 149WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 150WR_ADDR: 150WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 421WR_ADDR: 165WR1: '1'WR2: '0'
+RDAD_DataOut_obs: 166WR_ADDR: 166WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 167WR_ADDR: 167WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 439WR_ADDR: 183WR1: '1'WR2: '0'
+RDAD_DataOut_obs: 184WR_ADDR: 184WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 201WR_ADDR: 201WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 202WR_ADDR: 202WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 203WR_ADDR: 203WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 512WR_ADDR: 0WR1: '0'WR2: '1'
+RDAD_DataOut_obs: 5WR_ADDR: 5WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 518WR_ADDR: 6WR1: '0'WR2: '1'
+RDAD_DataOut_obs: 512WR_ADDR: 0WR1: '0'WR2: '1'
+RDAD_DataOut_obs: 256WR_ADDR: 0WR1: '1'WR2: '0'
+RDAD_DataOut_obs: 258WR_ADDR: 2WR1: '1'WR2: '0'
+RDAD_DataOut_obs: 3WR_ADDR: 3WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 4WR_ADDR: 4WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 5WR_ADDR: 5WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 6WR_ADDR: 6WR1: '0'WR2: '0'
+RDAD_DataOut_obs: 519WR_ADDR: 7WR1: '0'WR2: '1'

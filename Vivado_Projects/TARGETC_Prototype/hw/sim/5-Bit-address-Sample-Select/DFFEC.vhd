@@ -44,8 +44,8 @@ begin
 	);
 	
 	D2 : RisingEdge_DFlipFlop
-   port(
-      Q 	=> B_intl
+   port map(
+      Q 	=> B_intl,
       nQ	=> nQ,    
       Clk 	=> Clk,   
       D 	=> D_intl,

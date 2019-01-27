@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="base_zynq" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1546983980"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1546983980"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1546983980"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1546983980"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1548470442"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1548470442"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1548470442"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1548470442"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip/base_zynq_processing_system7_0_0/base_zynq_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
@@ -123,6 +123,14 @@
       </File>
       <File Name="ip/base_zynq_TARGETC_IP_Prototype_0_1/base_zynq_TARGETC_IP_Prototype_0_1.xci" Type="IP">
         <Instance HierarchyPath="TARGETC_IP_Prototype_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/base_zynq_xlconstant_0_0/base_zynq_xlconstant_0_0.xci" Type="IP">
+        <Instance HierarchyPath="xlconstant_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

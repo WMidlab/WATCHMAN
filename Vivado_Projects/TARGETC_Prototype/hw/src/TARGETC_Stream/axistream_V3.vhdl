@@ -11,6 +11,7 @@ entity axistream is
 		);
 	port (
 		-- Users to add ports here
+		SW_nRST:			in std_logic;
 		TestStream:			in std_logic;
 		
 		FIFOvalid:			in std_logic;
@@ -90,7 +91,7 @@ begin
 	process(M_AXIS_ACLK)                                                                        
 	begin                                                                                       
 	  if (rising_edge (M_AXIS_ACLK)) then                                                       
-	    if(M_AXIS_ARESETN = '0') then                                                           
+	    if(M_AXIS_ARESETN = '0' or SW_nRST='0') then                                                           
 	      -- Synchronous reset (active low)                                                     
 	      mst_exec_state      <= IDLE;                                                          
 
@@ -252,7 +253,7 @@ begin
 	process(M_AXIS_ACLK)                                                                           
 	begin                                                                                          
 	  if (rising_edge (M_AXIS_ACLK)) then                                                          
-	    if(M_AXIS_ARESETN = '0') then                                                              
+	    if(M_AXIS_ARESETN = '0' or SW_nRST='0') then                                                              
 	      axis_tvalid_delay <= '0';                                                                
 	      axis_tlast_delay <= '0';                                                                 
 	    else                                                                                       

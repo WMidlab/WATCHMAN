@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Tue Jan  8 11:46:19 2019
+--Date        : Fri Jan 25 16:40:41 2019
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq_wrapper.bd
 --Design      : base_zynq_wrapper
@@ -57,6 +57,10 @@ entity base_zynq_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     GCC_RESET : out STD_LOGIC;
+    HCMPA : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPB : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPC : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPD : out STD_LOGIC_VECTOR ( 0 to 0 );
     HSCLK_N : out STD_LOGIC;
     HSCLK_P : out STD_LOGIC;
     MONTIMING_N : in STD_LOGIC;
@@ -138,8 +142,6 @@ architecture STRUCTURE of base_zynq_wrapper is
     DO_9 : in STD_LOGIC;
     SDA : inout STD_LOGIC;
     SCL : inout STD_LOGIC;
-    BB2 : out STD_LOGIC;
-    BB4 : out STD_LOGIC;
     SIN : out STD_LOGIC;
     SCLK : out STD_LOGIC;
     PCLK : out STD_LOGIC;
@@ -170,7 +172,6 @@ architecture STRUCTURE of base_zynq_wrapper is
     SSTIN_N : out STD_LOGIC;
     BB1 : out STD_LOGIC;
     BB5 : out STD_LOGIC;
-    BB3 : out STD_LOGIC;
     SHOUT : in STD_LOGIC;
     MONTIMING_P : in STD_LOGIC;
     MONTIMING_N : in STD_LOGIC;
@@ -178,7 +179,14 @@ architecture STRUCTURE of base_zynq_wrapper is
     TRIGD : in STD_LOGIC;
     TRIGC : in STD_LOGIC;
     TRIGB : in STD_LOGIC;
-    TRIGA : in STD_LOGIC
+    TRIGA : in STD_LOGIC;
+    HCMPD : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPC : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPB : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPA : out STD_LOGIC_VECTOR ( 0 to 0 );
+    BB2 : out STD_LOGIC;
+    BB3 : out STD_LOGIC;
+    BB4 : out STD_LOGIC
   );
   end component base_zynq;
 begin
@@ -228,6 +236,10 @@ base_zynq_i: component base_zynq
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       GCC_RESET => GCC_RESET,
+      HCMPA(0) => HCMPA(0),
+      HCMPB(0) => HCMPB(0),
+      HCMPC(0) => HCMPC(0),
+      HCMPD(0) => HCMPD(0),
       HSCLK_N => HSCLK_N,
       HSCLK_P => HSCLK_P,
       MONTIMING_N => MONTIMING_N,

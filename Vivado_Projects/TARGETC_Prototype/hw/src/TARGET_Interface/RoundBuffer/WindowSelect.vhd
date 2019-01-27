@@ -7,6 +7,7 @@ use work.WindowCPU_pkg.all;
 
 entity WindowSelect is
 	Port (
+	clk:			in std_logic;
 	CurAddr :		in std_logic_vector(7 downto 0);
 
 	NextBus_In:		in Bus_t;
@@ -22,7 +23,12 @@ architecture Behavioral of WindowSelect is
 
 begin
 
-	NextAddr 	<= NextBus_In(to_integer(unsigned(CurAddr)));
-	PrevAddr	<= PrevBus_In(to_integer(unsigned(CurAddr)));
+	process(clk)
+	BEGIN
+		if rising_edge(clk) then
+			NextAddr 	<= NextBus_In(to_integer(unsigned(CurAddr)));
+			PrevAddr	<= PrevBus_In(to_integer(unsigned(CurAddr)));
+		end if;
+	end process;
 
 end Behavioral;

@@ -33,6 +33,7 @@ int main(void)
 	int timeout= 5;
 	int tmp = 0;
 
+	axidma_flg = FALSE;
 	head = NULL;
 	
 	ControlRegisterWrite(TRIG_CLEAR_MASK,ENABLE);
@@ -41,11 +42,12 @@ int main(void)
     init_platform();
 	platform_setup_interrupts();
 	platform_enable_interrupts();
-	PedInitialize();	// Pedestals initialization
 
-    xil_printf("\n\r*** ************************** *** ");
-    xil_printf("\n\r*** TARGETC : Testing Software *** \n\r");
-    xil_printf("*** ************************** *** \n\r");
+    // Banner TARGET C
+	for(int i=0; i<14;++i){
+		xil_printf("%s\r\n",banner[i]);
+	}
+	xil_printf("\r\n");
 
     // Test I2C
     status = DAC_LTC2657_initialize();
@@ -53,7 +55,7 @@ int main(void)
     	xil_printf("ERROR:\tFailure to initialize I2C DAC LT2657\r\n");
     }
    // status = DAC_LTC2657_SetChannelVoltage(CHANNEL_ALL,2.00);	//Vped = 1.25
-    status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,2.00);	//Vped = 1.25
+    status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,VPED_ANALOG);	//Vped = 1.25
     status = DAC_LTC2657_SetChannelVoltage(CHANNEL_A,1.00);	//Vped = 1.25
     status = DAC_LTC2657_SetChannelVoltage(CHANNEL_B,1.00);	//Vped = 1.25
     status = DAC_LTC2657_SetChannelVoltage(CHANNEL_C,1.00);	//Vped = 1.25
@@ -63,8 +65,6 @@ int main(void)
     }
     xil_printf("DAC LT2657 ... OK\r\n");
     sleep(2);
-
-
 
 
 	xil_printf("\n\r*** CONTROL *** \n\r");
@@ -92,7 +92,8 @@ int main(void)
 	xil_printf("\r\n");
 
 	xil_printf("\n\r*** REGISTERS *** \n\r");
-    SetTargetCRegisters();
+    //SetTargetCRegisters();
+    SetTargetCRegisters_DLL();
 
     //GetTargetCStatus();
 
@@ -116,11 +117,16 @@ int main(void)
 	}
 */
 
+	xil_printf("\n\r*** DEBUG *** \n\r");
+	regptr[TC_DEBUGSEL_REG] = BBX_ReadEN;
+	xil_printf("TC_DEBUGSEL_REG = 0x%x",regptr[TC_DEBUGSEL_REG]);
+	sleep(2);
+
      xil_printf("\n\r*** Test Pattern Generator *** \n\r");
-	TestPatternGenerator(0x505);
+	//TestPatternGenerator(0x505);
     sleep(1);
 
-    TestPatternGenerator(0xA69);
+    //TestPatternGenerator(0xA69);
 	sleep(1);
 	
 	//TestPatternGenerator(0x555);
@@ -129,28 +135,61 @@ int main(void)
     //TestPatternGenerator(0x111);
 	sleep(1);
 
+  	xil_printf("\n\r*** Pedestals *** \n\r");
+	init_pedestals();
+  	xil_printf("\n\r*** End Pedestals *** \n\r");
+  	
+  	for(int tmp=0; tmp<5; tmp++){
+  		sleep(1);
+  		xil_printf("...\t");
+	}
+	xil_printf("... DONE\r\n");
+	sleep(1);
 
 
 // *** Vadjustement ***
-/*
+/*	xil_printf("\n\r*** Vadjustement *** \n\r");
 	int vadjp = 0, vadjn =0;
-
-	xil_printf("\n\r*** MonTiming *** \n\r");
-	xil_printf("\n\r Probe BB1 : SSTIN\n\r");
-	xil_printf("\n\r Probe BB5 : MonTiming\n\r");
-
-	sleep(1);
-
+	int LE = 0, TE = 0;
+	
 
 	int sw = 0;
 	//SSTOUT OK
 	xil_printf("SSTOUT OK \r\n");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSTOUT_MASK );
+	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSTOUTFB_MASK );
 	sleep(3);
+	
 
+	vadjp = 0;
+	int upper = 0, lower = 0;
+	
+	upper = 800;
+	lower = 700;
+	
+	vadjp = lower;
+	while(vadjp < upper){
+		usleep(500000);
+		WriteRegister(TC_VADJP_REG,	vadjp);
+
+		xil_printf("VadjP\t%d\r\n",vadjp);
+		vadjp = vadjp + 1;
+	}
+	LE = 50;
+	while((LE < 64)){
+		//usleep(50000);
+		WriteRegister(TC_SSTOUTFB_REG,		LE);
+		xil_printf("LE: %d\tTE: %d\r\n",LE,TE);
+		sleep(1);
+		LE = LE + 1;
+	}
+	
+*/
+	
+
+	/*
 	xil_printf("SSPIN OK \r\n");
 	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSPIN_MASK );
-	sleep(3);
+	sleep(5);
 
 
 	xil_printf("SSPOUT OK \r\n");
@@ -174,36 +213,19 @@ int main(void)
 	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR_STRB2_MASK );
 	sleep(3);
 */
-
-
-/*	int LE = 0;
-	int TE = 31;
-
-	while((LE < 64)){
-		//usleep(50000);
-		WriteRegister(TC_WR_STRB2_LE_REG,		LE);
-		WriteRegister(TC_WR_STRB2_TE_REG,		TE);
-		usleep(500000);
-		xil_printf("LE: %d\tTE: %d\r\n",LE,TE);
-		LE ++;
-		TE++;
-	}
-*/
-
-
-
-/*	int LE = 4;
+	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSPOUT_MASK );
+	int LE = 2;
 	int TE = 0;
 
 	while((LE < 64)){
 		//usleep(50000);
-		WriteRegister(TC_WR1_ADDR_LE_REG,		LE);
+		WriteRegister(TC_SSPIN_LE_REG,		LE);
 
-		TE = 20;
+		TE = 0;
 		while((TE < 64)){
 
-			WriteRegister(TC_WR1_ADDR_TE_REG,		TE);
-			usleep(500000);
+			WriteRegister(TC_SSPIN_TE_REG,		TE);
+			sleep(1);
 			xil_printf("LE: %d\tTE: %d\r\n",LE,TE);
 			TE = TE + 1;
 
@@ -213,21 +235,6 @@ int main(void)
 		xil_printf("\r\n");
 		xil_printf("\r\n");
 	}
-*/
-/*	xil_printf("\n\r*** MonTiming *** \n\r");
-	sleep(5);
-
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR2_ADDR_SYNC_MASK );
-
-	LE = 0;
-	TE = 0;
-	while((LE < 64)){
-		usleep(250000);
-		WriteReadBackRegister(TC_WR2_ADDR_LE_REG,		LE);
-		LE = LE + 1;
-	}
-
-*/
 
 // *** Test Stream ***
 
@@ -284,7 +291,7 @@ int main(void)
 // TEST FIFO
 /*	xil_printf("\r\n*** Test FIFO ***\r\n");
     NBRWINDOWS = 1;
-
+	axidma_flg = FALSE;
 	head = malloc(sizeof(struct ele_list_st));
 	if(head == NULL){
 		printf("Fuck malloc\r\n");
@@ -371,123 +378,19 @@ int main(void)
     ControlRegisterWrite(SMODE_MASK,DISABLE);
 	sleep(2);
 	free(head);
+
 */
-// STORAGE STREAM
-//	status = DAC_LTC2657_setvoltage(1.25);
 
 
-	//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,1.25);	//Vped = 1.25
+		xil_printf("******** Multiple Window - Multiple Window *************\r\n");
 
-
-	//for(int i= 0; i < 20; i++){
-	//	status = DAC_LTC2657_SetChannelVoltage(CHANNEL_A,1.1);
-	//	status = DAC_LTC2657_SetChannelVoltage(CHANNEL_B,1.1);
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,0.25*i);
-		//WriteRegister(TC_ISEL_REG,2000+i*20);
-		
-		//status = DAC_LTC2657_setvoltage(1.25);
-
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,1.25);	//Vped = 1.25
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_A,1.50);
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_B,1.50);
-
-		//if(status != XST_SUCCESS){
-		//	xil_printf("ERROR:\tFailure to initialize I2C DAC LT2657\r\n");
-		//}
-		xil_printf("******** Pedestal ANTHONY *************\r\n");
-		
 		uint32_t data[16][32];
 		//int timeout;
 		int flg_error = 0;
 
-		struct ele_list_st* tmp_ptr = malloc(sizeof(struct ele_list_st));
-		if(!tmp_ptr){
-			printf("malloc for tmp_ptr failed!\r\n");
-			return XST_FAILURE;
-		}
-		tmp_ptr->pnext = NULL;
-
-		for(int window=0; window<512; window++){
-//			for(int i=0; i<16; i++){
-//				for(int j=0; j<32; j++) data[i][j] = 0;
-//			}
-			printf("Window:\t%d\r\n",window);
-			for(int count=0; count<10; count++){
-				
-				Xil_DCacheFlushRange(&(tmp_ptr->wdo), sizeof(struct window_st));
-				XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(tmp_ptr->wdo), sizeof(struct window_st));
-				
-				regptr[TC_FSTWINDOW_REG] = window;
-				regptr[TC_NBRWINDOW_REG] = 1;
-				
-				ControlRegisterWrite(SMODE_MASK ,ENABLE);
-				ControlRegisterWrite(SS_TPG_MASK ,ENABLE);
-				ControlRegisterWrite(WINDOW_MASK,ENABLE);
-				usleep(50);
-				ControlRegisterWrite(WINDOW_MASK,DISABLE); // PL side starts on falling edge
-
-				printf("%d ", count);
-				
-				timeout = 200000; // 10sec
-				while(timeout && !axidma_rx_done){
-					usleep(50);
-					timeout--;
-				}
-				if(axidma_rx_done == 1){
-					Xil_DCacheInvalidateRange(&(tmp_ptr->wdo), sizeof(struct window_st));
-		
-					
-					/*for(int i=0; i<6; i++){
-						xil_printf("Header%d:\t%d\r\n",i,tmp_ptr->wdo.header[i]);
-					}
-					for(int i=0; i<16; i++){
-						printf("%d\t", tmp_ptr->wdo.data[i*32]);
-					}
-					printf("\r\n");
-					*/
-					if(timeout <= 0){
-						printf("Timeout on window %d: pedestal initialization failed!\r\n", window);
-						return XST_FAILURE;
-					}
-					else axidma_rx_done = 0;
-
-				
-					if(tmp_ptr->wdo.header[5] != window){
-						printf(">>> ERROR !!! window id %d /= %d!\r\n",tmp_ptr->wdo.header[5],window);
-						for(int i=0; i<6; i++){
-							xil_printf("Header%d:\t%d\r\n",i,tmp_ptr->wdo.header[i]);
-						}
-						flg_error = 1;
-					}
-					else{
-					//	for(int i=0; i<16; i++){
-					//		for(int j=0; j<32; j++) data[i][j] += tmp_ptr->wdo.data[i*32+j];
-					//	}
-					}
-				}
-				else{
-					xil_printf("Timeout\r\n");
-					flg_error = 1;
-				}
-
-				if(flg_error) break;
-			}
-			printf("\r\n");
-
-			if(flg_error) break;
-			sleep(1);
-		}
-		
-		free(tmp_ptr);
-
-		xil_printf("\r\n*** Pedestal Finished ***\r\n");
-
-/*
-		xil_printf("\r\n*** Storage Stream ***\r\n");
-		//GetTargetCStatus();
-		//GetTargetCControl();
-		
-		NBRWINDOWS = 1;
+		axi_dma_mult_flg = 0;
+		NBRWINDOWS = 10;
+		axidma_flg = TRUE;
 
 		head = malloc(sizeof(struct ele_list_st));
 		if(head == NULL){
@@ -495,309 +398,108 @@ int main(void)
 		}
 		head->pnext = NULL;
 		axiptr = head;
-		
-		for(int i= 0; i< 512; i++){
-			head->wdo.data[i] = i;
-		}
+		printf("Head %d\t axiptr %d\r\n",head,axiptr);
 
-	 	Xil_DCacheFlushRange(&(head->wdo), sizeof(struct window_st));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(head->wdo), sizeof(struct window_st));
-	  
-	  	cntwindow = 0;
-		samplecnt = 0;
+		Xil_DCacheFlushRange(&(axiptr->wdo), sizeof(struct window_st));
+		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(axiptr->wdo), sizeof(struct window_st));
+		for(int window=0; window<1; window+=1){
+			printf("-> Head %d\t axiptr %d\r\n",head,axiptr);
+			printf("-> Window:\t%d %d\r\n",window,NBRWINDOWS);
 
-		regptr[TC_FSTWINDOW_REG] = 6;
-		regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
+			ControlRegisterWrite(PSBUSY_MASK,DISABLE);
 
-		ControlRegisterWrite(SMODE_MASK ,ENABLE);
-		ControlRegisterWrite(SS_TPG_MASK ,ENABLE);
-		ControlRegisterWrite(WINDOW_MASK,ENABLE);
+			regptr[TC_FSTWINDOW_REG] = window;
+			regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
 
-		usleep(50);
-		ControlRegisterWrite(WINDOW_MASK,DISABLE);
-		
-		timeout= 10;
-		tmp = 0;
-		while(timeout && !axidma_rx_done){
-			sleep(1);
-			xil_printf("%d...\r\n",cntwindow);
-			timeout--;
-		}
-		xil_printf("\r\n");
+			ControlRegisterWrite(SMODE_MASK ,ENABLE);
+			ControlRegisterWrite(SS_TPG_MASK ,ENABLE);
+			//ControlRegisterWrite(SS_TPG_MASK ,DISABLE);
+
+			ControlRegisterWrite(CPUMODE_MASK,DISABLE);
+			ControlRegisterWrite(WINDOW_MASK,ENABLE);
+
+			//Xil_DCacheFlushRange(&(axiptr->wdo), sizeof(struct window_st));
+			Xil_DCacheFlushRange(&(head->wdo), sizeof(struct window_st));
+			usleep(50);
+			ControlRegisterWrite(WINDOW_MASK,DISABLE); // PL side starts on falling edge
 
 
-		if(axidma_rx_done){
-			//while(head->pnext != NULL){
-				Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
-		
-				xil_printf("HEADER\r\n");
-				xil_printf("------------\r\n");
-		
-			
-				for(int i=0; i<6; i++){
-					xil_printf("Header%d:\t%d\r\n",i,head->wdo.header[i]);
-				}
-				xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
-				xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
-				xil_printf(">>>\r\n");
-		
-				for(int i=0; i<32;i++){
-
-						xil_printf("%d\t",head->wdo.data[i]);
-						xil_printf("%d\t",head->wdo.data[i + 32]);
-						xil_printf("%d\t",head->wdo.data[i + 32*2]);
-						xil_printf("%d\t",head->wdo.data[i + 32*3]);
-
-						xil_printf("%d\t",head->wdo.data[i + 32*4]);
-						xil_printf("%d\t",head->wdo.data[i + 32*5]);
-						xil_printf("%d\t",head->wdo.data[i + 32*6]);
-						xil_printf("%d\t",head->wdo.data[i + 32*7]);
-
-						xil_printf("%d\t",head->wdo.data[i + 32*8]);
-						xil_printf("%d\t",head->wdo.data[i + 32*9]);
-						xil_printf("%d\t",head->wdo.data[i + 32*10]);
-						xil_printf("%d\t",head->wdo.data[i + 32*11]);
-
-						xil_printf("%d\t",head->wdo.data[i + 32*12]);
-						xil_printf("%d\t",head->wdo.data[i + 32*13]);
-						xil_printf("%d\t",head->wdo.data[i + 32*14]);
-						xil_printf("%d\r\n",head->wdo.data[i + 32*15]);
-				}
-				xil_printf("<<<\r\n");
-				xil_printf("\r\n");
-		
-				//Increment List
-//				tmp = head;
-				
-//				head = head->pnext;
-//				free(tmp);
-			//}
-			
-		}
-		else{
-			xil_printf("No interrupts\r\n");
-		}
-
-		axidma_rx_done = 0;
-		
-		free(head);		
-
-		ControlRegisterWrite(SMODE_MASK,DISABLE);
-		sleep(1);	
-
-			if(regptr[TC_STATUS_REG] & TEST_0_MASK){
-				xil_printf("T0\t");
+			timeout = 200000; // 10sec
+			while(timeout && !axi_dma_mult_flg){
+				usleep(50);
+				timeout--;
 			}
-			if(regptr[TC_STATUS_REG] & TEST_1_MASK){
-				xil_printf("T1\t");
-			}
-			if(regptr[TC_STATUS_REG] & TEST_2_MASK){
-				xil_printf("T2\t");
-			}
-			if(regptr[TC_STATUS_REG] & TEST_3_MASK){
-				xil_printf("T3\t");
-			}
-			if(regptr[TC_STATUS_REG] & TEST_4_MASK){
-				xil_printf("T4\t");
-			}
-			if(regptr[TC_STATUS_REG] & TEST_5_MASK){
-				xil_printf("T5\t");
-			}
-*/
+			if(axi_dma_mult_flg){
+				printf("Window:\t%d %d\r\n",window,NBRWINDOWS);
+				for(int times=0;times<NBRWINDOWS;times++){
+					xil_printf("Head%d\t%d\r\n",times,head);
 
-// PEDESTAL SUBSTRACTION INIT WINDOW 0 only
+					Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
+					//Xil_DCacheInvalidateRange(&(axiptr->wdo), sizeof(struct window_st));
 
-/*	int PEDROUNDS = 20;
-	
-	status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,1.25); // VPED @ 1.25V
-	
-	xil_printf("\r\n*** Pedestal Calculation ***\r\n");
-	
-	for(int i= 0; i < PEDROUNDS; i++){
-
-		NBRWINDOWS = 1;
-
-
-	  	Xil_DCacheFlushRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,(UINTPTR)window, (NBRWINDOWS*512*sizeof(int)));
-		//switch to stream rather than normal Axi-Lite
-		ControlRegisterWrite(SMODE_MASK ,ENABLE);
-
-		samplecnt = 0;
-
-	   	ControlRegisterWrite(SS_TPG_MASK,ENABLE);	// SAmple and not TPG
-
-		regptr[TC_FSTWINDOW_REG] = 0;
-		regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
-
-		ControlRegisterWrite(WINDOW_MASK,ENABLE);
-
-
-		timeout= 5;
-		tmp = 0;
-		while(timeout && !axidma_rx_done){
-			usleep(500000);
-			xil_printf("... ");
-			timeout--;
-		}
-		xil_printf("\r\n");
-		ControlRegisterWrite(WINDOW_MASK,DISABLE);
-
-		if(axidma_rx_done){
-			//sleep(1);
-			Xil_DCacheInvalidateRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-
-			PedCalculate(&window,0,512,PEDROUNDS);	// Pedestal Calculation for Window N°0
-			
-			axidma_rx_done = 0;
-
-		}
-		else{
-			xil_printf("No interrupts\r\n");
-		}
-
-		ControlRegisterWrite(SMODE_MASK,DISABLE);
-		sleep(1);
-	}
-	
-	PedShow(0);
-*/	
-
-/*	
-	int NBRRUNS = 20;
-	for(int i= 0; i < NBRRUNS; i++){
-
-		NBRWINDOWS = 1;
-
-
-	  	Xil_DCacheFlushRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,(UINTPTR)window, (NBRWINDOWS*512*sizeof(int)));
-		//switch to stream rather than normal Axi-Lite
-		ControlRegisterWrite(SMODE_MASK ,ENABLE);
-
-		samplecnt = 0;
-
-	   	ControlRegisterWrite(SS_TPG_MASK,ENABLE);	// SAmple and not TPG
-
-		regptr[TC_FSTWINDOW_REG] = 0;
-		regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
-
-		ControlRegisterWrite(WINDOW_MASK,ENABLE);
-
-
-		timeout= 5;
-		tmp = 0;
-		while(timeout && !axidma_rx_done){
-			usleep(500000);
-			xil_printf("... ");
-			timeout--;
-		}
-		xil_printf("\r\n");
-		ControlRegisterWrite(WINDOW_MASK,DISABLE);
-
-		if(axidma_rx_done){
-			//sleep(1);
-			Xil_DCacheInvalidateRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-
-			xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
-			xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
-			xil_printf(">>>\r\n");
-			for(int k=0; k <NBRWINDOWS ; k++){
-				
-				for(int s=0; s<32;s++){
-					for(int c=0; c< 15; c++){
-						xil_printf("%d\t",PedSubstraction(&window,0,c,s));
+					for(int i=0; i<6; i++){
+						xil_printf("Header%d:\t%d\t\t%d\r\n",i,head->wdo.header[i],axiptr->wdo.header[i]);
 					}
-					xil_printf("%d\r\n",PedSubstraction(&window,0,15,s));
+					printf("\r\n");
+						xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
+						xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
+						printf(">>>\r\n");
+						//data_tmp = (uint16_t)(tmp_ptr->data.data_struct.data[i][j] + VPED_DIGITAL - pedestal[window][i][j]);
+					//if(data_tmp > 2047) data_tmp = 2047;
+						for(int j=0; j<32; j++){
+							for(int i=0; i<15; i++){
+								printf("%d\t", head->wdo.data[i*32+j]+ VPED_DIGITAL - pedestal[window][i][j]);
+							}
+							printf("%d\r\n", head->wdo.data[15*32+j]+ VPED_DIGITAL - pedestal[window][15][j]);
+
+						}
+						printf("<<<\r\n");
+						printf("\r\n");
+
+					struct ele_list_st *swapele;
+					swapele = head;
+					head = head->pnext;
+					xil_printf("FREE:\t%d\t%d\r\n",head,swapele);
+					//Xil_DCacheInvalidateRange(&(swapele->wdo), sizeof(struct window_st));
+					free(swapele);
 				}
-				xil_printf("<<<\r\n");
-				xil_printf("\r\n");
+
+				struct ele_list_st *testele;
+				testele = head;
+				xil_printf("check head:");
+				while(testele){
+					xil_printf("%d\t",testele);
+					testele = testele->pnext;
+				}
+				printf("\r\n");
+				axi_dma_mult_flg = 0;
+
+
 			}
-			axidma_rx_done = 0;
+			else{
+				xil_printf("Timeout\r\n");
+				flg_error = 1;
+			}
 
-		}
-		else{
-			xil_printf("No interrupts\r\n");
+
+
+			if(flg_error) break;
+			printf("\r\n");
+
+			printf("Window Busy?");
+			while(regptr[TC_STATUS_REG] & WINDOWBUSY_MASK){
+				usleep(100000); //sleep 100ms
+				printf("... ");
+			}
+			printf("\r\n");
+			sleep(3);
 		}
 
-		ControlRegisterWrite(SMODE_MASK,DISABLE);
-		sleep(1);
-	}
-*/	
-/*	for(int i= 0; i < 10; i++){
-		status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,0.25*i);
-		sleep(1);
-		//WriteRegister(TC_ISEL_REG,2000+i*20);
+		//free(head);
+		//free(axiptr);
+
+		xil_printf("\r\n*** Multiple Window Finished ***\r\n");
 		
-		//status = DAC_LTC2657_setvoltage(1.25);
-
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_H,1.25);	//Vped = 1.25
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_A,1.50);
-		//status = DAC_LTC2657_SetChannelVoltage(CHANNEL_B,1.50);
-
-		//if(status != XST_SUCCESS){
-		//	xil_printf("ERROR:\tFailure to initialize I2C DAC LT2657\r\n");
-		//}
-
-		xil_printf("\r\n*** Storage Stream ***\r\n");
-
-		NBRWINDOWS = 1;
-
-
-	  	Xil_DCacheFlushRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-		XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,(UINTPTR)window, (NBRWINDOWS*512*sizeof(int)));
-		//switch to stream rather than normal Axi-Lite
-		ControlRegisterWrite(SMODE_MASK ,ENABLE);
-
-		samplecnt = 0;
-
-	   	ControlRegisterWrite(SS_TPG_MASK,ENABLE);	// SAmple and not TPG
-
-		regptr[TC_FSTWINDOW_REG] = 0;
-		regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
-
-		ControlRegisterWrite(WINDOW_MASK,ENABLE);
-
-
-		timeout= 5;
-		tmp = 0;
-		while(timeout && !axidma_rx_done){
-			usleep(500000);
-			xil_printf("... ");
-			timeout--;
-		}
-		xil_printf("\r\n");
-		ControlRegisterWrite(WINDOW_MASK,DISABLE);
-
-		if(axidma_rx_done){
-			//sleep(1);
-			Xil_DCacheInvalidateRange((UINTPTR)window, NBRWINDOWS*512*sizeof(int));
-
-			xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
-			xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
-			xil_printf(">>>\r\n");
-			for(int k=0; k <NBRWINDOWS ; k++){
-				
-				for(int s=0; s<32;s++){
-					for(int c=0; c< 15; c++){
-						xil_printf("%d\t",2048+PedSubstraction(&window,0,c,s));
-					}
-					xil_printf("%d\r\n",2048+PedSubstraction(&window,0,15,s));
-				}
-				xil_printf("<<<\r\n");
-				xil_printf("\r\n");
-			}
-			axidma_rx_done = 0;
-
-		}
-		else{
-			xil_printf("No interrupts\r\n");
-		}
-
-		ControlRegisterWrite(SMODE_MASK,DISABLE);
-		sleep(1);
-	}
-*/
 
 // END CLEANING UP
     xil_printf("\n\r*** ************************** ***");

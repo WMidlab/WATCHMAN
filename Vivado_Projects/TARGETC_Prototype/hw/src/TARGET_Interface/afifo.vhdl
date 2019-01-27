@@ -2,7 +2,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-    
+
 entity aFifo is
     generic (
         DATA_WIDTH :integer := 8;
@@ -28,13 +28,19 @@ architecture rtl of aFifo is
 
     type RAM is array (integer range <>)of std_logic_vector (DATA_WIDTH-1 downto 0);
     signal Mem : RAM (0 to FIFO_DEPTH-1);
-    
+
     signal pNextWordToWrite     :std_logic_vector (ADDR_WIDTH downto 0);
     signal pNextWordToRead      :std_logic_vector (ADDR_WIDTH downto 0);
-    
+
     signal Equal, looped       :std_logic;
     signal empty,full   :std_logic;
-    
+
+    -- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+    -- attribute ram_style : string;
+    -- attribute ram_style of Mem : signal is "block";
+
 begin
 
     --------------Code--------------/
@@ -52,7 +58,7 @@ begin
 		    end if;
 		end if;
     end process;
-            
+
     --'Data_in' logic:
     process (WClk,rst) begin
 		if rst = '0' then
@@ -75,35 +81,57 @@ begin
 			pNextWordToWrite <= (others => '0');
 		else
 			if rising_edge(WCLK) then
-				
+
 				if  (WriteEn_in and (not full)) = '1' then
 					pNextWordToWrite <= std_logic_vector(unsigned(pNextWordToWrite) + 1);
 				end if;
 			end if;
 		end if;
 	end process;
-	  
+
 	process(RClk,rst)
 	begin
 		if rst = '0' then
 			pNextWordToRead <= (others => '0');
 		else
-			if rising_edge(RCLK) then		
+			if rising_edge(RCLK) then
 				if (ReadEn_in  and (not empty)) = '1' then
 					pNextWordToRead <= std_logic_vector(unsigned(pNextWordToRead) + 1);
 				end if;
 			end if;
 		end if;
-	end process;  
-	         
+	end process;
+
     --'EqualAddresses' logic:  EqualAddresses <= '1' when (pNextWordToWrite = pNextWordToRead) else '0';
     Equal <= '1' when (pNextWordToWrite(ADDR_WIDTH-1 downto 0) = pNextWordToRead(ADDR_WIDTH-1 downto 0)) else '0';
-    Looped <= '1' when (pNextWordToWrite(ADDR_WIDTH) /= pNextWordToRead(ADDR_WIDTH)) else '0';	
-    
+    Looped <= '1' when (pNextWordToWrite(ADDR_WIDTH) /= pNextWordToRead(ADDR_WIDTH)) else '0';
+    --
 	Full  <= '1' when Looped = '1' and Equal = '1'  	else '0';
 	Empty <= '1' when Looped = '0' and Equal = '1'      else '0';
 
-	full_out <= full;
-	empty_out <= empty;
-	
+    --Clocked Output
+    -- process(RClk)
+    -- begin
+    --     if rising_edge(Rclk) then
+    --         if Looped = '0' and Equal = '1'  then
+    --            Empty  <= '1';
+    --         else
+    --             Empty <= '0';
+    --         end if;
+    --     end if;
+    -- end process;
+    --
+    -- process(WClk)
+    -- begin
+    --     if rising_edge(Wclk) then
+    --         if Looped = '1' and Equal = '1'  then
+	--            Full  <= '1';
+    --         else
+    --             Full <= '0';
+    --         end if;
+    --     end if;
+    -- end process;
+
+    empty_out <= empty;
+    full_out <= full;
 end architecture;

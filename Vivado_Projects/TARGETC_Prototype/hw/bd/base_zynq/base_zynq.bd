@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x5C3D07C18981E294" bd:device="xc7z010clg400-1" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2018.2" bd:top="base_zynq" bd:version="1.00.a">
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0x56752F75DC06CE2D" bd:device="xc7z010clg400-1" bd:isValidated="true" bd:synthFlowMode="Hierarchical" bd:tool_version="2018.2" bd:top="base_zynq" bd:version="1.00.a">
 
   <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
     <spirit:vendor>xilinx.com</spirit:vendor>
@@ -388,18 +388,6 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>BB2</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>BB4</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
           <spirit:name>SIN</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
@@ -580,12 +568,6 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>BB3</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
           <spirit:name>SHOUT</spirit:name>
           <spirit:wire>
             <spirit:direction>in</spirit:direction>
@@ -631,6 +613,64 @@
           <spirit:name>TRIGA</spirit:name>
           <spirit:wire>
             <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPD</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPC</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPB</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPA</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>BB2</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>BB3</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>BB4</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
           </spirit:wire>
         </spirit:port>
       </spirit:ports>
@@ -1238,28 +1278,6 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>iobuf_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="iobuf" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_iobuf_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">iobuf</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>iobuf_1</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="iobuf" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_iobuf_0_1</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">iobuf</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
         <spirit:instanceName>axi_dma_0</spirit:instanceName>
         <spirit:componentRef spirit:library="ip" spirit:name="axi_dma" spirit:vendor="xilinx.com" spirit:version="7.1"/>
         <spirit:configurableElementValues>
@@ -1286,7 +1304,38 @@
         <spirit:componentRef spirit:library="ip" spirit:name="xlconcat" spirit:vendor="xilinx.com" spirit:version="2.1"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_xlconcat_1_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="NUM_PORTS">6</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="NUM_PORTS">2</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>xlconstant_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="xlconstant" spirit:vendor="xilinx.com" spirit:version="1.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_xlconstant_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CONST_WIDTH">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CONST_VAL">0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>iobuf_1</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="iobuf" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_iobuf_0_1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">iobuf</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>iobuf_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="iobuf" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_iobuf_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">iobuf</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
@@ -1379,7 +1428,6 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="nRST"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="tc_axi_aresetn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
@@ -1477,6 +1525,7 @@
         <spirit:internalPortReference spirit:componentRef="axi_dma_0" spirit:portRef="s_axi_lite_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_dma_0" spirit:portRef="m_axi_s2mm_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="M_AXIS_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1485,7 +1534,6 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CLK"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RefCLK_i1"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RefCLK_i2"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="tc_axi_aclk"/>
@@ -1543,13 +1591,11 @@
       <spirit:adHocConnection>
         <spirit:name>FifoManagerV4_0_FIFOresponse</spirit:name>
         <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFOresponse"/>
-        <spirit:externalPortReference spirit:portRef="BB2"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFOresponse"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>FifoManagerV4_0_FIFOvalid</spirit:name>
         <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFOvalid"/>
-        <spirit:externalPortReference spirit:portRef="BB4"/>
         <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="FIFOvalid"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
@@ -1708,26 +1754,6 @@
         <spirit:externalPortReference spirit:portRef="SSTIN_N"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WDOTime</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WDOTime"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="WDOTime"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_DIGTime</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="DIGTime"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="DIGTime"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_Trigger</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="Trigger"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="Trigger"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WDONbr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WDONbr"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="WDONBR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>TARGETC_IP_Prototype_0_CH0</spirit:name>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH0"/>
         <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH0"/>
@@ -1819,18 +1845,13 @@
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>TARGETC_IP_Prototype_0_SSTIN</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SSTIN"/>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB1"/>
         <spirit:externalPortReference spirit:portRef="BB1"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>TARGETC_IP_Prototype_0_MONTIMING</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="MONTIMING"/>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB5"/>
         <spirit:externalPortReference spirit:portRef="BB5"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_RAMP_CNT</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RAMP_CNT"/>
-        <spirit:externalPortReference spirit:portRef="BB3"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>SHOUT_1</spirit:name>
@@ -1853,26 +1874,6 @@
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="DONE"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_TrigA_intr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigA_intr"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In2"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_TrigB_intr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigB_intr"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In3"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_TrigC_intr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigC_intr"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In4"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_TrigD_intr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigD_intr"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In5"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>TRIGD_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="TRIGD"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigD"/>
@@ -1891,6 +1892,75 @@
         <spirit:name>TRIGA_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="TRIGA"/>
         <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigA"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>xlconstant_0_dout</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="xlconstant_0" spirit:portRef="dout"/>
+        <spirit:externalPortReference spirit:portRef="HCMPA"/>
+        <spirit:externalPortReference spirit:portRef="HCMPB"/>
+        <spirit:externalPortReference spirit:portRef="HCMPC"/>
+        <spirit:externalPortReference spirit:portRef="HCMPD"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_BB2</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB2"/>
+        <spirit:externalPortReference spirit:portRef="BB2"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_BB3</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB3"/>
+        <spirit:externalPortReference spirit:portRef="BB3"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_BB4</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB4"/>
+        <spirit:externalPortReference spirit:portRef="BB4"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_SW_nRST</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SW_nRST"/>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="SW_nRST"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="nRST"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_PSBusy</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="PSBusy"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="PSBUSY_i"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Time</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Time"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Time"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_WdoAddr</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_WdoAddr"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_WdoAddr"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_TrigInfo</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_TrigInfo"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_TrigInfo"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Spare</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Spare"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Spare"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Empty</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Empty"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Empty"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>FifoManagerV4_0_FIFO_ReadEn</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_ReadEn"/>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_ReadEn"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGETC_IP_Prototype_0_TestFiFO</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TestFiFO"/>
+        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="TestFIFO"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
