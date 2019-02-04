@@ -32,27 +32,30 @@ void platform_setup_interrupts(void)
 	}
 
 	// set the priority to 0xA0 (highest 0xF8, lowest 0x00) and a trigger for a rising edge 0x3.
-	
+
 	//SSVALID Interrupt
 	//XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR, 0xA1, 0x3);
-	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR, 0xA1, 0x3);
+	//XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR, 0xA1, 0x3);
+	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_TARGET_C_TOPLEVEL_SY_0_SSVALID_INTR_INTR, 0xA1, 0x3);
 
 	//AXIDMA Interrupt
 	XScuGic_SetPriorityTriggerType(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR, 0xA1, 0x3);
-	
+
 	Xil_ExceptionInit();
 
 	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
 			(Xil_ExceptionHandler)XScuGic_InterruptHandler,
 			(void *)&Intc);
-			
-	
-	//Connect Interruptions		
+
+
+	//Connect Interruptions
 //	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR,
 //								(Xil_InterruptHandler)SSVALID_IntrHandler,
 //								&Intc);
 
-	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR,(Xil_InterruptHandler)SSVALID_IntrHandler,&Intc);
+	//Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR,(Xil_InterruptHandler)SSVALID_IntrHandler,&Intc);
+
+	Status = XScuGic_Connect(&Intc,	XPAR_FABRIC_TARGET_C_TOPLEVEL_SY_0_SSVALID_INTR_INTR,(Xil_InterruptHandler)SSVALID_IntrHandler,&Intc);
 	if (Status != XST_SUCCESS) {
 		xil_printf("In %s: TIMER_IRPT_INTR failed...\r\n",__func__);
 		return ;
@@ -77,16 +80,16 @@ void platform_enable_interrupts()
 	 * Enable non-critical exceptions.
 	 */
 	SSVALID_intr_flg = 0;
-	TPG_intr_flg = 0; 
+	TPG_intr_flg = 0;
 	TC_ERROR_intr_flg = 0;
-	 
+
 //	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
-	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR);
+	XScuGic_Enable(&Intc, XPAR_FABRIC_TARGET_C_TOPLEVEL_SY_0_SSVALID_INTR_INTR);
 
 	XScuGic_Enable(&Intc, XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR);
 
 	XAxiDma_IntrEnable(&AxiDmaInstance, XAXIDMA_IRQ_IOC_MASK, XAXIDMA_DEVICE_TO_DMA);
-	
+
 	Xil_ExceptionEnableMask(XIL_EXCEPTION_IRQ);
 
 	return;
@@ -96,11 +99,11 @@ void platform_enable_interrupts()
 void platform_cleanup_interrupts()
 {
 //	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_0_SSVALID_INTR_INTR);
-	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR);
+	XScuGic_Disable(&Intc, XPAR_FABRIC_TARGET_C_TOPLEVEL_SY_0_SSVALID_INTR_INTR);
 
-	
+
 	XAxiDma_IntrDisable(&AxiDmaInstance, XAXIDMA_IRQ_ALL_MASK, XAXIDMA_DMA_TO_DEVICE);
-	
+
 	Xil_ICacheDisable();
 	Xil_DCacheDisable();
 	return;
@@ -108,10 +111,10 @@ void platform_cleanup_interrupts()
 
 // Uer Functions for interrupt handler
 void SSVALID_IntrHandler(void){
-	
+
 	if((regptr[TC_STATUS_REG] & SSVALID_MASK) == SSVALID_MASK){
 		//xil_printf(">> Interrupt \t");
-		//Interrupt handler 
+		//Interrupt handler
 		if((regptr[TC_CONTROL_REG] & SS_TPG_MASK) == 0){
 			TPG_intr_flg = 1;
 			xil_printf("TPG %d\n\r",TPG_intr_flg);
@@ -123,7 +126,7 @@ void SSVALID_IntrHandler(void){
 			//printf("%d %d\t%d\t",test.oddeven,test.addr,test.sscnt);
 			decToHexa(regptr[TC_RDAD_ADDR_REG]);
 			xil_printf("\t");
-			
+
 			printf("%d\t",regptr[TC_eDO_CH0_REG]);
 			printf("%d\t",regptr[TC_eDO_CH1_REG]);
 			printf("%d\t",regptr[TC_eDO_CH2_REG]);
@@ -136,15 +139,15 @@ void SSVALID_IntrHandler(void){
 				xil_printf("ERROR \r\n");
 			}
 		}
-		
+
 		ControlRegisterWrite(SSACK_MASK,ENABLE);
 		//GetTargetCStatus();
-		
+
 	}
 	else{
 		xil_printf("Error in Intterupt");
 	}
-	
+
 	if(SSVALID_intr_flg){
 		ControlRegisterWrite(SSACK_MASK,DISABLE);
 		SSVALID_intr_flg = 0;
@@ -185,7 +188,7 @@ int AxiDma_Initialize(void)
 	XAxiDma_Reset(&AxiDmaInstance);
 	uint32_t reg = XAxiDma_ReadReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET, XAXIDMA_CR_OFFSET);
 	XAxiDma_WriteReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET,XAXIDMA_CR_OFFSET, reg | XAXIDMA_CR_RESET_MASK);
-	
+
 	int TimeOutCnt = 5;
 	while(TimeOutCnt){
 		reg = XAxiDma_ReadReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET, XAXIDMA_CR_OFFSET);
@@ -225,6 +228,7 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 
 	/* If no interrupt is asserted, we do not do anything */
 	if (!(IrqStatus & XAXIDMA_IRQ_ALL_MASK)) {
+		xil_printf("Else AXI-DMA\r\n");
 		return;
 	}
 
@@ -235,6 +239,7 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 	 */
 	if ((IrqStatus & XAXIDMA_IRQ_ERROR_MASK)) {
 		axidma_error = 1;
+		xil_printf("Error AXI-DMA\r\n");
 		return;
 	}
 
@@ -246,8 +251,6 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 
 		if(axidma_flg == TRUE){
 			//Xil_DCacheInvalidateRange(&(axiptr->wdo), sizeof(struct window_st));
-
-			xil_printf("INT :%d\t%d\t%d\r\n",cntwindow,axiptr,axiptr->wdo.header[5]);
 
 			ptrele = malloc(sizeof(struct ele_list_st));
 			if(ptrele == NULL){
@@ -268,8 +271,9 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 			else{
 				cntwindow++;
 			}
+			ControlRegisterWrite(PSBUSY_MASK,DISABLE);
 		}
-		ControlRegisterWrite(PSBUSY_MASK,DISABLE);
+
 		axidma_rx_done = 1;
 	}
 }
@@ -287,4 +291,3 @@ void XAxiDma_SimpleTransfer_Hej(XAxiDma *InstancePtr, UINTPTR BuffAddr, int Leng
 
 	XAxiDma_WriteReg(XPAR_AXI_DMA_0_BASEADDR+XAXIDMA_RX_OFFSET, XAXIDMA_BUFFLEN_OFFSET, LengthOfBytes);
 }
-

@@ -184,7 +184,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_P</spirit:value>
+            <spirit:value>base_zynq_TARGET_C_TopLevel_Sy_0_0_WL_CLK_P</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
                 <bd:configElementInfo bd:valueSource="default_prop"/>
@@ -231,7 +231,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>base_zynq_TARGETC_IP_Prototype_0_1_WL_CLK_N</spirit:value>
+            <spirit:value>base_zynq_TARGET_C_TopLevel_Sy_0_0_WL_CLK_N</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
                 <bd:configElementInfo bd:valueSource="default_prop"/>
@@ -388,6 +388,46 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
+          <spirit:name>HCMPA</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPB</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPC</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>HCMPD</spirit:name>
+          <spirit:wire>
+            <spirit:direction>out</spirit:direction>
+            <spirit:vector>
+              <spirit:left>0</spirit:left>
+              <spirit:right>0</spirit:right>
+            </spirit:vector>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
           <spirit:name>SIN</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
@@ -418,13 +458,13 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>WR_RS_S1</spirit:name>
+          <spirit:name>WR_RS_S0</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>WR_RS_S0</spirit:name>
+          <spirit:name>WR_RS_S1</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
           </spirit:wire>
@@ -562,97 +602,9 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>BB5</spirit:name>
+          <spirit:name>BB4</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>SHOUT</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>MONTIMING_P</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>MONTIMING_N</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>DONE</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>TRIGD</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>TRIGC</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>TRIGB</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>TRIGA</spirit:name>
-          <spirit:wire>
-            <spirit:direction>in</spirit:direction>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>HCMPD</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-            <spirit:vector>
-              <spirit:left>0</spirit:left>
-              <spirit:right>0</spirit:right>
-            </spirit:vector>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>HCMPC</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-            <spirit:vector>
-              <spirit:left>0</spirit:left>
-              <spirit:right>0</spirit:right>
-            </spirit:vector>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>HCMPB</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-            <spirit:vector>
-              <spirit:left>0</spirit:left>
-              <spirit:right>0</spirit:right>
-            </spirit:vector>
-          </spirit:wire>
-        </spirit:port>
-        <spirit:port>
-          <spirit:name>HCMPA</spirit:name>
-          <spirit:wire>
-            <spirit:direction>out</spirit:direction>
-            <spirit:vector>
-              <spirit:left>0</spirit:left>
-              <spirit:right>0</spirit:right>
-            </spirit:vector>
           </spirit:wire>
         </spirit:port>
         <spirit:port>
@@ -668,9 +620,57 @@
           </spirit:wire>
         </spirit:port>
         <spirit:port>
-          <spirit:name>BB4</spirit:name>
+          <spirit:name>BB5</spirit:name>
           <spirit:wire>
             <spirit:direction>out</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>MONTIMING_P</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>DONE</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>SHOUT</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>MONTIMING_N</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>TRIGA</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>TRIGB</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>TRIGC</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
+          </spirit:wire>
+        </spirit:port>
+        <spirit:port>
+          <spirit:name>TRIGD</spirit:name>
+          <spirit:wire>
+            <spirit:direction>in</spirit:direction>
           </spirit:wire>
         </spirit:port>
       </spirit:ports>
@@ -1350,22 +1350,11 @@
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
-        <spirit:instanceName>FifoManagerV4_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="FifoManagerV4" spirit:vendor="xilinx.com" spirit:version="1.0"/>
+        <spirit:instanceName>TARGET_C_TopLevel_Sy_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="module_ref" spirit:name="TARGET_C_TopLevel_System" spirit:vendor="xilinx.com" spirit:version="1.0"/>
         <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_FifoManagerV4_0_0</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">FifoManagerV4</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
-        </spirit:configurableElementValues>
-      </spirit:componentInstance>
-      <spirit:componentInstance>
-        <spirit:instanceName>TARGETC_IP_Prototype_0</spirit:instanceName>
-        <spirit:componentRef spirit:library="module_ref" spirit:name="TARGETC_IP_Prototype" spirit:vendor="xilinx.com" spirit:version="1.0"/>
-        <spirit:configurableElementValues>
-          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_TARGETC_IP_Prototype_0_1</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">TARGETC_IP_Prototype</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">base_zynq_TARGET_C_TopLevel_Sy_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="bd:referenceName">TARGET_C_TopLevel_System</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:subInstancePath"></spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:referenceType">hdl</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="bd:BoundaryCRC">0x0</spirit:configurableElementValue>
@@ -1406,7 +1395,7 @@
       <spirit:interconnection>
         <spirit:name>ps7_0_axi_periph_M00_AXI</spirit:name>
         <spirit:activeInterface spirit:busRef="M00_AXI" spirit:componentRef="ps7_0_axi_periph"/>
-        <spirit:activeInterface spirit:busRef="tc_axi" spirit:componentRef="TARGETC_IP_Prototype_0"/>
+        <spirit:activeInterface spirit:busRef="tc_axi" spirit:componentRef="TARGET_C_TopLevel_Sy_0"/>
       </spirit:interconnection>
     </spirit:interconnections>
     <spirit:adHocConnections>
@@ -1428,7 +1417,7 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="tc_axi_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="tc_axi_aresetn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>ARESETN_1</spirit:name>
@@ -1525,7 +1514,6 @@
         <spirit:internalPortReference spirit:componentRef="axi_dma_0" spirit:portRef="s_axi_lite_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_dma_0" spirit:portRef="m_axi_s2mm_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="M_AXIS_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M00_ACLK"/>
@@ -1534,9 +1522,9 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="ps7_0_axi_periph" spirit:portRef="M02_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RefCLK_i1"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RefCLK_i2"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="tc_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RefCLK_i1"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RefCLK_i2"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="tc_axi_aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>Net</spirit:name>
@@ -1589,378 +1577,257 @@
         <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="IRQ_F2P"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>FifoManagerV4_0_FIFOresponse</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFOresponse"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFOresponse"/>
+        <spirit:name>xlconstant_0_dout</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="xlconstant_0" spirit:portRef="dout"/>
+        <spirit:externalPortReference spirit:portRef="HCMPD"/>
+        <spirit:externalPortReference spirit:portRef="HCMPC"/>
+        <spirit:externalPortReference spirit:portRef="HCMPB"/>
+        <spirit:externalPortReference spirit:portRef="HCMPA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>FifoManagerV4_0_FIFOvalid</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFOvalid"/>
-        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="FIFOvalid"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SIN</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SIN"/>
+        <spirit:externalPortReference spirit:portRef="SIN"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>FifoManagerV4_0_DataOut</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="DataOut"/>
-        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="FIFOdata"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SCLK</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SCLK"/>
+        <spirit:externalPortReference spirit:portRef="SCLK"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>axistream_0_StreamReady</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="StreamReady"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="ready_i"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_PCLK</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="PCLK"/>
+        <spirit:externalPortReference spirit:portRef="PCLK"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_HSCLK_P</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="HSCLK_P"/>
+        <spirit:externalPortReference spirit:portRef="HSCLK_P"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_HSCLK_N</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="HSCLK_N"/>
+        <spirit:externalPortReference spirit:portRef="HSCLK_N"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_RS_S0</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_RS_S0"/>
+        <spirit:externalPortReference spirit:portRef="WR_RS_S0"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_RS_S1</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_RS_S1"/>
+        <spirit:externalPortReference spirit:portRef="WR_RS_S1"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S0</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S0"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S0"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S1</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S1"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S1"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S2</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S2"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S2"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S3</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S3"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S3"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S4</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S4"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S4"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WR_CS_S5</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WR_CS_S5"/>
+        <spirit:externalPortReference spirit:portRef="WR_CS_S5"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_GCC_RESET</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="GCC_RESET"/>
+        <spirit:externalPortReference spirit:portRef="GCC_RESET"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WL_CLK_P</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WL_CLK_P"/>
+        <spirit:externalPortReference spirit:portRef="WL_CLK_P"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_WL_CLK_N</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="WL_CLK_N"/>
+        <spirit:externalPortReference spirit:portRef="WL_CLK_N"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_RDAD_CLK</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RDAD_CLK"/>
+        <spirit:externalPortReference spirit:portRef="RDAD_CLK"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_RDAD_SIN</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RDAD_SIN"/>
+        <spirit:externalPortReference spirit:portRef="RDAD_SIN"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_RDAD_DIR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RDAD_DIR"/>
+        <spirit:externalPortReference spirit:portRef="RDAD_DIR"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SAMPLESEL_ANY</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SAMPLESEL_ANY"/>
+        <spirit:externalPortReference spirit:portRef="SAMPLESEL_ANY"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SS_INCR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SS_INCR"/>
+        <spirit:externalPortReference spirit:portRef="SS_INCR"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SS_RESET</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SS_RESET"/>
+        <spirit:externalPortReference spirit:portRef="SS_RESET"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_REGCLR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="REGCLR"/>
+        <spirit:externalPortReference spirit:portRef="REGCLR"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SS_LD_SIN</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SS_LD_SIN"/>
+        <spirit:externalPortReference spirit:portRef="SS_LD_SIN"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SS_LD_DIR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SS_LD_DIR"/>
+        <spirit:externalPortReference spirit:portRef="SS_LD_DIR"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_RAMP</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="RAMP"/>
+        <spirit:externalPortReference spirit:portRef="RAMP"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SSTIN_P</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SSTIN_P"/>
+        <spirit:externalPortReference spirit:portRef="SSTIN_P"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SSTIN_N</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SSTIN_N"/>
+        <spirit:externalPortReference spirit:portRef="SSTIN_N"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_BB1</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="BB1"/>
+        <spirit:externalPortReference spirit:portRef="BB1"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_BB4</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="BB4"/>
+        <spirit:externalPortReference spirit:portRef="BB4"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_BB2</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="BB2"/>
+        <spirit:externalPortReference spirit:portRef="BB2"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_BB3</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="BB3"/>
+        <spirit:externalPortReference spirit:portRef="BB3"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_BB5</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="BB5"/>
+        <spirit:externalPortReference spirit:portRef="BB5"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SSVALID_INTR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SSVALID_INTR"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In0"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>xlconcat_0_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="dout"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="DO"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="DO"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SIN</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SIN"/>
-        <spirit:externalPortReference spirit:portRef="SIN"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_FIFOdata</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="FIFOdata"/>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="FIFOdata"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SCLK</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SCLK"/>
-        <spirit:externalPortReference spirit:portRef="SCLK"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_CNT_CLR</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="CNT_CLR"/>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="CNT_CLR"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_PCLK</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="PCLK"/>
-        <spirit:externalPortReference spirit:portRef="PCLK"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_FIFOvalid</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="FIFOvalid"/>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="FIFOvalid"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_HSCLK_P</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="HSCLK_P"/>
-        <spirit:externalPortReference spirit:portRef="HSCLK_P"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_HSCLK_N</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="HSCLK_N"/>
-        <spirit:externalPortReference spirit:portRef="HSCLK_N"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_RS_S1</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_RS_S1"/>
-        <spirit:externalPortReference spirit:portRef="WR_RS_S1"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_RS_S0</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_RS_S0"/>
-        <spirit:externalPortReference spirit:portRef="WR_RS_S0"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S0</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S0"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S0"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S1</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S1"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S1"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S2</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S2"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S2"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S3</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S3"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S3"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S4</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S4"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S4"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WR_CS_S5</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WR_CS_S5"/>
-        <spirit:externalPortReference spirit:portRef="WR_CS_S5"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_GCC_RESET</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="GCC_RESET"/>
-        <spirit:externalPortReference spirit:portRef="GCC_RESET"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WL_CLK_P</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WL_CLK_P"/>
-        <spirit:externalPortReference spirit:portRef="WL_CLK_P"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_WL_CLK_N</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="WL_CLK_N"/>
-        <spirit:externalPortReference spirit:portRef="WL_CLK_N"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_RDAD_CLK</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RDAD_CLK"/>
-        <spirit:externalPortReference spirit:portRef="RDAD_CLK"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_RDAD_SIN</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RDAD_SIN"/>
-        <spirit:externalPortReference spirit:portRef="RDAD_SIN"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_RDAD_DIR</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RDAD_DIR"/>
-        <spirit:externalPortReference spirit:portRef="RDAD_DIR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SAMPLESEL_ANY</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SAMPLESEL_ANY"/>
-        <spirit:externalPortReference spirit:portRef="SAMPLESEL_ANY"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SS_INCR</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SS_INCR"/>
-        <spirit:externalPortReference spirit:portRef="SS_INCR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SS_RESET</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SS_RESET"/>
-        <spirit:externalPortReference spirit:portRef="SS_RESET"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_REGCLR</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="REGCLR"/>
-        <spirit:externalPortReference spirit:portRef="REGCLR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SS_LD_SIN</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SS_LD_SIN"/>
-        <spirit:externalPortReference spirit:portRef="SS_LD_SIN"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SS_LD_DIR</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SS_LD_DIR"/>
-        <spirit:externalPortReference spirit:portRef="SS_LD_DIR"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_RAMP</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="RAMP"/>
-        <spirit:externalPortReference spirit:portRef="RAMP"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SSTIN_P</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SSTIN_P"/>
-        <spirit:externalPortReference spirit:portRef="SSTIN_P"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SSTIN_N</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SSTIN_N"/>
-        <spirit:externalPortReference spirit:portRef="SSTIN_N"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH0</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH0"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH0"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH1</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH1"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH1"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH2</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH2"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH2"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH3</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH3"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH3"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH4</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH4"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH4"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH5</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH5"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH5"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH6</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH6"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH6"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH7</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH7"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH7"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH8</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH8"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH8"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH9</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH9"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH9"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH10</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH10"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH10"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH11</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH11"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH11"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH12</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH12"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH12"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH13</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH13"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH13"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH14</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH14"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH14"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_CH15</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="CH15"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="CH15"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SSvalid</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SSvalid"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="PRECvalid"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SSVALID_INTR</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SSVALID_INTR"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_1" spirit:portRef="In0"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SSTIN</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB1"/>
-        <spirit:externalPortReference spirit:portRef="BB1"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_MONTIMING</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB5"/>
-        <spirit:externalPortReference spirit:portRef="BB5"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>SHOUT_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="SHOUT"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SHOUT"/>
+        <spirit:name>TARGET_C_TopLevel_Sy_0_SW_nRST</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SW_nRST"/>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="SW_nRST"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>MONTIMING_P_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="MONTIMING_P"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="MONTIMING_P"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>MONTIMING_N_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="MONTIMING_N"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="MONTIMING_N"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="MONTIMING_P"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>DONE_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="DONE"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="DONE"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="DONE"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TRIGD_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="TRIGD"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigD"/>
+        <spirit:name>SHOUT_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="SHOUT"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="SHOUT"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TRIGC_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="TRIGC"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigC"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TRIGB_1</spirit:name>
-        <spirit:externalPortReference spirit:portRef="TRIGB"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigB"/>
+        <spirit:name>MONTIMING_N_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="MONTIMING_N"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="MONTIMING_N"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>TRIGA_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="TRIGA"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TrigA"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="TrigA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>xlconstant_0_dout</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="xlconstant_0" spirit:portRef="dout"/>
-        <spirit:externalPortReference spirit:portRef="HCMPA"/>
-        <spirit:externalPortReference spirit:portRef="HCMPB"/>
-        <spirit:externalPortReference spirit:portRef="HCMPC"/>
-        <spirit:externalPortReference spirit:portRef="HCMPD"/>
+        <spirit:name>axistream_0_StreamReady</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="StreamReady"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="StreamReady"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_BB2</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB2"/>
-        <spirit:externalPortReference spirit:portRef="BB2"/>
+        <spirit:name>axistream_0_Cnt_AXIS_DATA</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="Cnt_AXIS_DATA"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="Cnt_AXIS_DATA"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_BB3</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB3"/>
-        <spirit:externalPortReference spirit:portRef="BB3"/>
+        <spirit:name>TRIGB_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="TRIGB"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="TrigB"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_BB4</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="BB4"/>
-        <spirit:externalPortReference spirit:portRef="BB4"/>
+        <spirit:name>TRIGC_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="TRIGC"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="TrigC"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_SW_nRST</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="SW_nRST"/>
-        <spirit:internalPortReference spirit:componentRef="axistream_0" spirit:portRef="SW_nRST"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="nRST"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_PSBusy</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="PSBusy"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="PSBUSY_i"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Time</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Time"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Time"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_FIFO_WdoAddr</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_WdoAddr"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_WdoAddr"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_FIFO_TrigInfo</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_TrigInfo"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_TrigInfo"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Spare</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Spare"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Spare"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_FIFO_Empty</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_Empty"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_Empty"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>FifoManagerV4_0_FIFO_ReadEn</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="FIFO_ReadEn"/>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="FIFO_ReadEn"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
-        <spirit:name>TARGETC_IP_Prototype_0_TestFiFO</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="TARGETC_IP_Prototype_0" spirit:portRef="TestFiFO"/>
-        <spirit:internalPortReference spirit:componentRef="FifoManagerV4_0" spirit:portRef="TestFIFO"/>
+        <spirit:name>TRIGD_1</spirit:name>
+        <spirit:externalPortReference spirit:portRef="TRIGD"/>
+        <spirit:internalPortReference spirit:componentRef="TARGET_C_TopLevel_Sy_0" spirit:portRef="TrigD"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
@@ -3741,8 +3608,8 @@
         <spirit:width>32</spirit:width>
         <spirit:segments>
           <spirit:segment>
-            <spirit:name>SEG_TARGETC_IP_Prototype_0_reg0</spirit:name>
-            <spirit:displayName>/TARGETC_IP_Prototype_0/tc_axi/reg0</spirit:displayName>
+            <spirit:name>SEG_TARGET_C_TopLevel_Sy_0_reg0</spirit:name>
+            <spirit:displayName>/TARGET_C_TopLevel_Sy_0/tc_axi/reg0</spirit:displayName>
             <spirit:addressOffset>0x60000000</spirit:addressOffset>
             <spirit:range>512M</spirit:range>
           </spirit:segment>

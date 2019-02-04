@@ -82,6 +82,8 @@ architecture arch_imp of TC_Control is
     signal STATUS_intl: std_logic_vector(31 downto 0);
 
 	signal TCReg: slv_array(0 to TC_REGISTER_NUMBER);
+	signal Cnt_AXIS_intl: std_logic_vector(9 downto 0);
+	signal WindowStorage_intl : std_logic;
 
 begin
 	-- I/O Connections assignments
@@ -217,7 +219,7 @@ begin
 						-- Read Only
 					when TC_eDO_CH15_REG =>
 						-- Read Only
-
+					when TC_CNT_RB_AXIS =>
 					when others =>
 						-- Respective byte enables are asserted as per write strobes
 						TCReg(index) <= (others => '0');
@@ -279,6 +281,7 @@ begin
 						-- Read Only
 					when TC_eDO_CH15_REG =>
 						-- Read Only
+					when TC_CNT_RB_AXIS =>
 					when others =>
 						for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 							if ( AxiBusIn.WSTRB(byte_index) = '1' ) then
@@ -418,7 +421,9 @@ begin
 	        	when TC_eDO_CH15_REG =>
 	        		reg_data_out <= x"00000" & CtrlBus_IxMS.DO_BUS.CH15;
 				when TC_ADDR_READOUT =>
-					reg_data_out <= x"0" & CtrlBus_IxMS.SS_read & CtrlBus_IxMS.WL_read & CtrlBus_IxMS.RDAD_read;
+					--reg_data_out <= x"0" & CtrlBus_IxMS.SS_read & CtrlBus_IxMS.WL_read & CtrlBus_IxMS.RDAD_read;
+				when TC_CNT_RB_AXIS =>
+					reg_data_out <= "000000" & CtrlBus_IxMS.Cnt_AXIS & x"00" & CtrlBus_IxMS.RBNbrOfPackets;
 	    		when others =>
 	    			reg_data_out <= TCReg(to_integer(unsigned(loc_addr)));
 	    	end case;
@@ -570,9 +575,10 @@ begin
 
 
     --CtrlBus_OxMS.WindowStorage		<= '1' when startstorage_stm = PULSE else '0';
-	CtrlBus_OxMS.WindowStorage		<= '0' when startstorage_stm = IDLE else '1';
+	--CtrlBus_OxMS.WindowStorage		<= '0' when startstorage_stm = IDLE else '1';
+	WindowStorage_intl		<= '0' when startstorage_stm = IDLE else '1';
 
-    -- --------------------------------------------------------------------------------
+	-- --------------------------------------------------------------------------------
 	-- Acknowledge the read of sample
     process(AxiBusIn.ARESETN,ClockBus.HSCLK) is
     begin
@@ -714,6 +720,17 @@ begin
 	--
 	-- CtrlBus_OxMS.SAMPLEMODE		<= TCReg(TC_CONTROL_REG)(C_SMODE_BIT);
 	-- CtrlBus_OxMS.CPUMODE		<= TCReg(TC_CONTROL_REG)(C_CPUMODE_BIT);
+	BUF_WINDOWMODE : clkcrossing_buf
+		generic map(
+			NBITS => 1
+		)
+		port map(
+			nrst	=>	AxiBusIn.ARESETN,
+			DA(0)	=>	 WindowStorage_intl,
+			QB(0)	=> 	CtrlBus_OxMS.WindowStorage,
+			ClkA	=> 	AxiBusIn.ACLK,
+			ClkB	=> ClockBus.CLK250MHz
+		);
 
 	BUF_CPUMODE : clkcrossing_buf
 		generic map(
@@ -763,13 +780,6 @@ begin
 			ClkB	=> ClockBus.CLK250MHz
 		);
 
-	CtrlBus_OxMS.BB1_sel		<= TCReg(TC_DEBUGSEL_REG)(2 downto 0);
-	CtrlBus_OxMS.BB2_sel		<= TCReg(TC_DEBUGSEL_REG)(5 downto 3);
-	CtrlBus_OxMS.BB3_sel		<= TCReg(TC_DEBUGSEL_REG)(8 downto 6);
-	CtrlBus_OxMS.BB4_sel		<= TCReg(TC_DEBUGSEL_REG)(11 downto 9);
-	CtrlBus_OxMS.BB5_sel		<= TCReg(TC_DEBUGSEL_REG)(14 downto 12);
-
-
 	-- STATUS Register Update
     process(AxiBusIn.ACLK)
     variable tmp : std_logic_vector(31 downto 0) := (others => '0');
@@ -798,6 +808,18 @@ begin
     	else
     		tmp :=	tmp and (not C_WINDOWBUSY_MASK);
     	end if;
+
+		if startstorage_stm /= IDLE  then
+			tmp :=	tmp  or C_STORAGE_MASK;
+		else
+			tmp :=	tmp and (not C_STORAGE_MASK);
+		end if;
+
+		if CtrlBus_IxMS.FIFOBusy = '1'  then
+			tmp :=	tmp  or C_FIFOBusy_MASK;
+		else
+			tmp :=	tmp and (not C_FIFOBusy_MASK);
+		end if;
 
     	STATUS_intl <= tmp;
 

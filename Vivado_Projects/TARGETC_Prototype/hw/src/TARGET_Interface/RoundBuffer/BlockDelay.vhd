@@ -10,6 +10,7 @@ entity BlockDelay is
 	);
 	Port (
 	nrst : 		in	STD_Logic;
+	nclr :		in	std_logic;
 	clk:		in std_logic;
 
 	Scnt:		in	std_logic_vector(3 downto 0);
@@ -53,7 +54,7 @@ begin
 
 		DFFX : RisingEdge_DFlipFlop
 		port map(
-			nrst 	=> nrst,
+			nrst 	=> nRST,
 			clk		=> ClkInter(I),
 			D		=> D,
 			Q		=> Qinter(I),
@@ -62,7 +63,8 @@ begin
 
 	end generate;
 
-	Q <=  '0' when Qinter = x"0000"else '1';
+	Q <= 	'0' when Qinter = x"0000"else 
+			'1';
 
 	-- -- Demultiplexer
 	-- DInter <= 	(0=> D, others => '0')	when SCnt = "0000" else

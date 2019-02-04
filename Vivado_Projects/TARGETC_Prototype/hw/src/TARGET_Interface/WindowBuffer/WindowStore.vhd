@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.TARGETC_pkg.all;
-use work.WindowCPU_pkg.all;
+use work.WindowCPU_pkg_old.all;
 
 entity WindowStore is
 	Generic(
@@ -20,7 +20,7 @@ entity WindowStore is
 	wr1_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
 	Wr2_en:		in 	std_logic_vector(NBRWINDOWS-1 downto 0);
 
-	triginfo:	in t_triginfobus(NBRWINDOWS-1 downto 0);
+	--triginfo:	in t_triginfobus(NBRWINDOWS-1 downto 0);
 
 	-- FIFO out for Reading RDAD
     RDAD_ReadEn  :in  std_logic;
@@ -102,7 +102,8 @@ begin
 	Data_in_intl(72)				<= wr1_en(to_integer(unsigned(windowstore)));
 	Data_in_intl(73)				<= wr2_en(to_integer(unsigned(windowstore)));
 	--	Data_in_intl(100+5 downto 69+5)	<= x"00000" & triginfo(to_integer(unsigned(windowstore)));
-	Data_in_intl(85 downto 74)	<= triginfo(to_integer(unsigned(windowstore)));
+	--Data_in_intl(85 downto 74)	<= triginfo(to_integer(unsigned(windowstore)));
+	Data_in_intl(85 downto 74)	<= (others => '0');
 
   	WriteEn_intl <= '1' when enablewdo /= std_logic_vector(to_unsigned(0,enablewdo'length)) else '0';
 

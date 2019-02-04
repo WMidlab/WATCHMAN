@@ -28,7 +28,9 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xtime_l.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xiic.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xiic_l.h \
- ../src/TARGETC_RegisterMap.h ../src/interrupt.h ../src/pedestal.h
+ ../src/TARGETC_RegisterMap.h \
+ ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h \
+ ../src/interrupt.h ../src/pedestal.h
 
 ../src/platform.h:
 
@@ -91,6 +93,8 @@ src/main.o src/main.o: ../src/main.c ../src/platform.h \
 ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xiic_l.h:
 
 ../src/TARGETC_RegisterMap.h:
+
+../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h:
 
 ../src/interrupt.h:
 

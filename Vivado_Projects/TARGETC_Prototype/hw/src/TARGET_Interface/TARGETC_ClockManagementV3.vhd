@@ -32,7 +32,8 @@ entity TC_ClockManagementV3 is
 
 		ClockBus:		out T_ClockBus;
 
-		Timecounter:	out std_logic_vector(63 downto 0);		-- Pin
+		Timecounter:	out std_logic_vector(63 downto 0);
+		Timestamp:		out T_timestamp;
 
 		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44
 
@@ -77,6 +78,16 @@ architecture arch_imp of TC_ClockManagementV3 is
 		Q : out std_logic_vector(NBITS-1 downto 0)
 	);
 	end component counter;
+
+	component GRAY_ENCODER is
+		generic(
+			NBITS : integer := 8
+		);
+		Port (
+		GRAY_OUT :	out 	std_logic_vector(NBITS-1 downto 0);
+		BIN_IN:		in	std_logic_vector(NBITS-1 downto 0)
+		);
+	end component GRAY_ENCODER;
 	-- --------------------------------------------------------------------------------
 	-- Signal Declaration
 
@@ -118,6 +129,7 @@ architecture arch_imp of TC_ClockManagementV3 is
 
 	signal rst :		std_logic;
 	signal Timecounter_intl : std_logic_vector(63 downto 0);
+	signal GrayCounter_intl : std_logic_vector(59 downto 0);
 	signal clkFbOut_WL, clkFbOut : std_logic;
 	signal clkFbIn_WL, clkFbIn : std_logic;
 
@@ -238,6 +250,20 @@ begin
 		RST => nrst,
 		Q 	=> Timecounter_intl
 	);
+
+	GrayTime :  GRAY_ENCODER
+		generic map(
+			NBITS => 60
+		)
+		Port map(
+			GRAY_OUT => GrayCounter_intl,
+			BIN_IN	=> Timecounter_intl(63 downto 4)
+		);
+
+	-- Timestamp
+	Timestamp.graycnt <= GrayCounter_intl;
+	Timestamp.samplecnt <= Timecounter_intl(3 downto 0);
+
 	TimeCounter <= Timecounter_intl;
 
 	SSTIN_bufg	<= not Timecounter_intl(3);

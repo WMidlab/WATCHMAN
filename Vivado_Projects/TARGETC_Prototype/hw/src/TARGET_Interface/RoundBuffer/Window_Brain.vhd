@@ -30,12 +30,12 @@ entity WindowBrain is
 	CPUBus :		in	std_logic_vector(10 downto 0);
 
 	-- Write output indicating if CPU is write enable or disable
-	wr1_en:			out	std_logic;
-	wr2_en:			out	std_logic;
+	-- wr1_en:			out	std_logic;
+	-- wr2_en:			out	std_logic;
 
 	-- Bit Address/Select Enable
 	CurAddrBit:		in 	std_logic;
-	OldAddrBit:		in std_logic;
+--	OldAddrBit:		in std_logic;
 
 	-- Bus Next and Prev
 	PREVBus_IN :	in	std_logic;
@@ -72,11 +72,12 @@ architecture Behavioral of WindowBrain is
 	-- -------------------------------------------------------------
 	-- Constraints on Signals
 	-- -------------------------------------------------------------
-	-- attribute DONT_TOUCH : string;
+	attribute DONT_TOUCH : string;
 	--
-	-- attribute DONT_TOUCH of wr1_en_intl: signal is "TRUE";
-	-- attribute DONT_TOUCH of wr2_en_intl: signal is "TRUE";
+	attribute DONT_TOUCH of wr1_en_intl: signal is "TRUE";
+	attribute DONT_TOUCH of wr2_en_intl: signal is "TRUE";
 	--
+
 	-- attribute DONT_TOUCH of wr1_flg: signal is "TRUE";
 	-- attribute DONT_TOUCH of wr2_flg: signal is "TRUE";
 
@@ -137,12 +138,10 @@ begin
 	end process;
 
 	-- Write Output
-	wr1_en	<= wr1_en_intl;
-	wr2_en	<= wr2_en_intl;
+	-- wr1_en	<= wr1_en_intl;
+	-- wr2_en	<= wr2_en_intl;
 
-	-- Next and Prev Bus
-	PREVBus_Out <= PREVBus_s;
-	NEXTBus_Out <= NEXTBus_s;
+
 
 	process(CLK,nrst,nCLR)
 	begin
@@ -151,33 +150,33 @@ begin
 			-- NextAddr_s <= (others => 'Z');
 			PrevAddr_s <= '0';
 			NextAddr_s <= '0';
-			PREVBus_s <= '0';
-			NEXTBus_s <= '0';
+			-- PREVBus_s <= '0';
+			-- NEXTBus_s <= '0';
 		else
 			if rising_edge(CLK) then
 				--Signals New Version
-				if (CurAddrBit = '1') then
-					PREVBus_s <= '1';
-					NEXTBus_s <= '1';
-				else
-					if ((wr1_en_intl = '0') or (wr2_en_intl='0')) then
-						if (NEXTBus_In = '1') then
-							NEXTBus_s <= '1';
-						else
-							NEXTBus_s <= '0';
-						end if;
-
-						if (PREVBus_In = '1') then
-							PREVBus_s <= '1';
-						else
-							PREVBus_s <= '0';
-						end if;
-
-					else
-						PREVBus_s <= '0';
-						NEXTBus_s <= '0';
-					end if;
-				end if;
+				-- if (CurAddrBit = '1') then
+				-- 	PREVBus_s <= '1';
+				-- 	NEXTBus_s <= '1';
+				-- else
+				-- 	if ((wr1_en_intl = '0') or (wr2_en_intl='0')) then
+				-- 		if (NEXTBus_In = '1') then
+				-- 			NEXTBus_s <= '1';
+				-- 		else
+				-- 			NEXTBus_s <= '0';
+				-- 		end if;
+				--
+				-- 		if (PREVBus_In = '1') then
+				-- 			PREVBus_s <= '1';
+				-- 		else
+				-- 			PREVBus_s <= '0';
+				-- 		end if;
+				--
+				-- 	else
+				-- 		PREVBus_s <= '0';
+				-- 		NEXTBus_s <= '0';
+				-- 	end if;
+				-- end if;
 
 				--Old Version
 				-- if (((PREVBus_In = '1') and ((wr1_en_intl = '0') or (wr2_en_intl='0'))) or (CurAddrBit = '1')) then
@@ -204,6 +203,9 @@ begin
 					else
 						PrevAddr_s <= '0'; --(others => 'Z');
 					end if;
+				else
+					PrevAddr_s <= '0';
+					NextAddr_s <= '0';
 				end if;
 
 				-- OLD VERSION
@@ -225,11 +227,15 @@ begin
 	-- Update the PrevAddr and NextAddr
 	NextAddr <= NextAddr_s;
 	PrevAddr <= PrevAddr_s;
-	-- Signals
-	-- PREVBus_Out <= '1' when (((PREVBus_In = '1') and ((wr1_en_intl = '0') or (wr2_en_intl='0'))) or (CurAddrBit = '1')) else '0';
-	--
-	-- NEXTBus_Out <= '1' when (((NEXTBus_In = '1') and ((wr1_en_intl = '0') or (wr2_en_intl='0'))) or (CurAddrBit = '1')) else '0';
-	--
+
+	-- Next and Prev Bus
+	-- PREVBus_Out <= PREVBus_s;
+	-- NEXTBus_Out <= NEXTBus_s;
+
+	PREVBus_Out <= '1' when (((PREVBus_In = '1') and ((wr1_en_intl = '0') or (wr2_en_intl='0'))) or (CurAddrBit = '1')) else '0';
+
+	NEXTBus_Out <= '1' when (((NEXTBus_In = '1') and ((wr1_en_intl = '0') or (wr2_en_intl='0'))) or (CurAddrBit = '1')) else '0';
+
 	-- --Address
 	-- NextAddr <= std_logic_vector(to_unsigned(ADDRESS,8)) when ((NEXTBus_In = '1') and  (wr1_en_intl = '1') and (wr2_en_intl='1') and (CurAddrBit = '0')) else (others => 'Z');
 	--

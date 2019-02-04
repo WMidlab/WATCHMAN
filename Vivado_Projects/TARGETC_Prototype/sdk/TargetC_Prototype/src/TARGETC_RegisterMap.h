@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "platform.h"
 #include "xil_printf.h"
-
+#include "xuartps_hw.h"
 #include "global.h"
 //#include "interrupt.h"
 
@@ -78,7 +78,7 @@
 	//MASK for bits in TC_CONTROL_REG
 	#define			WRITE_MASK		0x00000001
 	#define			TRIG_CLEAR_MASK 0x00000002
-	
+
 	#define			PCLK_MASK		0x00000002
 	#define			SCLK_MASK		0x00000004
 	#define			SIN_MASK		0x00000008
@@ -109,7 +109,7 @@
 	#define			SSVALID_MASK	0x00000008
 	//#define 		RESET_MASK		0x00000010
 	#define			WINDOWBUSY_MASK	0x00000010
-	
+
 	#define			TEST_0_MASK		0x00000020
 	#define			TEST_1_MASK		0x00000040
 	#define			TEST_2_MASK		0x00000080
@@ -153,27 +153,15 @@
 	#define WL_CLK_250MHz	0x00000003
 	#define WL_CLK_300MHz	0x00000004
 
-	
-#define TC_DEBUGSEL_REG 154
-	#define SELECT_BB1	0x00000000
-	#define SELECT_BB2	0x00000003
-	#define SELECT_BB3	0x00000006
-	#define SELECT_BB4	0x00000009
-	#define SELECT_BB5	0x0000000C
 
-	#define	BBX_SSTIN	0
-	#define	BBX_MONTIMING	1
-	#define	BBX_CPUMODE	2
-	#define	BBX_WINDOW	3
-	#define	BBX_TRIG	4
-	#define	BBX_ReadEN	5
+#define TC_CNT_AXIS_REG 154
 
 #define TC_ADDRESS_READOUT_REG		155
 
 	// Global Variables
 	//static int* regptr = XPAR_TARGETC_0_TC_AXI_BASEADDR;
-	static int* regptr = XPAR_TARGETC_IP_PROTOTYPE_0_BASEADDR ; //XPAR_TARGETC_INTERFACE_IP_0_BASEADDR;
-
+	//static int* regptr = XPAR_TARGETC_IP_PROTOTYPE_0_BASEADDR ; //XPAR_TARGETC_INTERFACE_IP_0_BASEADDR;
+	static int* regptr = XPAR_TARGET_C_TOPLEVEL_SY_0_BASEADDR;
 
 //	int TPG_intr_flg;
 //	int SSVALID_intr_flg;
@@ -188,6 +176,9 @@
 	int TestPatternGenerator(int tpg);
 	void decToHexa(unsigned int n);
 	void decToBin(unsigned int n);
+	int MonTimingSet(void);
+	int readinput0to63(void);
+	int readinput0to4095(void);
 
 #define ENABLE 		1
 #define DISABLE 	0

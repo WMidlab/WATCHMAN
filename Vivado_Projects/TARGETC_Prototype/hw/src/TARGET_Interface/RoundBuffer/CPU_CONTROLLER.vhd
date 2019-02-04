@@ -77,6 +77,7 @@ architecture Behavioral of CPU_CONTROLLER is
 		);
 		Port (
 		nrst : 		in	STD_Logic;
+		nclr :		in	std_logic;
 		clk:		in std_logic;
 
 		Scnt:		in	std_logic_vector(3 downto 0);
@@ -103,7 +104,7 @@ architecture Behavioral of CPU_CONTROLLER is
 		);
 	end component;
 
-	component aFifo is
+	component aFifoV2 is
     generic (
         DATA_WIDTH :integer := 8;
         ADDR_WIDTH :integer := 4
@@ -121,7 +122,7 @@ architecture Behavioral of CPU_CONTROLLER is
         WriteEn_in  :in  std_logic;
         WClk        :in  std_logic
     );
-	end component aFifo;
+	end component aFifoV2;
 
 	component LookupTable_LE is
 		generic(
@@ -163,7 +164,7 @@ architecture Behavioral of CPU_CONTROLLER is
 	);
 	signal digsto_stm : digstoragestate;
 
-	signal WR_ADDR_s : std_logic_vector(7 downto 0);
+	signal CurAddr_s : std_logic_vector(7 downto 0);
 	--signal busy_intl : std_logic;
 
 	signal NextAddr_intl : std_logic_vector(7 downto 0);
@@ -262,6 +263,7 @@ begin
 			)
 			port map(
 				nrst 	=> nrst,
+				nclr 	=> valid,
 				clk		=> ClockBus.Clk250Mhz,
 
 				SCnt	=> timecounter(3 downto 0),
@@ -271,32 +273,64 @@ begin
 	end generate;
 
 	-- Store and delay blocks for write 1 used in trigger mode
-	Dly_WR1 : BlockDelay
-		generic map(
-			NBR => 16
-		)
-		port map(
-			nrst 	=> nrst,
-			clk		=> ClockBus.Clk250Mhz,
+--	Dly_WR1 : BlockDelay
+--		generic map(
+--			NBR => 16
+--		)
+--		port map(
+--			nrst 	=> nrst,
+--			nclr 	=> valid,
+--			clk		=> ClockBus.Clk250Mhz,
 
-			SCnt	=> timecounter(3 downto 0),
-			D		=> D_wr1_en,
-			Q		=> wr1_en_dly
-		);
+--			SCnt	=> timecounter(3 downto 0),
+--			D		=> D_wr1_en,
+--			Q		=> wr1_en_dly
+--		);
 
 	-- Store and delay blocks for write 2 used in trigger mode
-	Dly_WR2 : BlockDelay
-		generic map(
-			NBR => 16
-		)
-		port map(
-			nrst 	=> nrst,
-			clk		=> ClockBus.Clk250Mhz,
+--	Dly_WR2 : BlockDelay
+--		generic map(
+--			NBR => 16
+--		)
+--		port map(
+--			nrst 	=> nrst,
+--			nclr 	=> valid,
+--			clk		=> ClockBus.Clk250Mhz,
 
-			SCnt	=> timecounter(3 downto 0),
-			D		=> D_wr2_en,
-			Q		=> wr2_en_dly
-		);
+--			SCnt	=> timecounter(3 downto 0),
+--			D		=> D_wr2_en,
+--			Q		=> wr2_en_dly
+--		);
+		
+	process(ClockBus.CLK250MHz,nrst)
+	begin
+		if nRST = '0' then
+			wr1_en_dly <= '0';
+		else
+			if rising_edge(ClockBus.CLK250MHz) then
+				if timecounter(3 downto 0) = "1111" then
+					wr1_en_dly <= D_wr1_en;
+				else
+					wr1_en_dly <= D_wr1_en or wr1_en_dly;
+				end if;
+			end if;
+		end if;
+	end process;
+	
+	process(ClockBus.CLK250MHz,nrst)
+	begin
+		if nRST = '0' then
+			wr2_en_dly <= '0';
+		else
+			if rising_edge(ClockBus.CLK250MHz) then
+				if timecounter(3 downto 0) = "0111" then
+					wr2_en_dly <= D_wr2_en;
+				else
+					wr2_en_dly <= D_wr2_en or wr2_en_dly;
+				end if;
+			end if;
+		end if;
+	end process;
 
 	-- Process for the write signals
 	process(ClockBus.CLK250MHz,nrst)	-- Every 64 ns
@@ -313,8 +347,12 @@ begin
 				if prevTrigger = '1' or Trig_intl = '1' then
 					if timecounter(3) = '1' then
 						D_wr1_en <= '1';
+						--add on
+						D_wr2_en <= '0';
 					else
 						D_wr2_en <= '1';
+						--add on
+						D_wr1_en <= '0';
 					end if;
 				else
 					D_wr1_en <= '0';
@@ -331,9 +369,10 @@ begin
 		if nRST = '0' then
 			valid <= '0';
 
-			WR_ADDR_S <= (others => '0');
+			
 
 			-- Init the CPUs
+			CurAddr_s <= (others => '0');
 			CurAddrBit <= (0 => '1', others => '0');
 
 			OldAddr_intl <= x"FF";
@@ -351,11 +390,11 @@ begin
 					when "1111" => --Time 0
 						valid <= '0';
 
-						WR_ADDR_S 		<= NextAddr_intl;
-						OldAddr_intl 	<= WR_ADDR_S;
+						CurAddr_s 		<= NextAddr_intl;
+						OldAddr_intl 	<= CurAddr_s;
 
 						OldAddrBit <= (others => '0');
-						OldAddrBit(to_integer(unsigned(WR_ADDR_S))) <= '1';
+						OldAddrBit(to_integer(unsigned(CurAddr_s))) <= '1';
 						--OldAddrBit <= (oldidx => '1', others => '0');
 
 						CurAddrBit <= (others => '0');
@@ -375,6 +414,8 @@ begin
 
 				if TriggerRegDly = "01" then
 					Old_TrigInfo <= TrigInfo_intl_dly;
+					--add on
+					Old_Wr_en	<= not(wr2_en_dly) & not(wr1_en_dly);
 				end if;
 			end if;
 		end if;
@@ -382,17 +423,17 @@ begin
 
 	-- Address update
 	ValidData <= valid;
-	CurAddr	<= WR_ADDR_S;
+	CurAddr	<= CurAddr_s;
 	OldAddr <= OldAddr_intl;
 
 	--Update TARGET C pins
-	WR_RS_S <= WR_ADDR_S(1 downto 0);
-	WR_CS_S <= WR_ADDR_S(7 downto 2);
+	WR_RS_S <= CurAddr_s(1 downto 0);
+	WR_CS_S <= CurAddr_s(7 downto 2);
 
 
 
     -- Digitizing and Storage FIFO
-	DIG_STO_AFIFO :  aFifo
+	DIG_STO_AFIFO :  aFifoV2
     generic map(
         DATA_WIDTH => 9,
         ADDR_WIDTH => 4	--Maybe more ?

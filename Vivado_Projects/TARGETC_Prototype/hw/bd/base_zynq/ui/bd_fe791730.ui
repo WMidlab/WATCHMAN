@@ -19,25 +19,25 @@ preplace port SSTIN_P -pg 1 -y 1630 -defaultsOSRD
 preplace port WL_CLK_P -pg 1 -y 1370 -defaultsOSRD
 preplace port SCLK -pg 1 -y 1110 -defaultsOSRD
 preplace port RAMP -pg 1 -y 1610 -defaultsOSRD
-preplace port MONTIMING_P -pg 1 -y 1720 -defaultsOSRD
-preplace port BB1 -pg 1 -y 2230 -defaultsOSRD
+preplace port MONTIMING_P -pg 1 -y 810 -defaultsOSRD
+preplace port BB1 -pg 1 -y 1730 -defaultsOSRD
 preplace port SAMPLESEL_ANY -pg 1 -y 1470 -defaultsOSRD
 preplace port HSCLK_N -pg 1 -y 1170 -defaultsOSRD
 preplace port SDA -pg 1 -y 260 -defaultsOSRD
-preplace port BB2 -pg 1 -y 2290 -defaultsOSRD
 preplace port SHOUT -pg 1 -y 1680 -defaultsOSRD
+preplace port BB2 -pg 1 -y 1790 -defaultsOSRD
 preplace port SS_RESET -pg 1 -y 1530 -defaultsOSRD
 preplace port WR_CS_S0 -pg 1 -y 1230 -defaultsOSRD
 preplace port PCLK -pg 1 -y 1130 -defaultsOSRD
-preplace port BB3 -pg 1 -y 2260 -defaultsOSRD
+preplace port BB3 -pg 1 -y 1760 -defaultsOSRD
 preplace port WR_CS_S1 -pg 1 -y 1250 -defaultsOSRD
 preplace port HSCLK_P -pg 1 -y 1150 -defaultsOSRD
 preplace port DO_1 -pg 1 -y 1330 -defaultsOSRD
-preplace port BB4 -pg 1 -y 2310 -defaultsOSRD
+preplace port BB4 -pg 1 -y 1810 -defaultsOSRD
 preplace port WR_CS_S2 -pg 1 -y 1270 -defaultsOSRD
 preplace port DO_2 -pg 1 -y 1350 -defaultsOSRD
 preplace port TRIGA -pg 1 -y 1760 -defaultsOSRD
-preplace port BB5 -pg 1 -y 2330 -defaultsOSRD
+preplace port BB5 -pg 1 -y 1830 -defaultsOSRD
 preplace port SS_INCR -pg 1 -y 1490 -defaultsOSRD
 preplace port GCC_RESET -pg 1 -y 1350 -defaultsOSRD
 preplace port WR_CS_S3 -pg 1 -y 1290 -defaultsOSRD
@@ -68,11 +68,10 @@ preplace portBus HCMPB -pg 1 -y 720 -defaultsOSRD
 preplace portBus HCMPC -pg 1 -y 740 -defaultsOSRD
 preplace portBus HCMPD -pg 1 -y 760 -defaultsOSRD
 preplace inst rst_ps7_0_50M -pg 1 -lvl 1 -y 420 -defaultsOSRD
-preplace inst FifoManagerV4_0 -pg 1 -lvl 4 -y 880 -defaultsOSRD
 preplace inst axi_dma_0 -pg 1 -lvl 3 -y 430 -defaultsOSRD
 preplace inst axi_iic_0 -pg 1 -lvl 3 -y 180 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 5 -y 730 -defaultsOSRD
-preplace inst TARGETC_IP_Prototype_0 -pg 1 -lvl 5 -y 1680 -defaultsOSRD
+preplace inst TARGET_C_TopLevel_Sy_0 -pg 1 -lvl 5 -y 1330 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 4 -y 1480 -defaultsOSRD
 preplace inst iobuf_0 -pg 1 -lvl 5 -y 250 -defaultsOSRD
 preplace inst xlconcat_1 -pg 1 -lvl 4 -y 2610 -defaultsOSRD
@@ -81,120 +80,96 @@ preplace inst axistream_0 -pg 1 -lvl 2 -y 460 -defaultsOSRD
 preplace inst axi_interconnect_0 -pg 1 -lvl 4 -y 450 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -y 160 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 5 -y 470 -defaultsOSRD
-preplace netloc MONTIMING_P_1 1 0 5 NJ 1720 NJ 1720 NJ 1720 NJ 1720 2590J
-preplace netloc TARGETC_IP_Prototype_0_CH6 1 3 3 1910 2360 NJ 2360 3390
-preplace netloc TARGETC_IP_Prototype_0_SS_LD_SIN 1 5 1 3400J
+preplace netloc MONTIMING_P_1 1 0 5 NJ 810 NJ 810 NJ 810 NJ 810 2520
 preplace netloc DO_16_1 1 0 4 NJ 1630 NJ 1630 NJ 1630 NJ
-preplace netloc TARGETC_IP_Prototype_0_CH7 1 3 3 1810 2420 NJ 2420 3490
-preplace netloc TARGETC_IP_Prototype_0_SCLK 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_CH8 1 3 3 1820 2430 NJ 2430 3480
-preplace netloc axi_iic_0_sda_t 1 3 2 1670 260 NJ
-preplace netloc TARGETC_IP_Prototype_0_HSCLK_N 1 5 1 3400J
-preplace netloc processing_system7_0_FIXED_IO 1 5 1 3670J
-preplace netloc TARGETC_IP_Prototype_0_MONTIMING 1 5 1 3630J
-preplace netloc TARGETC_IP_Prototype_0_SSTIN 1 5 1 3670J
-preplace netloc TARGETC_IP_Prototype_0_CH9 1 3 3 1830 2440 NJ 2440 3470
-preplace netloc axistream_0_StreamReady 1 2 2 1040 610 1680J
+preplace netloc TARGET_C_TopLevel_Sy_0_BB3 1 5 1 3410
+preplace netloc TARGET_C_TopLevel_Sy_0_SIN 1 5 1 3710
+preplace netloc TARGET_C_TopLevel_Sy_0_RDAD_SIN 1 5 1 3540
+preplace netloc TARGET_C_TopLevel_Sy_0_BB4 1 5 1 3400
+preplace netloc axi_iic_0_sda_t 1 3 2 1660 260 NJ
+preplace netloc TARGET_C_TopLevel_Sy_0_BB5 1 5 1 3390
+preplace netloc processing_system7_0_FIXED_IO 1 5 1 3420J
+preplace netloc axistream_0_StreamReady 1 2 3 1090J 330 NJ 330 2540
 preplace netloc DO_9_1 1 0 4 NJ 1490 NJ 1490 NJ 1490 NJ
-preplace netloc TARGETC_IP_Prototype_0_HSCLK_P 1 5 1 3400J
-preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 1040
-preplace netloc TARGETC_IP_Prototype_0_FIFO_WdoAddr 1 3 3 1700 2680 NJ 2680 3620
-preplace netloc xlconcat_1_dout 1 4 1 2540
-preplace netloc TRIGC_1 1 0 5 NJ 1800 NJ 1800 NJ 1800 NJ 1800 2520J
+preplace netloc TARGET_C_TopLevel_Sy_0_SS_LD_SIN 1 5 1 3480
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 1080
+preplace netloc xlconcat_1_dout 1 4 1 2550
+preplace netloc TARGET_C_TopLevel_Sy_0_SCLK 1 5 1 3700
+preplace netloc TRIGC_1 1 0 5 NJ 1800 NJ 1800 NJ 1800 NJ 1800 2590
+preplace netloc TARGET_C_TopLevel_Sy_0_PCLK 1 5 1 3690
 preplace netloc DO_7_1 1 0 4 NJ 1450 NJ 1450 NJ 1450 NJ
-preplace netloc xlconcat_0_dout 1 4 1 2550
-preplace netloc FifoManagerV4_0_DataOut 1 1 4 430 -10 NJ -10 NJ -10 2530
-preplace netloc TARGETC_IP_Prototype_0_SSvalid 1 3 3 1690 2710 NJ 2710 3550
+preplace netloc xlconcat_0_dout 1 4 1 2500
 preplace netloc DO_11_1 1 0 4 NJ 1530 NJ 1530 NJ 1530 NJ
 preplace netloc DO_1_1 1 0 4 NJ 1330 NJ 1330 NJ 1330 NJ
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S0 1 5 1 3640
 preplace netloc DO_10_1 1 0 4 NJ 1510 NJ 1510 NJ 1510 NJ
+preplace netloc TARGET_C_TopLevel_Sy_0_WL_CLK_N 1 5 1 3560
 preplace netloc DO_8_1 1 0 4 NJ 1470 NJ 1470 NJ 1470 NJ
-preplace netloc processing_system7_0_DDR 1 5 1 3670J
-preplace netloc TARGETC_IP_Prototype_0_TestFiFO 1 3 3 1750 2370 NJ 2370 3560
-preplace netloc TARGETC_IP_Prototype_0_FIFO_Empty 1 3 3 1740 2510 NJ 2510 3570
-preplace netloc TARGETC_IP_Prototype_0_SW_nRST 1 1 5 440 620 N 620 1910 320 NJ 320 3400
-preplace netloc axistream_0_M_AXIS 1 2 1 1040
-preplace netloc TARGETC_IP_Prototype_0_GCC_RESET 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_PSBusy 1 3 3 1760 2690 NJ 2690 3590
-preplace netloc TARGETC_IP_Prototype_0_FIFO_Spare 1 3 3 1730 2520 NJ 2520 3580
-preplace netloc TRIGA_1 1 0 5 NJ 1760 NJ 1760 NJ 1760 NJ 1760 2520J
-preplace netloc ps7_0_axi_periph_M00_AXI 1 2 3 1040 40 1670J 50 2600J
-preplace netloc TRIGB_1 1 0 5 NJ 1780 NJ 1780 NJ 1780 NJ 1780 2520J
-preplace netloc MONTIMING_N_1 1 0 5 NJ 1740 NJ 1740 NJ 1740 NJ 1740 2600J
-preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 4 420 340 1060 530 1680 300 2590J
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 20 320 400J 330 NJ 330 NJ 330 NJ 330 3390
-preplace netloc FifoManagerV4_0_FIFOresponse 1 4 1 2570
-preplace netloc TARGETC_IP_Prototype_0_CH10 1 3 3 1840 2450 NJ 2450 3460
-preplace netloc iobuf_0_O 1 3 3 N 180 NJ 180 3390
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S1 1 5 1 3630
+preplace netloc processing_system7_0_DDR 1 5 1 3420J
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S2 1 5 1 3620
+preplace netloc axistream_0_M_AXIS 1 2 1 1100
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S3 1 5 1 3610
+preplace netloc TARGET_C_TopLevel_Sy_0_WL_CLK_P 1 5 1 3570
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S4 1 5 1 3600
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_CS_S5 1 5 1 3590
+preplace netloc TRIGA_1 1 0 5 NJ 1760 NJ 1760 NJ 1760 NJ 1760 2560
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 3 1060J 40 NJ 40 2580
+preplace netloc TRIGB_1 1 0 5 NJ 1780 NJ 1780 NJ 1780 NJ 1780 2570
+preplace netloc MONTIMING_N_1 1 0 5 NJ 1740 NJ 1740 NJ 1740 NJ 1740 2510
+preplace netloc TARGET_C_TopLevel_Sy_0_FIFOdata 1 1 5 440 660 NJ 660 NJ 660 NJ 660 3430
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 4 400 0 1070 530 1680 590 2570
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 10 600 NJ 600 NJ 600 NJ 600 NJ 600 3380
+preplace netloc TARGET_C_TopLevel_Sy_0_CNT_CLR 1 1 5 450 650 NJ 650 NJ 650 NJ 650 3420
+preplace netloc iobuf_0_O 1 3 3 N 180 NJ 180 3380
 preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 N
-preplace netloc TARGETC_IP_Prototype_0_CH11 1 3 3 1850 2460 NJ 2460 3450
-preplace netloc TARGETC_IP_Prototype_0_CH12 1 3 3 1860 2470 NJ 2470 3440
-preplace netloc TARGETC_IP_Prototype_0_SSTIN_N 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_CH13 1 3 3 1870 2480 NJ 2480 3430
-preplace netloc TARGETC_IP_Prototype_0_FIFO_TrigInfo 1 3 3 1720 2540 NJ 2540 3600
-preplace netloc TARGETC_IP_Prototype_0_CH14 1 3 3 1880 2490 NJ 2490 3420
+preplace netloc TARGET_C_TopLevel_Sy_0_HSCLK_N 1 5 1 3670
+preplace netloc TARGET_C_TopLevel_Sy_0_FIFOvalid 1 1 5 430 670 NJ 670 NJ 670 NJ 670 3390
+preplace netloc TARGET_C_TopLevel_Sy_0_RAMP 1 5 1 3460
+preplace netloc TARGET_C_TopLevel_Sy_0_HSCLK_P 1 5 1 3680
 preplace netloc DO_14_1 1 0 4 NJ 1590 NJ 1590 NJ 1590 NJ
-preplace netloc TARGETC_IP_Prototype_0_SSTIN_P 1 5 1 3400J
 preplace netloc DO_5_1 1 0 4 NJ 1410 NJ 1410 NJ 1410 NJ
-preplace netloc axi_dma_0_M_AXI_S2MM 1 3 1 1900
-preplace netloc TARGETC_IP_Prototype_0_SSVALID_INTR 1 3 3 1900 2700 NJ 2700 3540
-preplace netloc TARGETC_IP_Prototype_0_CH15 1 3 3 1890 2500 NJ 2500 3410
+preplace netloc axi_dma_0_M_AXI_S2MM 1 3 1 1660
 preplace netloc DO_12_1 1 0 4 NJ 1550 NJ 1550 NJ 1550 NJ
-preplace netloc TARGETC_IP_Prototype_0_SIN 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_WL_CLK_N 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_RDAD_CLK 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_WL_CLK_P 1 5 1 3400J
-preplace netloc FifoManagerV4_0_FIFOvalid 1 1 4 450 320 NJ 320 1670J 290 2520
-preplace netloc SHOUT_1 1 0 5 NJ 1680 NJ 1680 NJ 1680 1660J 1690 2520J
+preplace netloc TARGET_C_TopLevel_Sy_0_RDAD_CLK 1 5 1 3550
+preplace netloc TARGET_C_TopLevel_Sy_0_SS_RESET 1 5 1 3500
+preplace netloc SHOUT_1 1 0 5 20J 1270 NJ 1270 NJ 1270 NJ 1270 2500
+preplace netloc TARGET_C_TopLevel_Sy_0_SW_nRST 1 1 5 420 790 NJ 790 NJ 790 NJ 790 3380
 preplace netloc Net 1 5 1 NJ
-preplace netloc TARGETC_IP_Prototype_0_RDAD_SIN 1 5 1 3400J
+preplace netloc TARGET_C_TopLevel_Sy_0_GCC_RESET 1 5 1 3580
 preplace netloc Net1 1 5 1 NJ
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 10 310 410 0 1050 540 1920 310 2580 600 3380
-preplace netloc TARGETC_IP_Prototype_0_RDAD_DIR 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_PCLK 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_SS_LD_DIR 1 5 1 3400J
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 10 320 390 -10 1110 320 1670 570 2590 610 3390
+preplace netloc TARGET_C_TopLevel_Sy_0_REGCLR 1 5 1 3490
 preplace netloc DO_2_1 1 0 4 NJ 1350 NJ 1350 NJ 1350 NJ
-preplace netloc TARGETC_IP_Prototype_0_SS_INCR 1 5 1 3400J
-preplace netloc DONE_1 1 0 5 NJ 1700 NJ 1700 NJ 1700 NJ 1700 2530J
+preplace netloc TARGET_C_TopLevel_Sy_0_SS_INCR 1 5 1 3510
+preplace netloc DONE_1 1 0 5 10J 1260 NJ 1260 NJ 1260 NJ 1260 2510
 preplace netloc DO_13_1 1 0 4 NJ 1570 NJ 1570 NJ 1570 NJ
-preplace netloc FifoManagerV4_0_FIFO_ReadEn 1 4 1 2560
-preplace netloc TRIGD_1 1 0 5 NJ 1820 NJ 1820 NJ 1820 NJ 1820 2520J
-preplace netloc iobuf_1_O 1 3 3 1680 40 NJ 40 3390
-preplace netloc TARGETC_IP_Prototype_0_REGCLR 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_WR_RS_S0 1 5 1 3400J
+preplace netloc TARGET_C_TopLevel_Sy_0_SAMPLESEL_ANY 1 5 1 3520
+preplace netloc TRIGD_1 1 0 5 10J 1750 NJ 1750 NJ 1750 NJ 1750 2580
+preplace netloc iobuf_1_O 1 3 3 1660 30 NJ 30 3380
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_RS_S0 1 5 1 3660
+preplace netloc TARGET_C_TopLevel_Sy_0_SSVALID_INTR 1 3 3 1680 1810 NJ 1810 3380
+preplace netloc TARGET_C_TopLevel_Sy_0_RDAD_DIR 1 5 1 3530
+preplace netloc TARGET_C_TopLevel_Sy_0_WR_RS_S1 1 5 1 3650
 preplace netloc DO_4_1 1 0 4 NJ 1390 NJ 1390 NJ 1390 NJ
 preplace netloc DO_15_1 1 0 4 NJ 1610 NJ 1610 NJ 1610 NJ
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S0 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_WR_RS_S1 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_FIFO_Time 1 3 3 1710 2530 NJ 2530 3610
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S1 1 5 1 3400J
-preplace netloc axi_iic_0_scl_o 1 3 2 1910 100 NJ
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 5 450 -20 NJ -20 NJ -20 NJ -20 3660
-preplace netloc TARGETC_IP_Prototype_0_CH0 1 3 3 1770 2380 NJ 2380 3530
-preplace netloc TARGETC_IP_Prototype_0_SAMPLESEL_ANY 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S2 1 5 1 3400J
+preplace netloc TARGET_C_TopLevel_Sy_0_SSTIN_N 1 5 1 3440
+preplace netloc axi_iic_0_scl_o 1 3 2 1670 100 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 5 410 -20 NJ -20 NJ -20 NJ -20 3390
+preplace netloc TARGET_C_TopLevel_Sy_0_SS_LD_DIR 1 5 1 3470
 preplace netloc DO_3_1 1 0 4 NJ 1370 NJ 1370 NJ 1370 NJ
-preplace netloc TARGETC_IP_Prototype_0_SS_RESET 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_BB2 1 5 1 3660
-preplace netloc xlconstant_0_dout 1 5 1 3670
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S3 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_CH1 1 3 3 1780 2390 NJ 2390 3520
-preplace netloc TARGETC_IP_Prototype_0_BB3 1 5 1 3650
-preplace netloc TARGETC_IP_Prototype_0_CH2 1 3 3 1790 2400 NJ 2400 3510
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S4 1 5 1 3400J
-preplace netloc ARESETN_1 1 1 1 390
-preplace netloc TARGETC_IP_Prototype_0_BB4 1 5 1 3640
-preplace netloc TARGETC_IP_Prototype_0_CH3 1 3 3 1800 2410 NJ 2410 3500
+preplace netloc TARGET_C_TopLevel_Sy_0_SSTIN_P 1 5 1 3450
+preplace netloc xlconstant_0_dout 1 5 1 3710
+preplace netloc ARESETN_1 1 1 1 410
 preplace netloc DO_6_1 1 0 4 NJ 1430 NJ 1430 NJ 1430 NJ
-preplace netloc axi_dma_0_s2mm_introut 1 3 1 1670
-preplace netloc axi_iic_0_sda_o 1 3 2 1910 240 NJ
-preplace netloc TARGETC_IP_Prototype_0_WR_CS_S5 1 5 1 3400J
-preplace netloc TARGETC_IP_Prototype_0_CH4 1 3 3 1900 2350 NJ 2350 3400
-preplace netloc axi_iic_0_scl_t 1 3 2 1920 120 NJ
-preplace netloc TARGETC_IP_Prototype_0_RAMP 1 5 1 3400J
+preplace netloc axi_dma_0_s2mm_introut 1 3 1 1660
+preplace netloc axi_iic_0_sda_o 1 3 2 1680 240 NJ
+preplace netloc axi_iic_0_scl_t 1 3 2 1680 120 NJ
+preplace netloc TARGET_C_TopLevel_Sy_0_BB1 1 5 1 3430
 preplace netloc axi_interconnect_0_M00_AXI 1 4 1 N
-preplace netloc TARGETC_IP_Prototype_0_CH5 1 3 3 1920 2340 NJ 2340 3380
-levelinfo -pg 1 -10 210 880 1475 2345 3145 3690 -top -60 -bot 2730
+preplace netloc axistream_0_Cnt_AXIS_DATA 1 2 3 1060J 580 NJ 580 2530
+preplace netloc TARGET_C_TopLevel_Sy_0_BB2 1 5 1 3420
+levelinfo -pg 1 -10 210 880 1475 2345 3145 3730 -top -60 -bot 2780
 ",
 }
 {

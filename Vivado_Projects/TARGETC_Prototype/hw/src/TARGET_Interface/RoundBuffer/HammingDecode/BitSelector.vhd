@@ -16,7 +16,7 @@ end BIT_SELECTOR;
 
 architecture implementation of BIT_SELECTOR is
 
-	component HAMMING_DECODER is
+	component HAMMING_DECODERV2 is
 		Port (
 		nrst :		in 	std_logic;
 		nclr:		in	std_logic;
@@ -25,7 +25,7 @@ architecture implementation of BIT_SELECTOR is
 		valid : 	out std_logic;
 		addr :		out	std_logic_vector(3 downto 0)
 		);
-	end component HAMMING_DECODER;
+	end component HAMMING_DECODERV2;
 
 	-- -------------------------------------------------------------
 	-- SIGNALS
@@ -42,7 +42,7 @@ architecture implementation of BIT_SELECTOR is
 begin
 
 	H_GEN : for I in 0 to 15 generate
-		DATAH : HAMMING_DECODER
+		DATAH : HAMMING_DECODERV2
 			Port map(
 			nrst 		=> nrst,
 			nclr		=> nclr,
@@ -53,7 +53,7 @@ begin
 			);
 		end generate;
 
-	VALIDH : HAMMING_DECODER
+	VALIDH : HAMMING_DECODERV2
 		Port map(
 		nrst 		=> nrst,
 		nclr		=> nclr,

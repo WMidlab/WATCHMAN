@@ -57,12 +57,11 @@ package TARGETC_pkg is
  		--MASK
  		constant C_WRITE_MASK:				std_logic_vector(31 downto 0) := x"00000001";
  		constant C_TRIG_CLEAR_MASK:			std_logic_vector(31 downto 0) := x"00000002";
-
  		--constant C_SS_TPG_MASK:				std_logic_vector(31 downto 0) := x"00000004";
 		--constant C_WRITE_MASK:				std_logic_vector(31 downto 0) := x"00000008";
 
  		--constant C_SS_INCR_MASK:			std_logic_vector(31 downto 0) := x"00000010";
- 		constant C_REGCLR_MASK:				std_logic_vector(31 downto 0) := x"00000020";
+ 		constant C_REGCLR_MASK:			std_logic_vector(31 downto 0) := x"00000020";
 		constant C_SS_INCR_MASK:		std_logic_vector(31 downto 0) := x"00000040";
  		constant C_SS_TPG_MASK:			std_logic_vector(31 downto 0) := x"00000080";
 
@@ -108,22 +107,18 @@ package TARGETC_pkg is
 		--MASK
 		constant C_BUSY_MASK:	std_logic_vector(31 downto 0) := x"00000001";
 		constant C_LOCKED_MASK:	std_logic_vector(31 downto 0) := x"00000002";
-		--constant C_STORAGE_MASK:	std_logic_vector(31 downto 0) := x"00000004";
+		constant C_STORAGE_MASK:	std_logic_vector(31 downto 0) := x"00000004";
 		constant C_SSVALID_MASK:	std_logic_vector(31 downto 0) := x"00000008";
 		constant C_WINDOWBUSY_MASK:		std_logic_vector(31 downto 0) := x"00000010";
+		constant C_FIFOBUSY_MASK:		std_logic_vector(31 downto 0) := x"00000020";
 
-		constant C_TEST_0_MASK:		std_logic_vector := x"00000020";
-		constant C_TEST_1_MASK:		std_logic_vector := x"00000040";
-		constant C_TEST_2_MASK:		std_logic_vector := x"00000080";
-		constant C_TEST_3_MASK:		std_logic_vector := x"00000100";
-		constant C_TEST_4_MASK:		std_logic_vector := x"00000200";
-		constant C_TEST_5_MASK:		std_logic_vector := x"00000400";
 		--BIT
 		constant C_BUSY_BIT:	integer := 0;
 		constant C_LOCKED_BIT:	integer := 1;
-		--constant C_STORAGE_BIT:	integer := 2;
+		constant C_STORAGE_BIT:	integer := 2;
 		constant C_SSVALID_BIT:	integer := 3;
 		constant C_WINDOWBUSY_BIT:	integer := 4;
+		constant C_FIFOBUSY_BIT:	integer := 4;
 
 	constant TC_ADDR_REG :		integer := 131;
 	constant TC_DATA_OUT_REG:	integer := 132;
@@ -155,7 +150,8 @@ package TARGETC_pkg is
 
 	constant TC_WL_DIV_REG:		integer := 153;
 
-	constant TC_DEBUGSEL_REG:		integer := 154;
+    --Overwatch
+	constant TC_CNT_RB_AXIS:		integer := 154;
     constant TC_ADDR_READOUT:       integer := 155;
 
 	--type eDO_ARRAY is array (0 downto 15) of std_logic_vector(11 downto 0);
@@ -214,12 +210,6 @@ package TARGETC_pkg is
 
         CPUMode:        std_logic;
 
-        BB1_sel:        std_logic_vector(2 downto 0);
-        BB2_sel:        std_logic_vector(2 downto 0);
-        BB3_sel:        std_logic_vector(2 downto 0);
-        BB4_sel:        std_logic_vector(2 downto 0);
-        BB5_sel:        std_logic_vector(2 downto 0);
-
 	end record;
 	subtype T_CtrlBus_IxSL is T_CtrlBus_OxMS;
 	subtype T_CtrlBus_OxMS_Intl is T_CtrlBus_OxMS;
@@ -228,8 +218,6 @@ package TARGETC_pkg is
 	type T_CtrlBus_IxMS is record
 
 		TC_BUS: 		std_logic_vector(18 downto 0);
-		--RD_ADDR:		std_logic_vector(8 downto 0);
-		--SS_SELECT:		std_logic_vector(31 downto 0);
 
 		DO_BUS :		eDO_BUS_TYPE;
 		BUSY:			std_logic;
@@ -239,11 +227,9 @@ package TARGETC_pkg is
 		SSvalid:		std_logic;
 		RAMP_Cnt:		std_logic;
 
-        RDAD_read:      std_logic_vector(9 downto 0);
-        WL_read:      std_logic_vector(8 downto 0);
-        SS_read:      std_logic_vector(8 downto 0);
-
-        Ctrl_Busy:    std_logic;
+        FIFOBusy:    std_logic;
+        Cnt_AXIS:      std_logic_vector(9 downto 0);
+        RBNbrOfPackets: std_logic_vector(7 downto 0);
 
 	end record;
 	subtype T_CtrlBus_OxSL is T_CtrlBus_IxMS;
@@ -269,13 +255,47 @@ package TARGETC_pkg is
 
 	type slv_array is array (integer range <>) of std_logic_vector(31 downto 0);
 
-
-	type CtrlStorageArray is record
-		dirty :		std_logic_vector(511 downto 0);
-		digit :		std_logic_vector(511 downto 0);
+    -- --------------------------------------------------------------------------
+    -- Timestamp
+    type T_Timestamp is Record
+        graycnt : std_logic_vector(59 downto 0);    --63 downto 0 - 4
+        samplecnt:  std_logic_vector(3 downto 0);
+    end record;
+    -- --------------------------------------------------------------------------
+    -- HANDSHAKE
+    -- Acknowledge and Request from devices.
+    type T_Handshake_IxRECV is record
+		REQ:    std_logic;
+        RCLK:   std_logic;
 	end record;
 
+    type T_Handshake_OxRECV is record
+		ACK:    std_logic;
+        BUSY:   std_logic;
+        ACLK:   std_logic;
+	end record;
 
+    subtype T_Handshake_IxSEND is T_Handshake_OxRECV;
+    subtype T_Handshake_OxSEND is T_Handshake_IxRECV;
+
+    type T_Handshake_SEND_INTL is record
+		REQ:    std_logic;
+	end record;
+
+    type T_Handshake_RECV_INTL is record
+		ACK:    std_logic;
+        BUSY:   std_logic;
+	end record;
+
+    type T_Handshake_signal is Record
+        recv : T_Handshake_RECV_INTL;
+        send : T_Handshake_SEND_INTL;
+    end record;
+
+    -- Custom Data types
+    type T_Handshake_SS_FIFO is Record
+        testfifo : std_logic;
+    end record;
 
 end TARGETC_pkg;
 
