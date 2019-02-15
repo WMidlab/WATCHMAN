@@ -1,7 +1,7 @@
 --Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
---Date        : Thu Jan 24 09:22:56 2019
+--Date        : Thu Feb 14 11:07:35 2019
 --Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
 --Command     : generate_target base_zynq_wrapper.bd
 --Design      : base_zynq_wrapper
@@ -142,13 +142,17 @@ architecture STRUCTURE of base_zynq_wrapper is
     DO_9 : in STD_LOGIC;
     SDA : inout STD_LOGIC;
     SCL : inout STD_LOGIC;
+    HCMPA : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPB : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPC : out STD_LOGIC_VECTOR ( 0 to 0 );
+    HCMPD : out STD_LOGIC_VECTOR ( 0 to 0 );
     SIN : out STD_LOGIC;
     SCLK : out STD_LOGIC;
     PCLK : out STD_LOGIC;
     HSCLK_P : out STD_LOGIC;
     HSCLK_N : out STD_LOGIC;
-    WR_RS_S1 : out STD_LOGIC;
     WR_RS_S0 : out STD_LOGIC;
+    WR_RS_S1 : out STD_LOGIC;
     WR_CS_S0 : out STD_LOGIC;
     WR_CS_S1 : out STD_LOGIC;
     WR_CS_S2 : out STD_LOGIC;
@@ -171,22 +175,18 @@ architecture STRUCTURE of base_zynq_wrapper is
     SSTIN_P : out STD_LOGIC;
     SSTIN_N : out STD_LOGIC;
     BB1 : out STD_LOGIC;
-    BB5 : out STD_LOGIC;
-    SHOUT : in STD_LOGIC;
-    MONTIMING_P : in STD_LOGIC;
-    MONTIMING_N : in STD_LOGIC;
-    DONE : in STD_LOGIC;
-    TRIGD : in STD_LOGIC;
-    TRIGC : in STD_LOGIC;
-    TRIGB : in STD_LOGIC;
-    TRIGA : in STD_LOGIC;
-    HCMPD : out STD_LOGIC_VECTOR ( 0 to 0 );
-    HCMPC : out STD_LOGIC_VECTOR ( 0 to 0 );
-    HCMPB : out STD_LOGIC_VECTOR ( 0 to 0 );
-    HCMPA : out STD_LOGIC_VECTOR ( 0 to 0 );
+    BB4 : out STD_LOGIC;
     BB2 : out STD_LOGIC;
     BB3 : out STD_LOGIC;
-    BB4 : out STD_LOGIC
+    BB5 : out STD_LOGIC;
+    MONTIMING_P : in STD_LOGIC;
+    DONE : in STD_LOGIC;
+    SHOUT : in STD_LOGIC;
+    MONTIMING_N : in STD_LOGIC;
+    TRIGA : in STD_LOGIC;
+    TRIGB : in STD_LOGIC;
+    TRIGC : in STD_LOGIC;
+    TRIGD : in STD_LOGIC
   );
   end component base_zynq;
 begin

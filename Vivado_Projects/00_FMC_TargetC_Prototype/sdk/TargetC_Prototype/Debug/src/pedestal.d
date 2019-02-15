@@ -18,7 +18,8 @@ src/pedestal.o src/pedestal.o: ../src/pedestal.c ../src/pedestal.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xdebug.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../src/TARGETC_RegisterMap.h ../src/platform.h ../src/platform_config.h \
- ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xil_printf.h
+ ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xil_printf.h \
+ ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h
 
 ../src/pedestal.h:
 
@@ -65,3 +66,5 @@ src/pedestal.o src/pedestal.o: ../src/pedestal.c ../src/pedestal.h \
 ../src/platform_config.h:
 
 ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xil_printf.h:
+
+../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h:

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_HAMMING_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_HAMMING" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="14260000000fs"></ZoomStartTime>
+      <ZoomEndTime time="31000000001fs"></ZoomEndTime>
+      <Cursor1Time time="30226000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
+      <ValueColumnWidth column_width="132"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/TB_HAMMING/simulation_end_s">
+      <obj_property name="ElementShortName">simulation_end_s</obj_property>
+      <obj_property name="ObjectShortName">simulation_end_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_HAMMING/Refclk">
+      <obj_property name="ElementShortName">Refclk</obj_property>
+      <obj_property name="ObjectShortName">Refclk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_HAMMING/data_sti">
+      <obj_property name="ElementShortName">data_sti[255:0]</obj_property>
+      <obj_property name="ObjectShortName">data_sti[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_HAMMING/AddrBus">
+      <obj_property name="ElementShortName">AddrBus[15:0][3:0]</obj_property>
+      <obj_property name="ObjectShortName">AddrBus[15:0][3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_HAMMING/valid_intl">
+      <obj_property name="ElementShortName">valid_intl[15:0]</obj_property>
+      <obj_property name="ObjectShortName">valid_intl[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_HAMMING/valid_s">
+      <obj_property name="ElementShortName">valid_s</obj_property>
+      <obj_property name="ObjectShortName">valid_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_HAMMING/AddrData">
+      <obj_property name="ElementShortName">AddrData[3:0]</obj_property>
+      <obj_property name="ObjectShortName">AddrData[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_HAMMING/FullAddr">
+      <obj_property name="ElementShortName">FullAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">FullAddr[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>

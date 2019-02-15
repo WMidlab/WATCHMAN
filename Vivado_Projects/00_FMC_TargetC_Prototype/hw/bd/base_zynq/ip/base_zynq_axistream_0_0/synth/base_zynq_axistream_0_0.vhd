@@ -60,6 +60,8 @@ ENTITY base_zynq_axistream_0_0 IS
     FIFOvalid : IN STD_LOGIC;
     FIFOdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     StreamReady : OUT STD_LOGIC;
+    Cnt_AXIS_DATA : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+    CNT_CLR : IN STD_LOGIC;
     M_AXIS_ACLK : IN STD_LOGIC;
     M_AXIS_ARESETN : IN STD_LOGIC;
     M_AXIS_TVALID : OUT STD_LOGIC;
@@ -85,6 +87,8 @@ ARCHITECTURE base_zynq_axistream_0_0_arch OF base_zynq_axistream_0_0 IS
       FIFOvalid : IN STD_LOGIC;
       FIFOdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       StreamReady : OUT STD_LOGIC;
+      Cnt_AXIS_DATA : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
+      CNT_CLR : IN STD_LOGIC;
       M_AXIS_ACLK : IN STD_LOGIC;
       M_AXIS_ARESETN : IN STD_LOGIC;
       M_AXIS_TVALID : OUT STD_LOGIC;
@@ -127,6 +131,8 @@ BEGIN
       FIFOvalid => FIFOvalid,
       FIFOdata => FIFOdata,
       StreamReady => StreamReady,
+      Cnt_AXIS_DATA => Cnt_AXIS_DATA,
+      CNT_CLR => CNT_CLR,
       M_AXIS_ACLK => M_AXIS_ACLK,
       M_AXIS_ARESETN => M_AXIS_ARESETN,
       M_AXIS_TVALID => M_AXIS_TVALID,

@@ -1,15 +1,3 @@
--- -----------------------------------------------------------
---!@FILE: 	clockcrossing_Buffer.vhd
---!@AUTHOR: Jonathan Hendriks
---!@DATE: 	21st of January 2019
--- -----------------------------------------------------------
---!@DESCRIPTION:
---! Simple data clock crossing using 3 fifos
---! see the following link for more information https://fpgainterviewqa.blogspot.com/p/clock-domain-crossing-reconvergence.html
---!
--- -----------------------------------------------------------
-
--- Librairies
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -27,12 +15,9 @@ entity clkcrossing_buf is
 	);
 end clkcrossing_buf;
 
--- architecture
-architecture behavioral of clkcrossing_buf is
+architecture rtl of clkcrossing_buf is
 
-	-- -------------------------------------------------------------
-	-- COMPONENTS
-	component DFF is
+	component RisingEdge_DFlipFlop is
 	   port(
 		  Q : out std_logic;
 		  nQ: out std_logic;
@@ -40,13 +25,22 @@ architecture behavioral of clkcrossing_buf is
 		  D :in  std_logic ;
 		  nrst : in std_logic
 	   );
-	end component DFF;
+	end component RisingEdge_DFlipFlop;
 
-	-- -------------------------------------------------------------
-	-- SIGNALS
+	-- ----------------------------------
+	-- Signals
+
 	signal A_intl : std_logic_vector(NBITS-1 downto 0);
 	signal B_intl : std_logic_vector(NBITS-1 downto 0);
 	signal QB_intl : std_logic_vector(NBITS-1 downto 0);
+
+	-- -------------------------------------------------------------
+	-- Constraints on Signals
+	-- -------------------------------------------------------------
+	attribute DONT_TOUCH : string;
+	attribute DONT_TOUCH of A_intl: signal is "TRUE";
+	attribute DONT_TOUCH of B_intl: signal is "TRUE";
+	attribute DONT_TOUCH of QB_intl: signal is "TRUE";
 
 begin
 
