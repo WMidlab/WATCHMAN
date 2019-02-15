@@ -1,0 +1,25 @@
+var classgui__graphics_1_1_watchman__graphic__window =
+[
+    [ "__init__", "classgui__graphics_1_1_watchman__graphic__window.html#ade7ec22ccffe7f0c9bf0548cbb6c9be8", null ],
+    [ "combo_callback", "classgui__graphics_1_1_watchman__graphic__window.html#afc469c3cd26e7c933b9ec67be5833b32", null ],
+    [ "data_plotting_int", "classgui__graphics_1_1_watchman__graphic__window.html#a5ff02b39850e2da33ce5f2765a658160", null ],
+    [ "data_processing_int", "classgui__graphics_1_1_watchman__graphic__window.html#a0ec0ab5442e08eb2d981971209fada86", null ],
+    [ "exit_prog", "classgui__graphics_1_1_watchman__graphic__window.html#adecddfeff9fe853456ce504a06c273a9", null ],
+    [ "init_UDP_connection", "classgui__graphics_1_1_watchman__graphic__window.html#a01937e06ba45dedc4bcbbdbf4e193d01", null ],
+    [ "init_window", "classgui__graphics_1_1_watchman__graphic__window.html#a513798b4835e9505fd99095fbd968838", null ],
+    [ "recv_data", "classgui__graphics_1_1_watchman__graphic__window.html#a49cc4aa04f5c20758694013b4f14391b", null ],
+    [ "amplitude", "classgui__graphics_1_1_watchman__graphic__window.html#ae77ef0339726cebb09f66cbee2d69124", null ],
+    [ "ch_selected", "classgui__graphics_1_1_watchman__graphic__window.html#a5a4639ab085444668277b92545a6db33", null ],
+    [ "combolist", "classgui__graphics_1_1_watchman__graphic__window.html#ae4df63d152571ebe7f7963e79f54c040", null ],
+    [ "count", "classgui__graphics_1_1_watchman__graphic__window.html#ae6de33037e6d30b2754c19cdaf32f797", null ],
+    [ "hit_per_ch", "classgui__graphics_1_1_watchman__graphic__window.html#adcb5556df11cb507a0a281bc614028ad", null ],
+    [ "lock_graph", "classgui__graphics_1_1_watchman__graphic__window.html#a9d930ae6ae7105d39adef6de8c2e5bc7", null ],
+    [ "lostcnt", "classgui__graphics_1_1_watchman__graphic__window.html#af17660b9191ce1a884041d3e454ac7de", null ],
+    [ "master", "classgui__graphics_1_1_watchman__graphic__window.html#ac428e7350b7b535a60e0ffb20dc3de39", null ],
+    [ "run_flag", "classgui__graphics_1_1_watchman__graphic__window.html#a13862d3e57bc575be04d0ef74c3a7d3a", null ],
+    [ "sock", "classgui__graphics_1_1_watchman__graphic__window.html#a0052726d36b55d5aa89bc8ffc717cf92", null ],
+    [ "thread_list", "classgui__graphics_1_1_watchman__graphic__window.html#a088fdbaaf6419d56987c7a9a8d03c86b", null ],
+    [ "time", "classgui__graphics_1_1_watchman__graphic__window.html#a8502a7fca6ea75dccc561ebb112ab279", null ],
+    [ "UDP_IP", "classgui__graphics_1_1_watchman__graphic__window.html#ac8527023985a2496e33b219e45692956", null ],
+    [ "UDP_PORT", "classgui__graphics_1_1_watchman__graphic__window.html#ade9eb4e2b4dfd078ac0ca897357ca158", null ]
+];

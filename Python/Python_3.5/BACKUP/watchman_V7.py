@@ -1,0 +1,256 @@
+#!/usr/bin/env python
+############################################################################
+# Author: Anthony
+# Date:10/3/18
+#
+# Create GUi for WATCHMAN
+# This module uses a fixed IP address and port number that must match the
+# IP address of the MICROZED.
+###########################################################################
+from tkinter import Tk, Toplevel, Label, Button, Menu, Entry, Text, Scrollbar, StringVar, FALSE, RIDGE, N, S, E, W, END
+from tkinter import filedialog
+from tkinter import messagebox
+from tkinter import ttk
+from functools import partial
+from threading import Thread
+import time
+import sys
+import socket
+import optparse
+import random
+import receive
+
+#class Watchman_reg(Frame):
+class Watchman_reg():
+    def __init__(self, master):
+        # Global variable
+        self.master = master
+        self.regs = []
+        self.flag_data = []
+        self.UDP_IP = '192.168.1.10'
+        self.UDP_PORT = 7
+        self.cmd = ['write_all_reg', 'read_all_reg', 'ping', 'start_stop_stream', 'stop_uC']
+        self.stream_flag = False
+        self.destroy_flag = False
+        # Initialize the GUI
+        self.init_window()
+        self.init_UDP_connection()
+        self.thread=Thread(target=self.thread_int, args=())
+        self.run_flag = True
+        self.toplevel_flag = False
+        self.thread.start()
+
+    def init_window(self):
+        # Change window's title
+        self.master.title("Watchman - registers")
+        self.master.protocol("WM_DELETE_WINDOW", self.exit_prog) # when use close window with the red cross
+        # Menu bar
+        self.menu = Menu(self.master)
+        self.master.config(menu=self.menu)
+        self.submenu = Menu(self.menu)
+        self.menu.add_cascade(label='Menu', menu=self.submenu)
+        self.submenu.add_command(label='Load sequence...',command=self.openfile)
+        self.submenu.add_command(label='Save sequence...',command=self.savefile)
+        self.submenu.add_command(label='EXIT',command=self.exit_prog)
+        self.menu.add_cascade(label='HELP',command=self.help_callback)
+        # Table for the registers
+        count = 0
+        for i in range(0,4,2):
+            for j in range(25):
+                l = Label(self.master, relief=RIDGE,text= ("    Reg. " + str(count) + "   "))
+                l.grid(column=i, row=j, sticky=N+S+E+W)
+                var = StringVar()
+                var.trace('w', partial(self.entry_callback, count, var))
+                e = Entry(self.master, relief=RIDGE, textvariable=var)
+                e.grid(column=(i+1), row=j, sticky=N+S+E+W)
+                self.regs.append(e)
+                self.flag_data.append(1)
+                count += 1
+        # Buttons
+        self.btn_write_all = Button(self.master,text="Write all reg.", command=partial(self.send_command, 0))
+        self.btn_write_all.grid(column=4, row=0, rowspan=2, padx=5, sticky=W+E)
+        self.btn_write_all.configure(state="disable")
+        self.btn_read_all = Button(self.master,text="Read all reg.", command=partial(self.send_command, 1))
+        self.btn_read_all.grid(column=4, row=2, rowspan=2, padx=5, sticky=W+E)
+        self.btn_ping = Button(self.master,text="Ping", command=partial(self.send_command, 2))
+        self.btn_ping.grid(column=4, row=4, rowspan=2, padx=5, sticky=W+E)
+        self.btn_stream = Button(self.master,text="Start stream.", command=partial(self.send_command, 3))
+        self.btn_stream.grid(column=4, row=6, rowspan=2, padx=5, sticky=W+E)
+        self.btn_stop = Button(self.master,text="Stop uC", command=partial(self.send_command, 4))
+        self.btn_stop.grid(column=4, row=8, rowspan=2, padx=5, sticky=W+E)
+        self.btn_graph = Button(self.master,text="Open graph\nStore data", command=self.open_graph)
+        self.btn_graph.grid(column=4, row=22, rowspan=2, padx=5, sticky=W+E)
+        # Listbox to show data transfert
+        self.text = Text(self.master, width=40)
+        self.text.grid(column=5, row=0, rowspan=25, pady=10, sticky=N+S)
+        self.scrlbar = Scrollbar(self.master)
+        self.scrlbar.grid(column=6, row=0, rowspan=25, pady=10, padx=5, sticky=N+S)
+        self.text.configure(yscrollcommand = self.scrlbar.set)
+        self.scrlbar.configure(command=self.text.yview)
+        self.text.insert(END, "List of command sent and received\n-------------------------")
+        self.text.configure(state="disable")
+
+    def openfile(self):
+        file_path=filedialog.askopenfilename()
+        if len(file_path) != 0:
+            ff=open(file_path,'r')
+            for reg in self.regs:
+                reg.delete(0,END)
+                reg.insert(END, str(ff.readline())[:-1])
+            ff.close()
+
+    def savefile(self):
+        if(sum(self.flag_data) == 0):
+            file_path=filedialog.asksaveasfilename()
+            if len(file_path) != 0:
+                ff=open(file_path,'w')
+                for reg in self.regs:
+                    ff.write(str(reg.get())+"\n")
+                ff.close()
+        else:
+            messagebox.showinfo("Warning", "Every register value must be in the right format!")
+
+    def exit_prog(self):
+        if(self.toplevel_flag):
+            self.close_graph()
+            while(self.toplevel_flag):
+                time.sleep(0.1)
+        if(self.stream_flag):
+            self.destroy_flag = True # avoid problem while trying to change btn_stream's name
+            self.send_command(3)
+        while(self.stream_flag):
+            time.sleep(0.1)
+        self.run_flag = False # stop the thread
+        self.thread.join()
+        self.sock.close()
+        self.master.destroy()
+        print("main destroy",  file=sys.stderr)
+
+    def help_callback(self):
+        print("help_callback")
+
+    def is_number(self, s):
+        try:
+            numb = int(s)
+            if(numb >= 0):
+                return True
+            else:
+                return False
+        except ValueError:
+            return False
+
+    def entry_callback(self, count, var, *args):
+        s = var.get()
+        if(self.is_number(s) and (len(s) != 0)):
+            if((int(s) < 4096) and (int(s) >= 0)):
+                self.regs[count].configure(fg="black")
+                self.flag_data[count] = 0
+            else:
+                self.regs[count].configure(fg="red")
+                self.flag_data[count] = 1
+        else:
+            self.regs[count].configure(fg="red")
+            self.flag_data[count] = 1
+        if(sum(self.flag_data) == 0):
+            self.btn_write_all.configure(state="normal")
+        else:
+            self.btn_write_all.configure(state="disable")
+
+    def write_txt(self, text):
+        self.text.configure(state="normal")
+        self.text.insert(END, ("\n" + text))
+        self.text.see("end")
+        self.text.configure(state="disable")
+
+    def init_UDP_connection(self):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.sock.bind(('', self.UDP_PORT))
+        self.sock.settimeout(0.1)
+
+    def send_command(self, cmd):
+        payload = bytearray()
+        payload.append(int("0x55", 0))
+        payload.append(int("0xAA", 0))
+        payload.append(cmd)
+        payload.append(random.randrange(0,255))
+        if(self.cmd[cmd] == 'write_all_reg'):
+            for reg in self.regs:
+                numb = int(reg.get())
+                payload.append(int(numb / 256))
+                payload.append(int(numb % 256))
+        payload.append(int("0x33", 0))
+        payload.append(int("0xCC", 0))
+        self.write_txt("Tx: " + self.cmd[cmd] + " rand=" + str(payload[3]))
+        self.sock.sendto(payload, (self.UDP_IP, self.UDP_PORT))
+
+    def open_graph(self):
+        if(self.toplevel_flag == False):
+            self.toplevel = Toplevel(self.master)
+            self.window_data = receive.Watchman_data(self.toplevel)
+            self.toplevel_flag = True
+            self.toplevel.protocol("WM_DELETE_WINDOW", self.close_graph)
+
+    def close_graph(self):
+        self.window_data.exit_prog()
+        self.toplevel_flag = False
+
+    def thread_int(self):
+        while self.run_flag:
+            try:
+                data = bytearray()
+                data, adress = self.sock.recvfrom(200)
+                if(adress[0] == self.UDP_IP):
+                    if((data[0] == int("0x55", 0)) and (data[1] == int("0xAA", 0))):
+                        if(self.cmd[data[2]] == 'start_stop_stream'):
+                            if(self.stream_flag):
+                                if(self.destroy_flag == False):
+                                    self.btn_stream.configure(text="Start stream")
+                                    if(self.toplevel_flag):
+                                        self.write_txt("total of frame received =" + str(self.window_data.count))
+                                        self.write_txt("LostCnt:"+str(self.window_data.lostcnt))
+                                self.stream_flag = False
+                            else:
+                                if(self.destroy_flag == False):
+                                    self.btn_stream.configure(text="Stop stream")
+                                    if(self.toplevel_flag):
+                                        self.window_data.count = 0
+                                        self.window_data.lostcnt = 0
+                                self.stream_flag = True
+                        if(self.cmd[data[2]] == 'stop_uC'):
+                            self.btn_stream.configure(text="Start stream")
+                            self.stream_flag = False
+                        if(self.cmd[data[2]] == 'read_all_reg'):
+                            offset = 100
+                        else:
+                            offset = 0
+                        if((data[4+offset] == int("0x33", 0)) and (data[5+offset] == int("0xCC", 0))):
+                            if(self.destroy_flag == False):
+                                self.write_txt("Rx: " + self.cmd[data[2]] + " rand=" + str(data[3]))
+                                if(offset != 0):
+                                    count = 4
+                                    for reg in self.regs:
+                                        reg.delete(0,END)
+                                        reg.insert(END, str(data[count]*256 + data[count+1]))
+                                        count += 2
+                        else:
+                            if(self.destroy_flag == False):
+                                self.write_txt("Rx: ERROR end of frame")
+                    else:
+                        if(self.destroy_flag == False):
+                            self.write_txt("Rx: ERROR start of frame")
+                else:
+                    if(self.destroy_flag == False):
+                        self.write_txt("Rx: ERROR ip of frame (" + adress[0] + ")")
+            except socket.timeout:
+                time.sleep(0.1)
+                dummy = 0 # dummy execution just to use try without trouble
+            except socket.error:
+                dummy = 0
+            #time.sleep(0.5)
+        print("end of main thread", file=sys.stderr)
+
+root = Tk()
+root.resizable(width=FALSE, height=FALSE)
+
+window_reg = Watchman_reg(root)
+root.mainloop()
