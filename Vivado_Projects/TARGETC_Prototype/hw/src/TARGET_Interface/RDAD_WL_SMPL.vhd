@@ -12,7 +12,7 @@ entity TARGETC_RDAD_WL_SMPL is
 	INCR_WAIT_PERIOD:	in std_logic_vector(15 downto 0);
 
 	ClockBus:		in T_ClockBus;
-	TimeCounter:	in std_logic_vector(63 downto 0);
+	--TimeCounter:	in std_logic_vector(63 downto 0);
 
 	RDAD_CLK:		out	std_logic;		-- Pin#61
 	RDAD_SIN:		out	std_logic;		-- Pin#62
@@ -20,7 +20,7 @@ entity TARGETC_RDAD_WL_SMPL is
 
 	-- Fifo from storage
     RDAD_ReadEn  :	out	std_logic;
-    RDAD_DataOut : 	in	std_logic_vector(9 downto 0);
+    RDAD_DataOut : 	in	std_logic_vector(8 downto 0);
     --RDAD_CLK     :	out	std_logic;	-- RDAD CLK
     RDAD_Empty	: 	in 	std_logic;
 
@@ -40,16 +40,39 @@ entity TARGETC_RDAD_WL_SMPL is
 	SS_RESET:		out std_logic;
 
 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
-	CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+	--CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
 
-	TestFIFO :			out std_logic;
-	-- WDOTime:			out std_logic_vector(63 downto 0);
-	-- DIGTime:			out std_logic_vector(63 downto 0);
-	-- Trigger:			out std_logic_vector(11 downto 0);
-	-- WDONbr:				out std_logic_vector(8 downto 0);
+	--Output for control
+	WindowBusy:		out std_logic;
+	RAMP_CNT:		out std_logic;
+	DO_BUS:			out eDO_BUS_TYPE;
+	SSvalid:		out std_logic;
 
-	FIFOresponse:		in std_logic
+	--Channels
+	CH0 :			out	std_logic_vector(11 downto 0);
+	CH1 :			out	std_logic_vector(11 downto 0);
+	CH2 :			out	std_logic_vector(11 downto 0);
+	CH3 :			out	std_logic_vector(11 downto 0);
 
+	CH4 :			out	std_logic_vector(11 downto 0);
+	CH5 :			out	std_logic_vector(11 downto 0);
+	CH6 :			out	std_logic_vector(11 downto 0);
+	CH7 :			out	std_logic_vector(11 downto 0);
+
+	CH8 :			out	std_logic_vector(11 downto 0);
+	CH9 :			out	std_logic_vector(11 downto 0);
+	CH10 :			out	std_logic_vector(11 downto 0);
+	CH11 :			out	std_logic_vector(11 downto 0);
+
+	CH12 :			out	std_logic_vector(11 downto 0);
+	CH13 :			out	std_logic_vector(11 downto 0);
+	CH14 :			out	std_logic_vector(11 downto 0);
+	CH15 :			out	std_logic_vector(11 downto 0);
+
+	--Request and Acknowledge -
+	Handshake_IxSEND:	in 	T_Handshake_IxSEND;
+	Handshake_Data:		out T_Handshake_SS_FIFO;
+	Handshake_OxSEND:	out T_Handshake_OxSEND
 	);
 
 end TARGETC_RDAD_WL_SMPL;
@@ -82,15 +105,16 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 		HIGH_SET1,
 		HIGH_SET0,
 
-		VALID,
-		RESPVALID,
-		RESPVALID2,
+		REQUEST,
+		RESP_ACK,
+		REQ_GRANT,
 		IDLERESET,
 		FIFOTEST_DATA,
-		FIFOTEST_VALID,
-		FIFOTEST_RESPVALID,
-		FIFOTEST_RESPVALID2
+		FIFOTEST_REQUEST,
+		FIFOTEST_RESP_ACK,
+		FIFOTEST_REQ_GRANT
 	);
+	signal hsout_stm : state_type := IDLE;
 
 	-- RDAD : Reading the window for Digitazition STM
 	type rdad_state_type is (
@@ -99,19 +123,14 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 
 		FIFOREAD,
 		FIFOEVAL,
-		WD1_SET_RDAD_ADDR,
-		WD1_LOW_SET0, WD1_LOW_SET1, WD1_HIGH_SET1, WD1_HIGH_SET0,
-		WD1_VALID,
-		WD1_RESPVALID,
-
-		WD2_SET_RDAD_ADDR,
-		WD2_LOW_SET0, WD2_LOW_SET1, WD2_HIGH_SET1, WD2_HIGH_SET0,
-		WD2_VALID,
-		WD2_RESPVALID
+		WDO_SET_RDAD_ADDR,
+		WDO_LOW_SET0, WDO_LOW_SET1, WDO_HIGH_SET1, WDO_HIGH_SET0,
+		WDO_VALID,
+		WDO_RESPVALID
 	);
 	signal rdad_stm : rdad_state_type := IDLE;
 
-	signal hsout_stm : state_type := IDLE;
+
 			--State
 	type wilkinson_type is (
 		IDLE,
@@ -129,7 +148,7 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 
 	signal StoAddr : std_logic_vector(7 downto 0) := (others => '0');
 
-	signal RD_Addr	:std_logic_vector(8 downto 0) := (others => '0');
+	signal RDAD_Addr_s	:std_logic_vector(8 downto 0) := (others => '0');
 	signal RDADEndWindow:std_logic_vector(8 downto 0) := (others => '0');
 
 	signal BitCnt : integer := 8;
@@ -178,11 +197,6 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 	signal TestFIFO_window : integer;
 	signal TestFIFO_cnt : integer;
 
-	signal WDOTime_WL :			std_logic_vector(63 downto 0);
-	signal DIGTime_WL :			std_logic_vector(63 downto 0);
-	signal Trigger_WL :			std_logic_vector(11 downto 0);
-	signal WDONbr_WL :				std_logic_vector(8 downto 0);
-
 	type fiforec is record
 		wr1 : std_logic;
 		wr2 : std_logic;
@@ -190,15 +204,72 @@ architecture Behavioral of TARGETC_RDAD_WL_SMPL is
 	end record;
 	signal fifo_intl : fiforec;
 	signal NBRWINDOW_clkd : std_logic_vector(31 downto 0);
+
+	--Ack Request signals sets
+	signal acknowledge_intl : 	std_logic;
+	signal busy_intl : 			std_logic;
+	signal Handshake_SEND_intl: T_Handshake_SEND_intl;
+
+	signal CH0_intl : std_logic_vector(11 downto 0);
+	signal CH1_intl : std_logic_vector(11 downto 0);
+	signal CH2_intl : std_logic_vector(11 downto 0);
+	signal CH3_intl : std_logic_vector(11 downto 0);
+
+	signal CH4_intl : std_logic_vector(11 downto 0);
+	signal CH5_intl : std_logic_vector(11 downto 0);
+	signal CH6_intl : std_logic_vector(11 downto 0);
+	signal CH7_intl : std_logic_vector(11 downto 0);
+
+	signal CH8_intl : std_logic_vector(11 downto 0);
+	signal CH9_intl : std_logic_vector(11 downto 0);
+	signal CH10_intl : std_logic_vector(11 downto 0);
+	signal CH11_intl : std_logic_vector(11 downto 0);
+
+	signal CH12_intl : std_logic_vector(11 downto 0);
+	signal CH13_intl : std_logic_vector(11 downto 0);
+	signal CH14_intl : std_logic_vector(11 downto 0);
+	signal CH15_intl : std_logic_vector(11 downto 0);
+
 begin
 
-	-- --------------------------------------------------------------------------------
-	-- Unused signals from Bus
-	CtrlBus_OxSL.TC_BUS	<= (others => 'Z');
-	CtrlBus_OxSL.BUSY	<= 'Z';
-	CtrlBus_OxSL.PLL_LOCKED <= 'Z';
+	--Clock Domain Handshake
+	ACK_CLKBUF : clkcrossing_buf
+		generic map(
+			NBITS => 1
+		)
+		port map (
+			nrst	=> CtrlBus_IxSL.SW_nRST,
+			DA(0)	=> Handshake_IxSEND.ACK,
+			QB(0)	=> acknowledge_intl,
+			ClkA	=> Handshake_IxSEND.ACLK, --foreign clock
+			ClkB	=> ClockBus.HSCLK
+		);
 
-	-- --------------------------------------------------------------------------------
+	BUSY_CLKBUF : clkcrossing_buf
+			generic map(
+				NBITS => 1
+			)
+			port map (
+				nrst	=> CtrlBus_IxSL.SW_nRST,
+				DA(0)	=> Handshake_IxSEND.BUSY,
+				QB(0)	=> busy_intl,
+				ClkA	=> Handshake_IxSEND.ACLK, --foreign clock
+				ClkB	=> ClockBus.HSCLK
+			);
+
+	Handshake_OxSEND.Req	<= Handshake_SEND_intl.REQ;
+	Handshake_OxSEND.RClk	<= ClockBus.HSCLK;
+
+	-- -- --------------------------------------------------------------------------------
+	-- -- Unused signals from Bus
+	-- CtrlBus_OxSL.TC_BUS	<= (others => 'Z');
+	-- CtrlBus_OxSL.BUSY	<= 'Z';
+	-- CtrlBus_OxSL.PLL_LOCKED <= 'Z';
+	-- CtrlBus_OxSL.FIFOBusy <= 'Z';
+	-- CtrlBus_OxSL.Cnt_AXIS <= (others => 'Z');
+	-- CtrlBus_OxSL.RBNbrOfPackets <= (others => 'Z');
+	--
+	-- -- --------------------------------------------------------------------------------
 
 	BUF_NBRWINDOWS : clkcrossing_buf
 		generic map(
@@ -223,6 +294,26 @@ begin
 	end process;
 
 
+	process(CtrlBus_IxSL.SW_nRST,ClockBus.RDAD_CLK)
+	begin
+		if CtrlBus_IxSL.SW_nRST = '0' then
+			RDAD_ReadEn <= '0';
+		else
+			if falling_edge(ClockBus.RDAD_CLK) then
+				case rdad_stm is
+					when IDLE =>
+						RDAD_ReadEn <= '0';
+					when FIFOREAD =>
+						RDAD_ReadEn <= '1';
+					when FIFOEVAL =>
+						RDAD_ReadEn <= '0';
+					when others	=>
+						RDAD_ReadEn <= '0';
+				end case;
+			end if;
+		end if;
+	end process;
+
 	-- Digitilization Readout the Samples Storage Location
 	process(CtrlBus_IxSL.SW_nRST,ClockBus.RDAD_CLK)
 	begin
@@ -232,15 +323,13 @@ begin
 			RDAD_DIR_intl 	<= '0';
 			BitCnt <= 8;
 			StoAddr <= (others => '0');
-			RD_Addr <= (others => '0');
+			RDAD_Addr_s <= (others => '0');
 			--CtrlBus_OxSL.RD_ADDR <= (others => '0');
 			RDAD.response <= '0';
 			RDAD.ready <= '0';
 			RDAD.busy <= '0';
 			RDAD.valid <= '0';
 			RDAD_stm <= IDLE;
-
-			RDAD_ReadEn <= '0';
 
 		else
 			if rising_edge(ClockBus.RDAD_CLK) then
@@ -267,8 +356,6 @@ begin
 					when READY =>
 						if (RDAD_Empty = '0') then	-- Something to read from the FIFO
 							rdad_stm <= FIFOREAD;
-
-							RDAD_ReadEn <= '1';
 						else
 							rdad_stm <= READY;
 						end if;
@@ -276,150 +363,74 @@ begin
 						RDAD.response <= '1';
 						RDAD.busy <= '1';
 
-						RDAD_ReadEn <= '0';
 						rdad_stm <= FIFOEVAL;
 					when FIFOEVAL =>
 						RDAD.response <= '1';
 						RDAD.busy <= '1';
 
-						RDAD_ReadEn <= '0';
+						rdad_stm <= WDO_SET_RDAD_ADDR;
 
-						--Check which window needs to be seen first
-						if  RDAD_DataOut(8)= '0' then
-							rdad_stm <= WD1_SET_RDAD_ADDR;
+					when WDO_SET_RDAD_ADDR =>
+						--Set Window Address to be digitized
+						RDAD_Addr_s <= RDAD_DataOut;
+						if(WL.ready = '1') then
+							RDAD.response <= '0';
+							rdad_stm <= WDO_LOW_SET0;
 						else
-							if  RDAD_DataOut(9)= '0' then
-								rdad_stm <= WD2_SET_RDAD_ADDR;
-							else
-								assert false report "No Window to Read!" severity error;
-								rdad_stm <= IDLE;
-							end if;
+							rdad_stm <= WDO_SET_RDAD_ADDR;
 						end if;
-
-						-- Save the information
-
-						fifo_intl.addr 	<= RDAD_DataOut(7 downto 0);
-						fifo_intl.wr1	<= RDAD_DataOut(8);
-						fifo_intl.wr2	<= RDAD_DataOut(9);
-
-			--WINDOW #1
-					when WD1_SET_RDAD_ADDR =>
-							if(WL.ready = '1') then
-								RDAD.response <= '0';
-								RD_Addr <= fifo_intl.addr & '0';	-- Window 1
-								rdad_stm <= WD1_LOW_SET0;
-							else
-								rdad_stm <= WD1_SET_RDAD_ADDR;
-							end if;
-					when WD1_LOW_SET0 =>
+					when WDO_LOW_SET0 =>
 						RDAD_CLK_intl 	<= '0';
-						RDAD_SIN_intl 	<= RD_Addr(8-BitCnt); --MSB First
+						RDAD_SIN_intl 	<= RDAD_Addr_s(8-BitCnt); --MSB First
 						RDAD_DIR_intl 	<= '1';
-						rdad_stm <= WD1_LOW_SET1;
-					when WD1_LOW_SET1 =>
+						rdad_stm <= WDO_LOW_SET1;
+					when WDO_LOW_SET1 =>
 						RDAD_CLK_intl <= '1';
-						rdad_stm <= WD1_HIGH_SET1;
-					when WD1_HIGH_SET1 =>
+						rdad_stm <= WDO_HIGH_SET1;
+					when WDO_HIGH_SET1 =>
 						RDAD_CLK_intl <= '1';
-						rdad_stm <= WD1_HIGH_SET0;
-					when WD1_HIGH_SET0 =>
+						rdad_stm <= WDO_HIGH_SET0;
+					when WDO_HIGH_SET0 =>
 						if BitCnt >= 8 then
 							BitCnt <= 0;
 							RDAD_DIR_intl <= '0';
-							rdad_stm <= WD1_VALID;
+							rdad_stm <= WDO_VALID;
 							RDAD.valid <= '1';
 							RDAD.busy <= '1';
 						else
 							RDAD_DIR_intl 	<= '1';
 							BitCnt <= BitCnt + 1;
-							rdad_stm <= WD1_LOW_SET0;
+							rdad_stm <= WDO_LOW_SET0;
 							RDAD.busy <= '1';
 						end if;
 						RDAD_CLK_intl 	<= '0';
 
-					when WD1_VALID =>
+					when WDO_VALID =>
 						RDAD_SIN_intl 	<= '0'; --MSB First
 
 						if (WL.response = '1') then
 							RDAD.valid <= '0';
-							--rdad_stm <= WD1_VALID;
-							rdad_stm <= WD1_RESPVALID;
+							--rdad_stm <= WDO_VALID;
+							rdad_stm <= WDO_RESPVALID;
 						else
 							RDAD.valid <= '1';
-							--rdad_stm <= WD1_RESPVALID;
-							rdad_stm <= WD1_VALID;
+							--rdad_stm <= WDO_RESPVALID;
+							rdad_stm <= WDO_VALID;
 						end if;
-					when WD1_RESPVALID =>
+					when WDO_RESPVALID =>
 						if (WL.response = '0') then	--Wilkinson
-							if  fifo_intl.wr2 = '0' then	--Second window is good to go too
-								rdad_stm <= WD2_SET_RDAD_ADDR;
-								RDAD.valid <= '0';
-								RDAD.busy <= '1';
-							else
+							-- if  fifo_intl.wr2 = '0' then	--Second window is good to go too
+							-- 	rdad_stm <= WD2_SET_RDAD_ADDR;
+							-- 	RDAD.valid <= '0';
+							-- 	RDAD.busy <= '1';
+							-- else
 								RDAD.valid <= '0';
 								RDAD.busy <= '0';
 								rdad_stm <= IDLE;
-							end if;
+							--end if;
 						else
 							RDAD.valid <= '0';
-							rdad_stm <= WD1_RESPVALID;
-						end if;
-
-			--WINDOW #2
-					when WD2_SET_RDAD_ADDR =>
-							if(WL.ready = '1') then
-								RDAD.response <= '0';
-								RD_Addr <= fifo_intl.addr & '1';	-- Window 1
-								rdad_stm <= WD2_LOW_SET0;
-							else
-								rdad_stm <= WD2_SET_RDAD_ADDR;
-							end if;
-					when WD2_LOW_SET0 =>
-						RDAD_CLK_intl 	<= '0';
-						RDAD_SIN_intl 	<= RD_Addr(8-BitCnt); --MSB First
-						RDAD_DIR_intl 	<= '1';
-						rdad_stm <= WD2_LOW_SET1;
-					when WD2_LOW_SET1 =>
-						RDAD_CLK_intl <= '1';
-						rdad_stm <= WD2_HIGH_SET1;
-					when WD2_HIGH_SET1 =>
-						RDAD_CLK_intl <= '1';
-						rdad_stm <= WD2_HIGH_SET0;
-					when WD2_HIGH_SET0 =>
-						if BitCnt >= 8 then
-							BitCnt <= 0;
-							RDAD_DIR_intl <= '0';
-							rdad_stm <= WD2_VALID;
-							RDAD.valid <= '1';
-							RDAD.busy <= '1';
-						else
-							RDAD_DIR_intl 	<= '1';
-							BitCnt <= BitCnt + 1;
-							rdad_stm <= WD2_LOW_SET0;
-							RDAD.busy <= '1';
-						end if;
-						RDAD_CLK_intl 	<= '0';
-
-					when WD2_VALID =>
-						RDAD_SIN_intl 	<= '0'; --MSB First
-
-						if (WL.response = '1') then
-							RDAD.valid <= '0';
-							--rdad_stm <= WD2_VALID;
-							rdad_stm <= WD2_RESPVALID;
-						else
-							RDAD.valid <= '1';
-							--rdad_stm <= WD2_RESPVALID;
-							rdad_stm <= WD2_VALID;
-						end if;
-					when WD2_RESPVALID =>
-						if (WL.response = '0') then	--Wilkinson
-							RDAD.valid <= '0';
-							RDAD.busy <= '0';
-							rdad_stm <= IDLE;
-						else
-							RDAD.valid <= '0';
-							rdad_stm <= WD2_RESPVALID;
+							rdad_stm <= WDO_RESPVALID;
 						end if;
 
 					when others	=>
@@ -452,11 +463,6 @@ begin
 			DIG_WriteEn <= '0';
 			DIG_DataIn <= (others => '0');
 
-			WDOTime_WL	<= 	(others => '0');
-			DIGTime_WL <=(others => '0');
-			WDONbr_WL <= (others => '0');
-			Trigger_WL <= (others => '0');
-
 		else
 			if rising_edge(ClockBus.WL_CLK) then
 				case wlstate is
@@ -481,6 +487,8 @@ begin
 						WL.ready <= '0';
 						WL.busy <= '1';
 						if (RDAD.valid = '0') then
+							-- Save the wdo address prior to starting the WL
+							DIG_DataIn <= RDAD_Addr_s;
 							WL.valid <= '0';
 							--WL.ready <= '0';
 							GCC_RESET_intl <= '1';
@@ -519,10 +527,10 @@ begin
 						else
 							wlstate <= RESPVALID;
 							DIG_WriteEn <= '1';
-							DIG_DataIn <= RD_Addr;
+							--DIG_DataIn <= RDAD_Addr_s;
 
 							--Test
-							CtrlBus_OxSL.WL_Read <= RD_Addr;
+							--CtrlBus_OxSL.WL_Read <= RD_Addr;
 
 							-- 4 signals to FIFO Manager
 							-- WDOTime_WL	<= 	fifo_intl.wdotime;
@@ -583,7 +591,8 @@ begin
 	--					'0';
 
 	GCC_RESET 	<= GCC_RESET_intl;
-	CtrlBus_OxSL.RAMP_CNT	<= WL_CNT_EN_intl;
+	--CtrlBus_OxSL.RAMP_CNT	<= WL_CNT_EN_intl;
+	RAMP_CNT	<= WL_CNT_EN_intl;
 
 
 	process (ClockBus.HSCLK,SS_CNT_EN) begin
@@ -616,6 +625,8 @@ begin
 
 			SS_RESET_intl <= '1';
 
+			Handshake_SEND_intl.REQ <= '0';
+			Handshake_Data.testfifo <= '0';
 			-- WDOTime	<= 	(others => '0');
 			-- DIGTime <=(others => '0');
 			-- WDONbr <= (others => '0');
@@ -647,19 +658,22 @@ begin
 							--SS_CNT_EN <= '1';
 							--hsout_stm <= INCRWAIT;
 						elsif (CtrlBus_IxSL.TestFIFO = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then	-- New
+							Handshake_Data.TestFIFO <= '1';
 							TestFIFO_cnt <= 0;
 							TestFIFO_window <= 0;
 							SS.busy <= '1';
 							hsout_stm <= FIFOTEST_DATA;
-							TestFIFO <= '1';
+						--	TestFIFO <= '1';
 						elsif (WL.valid = '1') and (CtrlBus_IxSL.SAMPLEMODE = '1') then
+
+							Handshake_Data.TestFIFO <= '0';
 							SS_RESET_intl <= '1';
 							SS_INCR_flg <= '0';
 							hsout_stm <= RESPREADY;
 							SS.busy <= '1';
-							TestFIFO <= '0';
+						--	TestFIFO <= '0';
 						else
-							TestFIFO <= '0';
+						--	TestFIFO <= '0';
 							hsout_stm <= READY;
 						end if;
 
@@ -672,41 +686,43 @@ begin
 						-- Trigger <= x"123";
 						-- WDONbr <= "110110110";
 
-						CtrlDO_intl.CH0 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 0,CtrlDO_intl.CH0'length));
-						CtrlDO_intl.CH1 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 1,CtrlDO_intl.CH1'length));
-						CtrlDO_intl.CH2 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 2,CtrlDO_intl.CH2'length));
-						CtrlDO_intl.CH3 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 3,CtrlDO_intl.CH3'length));
+						CH0_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 0,CH0_intl'length));
+						CH1_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 1,CH1_intl'length));
+						CH2_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 2,CH2_intl'length));
+						CH3_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 3,CH3_intl'length));
 
-						CtrlDO_intl.CH4 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 4,CtrlDO_intl.CH4'length));
-						CtrlDO_intl.CH5 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 5,CtrlDO_intl.CH5'length));
-						CtrlDO_intl.CH6 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 6,CtrlDO_intl.CH6'length));
-						CtrlDO_intl.CH7 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 7,CtrlDO_intl.CH7'length));
+						CH4_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 4,CH4_intl'length));
+						CH5_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 5,CH5_intl'length));
+						CH6_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 6,CH6_intl'length));
+						CH7_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 7,CH7_intl'length));
 
-						CtrlDO_intl.CH8 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 8,CtrlDO_intl.CH8'length));
-						CtrlDO_intl.CH9 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 9,CtrlDO_intl.CH9'length));
-						CtrlDO_intl.CH10 <=std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 10,CtrlDO_intl.CH10'length));
-						CtrlDO_intl.CH11 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 11,CtrlDO_intl.CH11'length));
+						CH8_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 8,CH8_intl'length));
+						CH9_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 9,CH9_intl'length));
+						CH10_intl <=std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 10,CH10_intl'length));
+						CH11_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 11,CH11_intl'length));
 
-						CtrlDO_intl.CH12 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 12,CtrlDO_intl.CH12'length));
-						CtrlDO_intl.CH13 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 13,CtrlDO_intl.CH13'length));
-						CtrlDO_intl.CH14 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 14,CtrlDO_intl.CH14'length));
-						CtrlDO_intl.CH15 <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 15,CtrlDO_intl.CH15'length));
+						CH12_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 12,CH12_intl'length));
+						CH13_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 13,CH13_intl'length));
+						CH14_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 14,CH14_intl'length));
+						CH15_intl  <= std_logic_vector(to_unsigned(TestFIFO_window * 512 + TestFIFO_cnt*16 + 15,CH15_intl'length));
 
 						SS.valid <= '1';
-						hsout_stm <= FIFOTEST_VALID;
+						Handshake_SEND_intl.REQ <= '1';
+						hsout_stm <= FIFOTEST_REQUEST;
 
-					when FIFOTEST_VALID =>
-						hsout_stm <= FIFOTEST_RESPVALID;
+					when FIFOTEST_REQUEST =>
+						hsout_stm <= FIFOTEST_RESP_ACK;
 
-					when FIFOTEST_RESPVALID =>
-						if (FIFOresponse = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+					when FIFOTEST_RESP_ACK =>
+						if ( acknowledge_intl = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then
 							SS.valid <= '0';
-							hsout_stm <= FIFOTEST_RESPVALID2;
+							Handshake_SEND_intl.REQ <= '0';
+							hsout_stm <= FIFOTEST_REQ_GRANT;
 						else
-							hsout_stm <= FIFOTEST_RESPVALID;
+							hsout_stm <= FIFOTEST_RESP_ACK;
 						end if;
-					when FIFOTEST_RESPVALID2 =>
-						if (FIFOresponse = '0' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+					when FIFOTEST_REQ_GRANT =>
+						if (acknowledge_intl = '0' and CtrlBus_IxSL.SAMPLEMODE = '1') then
 							if (TestFIFO_cnt < 31) then
 								hsout_stm <= FIFOTEST_DATA;
 								TestFIFO_cnt <= TestFIFO_cnt + 1;
@@ -721,7 +737,7 @@ begin
 								end if;
 							end if;
 						else
-							hsout_stm <= FIFOTEST_RESPVALID2;
+							hsout_stm <= FIFOTEST_REQ_GRANT;
 						end if;
 
 
@@ -741,7 +757,7 @@ begin
 							-- WDONbr <= WDONbr_WL;
 
 							--Test
-							CtrlBus_OxSL.SS_Read <= WDONbr_WL;
+						--	CtrlBus_OxSL.SS_Read <= WDONbr_WL;
 						else
 							hsout_stm <= RESPREADY;
 						end if;
@@ -775,46 +791,26 @@ begin
 						-- SAmple the output of TARGETC
 						if SSBitCnt > 1 then
 
-							CtrlDO_intl.CH0(SSBitCnt-2) <= DO(0);
-							CtrlDO_intl.CH1(SSBitCnt-2) <= DO(1);
-							CtrlDO_intl.CH2(SSBitCnt-2) <= DO(2);
-							CtrlDO_intl.CH3(SSBitCnt-2) <= DO(3);
+							CH0_intl(SSBitCnt-2) <= DO(0);
+							CH1_intl(SSBitCnt-2) <= DO(1);
+							CH2_intl(SSBitCnt-2) <= DO(2);
+							CH3_intl(SSBitCnt-2) <= DO(3);
 
-							CtrlDO_intl.CH4(SSBitCnt-2) <= DO(4);
-							CtrlDO_intl.CH5(SSBitCnt-2) <= DO(5);
-							CtrlDO_intl.CH6(SSBitCnt-2) <= DO(6);
-							CtrlDO_intl.CH7(SSBitCnt-2) <= DO(7);
+							CH4_intl(SSBitCnt-2) <= DO(4);
+							CH5_intl(SSBitCnt-2) <= DO(5);
+							CH6_intl(SSBitCnt-2) <= DO(6);
+							CH7_intl(SSBitCnt-2) <= DO(7);
 
-							CtrlDO_intl.CH8(SSBitCnt-2) <= DO(8);
-							CtrlDO_intl.CH9(SSBitCnt-2) <= DO(9);
-							CtrlDO_intl.CH10(SSBitCnt-2) <=DO(10);
-							CtrlDO_intl.CH11(SSBitCnt-2) <= DO(11);
+							CH8_intl(SSBitCnt-2) <= DO(8);
+							CH9_intl(SSBitCnt-2) <= DO(9);
+							CH10_intl(SSBitCnt-2) <=DO(10);
+							CH11_intl(SSBitCnt-2) <= DO(11);
 
-							CtrlDO_intl.CH12(SSBitCnt-2) <= DO(12);
-							CtrlDO_intl.CH13(SSBitCnt-2) <= DO(13);
-							CtrlDO_intl.CH14(SSBitCnt-2) <= DO(14);
-							CtrlDO_intl.CH15(SSBitCnt-2) <= DO(15);
+							CH12_intl(SSBitCnt-2) <= DO(12);
+							CH13_intl(SSBitCnt-2) <= DO(13);
+							CH14_intl(SSBitCnt-2) <= DO(14);
+							CH15_intl(SSBitCnt-2) <= DO(15);
 
-							-- LSB First
-							--CtrlBus_OxSL.DO_BUS.CH0(SSBitCnt-2) <= DO(0);
-							--CtrlBus_OxSL.DO_BUS.CH1(SSBitCnt-2) <= DO(1);
-							--CtrlBus_OxSL.DO_BUS.CH2(SSBitCnt-2) <= DO(2);
-							--CtrlBus_OxSL.DO_BUS.CH3(SSBitCnt-2) <= DO(3);
-
-							--CtrlBus_OxSL.DO_BUS.CH4(SSBitCnt-2) <= DO(4);
-							--CtrlBus_OxSL.DO_BUS.CH5(SSBitCnt-2) <= DO(5);
-							--CtrlBus_OxSL.DO_BUS.CH6(SSBitCnt-2) <= DO(6);
-							--CtrlBus_OxSL.DO_BUS.CH7(SSBitCnt-2) <= DO(7);
-
-							--CtrlBus_OxSL.DO_BUS.CH8(SSBitCnt-2) <= DO(8);
-							--CtrlBus_OxSL.DO_BUS.CH9(SSBitCnt-2) <= DO(9);
-							--CtrlBus_OxSL.DO_BUS.CH10(SSBitCnt-2) <=DO(10);
-							--CtrlBus_OxSL.DO_BUS.CH11(SSBitCnt-2) <= DO(11);
-
-							--CtrlBus_OxSL.DO_BUS.CH12(SSBitCnt-2) <= DO(12);
-							--CtrlBus_OxSL.DO_BUS.CH13(SSBitCnt-2) <= DO(13);
-							--CtrlBus_OxSL.DO_BUS.CH14(SSBitCnt-2) <= DO(14);
-							--CtrlBus_OxSL.DO_BUS.CH15(SSBitCnt-2) <= DO(15);
 						end if;
 
 						HSCLK_intl <= '0';
@@ -822,7 +818,7 @@ begin
 						if SSBitCnt = 13 then
 						--if SSBitCnt = 13 then
 						--if SSBitCnt = 11 then
-							hsout_stm <= VALID;
+							hsout_stm <= REQUEST;
 							SSBitCnt <= 0;
 							SS.busy <= '1';
 							SS.valid <= '1';
@@ -834,26 +830,33 @@ begin
 							SSBitCnt <= SSBitCnt + 1;
 						end if;
 						--WLvalidAck <= '0';
-					when VALID =>
-						HSCLK_intl <= '0';
-						hsout_stm <= RESPVALID;
-					when RESPVALID =>
+					when REQUEST =>
+						if Handshake_IxSEND.Busy = '0' then
+							Handshake_SEND_intl.REQ <= '1';
+							HSCLK_intl <= '0';
+							hsout_stm <= RESP_ACK;
+						else
+							Handshake_SEND_intl.REQ <= '0';
+							HSCLK_intl <= '0';
+							hsout_stm <= REQUEST;
+						end if;
+					when RESP_ACK =>
 						HSCLK_intl <= '0';
 						--CtrlBus_OxSL.SS_SELECT <= std_logic_vector(to_unsigned(SScnt,CtrlBus_OxSL.SS_SELECT'length));
-						if (CtrlBus_IxSL.SSACK = '1' and CtrlBus_IxSL.SAMPLEMODE = '0') or (FIFOresponse = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then
-
+						if (CtrlBus_IxSL.SSACK = '1' and CtrlBus_IxSL.SAMPLEMODE = '0') or (acknowledge_intl = '1' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+							Handshake_SEND_intl.REQ <= '0';
 							SS.valid <= '0';
-							hsout_stm <= RESPVALID2;
+							hsout_stm <= REQ_GRANT;
 
 						else
 							SS.busy <= '1';
 							SS.valid <= '1';
-							hsout_stm <= RESPVALID;
+							hsout_stm <= RESP_ACK;
 						end if;
 
-					when RESPVALID2 =>
+					when REQ_GRANT =>
 						--if CtrlBus_IxSL.SSACK = '0' then
-						if (CtrlBus_IxSL.SSACK = '0' and CtrlBus_IxSL.SAMPLEMODE = '0') or (FIFOresponse = '0' and CtrlBus_IxSL.SAMPLEMODE = '1') then
+						if (CtrlBus_IxSL.SSACK = '0' and CtrlBus_IxSL.SAMPLEMODE = '0') or (acknowledge_intl = '0' and CtrlBus_IxSL.SAMPLEMODE = '1') then
 							if (SS_INCR_flg = '0') then
 								SScnt <= SScnt + 1;
 								if(SScnt < 31) then
@@ -871,6 +874,8 @@ begin
 								SS.busy <= '0';
 								hsout_stm <= IDLERESET;
 							end if;
+						else
+							hsout_stm <= REQ_GRANT;
 						end if;
 					when IDLERESET =>
 						SS.busy <= '0';
@@ -883,7 +888,8 @@ begin
 		end if;
 	end process;
 
-	CtrlBus_OxSL.DO_BUS <= CtrlDO_intl;
+	--CtrlBus_OxSL.DO_BUS <= CtrlDO_intl;
+	DO_BUS <= CtrlDO_intl;
 
 	SS_RESET 	<= SS_RESET_intl;
 	--SS_RESET 	<= '0';
@@ -891,10 +897,31 @@ begin
 	HSCLK 		<= HSCLK_intl;
 	-- Input/Output Refresh
 
+	CH0 	<= CH0_intl;
+	CH1 	<= CH1_intl;
+	CH2 	<= CH2_intl;
+	CH3 	<= CH3_intl;
+
+	CH4 	<= CH4_intl;
+	CH5 	<= CH5_intl;
+	CH6 	<= CH6_intl;
+	CH7 	<= CH7_intl;
+
+	CH8 	<= CH8_intl;
+	CH9 	<= CH9_intl;
+	CH10 	<= CH10_intl;
+	CH11 	<= CH11_intl;
+
+	CH12 	<= CH12_intl;
+	CH13 	<= CH13_intl;
+	CH14 	<= CH14_intl;
+	CH15 	<= CH15_intl;
 
 
-	CtrlBus_OxSL.SSvalid	<= SS.valid;	-- Status on AXI Lite
-	CtrlBus_OxSL.WindowBusy <= 	'1' when RDAD.busy = '1' else
+	--CtrlBus_OxSL.SSvalid	<= SS.valid;	-- Status on AXI Lite
+	SSvalid	<= SS.valid;	-- Status on AXI Lite
+	--CtrlBus_OxSL.WindowBusy <= 	'1' when RDAD.busy = '1' else
+	WindowBusy <= 	'1' when RDAD.busy = '1' else
 								'1' when WL.busy = '1' else
 								'1' when SS.busy = '1' else
 								 '0';

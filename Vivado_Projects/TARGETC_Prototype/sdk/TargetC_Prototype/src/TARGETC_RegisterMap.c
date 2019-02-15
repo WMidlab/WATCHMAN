@@ -6,6 +6,220 @@
  */
 #include "TARGETC_RegisterMap.h"
 
+
+int readinput0to63(void){
+	int bytecount= 0;
+	int tmp[2];
+	tmp[0] = -1;
+	tmp[1] = -1;
+	u32 ReceivedByte;
+
+	for(int i= 0; i<2;i++){
+		/* Check if there is data */
+		while (!XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
+			usleep(100000);
+		}
+		tmp[i] = XUartPs_ReadReg(STDIN_BASEADDRESS, XUARTPS_FIFO_OFFSET);
+		tmp[i] = tmp[i]-48;
+	}
+	//convert type
+	int a = (tmp[0])*10+tmp[1];
+
+	if (a>= 0 && a <= 63){
+		xil_printf("%d\r\n",a);
+		return a;
+	}
+	else
+		xil_printf("-1\r\n",a);
+		return -1;
+}
+
+
+int readinput0to4095(void){
+	int bytecount= 0;
+	int tmp[4];
+	tmp[0] = -1;
+	tmp[1] = -1;
+	tmp[2] = -1;
+	tmp[3] = -1;
+	u32 ReceivedByte;
+
+	for(int i= 0; i<4;i++){
+		/* Check if there is data */
+		while (!XUartPs_IsReceiveData(STDIN_BASEADDRESS)) {
+			usleep(100000);
+		}
+		tmp[i] = XUartPs_ReadReg(STDIN_BASEADDRESS, XUARTPS_FIFO_OFFSET);
+		tmp[i] = tmp[i]-48;
+	}
+	//convert type
+	int a = (tmp[0])*1000+tmp[1]*100+tmp[2]*10+tmp[3];
+
+	if (a>= 0 && a <= 4095){
+		xil_printf("%d\r\n",a);
+		return a;
+	}
+	else
+		xil_printf("-1\r\n",a);
+		return -1;
+}
+
+
+/** **********************************************************
+ * @brief 	Set the TargetC Registers using AXI Lite control
+ *
+ * @param	  void
+ * @return	status
+ ************************************************************* */
+int MonTimingSet(void){
+
+
+	int value = 0;
+	int LE = 0;
+	int TE = 0;
+
+	xil_printf("SSTOUT 50 duty_cycle\r\n");
+	WriteRegister(TC_MONTIMING_REG, TC_MT_SSTOUT_MASK );
+	value = 0;
+	while(value != -1){
+		xil_printf("Change VadjP:");
+		value = readinput0to4095();
+		if (value != -1){
+		   WriteRegister(TC_VADJP_REG,		value);
+		   xil_printf("\r\n>>VadjP : %d\r\n",regptr[TC_VADJP_REG]);
+		}
+		sleep(1);
+	}
+
+	xil_printf("SSSTOUTFB OK \r\n");
+	WriteRegister(TC_MONTIMING_REG, TC_MT_SSTOUTFB_MASK );
+	value = 0;
+	while(value != -1){
+		xil_printf("Change SSTOUTFB:");
+		value = readinput0to63();
+		if (value != -1){
+		   WriteRegister(TC_SSTOUTFB_REG,		value);
+		   xil_printf("\r\n>>SSSTOUTFB : %d\r\n",regptr[TC_SSTOUTFB_REG]);
+		}
+		sleep(1);
+	}
+
+	xil_printf("SSSTOUT OK \r\n");
+	WriteRegister(TC_MONTIMING_REG, TC_MT_SSTOUT_MASK );
+
+	xil_printf("\r\nSSPIN\n\r");
+    WriteRegister(TC_MONTIMING_REG, TC_MT_SSPIN_MASK );
+    LE = 0;
+    TE = 0;
+    while((LE != -1) && (TE != -1)){
+   	 xil_printf("Change LE (EXIT 99):");
+   	 LE = readinput0to63();
+   	 if (LE != -1){
+   		WriteRegister(TC_SSPIN_LE_REG,		LE);
+   		xil_printf("\r\nChange TE (EXIT 99):");
+   		TE = readinput0to63();
+   		 if (TE != -1){
+   			WriteRegister(TC_SSPIN_TE_REG,		TE);
+   			 xil_printf("\r\n>>SSPIN :\tLE: %d\tTE: %d\r\n",regptr[TC_SSPIN_LE_REG],regptr[TC_SSPIN_TE_REG]);
+   		 }
+   	 }
+   	 sleep(1);
+    }
+
+	xil_printf("\r\nSSPIN - SSPOUT\n\r");
+	for(int i=0; i<10;i++){
+		xil_printf("%d\r\n",i);
+		WriteRegister(TC_MONTIMING_REG, TC_MT_SSPIN_MASK );
+		sleep(1);
+		WriteRegister(TC_MONTIMING_REG, TC_MT_SSPOUT_MASK );
+		sleep(1);
+	}
+	// xil_printf("Check SSPIN against SSTIN delay?\r\n");
+	// WriteRegister(TC_MONTIMING_REG, TC_MT_SSPIN_MASK  );
+	// sleep(10);
+	//
+	// xil_printf("Check SSPIN against SSOUT delay?\r\n");
+	// WriteRegister(TC_MONTIMING_REG,  TC_MT_SSPOUT_MASK);
+	// sleep(10);
+
+   xil_printf("\r\nWR_STRB2\n\r");
+   WriteRegister(TC_MONTIMING_REG, TC_MT_WR_STRB2_MASK );
+   LE = 0;
+   TE = 0;
+   while((LE != -1) && (TE != -1)){
+	   xil_printf("Change LE (EXIT 99):");
+	   LE = readinput0to63();
+	   if (LE != -1){
+		  WriteRegister(TC_WR_STRB2_LE_REG,		LE);
+		  xil_printf("\r\nChange TE (EXIT 99):");
+		  TE = readinput0to63();
+	   	   if (TE != -1){
+	   		  WriteRegister(TC_WR_STRB2_TE_REG,		TE);
+			   xil_printf("\r\n>>WR_STRB2 :\tLE: %d\tTE: %d\r\n",regptr[TC_WR_STRB2_LE_REG],regptr[TC_WR_STRB2_TE_REG]);
+	   	   }
+	   }
+	   sleep(1);
+   }
+
+   xil_printf("\r\nWR_ADDR2\n\r");
+   WriteRegister(TC_MONTIMING_REG, TC_MT_WR2_ADDR_SYNC_MASK );
+   LE = 0;
+   TE = 0;
+   while((LE != -1) && (TE != -1)){
+	   xil_printf("Change LE (EXIT 99):");
+	   LE = readinput0to63();
+	   if (LE != -1){
+		  WriteRegister(TC_WR2_ADDR_LE_REG,		LE);
+		  xil_printf("\r\nChange TE (EXIT 99):");
+		  TE = readinput0to63();
+	   	   if (TE != -1){
+	   		  WriteRegister(TC_WR2_ADDR_TE_REG,		TE);
+			   xil_printf("\r\n>>WR_ADDR2 :\tLE: %d\tTE: %d\r\n",regptr[TC_WR2_ADDR_LE_REG],regptr[TC_WR2_ADDR_TE_REG]);
+	   	   }
+	   }
+	   sleep(1);
+   }
+
+
+   xil_printf("\r\nWR_STRB1\n\r");
+   WriteRegister(TC_MONTIMING_REG, TC_MT_WR_STRB1_MASK );
+   LE = 0;
+   TE = 0;
+   while((LE != -1) && (TE != -1)){
+ 	  xil_printf("Change LE (EXIT 99):");
+ 	  LE = readinput0to63();
+ 	  if (LE != -1){
+ 		 WriteRegister(TC_WR_STRB1_LE_REG,		LE);
+ 		 xil_printf("\r\nChange TE (EXIT 99):");
+ 		 TE = readinput0to63();
+ 		  if (TE != -1){
+ 			 WriteRegister(TC_WR_STRB1_TE_REG,		TE);
+ 			  xil_printf("\r\n>>WR_STRB1 :\tLE: %d\tTE: %d\r\n",regptr[TC_WR_STRB1_LE_REG],regptr[TC_WR_STRB1_TE_REG]);
+ 		  }
+ 	  }
+ 	  sleep(1);
+   }
+
+   xil_printf("\r\nWR_ADDR1\n\r");
+   WriteRegister(TC_MONTIMING_REG, TC_MT_WR1_ADDR_SYNC_MASK );
+   LE = 0;
+   TE = 0;
+   while((LE != -1) && (TE != -1)){
+ 	  xil_printf("Change LE (EXIT 99):");
+ 	  LE = readinput0to63();
+ 	  if (LE != -1){
+ 		 WriteRegister(TC_WR1_ADDR_LE_REG,		LE);
+ 		 xil_printf("\r\nChange TE (EXIT 99):");
+ 		 TE = readinput0to63();
+ 		  if (TE != -1){
+ 			 WriteRegister(TC_WR1_ADDR_TE_REG,		TE);
+ 			  xil_printf("\r\n>>WR_ADDR1 :\tLE: %d\tTE: %d\r\n",regptr[TC_WR1_ADDR_LE_REG],regptr[TC_WR1_ADDR_TE_REG]);
+ 		  }
+ 	  }
+ 	  sleep(1);
+   }
+
+}
 /** **********************************************************
  * @brief 	Set the TargetC Registers using AXI Lite control
  *
@@ -14,56 +228,176 @@
  ************************************************************* */
 int SetTargetCRegisters(void){
 
-	for(int i=0; i<64; i++){
-		WriteRegister(TC_VDLYTUNE_REG + i,	0);
+	switch(PARAMETERS){
+		case ADRIAN :
+			// No results for the four write signals
+			xil_printf("TARGET C : ADRIAN Setup\r\n");
+			for(int i=0; i<64; i++){
+				WriteRegister(TC_VDLYTUNE_REG + i,	0);
+			}
+		//	*** TARGETC Register Initial Values
+			WriteRegister(TC_SSTOUTFB_REG,		0x03a);
+
+			WriteRegister(TC_SSPIN_LE_REG,		9);	 // ? no value from Adrian
+			WriteRegister(TC_SSPIN_TE_REG,		40); // ? no value from Adrian
+
+			//WriteRegister(TC_WR_STRB2_LE_REG,	61);
+			WriteRegister(TC_WR_STRB2_LE_REG,	20);
+			//WriteRegister(TC_WR_STRB2_TE_REG,	7);
+			WriteRegister(TC_WR_STRB2_TE_REG,	30);
+
+			WriteRegister(TC_WR2_ADDR_LE_REG,	4);
+			WriteRegister(TC_WR2_ADDR_TE_REG,	10);
+
+			//WriteRegister(TC_WR_STRB1_LE_REG,	25);
+			WriteRegister(TC_WR_STRB1_LE_REG,	50);
+			//WriteRegister(TC_WR_STRB1_TE_REG,	10);
+			WriteRegister(TC_WR_STRB1_TE_REG,	60);
+
+			WriteRegister(TC_WR1_ADDR_LE_REG,	35);
+			WriteRegister(TC_WR1_ADDR_TE_REG,	45);
+
+			WriteRegister(TC_VQBUFF_REG,	1100);	// ADRIAN = 0
+			WriteRegister(TC_QBIAS_REG,		0);		// ADRIAN no PLL
+			WriteRegister(TC_VTRIMT_REG,	0x4d8);
+
+			WriteRegister(TC_VBIAS_REG,		0x4B0);
+
+			WriteRegister(TC_VAPBUFF_REG,	0x3D9);
+			WriteRegister(TC_VADJP_REG,		0x480);
+			//WriteRegister(TC_VADJP_REG,		1020);
+
+			WriteRegister(TC_VANBUFF_REG,	0x426);
+			WriteRegister(TC_VADJN_REG,		0x8BB);
+			//WriteRegister(TC_VADJN_REG,		2430);
+
+			WriteRegister(TC_SBBIAS_REG,	0x78E);
+
+			WriteRegister(TC_VDISCH_REG,	0);
+			//WriteRegister(TC_ISEL_REG,		2600);
+			WriteRegister(TC_ISEL_REG,	0x8fc);
+			WriteRegister(TC_DBBIAS_REG,	0x690);
+
+			// Initial Base Value
+			WriteRegister(TC_CMPBIAS2_REG,	0x2D6);
+			WriteRegister(TC_PUBIAS_REG,	0xBCA);
+			WriteRegister(TC_CMPBIASIN_REG,	0x654);
+
+			WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
+			WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
+			break;
+		case CHRIS:
+			xil_printf("TARGET C : CHRIS Setup\r\n");
+			for(int i=0; i<64; i++){
+				WriteRegister(TC_VDLYTUNE_REG + i,	0);
+			}
+		//	*** TARGETC Register Initial Values
+			WriteRegister(TC_SSTOUTFB_REG,		58);
+
+			WriteRegister(TC_SSPIN_LE_REG,		51);	 // ? no value from Adrian
+			WriteRegister(TC_SSPIN_TE_REG,		7); // ? no value from Adrian
+
+			WriteRegister(TC_WR_STRB2_LE_REG,	56);
+			WriteRegister(TC_WR_STRB2_TE_REG,	12);
+
+			WriteRegister(TC_WR2_ADDR_LE_REG,	33);
+			WriteRegister(TC_WR2_ADDR_TE_REG,	53);
+
+			WriteRegister(TC_WR_STRB1_LE_REG,	20);
+			WriteRegister(TC_WR_STRB1_TE_REG,	40);
+
+			WriteRegister(TC_WR1_ADDR_LE_REG,	5);
+			WriteRegister(TC_WR1_ADDR_TE_REG,	25);
+
+			WriteRegister(TC_VQBUFF_REG,	1062);	// ADRIAN = 0
+			WriteRegister(TC_QBIAS_REG,		1500);		// ADRIAN no PLL
+			WriteRegister(TC_VTRIMT_REG,	1209);
+
+			WriteRegister(TC_VBIAS_REG,		1130);
+
+			WriteRegister(TC_VAPBUFF_REG,	0);
+			WriteRegister(TC_VADJP_REG,		1152);
+			//WriteRegister(TC_VADJP_REG,		1020);
+
+			WriteRegister(TC_VANBUFF_REG,	0);
+			WriteRegister(TC_VADJN_REG,		2235);
+			//WriteRegister(TC_VADJN_REG,		2430);
+
+			WriteRegister(TC_SBBIAS_REG,	1300);
+
+			WriteRegister(TC_VDISCH_REG,	0);
+			//WriteRegister(TC_ISEL_REG,		2600);
+			WriteRegister(TC_ISEL_REG,		2650);
+			WriteRegister(TC_DBBIAS_REG,	1100);
+
+			// Initial Base Value
+			WriteRegister(TC_CMPBIAS2_REG,	737);
+			WriteRegister(TC_PUBIAS_REG,	3112);
+			WriteRegister(TC_CMPBIASIN_REG,	1152);
+
+			WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
+			WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
+			break;
+
+		case BRONSON:
+			xil_printf("TARGET C : BRONSON Setup\r\n");
+			for(int i=0; i<64; i++){
+				WriteRegister(TC_VDLYTUNE_REG + i,	0);
+			}
+		//	*** TARGETC Register Initial Values
+			WriteRegister(TC_SSTOUTFB_REG,		58);
+
+			WriteRegister(TC_SSPIN_LE_REG,		51);	 // ? no value from Adrian
+			WriteRegister(TC_SSPIN_TE_REG,		7); // ? no value from Adrian
+
+			WriteRegister(TC_WR_STRB2_LE_REG,	56);
+			WriteRegister(TC_WR_STRB2_TE_REG,	12);
+
+			WriteRegister(TC_WR2_ADDR_LE_REG,	33);
+			WriteRegister(TC_WR2_ADDR_TE_REG,	53);
+
+			WriteRegister(TC_WR_STRB1_LE_REG,	20);
+			WriteRegister(TC_WR_STRB1_TE_REG,	40);
+
+			WriteRegister(TC_WR1_ADDR_LE_REG,	5);
+			WriteRegister(TC_WR1_ADDR_TE_REG,	25);
+
+			WriteRegister(TC_VQBUFF_REG,	1062);	// ADRIAN = 0
+			WriteRegister(TC_QBIAS_REG,		0);		// ADRIAN no PLL
+			WriteRegister(TC_VTRIMT_REG,	1209);
+
+			WriteRegister(TC_VBIAS_REG,		1130);
+
+			WriteRegister(TC_VAPBUFF_REG,	1100);	// should be 0
+			WriteRegister(TC_VADJP_REG,		1152);
+			//WriteRegister(TC_VADJP_REG,		1020);
+
+			WriteRegister(TC_VANBUFF_REG,	0);
+			WriteRegister(TC_VADJN_REG,		2948);//2235);
+			//WriteRegister(TC_VADJN_REG,		2430);
+
+			WriteRegister(TC_SBBIAS_REG,	1300);
+
+			WriteRegister(TC_VDISCH_REG,	0);
+			//WriteRegister(TC_ISEL_REG,		2600);
+			WriteRegister(TC_ISEL_REG,		2650);
+			WriteRegister(TC_DBBIAS_REG,	1100);
+
+			// Initial Base Value
+			WriteRegister(TC_CMPBIAS2_REG,	737);
+			WriteRegister(TC_PUBIAS_REG,	3112);
+			WriteRegister(TC_CMPBIASIN_REG,	1152);
+
+			WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
+			WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
+			break;
+		case KEK:
+			xil_printf("TARGET C : KEK Setup\r\n");
+			break;
+		default:
+
+			break;
 	}
-//	*** TARGETC Register Initial Values
-	WriteRegister(TC_SSTOUTFB_REG,		0x03a);
-
-	WriteRegister(TC_SSPIN_LE_REG,		9);	//TEST with SSPIN
-	WriteRegister(TC_SSPIN_TE_REG,		40);
-
-	WriteRegister(TC_WR_STRB2_LE_REG,	54);
-	WriteRegister(TC_WR_STRB2_TE_REG,	21);
-
-	WriteRegister(TC_WR2_ADDR_LE_REG,	30);
-	WriteRegister(TC_WR2_ADDR_TE_REG,	61);
-
-	WriteRegister(TC_WR_STRB1_LE_REG,	15);
-	WriteRegister(TC_WR_STRB1_TE_REG,	46);
-
-	WriteRegister(TC_WR1_ADDR_LE_REG,	0);
-	WriteRegister(TC_WR1_ADDR_TE_REG,	29);
-
-	WriteRegister(TC_VQBUFF_REG,	1100);
-	WriteRegister(TC_QBIAS_REG,		0);
-	WriteRegister(TC_VTRIMT_REG,	0x4d8);
-
-	WriteRegister(TC_VBIAS_REG,		0x4B0);
-
-	WriteRegister(TC_VAPBUFF_REG,	0x3D9);
-	//WriteRegister(TC_VADJP_REG,		0x480);
-	WriteRegister(TC_VADJP_REG,		1020);
-
-	WriteRegister(TC_VANBUFF_REG,	0x426);
-	//WriteRegister(TC_VADJN_REG,		0x8BB);
-	WriteRegister(TC_VADJN_REG,		2430);
-
-	WriteRegister(TC_SBBIAS_REG,	0x78E);
-	
-	WriteRegister(TC_VDISCH_REG,	0);
-	//WriteRegister(TC_ISEL_REG,		2600);
-	WriteRegister(TC_ISEL_REG,	0x8fc);
-	WriteRegister(TC_DBBIAS_REG,	0x690);
-
-	// Initial Base Value
-	WriteRegister(TC_CMPBIAS2_REG,	0x2D6);
-	WriteRegister(TC_PUBIAS_REG,	0xBCA);
-	WriteRegister(TC_CMPBIASIN_REG,	0x654);
-
-	WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
-	WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
-
 	xil_printf("DONE\r\n");
 	xil_printf("\r\n");
 }
@@ -81,51 +415,70 @@ int SetTargetCRegisters_DLL(void){
 	for(int i=0; i<64; i++){
 		WriteRegister(TC_VDLYTUNE_REG + i,	0);
 	}
-//	*** TARGETC Register Initial Values
-	WriteRegister(TC_SSTOUTFB_REG,		0x03a);
+	//	*** TARGETC Register Initial Values
+	WriteRegister(TC_SSTOUTFB_REG,		58);
 
-	WriteRegister(TC_SSPIN_LE_REG,		1);	//TEST with SSPIN
-	WriteRegister(TC_SSPIN_TE_REG,		20);
+	WriteRegister(TC_SSPIN_LE_REG,		7);	 // ? no value from Adrian
+	WriteRegister(TC_SSPIN_TE_REG,		38);
 
-	WriteRegister(TC_WR_STRB2_LE_REG,	55);
-	WriteRegister(TC_WR_STRB2_TE_REG,	6);
+	int delayline_WR_STRB1 = 0;
+	int delayline_WR_ADDR1 = 0;
+	int delayline_WR_STRB2 = 0;
+	int delayline_WR_ADDR2 = 0;
+	//WriteRegister(TC_WR_STRB2_LE_REG,	61);
+	WriteRegister(TC_WR_STRB2_LE_REG,	20);
+	//WriteRegister(TC_WR_STRB2_TE_REG,	7);
+	WriteRegister(TC_WR_STRB2_TE_REG,	30);
 
-	WriteRegister(TC_WR2_ADDR_LE_REG,	61);
-	WriteRegister(TC_WR2_ADDR_TE_REG,	7);
+	WriteRegister(TC_WR2_ADDR_LE_REG,	4);
+	WriteRegister(TC_WR2_ADDR_TE_REG,	10);
 
-	WriteRegister(TC_WR_STRB1_LE_REG,	25);
-	WriteRegister(TC_WR_STRB1_TE_REG,	10);
+	//WriteRegister(TC_WR_STRB1_LE_REG,	25);
+	WriteRegister(TC_WR_STRB1_LE_REG,	50);
+	//WriteRegister(TC_WR_STRB1_TE_REG,	10);
+	WriteRegister(TC_WR_STRB1_TE_REG,	60);
 
-	WriteRegister(TC_WR1_ADDR_LE_REG,	55);
-	WriteRegister(TC_WR1_ADDR_TE_REG,	6);
+	WriteRegister(TC_WR1_ADDR_LE_REG,	35);
+	WriteRegister(TC_WR1_ADDR_TE_REG,	45);
+		// WriteRegister(TC_WR_STRB2_LE_REG,	(15+delayline_WR_STRB2)%64);
+		// WriteRegister(TC_WR_STRB2_TE_REG,	(45+delayline_WR_STRB2)%64);
+		//
+		// WriteRegister(TC_WR2_ADDR_LE_REG,	(12+delayline_WR_ADDR2)%64);
+		// WriteRegister(TC_WR2_ADDR_TE_REG,	(42+delayline_WR_ADDR2)%64);
+		//
+		// //@ TC_VDLYTUNE_REG = 1000
+		// WriteRegister(TC_WR_STRB1_LE_REG,	(45+delayline_WR_STRB1)%64);
+		// WriteRegister(TC_WR_STRB1_TE_REG,	(15+delayline_WR_STRB1)%64);
+		//
+		//
+		// WriteRegister(TC_WR1_ADDR_LE_REG,	(42+delayline_WR_ADDR1)%64);
+		// WriteRegister(TC_WR1_ADDR_TE_REG,	(12+delayline_WR_ADDR1)%64);
 
-	WriteRegister(TC_VQBUFF_REG,	1100);
-	WriteRegister(TC_QBIAS_REG,		1500);
-	WriteRegister(TC_VTRIMT_REG,	0x4d8);
+	WriteRegister(TC_VQBUFF_REG,	1062);	// ADRIAN = 0
+	WriteRegister(TC_QBIAS_REG,		1500);		// ADRIAN no PLL
+	WriteRegister(TC_VTRIMT_REG,	1209);
 
-	WriteRegister(TC_VBIAS_REG,		0x4B0);
+	WriteRegister(TC_VBIAS_REG,		1130);
 
-	//WriteRegister(TC_VAPBUFF_REG,	0x400);//0x3D9);
-	WriteRegister(TC_VAPBUFF_REG,	0x3D9);
-	
-	WriteRegister(TC_VADJP_REG,		0x480);
-	//WriteRegister(TC_VADJP_REG,		767);
+	WriteRegister(TC_VAPBUFF_REG,	1100);	// should be 0
+	WriteRegister(TC_VADJP_REG,		1020);
+	//WriteRegister(TC_VADJP_REG,		1020);
 
 	WriteRegister(TC_VANBUFF_REG,	0);
-	//WriteRegister(TC_VADJN_REG,		0x8BB);
-	WriteRegister(TC_VADJN_REG,		2430);
+	WriteRegister(TC_VADJN_REG,		2948);//2235);
+	//WriteRegister(TC_VADJN_REG,		2430);
 
-	WriteRegister(TC_SBBIAS_REG,	0x78E);
-	
+	WriteRegister(TC_SBBIAS_REG,	1300);
+
 	WriteRegister(TC_VDISCH_REG,	0);
 	//WriteRegister(TC_ISEL_REG,		2600);
-	WriteRegister(TC_ISEL_REG,	0x8fc);
-	WriteRegister(TC_DBBIAS_REG,	0x690);
+	WriteRegister(TC_ISEL_REG,		0x8fC);
+	WriteRegister(TC_DBBIAS_REG,	1100);
 
 	// Initial Base Value
-	WriteRegister(TC_CMPBIAS2_REG,	0x2D6);
-	WriteRegister(TC_PUBIAS_REG,	0xBCA);
-	WriteRegister(TC_CMPBIASIN_REG,	0x654);
+	WriteRegister(TC_CMPBIAS2_REG,	737);
+	WriteRegister(TC_PUBIAS_REG,	3112);
+	WriteRegister(TC_CMPBIASIN_REG,	1152);
 
 	WriteRegister(TC_MISCDIG_REG,	0);		//nRD_EN, nWR1_Enable nWR2_Enable are set to
 	WriteRegister(TC_MONTIMING_REG,	0);		//INIT MonTiming PASS disable
@@ -135,8 +488,9 @@ int SetTargetCRegisters_DLL(void){
 }
 
 int GetTargetCStatus(){
-	xil_printf(">> STATUS:\t ");
-	decToHexa(regptr[TC_STATUS_REG] );
+	//xil_printf(">> STATUS:\t ");
+	//xil_printf("%x\r\n",regptr[TC_STATUS_REG]);
+	//decToHexa(regptr[TC_STATUS_REG] );
 	//xil_printf(" :");
 #ifdef VERBOSE
 	if(regptr[TC_STATUS_REG] & BUSY_MASK)	xil_printf("\t BUSY_MASK");
@@ -147,7 +501,7 @@ int GetTargetCStatus(){
 	//if(regptr[TC_STATUS_REG] & RESET_MASK)	xil_printf("\t RESET_MASK");
 
 #endif
-	xil_printf("\r\n");
+	return regptr[TC_STATUS_REG];
 }
 
 int GetTargetCControl(){

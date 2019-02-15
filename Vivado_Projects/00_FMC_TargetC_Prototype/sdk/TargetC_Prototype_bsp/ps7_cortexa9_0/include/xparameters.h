@@ -266,9 +266,9 @@
 #define XPAR_PS7_SLCR_0_S_AXI_HIGHADDR 0xF8000FFF
 
 
-/* Definitions for peripheral TARGETC_IP_PROTOTYPE_0 */
-#define XPAR_TARGETC_IP_PROTOTYPE_0_BASEADDR 0x60000000
-#define XPAR_TARGETC_IP_PROTOTYPE_0_HIGHADDR 0x7FFFFFFF
+/* Definitions for peripheral TARGET_C_TOPLEVEL_SY_0 */
+#define XPAR_TARGET_C_TOPLEVEL_SY_0_BASEADDR 0x60000000
+#define XPAR_TARGET_C_TOPLEVEL_SY_0_HIGHADDR 0x7FFFFFFF
 
 
 /******************************************************************/
@@ -341,7 +341,7 @@
 /******************************************************************/
 
 /* Definitions for Fabric interrupts connected to ps7_scugic_0 */
-#define XPAR_FABRIC_TARGETC_IP_PROTOTYPE_0_SSVALID_INTR_INTR 61U
+#define XPAR_FABRIC_TARGET_C_TOPLEVEL_SY_0_SSVALID_INTR_INTR 61U
 #define XPAR_FABRIC_AXI_DMA_0_S2MM_INTROUT_INTR 62U
 
 /******************************************************************/

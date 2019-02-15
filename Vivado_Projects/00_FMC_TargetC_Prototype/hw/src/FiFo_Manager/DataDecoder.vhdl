@@ -1,47 +1,37 @@
--- -----------------------------------------------------------
---!@FILE: 	DataDecoder.vhd
---!@AUTHOR: Jonathan Hendriks
---!@DATE: 	24th of January 2019
--- -----------------------------------------------------------
---!@DESCRIPTION:
---! Multiplexer of data according to the address
--- -----------------------------------------------------------
-
--- Librairies
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Entity
 entity DataDecoder is
  port(
      address: 	in	std_logic_vector(3 downto 0);
      dataOut :		out std_logic_vector(31 downto 0);
-
+     
      dataIN_0 :		in std_logic_vector(31 downto 0);
      dataIN_1 :		in std_logic_vector(31 downto 0);
      dataIN_2 :		in std_logic_vector(31 downto 0);
      dataIN_3 :		in std_logic_vector(31 downto 0);
-
+     
      dataIN_4 :		in std_logic_vector(31 downto 0);
      dataIN_5 :		in std_logic_vector(31 downto 0);
      dataIN_6 :		in std_logic_vector(31 downto 0);
      dataIN_7 :		in std_logic_vector(31 downto 0);
-
+     
      dataIN_8 :		in std_logic_vector(31 downto 0);
      dataIN_9 :		in std_logic_vector(31 downto 0);
      dataIN_10 :	in std_logic_vector(31 downto 0);
      dataIN_11 :	in std_logic_vector(31 downto 0);
-
+     
      dataIN_12 :	in std_logic_vector(31 downto 0);
      dataIN_13 :	in std_logic_vector(31 downto 0);
      dataIN_14 :	in std_logic_vector(31 downto 0);
      dataIN_15 :	in std_logic_vector(31 downto 0)
+     
+    
   );
 end DataDecoder;
 
--- architecture
-architecture behavior of DataDecoder is
+architecture bhv of DataDecoder is
 begin
 
 	dataOut <=	dataIN_0 when address = "0000" else
@@ -61,4 +51,4 @@ begin
 				dataIN_14 when address = "1110" else
 				dataIN_15 when address = "1111" else
 				(others => '0');
-end architecture;
+end bhv;

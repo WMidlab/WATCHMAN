@@ -1,10 +1,10 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Sat Dec  8 09:30:10 2018
+// Date        : Thu Feb 14 10:58:28 2019
 // Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
-// Command     : write_verilog -force -mode funcsim -rename_top base_zynq_rst_ps7_0_50M_0 -prefix
-//               base_zynq_rst_ps7_0_50M_0_ base_zynq_rst_ps7_0_50M_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               /home/jonathan/GitProjects/WATCHMAN/Vivado_Projects/00_FMC_TargetC_Prototype/hw/bd/base_zynq/ip/base_zynq_rst_ps7_0_50M_0/base_zynq_rst_ps7_0_50M_0_sim_netlist.v
 // Design      : base_zynq_rst_ps7_0_50M_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -69,6 +69,7 @@ module base_zynq_rst_ps7_0_50M_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "cdc_sync" *) 
 module base_zynq_rst_ps7_0_50M_0_cdc_sync
    (lpf_asr_reg,
     scndry_out,
@@ -250,6 +251,7 @@ module base_zynq_rst_ps7_0_50M_0_cdc_sync_0
         .O(lpf_exr_reg));
 endmodule
 
+(* ORIG_REF_NAME = "lpf" *) 
 module base_zynq_rst_ps7_0_50M_0_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -398,6 +400,7 @@ endmodule
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b0" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "zynq" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
+(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module base_zynq_rst_ps7_0_50M_0_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -514,6 +517,7 @@ module base_zynq_rst_ps7_0_50M_0_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "sequence_psr" *) 
 module base_zynq_rst_ps7_0_50M_0_sequence_psr
    (MB_out,
     Bsr_out,
@@ -754,6 +758,7 @@ module base_zynq_rst_ps7_0_50M_0_sequence_psr
         .R(lpf_int));
 endmodule
 
+(* ORIG_REF_NAME = "upcnt_n" *) 
 module base_zynq_rst_ps7_0_50M_0_upcnt_n
    (Q,
     seq_clr,

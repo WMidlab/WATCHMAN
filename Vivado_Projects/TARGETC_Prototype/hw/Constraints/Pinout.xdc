@@ -2,14 +2,17 @@
 # PINOUT Constraint File
 # ----------------------------------------------------------------------------
 
-set_property PACKAGE_PIN G20 [get_ports {PB1}];  			# "G20.JX2_LVDS_16_N.JX2.69.PB1"
-
 set_property PULLUP true [get_ports SDA]
 set_property PULLUP true [get_ports SCL]
+
+set_property DIFF_TERM TRUE [get_ports MONTIMING_P]
+set_property DIFF_TERM TRUE [get_ports MONTIMING_N]
+
 # ----------------------------------------------------------------------------
 # FMC Expansion Connector - Bank 34
 # ----------------------------------------------------------------------------
 
+set_property PACKAGE_PIN G20 [get_ports {PB1}];  			# "G20.JX2_LVDS_16_N.JX2.69.PB1"
 set_property PACKAGE_PIN Y14 [get_ports BB3]
 set_property PACKAGE_PIN U14 [get_ports BB4]
 set_property PACKAGE_PIN U20 [get_ports {BB6}];     #{LA08_N}];  # "U20.JX1_LVDS_14_N.JX1.55.LA08_N"

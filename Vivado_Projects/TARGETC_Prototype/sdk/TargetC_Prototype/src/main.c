@@ -35,10 +35,10 @@ int main(void)
 
 	axidma_flg = FALSE;
 	head = NULL;
-	
+
 	ControlRegisterWrite(TRIG_CLEAR_MASK,ENABLE);
 	ControlRegisterWrite(TRIG_CLEAR_MASK,DISABLE);
-	
+
     init_platform();
 	platform_setup_interrupts();
 	platform_enable_interrupts();
@@ -77,6 +77,7 @@ int main(void)
 	GetTargetCStatus();
 	ControlRegisterWrite(REGCLR_MASK,DISABLE);
     ControlRegisterWrite(SWRESET_MASK,ENABLE);
+	ControlRegisterWrite(PSBUSY_MASK,DISABLE);
     GetTargetCControl();
  	usleep(100000);
  	GetTargetCStatus();
@@ -94,9 +95,26 @@ int main(void)
 	xil_printf("\n\r*** REGISTERS *** \n\r");
     //SetTargetCRegisters();
     SetTargetCRegisters_DLL();
-
+	xil_printf("\n\r*** End REGISTERS *** \n\r");
     //GetTargetCStatus();
 
+	xil_printf("*** Checking DLL ****\r\n");
+	WriteRegister(TC_MONTIMING_REG, TC_MT_SSTOUTFB_MASK );
+	sleep(1);
+
+	WriteRegister(TC_VQBUFF_REG,	0);
+	WriteRegister(TC_VANBUFF_REG,	1100);
+	WriteRegister(TC_VADJN_REG,		2235);
+	WriteRegister(TC_VQBUFF_REG,	1062);
+
+	WriteRegister(TC_VANBUFF_REG,	0);
+	// write_asic_direct_register(BS, carrier, asic, 178, 0)  # Vqbuff is Qbias buffer bias
+	// write_asic_direct_register(BS, carrier, asic, 183, 1300)  # VANbuff # 1300 rec'd by Gary
+	// write_asic_direct_register(BS, carrier, asic, 182, 1530)  # VadjN
+	// write_asic_direct_register(BS, carrier, asic, 178, 1300)  # Vqbuff is Qbias buffer bias
+	// write_asic_direct_register(BS, carrier, asic, 183, 0)  # VANbuff # 1300 rec'd by Gary
+	xil_printf("FIGHT\r\n");
+	sleep(5);
     //int* registers = XPAR_TARGETC_0_TC_AXI_BASEADDR;
 
 /*	xil_printf("\n\r*** Testing ISEL *** \n\r");
@@ -116,126 +134,28 @@ int main(void)
 		isel -= 100;
 	}
 */
+	xil_printf("Test Pattern Register Write\r\n");
+	WriteReadBackRegister(TC_TPG_REG, 0x123);
+    // xil_printf("\n\r*** Test Pattern Generator *** \n\r");
+	// //TestPatternGenerator(0x505);
+    // sleep(1);
+	//
+    // //TestPatternGenerator(0xA69);
+	// sleep(1);
+	//
+	// //TestPatternGenerator(0x555);
+    // sleep(1);
+	//
+    // //TestPatternGenerator(0x111);
+	// sleep(1);
 
-	xil_printf("\n\r*** DEBUG *** \n\r");
-	regptr[TC_DEBUGSEL_REG] = BBX_ReadEN;
-	xil_printf("TC_DEBUGSEL_REG = 0x%x",regptr[TC_DEBUGSEL_REG]);
-	sleep(2);
-
-     xil_printf("\n\r*** Test Pattern Generator *** \n\r");
-	//TestPatternGenerator(0x505);
-    sleep(1);
-
-    //TestPatternGenerator(0xA69);
-	sleep(1);
-	
-	//TestPatternGenerator(0x555);
-    sleep(1);
-
-    //TestPatternGenerator(0x111);
-	sleep(1);
-
-  	xil_printf("\n\r*** Pedestals *** \n\r");
+	xil_printf("\n\r*** Pedestals *** \n\r");
 	init_pedestals();
   	xil_printf("\n\r*** End Pedestals *** \n\r");
-  	
-  	for(int tmp=0; tmp<5; tmp++){
-  		sleep(1);
-  		xil_printf("...\t");
-	}
-	xil_printf("... DONE\r\n");
-	sleep(1);
 
-
-// *** Vadjustement ***
-/*	xil_printf("\n\r*** Vadjustement *** \n\r");
-	int vadjp = 0, vadjn =0;
-	int LE = 0, TE = 0;
-	
-
-	int sw = 0;
-	//SSTOUT OK
-	xil_printf("SSTOUT OK \r\n");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSTOUTFB_MASK );
-	sleep(3);
-	
-
-	vadjp = 0;
-	int upper = 0, lower = 0;
-	
-	upper = 800;
-	lower = 700;
-	
-	vadjp = lower;
-	while(vadjp < upper){
-		usleep(500000);
-		WriteRegister(TC_VADJP_REG,	vadjp);
-
-		xil_printf("VadjP\t%d\r\n",vadjp);
-		vadjp = vadjp + 1;
-	}
-	LE = 50;
-	while((LE < 64)){
-		//usleep(50000);
-		WriteRegister(TC_SSTOUTFB_REG,		LE);
-		xil_printf("LE: %d\tTE: %d\r\n",LE,TE);
-		sleep(1);
-		LE = LE + 1;
-	}
-	
-*/
-	
-
-	/*
-	xil_printf("SSPIN OK \r\n");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSPIN_MASK );
-	sleep(5);
-
-
-	xil_printf("SSPOUT OK \r\n");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSPOUT_MASK );
-	sleep(3);
-
-
-	xil_printf("WR1_ADDR_SYNC\t");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR1_ADDR_SYNC_MASK );
-	sleep(3);
-
-	xil_printf("WR_STRB1\t");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR_STRB1_MASK );
-	sleep(3);
-
-	xil_printf("WR2_ADDR_SYNC\t");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR2_ADDR_SYNC_MASK );
-	sleep(3);
-
-	xil_printf("WR_STRB2\t");
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_WR_STRB2_MASK );
-	sleep(3);
-*/
-	WriteReadBackRegister(TC_MONTIMING_REG, TC_MT_SSPOUT_MASK );
-	int LE = 2;
-	int TE = 0;
-
-	while((LE < 64)){
-		//usleep(50000);
-		WriteRegister(TC_SSPIN_LE_REG,		LE);
-
-		TE = 0;
-		while((TE < 64)){
-
-			WriteRegister(TC_SSPIN_TE_REG,		TE);
-			sleep(1);
-			xil_printf("LE: %d\tTE: %d\r\n",LE,TE);
-			TE = TE + 1;
-
-		}
-		LE = LE + 1;
-
-		xil_printf("\r\n");
-		xil_printf("\r\n");
-	}
-
+	xil_printf("\n\r*** MonTiming *** \n\r");
+	//MonTimingSet();
+	xil_printf("\n\r*** End MonTiming *** \n\r");
 // *** Test Stream ***
 
 /*	xil_printf("\r\n*** TestStream ***\r\n");
@@ -289,7 +209,7 @@ int main(void)
 	sleep(2);
 */
 // TEST FIFO
-/*	xil_printf("\r\n*** Test FIFO ***\r\n");
+	xil_printf("\r\n*** Test FIFO ***\r\n");
     NBRWINDOWS = 1;
 	axidma_flg = FALSE;
 	head = malloc(sizeof(struct ele_list_st));
@@ -297,15 +217,15 @@ int main(void)
 		printf("Fuck malloc\r\n");
 	}
 	head->pnext = NULL;
-	
+
  	Xil_DCacheFlushRange(&(head->wdo), sizeof(struct window_st));
 	XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(head->wdo), sizeof(struct window_st));
-  
+
     //switch to stream rather than normal Axi-Lite
     ControlRegisterWrite(SMODE_MASK ,ENABLE);
 
 	samplecnt = 0;
-
+	ControlRegisterWrite(PSBUSY_MASK,DISABLE);
    	ControlRegisterWrite(SS_TPG_MASK,ENABLE);	// SAmple and not TPG
 
     regptr[TC_FSTWINDOW_REG] = 0;
@@ -328,10 +248,10 @@ int main(void)
 		if(axidma_rx_done){
 			//sleep(1);
 			Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
-			
+
 			xil_printf("HEADER\r\n");
 			xil_printf("------------\r\n");
-			
+
 //			xil_printf("Window Time :\t%d\r\n",head->wdo.wdotime);
 //			xil_printf("Dig Time :\t%d\r\n",head->wdo.digtime);
 //			xil_printf("Trigger :\t%d\r\n",head->wdo.trig);
@@ -379,12 +299,11 @@ int main(void)
 	sleep(2);
 	free(head);
 
-*/
+
 
 
 		xil_printf("******** Multiple Window - Multiple Window *************\r\n");
 
-		uint32_t data[16][32];
 		//int timeout;
 		int flg_error = 0;
 
@@ -435,7 +354,7 @@ int main(void)
 					xil_printf("Head%d\t%d\r\n",times,head);
 
 					Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
-					//Xil_DCacheInvalidateRange(&(axiptr->wdo), sizeof(struct window_st));
+					Xil_DCacheInvalidateRange(&(axiptr->wdo), sizeof(struct window_st));
 
 					for(int i=0; i<6; i++){
 						xil_printf("Header%d:\t%d\t\t%d\r\n",i,head->wdo.header[i],axiptr->wdo.header[i]);
@@ -478,6 +397,10 @@ int main(void)
 			}
 			else{
 				xil_printf("Timeout\r\n");
+				for(int i=0; i<6; i++){
+					xil_printf("Header%d:\t%d\t\t%d\r\n",i,head->wdo.header[i],axiptr->wdo.header[i]);
+				}
+
 				flg_error = 1;
 			}
 
@@ -499,7 +422,7 @@ int main(void)
 		//free(axiptr);
 
 		xil_printf("\r\n*** Multiple Window Finished ***\r\n");
-		
+
 
 // END CLEANING UP
     xil_printf("\n\r*** ************************** ***");
@@ -516,6 +439,8 @@ int main(void)
 	platform_cleanup_interrupts();
     cleanup_platform();
 
+	free(axiptr);
+	free(head);
 
     xil_printf("\r\n***          Finished          ***\r\n");
 

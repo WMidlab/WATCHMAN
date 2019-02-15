@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.simulation_pkg.all;
 use work.TARGETC_pkg.all;
-use work.WindowCPU_pkg.all;
+use work.WindowCPU_pkg_old.all;
 use std.textio.all;
 
 entity TB_RoundBufferElement is
@@ -115,7 +115,7 @@ architecture implementation of TB_RoundBufferElement is
 		wr1_en:		in std_logic_vector(NBRWINDOWS-1 downto 0);
 		Wr2_en:		in std_logic_vector(NBRWINDOWS-1 downto 0);
 
-		triginfo:	in TrigInfoBus_t(NBRWINDOWS-1 downto 0);
+		--triginfo:	in TrigInfoBus_t(NBRWINDOWS-1 downto 0);
 
 		-- FIFO out for Reading RDAD
 		RDAD_ReadEn  :in  std_logic;
@@ -199,7 +199,7 @@ architecture implementation of TB_RoundBufferElement is
 	signal NEXTTRIGBus : T_TriggerBusArray;
 	signal PREVTRIGBus : T_TriggerBusArray;
 
-	signal 	triginfo_intl:	TrigInfoBus_t(16-1 downto 0);
+	--signal 	triginfo_intl:	TrigInfoBus_t(16-1 downto 0);
 
 
 	signal trigger_sti : std_logic_vector(3 downto 0);
@@ -261,7 +261,9 @@ begin
 		wr2_en			=> wr2_en(0),
 		Scnt			=> Scnt_intl,
 		trigger			=> trigger_sti,
-		TrigInfo_OUT	=> triginfo_intl(0),
+				--TrigInfo_OUT	=> triginfo_intl(0)
+				
+		TrigInfo_OUT	=> open,
 		CurAddr			=> CurWindowCnt,
 
 		PREVBus_IN 		=> PREVBus_intl(0),
@@ -298,7 +300,8 @@ begin
 			wr2_en			=> wr2_en(I),
 			Scnt			=> Scnt_intl,
 			trigger			=> trigger_sti,
-			TrigInfo_OUT	=> triginfo_intl(I),
+			--TrigInfo_OUT	=> triginfo_intl(I),
+			TrigInfo_OUT	=> open,
 			CurAddr			=> CurWindowCnt,
 
 			PREVBus_IN 		=> PREVBus_intl(I),
@@ -335,7 +338,8 @@ begin
 		wr2_en			=> wr2_en(15),
 		Scnt			=> Scnt_intl,
 		trigger			=> trigger_sti,
-		TrigInfo_OUT	=> triginfo_intl(15),
+		--TrigInfo_OUT	=> triginfo_intl(15),
+		TrigInfo_OUT	=> open,
 		CurAddr			=> CurWindowCnt,
 		PREVBus_IN => PREVBus_intl(15),
 		PREVBus_OUT =>  PREVBus_intl(0),
@@ -395,7 +399,8 @@ begin
 		wr1_en		=> wr1_en,
 		Wr2_en		=> wr2_en,
 
-		TrigInfo 	=> triginfo_intl,
+		--TrigInfo 	=> triginfo_intl,
+		--TrigInfo	=> (others => (others => '0')),
 		-- FIFO out for Reading RDAD
 		RDAD_ReadEn  => RDAD_ReadEn_sti,
 		RDAD_DataOut => RDAD_DataOut_obs,
@@ -440,7 +445,7 @@ begin
 	begin
 		simulation_end_s <= '0';
 		nrst <= '0';
-		CtrlBus_IxSL_intl.SWRESET <= '1';
+		--CtrlBus_IxSL_intl.SWRESET <= '1';
 		trigger_sti <= "0000";
 		CtrlBus_IxSL_intl.WindowStorage <= '0';
 		wait for 10 us;

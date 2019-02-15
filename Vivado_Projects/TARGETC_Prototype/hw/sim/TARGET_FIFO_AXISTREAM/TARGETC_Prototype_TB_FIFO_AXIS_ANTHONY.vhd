@@ -102,6 +102,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			TestStream:		out std_logic;
 			PSBusy:			out std_logic;
 			FIFOresponse:	in	std_logic;
+			FIFOBusy:		in	std_logic;
 			CH0 :			out	std_logic_vector(11 downto 0);
 			CH1 :			out	std_logic_vector(11 downto 0);
 			CH2 :			out	std_logic_vector(11 downto 0);
@@ -139,6 +140,9 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 
 			TestFIFO:		out std_logic;
 					-- Interrupt SIGNALS
+			Cnt_AXIS_DATA:		in std_logic_Vector(9 downto 0);
+			CNT_CLR:			out std_logic;
+			
 			SSVALID_INTR:	out	std_logic;
 
 			-- DEBUG OUTPUTs
@@ -162,7 +166,7 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 		--DATA INCOMING
 		PRECvalid:	in	std_logic;
 		FIFOresponse:	out std_logic;
-
+		FIFOBusy:		out	std_logic;
 		TestFIFO:		in std_logic;
 		--Header Information
 		FIFO_ReadEn:	out	std_logic;
@@ -215,6 +219,8 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 			FIFOvalid:			in std_logic;
 			FIFOdata:			in std_logic_vector(C_M_AXIS_TDATA_WIDTH-1 downto 0);
 			StreamReady:		out	std_logic;
+			Cnt_AXIS_DATA:		out std_logic_Vector(9 downto 0);
+			CNT_CLR:			in std_logic;
 			-- User ports ends
 			-- NBRWINDOW
 			--NBRWINDOW:		in std_logic_vector(31 downto 0);
@@ -287,8 +293,12 @@ architecture implementation of TARGETC_Prototype_TB_FIFO_AXIS is
 
 	signal FIFOData_intl: eDO_BUS_TYPE;
 	signal FIFOresponse_intl : std_logic;
+	signal FIFObusy_intl : std_logic;
 	signal SSValid_intl:	std_logic;
 	signal NBRWINDOW_sti : std_logic_vector(31 downto 0);
+
+	signal Cnt_AXIS_DATA_intl : std_logic_vector(9 downto 0);
+	signal Cnt_CLR_intl : std_logic;
 
 	signal M_AXIS_TREADY_sti:	std_logic := '0';
 	signal M_AXIS_TLAST_obs : std_logic;
@@ -394,9 +404,13 @@ begin
 		MONTIMING_N		=> montiming_n,		-- Pin#117
 
 	-- FIFO
+		Cnt_AXIS_DATA	=> Cnt_AXIS_DATA_intl,
+		CNT_CLR			=> Cnt_clr_intl,
+
 		TestStream	=> TestStream_sti,
 		PSBusy		=> open,
 		FIFOresponse	=> FIFOresponse_intl,
+		FIFOBusy => FIFObusy_intl,
 		CH0 		=> FIFOData_intl.CH0,
 		CH1 		=> FIFOData_intl.CH1,
 		CH2 		=> FIFOData_intl.CH2,
@@ -458,6 +472,8 @@ begin
 			FIFOvalid	=> FIFOvalid_sti,
 			FIFOdata	=> FIFOData_sti,
 			StreamReady	=> ready_sti,
+			Cnt_AXIS_DATA	=> Cnt_AXIS_DATA_intl,
+			CNT_CLR			=> Cnt_clr_intl,
 			-- User ports ends
 			-- Do not modify the ports beyond this line
 			--NBRWINDOW => NBRWINDOW_sti,
@@ -481,7 +497,7 @@ begin
 
 		PRECvalid	=> SSvalid_intl,
 		FIFOresponse	=> FIFOresponse_intl,
-
+		FIFOBusy => FIFObusy_intl,
 
 		TestFIFO => TestFIFO_intl,
 		--Header Information
@@ -705,7 +721,7 @@ begin
 		wait for 1 us;
 
 		M_AXIS_TREADY_sti <= '1';
-		
+
 		wait for 10 us;
 		report "FIFO TEST!";
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
@@ -716,7 +732,7 @@ begin
 		wait until s00_axi_BVALID = '1';
 		wait until s00_axi_BVALID = '0';  --AXI Write finished
 		wait for 1 us;
-		
+
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
 		s00_axi_WDATA<= C_SWRESET_MASK or C_TESTFIFO_MASK or  C_SMODE_MASK ;
 		s00_axi_WSTRB<=b"1111";
@@ -725,7 +741,7 @@ begin
 		wait until s00_axi_BVALID = '1';
 		wait until s00_axi_BVALID = '0';  --AXI Write finished
 		wait for 10 us;
-		
+
 		s00_axi_AWADDR<=std_logic_vector(to_unsigned(TC_CONTROL_REG*4, s00_axi_AWADDR'length));
 		s00_axi_WDATA<= C_SWRESET_MASK;
 		s00_axi_WSTRB<=b"1111";
@@ -735,7 +751,7 @@ begin
 		wait until s00_axi_BVALID = '0';  --AXI Write finished
 		wait for 1 us;
 		wait for 20 us;
-		
+
 		WRITE(L,string'("Timings for simulation (From Order AXI to AXIS TLast):" & CR & LF));
 
 		for J in 0 to 511 loop

@@ -23,7 +23,7 @@ use work.AXI_Lite_pkg.all;
 -------------------------------------------------------
 --! Entity declaration for TARGETC_IP_Prototype .
 -------------------------------------------------------
-entity TARGETC_IP_Prototype is
+entity TARGET_C_TopLevel_System is
 	-- Generic Parameters :
 
 	-- Port Parameters :
@@ -113,43 +113,13 @@ entity TARGETC_IP_Prototype is
 		MONTIMING_P:	in	std_logic;		-- Pin#118
 		MONTIMING_N:	in	std_logic;		-- Pin#117
 
-		TestFiFO:	out std_logic;
+		Cnt_AXIS_DATA:	in	std_logic_vector(9 downto 0);
+		CNT_CLR:		out std_logic;
 
-		-- FIFO Interface
-		FIFO_ReadEn:	in	std_logic;
-		FIFO_Time : 	out std_logic_vector(63 downto 0);
-		FIFO_WdoAddr : 	out std_logic_vector(8 downto 0);
-		FIFO_TrigInfo : out std_logic_vector(11 downto 0);
-		FIFO_Spare :	out std_logic_vector(9 downto 0);
-		FIFO_Empty	: 	out std_logic;
-		-- WDOTime:			out std_logic_vector(63 downto 0);
-		-- DIGTime:			out std_logic_vector(63 downto 0);
-		-- Trigger:			out std_logic_vector(31 downto 0);
-		-- WDONbr:				out std_logic_vector(8 downto 0);
-
-		TestStream:		out std_logic;
-		PSBusy:			out	std_logic;
-		FIFOresponse:	in	std_logic;
-		CH0 :			out	std_logic_vector(11 downto 0);
-		CH1 :			out	std_logic_vector(11 downto 0);
-		CH2 :			out	std_logic_vector(11 downto 0);
-		CH3 :			out	std_logic_vector(11 downto 0);
-
-		CH4 :			out	std_logic_vector(11 downto 0);
-		CH5 :			out	std_logic_vector(11 downto 0);
-		CH6 :			out	std_logic_vector(11 downto 0);
-		CH7 :			out	std_logic_vector(11 downto 0);
-
-		CH8 :			out	std_logic_vector(11 downto 0);
-		CH9 :			out	std_logic_vector(11 downto 0);
-		CH10 :			out	std_logic_vector(11 downto 0);
-		CH11 :			out	std_logic_vector(11 downto 0);
-
-		CH12 :			out	std_logic_vector(11 downto 0);
-		CH13 :			out	std_logic_vector(11 downto 0);
-		CH14 :			out	std_logic_vector(11 downto 0);
-		CH15 :			out	std_logic_vector(11 downto 0);
-		SSvalid:		out std_logic;
+		-- DATA TO STREAM
+		FIFOvalid:			out std_logic;
+		FIFOdata:			out std_logic_vector(31 downto 0);
+		StreamReady:		in	std_logic;
 
 		-- Trigger
 		TrigA :			in std_logic;
@@ -167,11 +137,11 @@ entity TARGETC_IP_Prototype is
 		BB4 :	out std_logic;
 		BB5 :	out std_logic
 	);
-end TARGETC_IP_Prototype;
+end TARGET_C_TopLevel_System;
 
 -------------------------------------------------------
 --! @brief architecture definition of TARGETC_IP_Prototype
-architecture arch_imp of TARGETC_IP_Prototype is
+architecture arch_imp of TARGET_C_TopLevel_System is
 
 	-------------------------------------------------------
 	-- Component Declaration
@@ -193,6 +163,8 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		ClockBus:		out T_ClockBus;
 
 		Timecounter:	out std_logic_vector(63 downto 0);
+		Timestamp:		out T_timestamp;
+		--GrayTimeCnt:	out std_logic_vector(63 downto 0);
 
 		HSCLKdif:		in std_logic;		-- Pin#43 to Pin#44
 
@@ -236,10 +208,15 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 				LOAD_PERIOD : 		in  STD_LOGIC_VECTOR(15 downto 0);
 				LATCH_PERIOD : 		in  STD_LOGIC_VECTOR(15 downto 0);
-				UPDATE : 			in  STD_LOGIC;
-				REG_DATA_IN : 		in  STD_LOGIC_VECTOR(18 downto 0);
-				REG_DATA_OUT : 		out std_logic_vector(18 downto 0);
-		       	busy		: 		out std_logic;
+				-- UPDATE : 			in  STD_LOGIC;
+				-- REG_DATA_IN : 		in  STD_LOGIC_VECTOR(18 downto 0);
+				-- REG_DATA_OUT : 		out std_logic_vector(18 downto 0);
+		       	-- busy		: 		out std_logic;
+
+	            CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+	    		--CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+				TC_BUS: 		out std_logic_vector(18 downto 0);
+				BUSY:			out std_logic;
 
 				SIN : out  STD_LOGIC;
 		       	SCLK : out  STD_LOGIC;
@@ -247,40 +224,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		       	SHOUT: in	STD_LOGIC);
 	end component TARGETX_DAC_CONTROL;
 
-	-- component RoundBufferGray500MHz is
-	-- 	Generic (
-	-- 	MAXWINDOWS : integer := 4
-	-- 	);
-	-- 	Port (
-	-- 	RST : 			in	STD_Logic;
-	--
-	-- 	ClockBus:		in T_ClockBus;
-	--
-	-- 	TimeCounter:	in	std_logic_vector(63 downto 0);
-	-- 	--eTPG :			in std_logic;
-	--
-	-- 	WR_RS_S:		out std_logic_vector(1 downto 0);
-	-- 	WR_CS_S:		out std_logic_vector(5 downto 0);
-	--
-	--
-	-- 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
-	-- 	CtrlBus_OxSL:		out T_CtrlBus_OxSL;
-	--
-	-- 	-- FIFO out for Reading RDAD
-	-- 	RDAD_ReadEn  :in  std_logic;
-	-- 	RDAD_DataOut : out std_logic_vector(100+5 downto 0);
-	-- 	--RDAD_CLK     :in  std_logic;	-- RDAD CLK
-	-- 	RDAD_Empty	: out std_logic;
-	--
-	-- 	-- FIFO IN for Digiting
-	-- 	DIG_Full	: out	std_logic;
-	-- 	DIG_DataIn	: in	std_logic_vector(8 downto 0);
-	-- 	DIG_WriteEn	: in	std_logic
-	-- 	--DIG_CLK   	: in	std_logic
-	-- 	);
-	-- end component RoundBufferGray500MHz;
-
-	component RoundBufferV5 is
+	component RoundBufferV6 is
 		generic(
 			NBRWINDOWS : integer := 128
 		);
@@ -288,6 +232,8 @@ architecture arch_imp of TARGETC_IP_Prototype is
 			--nrst : 			in	std_Logic;
 			ClockBus:		in T_ClockBus;
 			Timecounter:	in std_logic_vector(63 downto 0);
+			Timestamp:		in T_timestamp;
+			--GrayTimeCnt:	in std_logic_vector(63 downto 0);
 
 			trigger : 		in std_logic_vector(3 downto 0);
 
@@ -295,26 +241,27 @@ architecture arch_imp of TARGETC_IP_Prototype is
 			WR_CS_S:		out std_logic_vector(5 downto 0);
 
 			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+			--CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+
+			RBNbrOfPackets: out std_logic_vector(7 downto 0);
 
 			RDAD_ReadEn  :in  std_logic;
-			RDAD_DataOut : out std_logic_vector(9 downto 0);
+			RDAD_DataOut : out std_logic_vector(8 downto 0);
 			RDAD_Empty	: out std_logic;
 
 			AXI_ReadEn:	in	std_logic;
 			AXI_Time_DataOut : out std_logic_vector(63 downto 0);
 			AXI_WdoAddr_DataOut : out std_logic_vector(8 downto 0);
 			AXI_TrigInfo_DataOut : out std_logic_vector(11 downto 0);
-			AXI_Spare_DataOut :	out std_logic_vector(9 downto 0);
+			AXI_Spare_DataOut :	out std_logic_vector(10 downto 0);
 			AXI_Empty	: out std_logic;
 
 			-- FIFO IN for Digiting
 		    DIG_Full	: out	std_logic;
 		    DIG_DataIn	: in	std_logic_vector(8 downto 0);
-		    DIG_WriteEn	: in	std_logic;
-
-			sDEBUG :	out std_logic_vector(7 downto 0)
+		    DIG_WriteEn	: in	std_logic
 		);
-	end component RoundBufferV5;
+	end component RoundBufferV6;
 
 	component TARGETC_RDAD_WL_SMPL is
 		Port (
@@ -325,7 +272,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		INCR_WAIT_PERIOD:	in std_logic_vector(15 downto 0);
 
 		ClockBus:		in T_ClockBus;
-		TimeCounter:	in std_logic_vector(63 downto 0);
+		--TimeCounter:	in std_logic_vector(63 downto 0);
 
 		RDAD_CLK:		out	std_logic;		-- Pin#61
 		RDAD_SIN:		out	std_logic;		-- Pin#62
@@ -333,11 +280,10 @@ architecture arch_imp of TARGETC_IP_Prototype is
 
 		-- Fifo from storage
 		RDAD_ReadEn  :	out	std_logic;
-		RDAD_DataOut : 	in	std_logic_vector(9 downto 0);
+		RDAD_DataOut : 	in	std_logic_vector(8 downto 0);
 		--RDAD_CLK     :	out	std_logic;	-- RDAD CLK
 		RDAD_Empty	: 	in 	std_logic;
 
-		TestFIFO:		out std_logic;
 		-- FIFO IN for Digiting
 		DIG_Full	: in	std_logic;
 		DIG_DataIn	: out	std_logic_vector(8 downto 0);
@@ -353,13 +299,91 @@ architecture arch_imp of TARGETC_IP_Prototype is
 		SS_RESET:		out std_logic;
 
 		CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
-		CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+		--CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+		WindowBusy:		out std_logic;
+		RAMP_CNT:		out std_logic;
+		DO_BUS:			out eDO_BUS_TYPE;
+		SSvalid:		out std_logic;
 
-		FIFOresponse:		in std_logic
+		--Channels
+		CH0 :			out	std_logic_vector(11 downto 0);
+		CH1 :			out	std_logic_vector(11 downto 0);
+		CH2 :			out	std_logic_vector(11 downto 0);
+		CH3 :			out	std_logic_vector(11 downto 0);
 
-		);
+		CH4 :			out	std_logic_vector(11 downto 0);
+		CH5 :			out	std_logic_vector(11 downto 0);
+		CH6 :			out	std_logic_vector(11 downto 0);
+		CH7 :			out	std_logic_vector(11 downto 0);
+
+		CH8 :			out	std_logic_vector(11 downto 0);
+		CH9 :			out	std_logic_vector(11 downto 0);
+		CH10 :			out	std_logic_vector(11 downto 0);
+		CH11 :			out	std_logic_vector(11 downto 0);
+
+		CH12 :			out	std_logic_vector(11 downto 0);
+		CH13 :			out	std_logic_vector(11 downto 0);
+		CH14 :			out	std_logic_vector(11 downto 0);
+		CH15 :			out	std_logic_vector(11 downto 0);
+
+		--Request and Acknowledge -
+		Handshake_IxSEND:	in 	T_Handshake_IxSEND;
+		Handshake_Data:		out T_Handshake_SS_FIFO;
+		Handshake_OxSEND:	out T_Handshake_OxSEND
+	);
 	end component TARGETC_RDAD_WL_SMPL;
 
+	component FifoManagerV4 is
+		generic (
+			C_M_AXIS_TDATA_WIDTH	: integer	:= 32
+		);
+		port (
+			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
+			--CtrlBus_OxSL:		out	T_CtrlBus_OxSL; --Outputs from Control Master
+			FIFOBusy:		out std_logic;
+
+			ClockBus:		in T_ClockBus;
+
+			--Request and Acknowledge - READOUT
+			Handshake_IxRECV:	in 	T_Handshake_IxRECV;
+			Handshake_Data:		in T_Handshake_SS_FIFO;
+			Handshake_OxRECV:	out T_Handshake_OxRECV;
+
+			--Header Information from FIFO
+			FIFO_ReadEn:	out	std_logic;
+			FIFO_Time : 	in 	std_logic_vector(63 downto 0);
+			FIFO_WdoAddr : 	in 	std_logic_vector(8 downto 0);
+			FIFO_TrigInfo : in 	std_logic_vector(11 downto 0);
+			FIFO_Spare :	in 	std_logic_vector(10 downto 0);
+			FIFO_Empty	: 	in 	std_logic;
+
+			--Channels
+			CH0 :			in	std_logic_vector(11 downto 0);
+			CH1 :			in	std_logic_vector(11 downto 0);
+			CH2 :			in	std_logic_vector(11 downto 0);
+			CH3 :			in	std_logic_vector(11 downto 0);
+
+			CH4 :			in	std_logic_vector(11 downto 0);
+			CH5 :			in	std_logic_vector(11 downto 0);
+			CH6 :			in	std_logic_vector(11 downto 0);
+			CH7 :			in	std_logic_vector(11 downto 0);
+
+			CH8 :			in	std_logic_vector(11 downto 0);
+			CH9 :			in	std_logic_vector(11 downto 0);
+			CH10 :			in	std_logic_vector(11 downto 0);
+			CH11 :			in	std_logic_vector(11 downto 0);
+
+			CH12 :			in	std_logic_vector(11 downto 0);
+			CH13 :			in	std_logic_vector(11 downto 0);
+			CH14 :			in	std_logic_vector(11 downto 0);
+			CH15 :			in	std_logic_vector(11 downto 0);
+
+			-- DATA TO STREAM
+			FIFOvalid:			out std_logic;
+			FIFOdata:			out std_logic_vector(C_M_AXIS_TDATA_WIDTH-1 downto 0);
+			StreamReady:		in	std_logic
+		);
+	end component FifoManagerV4;
 	--! Input LVDS_25 Buffer to single ended signal
 	component IBUFDS is
 	generic(
@@ -396,7 +420,7 @@ architecture arch_imp of TARGETC_IP_Prototype is
 	signal tc_axi_intr:		std_logic;
 
 	signal RDAD_ReadEn_intl  :  std_logic;
-	signal RDAD_DataOut_intl : std_logic_vector(9 downto 0);
+	signal RDAD_DataOut_intl : std_logic_vector(8 downto 0);
     signal RDAD_Empty_intl     :  std_logic;
 
     signal DIG_DataIn_intl	: std_logic_vector(8 downto 0);
@@ -404,11 +428,44 @@ architecture arch_imp of TARGETC_IP_Prototype is
     signal DIG_Full_intl	: std_logic;
 
     signal timecounter_intl : std_logic_vector(63 downto 0);
+	signal GrayTimeCnt_intl:	std_logic_vector(63 downto 0);
+	signal timestamp_intl:		T_timestamp;
 
 	signal nTrigA, nTrigB, nTrigC, nTrigD : std_logic;
 
 	signal trigger_intl : std_logic_vector(3 downto 0);
 	signal TriggerInfor_intl : std_logic_vector(11 downto 0);
+
+	signal 	FIFO_ReadEn_intl : std_logic;
+	signal 	FIFO_Time_intl : std_logic_Vector(63 downto 0);
+	signal 	FIFO_WdoAddr_intl : std_logic_vector(8 downto 0);
+	signal 	FIFO_TrigInfo_intl: std_logic_vector(11 downto 0);
+	signal 	FIFO_Spare_intl:	std_logic_vector(10 downto 0);
+	signal 	FIFO_Empty_intl:	std_logic;
+
+	signal Handshake_IxSEND_intl : T_Handshake_IxSEND;
+	signal Handshake_SS_FIFO: T_Handshake_SS_FIFO;
+	signal Handshake_OxSEND_intl : T_Handshake_OxSEND;
+
+	signal CH0_intl : std_logic_vector(11 downto 0);
+	signal CH1_intl : std_logic_vector(11 downto 0);
+	signal CH2_intl : std_logic_vector(11 downto 0);
+	signal CH3_intl : std_logic_vector(11 downto 0);
+
+	signal CH4_intl : std_logic_vector(11 downto 0);
+	signal CH5_intl : std_logic_vector(11 downto 0);
+	signal CH6_intl : std_logic_vector(11 downto 0);
+	signal CH7_intl : std_logic_vector(11 downto 0);
+
+	signal CH8_intl : std_logic_vector(11 downto 0);
+	signal CH9_intl : std_logic_vector(11 downto 0);
+	signal CH10_intl : std_logic_vector(11 downto 0);
+	signal CH11_intl : std_logic_vector(11 downto 0);
+
+	signal CH12_intl : std_logic_vector(11 downto 0);
+	signal CH13_intl : std_logic_vector(11 downto 0);
+	signal CH14_intl : std_logic_vector(11 downto 0);
+	signal CH15_intl : std_logic_vector(11 downto 0);
 
 	--DEBUG Signals
 	signal MONTIMING_s : std_logic;
@@ -437,6 +494,8 @@ begin
 		ClockBus	=> ClockBus_intl,
 
 		timecounter		=> timecounter_intl,
+		TimeStamp => TimeStamp_intl,
+		--GrayTimeCnt		=> GrayTimeCnt_intl,
 
 		HSCLKdif		=> HSCLK_dif,
 		-- LVDS Differential Pair
@@ -492,10 +551,14 @@ begin
 		PCLK_TRANSITION_PERIOD 	=> x"0003",
 		LOAD_PERIOD 	=> (others => '0'),
 		LATCH_PERIOD 	=> (others => '0'),
-		UPDATE 			=> CtrlBusOut_intl.WRITEREG,
-		REG_DATA_IN 	=> CtrlBusOut_intl.TC_BUS,
-		REG_DATA_OUT 	=> CtrlBusIn_intl.TC_BUS,
-		busy		 	=> CtrlBusIn_intl.BUSY,
+		-- UPDATE 			=> CtrlBusOut_intl.WRITEREG,
+		-- REG_DATA_IN 	=> CtrlBusOut_intl.TC_BUS,
+		-- REG_DATA_OUT 	=> CtrlBusIn_intl.TC_BUS,
+		-- busy		 	=> CtrlBusIn_intl.BUSY,
+		CtrlBus_IxSL			=> CtrlBusOut_intl,
+		--CtrlBus_OxSL			=> CtrlBusIn_intl,
+		TC_BUS				=> CtrlBusIn_intl.TC_BUS,
+		BUSY				=> CtrlBusIn_intl.BUSY,
 
 		SIN 	=> SIN,
 		SCLK 	=> SCLK,
@@ -503,34 +566,7 @@ begin
 		SHOUT	=> SHOUT
 	);
 
-	--
-	-- TC_RoundBuffer_inst :RoundBufferGray500MHz
-	-- generic map(
-	-- 	MAXWINDOWS => 4
-	-- )
-	-- port map(
-	-- 	RST => tc_axi_aresetn,
-	--
-	-- 	ClockBus	=> ClockBus_intl,
-	--
-	-- 	TimeCounter	=> timecounter_intl,
-	-- 	--eTPG :			in std_logic;
-	--
-	-- 	WR_RS_S		=> WR_RS_S_intl,
-	-- 	WR_CS_S		=> WR_CS_S_intl,
-	--
-	-- 	CtrlBus_IxSL	=> CtrlBusOut_intl,
-	-- 	CtrlBus_OxSL	=> CtrlBusIn_intl,
-	--
-	-- 	RDAD_ReadEn => RDAD_ReadEn_intl,
-	-- 	RDAD_DataOut => RDAD_DataOut_intl,
-	-- 	RDAD_Empty 	=> RDAD_Empty_intl,
-	--
-	-- 	DIG_DataIn	=> DIG_DataIn_intl,
-    -- 	DIG_WriteEn	=> DIG_WriteEn_intl,
-    -- 	DIG_Full	=> DIG_Full_intl
-	-- );
-	TC_RoundBuffer : RoundBufferV5
+	TC_RoundBuffer : RoundBufferV6
 		generic map(
 			NBRWINDOWS => 256
 		)
@@ -538,33 +574,34 @@ begin
 			--nrst 		=> CtrlBusOut_intl.SW_nRST,
 			ClockBus	=> 	ClockBus_intl,
 			Timecounter	=> timecounter_intl,
+			TimeStamp => TimeStamp_intl,
+			--GrayTimeCnt => GrayTimeCnt_intl,
 
 			trigger		=> trigger_intl,
 
 			WR_RS_S		=> WR_RS_S_intl,
 			WR_CS_S		=> WR_CS_S_intl,
 
-			CtrlBus_IxSL=> CtrlBusOut_intl,
+			CtrlBus_IxSL		=> CtrlBusOut_intl,
+			--CtrlBus_OxSL		=> CtrlBusIn_intl,
+			RBNbrOfPackets	=> CtrlBusIn_intl.RBNbrOfPackets,
 
 			RDAD_ReadEn  => RDAD_ReadEn_intl,
 			RDAD_DataOut => RDAD_DataOut_intl,
 			RDAD_Empty	=> RDAD_Empty_intl,
 
 			-- FIFO <-> AXI Connection
-			AXI_ReadEn				=> FIFO_ReadEn,
-			AXI_Time_DataOut		=> FIFO_Time,
-			AXI_WdoAddr_DataOut		=> FIFO_WdoAddr,
-			AXI_TrigInfo_DataOut	=> FIFO_TrigInfo,
-			AXI_Spare_DataOut 		=> FIFO_Spare,
-			AXI_Empty				=> FIFO_Empty,
+			AXI_ReadEn				=> FIFO_ReadEn_intl,
+			AXI_Time_DataOut		=> FIFO_Time_intl,
+			AXI_WdoAddr_DataOut		=> FIFO_WdoAddr_intl,
+			AXI_TrigInfo_DataOut	=> FIFO_TrigInfo_intl,
+			AXI_Spare_DataOut 		=> FIFO_Spare_intl,
+			AXI_Empty				=> FIFO_Empty_intl,
 
 			-- FIFO IN for Digiting
 			DIG_Full	=> DIG_Full_intl,
 			DIG_DataIn	=> DIG_DataIn_intl,
-			DIG_WriteEn	=> DIG_WriteEn_intl,
-
-			sDEBUG => Debug_RoundBuffer
-
+			DIG_WriteEn	=> DIG_WriteEn_intl
 		);
 
 	TC_RDAD_WL_SS :	 TARGETC_RDAD_WL_SMPL
@@ -575,7 +612,7 @@ begin
 		INCR_WAIT_PERIOD => x"0032",
 
 		ClockBus	=> ClockBus_intl,
-		TimeCounter	=> timecounter_intl,
+		--TimeCounter	=> timecounter_intl,
 		RDAD_CLK		=> RDAD_CLK,
 		RDAD_SIN		=> RDAD_SIN,
 		RDAD_DIR		=> RDAD_DIR,
@@ -595,22 +632,97 @@ begin
 
 		HSCLK		=> HSCLK_dif,
 
-		TestFifo	=> TestFIFO,
 		-- Data Readout
 		DO 		=> DO,
 		SS_INCR	=> SS_INCR,
 		SS_RESET => SS_RESET,
 
 		CtrlBus_IxSL		=> CtrlBusOut_intl,
-		CtrlBus_OxSL		=> CtrlBusIn_intl,
+		--CtrlBus_OxSL		=> CtrlBusIn_intl,
+		WindowBusy	=> CtrlBusIn_intl.WindowBusy,
+		RAMP_CNT	=> CtrlBusIn_intl.RAMP_CNT,
+		DO_BUS		=> CtrlBusIn_intl.DO_BUS,
+		SSvalid		=> CtrlBusIn_intl.SSvalid,
+		--Channels
+		CH0 	=> CH0_intl,
+		CH1 	=> CH1_intl,
+		CH2 	=> CH2_intl,
+		CH3 	=> CH3_intl,
 
-		FIFOresponse	=> FIFOresponse
+		CH4 	=> CH4_intl,
+		CH5 	=> CH5_intl,
+		CH6 	=> CH6_intl,
+		CH7 	=> CH7_intl,
+
+		CH8 	=> CH8_intl,
+		CH9 	=> CH9_intl,
+		CH10 	=> CH10_intl,
+		CH11 	=> CH11_intl,
+
+		CH12 	=> CH12_intl,
+		CH13 	=> CH13_intl,
+		CH14 	=> CH14_intl,
+		CH15 	=> CH15_intl,
+
+		Handshake_IxSEND	=> Handshake_IxSEND_intl,
+		Handshake_Data 		=> Handshake_SS_FIFO,
+		Handshake_OxSEND	=> Handshake_OxSEND_intl
 	);
+
+	FIFOMANAGER : FifoManagerV4
+		generic map(
+			C_M_AXIS_TDATA_WIDTH =>  32
+		)
+		port map(
+			CtrlBus_IxSL		=> CtrlBusOut_intl,
+			--CtrlBus_OxSL		=> CtrlBusIn_intl,
+			FIFOBusy => 	CtrlBusIn_intl.FIFOBusy,
+
+			ClockBus	 => ClockBus_intl,
+
+			--Request and Acknowledge - READOUT
+			Handshake_IxRECV=> Handshake_OxSEND_intl,
+			Handshake_Data 		=> Handshake_SS_FIFO,
+			Handshake_OxRECV=> Handshake_IxSEND_intl,
+
+			--Header Information from FIFO
+			FIFO_ReadEn			=> FIFO_ReadEn_intl,
+			FIFO_Time			=> FIFO_Time_intl,
+			FIFO_WdoAddr		=> FIFO_WdoAddr_intl,
+			FIFO_TrigInfo		=> FIFO_TrigInfo_intl,
+			FIFO_Spare	 		=> FIFO_Spare_intl,
+			FIFO_Empty			=> FIFO_Empty_intl,
+
+			--Channels
+			CH0 	=> CH0_intl,
+			CH1 	=> CH1_intl,
+			CH2 	=> CH2_intl,
+			CH3 	=> CH3_intl,
+
+			CH4 	=> CH4_intl,
+			CH5 	=> CH5_intl,
+			CH6 	=> CH6_intl,
+			CH7 	=> CH7_intl,
+
+			CH8 	=> CH8_intl,
+			CH9 	=> CH9_intl,
+			CH10 	=> CH10_intl,
+			CH11 	=> CH11_intl,
+
+			CH12 	=> CH12_intl,
+			CH13 	=> CH13_intl,
+			CH14 	=> CH14_intl,
+			CH15 	=> CH15_intl,
+
+
+			-- DATA TO STREAM
+			FIFOvalid	=> FIFOValid,
+			FIFOdata	=> FIFOdata,
+			StreamReady	=> StreamReady
+		);
 
 	SAMPLESEL_ANY <= CtrlBusOut_intl.SmplSl_Any;
 	REGCLR <= CtrlBusOut_intl.REGCLR;
-
-
 
 	WR_RS_S0	<= WR_RS_S_intl(0);
 	WR_RS_S1	<= WR_RS_S_intl(1);
@@ -627,29 +739,10 @@ begin
 
 	DOE <= '1';
 
-	CH0 	<= CtrlBusIn_intl.DO_BUS.CH0;
-	CH1 	<= CtrlBusIn_intl.DO_BUS.CH1;
-	CH2 	<= CtrlBusIn_intl.DO_BUS.CH2;
-	CH3 	<= CtrlBusIn_intl.DO_BUS.CH3;
 
-	CH4 	<= CtrlBusIn_intl.DO_BUS.CH4;
-	CH5 	<= CtrlBusIn_intl.DO_BUS.CH5;
-	CH6 	<= CtrlBusIn_intl.DO_BUS.CH6;
-	CH7 	<= CtrlBusIn_intl.DO_BUS.CH7;
+	CtrlBusIn_intl.Cnt_AXIS <= Cnt_AXIS_DATA;
 
-	CH8 	<= CtrlBusIn_intl.DO_BUS.CH8;
-	CH9 	<= CtrlBusIn_intl.DO_BUS.CH9;
-	CH10 	<= CtrlBusIn_intl.DO_BUS.CH10;
-	CH11 	<= CtrlBusIn_intl.DO_BUS.CH11;
-
-	CH12 	<= CtrlBusIn_intl.DO_BUS.CH12;
-	CH13 	<= CtrlBusIn_intl.DO_BUS.CH13;
-	CH14 	<= CtrlBusIn_intl.DO_BUS.CH14;
-	CH15 	<= CtrlBusIn_intl.DO_BUS.CH15;
-
-	TestStream	<= CtrlBusOut_intl.TestStream;
-	SSvalid		<= CtrlBusIn_intl.SSVALID when CtrlBusOut_intl.SAMPLEMODE = '1' else '0';
-	PSBusy		<= CtrlBusOut_intl.PSBusy;
+	CNT_CLR <= CtrlBusOut_intl.WindowStorage;
 
 	--NbrWindow	<= CtrlBusOut_intl.NBRWINDOW;
 	SW_nRST <= CtrlBusOut_intl.SW_nRST;
@@ -677,60 +770,8 @@ begin
 
 	Trigger_intl <= nTrigD & nTrigC & nTrigB & nTrigA;
 
-	-- Debug Core
-	Debug_intl(0) <= ClockBus_intl.SSTIN;
-	Debug_intl(1) <= MONTIMING_s;
-	Debug_intl(7 downto 2) <= Debug_RoundBuffer(7 downto 2);
-
+	-- Debug pins
 	BB1 <= ClockBus_intl.SSTIN;
 	BB5 <= MONTIMING_s;
 
-	-- OBUF_SSTIN : BUFG
-	-- port map(
-	-- 	O	=> BB1,
-	-- 	I	=> ClockBus_intl.SSTIN
-	-- );
-	--
-	-- OBUF_MONTIMING : BUFG
-	-- port map(
-	-- 	O	=> BB5,
-	-- 	I	=> MONTIMING_s
-	-- );
-	-- BB1_Debug_inst : DebugCore
-	-- port map(
-	-- 	O	=> BB1,
-	-- 	I	=> Debug_intl,
-	-- 	sel	=> CtrlBusOut_intl.BB1_sel
-	-- );
-	--
-	-- BB2_Debug_inst : DebugCore
-	-- port map(
-	-- 	O	=> BB2,
-	-- 	I	=> Debug_intl,
-	--
-	-- 	sel	=> CtrlBusOut_intl.BB2_sel
-	-- );
-	--
-	-- BB3_Debug_inst : DebugCore
-	-- port map(
-	-- 	O	=> BB3,
-	-- 	I	=> Debug_intl,
-	--
-	-- 	sel	=> CtrlBusOut_intl.BB3_sel
-	-- );
-	--
-	-- BB4_Debug_inst : DebugCore
-	-- port map(
-	-- 	O	=> BB4,
-	-- 	I	=> Debug_intl,
-	--
-	-- 	sel	=> CtrlBusOut_intl.BB4_sel
-	-- );
-	-- BB5_Debug_inst : DebugCore
-	-- port map(
-	-- 	O	=> BB5,
-	-- 	I	=> Debug_intl,
-	--
-	-- 	sel	=> CtrlBusOut_intl.BB5_sel
-	-- );
 end arch_imp;

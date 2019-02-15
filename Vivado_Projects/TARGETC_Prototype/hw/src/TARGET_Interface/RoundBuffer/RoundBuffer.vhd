@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use work.TARGETC_pkg.all;
-use work.WindowCPU_pkg.all;
+use work.WindowCPU_pkg_old.all;
 
 entity RoundBuffer is
 	generic(
@@ -313,5 +313,6 @@ begin
 		RDAD_DataOut => RDAD_DataOut,
 		RDAD_Empty	=> 	RDAD_Empty
 		);
+	
 
 end implementation;

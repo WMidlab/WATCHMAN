@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_AFIFO_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_AFIFO" />
+            <top_module name="glbl" />
+            <top_module name="simulation_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2028166666fs"></ZoomStartTime>
+      <ZoomEndTime time="2200766667fs"></ZoomEndTime>
+      <Cursor1Time time="2172000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="221"></NameColumnWidth>
+      <ValueColumnWidth column_width="91"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="divider1947" type="divider">
+      <obj_property name="label">WRITE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/Wclk">
+      <obj_property name="ElementShortName">Wclk</obj_property>
+      <obj_property name="ObjectShortName">Wclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/WriteEn_sti">
+      <obj_property name="ElementShortName">WriteEn_sti</obj_property>
+      <obj_property name="ObjectShortName">WriteEn_sti</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_AFIFO/data_in_sti">
+      <obj_property name="ElementShortName">data_in_sti[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_sti[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/full_obs">
+      <obj_property name="ElementShortName">full_obs</obj_property>
+      <obj_property name="ObjectShortName">full_obs</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1948" type="divider">
+      <obj_property name="label">READ</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/Rclk">
+      <obj_property name="ElementShortName">Rclk</obj_property>
+      <obj_property name="ObjectShortName">Rclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/ReadEn_sti">
+      <obj_property name="ElementShortName">ReadEn_sti</obj_property>
+      <obj_property name="ObjectShortName">ReadEn_sti</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_AFIFO/Data_obs">
+      <obj_property name="ElementShortName">Data_obs[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Data_obs[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_AFIFO/empty_obs">
+      <obj_property name="ElementShortName">empty_obs</obj_property>
+      <obj_property name="ObjectShortName">empty_obs</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1949" type="divider">
+      <obj_property name="label">FIFO Internal</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group826">
+      <obj_property name="label">Write To Read</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pNextWordToWrite">
+         <obj_property name="ElementShortName">pNextWordToWrite[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pNextWordToWrite[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pWriteToReadGray">
+         <obj_property name="ElementShortName">pWriteToReadGray[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pWriteToReadGray[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pWriteToReadBuf">
+         <obj_property name="ElementShortName">pWriteToReadBuf[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pWriteToReadBuf[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pWriteToRead">
+         <obj_property name="ElementShortName">pWriteToRead[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pWriteToRead[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group827">
+      <obj_property name="label">Read To Write</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pNextWordToRead">
+         <obj_property name="ElementShortName">pNextWordToRead[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pNextWordToRead[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pReadToWriteGray">
+         <obj_property name="ElementShortName">pReadToWriteGray[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pReadToWriteGray[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pReadToWriteBuf">
+         <obj_property name="ElementShortName">pReadToWriteBuf[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pReadToWriteBuf[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_AFIFO/DUT/pReadToWrite">
+         <obj_property name="ElementShortName">pReadToWrite[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pReadToWrite[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_AFIFO/DUT/Mem">
+      <obj_property name="ElementShortName">Mem[0:15][7:0]</obj_property>
+      <obj_property name="ObjectShortName">Mem[0:15][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_TARGETC_SYSTEM_AXIS_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_TARGETC_SYSTEM_AXIS" />
+            <top_module name="axi_lite_pkg" />
+            <top_module name="glbl" />
+            <top_module name="register_pkg" />
+            <top_module name="simulation_pkg" />
+            <top_module name="targetc_pkg" />
+            <top_module name="windowcpu_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="35594000000fs"></ZoomStartTime>
+      <ZoomEndTime time="36479000001fs"></ZoomEndTime>
+      <Cursor1Time time="36343000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="224"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="33" />
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/ClockBus_intl">
+      <obj_property name="ElementShortName">ClockBus_intl</obj_property>
+      <obj_property name="ObjectShortName">ClockBus_intl</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="divider803" type="divider">
+      <obj_property name="label">TIme</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/timecounter_intl">
+      <obj_property name="ElementShortName">timecounter_intl[63:0]</obj_property>
+      <obj_property name="ObjectShortName">timecounter_intl[63:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_ClockMgmt_inst/Timestamp">
+      <obj_property name="ElementShortName">Timestamp</obj_property>
+      <obj_property name="ObjectShortName">Timestamp</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/prev_TimeStamp">
+      <obj_property name="ElementShortName">prev_TimeStamp</obj_property>
+      <obj_property name="ObjectShortName">prev_TimeStamp</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/copy_CPUTime">
+      <obj_property name="ElementShortName">copy_CPUTime</obj_property>
+      <obj_property name="ObjectShortName">copy_CPUTime</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/CPUTime">
+      <obj_property name="ElementShortName">CPUTime</obj_property>
+      <obj_property name="ObjectShortName">CPUTime</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider1620" type="divider">
+      <obj_property name="label">Real Address</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/ClockBus_intl.SSTIN">
+      <obj_property name="ElementShortName">.SSTIN</obj_property>
+      <obj_property name="ObjectShortName">.SSTIN</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/ClockBus_intl.CLK250MHz">
+      <obj_property name="ElementShortName">.CLK250MHz</obj_property>
+      <obj_property name="ObjectShortName">.CLK250MHz</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/RealTimeAddr">
+      <obj_property name="ElementShortName">RealTimeAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">RealTimeAddr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/RealAddrBit">
+      <obj_property name="ElementShortName">RealAddrBit[255:0]</obj_property>
+      <obj_property name="ObjectShortName">RealAddrBit[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/ValidReal">
+      <obj_property name="ElementShortName">ValidReal</obj_property>
+      <obj_property name="ObjectShortName">ValidReal</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/CurAddr_s">
+      <obj_property name="ElementShortName">CurAddr_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">CurAddr_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/OldAddr_intl">
+      <obj_property name="ElementShortName">OldAddr_intl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">OldAddr_intl[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/ValidData">
+      <obj_property name="ElementShortName">ValidData</obj_property>
+      <obj_property name="ObjectShortName">ValidData</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/PREVBus_intl">
+      <obj_property name="ElementShortName">PREVBus_intl[255:0]</obj_property>
+      <obj_property name="ObjectShortName">PREVBus_intl[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/NEXTBus_intl">
+      <obj_property name="ElementShortName">NEXTBus_intl[255:0]</obj_property>
+      <obj_property name="ObjectShortName">NEXTBus_intl[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/NextAddrBus">
+      <obj_property name="ElementShortName">NextAddrBus[255:0]</obj_property>
+      <obj_property name="ObjectShortName">NextAddrBus[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/PrevAddrBus">
+      <obj_property name="ElementShortName">PrevAddrBus[255:0]</obj_property>
+      <obj_property name="ObjectShortName">PrevAddrBus[255:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/NextAddr_intl">
+      <obj_property name="ElementShortName">NextAddr_intl[7:0]</obj_property>
+      <obj_property name="ObjectShortName">NextAddr_intl[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/NextValid_s">
+      <obj_property name="ElementShortName">NextValid_s</obj_property>
+      <obj_property name="ObjectShortName">NextValid_s</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/PrevValid_s">
+      <obj_property name="ElementShortName">PrevValid_s</obj_property>
+      <obj_property name="ObjectShortName">PrevValid_s</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/NextAddr_s">
+      <obj_property name="ElementShortName">NextAddr_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">NextAddr_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/PrevAddr_s">
+      <obj_property name="ElementShortName">PrevAddr_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">PrevAddr_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/WR_CS_S">
+      <obj_property name="ElementShortName">WR_CS_S[5:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_CS_S[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/WR_RS_S">
+      <obj_property name="ElementShortName">WR_RS_S[1:0]</obj_property>
+      <obj_property name="ObjectShortName">WR_RS_S[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/s00_axi_WDATA">
+      <obj_property name="ElementShortName">s00_axi_WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/s00_axi_RDATA">
+      <obj_property name="ElementShortName">s00_axi_RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s00_axi_RDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/CtrlBusIn_intl">
+      <obj_property name="ElementShortName">CtrlBusIn_intl</obj_property>
+      <obj_property name="ObjectShortName">CtrlBusIn_intl</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/CtrlBusOut_intl">
+      <obj_property name="ElementShortName">CtrlBusOut_intl</obj_property>
+      <obj_property name="ObjectShortName">CtrlBusOut_intl</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group2596">
+      <obj_property name="label">TARGET C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="group" fp_name="group3602">
+         <obj_property name="label">RoundBuffer</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/ValidData">
+            <obj_property name="ElementShortName">ValidData</obj_property>
+            <obj_property name="ObjectShortName">ValidData</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/CPUBus">
+            <obj_property name="ElementShortName">CPUBus[10:0]</obj_property>
+            <obj_property name="ObjectShortName">CPUBus[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/CTRL_CPUBUS">
+            <obj_property name="ElementShortName">CTRL_CPUBUS[10:0]</obj_property>
+            <obj_property name="ObjectShortName">CTRL_CPUBUS[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/TRIG_CPUBUS">
+            <obj_property name="ElementShortName">TRIG_CPUBUS[10:0]</obj_property>
+            <obj_property name="ObjectShortName">TRIG_CPUBUS[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/DIGI_CPUBUS">
+            <obj_property name="ElementShortName">DIGI_CPUBUS[10:0]</obj_property>
+            <obj_property name="ObjectShortName">DIGI_CPUBUS[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/RealTimeAddr">
+            <obj_property name="ElementShortName">RealTimeAddr[7:0]</obj_property>
+            <obj_property name="ObjectShortName">RealTimeAddr[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/NextValid_in">
+            <obj_property name="ElementShortName">NextValid_in</obj_property>
+            <obj_property name="ObjectShortName">NextValid_in</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/NextAddr_in">
+            <obj_property name="ElementShortName">NextAddr_in[7:0]</obj_property>
+            <obj_property name="ObjectShortName">NextAddr_in[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/PrevValid_in">
+            <obj_property name="ElementShortName">PrevValid_in</obj_property>
+            <obj_property name="ObjectShortName">PrevValid_in</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/PrevAddr_in">
+            <obj_property name="ElementShortName">PrevAddr_in[7:0]</obj_property>
+            <obj_property name="ObjectShortName">PrevAddr_in[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/storage_stm">
+            <obj_property name="ElementShortName">storage_stm</obj_property>
+            <obj_property name="ObjectShortName">storage_stm</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/CPU_CONTROLLER_inst/digsto_stm">
+            <obj_property name="ElementShortName">digsto_stm</obj_property>
+            <obj_property name="ObjectShortName">digsto_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/NbrOfPackets">
+            <obj_property name="ElementShortName">NbrOfPackets[7:0]</obj_property>
+            <obj_property name="ObjectShortName">NbrOfPackets[7:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/Reg_Clr">
+            <obj_property name="ElementShortName">Reg_Clr</obj_property>
+            <obj_property name="ObjectShortName">Reg_Clr</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group3977">
+            <obj_property name="label">Storage</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/WriteEn_intl">
+               <obj_property name="ElementShortName">WriteEn_intl</obj_property>
+               <obj_property name="ObjectShortName">WriteEn_intl</obj_property>
+            </wvobject>
+            <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/writeEn_stm">
+               <obj_property name="ElementShortName">writeEn_stm</obj_property>
+               <obj_property name="ObjectShortName">writeEn_stm</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/Counter">
+               <obj_property name="ElementShortName">Counter[63:0]</obj_property>
+               <obj_property name="ObjectShortName">Counter[63:0]</obj_property>
+               <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/Trig">
+               <obj_property name="ElementShortName">Trig[11:0]</obj_property>
+               <obj_property name="ObjectShortName">Trig[11:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/Wdo1">
+               <obj_property name="ElementShortName">Wdo1[8:0]</obj_property>
+               <obj_property name="ObjectShortName">Wdo1[8:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_Time_AFIFO/Mem">
+               <obj_property name="ElementShortName">Mem[0:31][63:0]</obj_property>
+               <obj_property name="ObjectShortName">Mem[0:31][63:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="group" fp_name="group2583">
+            <obj_property name="label">Store to AIS</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_Empty">
+               <obj_property name="ElementShortName">AXI_Empty</obj_property>
+               <obj_property name="ObjectShortName">AXI_Empty</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/axi_full_s">
+               <obj_property name="ElementShortName">axi_full_s[3:0]</obj_property>
+               <obj_property name="ObjectShortName">axi_full_s[3:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/axi_empty_s">
+               <obj_property name="ElementShortName">axi_empty_s[3:0]</obj_property>
+               <obj_property name="ObjectShortName">axi_empty_s[3:0]</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_ReadEn">
+               <obj_property name="ElementShortName">AXI_ReadEn</obj_property>
+               <obj_property name="ObjectShortName">AXI_ReadEn</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_Time_DataOut">
+               <obj_property name="ElementShortName">AXI_Time_DataOut[63:0]</obj_property>
+               <obj_property name="ObjectShortName">AXI_Time_DataOut[63:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_WdoAddr_DataOut">
+               <obj_property name="ElementShortName">AXI_WdoAddr_DataOut[8:0]</obj_property>
+               <obj_property name="ObjectShortName">AXI_WdoAddr_DataOut[8:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_TrigInfo_DataOut">
+               <obj_property name="ElementShortName">AXI_TrigInfo_DataOut[11:0]</obj_property>
+               <obj_property name="ObjectShortName">AXI_TrigInfo_DataOut[11:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/AXI_Spare_DataOut">
+               <obj_property name="ElementShortName">AXI_Spare_DataOut[10:0]</obj_property>
+               <obj_property name="ObjectShortName">AXI_Spare_DataOut[10:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="divider969" type="divider">
+            <obj_property name="label">Handshake</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RDAD_WL_SS/hsout_stm">
+            <obj_property name="ElementShortName">hsout_stm</obj_property>
+            <obj_property name="ObjectShortName">hsout_stm</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/fifo_wr_stm">
+            <obj_property name="ElementShortName">fifo_wr_stm</obj_property>
+            <obj_property name="ObjectShortName">fifo_wr_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/Handshake_IxSEND_intl">
+            <obj_property name="ElementShortName">Handshake_IxSEND_intl</obj_property>
+            <obj_property name="ObjectShortName">Handshake_IxSEND_intl</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/Handshake_SS_FIFO">
+            <obj_property name="ElementShortName">Handshake_SS_FIFO</obj_property>
+            <obj_property name="ObjectShortName">Handshake_SS_FIFO</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/Handshake_OxSEND_intl">
+            <obj_property name="ElementShortName">Handshake_OxSEND_intl</obj_property>
+            <obj_property name="ObjectShortName">Handshake_OxSEND_intl</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group2590">
+            <obj_property name="label">Store DIGI</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/pNextWordToWrite">
+               <obj_property name="ElementShortName">pNextWordToWrite[4:0]</obj_property>
+               <obj_property name="ObjectShortName">pNextWordToWrite[4:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/pNextWordToRead">
+               <obj_property name="ElementShortName">pNextWordToRead[4:0]</obj_property>
+               <obj_property name="ObjectShortName">pNextWordToRead[4:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/pWriteToRead">
+               <obj_property name="ElementShortName">pWriteToRead[4:0]</obj_property>
+               <obj_property name="ObjectShortName">pWriteToRead[4:0]</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/pReadToWrite">
+               <obj_property name="ElementShortName">pReadToWrite[4:0]</obj_property>
+               <obj_property name="ObjectShortName">pReadToWrite[4:0]</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/Equal_WR">
+               <obj_property name="ElementShortName">Equal_WR</obj_property>
+               <obj_property name="ObjectShortName">Equal_WR</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/looped_WR">
+               <obj_property name="ElementShortName">looped_WR</obj_property>
+               <obj_property name="ObjectShortName">looped_WR</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/Equal_RD">
+               <obj_property name="ElementShortName">Equal_RD</obj_property>
+               <obj_property name="ObjectShortName">Equal_RD</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_STO_AFIFO/looped_RD">
+               <obj_property name="ElementShortName">looped_RD</obj_property>
+               <obj_property name="ObjectShortName">looped_RD</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_ReadEn">
+               <obj_property name="ElementShortName">RDAD_ReadEn</obj_property>
+               <obj_property name="ObjectShortName">RDAD_ReadEn</obj_property>
+            </wvobject>
+            <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_DataOut">
+               <obj_property name="ElementShortName">RDAD_DataOut[8:0]</obj_property>
+               <obj_property name="ObjectShortName">RDAD_DataOut[8:0]</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RoundBuffer/WDOSTORE/RDAD_Empty">
+               <obj_property name="ElementShortName">RDAD_Empty</obj_property>
+               <obj_property name="ObjectShortName">RDAD_Empty</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RDAD_WL_SS/hsout_stm">
+         <obj_property name="ElementShortName">hsout_stm</obj_property>
+         <obj_property name="ObjectShortName">hsout_stm</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RDAD_WL_SS/rdad_stm">
+         <obj_property name="ElementShortName">rdad_stm</obj_property>
+         <obj_property name="ObjectShortName">rdad_stm</obj_property>
+      </wvobject>
+      <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/TC_RDAD_WL_SS/wlstate">
+         <obj_property name="ElementShortName">wlstate</obj_property>
+         <obj_property name="ObjectShortName">wlstate</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group2926">
+         <obj_property name="label">FIFOMANAGER</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/Handshake_IxRECV">
+            <obj_property name="ElementShortName">Handshake_IxRECV</obj_property>
+            <obj_property name="ObjectShortName">Handshake_IxRECV</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/Handshake_Data">
+            <obj_property name="ElementShortName">Handshake_Data</obj_property>
+            <obj_property name="ObjectShortName">Handshake_Data</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/Handshake_OxRECV">
+            <obj_property name="ElementShortName">Handshake_OxRECV</obj_property>
+            <obj_property name="ObjectShortName">Handshake_OxRECV</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/full">
+            <obj_property name="ElementShortName">full[15:0]</obj_property>
+            <obj_property name="ObjectShortName">full[15:0]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/fifo_wr_stm">
+            <obj_property name="ElementShortName">fifo_wr_stm</obj_property>
+            <obj_property name="ObjectShortName">fifo_wr_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_WR">
+            <obj_property name="ElementShortName">FIFO_WR</obj_property>
+            <obj_property name="ObjectShortName">FIFO_WR</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/fifo_rd_stm">
+            <obj_property name="ElementShortName">fifo_rd_stm</obj_property>
+            <obj_property name="ObjectShortName">fifo_rd_stm</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_RD">
+            <obj_property name="ElementShortName">FIFO_RD</obj_property>
+            <obj_property name="ObjectShortName">FIFO_RD</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_ReadEn">
+            <obj_property name="ElementShortName">FIFO_ReadEn</obj_property>
+            <obj_property name="ObjectShortName">FIFO_ReadEn</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_Time">
+            <obj_property name="ElementShortName">FIFO_Time[63:0]</obj_property>
+            <obj_property name="ObjectShortName">FIFO_Time[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_WdoAddr">
+            <obj_property name="ElementShortName">FIFO_WdoAddr[8:0]</obj_property>
+            <obj_property name="ObjectShortName">FIFO_WdoAddr[8:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_TrigInfo">
+            <obj_property name="ElementShortName">FIFO_TrigInfo[11:0]</obj_property>
+            <obj_property name="ObjectShortName">FIFO_TrigInfo[11:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_Spare">
+            <obj_property name="ElementShortName">FIFO_Spare[10:0]</obj_property>
+            <obj_property name="ObjectShortName">FIFO_Spare[10:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT/FIFOMANAGER/FIFO_Empty">
+            <obj_property name="ElementShortName">FIFO_Empty</obj_property>
+            <obj_property name="ObjectShortName">FIFO_Empty</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group10311">
+      <obj_property name="label">AXIS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="other" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/mst_exec_state">
+         <obj_property name="ElementShortName">mst_exec_state</obj_property>
+         <obj_property name="ObjectShortName">mst_exec_state</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/FIFOvalid">
+         <obj_property name="ElementShortName">FIFOvalid</obj_property>
+         <obj_property name="ObjectShortName">FIFOvalid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/FIFOdata">
+         <obj_property name="ElementShortName">FIFOdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">FIFOdata[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/StreamReady">
+         <obj_property name="ElementShortName">StreamReady</obj_property>
+         <obj_property name="ObjectShortName">StreamReady</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/Cnt_AXIS_DATA">
+         <obj_property name="ElementShortName">Cnt_AXIS_DATA[9:0]</obj_property>
+         <obj_property name="ObjectShortName">Cnt_AXIS_DATA[9:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/CNT_CLR">
+         <obj_property name="ElementShortName">CNT_CLR</obj_property>
+         <obj_property name="ObjectShortName">CNT_CLR</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/M_AXIS_TVALID">
+         <obj_property name="ElementShortName">M_AXIS_TVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TVALID</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/M_AXIS_TDATA">
+         <obj_property name="ElementShortName">M_AXIS_TDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TDATA[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/TB_TARGETC_SYSTEM_AXIS/DUT_AXIS/M_AXIS_TLAST">
+         <obj_property name="ElementShortName">M_AXIS_TLAST</obj_property>
+         <obj_property name="ObjectShortName">M_AXIS_TLAST</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

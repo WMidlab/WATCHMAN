@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 --use work.TARGETC_pkg.all;
-use work.WindowCPU_pkg.all;
+use work.WindowCPU_pkg_old.all;
 
 entity WindowCPU is
 	generic(

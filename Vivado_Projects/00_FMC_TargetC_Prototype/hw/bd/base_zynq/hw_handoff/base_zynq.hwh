@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Jan 24 09:22:57 2019" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Feb 14 11:07:36 2019" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="base_zynq" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -115,202 +115,7 @@
         <CONNECTION INSTANCE="iobuf_1" PORT="IO"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SIN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SIN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SCLK" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SCLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SCLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="PCLK" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PCLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="PCLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="HSCLK_P" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_HSCLK_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="HSCLK_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="HSCLK_N" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_HSCLK_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="HSCLK_N"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_RS_S1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_RS_S1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_RS_S1"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_RS_S0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_RS_S0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_RS_S0"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S0">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S0"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S1"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S2" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S2">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S2"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S3" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S3">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S3"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S4" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S4">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S4"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="WR_CS_S5" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S5">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WR_CS_S5"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="GCC_RESET" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_GCC_RESET">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="GCC_RESET"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_P" SIGIS="clk" SIGNAME="TARGETC_IP_Prototype_0_WL_CLK_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WL_CLK_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_N" SIGIS="clk" SIGNAME="TARGETC_IP_Prototype_0_WL_CLK_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="WL_CLK_N"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="RDAD_CLK" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RDAD_CLK">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RDAD_CLK"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="RDAD_SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RDAD_SIN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RDAD_SIN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="RDAD_DIR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RDAD_DIR">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RDAD_DIR"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SAMPLESEL_ANY" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SAMPLESEL_ANY">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SAMPLESEL_ANY"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SS_INCR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_INCR">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SS_INCR"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SS_RESET" SIGIS="rst" SIGNAME="TARGETC_IP_Prototype_0_SS_RESET">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SS_RESET"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="REGCLR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_REGCLR">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="REGCLR"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SS_LD_SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_LD_SIN">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SS_LD_SIN"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SS_LD_DIR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_LD_DIR">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SS_LD_DIR"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="RAMP" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RAMP">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RAMP"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SSTIN_P" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSTIN_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SSTIN_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="SSTIN_N" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSTIN_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SSTIN_N"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BB1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB1">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="BB1"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="BB5" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB5">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="BB5"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="SHOUT" SIGIS="undef" SIGNAME="External_Ports_SHOUT">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SHOUT"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="MONTIMING_P" SIGIS="undef" SIGNAME="External_Ports_MONTIMING_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="MONTIMING_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="MONTIMING_N" SIGIS="undef" SIGNAME="External_Ports_MONTIMING_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="MONTIMING_N"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="DONE" SIGIS="undef" SIGNAME="External_Ports_DONE">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="DONE"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="TRIGD" SIGIS="undef" SIGNAME="External_Ports_TRIGD">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TrigD"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="TRIGC" SIGIS="undef" SIGNAME="External_Ports_TRIGC">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TrigC"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="TRIGB" SIGIS="undef" SIGNAME="External_Ports_TRIGB">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TrigB"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="TRIGA" SIGIS="undef" SIGNAME="External_Ports_TRIGA">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TrigA"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="HCMPD" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="HCMPC" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+    <PORT DIR="O" LEFT="0" NAME="HCMPA" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
       </CONNECTIONS>
@@ -320,24 +125,219 @@
         <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="0" NAME="HCMPA" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+    <PORT DIR="O" LEFT="0" NAME="HCMPC" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="BB2" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB2">
+    <PORT DIR="O" LEFT="0" NAME="HCMPD" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="BB2"/>
+        <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="BB3" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB3">
+    <PORT DIR="O" NAME="SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SIN">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="BB3"/>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SIN"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="BB4" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB4">
+    <PORT DIR="O" NAME="SCLK" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SCLK">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="BB4"/>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SCLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="PCLK" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_PCLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="PCLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="HSCLK_P" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_HSCLK_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="HSCLK_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="HSCLK_N" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_HSCLK_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="HSCLK_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_RS_S0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_RS_S0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_RS_S0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_RS_S1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_RS_S1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_RS_S1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S2" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S3" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S3">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S3"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S4" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S4">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S4"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="WR_CS_S5" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S5">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WR_CS_S5"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="GCC_RESET" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_GCC_RESET">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="GCC_RESET"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_P" SIGIS="clk" SIGNAME="TARGET_C_TopLevel_Sy_0_WL_CLK_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WL_CLK_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_N" SIGIS="clk" SIGNAME="TARGET_C_TopLevel_Sy_0_WL_CLK_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="WL_CLK_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="RDAD_CLK" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_CLK">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RDAD_CLK"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="RDAD_SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_SIN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RDAD_SIN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="RDAD_DIR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_DIR">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RDAD_DIR"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SAMPLESEL_ANY" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SAMPLESEL_ANY">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SAMPLESEL_ANY"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SS_INCR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_INCR">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SS_INCR"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SS_RESET" SIGIS="rst" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_RESET">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SS_RESET"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="REGCLR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_REGCLR">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="REGCLR"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SS_LD_SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_LD_SIN">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SS_LD_SIN"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SS_LD_DIR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_LD_DIR">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SS_LD_DIR"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="RAMP" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RAMP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RAMP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SSTIN_P" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SSTIN_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SSTIN_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="SSTIN_N" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SSTIN_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SSTIN_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BB1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="BB1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BB4" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB4">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="BB4"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BB2" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="BB2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BB3" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB3">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="BB3"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="BB5" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB5">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="BB5"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="MONTIMING_P" SIGIS="undef" SIGNAME="External_Ports_MONTIMING_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="MONTIMING_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="DONE" SIGIS="undef" SIGNAME="External_Ports_DONE">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="DONE"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="SHOUT" SIGIS="undef" SIGNAME="External_Ports_SHOUT">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SHOUT"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="MONTIMING_N" SIGIS="undef" SIGNAME="External_Ports_MONTIMING_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="MONTIMING_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="TRIGA" SIGIS="undef" SIGNAME="External_Ports_TRIGA">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="TrigA"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="TRIGB" SIGIS="undef" SIGNAME="External_Ports_TRIGB">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="TrigB"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="TRIGC" SIGIS="undef" SIGNAME="External_Ports_TRIGC">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="TrigC"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="TRIGD" SIGIS="undef" SIGNAME="External_Ports_TRIGD">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="TrigD"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -390,188 +390,21 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE FULLNAME="/FifoManagerV4_0" HWVERSION="1.0" INSTANCE="FifoManagerV4_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="FifoManagerV4" VLNV="xilinx.com:module_ref:FifoManagerV4:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="C_M_AXIS_TDATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="Component_Name" VALUE="base_zynq_FifoManagerV4_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="nRST" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SW_nRST">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SW_nRST"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="1e+08" DIR="I" NAME="CLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="PRECvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SSvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIFOresponse" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOresponse">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFOresponse"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="TestFIFO" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_TestFiFO">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="TestFiFO"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIFO_ReadEn" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFO_ReadEn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_ReadEn"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="63" NAME="FIFO_Time" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Time">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Time"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="8" NAME="FIFO_WdoAddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_WdoAddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_WdoAddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="FIFO_TrigInfo" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_TrigInfo">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_TrigInfo"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="9" NAME="FIFO_Spare" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Spare">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Spare"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="FIFO_Empty" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Empty">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="FIFO_Empty"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH0" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH1" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH2" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH2">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH2"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH3" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH3">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH3"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH4" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH4">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH4"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH5" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH5">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH5"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH6" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH6">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH6"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH7" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH7">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH7"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH8" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH8">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH8"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH9" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH9">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH9"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH10" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH10">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH10"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH11" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH11">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH11"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH12" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH12">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH12"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH13" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH13">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH13"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH14" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH14">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH14"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="11" NAME="CH15" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH15">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="CH15"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIFOvalid" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axistream_0" PORT="FIFOvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="ready_i" SIGIS="undef" SIGNAME="axistream_0_StreamReady">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axistream_0" PORT="StreamReady"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="PSBUSY_i" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PSBusy">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="PSBusy"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="DataOut" RIGHT="0" SIGIS="undef" SIGNAME="FifoManagerV4_0_DataOut">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axistream_0" PORT="FIFOdata"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE FULLNAME="/TARGETC_IP_Prototype_0" HWVERSION="1.0" INSTANCE="TARGETC_IP_Prototype_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TARGETC_IP_Prototype" VLNV="xilinx.com:module_ref:TARGETC_IP_Prototype:1.0">
+    <MODULE FULLNAME="/TARGET_C_TopLevel_Sy_0" HWVERSION="1.0" INSTANCE="TARGET_C_TopLevel_Sy_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="TARGET_C_TopLevel_System" VLNV="xilinx.com:module_ref:TARGET_C_TopLevel_System:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="tc_axi" NAME="reg0" RANGE="4294967296" USAGE="register"/>
       </ADDRESSBLOCKS>
       <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="base_zynq_TARGETC_IP_Prototype_0_1"/>
+        <PARAMETER NAME="Component_Name" VALUE="base_zynq_TARGET_C_TopLevel_Sy_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x60000000"/>
         <PARAMETER NAME="C_HIGHADDR" VALUE="0x7FFFFFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" NAME="SW_nRST" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SW_nRST">
+        <PORT DIR="O" NAME="SW_nRST" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SW_nRST">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axistream_0" PORT="SW_nRST"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="nRST"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="RefCLK_i1" SIGIS="undef" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -594,112 +427,112 @@
             <CONNECTION INSTANCE="rst_ps7_0_50M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="tc_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awaddr">
+        <PORT DIR="I" LEFT="31" NAME="tc_axi_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="tc_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awprot">
+        <PORT DIR="I" LEFT="2" NAME="tc_axi_awprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_awprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tc_axi_awvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awvalid">
+        <PORT DIR="I" NAME="tc_axi_awvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tc_axi_awready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awready">
+        <PORT DIR="O" NAME="tc_axi_awready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="tc_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wdata">
+        <PORT DIR="I" LEFT="31" NAME="tc_axi_wdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="tc_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wstrb">
+        <PORT DIR="I" LEFT="3" NAME="tc_axi_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wstrb">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tc_axi_wvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wvalid">
+        <PORT DIR="I" NAME="tc_axi_wvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tc_axi_wready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wready">
+        <PORT DIR="O" NAME="tc_axi_wready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="tc_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bresp">
+        <PORT DIR="O" LEFT="1" NAME="tc_axi_bresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tc_axi_bvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bvalid">
+        <PORT DIR="O" NAME="tc_axi_bvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tc_axi_bready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bready">
+        <PORT DIR="I" NAME="tc_axi_bready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="tc_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_araddr">
+        <PORT DIR="I" LEFT="31" NAME="tc_axi_araddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_araddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="2" NAME="tc_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arprot">
+        <PORT DIR="I" LEFT="2" NAME="tc_axi_arprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arprot">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_arprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tc_axi_arvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arvalid">
+        <PORT DIR="I" NAME="tc_axi_arvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tc_axi_arready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arready">
+        <PORT DIR="O" NAME="tc_axi_arready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="tc_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rdata">
+        <PORT DIR="O" LEFT="31" NAME="tc_axi_rdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="tc_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rresp">
+        <PORT DIR="O" LEFT="1" NAME="tc_axi_rresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rresp">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="tc_axi_rvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rvalid">
+        <PORT DIR="O" NAME="tc_axi_rvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="tc_axi_rready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rready">
+        <PORT DIR="I" NAME="tc_axi_rready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M00_AXI_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SIN">
+        <PORT DIR="O" NAME="SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SIN">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SIN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SCLK" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SCLK">
+        <PORT DIR="O" NAME="SCLK" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SCLK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SCLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="PCLK" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PCLK">
+        <PORT DIR="O" NAME="PCLK" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_PCLK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="PCLK"/>
           </CONNECTIONS>
@@ -709,87 +542,87 @@
             <CONNECTION INSTANCE="External_Ports" PORT="SHOUT"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="HSCLK_P" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_HSCLK_P">
+        <PORT DIR="O" NAME="HSCLK_P" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_HSCLK_P">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="HSCLK_P"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="HSCLK_N" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_HSCLK_N">
+        <PORT DIR="O" NAME="HSCLK_N" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_HSCLK_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="HSCLK_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_RS_S0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_RS_S0">
+        <PORT DIR="O" NAME="WR_RS_S0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_RS_S0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_RS_S0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_RS_S1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_RS_S1">
+        <PORT DIR="O" NAME="WR_RS_S1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_RS_S1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_RS_S1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S0">
+        <PORT DIR="O" NAME="WR_CS_S0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S1">
+        <PORT DIR="O" NAME="WR_CS_S1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S2" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S2">
+        <PORT DIR="O" NAME="WR_CS_S2" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S2">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S3" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S3">
+        <PORT DIR="O" NAME="WR_CS_S3" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S3">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S3"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S4" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S4">
+        <PORT DIR="O" NAME="WR_CS_S4" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S4">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="WR_CS_S5" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_WR_CS_S5">
+        <PORT DIR="O" NAME="WR_CS_S5" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_WR_CS_S5">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WR_CS_S5"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="GCC_RESET" SIGIS="rst" SIGNAME="TARGETC_IP_Prototype_0_GCC_RESET">
+        <PORT DIR="O" NAME="GCC_RESET" SIGIS="rst" SIGNAME="TARGET_C_TopLevel_Sy_0_GCC_RESET">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="GCC_RESET"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_P" SIGIS="clk" SIGNAME="TARGETC_IP_Prototype_0_WL_CLK_P">
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_P" SIGIS="clk" SIGNAME="TARGET_C_TopLevel_Sy_0_WL_CLK_P">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WL_CLK_P"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_N" SIGIS="clk" SIGNAME="TARGETC_IP_Prototype_0_WL_CLK_N">
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="WL_CLK_N" SIGIS="clk" SIGNAME="TARGET_C_TopLevel_Sy_0_WL_CLK_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="WL_CLK_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="RDAD_CLK" SIGIS="clk" SIGNAME="TARGETC_IP_Prototype_0_RDAD_CLK">
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="RDAD_CLK" SIGIS="clk" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_CLK">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RDAD_CLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="RDAD_SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RDAD_SIN">
+        <PORT DIR="O" NAME="RDAD_SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_SIN">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RDAD_SIN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="RDAD_DIR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RDAD_DIR">
+        <PORT DIR="O" NAME="RDAD_DIR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RDAD_DIR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RDAD_DIR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SAMPLESEL_ANY" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SAMPLESEL_ANY">
+        <PORT DIR="O" NAME="SAMPLESEL_ANY" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SAMPLESEL_ANY">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SAMPLESEL_ANY"/>
           </CONNECTIONS>
@@ -799,7 +632,7 @@
             <CONNECTION INSTANCE="xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SS_INCR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_INCR">
+        <PORT DIR="O" NAME="SS_INCR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_INCR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SS_INCR"/>
           </CONNECTIONS>
@@ -810,37 +643,37 @@
             <CONNECTION INSTANCE="External_Ports" PORT="DONE"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SS_RESET" SIGIS="rst" SIGNAME="TARGETC_IP_Prototype_0_SS_RESET">
+        <PORT DIR="O" NAME="SS_RESET" SIGIS="rst" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_RESET">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SS_RESET"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="REGCLR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_REGCLR">
+        <PORT DIR="O" NAME="REGCLR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_REGCLR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="REGCLR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SS_LD_SIN" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_LD_SIN">
+        <PORT DIR="O" NAME="SS_LD_SIN" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_LD_SIN">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SS_LD_SIN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SS_LD_DIR" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SS_LD_DIR">
+        <PORT DIR="O" NAME="SS_LD_DIR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SS_LD_DIR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SS_LD_DIR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="RAMP" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_RAMP">
+        <PORT DIR="O" NAME="RAMP" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_RAMP">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="RAMP"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SSTIN_P" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSTIN_P">
+        <PORT DIR="O" NAME="SSTIN_P" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SSTIN_P">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SSTIN_P"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SSTIN_N" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSTIN_N">
+        <PORT DIR="O" NAME="SSTIN_N" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SSTIN_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="SSTIN_N"/>
           </CONNECTIONS>
@@ -855,135 +688,34 @@
             <CONNECTION INSTANCE="External_Ports" PORT="MONTIMING_N"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="TestFiFO" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_TestFiFO">
+        <PORT DIR="I" LEFT="9" NAME="Cnt_AXIS_DATA" RIGHT="0" SIGIS="undef" SIGNAME="axistream_0_Cnt_AXIS_DATA">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="TestFIFO"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="Cnt_AXIS_DATA"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="FIFO_ReadEn" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFO_ReadEn">
+        <PORT DIR="O" NAME="CNT_CLR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_CNT_CLR">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_ReadEn"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="CNT_CLR"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="63" NAME="FIFO_Time" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Time">
+        <PORT DIR="O" NAME="TestStream" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_TestStream">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Time"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="TestStream"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="FIFO_WdoAddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_WdoAddr">
+        <PORT DIR="O" NAME="FIFOvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_FIFOvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_WdoAddr"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="FIFOvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="11" NAME="FIFO_TrigInfo" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_TrigInfo">
+        <PORT DIR="O" LEFT="31" NAME="FIFOdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_FIFOdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_TrigInfo"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="FIFOdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="9" NAME="FIFO_Spare" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Spare">
+        <PORT DIR="I" NAME="StreamReady" SIGIS="undef" SIGNAME="axistream_0_StreamReady">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Spare"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="FIFO_Empty" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_FIFO_Empty">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFO_Empty"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="TestStream" SIGIS="undef"/>
-        <PORT DIR="O" NAME="PSBusy" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_PSBusy">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="PSBUSY_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="FIFOresponse" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOresponse">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFOresponse"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH0" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH1" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH1">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH1"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH2" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH2">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH2"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH3" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH3">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH3"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH4" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH4">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH4"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH5" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH5">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH5"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH6" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH6">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH6"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH7" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH7">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH7"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH8" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH8">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH8"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH9" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH9">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH9"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH10" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH10">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH10"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH11" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH11">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH11"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH12" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH12">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH12"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH13" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH13">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH13"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH14" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH14">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH14"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="11" NAME="CH15" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_CH15">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CH15"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="SSvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="PRECvalid"/>
+            <CONNECTION INSTANCE="axistream_0" PORT="StreamReady"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="TrigA" SIGIS="undef" SIGNAME="External_Ports_TRIGA">
@@ -1006,32 +738,32 @@
             <CONNECTION INSTANCE="External_Ports" PORT="TRIGD"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="SSVALID_INTR" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="TARGETC_IP_Prototype_0_SSVALID_INTR">
+        <PORT DIR="O" NAME="SSVALID_INTR" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="TARGET_C_TopLevel_Sy_0_SSVALID_INTR">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_1" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="BB1" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB1">
+        <PORT DIR="O" NAME="BB1" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BB1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="BB2" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB2">
+        <PORT DIR="O" NAME="BB2" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB2">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BB2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="BB3" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB3">
+        <PORT DIR="O" NAME="BB3" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB3">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BB3"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="BB4" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB4">
+        <PORT DIR="O" NAME="BB4" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB4">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BB4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="BB5" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_BB5">
+        <PORT DIR="O" NAME="BB5" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_BB5">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="BB5"/>
           </CONNECTIONS>
@@ -3965,25 +3697,39 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="SW_nRST" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SW_nRST">
+        <PORT DIR="I" NAME="SW_nRST" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SW_nRST">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SW_nRST"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SW_nRST"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="TestStream" SIGIS="undef"/>
-        <PORT DIR="I" NAME="FIFOvalid" SIGIS="undef" SIGNAME="FifoManagerV4_0_FIFOvalid">
+        <PORT DIR="I" NAME="TestStream" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_TestStream">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="FIFOvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="TestStream"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="FIFOdata" RIGHT="0" SIGIS="undef" SIGNAME="FifoManagerV4_0_DataOut">
+        <PORT DIR="I" NAME="FIFOvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_FIFOvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="DataOut"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="FIFOvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="FIFOdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_FIFOdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="FIFOdata"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="StreamReady" SIGIS="undef" SIGNAME="axistream_0_StreamReady">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="ready_i"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="StreamReady"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="9" NAME="Cnt_AXIS_DATA" RIGHT="0" SIGIS="undef" SIGNAME="axistream_0_Cnt_AXIS_DATA">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="Cnt_AXIS_DATA"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="CNT_CLR" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_CNT_CLR">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="CNT_CLR"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="1e+08" DIR="I" NAME="M_AXIS_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
@@ -5467,10 +5213,9 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ACLK"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RefCLK_i1"/>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="RefCLK_i2"/>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aclk"/>
-            <CONNECTION INSTANCE="FifoManagerV4_0" PORT="CLK"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RefCLK_i1"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="RefCLK_i2"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
@@ -5703,12 +5448,12 @@
       <MEMORYMAP>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x40400000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4040FFFF" INSTANCE="axi_dma_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI_LITE"/>
         <MEMRANGE ADDRESSBLOCK="Reg" BASENAME="C_BASEADDR" BASEVALUE="0x41600000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x4160FFFF" INSTANCE="axi_iic_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="S_AXI"/>
-        <MEMRANGE ADDRESSBLOCK="reg0" BASENAME="C_BASEADDR" BASEVALUE="0x60000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x7FFFFFFF" INSTANCE="TARGETC_IP_Prototype_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="tc_axi"/>
+        <MEMRANGE ADDRESSBLOCK="reg0" BASENAME="C_BASEADDR" BASEVALUE="0x60000000" HIGHNAME="C_HIGHADDR" HIGHVALUE="0x7FFFFFFF" INSTANCE="TARGET_C_TopLevel_Sy_0" IS_DATA="TRUE" IS_INSTRUCTION="TRUE" MASTERBUSINTERFACE="M_AXI_GP0" MEMTYPE="REGISTER" SLAVEBUSINTERFACE="tc_axi"/>
       </MEMORYMAP>
       <PERIPHERALS>
         <PERIPHERAL INSTANCE="axi_dma_0"/>
         <PERIPHERAL INSTANCE="axi_iic_0"/>
-        <PERIPHERAL INSTANCE="TARGETC_IP_Prototype_0"/>
+        <PERIPHERAL INSTANCE="TARGET_C_TopLevel_Sy_0"/>
       </PERIPHERALS>
     </MODULE>
     <MODULE FULLNAME="/ps7_0_axi_periph" HWVERSION="2.1" INSTANCE="ps7_0_axi_periph" IPTYPE="BUS" IS_ENABLE="1" MODCLASS="BUS" MODTYPE="axi_interconnect" VLNV="xilinx.com:ip:axi_interconnect:2.1">
@@ -6439,99 +6184,99 @@
             <CONNECTION INSTANCE="axi_dma_0" PORT="s_axi_lite_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awaddr">
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awaddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_awaddr"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_awaddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awprot">
+        <PORT DIR="O" LEFT="2" NAME="M00_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awprot">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_awprot"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_awprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awvalid">
+        <PORT DIR="O" NAME="M00_AXI_awvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_awvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_awready">
+        <PORT DIR="I" NAME="M00_AXI_awready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_awready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_awready"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_awready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wdata">
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_wdata"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wstrb">
+        <PORT DIR="O" LEFT="3" NAME="M00_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wstrb">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_wstrb"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wvalid">
+        <PORT DIR="O" NAME="M00_AXI_wvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_wvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_wready">
+        <PORT DIR="I" NAME="M00_AXI_wready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_wready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_wready"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_wready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bresp">
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_bresp"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bvalid">
+        <PORT DIR="I" NAME="M00_AXI_bvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_bvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_bready">
+        <PORT DIR="O" NAME="M00_AXI_bready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_bready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_bready"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_bready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_araddr">
+        <PORT DIR="O" LEFT="31" NAME="M00_AXI_araddr" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_araddr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_araddr"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_araddr"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="2" NAME="M00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arprot">
+        <PORT DIR="O" LEFT="2" NAME="M00_AXI_arprot" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arprot">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_arprot"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_arprot"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arvalid">
+        <PORT DIR="O" NAME="M00_AXI_arvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_arvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_arready">
+        <PORT DIR="I" NAME="M00_AXI_arready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_arready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_arready"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_arready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rdata">
+        <PORT DIR="I" LEFT="31" NAME="M00_AXI_rdata" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_rdata"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rresp">
+        <PORT DIR="I" LEFT="1" NAME="M00_AXI_rresp" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rresp">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_rresp"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rvalid">
+        <PORT DIR="I" NAME="M00_AXI_rvalid" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rvalid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_rvalid"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_tc_axi_rready">
+        <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_tc_axi_rready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_rready"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_rready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6697,7 +6442,7 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ARESETN"/>
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="M00_ARESETN"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ARESETN"/>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="tc_axi_aresetn"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="tc_axi_aresetn"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6826,7 +6571,7 @@
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="DO"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="DO"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -6873,9 +6618,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TARGETC_IP_Prototype_0_SSVALID_INTR">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="TARGET_C_TopLevel_Sy_0_SSVALID_INTR">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="TARGETC_IP_Prototype_0" PORT="SSVALID_INTR"/>
+            <CONNECTION INSTANCE="TARGET_C_TopLevel_Sy_0" PORT="SSVALID_INTR"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="axi_dma_0_s2mm_introut">
@@ -6902,10 +6647,10 @@
       <PORTS>
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="HCMPA"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="HCMPB"/>
-            <CONNECTION INSTANCE="External_Ports" PORT="HCMPC"/>
             <CONNECTION INSTANCE="External_Ports" PORT="HCMPD"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="HCMPC"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="HCMPB"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="HCMPA"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

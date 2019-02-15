@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-use work.WindowCPU_PKG.all;
+use work.WindowCPU_PKG_old.all;
 use work.TARGETC_pkg.all;
 
 entity WindowControlV3 is
@@ -33,10 +33,10 @@ entity WindowControlV3 is
 	CtrlBus_IxSL:		in 	T_CtrlBus_IxSL;
 
 	CurAddr:		out	std_logic_vector(7 downto 0);
-	--	NextBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
-	--	PrevBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
-	NextAddr_in : 	in std_logic_vector(7 downto 0);
-	PrevAddr_in :	in std_logic_vector(7 downto 0);
+	NextBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
+	PrevBus_In:		in Bus_t(NBRWINDOWS-1 downto 0);
+	--NextAddr_in : 	in std_logic_vector(7 downto 0);
+	--PrevAddr_in :	in std_logic_vector(7 downto 0);
 
     -- FIFO IN for Digiting
     DIG_Full	: out	std_logic;
@@ -48,7 +48,7 @@ end WindowControlV3;
 
 architecture Behavioral of WindowControlV3 is
 
-	component LookupTable_LE is
+	component LookupTable_LE_old is
 	generic(
 		MIN_LE_TIME : integer := 3	-- All times are x4 ns so 2 is equal to 8ns = 12 samples before rise of trigger
 	);
@@ -56,9 +56,9 @@ architecture Behavioral of WindowControlV3 is
 		SCnt:		in 	std_logic_vector(2 downto 0);
 		prevWdo :	out	std_logic
 	);
-	end component LookupTable_LE;
+	end component LookupTable_LE_old;
 
-	component LookupTable_TE is
+	component LookupTable_TE_old is
 	generic(
 		MIN_TE_TIME : integer := 1
 	);
@@ -66,17 +66,17 @@ architecture Behavioral of WindowControlV3 is
 		SCnt:		in 	std_logic_vector(2 downto 0);
 		NextWdo :	out	std_logic
 	);
-	end component LookupTable_TE;
+	end component LookupTable_TE_old;
 
 	component WindowSelect is
 
 		Port (
-		Clk        :in  std_logic;
+		--Clk        :in  std_logic;
 		CurAddr :		in std_logic_vector(7 downto 0);
 
-		NextBus_In:		in Bus_t;
-		PrevBus_In:		in Bus_t;
-
+		NextBus_In:		in Bus_t(255 downto 0);
+		PrevBus_In:		in Bus_t(255 downto 0);
+		
 		NextAddr:		out std_logic_vector(7 downto 0);
 		PrevAddr:		out std_logic_vector(7 downto 0)
 		);
@@ -181,7 +181,7 @@ architecture Behavioral of WindowControlV3 is
 	signal cmd_s : std_logic;
 begin
 
-	LE_LUT_inst : 	LookupTable_LE
+	LE_LUT_inst : 	LookupTable_LE_old
 	generic map(
 		MIN_LE_TIME => MIN_LE_TIME
 	)
@@ -190,7 +190,7 @@ begin
 		prevWdo => prevWdo_LE
 	);
 
-	TE_LUT_inst : 	LookupTable_TE
+	TE_LUT_inst : 	LookupTable_TE_old
 	generic map(
 		MIN_TE_TIME => MIN_TE_TIME
 	)
@@ -289,20 +289,20 @@ begin
    -- 	PrevAddr	=> open
    -- 	);
 
-	NextAddr_intl <=	NextAddr_in;
-	PrevAddr_intl <= 	PrevAddr_in;
+	--NextAddr_intl <=	NextAddr_in;
+	--PrevAddr_intl <= 	PrevAddr_in;
 
-	-- WDOSS_Normal : WindowSelect
-	-- 	Port map (
-	-- 	clk			=> ClockBus.CLK250MHz,
-	-- 	CurAddr 	=> WR_ADDR_S,
-	--
-	-- 	NextBus_In	=> NextBus_In,
-	-- 	PrevBus_In	=> PrevBus_In,
-	--
-	-- 	NextAddr	=> NextAddr_intl,
-	-- 	PrevAddr	=> PrevAddr_intl
-	-- 	);
+	WDOSS_Normal : WindowSelect
+	 	Port map (
+	 	--clk			=> ClockBus.CLK250MHz,
+	 	CurAddr 	=> WR_ADDR_S,
+	
+	 	NextBus_In	=> NextBus_In,
+	 	PrevBus_In	=> PrevBus_In,
+	
+	 	NextAddr	=> NextAddr_intl,
+	 	PrevAddr	=> PrevAddr_intl
+	 	);
 	--
 	-- WDOSS_Search : WindowSelect
 	-- 	Port map (
@@ -333,9 +333,13 @@ begin
 	WR_CS_S <= WR_ADDR_S(7 downto 2);
 
 	-- Minimal State Machine For Windows select
-	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	begin
+--	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+process(ClockBus.CLK250MHz, nRST)	-- Every 64 ns
 	begin
-	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+	if nRST = '0' then
+	
 			storage_stm <= IDLE;
 			FstWindow512 <= (others => '0');
 			CntWindow512 <= (others => '0');
@@ -651,9 +655,13 @@ begin
 
 
 	-- Process for triggerB_stm
-	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
-	begin
-	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+--	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	begin
+--	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+	
+	process(ClockBus.CLK250MHz, nRST)	-- Every 64 ns
+		begin
+		if nRST = '0' then
 			BusB.en <= '0';
 			BusB.addr <= (others =>'0');
 			flgB_LE <= '0';
@@ -730,9 +738,12 @@ begin
 	end process;
 
 	-- Process for triggerC_stm
-	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	begin
+--	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+process(ClockBus.CLK250MHz, nRST)	-- Every 64 ns
 	begin
-	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+	if nRST = '0' then
 			BusC.en <= '0';
 			BusC.addr <= (others =>'0');
 			flgC_LE <= '0';
@@ -811,9 +822,13 @@ begin
 	end process;
 
 	-- Process for triggerD_stm
-	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
-	begin
-	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+--	process(ClockBus.CLK250MHz, nRST, CtrlBus_IxSL.SWRESET)	-- Every 64 ns
+--	begin
+--	if nRST = '0' or CtrlBus_IxSL.SWRESET = '0' then
+	
+process(ClockBus.CLK250MHz, nRST)	-- Every 64 ns
+		begin
+		if nRST = '0' then	
 			BusD.en <= '0';
 			BusD.addr <= (others =>'0');
 			flgD_LE <= '0';

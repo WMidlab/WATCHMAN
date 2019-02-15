@@ -66,35 +66,6 @@ begin
 			end if;
 		end if;
 	end process;
-	-- 	H(0) <= '0';	--1
-	-- 	H(1) <= '0'; 	--2
-	-- H(2) <= data(0);	--3
-	-- 	H(3) <= '0';	--4
-	-- H(4) <= data(1);
-	-- H(5) <= data(2);
-	-- H(6) <= data(3);
-	-- 	H(7) <= '0'; 	--8
-	--
-	-- H(8) <= data(4);
-	-- H(9) <= data(5);
-	-- H(10) <= data(6);
-	-- H(11) <= data(7);
-	-- H(12) <= data(8);
-	-- H(13) <= data(9);
-	-- H(14) <= data(10);
-	-- 	H(15) <= '0';	--16
-	--
-	-- H(16) <= data(11);
-	-- H(17) <= data(12);
-	-- H(18) <= data(13);
-	-- H(19) <= data(14);
-	-- H(20) <= data(15);
-
-	-- cx(0) <= H(0) xor H(2) xor H(4) xor H(6) xor H(8) xor H(10) xor H(12) xor H(14) xor H(16) xor H(18) xor H(20);
-	-- cx(1) <= H(1) xor H(2) xor H(5) xor H(6) xor H(9) xor H(10) xor H(13) xor H(14) xor H(17) xor H(18);
-	-- cx(2) <= H(3) xor H(4) xor H(5) xor H(6) xor H(11) xor H(12) xor H(13) xor H(14) xor  H(19) xor H(20);
-	-- cx(3) <= H(7) xor H(8) xor H(9) xor H(10) xor H(11) xor H(12) xor H(13) xor H(14) xor H(15);
-	-- cx(4) <= H(15) xor H(16) xor H(17) xor H(18) xor H(19) xor H(20);
 
 	process(clk, nrst)
 	begin
@@ -102,11 +73,22 @@ begin
 			cx <= (others => '0');
 		else
 			if rising_edge(clk) then
-				cx(0) <= H(0) xor H(2) xor H(4) xor H(6) xor H(8) xor H(10) xor H(12) xor H(14) xor H(16) xor H(18) xor H(20);
-				cx(1) <= H(1) xor H(2) xor H(5) xor H(6) xor H(9) xor H(10) xor H(13) xor H(14) xor H(17) xor H(18);
-				cx(2) <= H(3) xor H(4) xor H(5) xor H(6) xor H(11) xor H(12) xor H(13) xor H(14) xor  H(19) xor H(20);
-				cx(3) <= H(7) xor H(8) xor H(9) xor H(10) xor H(11) xor H(12) xor H(13) xor H(14) xor H(15);
-				cx(4) <= H(15) xor H(16) xor H(17) xor H(18) xor H(19) xor H(20);
+				cx(0) <= '0' xor data(0) xor data(1) xor data(3) xor data(4) xor data(6) xor data(8) xor data(10) xor data(11) xor data(13) xor data(15);
+				cx(1) <= '0' xor data(0) xor data(2) xor data(3) xor data(5) xor data(6) xor data(9) xor data(10) xor data(12) xor data(13);
+
+				cx(2) <= '0' xor data(1) xor data(2) xor data(3) xor data(7) xor data(8) xor data(9) xor data(10) xor  data(14) xor data(15);
+				--cx(3) <= H(7) xor H(8) xor H(9) xor H(10) xor H(11) xor H(12) xor H(13) xor H(14) xor H(15);
+				cx(3) <= '0' xor data(4) xor data(5) xor data(6) xor data(7) xor data(8) xor data(9) xor data(10);
+				cx(4) <= '0' xor data(11) xor data(12) xor data(13) xor data(14) xor data(15);
+				-- cx(0) <= H(0) xor H(2) xor H(4) xor H(6) xor H(8) xor H(10) xor H(12) xor H(14) xor H(16) xor H(18) xor H(20);
+				-- cx(1) <= H(1) xor H(2) xor H(5) xor H(6) xor H(9) xor H(10) xor H(13) xor H(14) xor H(17) xor H(18);
+				--
+				-- cx(2) <= H(3) xor H(4) xor H(5) xor H(6) xor H(11) xor H(12) xor H(13) xor H(14) xor  H(19) xor H(20);
+				-- --cx(3) <= H(7) xor H(8) xor H(9) xor H(10) xor H(11) xor H(12) xor H(13) xor H(14) xor H(15);
+				-- cx(3) <= H(7) xor H(8) xor H(9) xor H(10) xor H(11) xor H(12) xor H(13) xor H(14);
+				-- cx(4) <= H(15) xor H(16) xor H(17) xor H(18) xor H(19) xor H(20);
+				--using DATA
+
 			end if;
 		end if;
 	end process;

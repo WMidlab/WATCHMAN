@@ -24,7 +24,8 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xdebug.h \
  ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xil_cache.h \
  ../src/global.h ../src/TARGETC_RegisterMap.h ../src/platform.h \
- ../src/platform_config.h
+ ../src/platform_config.h \
+ ../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h
 
 ../src/interrupt.h:
 
@@ -83,3 +84,5 @@ src/interrupt.o src/interrupt.o: ../src/interrupt.c ../src/interrupt.h \
 ../src/platform.h:
 
 ../src/platform_config.h:
+
+../../TargetC_Prototype_bsp/ps7_cortexa9_0/include/xuartps_hw.h:

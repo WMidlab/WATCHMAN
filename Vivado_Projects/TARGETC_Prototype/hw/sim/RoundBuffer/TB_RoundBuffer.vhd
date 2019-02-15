@@ -56,7 +56,9 @@ architecture implementation of TB_RoundBuffer is
 			WR_CS_S:		out std_logic_vector(5 downto 0);
 
 			CtrlBus_IxSL:		in 	T_CtrlBus_IxSL; --Outputs from Control Master
-
+			
+			RBNbrOfPackets: out std_logic_vector(7 downto 0);
+			
 			RDAD_ReadEn  :in  std_logic;
 			RDAD_DataOut : out std_logic_vector(9 downto 0);
 			RDAD_Empty	: out std_logic;
@@ -157,7 +159,8 @@ begin
 			WR_CS_S		=> open,
 
 			CtrlBus_IxSL=> CtrlBus_IxSL_intl,
-
+			RBNbrOfPackets => open,
+			
 			RDAD_ReadEn  => RDAD_ReadEn_sti,
 			RDAD_DataOut => RDAD_DataOut_obs,
 			RDAD_Empty	=> RDAD_Empty_obs,

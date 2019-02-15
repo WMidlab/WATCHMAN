@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# FifoManagerV4, TARGETC_IP_Prototype, axistream, iobuf, iobuf
+# TARGET_C_TopLevel_System, axistream, iobuf, iobuf
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -65,7 +65,7 @@ set run_remote_bd_flow 1
 if { $run_remote_bd_flow == 1 } {
   # Set the reference directory for source file relative paths (by default 
   # the value is script directory path)
-  set origin_dir ./VivadoProjects/00_WATCHMANN/TARGETC_Prototype/hw/bd
+  set origin_dir ./GitProjects/WATCHMAN/Vivado_Projects/00_FMC_TargetC_Prototype/hw/bd
 
   # Use origin directory path location variable, if specified in the tcl shell
   if { [info exists ::origin_dir_loc] } {
@@ -228,24 +228,13 @@ proc create_root_design { parentCell } {
   set WR_RS_S0 [ create_bd_port -dir O WR_RS_S0 ]
   set WR_RS_S1 [ create_bd_port -dir O WR_RS_S1 ]
 
-  # Create instance: FifoManagerV4_0, and set properties
-  set block_name FifoManagerV4
-  set block_cell_name FifoManagerV4_0
-  if { [catch {set FifoManagerV4_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: TARGET_C_TopLevel_Sy_0, and set properties
+  set block_name TARGET_C_TopLevel_System
+  set block_cell_name TARGET_C_TopLevel_Sy_0
+  if { [catch {set TARGET_C_TopLevel_Sy_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $FifoManagerV4_0 eq "" } {
-     catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: TARGETC_IP_Prototype_0, and set properties
-  set block_name TARGETC_IP_Prototype
-  set block_cell_name TARGETC_IP_Prototype_0
-  if { [catch {set TARGETC_IP_Prototype_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_msg_id "BD_TCL-105" "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $TARGETC_IP_Prototype_0 eq "" } {
+   } elseif { $TARGET_C_TopLevel_Sy_0 eq "" } {
      catch {common::send_msg_id "BD_TCL-106" "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -1145,13 +1134,13 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins TARGETC_IP_Prototype_0/tc_axi] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins TARGET_C_TopLevel_Sy_0/tc_axi] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins axi_iic_0/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins axi_dma_0/S_AXI_LITE] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
 
   # Create port connections
   connect_bd_net -net ARESETN_1 [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins rst_ps7_0_50M/interconnect_aresetn]
-  connect_bd_net -net DONE_1 [get_bd_ports DONE] [get_bd_pins TARGETC_IP_Prototype_0/DONE]
+  connect_bd_net -net DONE_1 [get_bd_ports DONE] [get_bd_pins TARGET_C_TopLevel_Sy_0/DONE]
   connect_bd_net -net DO_10_1 [get_bd_ports DO_10] [get_bd_pins xlconcat_0/In9]
   connect_bd_net -net DO_11_1 [get_bd_ports DO_11] [get_bd_pins xlconcat_0/In10]
   connect_bd_net -net DO_12_1 [get_bd_ports DO_12] [get_bd_pins xlconcat_0/In11]
@@ -1168,96 +1157,73 @@ proc create_root_design { parentCell } {
   connect_bd_net -net DO_7_1 [get_bd_ports DO_7] [get_bd_pins xlconcat_0/In6]
   connect_bd_net -net DO_8_1 [get_bd_ports DO_8] [get_bd_pins xlconcat_0/In7]
   connect_bd_net -net DO_9_1 [get_bd_ports DO_9] [get_bd_pins xlconcat_0/In8]
-  connect_bd_net -net FifoManagerV4_0_DataOut [get_bd_pins FifoManagerV4_0/DataOut] [get_bd_pins axistream_0/FIFOdata]
-  connect_bd_net -net FifoManagerV4_0_FIFO_ReadEn [get_bd_pins FifoManagerV4_0/FIFO_ReadEn] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_ReadEn]
-  connect_bd_net -net FifoManagerV4_0_FIFOresponse [get_bd_pins FifoManagerV4_0/FIFOresponse] [get_bd_pins TARGETC_IP_Prototype_0/FIFOresponse]
-  connect_bd_net -net FifoManagerV4_0_FIFOvalid [get_bd_pins FifoManagerV4_0/FIFOvalid] [get_bd_pins axistream_0/FIFOvalid]
-  connect_bd_net -net MONTIMING_N_1 [get_bd_ports MONTIMING_N] [get_bd_pins TARGETC_IP_Prototype_0/MONTIMING_N]
-  connect_bd_net -net MONTIMING_P_1 [get_bd_ports MONTIMING_P] [get_bd_pins TARGETC_IP_Prototype_0/MONTIMING_P]
+  connect_bd_net -net MONTIMING_N_1 [get_bd_ports MONTIMING_N] [get_bd_pins TARGET_C_TopLevel_Sy_0/MONTIMING_N]
+  connect_bd_net -net MONTIMING_P_1 [get_bd_ports MONTIMING_P] [get_bd_pins TARGET_C_TopLevel_Sy_0/MONTIMING_P]
   connect_bd_net -net Net [get_bd_ports SDA] [get_bd_pins iobuf_0/IO]
   connect_bd_net -net Net1 [get_bd_ports SCL] [get_bd_pins iobuf_1/IO]
-  connect_bd_net -net SHOUT_1 [get_bd_ports SHOUT] [get_bd_pins TARGETC_IP_Prototype_0/SHOUT]
-  connect_bd_net -net TARGETC_IP_Prototype_0_BB2 [get_bd_ports BB2] [get_bd_pins TARGETC_IP_Prototype_0/BB2]
-  connect_bd_net -net TARGETC_IP_Prototype_0_BB3 [get_bd_ports BB3] [get_bd_pins TARGETC_IP_Prototype_0/BB3]
-  connect_bd_net -net TARGETC_IP_Prototype_0_BB4 [get_bd_ports BB4] [get_bd_pins TARGETC_IP_Prototype_0/BB4]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH0 [get_bd_pins FifoManagerV4_0/CH0] [get_bd_pins TARGETC_IP_Prototype_0/CH0]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH1 [get_bd_pins FifoManagerV4_0/CH1] [get_bd_pins TARGETC_IP_Prototype_0/CH1]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH2 [get_bd_pins FifoManagerV4_0/CH2] [get_bd_pins TARGETC_IP_Prototype_0/CH2]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH3 [get_bd_pins FifoManagerV4_0/CH3] [get_bd_pins TARGETC_IP_Prototype_0/CH3]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH4 [get_bd_pins FifoManagerV4_0/CH4] [get_bd_pins TARGETC_IP_Prototype_0/CH4]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH5 [get_bd_pins FifoManagerV4_0/CH5] [get_bd_pins TARGETC_IP_Prototype_0/CH5]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH6 [get_bd_pins FifoManagerV4_0/CH6] [get_bd_pins TARGETC_IP_Prototype_0/CH6]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH7 [get_bd_pins FifoManagerV4_0/CH7] [get_bd_pins TARGETC_IP_Prototype_0/CH7]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH8 [get_bd_pins FifoManagerV4_0/CH8] [get_bd_pins TARGETC_IP_Prototype_0/CH8]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH9 [get_bd_pins FifoManagerV4_0/CH9] [get_bd_pins TARGETC_IP_Prototype_0/CH9]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH10 [get_bd_pins FifoManagerV4_0/CH10] [get_bd_pins TARGETC_IP_Prototype_0/CH10]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH11 [get_bd_pins FifoManagerV4_0/CH11] [get_bd_pins TARGETC_IP_Prototype_0/CH11]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH12 [get_bd_pins FifoManagerV4_0/CH12] [get_bd_pins TARGETC_IP_Prototype_0/CH12]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH13 [get_bd_pins FifoManagerV4_0/CH13] [get_bd_pins TARGETC_IP_Prototype_0/CH13]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH14 [get_bd_pins FifoManagerV4_0/CH14] [get_bd_pins TARGETC_IP_Prototype_0/CH14]
-  connect_bd_net -net TARGETC_IP_Prototype_0_CH15 [get_bd_pins FifoManagerV4_0/CH15] [get_bd_pins TARGETC_IP_Prototype_0/CH15]
-  connect_bd_net -net TARGETC_IP_Prototype_0_FIFO_Empty [get_bd_pins FifoManagerV4_0/FIFO_Empty] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_Empty]
-  connect_bd_net -net TARGETC_IP_Prototype_0_FIFO_Spare [get_bd_pins FifoManagerV4_0/FIFO_Spare] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_Spare]
-  connect_bd_net -net TARGETC_IP_Prototype_0_FIFO_Time [get_bd_pins FifoManagerV4_0/FIFO_Time] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_Time]
-  connect_bd_net -net TARGETC_IP_Prototype_0_FIFO_TrigInfo [get_bd_pins FifoManagerV4_0/FIFO_TrigInfo] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_TrigInfo]
-  connect_bd_net -net TARGETC_IP_Prototype_0_FIFO_WdoAddr [get_bd_pins FifoManagerV4_0/FIFO_WdoAddr] [get_bd_pins TARGETC_IP_Prototype_0/FIFO_WdoAddr]
-  connect_bd_net -net TARGETC_IP_Prototype_0_GCC_RESET [get_bd_ports GCC_RESET] [get_bd_pins TARGETC_IP_Prototype_0/GCC_RESET]
-  connect_bd_net -net TARGETC_IP_Prototype_0_HSCLK_N [get_bd_ports HSCLK_N] [get_bd_pins TARGETC_IP_Prototype_0/HSCLK_N]
-  connect_bd_net -net TARGETC_IP_Prototype_0_HSCLK_P [get_bd_ports HSCLK_P] [get_bd_pins TARGETC_IP_Prototype_0/HSCLK_P]
-  connect_bd_net -net TARGETC_IP_Prototype_0_MONTIMING [get_bd_ports BB5] [get_bd_pins TARGETC_IP_Prototype_0/BB5]
-  connect_bd_net -net TARGETC_IP_Prototype_0_PCLK [get_bd_ports PCLK] [get_bd_pins TARGETC_IP_Prototype_0/PCLK]
-  connect_bd_net -net TARGETC_IP_Prototype_0_PSBusy [get_bd_pins FifoManagerV4_0/PSBUSY_i] [get_bd_pins TARGETC_IP_Prototype_0/PSBusy]
-  connect_bd_net -net TARGETC_IP_Prototype_0_RAMP [get_bd_ports RAMP] [get_bd_pins TARGETC_IP_Prototype_0/RAMP]
-  connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_CLK [get_bd_ports RDAD_CLK] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_CLK]
-  connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_DIR [get_bd_ports RDAD_DIR] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_DIR]
-  connect_bd_net -net TARGETC_IP_Prototype_0_RDAD_SIN [get_bd_ports RDAD_SIN] [get_bd_pins TARGETC_IP_Prototype_0/RDAD_SIN]
-  connect_bd_net -net TARGETC_IP_Prototype_0_REGCLR [get_bd_ports REGCLR] [get_bd_pins TARGETC_IP_Prototype_0/REGCLR]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SAMPLESEL_ANY [get_bd_ports SAMPLESEL_ANY] [get_bd_pins TARGETC_IP_Prototype_0/SAMPLESEL_ANY]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SCLK [get_bd_ports SCLK] [get_bd_pins TARGETC_IP_Prototype_0/SCLK]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SIN [get_bd_ports SIN] [get_bd_pins TARGETC_IP_Prototype_0/SIN]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN [get_bd_ports BB1] [get_bd_pins TARGETC_IP_Prototype_0/BB1]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN_N [get_bd_ports SSTIN_N] [get_bd_pins TARGETC_IP_Prototype_0/SSTIN_N]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSTIN_P [get_bd_ports SSTIN_P] [get_bd_pins TARGETC_IP_Prototype_0/SSTIN_P]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSVALID_INTR [get_bd_pins TARGETC_IP_Prototype_0/SSVALID_INTR] [get_bd_pins xlconcat_1/In0]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SS_INCR [get_bd_ports SS_INCR] [get_bd_pins TARGETC_IP_Prototype_0/SS_INCR]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SS_LD_DIR [get_bd_ports SS_LD_DIR] [get_bd_pins TARGETC_IP_Prototype_0/SS_LD_DIR]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SS_LD_SIN [get_bd_ports SS_LD_SIN] [get_bd_pins TARGETC_IP_Prototype_0/SS_LD_SIN]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SS_RESET [get_bd_ports SS_RESET] [get_bd_pins TARGETC_IP_Prototype_0/SS_RESET]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SSvalid [get_bd_pins FifoManagerV4_0/PRECvalid] [get_bd_pins TARGETC_IP_Prototype_0/SSvalid]
-  connect_bd_net -net TARGETC_IP_Prototype_0_SW_nRST [get_bd_pins FifoManagerV4_0/nRST] [get_bd_pins TARGETC_IP_Prototype_0/SW_nRST] [get_bd_pins axistream_0/SW_nRST]
-  connect_bd_net -net TARGETC_IP_Prototype_0_TestFiFO [get_bd_pins FifoManagerV4_0/TestFIFO] [get_bd_pins TARGETC_IP_Prototype_0/TestFiFO]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WL_CLK_N [get_bd_ports WL_CLK_N] [get_bd_pins TARGETC_IP_Prototype_0/WL_CLK_N]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WL_CLK_P [get_bd_ports WL_CLK_P] [get_bd_pins TARGETC_IP_Prototype_0/WL_CLK_P]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S0 [get_bd_ports WR_CS_S0] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S0]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S1 [get_bd_ports WR_CS_S1] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S1]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S2 [get_bd_ports WR_CS_S2] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S2]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S3 [get_bd_ports WR_CS_S3] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S3]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S4 [get_bd_ports WR_CS_S4] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S4]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_CS_S5 [get_bd_ports WR_CS_S5] [get_bd_pins TARGETC_IP_Prototype_0/WR_CS_S5]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_RS_S0 [get_bd_ports WR_RS_S0] [get_bd_pins TARGETC_IP_Prototype_0/WR_RS_S0]
-  connect_bd_net -net TARGETC_IP_Prototype_0_WR_RS_S1 [get_bd_ports WR_RS_S1] [get_bd_pins TARGETC_IP_Prototype_0/WR_RS_S1]
-  connect_bd_net -net TRIGA_1 [get_bd_ports TRIGA] [get_bd_pins TARGETC_IP_Prototype_0/TrigA]
-  connect_bd_net -net TRIGB_1 [get_bd_ports TRIGB] [get_bd_pins TARGETC_IP_Prototype_0/TrigB]
-  connect_bd_net -net TRIGC_1 [get_bd_ports TRIGC] [get_bd_pins TARGETC_IP_Prototype_0/TrigC]
-  connect_bd_net -net TRIGD_1 [get_bd_ports TRIGD] [get_bd_pins TARGETC_IP_Prototype_0/TrigD]
+  connect_bd_net -net SHOUT_1 [get_bd_ports SHOUT] [get_bd_pins TARGET_C_TopLevel_Sy_0/SHOUT]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_BB1 [get_bd_ports BB1] [get_bd_pins TARGET_C_TopLevel_Sy_0/BB1]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_BB2 [get_bd_ports BB2] [get_bd_pins TARGET_C_TopLevel_Sy_0/BB2]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_BB3 [get_bd_ports BB3] [get_bd_pins TARGET_C_TopLevel_Sy_0/BB3]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_BB4 [get_bd_ports BB4] [get_bd_pins TARGET_C_TopLevel_Sy_0/BB4]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_BB5 [get_bd_ports BB5] [get_bd_pins TARGET_C_TopLevel_Sy_0/BB5]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_CNT_CLR [get_bd_pins TARGET_C_TopLevel_Sy_0/CNT_CLR] [get_bd_pins axistream_0/CNT_CLR]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_FIFOdata [get_bd_pins TARGET_C_TopLevel_Sy_0/FIFOdata] [get_bd_pins axistream_0/FIFOdata]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_FIFOvalid [get_bd_pins TARGET_C_TopLevel_Sy_0/FIFOvalid] [get_bd_pins axistream_0/FIFOvalid]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_GCC_RESET [get_bd_ports GCC_RESET] [get_bd_pins TARGET_C_TopLevel_Sy_0/GCC_RESET]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_HSCLK_N [get_bd_ports HSCLK_N] [get_bd_pins TARGET_C_TopLevel_Sy_0/HSCLK_N]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_HSCLK_P [get_bd_ports HSCLK_P] [get_bd_pins TARGET_C_TopLevel_Sy_0/HSCLK_P]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_PCLK [get_bd_ports PCLK] [get_bd_pins TARGET_C_TopLevel_Sy_0/PCLK]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_RAMP [get_bd_ports RAMP] [get_bd_pins TARGET_C_TopLevel_Sy_0/RAMP]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_RDAD_CLK [get_bd_ports RDAD_CLK] [get_bd_pins TARGET_C_TopLevel_Sy_0/RDAD_CLK]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_RDAD_DIR [get_bd_ports RDAD_DIR] [get_bd_pins TARGET_C_TopLevel_Sy_0/RDAD_DIR]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_RDAD_SIN [get_bd_ports RDAD_SIN] [get_bd_pins TARGET_C_TopLevel_Sy_0/RDAD_SIN]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_REGCLR [get_bd_ports REGCLR] [get_bd_pins TARGET_C_TopLevel_Sy_0/REGCLR]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SAMPLESEL_ANY [get_bd_ports SAMPLESEL_ANY] [get_bd_pins TARGET_C_TopLevel_Sy_0/SAMPLESEL_ANY]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SCLK [get_bd_ports SCLK] [get_bd_pins TARGET_C_TopLevel_Sy_0/SCLK]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SIN [get_bd_ports SIN] [get_bd_pins TARGET_C_TopLevel_Sy_0/SIN]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SSTIN_N [get_bd_ports SSTIN_N] [get_bd_pins TARGET_C_TopLevel_Sy_0/SSTIN_N]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SSTIN_P [get_bd_ports SSTIN_P] [get_bd_pins TARGET_C_TopLevel_Sy_0/SSTIN_P]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SSVALID_INTR [get_bd_pins TARGET_C_TopLevel_Sy_0/SSVALID_INTR] [get_bd_pins xlconcat_1/In0]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SS_INCR [get_bd_ports SS_INCR] [get_bd_pins TARGET_C_TopLevel_Sy_0/SS_INCR]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SS_LD_DIR [get_bd_ports SS_LD_DIR] [get_bd_pins TARGET_C_TopLevel_Sy_0/SS_LD_DIR]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SS_LD_SIN [get_bd_ports SS_LD_SIN] [get_bd_pins TARGET_C_TopLevel_Sy_0/SS_LD_SIN]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SS_RESET [get_bd_ports SS_RESET] [get_bd_pins TARGET_C_TopLevel_Sy_0/SS_RESET]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_SW_nRST [get_bd_pins TARGET_C_TopLevel_Sy_0/SW_nRST] [get_bd_pins axistream_0/SW_nRST]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_TestStream [get_bd_pins TARGET_C_TopLevel_Sy_0/TestStream] [get_bd_pins axistream_0/TestStream]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WL_CLK_N [get_bd_ports WL_CLK_N] [get_bd_pins TARGET_C_TopLevel_Sy_0/WL_CLK_N]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WL_CLK_P [get_bd_ports WL_CLK_P] [get_bd_pins TARGET_C_TopLevel_Sy_0/WL_CLK_P]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S0 [get_bd_ports WR_CS_S0] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S0]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S1 [get_bd_ports WR_CS_S1] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S1]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S2 [get_bd_ports WR_CS_S2] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S2]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S3 [get_bd_ports WR_CS_S3] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S3]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S4 [get_bd_ports WR_CS_S4] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S4]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_CS_S5 [get_bd_ports WR_CS_S5] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_CS_S5]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_RS_S0 [get_bd_ports WR_RS_S0] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_RS_S0]
+  connect_bd_net -net TARGET_C_TopLevel_Sy_0_WR_RS_S1 [get_bd_ports WR_RS_S1] [get_bd_pins TARGET_C_TopLevel_Sy_0/WR_RS_S1]
+  connect_bd_net -net TRIGA_1 [get_bd_ports TRIGA] [get_bd_pins TARGET_C_TopLevel_Sy_0/TrigA]
+  connect_bd_net -net TRIGB_1 [get_bd_ports TRIGB] [get_bd_pins TARGET_C_TopLevel_Sy_0/TrigB]
+  connect_bd_net -net TRIGC_1 [get_bd_ports TRIGC] [get_bd_pins TARGET_C_TopLevel_Sy_0/TrigC]
+  connect_bd_net -net TRIGD_1 [get_bd_ports TRIGD] [get_bd_pins TARGET_C_TopLevel_Sy_0/TrigD]
   connect_bd_net -net axi_dma_0_s2mm_introut [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins xlconcat_1/In1]
   connect_bd_net -net axi_iic_0_scl_o [get_bd_pins axi_iic_0/scl_o] [get_bd_pins iobuf_1/I]
   connect_bd_net -net axi_iic_0_scl_t [get_bd_pins axi_iic_0/scl_t] [get_bd_pins iobuf_1/T]
   connect_bd_net -net axi_iic_0_sda_o [get_bd_pins axi_iic_0/sda_o] [get_bd_pins iobuf_0/I]
   connect_bd_net -net axi_iic_0_sda_t [get_bd_pins axi_iic_0/sda_t] [get_bd_pins iobuf_0/T]
-  connect_bd_net -net axistream_0_StreamReady [get_bd_pins FifoManagerV4_0/ready_i] [get_bd_pins axistream_0/StreamReady]
+  connect_bd_net -net axistream_0_Cnt_AXIS_DATA [get_bd_pins TARGET_C_TopLevel_Sy_0/Cnt_AXIS_DATA] [get_bd_pins axistream_0/Cnt_AXIS_DATA]
+  connect_bd_net -net axistream_0_StreamReady [get_bd_pins TARGET_C_TopLevel_Sy_0/StreamReady] [get_bd_pins axistream_0/StreamReady]
   connect_bd_net -net iobuf_0_O [get_bd_pins axi_iic_0/sda_i] [get_bd_pins iobuf_0/O]
   connect_bd_net -net iobuf_1_O [get_bd_pins axi_iic_0/scl_i] [get_bd_pins iobuf_1/O]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins FifoManagerV4_0/CLK] [get_bd_pins TARGETC_IP_Prototype_0/RefCLK_i1] [get_bd_pins TARGETC_IP_Prototype_0/RefCLK_i2] [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axistream_0/M_AXIS_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins TARGET_C_TopLevel_Sy_0/RefCLK_i1] [get_bd_pins TARGET_C_TopLevel_Sy_0/RefCLK_i2] [get_bd_pins TARGET_C_TopLevel_Sy_0/tc_axi_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_iic_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axistream_0/M_AXIS_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_50M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins TARGETC_IP_Prototype_0/tc_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axistream_0/M_AXIS_ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins TARGETC_IP_Prototype_0/DO] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins TARGET_C_TopLevel_Sy_0/tc_axi_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_iic_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axistream_0/M_AXIS_ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins TARGET_C_TopLevel_Sy_0/DO] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins processing_system7_0/IRQ_F2P] [get_bd_pins xlconcat_1/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_ports HCMPA] [get_bd_ports HCMPB] [get_bd_ports HCMPC] [get_bd_ports HCMPD] [get_bd_pins xlconstant_0/dout]
 
   # Create address segments
   create_bd_addr_seg -range 0x40000000 -offset 0x00000000 [get_bd_addr_spaces axi_dma_0/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] SEG_processing_system7_0_HP0_DDR_LOWOCM
-  create_bd_addr_seg -range 0x20000000 -offset 0x60000000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs TARGETC_IP_Prototype_0/tc_axi/reg0] SEG_TARGETC_IP_Prototype_0_reg0
+  create_bd_addr_seg -range 0x20000000 -offset 0x60000000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs TARGET_C_TopLevel_Sy_0/tc_axi/reg0] SEG_TARGET_C_TopLevel_Sy_0_reg0
   create_bd_addr_seg -range 0x00010000 -offset 0x40400000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] SEG_axi_dma_0_Reg
   create_bd_addr_seg -range 0x00010000 -offset 0x41600000 [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_iic_0/S_AXI/Reg] SEG_axi_iic_0_Reg
 

@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
 -- Date        : Mon Jan 14 08:55:14 2019
 -- Host        : jonathan-Latitude-E7450 running 64-bit Linux Mint 18.1 Serena
--- Command     : write_vhdl -force -mode funcsim {/home/jonathan/Desktop/Link to
---               TARGETC_Prototype/hw/bd/base_zynq/ip/base_zynq_xlconstant_0_0/base_zynq_xlconstant_0_0_sim_netlist.vhdl}
+-- Command     : write_vhdl -force -mode funcsim -rename_top base_zynq_xlconstant_0_0 -prefix
+--               base_zynq_xlconstant_0_0_ base_zynq_xlconstant_0_0_sim_netlist.vhdl
 -- Design      : base_zynq_xlconstant_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
