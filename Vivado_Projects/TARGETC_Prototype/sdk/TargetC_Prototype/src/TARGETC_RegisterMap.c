@@ -418,41 +418,49 @@ int SetTargetCRegisters_DLL(void){
 	//	*** TARGETC Register Initial Values
 	WriteRegister(TC_SSTOUTFB_REG,		58);
 
-	WriteRegister(TC_SSPIN_LE_REG,		7);	 // ? no value from Adrian
-	WriteRegister(TC_SSPIN_TE_REG,		38);
+	WriteRegister(TC_SSPIN_LE_REG,		51);	 // ? no value from Adrian
+	WriteRegister(TC_SSPIN_TE_REG,		7);
 
 	int delayline_WR_STRB1 = 0;
 	int delayline_WR_ADDR1 = 0;
 	int delayline_WR_STRB2 = 0;
 	int delayline_WR_ADDR2 = 0;
-	//WriteRegister(TC_WR_STRB2_LE_REG,	61);
-	WriteRegister(TC_WR_STRB2_LE_REG,	20);
-	//WriteRegister(TC_WR_STRB2_TE_REG,	7);
-	WriteRegister(TC_WR_STRB2_TE_REG,	30);
 
-	WriteRegister(TC_WR2_ADDR_LE_REG,	4);
-	WriteRegister(TC_WR2_ADDR_TE_REG,	10);
+//	SSTOUFB & 58 \\
+//	SSPIN\_LE & 7 \\
+//	SSPIN\_TE & 38 \\
+//	WR\_STRB2\_LE & 25 \\
+//	WR\_STRB2\_TE & 35 \\
+//	WR2\_ADDR\_LE & 5 \\
+//	WR2\_ADDR\_TE & 15 \\
+//	WR\_STRB1\_LE & 57 \\
+//	WR\_STRB1\_TE & 3 \\
+//	WR1\_ADDR\_LE & 37 \\
+//	WR1\_ADDR\_TE & 47 \\
 
-	//WriteRegister(TC_WR_STRB1_LE_REG,	25);
-	WriteRegister(TC_WR_STRB1_LE_REG,	50);
-	//WriteRegister(TC_WR_STRB1_TE_REG,	10);
-	WriteRegister(TC_WR_STRB1_TE_REG,	60);
+	WriteRegister(TC_WR_STRB2_LE_REG,	25);
+	WriteRegister(TC_WR_STRB2_TE_REG,	35);
 
-	WriteRegister(TC_WR1_ADDR_LE_REG,	35);
-	WriteRegister(TC_WR1_ADDR_TE_REG,	45);
-		// WriteRegister(TC_WR_STRB2_LE_REG,	(15+delayline_WR_STRB2)%64);
-		// WriteRegister(TC_WR_STRB2_TE_REG,	(45+delayline_WR_STRB2)%64);
-		//
-		// WriteRegister(TC_WR2_ADDR_LE_REG,	(12+delayline_WR_ADDR2)%64);
-		// WriteRegister(TC_WR2_ADDR_TE_REG,	(42+delayline_WR_ADDR2)%64);
-		//
-		// //@ TC_VDLYTUNE_REG = 1000
-		// WriteRegister(TC_WR_STRB1_LE_REG,	(45+delayline_WR_STRB1)%64);
-		// WriteRegister(TC_WR_STRB1_TE_REG,	(15+delayline_WR_STRB1)%64);
-		//
-		//
-		// WriteRegister(TC_WR1_ADDR_LE_REG,	(42+delayline_WR_ADDR1)%64);
-		// WriteRegister(TC_WR1_ADDR_TE_REG,	(12+delayline_WR_ADDR1)%64);
+	WriteRegister(TC_WR2_ADDR_LE_REG,	5);
+	WriteRegister(TC_WR2_ADDR_TE_REG,	15);
+
+	WriteRegister(TC_WR_STRB1_LE_REG,	57);
+	WriteRegister(TC_WR_STRB1_TE_REG,	3);
+
+	WriteRegister(TC_WR1_ADDR_LE_REG,	37);
+	WriteRegister(TC_WR1_ADDR_TE_REG,	47);
+
+//	WriteRegister(TC_WR_STRB1_LE_REG,	25);
+//	WriteRegister(TC_WR_STRB1_TE_REG,	35);
+//
+//	WriteRegister(TC_WR1_ADDR_LE_REG,	5);
+//	WriteRegister(TC_WR1_ADDR_TE_REG,	15);
+//
+//	WriteRegister(TC_WR_STRB2_LE_REG,	57);
+//	WriteRegister(TC_WR_STRB2_TE_REG,	3);
+//
+//	WriteRegister(TC_WR2_ADDR_LE_REG,	37);
+//	WriteRegister(TC_WR2_ADDR_TE_REG,	47);
 
 	WriteRegister(TC_VQBUFF_REG,	1062);	// ADRIAN = 0
 	WriteRegister(TC_QBIAS_REG,		1500);		// ADRIAN no PLL

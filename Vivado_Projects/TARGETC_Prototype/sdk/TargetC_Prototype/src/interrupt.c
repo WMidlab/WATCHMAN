@@ -222,6 +222,9 @@ void AxiDMA_IntrHandler(XAxiDma* AxiDmaInst){
 	//ControlRegisterWrite(PSBUSY_MASK,ENABLE);
 	/* Read pending interrupts */
 	IrqStatus = XAxiDma_IntrGetIrq(AxiDmaInst, XAXIDMA_DEVICE_TO_DMA);
+	//printf("IrqStatus = 0x%x\r\n", IrqStatus);
+	uint32_t reg = XAxiDma_ReadReg(AxiDmaInst->RegBase + (XAXIDMA_RX_OFFSET * XAXIDMA_DEVICE_TO_DMA), XAXIDMA_BUFFLEN_OFFSET);
+	
 
 	/* Acknowledge pending interrupts */
 	XAxiDma_IntrAckIrq(AxiDmaInst, IrqStatus, XAXIDMA_DEVICE_TO_DMA);

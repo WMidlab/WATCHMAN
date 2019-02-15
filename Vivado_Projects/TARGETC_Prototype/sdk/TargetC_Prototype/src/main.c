@@ -150,12 +150,14 @@ int main(void)
 	// sleep(1);
 
 	xil_printf("\n\r*** Pedestals *** \n\r");
-	init_pedestals();
+	//init_pedestals();
   	xil_printf("\n\r*** End Pedestals *** \n\r");
 
 	xil_printf("\n\r*** MonTiming *** \n\r");
 	//MonTimingSet();
 	xil_printf("\n\r*** End MonTiming *** \n\r");
+	sleep(5);
+
 // *** Test Stream ***
 
 /*	xil_printf("\r\n*** TestStream ***\r\n");
@@ -208,6 +210,98 @@ int main(void)
     ControlRegisterWrite(SMODE_MASK,DISABLE);
 	sleep(2);
 */
+// Test Stream
+	xil_printf("\r\n*** Test Stream ***\r\n");
+    NBRWINDOWS = 1;
+	axidma_flg = FALSE;
+	head = malloc(sizeof(struct ele_list_st));
+	if(head == NULL){
+		printf("Fuck malloc\r\n");
+	}
+	head->pnext = NULL;
+
+ 	Xil_DCacheFlushRange(&(head->wdo), sizeof(struct window_st));
+	XAxiDma_SimpleTransfer_Hej(&AxiDmaInstance,&(head->wdo), sizeof(struct window_st));
+
+    //switch to stream rather than normal Axi-Lite
+    ControlRegisterWrite(SMODE_MASK ,ENABLE);
+
+	samplecnt = 0;
+	ControlRegisterWrite(PSBUSY_MASK,DISABLE);
+   	ControlRegisterWrite(SS_TPG_MASK,ENABLE);	// SAmple and not TPG
+
+    regptr[TC_FSTWINDOW_REG] = 0;
+	regptr[TC_NBRWINDOW_REG] = NBRWINDOWS;
+
+
+    //switch to stream rather than normal Axi-Lite
+    ControlRegisterWrite(SMODE_MASK | TESTSTREAM_MASK,ENABLE);
+    ControlRegisterWrite(TESTSTREAM_MASK,DISABLE);
+
+	timeout= 5;
+	tmp = 0;
+	while(timeout && !axidma_rx_done){
+		sleep(1);
+		xil_printf("... ");
+		timeout--;
+	}
+	xil_printf("\r\n");
+
+		if(axidma_rx_done){
+			//sleep(1);
+			Xil_DCacheInvalidateRange(&(head->wdo), sizeof(struct window_st));
+
+			xil_printf("HEADER\r\n");
+			xil_printf("------------\r\n");
+
+//			xil_printf("Window Time :\t%d\r\n",head->wdo.wdotime);
+//			xil_printf("Dig Time :\t%d\r\n",head->wdo.digtime);
+//			xil_printf("Trigger :\t%d\r\n",head->wdo.trig);
+//			xil_printf("Window Nbr :\t%d\r\n",head->wdo.wdonbr);
+
+			for(int i=0; i<6; i++){
+				xil_printf("Header%d:\t%d\r\n",i,head->wdo.header[i]);
+			}
+			xil_printf("CH0\tCH1\tCH2\tCH3\tCH4\tCH5\tCH6\tCH7\tCH8\tCH9\tCH10\tCH11\tCH12\tCH13\tCH14\tCH15\r\n");
+			xil_printf("----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\t----\r\n");
+			xil_printf(">>>\r\n");
+			for(int i=0; i<32;i++){
+
+				xil_printf("%d\t",head->wdo.data[i]);
+				xil_printf("%d\t",head->wdo.data[i + 32]);
+				xil_printf("%d\t",head->wdo.data[i + 32*2]);
+				xil_printf("%d\t",head->wdo.data[i + 32*3]);
+
+				xil_printf("%d\t",head->wdo.data[i + 32*4]);
+				xil_printf("%d\t",head->wdo.data[i + 32*5]);
+				xil_printf("%d\t",head->wdo.data[i + 32*6]);
+				xil_printf("%d\t",head->wdo.data[i + 32*7]);
+
+				xil_printf("%d\t",head->wdo.data[i + 32*8]);
+				xil_printf("%d\t",head->wdo.data[i + 32*9]);
+				xil_printf("%d\t",head->wdo.data[i + 32*10]);
+				xil_printf("%d\t",head->wdo.data[i + 32*11]);
+
+				xil_printf("%d\t",head->wdo.data[i + 32*12]);
+				xil_printf("%d\t",head->wdo.data[i + 32*13]);
+				xil_printf("%d\t",head->wdo.data[i + 32*14]);
+				xil_printf("%d\r\n",head->wdo.data[i + 32*15]);
+			}
+			xil_printf("<<<\r\n");
+			xil_printf("\r\n");
+			axidma_rx_done = 0;
+
+		}
+		else{
+			xil_printf("No interrupts\r\n");
+		}
+	sleep(2);
+	GetTargetCStatus();
+    ControlRegisterWrite(SMODE_MASK,DISABLE);
+	sleep(2);
+	free(head);
+
+
 // TEST FIFO
 	xil_printf("\r\n*** Test FIFO ***\r\n");
     NBRWINDOWS = 1;
@@ -303,7 +397,7 @@ int main(void)
 
 
 		xil_printf("******** Multiple Window - Multiple Window *************\r\n");
-
+		ControlRegisterWrite(SS_TPG_MASK ,DISABLE);
 		//int timeout;
 		int flg_error = 0;
 
@@ -367,9 +461,19 @@ int main(void)
 					//if(data_tmp > 2047) data_tmp = 2047;
 						for(int j=0; j<32; j++){
 							for(int i=0; i<15; i++){
-								printf("%d\t", head->wdo.data[i*32+j]+ VPED_DIGITAL - pedestal[window][i][j]);
+								if(!(regptr[TC_CONTROL_REG] & SS_TPG_MASK))
+									printf("0x%x\t", head->wdo.data[i*32+j]);
+								else
+									printf("%d\t", head->wdo.data[i*32+j]);
+									//printf("%d\t", head->wdo.data[i*32+j]+ VPED_DIGITAL - pedestal[window][i][j]);
+
+
 							}
-							printf("%d\r\n", head->wdo.data[15*32+j]+ VPED_DIGITAL - pedestal[window][15][j]);
+							if(!(regptr[TC_CONTROL_REG] & SS_TPG_MASK))
+								printf("0x%x\r\n", head->wdo.data[15*32+j]);
+							else
+								printf("%d\r\n", head->wdo.data[15*32+j]);
+								//printf("%d\r\n", head->wdo.data[15*32+j]+ VPED_DIGITAL - pedestal[window][15][j]);
 
 						}
 						printf("<<<\r\n");

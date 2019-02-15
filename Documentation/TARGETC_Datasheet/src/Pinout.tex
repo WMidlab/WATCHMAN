@@ -1,0 +1,171 @@
+\clearpage
+\section{Pinout}
+\noindent
+\subsection*{Pinout Legend}
+\begin{minipage}{.5\textwidth}
+	\fcolorbox{black}{lightpink4}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad VDD : Power Supply\\
+	\fcolorbox{black}{lightpink2}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad ASIC Digital Input\\
+	\fcolorbox{black}{lightorange}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad ASIC LVDS Input\\
+
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+	\fcolorbox{black}{lightblue4}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad GND : Ground\\
+	\fcolorbox{black}{lightyellow}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad ASIC Digital Output\\
+	\fcolorbox{black}{lightpurple}{\rule{0pt}{6pt}\rule{6pt}{0pt}}\quad ASIC LVDS Output\\
+\end{minipage}
+
+
+\begin{footnotesize}
+\begin{center}
+\begin{longtabu}{  | c | p{0.12\linewidth} | p{0.4\linewidth} | p{0.3\linewidth} |}
+\caption{\label{tab:pinout}TARGETC Pinout} \\
+\hline
+\HEADTABLE
+Pin\# & Pin Name & Description & Comment\\
+\hline
+\hline
+\endfirsthead
+\multicolumn{4}{@{}l}{Table \ref{tab:pinout} continued}\\\hline
+\HEADTABLE
+Pin\# & Pin Name & Description & Comment\\
+\hline
+\hline
+\endhead % all the lines above this will be repeated on every page
+\hline
+\multicolumn{4}{r@{}}{next page\ldots}\\
+\endfoot
+\endlastfoot
+1	& RFin\_1	& PMT input Ch. 1 &	\\
+2	& RFN\_1		& Termination ref input Ch. 1	& \\
+3	& RFin\_2	& PMT input Ch. 2	& \\
+4	& RFN\_2	& 	Termination ref input Ch. 2	& \\
+5	& RFin\_3	& PMT input Ch. 3	& \\
+6	& RFN\_3		& Termination ref input Ch. 3	& \\
+7	& RFin\_4	& PMT input Ch. 4	& \\
+8	& RFN\_4		& Termination ref input Ch. 4	& \\
+9	& RFin\_5	& PMT input Ch. 5	& \\
+10	& RFN\_5		& Termination ref input Ch. 5	& \\
+11	& RFin\_6	& PMT input Ch. 6	& \\
+12	& RFN\_6		& Termination ref input Ch. 6	& \\
+13	& RFin\_7	& PMT input Ch. 7	& \\
+14	& RFN\_7		& Termination ref input Ch. 7	& \\
+15	& RFin\_8	& PMT input Ch. 8	& \\
+16	& RFN\_8		& Termination ref input Ch. 8	& \\
+17	& RFin\_9	& PMT input Ch. 9	& \\
+18	& RFN\_9		& Termination ref input Ch. 9	& \\
+19	& RFin\_10	& PMT input Ch. 10	& \\
+20	& RFN\_10	& Termination ref input Ch. 10	& \\
+21	& RFin\_11	& PMT input Ch. 11	& \\
+22	& RFN\_11	& Termination ref input Ch. 11	& \\
+23	& RFin\_12	& PMT input Ch. 12	& \\
+24	& RFN\_12	& Termination ref input Ch. 12	& \\
+25	& RFin\_13	& PMT input Ch. 13	& \\
+26	& RFN\_13	& Termination ref input Ch. 13	& \\
+27	& RFin\_14	& PMT input Ch. 14	& \\
+28	& RFN\_14	& Termination ref input Ch. 14	& \\
+29	& RFin\_15	& PMT input Ch. 15	& \\
+30	& RFN\_15	& Termination ref input Ch. 15	& \\
+31	& RFin\_16	& PMT input Ch. 16	& \\
+32	& RFN\_16	& Termination ref input Ch. 16	& \\
+\rowcolor{lightblue4} 33	& GND33		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 34	& VDD34		& 2.5V power (VDD)	& \\
+\rowcolor{lightpink2} 35	& SIN		& Serial Input data	& \\
+\rowcolor{lightpink2} 36	& SCLK		& Serial clock advance	& \\
+\rowcolor{lightpink2} 37	& PCLK		& Parallel clock load	& \\
+\rowcolor{lightyellow} 38	& SHout	& Serial Shift Out	& \\
+\rowcolor{lightblue4} 39	& GND39		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 40	& VDD40		& 2.5V power (VDD)	& \\
+41	& -			& - 	& \\
+42	& -			& -		& \\
+\rowcolor{lightorange} 43	& HSclkN	& Data Shift-out Clock	& \\
+\rowcolor{lightorange} 44	& HSclkP	& LVDS	& \\
+\rowcolor{lightblue4} 45	& GND43		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink2} 46	& WR\_RS\_S0	& WR Row Select Addr. 0	& \\
+\rowcolor{lightpink2} 47	& WR\_CS\_S1	& WR Row Select Addr. 1	& \\
+\rowcolor{lightpink2} 48	& WR\_CS\_S0	& WR Column Select Addr. 0	& \\
+\rowcolor{lightpink2} 49	& WR\_CS\_S1	& WR Column Select Addr. 1	& \\
+\rowcolor{lightpink2} 50	& WR\_CS\_S2	& WR Column Select Addr. 2	& \\
+\rowcolor{lightpink2} 51	& WR\_CS\_S3	& WR Column Select Addr. 3	& \\
+\rowcolor{lightpink4} 52	& VDD52		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4} 53	& GND53		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink2} 54	& WR\_CS\_S4	& WR Column Select Addr. 4	& \\
+\rowcolor{lightpink2} 55	& WR\_CS\_S5	& WR Column Select Addr. 5	& \\
+\rowcolor{lightpink2} 56	& GCC\_Reset & Gray Code Counter Reset	& \\
+\rowcolor{lightorange} 57	& WL\_CLK\_n	& Wilkinson Clock LVDS	& \\
+\rowcolor{lightorange} 58	& WL\_CLK\_p	& Wilkinson Clock LVDS	& \\
+\rowcolor{lightblue4} 59	& GND59		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 60	& VDD60		& 2.5V power (VDD)	& \\
+\rowcolor{lightpink2} 61	& RDAD\_clk	& Read Address Set SCLK	& \\
+\rowcolor{lightpink2} 62	& RDAD\_sin	& Read Address Set Serial Input	& \\
+\rowcolor{lightpink2} 63	& RDAD\_dir	& Read Address Set DIR	& \\
+64	& -			& - & \\
+65	& -			& -	& \\ \hline
+\rowcolor{lightpink2} 66	& SmplSl\_Any & Sample Select between TPG and sample value	& '0' : Test Pattern Generator\\
+\rowcolor{lightpink2}	&			&					& '1' : Sample Select\\ \hline
+\rowcolor{lightpink4} 67	& VDD67		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4} 68	& GND68		& 0V power (GND = VSS)	& \\
+\rowcolor{lightyellow} 69	& DO\_16	& Serial Data Out Ch. 16	& \\
+\rowcolor{lightyellow} 70	& DO\_15	& Serial Data Out Ch. 15	& \\
+\rowcolor{lightyellow} 71	& DO\_14	& Serial Data Out Ch. 14	& \\
+\rowcolor{lightyellow} 72	& DO\_13	& Serial Data Out Ch. 13	& \\
+\rowcolor{lightyellow} 73	& DO\_12	& Serial Data Out Ch. 12	& \\
+\rowcolor{lightyellow} 74	& DO\_11	& Serial Data Out Ch. 11	& \\
+\rowcolor{lightyellow} 75	& DO\_10	& Serial Data Out Ch. 10	& \\
+\rowcolor{lightyellow} 76	& DO\_9		& Serial Data Out Ch. 9	& \\
+\rowcolor{lightpink4} 77	& VDD77		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4} 78	& GND78		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink2} 79	& SS\_Incr	& Sample Select increment	& \\ \hline
+\rowcolor{lightyellow} 80	& DOE		& Data Output Enable	& '0' : Data Output Disabled\\
+\rowcolor{lightyellow}	&			&						& '1' : Data Output Enabled\\ \hline
+81	& -		& -	& \\
+\rowcolor{lightpink4} 82	& VDD82		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4}83	& GND83		& 0V power (GND = VSS)	& \\
+\rowcolor{lightyellow} 84	& DO\_8		& Serial Data Out Ch. 8	& \\
+\rowcolor{lightyellow} 85	& DO\_7		& Serial Data Out Ch. 7	& \\
+\rowcolor{lightyellow} 86	& DO\_6		& Serial Data Out Ch. 6	& \\
+\rowcolor{lightyellow} 87	& DO\_5		& Serial Data Out Ch. 5	& \\
+\rowcolor{lightyellow} 88	& DO\_4		& Serial Data Out Ch. 4	& \\
+\rowcolor{lightyellow} 89	& DO\_3		& Serial Data Out Ch. 3	& \\
+\rowcolor{lightyellow} 90	& DO\_2		& Serial Data Out Ch. 2	& \\
+\rowcolor{lightyellow} 91	& DO\_1		& Serial Data Out Ch. 1	& \\
+\rowcolor{lightpink4} 92	& VDD92		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4} 93	& GND93		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink2} 94	& DONE		& AND of all DONE	& Tied to VDD\\
+\rowcolor{lightpink2} 95	& eSS\_Reset	& Sample Select reset	& \\
+\rowcolor{lightblue4} 96	& GND96		& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 97	& VDD97		& 2.5V power (VDD)	& \\
+\rowcolor{lightblue4} 98	& GND98	0V 	& power (GND = VSS)	& \\
+\rowcolor{lightpink2} 99	& eRegCLR	& Global register clear	& \\
+100	& emDOE		& Monitor DOE (was PCLK2)	& \\
+\rowcolor{lightblue4} 101	& GND101	& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 102	& VDD102	& 2.5V power (VDD)	& \\
+\rowcolor{lightpink2} 103	& eSS\_LD\_sin	& Sample select load data	& \\
+\rowcolor{lightpink2} 104	& eSS\_LD\_dir	& Sample select load ctrl	& \\
+105	& - 	& - & \\
+\rowcolor{lightblue4} 106	& GND106	& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 107	& VDD107	& 2.5V power (VDD)	& \\
+\rowcolor{lightpink2} 108	& eRamp		& Wilkinson Ramp control	& \\
+\rowcolor{lightblue4} 109	& GND109	& 0V power (GND = VSS)	& \\
+110	& Vdischarge	& Wilkinson Ramp Start voltage	& \\
+111	& RampMon	& Buffered copy of Wilk Ramp	& \\
+112	& ISEL		& Monitor for Wilk Ramp I (V out)	& \\
+113	& VrampRef	& Charging node	& \\
+\rowcolor{lightblue4} 114	& GND114	& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 115	& VDD115	& 2.5V power (VDD)	& \\
+116	& - 		& - & \\
+\rowcolor{lightpurple} 117	& eMonTimeN	& Monitor internal Timebase gen	& \\
+\rowcolor{lightpurple} 118	& eMonTimeP	& 	& \\
+119	& - 		& -	& \\
+120	& - 		& -		& \\
+\rowcolor{lightblue4} 121	& GND121	& 0V power (GND = VSS)	& \\
+122	& VadjN		& Sampling NMOS current Adj	& \\
+123	& -			& - 	& \\
+124	& VadjP		& Sampling PMOS current Adj	& \\
+\rowcolor{lightorange} 125	& SSTin\_p	& SSTin LVDS	& \\
+\rowcolor{lightorange} 126	& SSTin\_n	& SSTin LVDS	& \\
+\rowcolor{lightblue4} 127	& GND127	& 0V power (GND = VSS)	& \\
+\rowcolor{lightpink4} 128	& VDD128	& 2.5V power (VDD)	& \\
+\hline
+\end{longtabu}
+\end{center}
+\end{footnotesize}

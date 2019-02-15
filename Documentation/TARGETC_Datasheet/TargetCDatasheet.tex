@@ -1,0 +1,37 @@
+%\documentclass[11pt,a4paper,twoside]{article} % Europe Paper
+\documentclass[11pt,letterpaper,twoside]{article}
+
+
+\input{src/structure}
+
+%---------------------------------------------------
+% Core Document
+%---------------------------------------------------
+\begin{document}
+\pagenumbering{arabic}
+\newgeometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\include{src/Title}
+\restoregeometry
+\setcounter{page}{\theCurrentPage}
+\include{src/Abbreviation}
+
+\tableofcontents % écrit automatiquement la table des matières
+%\setcounter{tocdepth}{6}
+
+% ------------------------------------------
+\cleardoublepage
+\input{src/Functionality.tex}
+
+\input{src/RegisterMap.tex}
+
+\input{src/Pinout.tex}
+
+\input{src/AdvancedControl.tex}
+
+%\input{src/Watchman.tex}
+
+\newpage
+%\listoffigures % écrit automatiquement la liste des figures
+
+\end{document}
+

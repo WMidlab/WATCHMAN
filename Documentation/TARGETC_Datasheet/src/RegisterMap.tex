@@ -1,0 +1,558 @@
+\clearpage
+\section{Register Map}
+\begin{footnotesize}
+\begin{center}
+\begin{longtabu}{  | c | p{0.2\linewidth} | p{0.5\linewidth} |}
+\caption{\label{tab:regmap}TARGETC Register Map} \\
+\hline
+\HEADTABLE	
+Reg \# & Reg Name & Description/Comment\\
+\hline
+\hline
+\endfirsthead
+\multicolumn{3}{@{}l}{Table \ref{tab:regmap} continued}\\\hline
+\HEADTABLE	
+Reg \# & Reg Name & Description/Comment\\
+\hline
+\hline
+\endhead % all the lines above this will be repeated on every page 
+\hline
+\multicolumn{3}{r@{}}{next page\ldots}\\
+\endfoot
+\endlastfoot
+1 .. 64	& 	VdlyTune	& 	Delay samples 1 - 64		Default to zero (max on)	\\ \hline
+65	& 	SSToutFB	& 	Timebase		8 bit time	\\ \hline
+66	& 	SSPin LE	& 	Timebase		8 bit time	\\ \hline
+67	& 	SSPin TE	& 	Timebase		8 bit time	\\ \hline
+68	& 	WR\_STRB2 LE	& 	Timebase		8 bit time	\\ \hline
+69	& 	WR\_STRB2 TE	& 	Timebase		8 bit time	\\ \hline
+70	& 	WR\_ADDR\_Incr2 LE	& 	Timebase		8 bit time	\\ \hline
+71	& 	WR\_ADDR\_Incr2 TE	& 	Timebase		8 bit time	\\ \hline
+72	& 	WR\_STRB1 LE	& 	Timebase		8 bit time	\\ \hline
+73	& 	WR\_STRB1 TE	& 	Timebase		8 bit time	\\ \hline
+74	& 	WR\_ADDR\_Incr1 LE	& 	Timebase		8 bit time	\\ \hline
+75	& 	WR\_ADDR\_Incr1 TE	& 	Timebase		8 bit time	\\ \hline
+76	& 	MonTiming SEL	& 	Timebase			\\ \hline
+77	& 	Vqbuff	& 	PLL			\\ \hline
+78	& 	Qbias	& 	PLL	Vqbuff		\\ \hline
+79	& 	VtrimT	& 	PLL	Vqbuff		\\ \hline
+80	& 	Vbias	& 	sampling	Vqbuff		\\ \hline
+81	& 	VAPbuff	& 	Timebase			\\ \hline
+82	& 	VadjP	& 	Timebase	VAPbuff		\\ \hline
+83	& 	VANbuff	& 	Timebase			\\ \hline
+84	& 	VadjN	& 	Timebase	VANbuff		\\ \hline
+85	& 	Sbbias	& 	Vramp	Dbbias		\\ \hline
+86	& 	Vdisch	& 	Vramp	Dbbias		\\ \hline
+87	& 	Isel	& 	Vramp	Dbbias		\\ \hline
+88	& 	Dbbias	& 	Vramp			\\ \hline
+89	& 	CMPbias2	& 	Wilk	Sbbias		\\ \hline
+90	& 	Pubias	& 	Wilk	Sbbias		\\ \hline
+91	& 	CMPbias	& 	Wilk	Sbbias		\\ \hline
+92	& 	Misc Digital Reg	& 		5-bit == at right		\\ \hline	
+93 .. 127	& 	(Unused)	& 				\\ \hline
+128	& 	TPGreg	& 		12 bit pattern		\\ \hline
+\end{longtabu}
+\end{center}
+\end{footnotesize}
+
+%Register Map Explained
+\newpage
+\subsection{Time Register}
+
+\subsection*{Reg 1-64 - VdTrim1-64 - 0x01-0x40}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage adjust for each delay cell (Fine Tune) 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg164} Reg 1-64 - VdTrim1-64 - 0x01-0x40}
+\end{center}
+\end{table}
+
+\subsection*{Reg 65 - SSToutFB - 0x41}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Pulse selection from the  TC\_dly64 (Delay chain)	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg65} Reg 65 - SSToutFB - 0x41}
+\end{center}
+\end{table}
+
+\subsection*{Reg 66 - SSPIN LE - 0x42}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Leading Edge of SSPIN signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg66} Reg 66 - SSPIN LE - 0x42}
+\end{center}
+\end{table}
+
+\subsection*{Reg 67 - SSPIN TE - 0x43}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Trailing Edge of SSPIN signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg67} Reg 67 - SSPIN TE - 0x43}
+\end{center}
+\end{table}
+
+\subsection*{Reg 68 - WR\_STRB2 LE - 0x44}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Leading Edge of Write Strobe 2 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg68} Reg 68 - WR\_STRB2 LE - 0x44}
+\end{center}
+\end{table}
+
+\subsection*{Reg 69 - WR\_STRB2 TE - 0x45}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Trailing Edge of Write Strobe 2 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg69} Reg 69 - WR\_STRB2 TE - 0x45}
+\end{center}
+\end{table}
+
+\subsection*{Reg 70 - WR2\_ADDR\_INCR LE - 0x46}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Leading Edge of Write Address 2 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg70} Reg 70 - WR2\_ADDR\_INCR LE - 0x46}
+\end{center}
+\end{table}
+
+\subsection*{Reg 71 - WR2\_ADDR\_INCR TE - 0x47}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Trailing Edge of Write Address 2 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg71} Reg 71 - WR2\_ADDR\_INCR TE - 0x47}
+\end{center}
+\end{table}
+
+
+\subsection*{Reg 72 - WR\_STRB1 LE - 0x48}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Leading Edge of Write Strobe 1 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg72} Reg 72 - WR\_STRB1 LE - 0x48}
+\end{center}
+\end{table}
+
+\subsection*{Reg 73 - WR\_STRB1 TE - 0x49}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Trailing Edge of Write Strobe 1 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg73} Reg 73 - WR\_STRB1 TE - 0x49}
+\end{center}
+\end{table}
+
+\subsection*{Reg 74 - WR1\_ADDR\_INCR LE - 0x4A}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Leading Edge of Write Address 1 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg74} Reg 74 - WR1\_ADDR\_INCR LE - 0x4A}
+\end{center}
+\end{table}
+
+\subsection*{Reg 75 - WR1\_ADDR\_INCR TE - 0x4B}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 6	& (unused) 	& -	& -	\\
+5 - 0	& Trailing Edge of Write Address 1 signal, Pulse selection from the TC\_dly64 (Delay chain)  & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg75} Reg 75 - WR1\_ADDR\_INCR TE - 0x4B}
+\end{center}
+\end{table}
+
+\subsection*{Reg 76 - MonTiming - 0x4C}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 8	& (unused) 	& -	& -	\\
+7 - 4	& Monitor Timing selection on MonTiming LVDS output & W	& $0000_2$	\\
+		& $0000_2$ : SSPout	& & \\
+		& $0001_2$ : SSTout	& & \\
+		& $0010_2$ : SSToutFB	& & \\
+		& $0011_2$ : SSPIN	& & \\
+		& $0100_2$ : WR\_STRB1	& & \\
+		& $0101_2$ : WR1\_ADDR\_INCR	& & \\
+		& $0110_2$ : WR\_STRB2	& & \\
+		& $0111_2$ : WR2\_ADDR\_INCR & & \\
+		& $1xxx_2$ : VDD (Tied to power supply)	& & \\
+3	& (unused) 	& -	& -	\\
+2	& Cload is for adding an additional capacitor for low pass filter 	& W	& 0	\\
+1 - 0	& (unused) 	& -	& -	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg76} Reg 76 - MonTiming - 0x4C}
+\end{center}
+\end{table}
+
+
+\subsection{Vramp Registers}
+\subsection*{Reg 77 - VQbuff - 0x4D}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for Register (Disable=0) : 	& W	& 0	\\
+		& - Reg 78 - Qbias - 0x4E	& 	& \\
+		& - Reg 79 - VtrimT - 0x4F	& 	& \\
+		& - Reg 80 - Vbias - 0x50	& 	& \\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg77} Reg 77 - VQbuff - 0x4D}
+\end{center}
+\end{table}
+
+\subsection*{Reg 78 - Qbias - 0x4E}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for the DLL 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg78} Reg 78 - Qbias - 0x4E}
+\end{center}
+\end{table}
+
+\subsection*{Reg 79 - VtrimT - 0x4F}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage parameter for fine tune of SSToutFB signal 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg79} Reg 79 - VtrimT - 0x4F}
+\end{center}
+\end{table}
+
+\subsection*{Reg 80 - Vbias - 0x50}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage parameter for a global fine tune of Vdly1 to Vdly64 voltages from Reg1 to Reg64	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg80}Reg 80 - Vbias - 0x50}
+\end{center}
+\end{table}
+
+\subsection*{Reg 81 - VAPbuff - 0x51}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for Register (Disable=0) : 	& W	& 0	\\
+		& - Reg 82 - VadjP- 0x52	& 	& \\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg81} Reg 81 - VAPbuff - 0x51}
+\end{center}
+\end{table}
+
+\subsection*{Reg 82 - VadjP - 0x52}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage for the DLL 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg82} Reg 82 - VadjP - 0x52}
+\end{center}
+\end{table}
+
+\subsection*{Reg 83 - VANbuff - 0x53}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for Register (Disable=0) : 	& W	& 0	\\
+		& - Reg 84 - VadjN- 0x54	& 	& \\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg83} Reg 83 - VANbuff - 0x53}
+\end{center}
+\end{table}
+
+\subsection*{Reg 84 - VadjN - 0x54}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage for the DLL 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg84} Reg 84 - VadjN - 0x54}
+\end{center}
+\end{table}
+
+\subsection*{Reg 85 - SSBias - 0x85}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for Register and SuperBuffer : 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg85}Reg 85 - SSBias - 0x85}
+\end{center}
+\end{table}
+
+\subsection*{Reg 86 - VDisch - 0x86}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage discharge value for the Ramp Capacitor for the Wilkinson Comparator : 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg86}Reg 86 - VDisch - 0x86}
+\end{center}
+\end{table}
+
+\subsection*{Reg 87 - Isel - 0x87}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Parameter for slope selection, therefore charging slower or faster the capacitor 	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg86}Reg 86 - VDisch - 0x86}
+\end{center}
+\end{table}
+
+\subsection*{Reg 88 - DDBias - 0x88}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Voltage bias for Register (Disable=0) : 	& W	& 0	\\
+		& - Reg 85 - SSBias - 0x85	& 	& \\
+		& - Reg 86 - VDisch - 0x86	& 	& \\
+		& - Reg 87 - Isel - 0x87	& 	& \\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg88} Reg 88 - DDBias - 0x88}
+\end{center}
+\end{table}
+
+\subsection{Comparator Parameters}
+\subsection*{Reg 89 - CMPBias2 - 0x89}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Second Stage Mosfet for voltage level	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg89}Reg 89 - CMPBias2 - 0x89}
+\end{center}
+\end{table}
+
+\subsection*{Reg 90 - PUbias - 0x8A}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Current selection for the Mosfet acting like Pull-Up Resistor	& W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg90}Reg 90 - PUbias - 0x8A}
+\end{center}
+\end{table}
+
+\subsection*{Reg 91 - CMPbias - 0x8B}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Current source for the Wilkinson Comparator & W	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg91}Reg 91 - CMPbias - 0x8B}
+\end{center}
+\end{table}
+
+\subsection*{Reg 92 - MiscDig - 0x8C}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 5	& (unused) 	& -	& -	\\
+4 - 3	& SHout Selection & W	& $00_2$	\\
+		& $0x_2$ : SHout Data	& & \\
+		& $10_2$ : RD\_SHout	& & \\
+		& $11_2$ : SS\_SHout	& & \\
+2	& nWR2\_Enable, Global write enable for second 32 samples, enable at 0 (Low value) 	& W	& 0	\\
+1	& nWR1\_Enable, Global write enable for first 32 samples, enable at 0 (Low value) 	& W	& 0	\\
+0	& nRD\_Enable, Global read enable for digitization of samples, enable at 0 (Low value) & W 	& 0	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg92} Reg 92 - MiscDig - 0x8C}
+\end{center}
+\end{table}
+
+\subsection*{Reg 128 - TPG - 0x100}
+\begin{table}[H]
+\begin{center}
+\begin{tabu}{  | p{0.1\linewidth} | p{0.6\linewidth} | c | c |}
+\hline
+\HEADTABLE	
+Bits & Function & R/W & Default\\
+\hline
+11 - 0	& Test Pattern, if enabled data output will be the test pattern 	& -	& -	\\
+\hline 	
+\end{tabu}
+\caption{\label{tab:reg128} Reg 128 - TPG - 0x100}
+\end{center}
+\end{table}
+
+
+
+
+
