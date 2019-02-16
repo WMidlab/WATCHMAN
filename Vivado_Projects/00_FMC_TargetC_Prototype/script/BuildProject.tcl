@@ -232,7 +232,7 @@ cd "${proj_dir}"
 puts "Save BIT File"
 switch -glob -- [lindex $tcl_platform(os) 0] {
 	Win* { #Windows
-		cd ../hw/images/
+		cd ../images/
 		if {[file exist $BITProjectWrapper] == 1} {
 			file mkdir ${proj_dir}/${ProjectName}.runs
 			file mkdir ${proj_dir}/${ProjectName}.runs/impl_1
@@ -244,10 +244,10 @@ switch -glob -- [lindex $tcl_platform(os) 0] {
 		cd "${proj_dir}"
 	}
 	Lin* { #Linux
-		if {[file exist $proj_dir/../hw/images/$BITProjectWrapper] == 1} {
+		if {[file exist $proj_dir/../images/$BITProjectWrapper] == 1} {
 			file mkdir ${proj_dir}/${ProjectName}.runs
 			file mkdir ${proj_dir}/${ProjectName}.runs/impl_1
-			exec cp $proj_dir/../hw/images/$BITProjectWrapper $proj_dir/$ProjectName.runs/impl_1/
+			exec cp $proj_dir/../images/$BITProjectWrapper $proj_dir/$ProjectName.runs/impl_1/
 			puts "Success : BIT Save Done"
 		} else {
 			puts "BIT File does not exist"
@@ -261,7 +261,7 @@ switch -glob -- [lindex $tcl_platform(os) 0] {
 puts "Save HDF File"
 switch -glob -- [lindex $tcl_platform(os) 0] {
 	Win* { #Windows
-		cd ../hw/images/
+		cd ../images/
 		if {[file exist $HDFProjectWrapper] == 1} {
 			file copy $HDFProjectWrapper ${proj_dir}/${ProjectName}.sdk/
 			puts "Success : HDF save done"
@@ -271,9 +271,9 @@ switch -glob -- [lindex $tcl_platform(os) 0] {
 		cd "${proj_dir}"
 	}
 	Lin* { #Linux
-		if {[file exist $proj_dir/../hw/images$HDFProjectWrapper] == 1} {
+		if {[file exist $proj_dir/../images/$HDFProjectWrapper] == 1} {
 			file mkdir ${proj_dir}/${ProjectName}.sdk
-			exec cp $proj_dir/../hw/images$HDFProjectWrapper $proj_dir/$ProjectName.sdk/
+			exec cp $proj_dir/../images/$HDFProjectWrapper $proj_dir/$ProjectName.sdk/
 			puts "Success : HDF Save Done"
 		} else {
 			puts "HDF File does not exist"
