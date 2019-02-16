@@ -1,7 +1,9 @@
 # HW
 Date: 15th of February 2019
+
 Author: Jonathan Hendriks
 
+Additionnal information, check [Master Thesis Jonathan Hendriks](WATCHMAN/Documentation/Master_Thesis)
 For the unfinished of next step refer to [TODO.md](TODO.md)
 
 ## sim
