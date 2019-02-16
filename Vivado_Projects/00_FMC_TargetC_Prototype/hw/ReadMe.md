@@ -90,21 +90,3 @@ Simulation files for various parts of the project :
 ### TargetC_Control
 [TARGETC_Control.vhd](src/TargetC_Control/TARGETC_Control.vhd)
 
-# TODO
-
-## TARGETC
-- [ ] SImulation of the ASIC
-
-## Hardware
-- [ ] Check all the Prototype board (same resistors, same capacitors, gain stages,...)
-
-## Firmware (VHDL)
-- [ ] Re-evaluate the firmware for the VHDL
-- [ ] Trigger System in the file CPU_CONTROLLERV3.vhd [link](hw/src/Round_Buffer/CPU_CONTROLLERV3.vhd)
-
-
-> **IMPORTANT:**
-> Trigger System - New Idea is to have the address saved with the trigger information and build a control system to readout this FIFO.
-
-## Software (in C)
-
