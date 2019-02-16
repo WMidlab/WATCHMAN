@@ -3,7 +3,8 @@ Date: 15th of February 2019
 
 Author: Jonathan Hendriks
 
-Additionnal information, check [Master Thesis Jonathan Hendriks](WATCHMAN/Documentation/Master_Thesis/Hendriks_TM_2018-2019_S1.pdf)
+Additionnal information, check the Master thesis under (WATCHMAN/Documentation/Master_Thesis/Hendriks_TM_2018-2019_S1.pdf)
+
 For the unfinished of next step refer to [TODO.md](TODO.md)
 
 ## sim
