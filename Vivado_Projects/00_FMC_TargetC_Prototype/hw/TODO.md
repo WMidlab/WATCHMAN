@@ -15,3 +15,4 @@
 > **IMPORTANT:**
 > Trigger System - New Idea is to have the address saved with the trigger information and build a control system to readout this FIFO.
 
+- [ ] Change the HP port for the ACP port in order to avoid cache issues
