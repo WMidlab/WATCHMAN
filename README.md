@@ -14,7 +14,7 @@ Date : 20th September 2018 - 11:51
 Contains the documentation of the project and tutorials
 
 #### Python
-Contains the script for sending/receiving UDP packets
+Contains the script for sending/receiving UDP packets and other tools, refer to [ReadMe.md](Python/ReadMe.md)
 
 #### Vivado Projects
 Contains all the Vivado Projects for implementing the WATCHMAN Project.
