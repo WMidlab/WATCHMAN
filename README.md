@@ -17,4 +17,4 @@ Contains the documentation of the project and tutorials
 Contains the script for sending/receiving UDP packets and other tools, refer to [README.md](Python/README.md)
 
 #### Vivado Projects
-Contains all the Vivado Projects for implementing the WATCHMAN Project. The current project is [00_FMC_TargetC_Prototype](Vivado_Project/00_FMC_TargetC_Prototype/ReadMe.md)
+Contains all the Vivado Projects for implementing the WATCHMAN Project. The current project is [00_FMC_TargetC_Prototype](Vivado_Projects/00_FMC_TargetC_Prototype/ReadMe.md)
