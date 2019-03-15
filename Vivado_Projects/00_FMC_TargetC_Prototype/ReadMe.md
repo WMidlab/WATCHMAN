@@ -4,7 +4,11 @@ Date: 3th of February 2019
 
 # Folder Structure
 ## hw
-Contains the hardware (PL) for the Zynq 7z010
+Contains the hardware (PL) for the Zynq 7z010, check the [link](hw/ReadMe.md)
+
+## images
+Contains the images BIT file and HDF file for the current (PL) for the Zynq 7z010
+
 
 ## sdk
 Contains the application project :
@@ -19,7 +23,7 @@ Contains the application project :
 > 1) Open Vivado 2018.2
 > 2) Edit the name of the project in :  set ProjectName "Project_Name"
 > 3) cd ../scripts (Change the directory to the scripts folder
-> 4) source CreateProjectVivado.tcl
+> 4) source BuildProject.tcl
 >
 > this will create the Project_Name.prj under the XilinxBuild folder which is ignored with the .gitignore file.
 
